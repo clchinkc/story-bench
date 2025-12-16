@@ -1,0 +1,46 @@
+evaluation_id: ec62d4a4
+task_id: multi_beat_synthesis_001
+generation_id: multi_beat_synthesis_001_openai/gpt-4o_0
+task_type: multi_beat_synthesis
+model: openai/gpt-4o
+sample_index: 0
+evaluator_model: openai/gpt-5-mini
+evaluator_cost: 0.00294075
+timestamp: '2025-12-12T12:16:11.324477'
+success: true
+final_score: 0.8928379951679376
+score_breakdown:
+  final_score: 0.8928
+  components:
+    word_count:
+      score: 0.9994
+      weight: 0.25
+      actual: 697
+      target_range:
+      - 700
+      - 1000
+    programmatic:
+      score: 0.6752
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 0.9381
+        overall: 0.6752
+    llm_judge:
+      score: 0.9483
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 14
+  beat_reqs_total: 15
+  beat_requirements_score: 0.9333333333333333
+  cross_beat_satisfied: 4
+  cross_beat_total: 4
+  cross_beat_score: 1.0
+  word_count_valid: false
+  context_score: 0.9
+  coherence_score: 0.9
+  failed_items:
+  - 'Beat 1: No explicit reference to Dante''s addiction/recovery (e.g., his three
+    years clean) — only vague mention of ''past failings'' and guilt.'
+  - Word count outside required range (697 words; required 700-1000).
+error: null

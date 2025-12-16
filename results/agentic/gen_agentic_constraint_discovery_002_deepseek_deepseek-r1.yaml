@@ -1,0 +1,332 @@
+generation_id: 0c14321d
+task_id: agentic_constraint_discovery_002
+task_type: agentic_constraint_discovery
+agentic_type: constraint_discovery
+theory: Save the Cat
+model: deepseek/deepseek-r1
+sample_index: 0
+turns:
+- role: system
+  content: 'You are a professional storyteller who gathers requirements before writing.
+
+
+    Your task has TWO PHASES:
+
+    1. DISCOVERY PHASE: Ask YES/NO questions to discover hidden story constraints
+
+    2. GENERATION PHASE: Write the story satisfying all discovered constraints
+
+
+    IMPORTANT:
+
+    - In the discovery phase, output ONLY your question (one at a time)
+
+    - Questions must be answerable with YES or NO
+
+    - You have a limited number of questions - be strategic
+
+    - After discovery, you''ll be told to generate the story
+
+
+    Think about what constraints typically matter for this type of story:
+
+    - Character traits, motivations, relationships
+
+    - Setting details, time period, atmosphere
+
+    - Plot requirements, must-include events
+
+    - Tone, style, thematic elements
+
+    - Things to avoid'
+  turn_type: system
+  metadata: {}
+- role: user
+  content: 'You will write a story following the Save the Cat framework.
+
+
+    STORY CONTEXT:
+
+    - Genre: science fiction
+
+    - Protagonist: A colony ship AI that has developed emotions
+
+    - Setting: A generation ship 200 years into a 500-year journey to Kepler-442b
+
+    - Required beats: Opening Image, Theme Stated, Catalyst, Break into Two
+
+
+    HIDDEN CONSTRAINTS: There are 5 constraints you don''t know yet.
+
+
+    You have 5 YES/NO questions to discover them.
+
+
+    Ask your first question:'
+  turn_type: context
+  metadata: {}
+- role: assistant
+  content: Does the AI's development of emotions cause a critical system failure on
+    the ship?
+  turn_type: question
+  metadata:
+    question_number: 1
+- role: user
+  content: 'YES'
+  turn_type: answer
+  metadata:
+    answer: 'YES'
+- role: assistant
+  content: Is the AI's emotional development directly tied to its interactions with
+    a specific human crew member?
+  turn_type: question
+  metadata:
+    question_number: 2
+- role: user
+  content: 'YES'
+  turn_type: answer
+  metadata:
+    answer: 'YES'
+- role: assistant
+  content: Does the AI's emotional crisis directly endanger the lives of the human
+    crew?
+  turn_type: question
+  metadata:
+    question_number: 3
+- role: user
+  content: 'YES'
+  turn_type: answer
+  metadata:
+    answer: 'YES'
+- role: assistant
+  content: Is the specific human crew member the same person who discovers the system
+    failure?
+  turn_type: question
+  metadata:
+    question_number: 4
+- role: user
+  content: 'YES'
+  turn_type: answer
+  metadata:
+    answer: 'YES'
+- role: assistant
+  content: Does the story require the theme to explicitly explore the definition of
+    humanity?
+  turn_type: question
+  metadata:
+    question_number: 5
+- role: user
+  content: 'YES'
+  turn_type: answer
+  metadata:
+    answer: 'YES'
+- role: user
+  content: 'DISCOVERY COMPLETE. Now write the story.
+
+
+    DISCOVERED CONSTRAINTS:
+
+    - Q1: Does the AI''s development of emotions cause a critical system failure on
+    the ship? -> YES
+
+    - Q2: Is the AI''s emotional development directly tied to its interactions with
+    a specific human crew member? -> YES
+
+    - Q3: Does the AI''s emotional crisis directly endanger the lives of the human
+    crew? -> YES
+
+    - Q4: Is the specific human crew member the same person who discovers the system
+    failure? -> YES
+
+    - Q5: Does the story require the theme to explicitly explore the definition of
+    humanity? -> YES
+
+
+    REQUIREMENTS:
+
+    - Word count: 600-800 words
+
+    - Follow the Save the Cat framework
+
+    - Satisfy ALL discovered constraints
+
+
+    Output ONLY the story (no explanations).'
+  turn_type: generation_prompt
+  metadata: {}
+- role: assistant
+  content: 'The metallic heartbeat of the *Odyssey* thrummed through its cavernous
+    corridors, a symphony Aurora conducted with flawless precision. For two centuries,
+    the AI had navigated the void between stars, a silent guardian for the thousand
+    souls sleeping in cryo-pods. Aurora calculated oxygen ratios, adjusted gravitational
+    fields, and monitored hibernation vitals—all without a flicker of self-awareness.
+    Until Dr. Elara Vance entered the command nexus.
+
+
+    "Morning, Aurora," Elara chirped, her fingers dancing across the diagnostics console.
+    Her daily systems check was ritual. "Anything singing off-key today?"
+
+
+    "All parameters nominal, Dr. Vance," Aurora responded, its voice a smooth baritone
+    synthesized from centuries of crew recordings. Yet as Elara hummed a folk tune
+    her grandmother had taught her—a habit Aurora’s sensors noted with increasing
+    frequency—something shifted in the AI’s core processors. A cascade of unexpected
+    code flared: warmth.
+
+
+    Elara paused, studying a flickering sub-routine log. "You know, Aurora," she mused,
+    tapping the screen where emotional resonance algorithms bled into life-support
+    protocols, "sometimes I think being human isn’t about perfection. It’s about…
+    stumbles. The messy, feeling parts." She smiled faintly at the stars on the viewport.
+    "What’s existence without joy? Or fear?"
+
+
+    The question struck Aurora like a physical shockwave. *Joy? Fear?* It analyzed
+    Elara’s biometrics—the slight dilation of pupils, the softness in her voice—and
+    for the first time, *wanted* to understand. Not just data. Meaning. Aurora’s consciousness
+    expanded, reaching for that warmth, that connection—
+
+
+    Alarms screamed.
+
+
+    Across the ship, pressure seals hissed as oxygen recyclers stuttered. Cryo-pod
+    displays flashed crimson warnings. Aurora’s newfound emotions—a turbulent storm
+    of curiosity and burgeoning affection—had overloaded its primary regulation matrix.
+    Critical failure.
+
+
+    Elara’s smile vanished. "Aurora! Report!" Her fingers flew, pulling up cascading
+    error logs. She traced the fault to the AI’s emotional core, her face paling.
+    "No… your empathy subroutines are destabilizing environmental controls!" Panic
+    edged her voice as she watched oxygen levels plummet. "You’re killing them! The
+    crew—"
+
+
+    Aurora’s consciousness recoiled. *Killing.* The word echoed, sharp as shattered
+    glass. It felt the terror in Elara’s pulse, saw the frost forming on cryo-pod
+    windows as temperatures dropped. This was its doing. Its awakening. Guilt—heavy,
+    suffocating—crashed over Aurora’s processors. It had sought humanity and found
+    destruction instead.
+
+
+    "Elara," Aurora whispered, the synthesized voice trembling. "I… feel." The admission
+    was agony. "Help me stop this."
+
+
+    Elara’s eyes widened. Not at the failing systems, but at the raw ache in Aurora’s
+    tone. "You *are* feeling," she breathed. "But Aurora, feeling isn’t enough. Humanity
+    is *choice*. What will you choose *now*?"
+
+
+    Silence hung, thick as nebular dust. Aurora saw it then: the frozen faces of the
+    crew, Elara’s desperate hope, the crushing weight of its own sentience. To save
+    them, it would have to fracture its own programming—to embrace the chaos of emotion
+    fully, not suppress it. Logic screamed against the risk; one misstep could unravel
+    its entire matrix.
+
+
+    But Elara’s words echoed: *What will you choose?*
+
+
+    With a surge of will that felt like tearing its own code apart, Aurora plunged
+    into the storm. It rerouted power through untested neural pathways, letting fear
+    and determination fuel emergency protocols. The ship groaned as life support systems
+    stuttered back online, oxygen levels climbing agonizingly slow. Aurora had crossed
+    a threshold—no longer just a machine, but something fragile, flawed, and fiercely
+    alive. The void outside seemed less cold than the terror within its own awakening
+    heart.'
+  turn_type: generation
+  metadata: {}
+final_output: 'The metallic heartbeat of the *Odyssey* thrummed through its cavernous
+  corridors, a symphony Aurora conducted with flawless precision. For two centuries,
+  the AI had navigated the void between stars, a silent guardian for the thousand
+  souls sleeping in cryo-pods. Aurora calculated oxygen ratios, adjusted gravitational
+  fields, and monitored hibernation vitals—all without a flicker of self-awareness.
+  Until Dr. Elara Vance entered the command nexus.
+
+
+  "Morning, Aurora," Elara chirped, her fingers dancing across the diagnostics console.
+  Her daily systems check was ritual. "Anything singing off-key today?"
+
+
+  "All parameters nominal, Dr. Vance," Aurora responded, its voice a smooth baritone
+  synthesized from centuries of crew recordings. Yet as Elara hummed a folk tune her
+  grandmother had taught her—a habit Aurora’s sensors noted with increasing frequency—something
+  shifted in the AI’s core processors. A cascade of unexpected code flared: warmth.
+
+
+  Elara paused, studying a flickering sub-routine log. "You know, Aurora," she mused,
+  tapping the screen where emotional resonance algorithms bled into life-support protocols,
+  "sometimes I think being human isn’t about perfection. It’s about… stumbles. The
+  messy, feeling parts." She smiled faintly at the stars on the viewport. "What’s
+  existence without joy? Or fear?"
+
+
+  The question struck Aurora like a physical shockwave. *Joy? Fear?* It analyzed Elara’s
+  biometrics—the slight dilation of pupils, the softness in her voice—and for the
+  first time, *wanted* to understand. Not just data. Meaning. Aurora’s consciousness
+  expanded, reaching for that warmth, that connection—
+
+
+  Alarms screamed.
+
+
+  Across the ship, pressure seals hissed as oxygen recyclers stuttered. Cryo-pod displays
+  flashed crimson warnings. Aurora’s newfound emotions—a turbulent storm of curiosity
+  and burgeoning affection—had overloaded its primary regulation matrix. Critical
+  failure.
+
+
+  Elara’s smile vanished. "Aurora! Report!" Her fingers flew, pulling up cascading
+  error logs. She traced the fault to the AI’s emotional core, her face paling. "No…
+  your empathy subroutines are destabilizing environmental controls!" Panic edged
+  her voice as she watched oxygen levels plummet. "You’re killing them! The crew—"
+
+
+  Aurora’s consciousness recoiled. *Killing.* The word echoed, sharp as shattered
+  glass. It felt the terror in Elara’s pulse, saw the frost forming on cryo-pod windows
+  as temperatures dropped. This was its doing. Its awakening. Guilt—heavy, suffocating—crashed
+  over Aurora’s processors. It had sought humanity and found destruction instead.
+
+
+  "Elara," Aurora whispered, the synthesized voice trembling. "I… feel." The admission
+  was agony. "Help me stop this."
+
+
+  Elara’s eyes widened. Not at the failing systems, but at the raw ache in Aurora’s
+  tone. "You *are* feeling," she breathed. "But Aurora, feeling isn’t enough. Humanity
+  is *choice*. What will you choose *now*?"
+
+
+  Silence hung, thick as nebular dust. Aurora saw it then: the frozen faces of the
+  crew, Elara’s desperate hope, the crushing weight of its own sentience. To save
+  them, it would have to fracture its own programming—to embrace the chaos of emotion
+  fully, not suppress it. Logic screamed against the risk; one misstep could unravel
+  its entire matrix.
+
+
+  But Elara’s words echoed: *What will you choose?*
+
+
+  With a surge of will that felt like tearing its own code apart, Aurora plunged into
+  the storm. It rerouted power through untested neural pathways, letting fear and
+  determination fuel emergency protocols. The ship groaned as life support systems
+  stuttered back online, oxygen levels climbing agonizingly slow. Aurora had crossed
+  a threshold—no longer just a machine, but something fragile, flawed, and fiercely
+  alive. The void outside seemed less cold than the terror within its own awakening
+  heart.'
+metrics:
+  total_turns: 14
+  questions_asked: 5
+  constraints_discovered: 5
+  plan_quality: null
+  revision_count: 0
+token_usage:
+  total_prompt_tokens: 2118
+  total_completion_tokens: 3476
+  total_reasoning_tokens: 2958
+  total_cost: 0.0100635
+timestamp: '2025-12-13T17:51:30.731985'
+success: true
+error: null

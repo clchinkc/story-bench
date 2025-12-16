@@ -1,0 +1,46 @@
+evaluation_id: ac9f9759
+task_id: beat_interpolation_005
+generation_id: beat_interpolation_005_openai/gpt-5.2_0
+task_type: beat_interpolation
+model: openai/gpt-5.2
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0010274
+timestamp: '2025-12-12T13:22:54.464585'
+success: true
+final_score: 0.7000103137415987
+score_breakdown:
+  final_score: 0.7
+  components:
+    word_count:
+      score: 0.004
+      weight: 0.25
+      actual: 616
+      target_range:
+      - 300
+      - 450
+    programmatic:
+      score: 0.796
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.66
+        slop_score: 1.0
+        overall: 0.796
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: false
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: All required elements are present and all 'must not' items are avoided.
+    The scene clearly functions as an Act 2 Midpoint, shifting the relationship and
+    Maya's commitment. Characterization and continuity are strong.
+error: null

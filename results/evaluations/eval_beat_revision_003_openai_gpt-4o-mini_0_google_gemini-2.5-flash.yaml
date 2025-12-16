@@ -1,0 +1,53 @@
+evaluation_id: b7a3a78a
+task_id: beat_revision_003
+generation_id: beat_revision_003_openai/gpt-4o-mini_0
+task_type: beat_revision
+model: openai/gpt-4o-mini
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0012252
+timestamp: '2025-12-13T13:40:41.926898'
+success: true
+final_score: 0.9195
+score_breakdown:
+  final_score: 0.9195
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 216
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.988
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.98
+        slop_score: 1.0
+        overall: 0.988
+    llm_judge:
+      score: 0.845
+      weight: 0.5
+llm_results:
+  diagnosis_score: 1.0
+  flaw_correction_score: 0.8
+  beat_satisfaction_score: 0.8
+  preservation_score: 1.0
+  preserved_count: 4
+  preserved_total: 4
+  required_preserved_score: 0.75
+  required_preserved_count: 3
+  required_preserved_total: 4
+  minimal_change_score: 0.7
+  word_count_valid: true
+  quality_score: 0.8
+  evidence: The model correctly identified that the flaw was Sophie's lack of change
+    upon returning. It addressed this by showing her responding differently to work
+    stress, having a lighter tone, and envisioning a fresh perspective. It also included
+    her mother noticing something different implicitly through the lighter tone and
+    Sophie's new priorities. The changes were relatively minimal, focusing on altering
+    Sophie's internal monologue and immediate actions regarding work. The phrase "It's
+    good to be home," she said" was changed to "It's good to be home," she said, a
+    smile creeping onto her face." which is a slight deviation from exact preservation.
+error: null

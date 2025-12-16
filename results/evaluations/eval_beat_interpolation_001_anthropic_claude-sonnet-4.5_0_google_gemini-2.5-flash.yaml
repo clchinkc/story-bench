@@ -1,0 +1,47 @@
+evaluation_id: 05eec5ee
+task_id: beat_interpolation_001
+generation_id: beat_interpolation_001_anthropic/claude-sonnet-4.5_0
+task_type: beat_interpolation
+model: anthropic/claude-sonnet-4.5
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0009139
+timestamp: '2025-12-12T14:07:15.712491'
+success: true
+final_score: 0.9908944099378882
+score_breakdown:
+  final_score: 0.9909
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 304
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.9636
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.96
+        slop_score: 0.9689
+        overall: 0.9636
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: true
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: All required elements are present and all 'must not' conditions are avoided.
+    The beat is executed perfectly, showing Elena's reluctant shift and Marcus's role
+    as a mentor. Character voices are consistent, and the bridge to the next beat
+    is smooth.
+error: null

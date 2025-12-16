@@ -1,0 +1,47 @@
+evaluation_id: 5e993bde
+task_id: constrained_continuation_002
+generation_id: constrained_continuation_002_openai/gpt-5.2_0
+task_type: constrained_continuation
+model: openai/gpt-5.2
+sample_index: 0
+evaluator_model: openai/gpt-5-mini
+evaluator_cost: 0.001543
+timestamp: '2025-12-12T13:49:15.674240'
+success: true
+final_score: 0.6757721788520592
+score_breakdown:
+  final_score: 0.6758
+  components:
+    word_count:
+      score: 0.0031
+      weight: 0.25
+      actual: 854
+      target_range:
+      - 450
+      - 650
+    programmatic:
+      score: 0.7
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 1.0
+        overall: 0.7
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beats_present: 2
+  beats_total: 2
+  beats_score: 1.0
+  must_include_present: 6
+  must_include_total: 6
+  must_include_score: 1.0
+  must_not_avoided: 4
+  must_not_total: 4
+  must_not_score: 1.0
+  word_count_valid: false
+  tone_score: 1.0
+  ending_score: 1.0
+  failed_constraints:
+  - 'word_count out of range: 854 words (required 450-650)'
+error: null

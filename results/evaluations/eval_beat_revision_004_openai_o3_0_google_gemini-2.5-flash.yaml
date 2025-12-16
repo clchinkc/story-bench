@@ -1,0 +1,49 @@
+evaluation_id: 79d5fbd5
+task_id: beat_revision_004
+generation_id: beat_revision_004_openai/o3_0
+task_type: beat_revision
+model: openai/o3
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.001045
+timestamp: '2025-12-13T13:51:56.849187'
+success: true
+final_score: 0.96
+score_breakdown:
+  final_score: 0.96
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 264
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 1.0
+      weight: 0.25
+      breakdown:
+        repetition_score: 1.0
+        slop_score: 1.0
+        overall: 1.0
+    llm_judge:
+      score: 0.92
+      weight: 0.5
+llm_results:
+  diagnosis_score: 1.0
+  flaw_correction_score: 1.0
+  beat_satisfaction_score: 1.0
+  preservation_score: 1.0
+  preserved_count: 5
+  required_preserved_score: 1.0
+  required_preserved_count: 4
+  minimal_change_score: 0.2
+  word_count_valid: true
+  quality_score: 1.0
+  evidence: The model correctly identified the 'telling not showing' flaw in the original
+    exposition. It transformed the summary into a scene that actively demonstrates
+    Rachel's traits, her relationship with James, and the setting. While the changes
+    were extensive, they were necessary to fix the fundamental flaw of 'telling' versus
+    'showing' in exposition. The model did not introduce new errors and maintained
+    high writing quality.
+error: null

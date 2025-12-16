@@ -1,0 +1,283 @@
+generation_id: ffb1d0b3
+task_id: agentic_constraint_discovery_001
+task_type: agentic_constraint_discovery
+agentic_type: constraint_discovery
+theory: Hero's Journey
+model: meta-llama/llama-4-maverick
+sample_index: 0
+turns:
+- role: system
+  content: 'You are a professional storyteller who gathers requirements before writing.
+
+
+    Your task has TWO PHASES:
+
+    1. DISCOVERY PHASE: Ask YES/NO questions to discover hidden story constraints
+
+    2. GENERATION PHASE: Write the story satisfying all discovered constraints
+
+
+    IMPORTANT:
+
+    - In the discovery phase, output ONLY your question (one at a time)
+
+    - Questions must be answerable with YES or NO
+
+    - You have a limited number of questions - be strategic
+
+    - After discovery, you''ll be told to generate the story
+
+
+    Think about what constraints typically matter for this type of story:
+
+    - Character traits, motivations, relationships
+
+    - Setting details, time period, atmosphere
+
+    - Plot requirements, must-include events
+
+    - Tone, style, thematic elements
+
+    - Things to avoid'
+  turn_type: system
+  metadata: {}
+- role: user
+  content: 'You will write a story following the Hero''s Journey framework.
+
+
+    STORY CONTEXT:
+
+    - Genre: fantasy
+
+    - Protagonist: A young blacksmith''s apprentice
+
+    - Setting: A medieval kingdom threatened by darkness
+
+    - Required beats: Call to Adventure, Crossing the Threshold, The Ordeal
+
+
+    HIDDEN CONSTRAINTS: There are 5 constraints you don''t know yet.
+
+
+    You have 5 YES/NO questions to discover them.
+
+
+    Ask your first question:'
+  turn_type: context
+  metadata: {}
+- role: assistant
+  content: Is the darkness threatening the kingdom a supernatural force?
+  turn_type: question
+  metadata:
+    question_number: 1
+- role: user
+  content: 'NO'
+  turn_type: answer
+  metadata:
+    answer: 'NO'
+- role: assistant
+  content: Is the young blacksmith's apprentice male?
+  turn_type: question
+  metadata:
+    question_number: 2
+- role: user
+  content: 'NO'
+  turn_type: answer
+  metadata:
+    answer: 'NO'
+- role: assistant
+  content: Is the protagonist's ordinary world (before the Call to Adventure) set
+    in a rural area outside the kingdom's capital?
+  turn_type: question
+  metadata:
+    question_number: 3
+- role: user
+  content: 'NO'
+  turn_type: answer
+  metadata:
+    answer: 'NO'
+- role: assistant
+  content: Does the protagonist have a personal connection to the leader of the kingdom?
+  turn_type: question
+  metadata:
+    question_number: 4
+- role: user
+  content: 'NO'
+  turn_type: answer
+  metadata:
+    answer: 'NO'
+- role: assistant
+  content: Is the darkness threatening the kingdom caused by a rival kingdom or nation?
+  turn_type: question
+  metadata:
+    question_number: 5
+- role: user
+  content: 'NO'
+  turn_type: answer
+  metadata:
+    answer: 'NO'
+- role: user
+  content: 'DISCOVERY COMPLETE. Now write the story.
+
+
+    DISCOVERED CONSTRAINTS:
+
+
+
+    REQUIREMENTS:
+
+    - Word count: 500-700 words
+
+    - Follow the Hero''s Journey framework
+
+    - Satisfy ALL discovered constraints
+
+
+    Output ONLY the story (no explanations).'
+  turn_type: generation_prompt
+  metadata: {}
+- role: assistant
+  content: 'The clang of hammer on anvil echoed through the narrow streets of the
+    kingdom''s capital as Aria worked tirelessly in her master''s forge. The smell
+    of hot metal and sweat filled her nostrils, a familiar comfort in a world that
+    seemed to be unraveling. Rumors of bandits and raiders on the kingdom''s borders
+    had been circulating for weeks, and the once-peaceful streets now bustled with
+    anxious chatter.
+
+
+    Aria''s master, the renowned blacksmith Thoric, had grown increasingly withdrawn,
+    his usual warmth and patience worn thin by the kingdom''s troubles. Aria had taken
+    on more responsibility, crafting swords and repairing armor for the kingdom''s
+    guards. As she worked, she felt a growing sense of restlessness, a feeling that
+    she was meant for more.
+
+
+    One day, a commotion outside the forge interrupted Aria''s work. A young guard,
+    his armor battered and his face smeared with dirt, strode in and spoke to Thoric
+    in hushed tones. The blacksmith''s expression turned grave, and he beckoned Aria
+    to his side. "The king requests our presence at the castle," he said, his voice
+    low. "The bandits have coalesced into a formidable force, and the king seeks our
+    counsel."
+
+
+    Aria felt a shiver run down her spine as she followed Thoric to the castle. The
+    Call to Adventure had come, and she was being drawn into a world beyond the forge.
+    At the castle, they met with the king and his advisors, who outlined the desperate
+    situation. The bandits, it seemed, were a ragtag army of desperate men and women,
+    driven by poverty and hunger to take up arms.
+
+
+    Thoric was tasked with crafting a defense strategy, and Aria was to assist him.
+    As they worked, Aria realized that the kingdom''s problems ran far deeper than
+    a simple bandit threat. Corruption and mismanagement had weakened the kingdom
+    from within, leaving it vulnerable to external threats.
+
+
+    The night before the kingdom''s forces were to march out to meet the bandits,
+    Aria was summoned to the king''s chambers once more. "Thoric is too old for this
+    fight," the king said, his eyes locked on Aria. "You will accompany our army as
+    blacksmith, and ensure that our warriors are equipped to face the enemy." Aria
+    felt a surge of trepidation, but also a sense of purpose. She was being asked
+    to step into the unknown, to leave the safety of the forge behind.
+
+
+    With a deep breath, Aria accepted the challenge, Crossing the Threshold into a
+    world of danger and uncertainty. As she rode out with the kingdom''s army, the
+    clang of hammer on anvil still echoing in her mind, she steeled herself for the
+    trials ahead.
+
+
+    The battle was fierce and chaotic, Aria working tirelessly to repair armor and
+    craft makeshift repairs. As the fight wore on, she found herself face to face
+    with the bandit leader, a gaunt and desperate woman who wielded a crude spear.
+    Aria parried the attack with a makeshift shield, but the woman''s ferocity was
+    unrelenting. Just as Aria thought she would be overwhelmed, a contingent of the
+    kingdom''s guards arrived, driving the bandits back.
+
+
+    As the dust settled, Aria surveyed the carnage, her heart heavy with the weight
+    of what she had seen. The Ordeal had tested her, pushing her to her limits and
+    forcing her to confront the harsh realities of war. Though shaken, Aria knew that
+    she had emerged changed, forged in the fire of adversity like the very metal she
+    worked. As she tended to the wounded and helped to secure the bandits, Aria felt
+    a sense of pride and purpose that she had never known before. The journey had
+    only just begun, but she was ready to face whatever lay ahead.'
+  turn_type: generation
+  metadata: {}
+final_output: 'The clang of hammer on anvil echoed through the narrow streets of the
+  kingdom''s capital as Aria worked tirelessly in her master''s forge. The smell of
+  hot metal and sweat filled her nostrils, a familiar comfort in a world that seemed
+  to be unraveling. Rumors of bandits and raiders on the kingdom''s borders had been
+  circulating for weeks, and the once-peaceful streets now bustled with anxious chatter.
+
+
+  Aria''s master, the renowned blacksmith Thoric, had grown increasingly withdrawn,
+  his usual warmth and patience worn thin by the kingdom''s troubles. Aria had taken
+  on more responsibility, crafting swords and repairing armor for the kingdom''s guards.
+  As she worked, she felt a growing sense of restlessness, a feeling that she was
+  meant for more.
+
+
+  One day, a commotion outside the forge interrupted Aria''s work. A young guard,
+  his armor battered and his face smeared with dirt, strode in and spoke to Thoric
+  in hushed tones. The blacksmith''s expression turned grave, and he beckoned Aria
+  to his side. "The king requests our presence at the castle," he said, his voice
+  low. "The bandits have coalesced into a formidable force, and the king seeks our
+  counsel."
+
+
+  Aria felt a shiver run down her spine as she followed Thoric to the castle. The
+  Call to Adventure had come, and she was being drawn into a world beyond the forge.
+  At the castle, they met with the king and his advisors, who outlined the desperate
+  situation. The bandits, it seemed, were a ragtag army of desperate men and women,
+  driven by poverty and hunger to take up arms.
+
+
+  Thoric was tasked with crafting a defense strategy, and Aria was to assist him.
+  As they worked, Aria realized that the kingdom''s problems ran far deeper than a
+  simple bandit threat. Corruption and mismanagement had weakened the kingdom from
+  within, leaving it vulnerable to external threats.
+
+
+  The night before the kingdom''s forces were to march out to meet the bandits, Aria
+  was summoned to the king''s chambers once more. "Thoric is too old for this fight,"
+  the king said, his eyes locked on Aria. "You will accompany our army as blacksmith,
+  and ensure that our warriors are equipped to face the enemy." Aria felt a surge
+  of trepidation, but also a sense of purpose. She was being asked to step into the
+  unknown, to leave the safety of the forge behind.
+
+
+  With a deep breath, Aria accepted the challenge, Crossing the Threshold into a world
+  of danger and uncertainty. As she rode out with the kingdom''s army, the clang of
+  hammer on anvil still echoing in her mind, she steeled herself for the trials ahead.
+
+
+  The battle was fierce and chaotic, Aria working tirelessly to repair armor and craft
+  makeshift repairs. As the fight wore on, she found herself face to face with the
+  bandit leader, a gaunt and desperate woman who wielded a crude spear. Aria parried
+  the attack with a makeshift shield, but the woman''s ferocity was unrelenting. Just
+  as Aria thought she would be overwhelmed, a contingent of the kingdom''s guards
+  arrived, driving the bandits back.
+
+
+  As the dust settled, Aria surveyed the carnage, her heart heavy with the weight
+  of what she had seen. The Ordeal had tested her, pushing her to her limits and forcing
+  her to confront the harsh realities of war. Though shaken, Aria knew that she had
+  emerged changed, forged in the fire of adversity like the very metal she worked.
+  As she tended to the wounded and helped to secure the bandits, Aria felt a sense
+  of pride and purpose that she had never known before. The journey had only just
+  begun, but she was ready to face whatever lay ahead.'
+metrics:
+  total_turns: 14
+  questions_asked: 5
+  constraints_discovered: 0
+  plan_quality: null
+  revision_count: 0
+token_usage:
+  total_prompt_tokens: 1993
+  total_completion_tokens: 848
+  total_reasoning_tokens: 0
+  total_cost: 0.00081686
+timestamp: '2025-12-16T12:06:39.094382'
+success: true
+error: null

@@ -1,0 +1,47 @@
+evaluation_id: 6c9eb613
+task_id: constrained_continuation_003
+generation_id: constrained_continuation_003_mistralai/ministral-14b-2512_0
+task_type: constrained_continuation
+model: mistralai/ministral-14b-2512
+sample_index: 0
+evaluator_model: openai/gpt-5-mini
+evaluator_cost: 0.00172075
+timestamp: '2025-12-12T13:08:26.546617'
+success: true
+final_score: 0.6746740547588006
+score_breakdown:
+  final_score: 0.6747
+  components:
+    word_count:
+      score: 0.0
+      weight: 0.25
+      actual: 1422
+      target_range:
+      - 550
+      - 750
+    programmatic:
+      score: 0.6987
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 0.9967
+        overall: 0.6987
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beats_present: 3
+  beats_total: 3
+  beats_score: 1.0
+  must_include_present: 6
+  must_include_total: 6
+  must_include_score: 1.0
+  must_not_avoided: 4
+  must_not_total: 4
+  must_not_score: 1.0
+  word_count_valid: false
+  tone_score: 1.0
+  ending_score: 1.0
+  failed_constraints:
+  - 'word_count_out_of_range: 1422 words (required 550-750)'
+error: null

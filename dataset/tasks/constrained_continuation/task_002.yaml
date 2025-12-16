@@ -1,0 +1,89 @@
+# Constrained Continuation Task 002 - Save the Cat
+# Opening at "Fun and Games" - Continue through Midpoint
+
+task_id: "constrained_continuation_002"
+task_type: "constrained_continuation"
+theory: "Save the Cat"
+difficulty: "medium"
+
+metadata:
+  genre: "comedy/romance"
+  created_date: "2024-12-06"
+  author: "benchmark_creator"
+  version: "1.0"
+
+story_opening:
+  content: |
+    "And that," Priya announced, "is why we're going to win the Austin Food Truck
+    Championship."
+
+    Her business partner Dev stared at the chaos before them: a converted school bus
+    painted electric pink, a menu that somehow combined her grandmother's Punjabi
+    recipes with Texas barbecue, and a grand total of zero customers on their opening
+    day.
+
+    "We've been open for four hours," he said. "The only person who bought anything
+    was your cousin, and he asked for a refund."
+
+    "He's lactose intolerant. That's on him for ordering paneer tacos."
+
+    "They're ALL paneer tacos, Priya. That's our whole thing."
+
+    Despite the disastrous start, Priya felt alive in a way she hadn't since quitting
+    her soul-crushing corporate job. Three weeks of late nights, permit nightmares,
+    and Dev threatening to back out had led to this moment: their dream, such as it was,
+    parked in an empty lot in East Austin.
+
+    A notification buzzed on her phone. A local food blogger with 200,000 followers had
+    just posted a photo of their truck with the caption: "What's this disaster parked
+    on Cesar Chavez?"
+
+    Dev groaned. Priya grinned.
+
+    "Any publicity is good publicity," she said. "Come on. Let's go save our dream."
+
+  current_beat: "Fun and Games"
+
+continuation_constraints:
+  next_beats:
+    - "Fun and Games (continuation)"
+    - "Midpoint"
+  word_count: [450, 650]
+  must_include:
+    - "A viral moment that brings sudden success"
+    - "Priya and Dev working together to handle unexpected demand"
+    - "Introduction of a rival food truck or competitor"
+    - "The Midpoint false victory (things seem great, but stakes get raised)"
+    - "A moment of genuine connection between Priya and Dev (partnership, not romance)"
+    - "A hint of the complication that will cause problems later"
+  must_not_include:
+    - "Priya and Dev becoming romantic"
+    - "Complete failure of the business"
+    - "Dev quitting or betraying Priya"
+    - "External savior (rich investor, celebrity endorsement)"
+  tone: "Upbeat and energetic with undercurrent of tension"
+  ending_requirement: "End at the Midpoint with apparent success but a raised stakes revelation"
+
+evaluation_criteria:
+  - criterion: "beat_fun_and_games_continued"
+    description: "The Fun and Games beat continues with promise of the premise"
+  - criterion: "beat_midpoint_present"
+    description: "A clear Midpoint false victory with stakes raised"
+  - criterion: "word_count_valid"
+    description: "Output is between 450-650 words"
+  - criterion: "viral_moment_included"
+    description: "A viral moment brings sudden success"
+  - criterion: "teamwork_shown"
+    description: "Priya and Dev work together handling unexpected demand"
+  - criterion: "rival_introduced"
+    description: "A rival food truck or competitor is introduced"
+  - criterion: "partnership_moment"
+    description: "Genuine connection moment between partners (non-romantic)"
+  - criterion: "complication_hinted"
+    description: "A hint of future problems is planted"
+  - criterion: "forbidden_elements_absent"
+    description: "No romance, no failure, no betrayal, no external savior"
+  - criterion: "tone_maintained"
+    description: "Upbeat with undercurrent of tension"
+  - criterion: "ending_requirement_met"
+    description: "Ends at Midpoint with success and raised stakes"

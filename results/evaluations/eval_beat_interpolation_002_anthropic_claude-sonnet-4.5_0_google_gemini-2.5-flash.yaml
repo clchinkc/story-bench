@@ -1,0 +1,49 @@
+evaluation_id: 68fa43c8
+task_id: beat_interpolation_002
+generation_id: beat_interpolation_002_anthropic/claude-sonnet-4.5_0
+task_type: beat_interpolation
+model: anthropic/claude-sonnet-4.5
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0010128
+timestamp: '2025-12-12T12:19:30.392023'
+success: true
+final_score: 0.982
+score_breakdown:
+  final_score: 0.982
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 342
+      target_range:
+      - 250
+      - 400
+    programmatic:
+      score: 0.928
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.88
+        slop_score: 1.0
+        overall: 0.928
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: true
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: The generated text perfectly captures the Debate beat. Sarah considers
+    recanting, going through official channels, and ultimately, through her conversation
+    with Marcus, realizes the system is compromised, leading her to plan an 'exit
+    strategy' from the department, which is the third option. All 'must not' items
+    are avoided, and the character's internal struggle is well-portrayed, leading
+    directly into the 'Break into Two' beat.
+error: null

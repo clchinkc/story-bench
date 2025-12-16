@@ -1,0 +1,53 @@
+evaluation_id: cccbafd7
+task_id: beat_revision_002
+generation_id: beat_revision_002_minimax/minimax-m2_0
+task_type: beat_revision
+model: minimax/minimax-m2
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0012065
+timestamp: '2025-12-13T13:30:51.279464'
+success: true
+final_score: 0.984
+score_breakdown:
+  final_score: 0.984
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 274
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.976
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.96
+        slop_score: 1.0
+        overall: 0.976
+    llm_judge:
+      score: 0.98
+      weight: 0.5
+llm_results:
+  diagnosis_score: 1.0
+  flaw_correction_score: 1.0
+  beat_satisfaction_score: 1.0
+  preservation_score: 1.0
+  preserved_count: 4
+  preserved_total: 4
+  required_preserved_score: 1.0
+  required_preserved_count: 4
+  required_preserved_total: 4
+  minimal_change_score: 0.8
+  word_count_valid: true
+  quality_score: 1.0
+  evidence: The model correctly identified that the original segment did not convey
+    a true 'All Is Lost' moment. It addressed the lack of complete failure, the intact
+    support system, and the absence of a 'whiff of death'. The revision introduces
+    the failure of the grant, the resignation of board members (isolating Marcus),
+    and a significant personal loss (wife's death), effectively removing all options
+    and support. The changes were surgical, primarily adding new dialogue and internal
+    monologue to achieve the desired effect, while preserving the core of the original
+    text.
+error: null

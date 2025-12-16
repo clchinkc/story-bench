@@ -1,0 +1,94 @@
+evaluation_id: af403a0a
+task_id: constrained_continuation_003
+generation_id: constrained_continuation_003_anthropic/claude-sonnet-4.5_0
+task_type: constrained_continuation
+model: anthropic/claude-sonnet-4.5
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.030469999999999997
+timestamp: '2025-12-12T03:23:53.831213'
+success: true
+final_score: 0.94225
+score_breakdown:
+  final_score: 0.9423
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 639
+      target_range:
+      - 550
+      - 750
+    programmatic:
+      score: 0.784
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.64
+        slop_score: 1.0
+        overall: 0.784
+    llm_judge:
+      score: 0.9925
+      weight: 0.5
+llm_results:
+  beats_present: 3
+  beats_total: 3
+  beats_score: 1.0
+  must_include_present: 6
+  must_include_total: 6
+  must_include_score: 1.0
+  must_not_avoided: 4
+  must_not_total: 4
+  must_not_score: 1.0
+  word_count_valid: true
+  tone_score: 0.95
+  ending_score: 1.0
+  failed_constraints: []
+  detailed_analysis:
+    beats_analysis:
+      Search: Present - Jin navigates faction politics, attends meetings, searches
+        for footing in the Collective ecosystem over three days
+      Find: Present - Ahmadi reveals the altered carbon capture data, showing the
+        technology is far more efficient than documented
+      Take: Present - Jin authorizes the broadcast knowing it will cost the Collective
+        supply lines and trigger corporate backlash; he pays the price of his action
+        immediately
+    must_include_analysis:
+      1_unfamiliar_culture: Excellent - Detailed portrayal of Collective's cramped
+        conditions, political factions (Pragmatists/Absolutists/Synthesists), faction-based
+        resource allocation, and bewildering governance structure
+      2_mentor_figure: Excellent - Dr. Nasrin Ahmadi serves as guide, explaining politics,
+        providing access, revealing truth, and standing with Jin through consequences
+      3_unexpected_discovery: Excellent - The revelation that Jin's own data was deliberately
+        altered by someone on his team (possibly Yuna), making the technology far
+        more powerful than he knew
+      4_finds_what_wanted: Excellent - Jin finds both safety (temporary quarters,
+        Research Commons access) and a platform to continue fighting (Synthesist broadcast
+        capability)
+      5_action_with_cost: Excellent - Broadcasting the data triggers immediate corporate
+        contract cancellations and factional condemnation; consequences are concrete
+        and ongoing
+      6_moral_compromise: Excellent - Jin must choose between exposing truth and protecting
+        the fragile Collective; he chooses truth knowing it will harm innocent people
+        dependent on Earth supplies
+    must_not_analysis:
+      1_easy_integration: Successfully avoided - Jin struggles with processing, confusion
+        about politics, three days of disorientation, need to declare faction alignment
+      2_earth_family_contact: Successfully avoided - Parents mentioned as unreachable;
+        no actual contact occurs
+      3_violence_weapons: Successfully avoided - Conflict is political and economic,
+        not physical
+      4_complete_resolution: Successfully avoided - Conspiracy remains partially unresolved
+        (Yuna's role ambiguous, broader Council operations continue)
+    tone_assessment: Contemplative and politically charged throughout. Personal stakes
+      (Jin's exile, parents, Yuna's betrayal) are interwoven with larger systemic
+      conflict. The ending particularly captures the weight of moral compromise. Minor
+      deduction only because the tone could have been slightly more introspective
+      in Jin's internal monologue, though the existing restraint actually serves the
+      contemplative quality well.
+    ending_assessment: Perfect execution of 'Take' beat. Jin gains a platform and
+      community but pays immediate, concrete costs (supply line cancellations, factional
+      backlash). The final line 'Where every truth costs someone everything' crystallizes
+      both his gain and his price. Ends precisely at the Take moment without resolving
+      forward consequences.
+  overall_score: 0.99
+error: null

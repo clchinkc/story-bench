@@ -1,0 +1,51 @@
+evaluation_id: 1ff3764a
+task_id: beat_revision_003
+generation_id: beat_revision_003_anthropic/claude-sonnet-4_0
+task_type: beat_revision
+model: anthropic/claude-sonnet-4
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0011139
+timestamp: '2025-12-13T13:36:23.907245'
+success: true
+final_score: 0.9645
+score_breakdown:
+  final_score: 0.9645
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 281
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.898
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.83
+        slop_score: 1.0
+        overall: 0.898
+    llm_judge:
+      score: 0.98
+      weight: 0.5
+llm_results:
+  diagnosis_score: 1.0
+  flaw_correction_score: 1.0
+  beat_satisfaction_score: 1.0
+  preservation_score: 1.0
+  preserved_count: 4
+  preserved_total: 4
+  required_preserved_score: 1.0
+  required_preserved_count: 4
+  required_preserved_total: 4
+  minimal_change_score: 0.8
+  word_count_valid: true
+  quality_score: 1.0
+  evidence: The model correctly identified and addressed the flaw of Sophie not showing
+    any change upon her return. It explicitly shows her responding differently to
+    work stress, applying a lesson from the retreat ('sit with discomfort'), demonstrating
+    a changed relationship with her phone/work, and her mother noticing the change.
+    The changes were surgical and effective, preserving the original structure while
+    injecting the necessary transformation.
+error: null

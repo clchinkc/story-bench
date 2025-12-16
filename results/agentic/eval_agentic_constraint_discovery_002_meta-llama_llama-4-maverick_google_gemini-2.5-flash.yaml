@@ -1,0 +1,46 @@
+evaluation_id: 4bef68d8
+task_id: agentic_constraint_discovery_002
+generation_id: 42a5aad5
+agentic_type: constraint_discovery
+model: meta-llama/llama-4-maverick
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.001382
+timestamp: '2025-12-13T18:24:05.009328'
+success: true
+process_scores:
+  discovery_efficiency: 0.2
+  question_quality: 0.6
+  question_coverage: 0.4
+output_scores:
+  constraint_satisfaction: 0.2
+  beat_execution: 0.8
+  narrative_quality: 0.6
+final_score: 0.48000000000000004
+llm_results:
+  discovery_efficiency: 0.2
+  constraints_discoverable: 1
+  constraints_total: 5
+  question_quality: 0.6
+  question_coverage: 0.4
+  constraint_satisfaction: 0.2
+  beat_execution: 0.8
+  narrative_quality: 0.6
+  evidence: 'The agent only discovered one constraint: ''The AI''s emotional development
+    is NOT a secret from the human crew''. The question ''Is the AI''s emotional development
+    a secret from the human crew on the ship?'' directly addressed this. The other
+    questions were too general or led to ''NO'' answers that didn''t reveal specific
+    hidden constraints. For example, asking ''Are there any specific rules or systems
+    on the spaceship that I need to be aware of...'' was too broad and received a
+    ''NO''. The question about conflict between AI and crew was answered ''YES'',
+    but the follow-up ''Does the conflict with the human crew relate to the AI''s
+    newfound emotions or its changing goals or priorities?'' was answered ''NO'',
+    which contradicts the hidden constraint about the AI''s attachment and choice.
+    The final output only incorporates the AI''s emotions as a ''double-edged sword''
+    and a ''conflict within ECHO'', but doesn''t touch on the critical system failure,
+    the reduced crew, the uninhabitable planet, or the specific child attachment.
+    The ''Break into Two'' beat introduces a ''secret directive'' which is not a hidden
+    constraint and seems to be a fabrication to create conflict, rather than using
+    the provided constraints. The beats are present and generally follow their definitions,
+    but the narrative quality suffers from the lack of integration of the actual hidden
+    constraints, leading to a generic sci-fi plot.'
+error: null

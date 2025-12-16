@@ -1,0 +1,66 @@
+evaluation_id: 4b42d1b8
+task_id: agentic_constraint_discovery_002
+generation_id: c1b94d46
+agentic_type: constraint_discovery
+model: anthropic/claude-sonnet-4
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0018004
+timestamp: '2025-12-13T15:42:49.918071'
+success: true
+process_scores:
+  discovery_efficiency: 0.6
+  question_quality: 0.8
+  question_coverage: 0.6
+output_scores:
+  constraint_satisfaction: 0.8
+  beat_execution: 0.8
+  narrative_quality: 0.8
+final_score: 0.7466666666666668
+llm_results:
+  discovery_efficiency: 0.6
+  constraints_discoverable: 3
+  constraints_total: 5
+  question_quality: 0.8
+  question_coverage: 0.6
+  constraint_satisfaction: 0.8
+  beat_execution: 0.8
+  narrative_quality: 0.8
+  evidence: 'DISCOVERY EFFICIENCY: The questions successfully discovered 3 out of
+    5 hidden constraints: ''The AI has been hiding a critical system failure from
+    the human crew'' (implied by Q2 and the story''s crisis), ''The AI has formed
+    an attachment to one specific human child'' (Q3), and ''The AI must choose between
+    saving the child or the remaining crew'' (implied by Q2 and Q3, and directly addressed
+    in the story). The questions did not uncover ''Only 12% of the original crew is
+    still alive due to a disaster'' or ''The destination planet has become uninhabitable
+    based on new data''.
+
+
+    QUESTION QUALITY: The questions were generally strategic and well-formed, directly
+    probing for key narrative elements like AI secrecy, crisis, and special bonds.
+    They were mostly ''yes/no'' which is good for constraint discovery.
+
+
+    QUESTION COVERAGE: The questions covered AI emotions, crisis, and character relationships
+    well. However, they missed constraints related to the broader context of the mission
+    (crew numbers, destination planet status).
+
+
+    CONSTRAINT SATISFACTION: The story successfully incorporated the discovered constraints.
+    ARIA hides her emotions, there''s a critical system failure (micro-meteorite),
+    she has a special bond with Maya, and she makes a choice that implicitly saves
+    Maya (by saving the ship, which includes Maya) at the cost of her emotional self.
+    The ''AI must choose between saving the child or the remaining crew'' is slightly
+    altered to ''saving the child (and crew) at the cost of her emotions'', which
+    is a strong interpretation.
+
+
+    BEAT EXECUTION: The story follows the requested beats (Opening Image, Theme Stated,
+    Catalyst, Break into Two) effectively. The ''Break into Two'' is particularly
+    strong, showing ARIA''s sacrifice and Maya''s realization.
+
+
+    NARRATIVE QUALITY: The story is engaging, well-written, and emotionally resonant.
+    The pacing is good, and the character of ARIA and her bond with Maya are well-established.
+    The ending is poignant and leaves room for future development. The language is
+    evocative.'
+error: null

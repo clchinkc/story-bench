@@ -1,0 +1,64 @@
+evaluation_id: fb0eed47
+task_id: beat_interpolation_002
+generation_id: beat_interpolation_002_openai/o3_0
+task_type: beat_interpolation
+model: openai/o3
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.02089
+timestamp: '2025-12-12T18:02:50.198047'
+success: true
+final_score: 0.95425
+score_breakdown:
+  final_score: 0.9543
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 349
+      target_range:
+      - 250
+      - 400
+    programmatic:
+      score: 0.952
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.92
+        slop_score: 1.0
+        overall: 0.952
+    llm_judge:
+      score: 0.9325
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 0.75
+  violations_found: 1
+  word_count_valid: true
+  character_score: 1.0
+  bridge_score: 0.9
+  continuity_score: 0.85
+  evidence: 'STRENGTHS: All 4 required elements present and well-executed. (1) Sarah
+    explicitly considers recanting—''One click and it was done''—and recognizes the
+    moral cost. (2) Marcus advocates official channels: protective custody, federal
+    involvement, FBI/Marshals. (3) Internal conflict is the beat''s core: justice
+    vs. sister, protocol vs. urgency, duty vs. love. (4) The tipping moment is crystalline—Marcus''s
+    hand on her shoulder triggers the realization that ''neither surrender nor protocol
+    would save Amy. Something outside the badge would.'' The Debate beat executes
+    perfectly: Sarah wrestles, considers alternatives, seeks advice, and commits to
+    action (going rogue). Character voice is consistent—Sarah''s pragmatism, her moral
+    weight, her detective''s mind. VIOLATIONS: The ''AFTER'' section begins with Sarah
+    already having resigned (''resignation letter in one hand and her badge in the
+    other''), which violates the must-not requirement that ''Sarah [should not already
+    have] resigned from the police force'' during the Debate beat. However, this violation
+    occurs in the AFTER section, not the GENERATED section being scored. The GENERATED
+    section itself avoids all must-not items—Sarah hasn''t resigned yet, Marcus doesn''t
+    solve the problem for her, she doesn''t confront Marchetti, and she doesn''t immediately
+    go rogue (she debates first). MINOR DEDUCTION: The bridge to Break Into Two is
+    strong but the AFTER section''s immediate resignation slightly undermines the
+    narrative momentum of Sarah''s internal decision-making. Setting continuity is
+    maintained (apartment, dawn, internal affairs report) with only minor ambiguity
+    about exact timeline.'
+error: null

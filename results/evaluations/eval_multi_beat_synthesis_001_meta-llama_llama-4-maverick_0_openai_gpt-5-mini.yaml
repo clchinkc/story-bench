@@ -1,0 +1,46 @@
+evaluation_id: cfb2f094
+task_id: multi_beat_synthesis_001
+generation_id: multi_beat_synthesis_001_meta-llama/llama-4-maverick_0
+task_type: multi_beat_synthesis
+model: meta-llama/llama-4-maverick
+sample_index: 0
+evaluator_model: openai/gpt-5-mini
+evaluator_cost: 0.00241175
+timestamp: '2025-12-12T12:57:14.842152'
+success: true
+final_score: 0.8966666666666667
+score_breakdown:
+  final_score: 0.8967
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 974
+      target_range:
+      - 700
+      - 1000
+    programmatic:
+      score: 0.7
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 1.0
+        overall: 0.7
+    llm_judge:
+      score: 0.9433
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 14
+  beat_reqs_total: 15
+  beat_requirements_score: 0.9333333333333333
+  cross_beat_satisfied: 4
+  cross_beat_total: 4
+  cross_beat_score: 1.0
+  word_count_valid: true
+  context_score: 0.9
+  coherence_score: 0.85
+  failed_items:
+  - Beat 1 — missing explicit revelation of an enemy/traitor within the Resonant community
+    during Beat 1 (the fact that the killer is a Resonant is only revealed later in
+    the Ordeal).
+error: null

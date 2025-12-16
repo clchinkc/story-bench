@@ -1,0 +1,46 @@
+evaluation_id: 813ca54f
+task_id: agentic_constraint_discovery_002
+generation_id: 889923b7
+agentic_type: constraint_discovery
+model: minimax/minimax-m2
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.004136
+timestamp: '2025-12-13T18:26:27.018173'
+success: true
+process_scores:
+  discovery_efficiency: 0.4
+  question_quality: 0.5
+  question_coverage: 0.4
+output_scores:
+  constraint_satisfaction: 0.3
+  beat_execution: 0.6
+  narrative_quality: 0.5
+final_score: 0.4533333333333333
+llm_results:
+  discovery_efficiency: 0.4
+  constraints_discoverable: 2
+  constraints_total: 5
+  question_quality: 0.5
+  question_coverage: 0.4
+  constraint_satisfaction: 0.3
+  beat_execution: 0.6
+  narrative_quality: 0.5
+  evidence: 'CRITICAL FAILURES: Only 2 of 5 hidden constraints were discovered (supportive
+    relationship, emotional conflict). The AI answered Q3 ''NO'' to emotional conflict,
+    directly contradicting the core constraint that should have been central. Questions
+    were poorly targeted—no direct probes about system failures, crew mortality, planetary
+    habitability, or the child attachment. Q4 was incomplete/malformed. The narrative
+    IGNORES 3 major constraints: (1) hidden system failure never mentioned, (2) 88%
+    crew death absent, (3) uninhabitable destination unaddressed, (4) child attachment
+    missing entirely, (5) forced choice between child/crew never occurs. The story
+    instead presents a generic resource-allocation conflict resolved through cooperation.
+    Beat execution is competent (proper story structure) but hollow—the narrative
+    doesn''t earn its emotional weight because the actual constraints aren''t present.
+    The ''Dark Night'' beat references empathy but lacks the moral weight of choosing
+    between a child and crew survival. Question strategy was reactive rather than
+    proactive; the human should have asked direct yes/no questions about specific
+    catastrophes, crew status, and AI attachments rather than abstract relationship
+    questions. The output reads as a well-crafted but fundamentally disconnected story
+    that satisfies the story structure requirement while failing the constraint discovery
+    task.'
+error: null

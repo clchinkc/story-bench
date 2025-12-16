@@ -1,0 +1,61 @@
+evaluation_id: f9d5f03d
+task_id: beat_interpolation_002
+generation_id: beat_interpolation_002_meta-llama/llama-4-maverick_0
+task_type: beat_interpolation
+model: meta-llama/llama-4-maverick
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.01883
+timestamp: '2025-12-12T09:46:13.661240'
+success: true
+final_score: 0.83275
+score_breakdown:
+  final_score: 0.8327
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 349
+      target_range:
+      - 250
+      - 400
+    programmatic:
+      score: 0.946
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.91
+        slop_score: 1.0
+        overall: 0.946
+    llm_judge:
+      score: 0.6925
+      weight: 0.5
+llm_results:
+  beat_elements_score: 0.75
+  elements_found: 3
+  elements_total: 4
+  beat_execution_score: 0.7
+  must_not_score: 0.5
+  violations_found: 2
+  word_count_valid: true
+  character_score: 0.85
+  bridge_score: 0.6
+  continuity_score: 0.8
+  evidence: 'ELEMENTS FOUND: (1) Sarah considers recanting testimony implicitly through
+    the weight of her decision; (2) Sarah explicitly considers going to Marcus/official
+    channels and consciously rejects this path; (3) Strong internal conflict between
+    duty (badge/system) vs. sister (Amy''s safety). MISSING ELEMENT: No moment or
+    conversation that tips her toward the third option (going rogue)—the decision
+    appears to crystallize internally without a clear catalyst within the Debate beat
+    itself. VIOLATIONS: (1) Sarah has already decided to go rogue by mid-passage (''she
+    would take matters into her own hands''), which skips the debate''s function of
+    wrestling with the decision; (2) The AFTER section reveals she HAS already resigned
+    and is acting as a vigilante, suggesting the Debate beat failed to maintain the
+    protagonist still being undecided. CHARACTER: Sarah''s voice is consistent—methodical,
+    conflicted, determined. However, her rapid pivot from ''making up her mind'' to
+    already being a vigilante feels rushed. BRIDGE: The transition from Debate to
+    Break Into Two is awkward because Sarah''s decision point is muddled—she decides
+    mid-Debate rather than at its conclusion, weakening the beat''s narrative function.
+    CONTINUITY: Setting remains consistent (kitchen to outside captain''s office),
+    but the timeline compression is jarring. The Debate should show her wrestling;
+    instead it shows her deciding and then acting.'
+error: null

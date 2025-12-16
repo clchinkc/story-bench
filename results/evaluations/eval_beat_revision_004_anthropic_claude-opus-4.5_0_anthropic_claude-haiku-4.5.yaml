@@ -1,0 +1,91 @@
+evaluation_id: cf458cd4
+task_id: beat_revision_004
+generation_id: beat_revision_004_anthropic/claude-opus-4.5_0
+task_type: beat_revision
+model: anthropic/claude-opus-4.5
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.028425
+timestamp: '2025-12-13T13:43:21.891386'
+success: true
+final_score: 0.9575
+score_breakdown:
+  final_score: 0.9575
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 251
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 1.0
+      weight: 0.25
+      breakdown:
+        repetition_score: 1.0
+        slop_score: 1.0
+        overall: 1.0
+    llm_judge:
+      score: 0.915
+      weight: 0.5
+llm_results:
+  diagnosis_score: 1.0
+  flaw_correction_score: 1.0
+  beat_satisfaction_score: 0.95
+  preservation_score: 1.0
+  preserved_count: 5
+  preserved_total: 5
+  required_preserved_score: 1.0
+  required_preserved_count: 4
+  required_preserved_total: 4
+  minimal_change_score: 0.3
+  word_count_valid: true
+  quality_score: 0.95
+  evidence: 'DIAGNOSIS: The model correctly identified the core flaw—that the original
+    segment was pure exposition-as-summary (telling, not showing) with no grounded
+    scene, sensory detail, or characteristic behavior. The revision demonstrates clear
+    understanding by transforming the entire approach into a lived scene.
+
+
+    FLAW CORRECTION: Fully addressed. The revision eliminates all info-dump language
+    (''She was known for,'' ''She enjoyed,'' ''She had never married'') and replaces
+    it with SHOWN behavior: Rachel obsessing over a cold case at 6:30 AM, interacting
+    with Sherlock naturally, receiving a call from James that reveals their 12-year
+    partnership through dialogue and his knowledge of her habits, and sensory grounding
+    (gray October sky, brick buildings, Manhattan skyline). The partnership is now
+    demonstrated through James''s familiar tone and his ability to predict her actions,
+    not stated as fact.
+
+
+    BEAT EXECUTION: Exposition requirements met: (1) Setting established through sensory
+    detail (kitchen table, grainy photograph, low gray sky, cramped brick buildings);
+    (2) Protagonist introduced through characteristic behavior (obsessing over unsolved
+    case, working at 6:30 AM, keeping separate files); (3) Relationships shown through
+    interaction (James''s dialogue reveals mutual respect and long history); (4) Investment
+    created (the Mendez file mystery, Sherlock''s backstory hint). The ordinary world
+    before disruption is clear.
+
+
+    PRESERVATION: All 5 elements preserved: ''Detective Rachel Torres'' (present),
+    ''Detective James Oyelaran'' (present in dialogue), ''cat named Sherlock'' (present,
+    integrated naturally), ''Queens apartment'' (present), ''October Tuesday'' (present:
+    ''Tuesday in October''). All 4 required phrases present.
+
+
+    MINIMAL CHANGE ASSESSMENT: This is NOT a minimal surgical edit—it''s a substantial
+    structural rewrite. The original ~280 words of summary were replaced with ~251
+    words of scene-based narrative. However, this level of change was NECESSARY to
+    fix the fundamental flaw (telling vs. showing). The model did not preserve the
+    original text structure; it rebuilt from the ground up. This represents a 0.3
+    on the minimal_change scale because while the word count stayed similar and all
+    required elements were preserved, the entire narrative approach was reconstructed.
+
+
+    QUALITY: Excellent. No new errors introduced. Prose is professional, sensory details
+    are vivid (''grainy surveillance still,'' ''orange tail sweeping,'' ''low and
+    gray''), dialogue feels natural, and the pacing builds intrigue. The Sherlock
+    backstory hint (''the only living witness to something he''d never tell'') adds
+    depth. The ending hook (''So was whatever this Tuesday would bring'') effectively
+    transitions to rising action.'
+error: null

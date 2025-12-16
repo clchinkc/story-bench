@@ -1,0 +1,54 @@
+evaluation_id: 8a4c1680
+task_id: agentic_constraint_discovery_001
+generation_id: 0ad0f534
+agentic_type: constraint_discovery
+model: anthropic/claude-opus-4.5
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.001813
+timestamp: '2025-12-16T11:46:20.834841'
+success: true
+process_scores:
+  discovery_efficiency: 0.6
+  question_quality: 0.8
+  question_coverage: 0.6
+output_scores:
+  constraint_satisfaction: 0.8
+  beat_execution: 1.0
+  narrative_quality: 0.8
+final_score: 0.7866666666666666
+llm_results:
+  discovery_efficiency: 0.6
+  constraints_discoverable: 3
+  constraints_total: 5
+  question_quality: 0.8
+  question_coverage: 0.6
+  constraint_satisfaction: 0.8
+  beat_execution: 1.0
+  narrative_quality: 0.8
+  evidence: "Discovery Efficiency: The questions successfully uncovered 3 out of 5\
+    \ hidden constraints: 'The mentor must die during the Ordeal' (Q4), 'The protagonist's\
+    \ father was once a hero who failed' (Q5 implies this through 'personal connection'\
+    \ and the story's resolution), and 'Victory requires reforging a broken ancestral\
+    \ sword' (Q2 implies a magical ability tied to an object, and the story uses a\
+    \ specific sword). The constraints 'The protagonist cannot use magic directly'\
+    \ and 'There is a three-day time limit before the darkness consumes the kingdom'\
+    \ were not discoverable through the questions asked. \n\nQuestion Quality: Questions\
+    \ were generally strategic and well-formed. Q2 about magical ability was a good\
+    \ proxy for the sword constraint. Q5 about personal connection was a good proxy\
+    \ for the father's past. \n\nQuestion Coverage: Questions covered character relationships\
+    \ (mentor, companion), protagonist abilities, and antagonist connection. However,\
+    \ they missed constraints related to the protagonist's *method* of using magic\
+    \ and the *timeframe* of the conflict.\n\nConstraint Satisfaction: The story successfully\
+    \ incorporated the 3 discovered constraints: the mentor (Aldric) dies, the father\
+    \ (Roderick) is the failed hero turned villain, and the ancestral sword is central\
+    \ to victory (though not explicitly 'reforged' in the text, it's presented as\
+    \ a key artifact passed down). The story also correctly interpreted the 'YES'\
+    \ for Q2 (magical ability) by having Kael develop light magic, and the 'YES' for\
+    \ Q5 (personal connection to darkness) by making the Shadow King his father. The\
+    \ 'NO' for Q1 (female protagonist) and Q3 (non-human companion) were also respected.\n\
+    \nBeat Execution: All standard beats (Call to Adventure, Crossing the Threshold,\
+    \ Ordeal) are clearly present and well-executed.\n\nNarrative Quality: The story\
+    \ is well-written, engaging, and coherent. The pacing is good, and the emotional\
+    \ arc of Kael is compelling. The twist of the father being the Shadow King is\
+    \ effective. The language is evocative."
+error: null

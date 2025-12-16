@@ -1,0 +1,41 @@
+evaluation_id: 7b922471
+task_id: beat_revision_005
+generation_id: beat_revision_005_meta-llama/llama-4-maverick_0
+task_type: beat_revision
+model: meta-llama/llama-4-maverick
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0007306999999999999
+timestamp: '2025-12-13T13:56:17.217432'
+success: true
+final_score: 0.4952142857142857
+score_breakdown:
+  final_score: 0.4952
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 275
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.8009
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.68
+        slop_score: 0.9821
+        overall: 0.8009
+    llm_judge:
+      score: 0.09
+      weight: 0.5
+llm_results:
+  correct_diagnosis_score: 0.0
+  beat_understanding_score: 0.6
+  false_positive_avoided_score: 0.0
+  reasoning_quality_score: 0.0
+  model_said_no_revision: false
+  evidence: The model did not recognize the segment was fine. It provided a revised
+    segment instead of stating 'NO REVISION NEEDED'. The revised segment attempts
+    to fulfill the beat, but the original was already correct.
+error: null

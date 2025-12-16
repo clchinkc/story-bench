@@ -1,0 +1,50 @@
+evaluation_id: 97d4e768
+task_id: beat_interpolation_001
+generation_id: beat_interpolation_001_qwen/qwen3-235b-a22b_0
+task_type: beat_interpolation
+model: qwen/qwen3-235b-a22b
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0010926999999999998
+timestamp: '2025-12-12T13:25:25.617918'
+success: true
+final_score: 0.991
+score_breakdown:
+  final_score: 0.991
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 327
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.964
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.94
+        slop_score: 1.0
+        overall: 0.964
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: true
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: 'All required elements are present: Marcus is introduced, he provides
+    tools (satchel, compass, scroll) and wisdom, Elena''s doubt shifts (''The compass
+    trembled in her grip, then steadied''), and her librarian skills are referenced
+    as useful. All ''must not'' items are avoided. The character of Elena remains
+    consistent, and Marcus''s character is well-established as a wise mentor. The
+    bridge from ''Refusal'' to ''Meeting the Mentor'' is smooth, with Elena seeking
+    out the shop after her refusal. Continuity is maintained throughout.'
+error: null

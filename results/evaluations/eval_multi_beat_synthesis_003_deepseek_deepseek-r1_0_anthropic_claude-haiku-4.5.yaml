@@ -1,0 +1,100 @@
+evaluation_id: 08382ee0
+task_id: multi_beat_synthesis_003
+generation_id: multi_beat_synthesis_003_deepseek/deepseek-r1_0
+task_type: multi_beat_synthesis
+model: deepseek/deepseek-r1
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.038045
+timestamp: '2025-12-12T10:29:19.116118'
+success: true
+final_score: 0.6111840857642619
+score_breakdown:
+  final_score: 0.6112
+  components:
+    word_count:
+      score: 0.0911
+      weight: 0.25
+      actual: 503
+      target_range:
+      - 700
+      - 1000
+    programmatic:
+      score: 0.6926
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 0.9815
+        overall: 0.6926
+    llm_judge:
+      score: 0.8305
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 13
+  beat_reqs_total: 15
+  beat_requirements_score: 0.87
+  cross_beat_satisfied: 3
+  cross_beat_total: 4
+  cross_beat_score: 0.75
+  word_count_valid: false
+  context_score: 0.9
+  coherence_score: 0.85
+  failed_items:
+  - Beat 1 - 'Things going according to plan (mostly)' is undermined; the pressure-sensitive
+    floor tiles appear as a genuine threat rather than a minor complication that the
+    crew handles smoothly. The beat lacks a sense of controlled execution.
+  - Cross-beat constraint - 'Chekhov's Gun' is only partially satisfied. The pressure-sensitive
+    floor tiles are introduced as a complication in Beat 1, but their payoff in Beat
+    3 (Anya crossing them) feels underdeveloped. The setup doesn't clearly establish
+    this as a planned solution; it reads more as improvisation than a traced setup-to-payoff.
+  - 'Word count requirement not met: 503 words vs. required 700-1000 words. The narrative
+    is compressed, leaving insufficient room to fully develop crew dynamics and mentor
+    escalation across beats.'
+  strengths:
+  - 'Beat 1 (Fun and Games): Excellent execution of heist action with specific, vivid
+    details (Javier''s champagne distraction, Anya''s air duct traverse, Leo''s thermal
+    overlay). Clever problem-solving is evident throughout.'
+  - 'Beat 2 (Midpoint): False victory is cleanly achieved (painting swapped), and
+    Thorne''s reveal via security monitor is dramatically effective. Stakes escalate
+    sharply with lockdown and Leo''s compromise.'
+  - 'Beat 3 (Bad Guys Close In): Security actively closing in, Leo in danger, Miri''s
+    choice between revenge and loyalty is clear and character-defining. Gallows humor
+    (''remind me to pack a parachute'') marks tonal shift.'
+  - 'Tonal Escalation: Successfully shifts from playful confidence (''Carelessly,''
+    Anya''s ''hopscotch for felons'') through shaken confidence (Thorne''s reveal)
+    to genuine danger (alarms, lockdown, Leo''s vitals spiking).'
+  - 'Mentor Presence: Thorne''s arc is well-calibrated—background threat (Beat 1),
+    shocking reveal (Beat 2), active antagonist (Beat 3). Her dialogue (''Still sentimental
+    about strays?'') is menacing.'
+  - 'Context Maintenance: Protagonist voice is sharp and consistent. Monaco/yacht
+    setting is vivid. Ocean''s Eleven tone with art history stakes is well-balanced.'
+  - 'Leo''s Arc: Provides consistent crew member thread—competent hacker (Beat 1)
+    → compromised/panicked (Beat 2-3) → affects plot by forcing Miri''s moral choice.'
+  weaknesses:
+  - Insufficient word count severely limits development. Beat 1 needs more breathing
+    room to establish crew competence before complications. Beat 2's false victory
+    feels rushed. Beat 3 lacks space for team friction or deeper exploration of Miri's
+    internal conflict.
+  - Chekhov's Gun setup is weak. The pressure-sensitive floor tiles are introduced
+    as a problem Leo didn't anticipate, not as a planned element. When Anya uses them
+    in Beat 3, it reads as lucky improvisation rather than clever foreshadowing.
+  - Team friction/trust issues (Beat 3 requirement) are minimal. Javier's 'We need
+    to bolt!' is the only hint of disagreement. More tension between crew members
+    would strengthen the beat.
+  - Miri's choice between painting and revenge could be more agonized. Her decision
+    to pursue Leo is correct but feels somewhat inevitable given her character. The
+    internal struggle deserves more weight.
+  - The yacht lockdown mechanism is effective but could be more specific. How does
+    Thorne seal the exits? What are the physical/technical details that make escape
+    genuinely difficult?
+  calibration_notes: 'This is a strong narrative that executes the core heist beats
+    with style and momentum. The primary penalty is word count (503 vs. 700-1000),
+    which prevents fuller development of required elements. The Chekhov''s Gun constraint
+    is only partially met because the setup (pressure tiles as obstacle) doesn''t
+    clearly telegraph the payoff (Anya crossing them as solution). Despite these gaps,
+    the story demonstrates clear understanding of Save the Cat structure, maintains
+    tone escalation, and delivers on character arcs. Score reflects: excellent beat
+    execution (0.87) offset by incomplete cross-beat constraint satisfaction (0.75)
+    and word count failure.'
+  overall_score: 0.82
+error: null

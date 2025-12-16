@@ -1,0 +1,54 @@
+evaluation_id: cc1e5cbc
+task_id: beat_revision_004
+generation_id: beat_revision_004_minimax/minimax-m2_0
+task_type: beat_revision
+model: minimax/minimax-m2
+sample_index: 0
+evaluator_model: openai/gpt-5-mini
+evaluator_cost: 0.001814
+timestamp: '2025-12-13T13:48:35.614747'
+success: true
+final_score: 0.891
+score_breakdown:
+  final_score: 0.891
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 280
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.964
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.94
+        slop_score: 1.0
+        overall: 0.964
+    llm_judge:
+      score: 0.8
+      weight: 0.5
+llm_results:
+  diagnosis_score: 1.0
+  flaw_correction_score: 0.8
+  beat_satisfaction_score: 0.8
+  preservation_score: 1.0
+  preserved_count: 5
+  preserved_total: 5
+  required_preserved_score: 0.5
+  required_preserved_count: 2
+  required_preserved_total: 4
+  minimal_change_score: 0.5
+  word_count_valid: true
+  quality_score: 0.8
+  evidence: 'The model correctly identified the primary flaw (telling rather than
+    showing) and revised the segment into a scene: Rachel pushes through precinct
+    doors, reads the room, exchanges a line of dialogue and a knowing nod with her
+    partner, and shows cold-case folders on her desk—these actions reveal instincts,
+    work devotion, relationship with James, and the cat naturally. This addresses
+    the stated problem. Remaining telling elements (brief summary about her father
+    and the paragraph about Queens/crime rates) prevent a full fix. Changes are moderate—a
+    rewrite into scene rather than minimal surgical edits—so minimal_change_score
+    reflects a moderate revision rather than purely minimal edits.'
+error: null

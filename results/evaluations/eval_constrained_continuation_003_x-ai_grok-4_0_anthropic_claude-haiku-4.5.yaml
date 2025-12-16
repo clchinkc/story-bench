@@ -1,0 +1,106 @@
+evaluation_id: 54f76b33
+task_id: constrained_continuation_003
+generation_id: constrained_continuation_003_x-ai/grok-4_0
+task_type: constrained_continuation
+model: x-ai/grok-4
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.03992
+timestamp: '2025-12-12T10:29:46.901370'
+success: true
+final_score: 0.700673368160762
+score_breakdown:
+  final_score: 0.7007
+  components:
+    word_count:
+      score: 0.1309
+      weight: 0.25
+      actual: 871
+      target_range:
+      - 550
+      - 750
+    programmatic:
+      score: 0.6868
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 0.967
+        overall: 0.6868
+    llm_judge:
+      score: 0.9925
+      weight: 0.5
+llm_results:
+  beats_present: 3
+  beats_total: 3
+  beats_score: 1.0
+  must_include_present: 6
+  must_include_total: 6
+  must_include_score: 1.0
+  must_not_avoided: 4
+  must_not_total: 4
+  must_not_score: 1.0
+  word_count_valid: false
+  word_count: 871
+  word_count_range: 550-750
+  word_count_overage: 121
+  tone_score: 0.95
+  ending_score: 1.0
+  overall_score: 0.82
+  analysis:
+    beats_analysis:
+      Search: Present - Jin navigates Collective politics, factions, unwritten codes;
+        struggles with disorientation and cultural barriers; meets Elias who guides
+        him through the landscape
+      Find: Present - Jin discovers the dual-use nature of the suppressed technology
+        (atmospheric manipulation/weather weaponization); realizes the Council's true
+        motivation
+      Take: Present - Jin uploads altered files to the Radicals, gaining platform/safety
+        but fracturing trust with Elias and creating enemies; pays price of isolation
+        and compromise
+    must_include_analysis:
+      1_navigating_culture: Excellent - Detailed portrayal of Collective's patchwork
+        nature, faction politics, language blending, rationing systems, lottery assignments,
+        faction meetings with cultural friction
+      2_mentor_figure: Excellent - Elias serves as guide, explains politics, provides
+        access, warns about consequences, confronts Jin about sabotage
+      3_unexpected_discovery: Excellent - Dual-use technology revelation (weather
+        weaponization) goes beyond profit motive to reveal orbital rebellion implications
+      4_finds_what_wanted: Excellent - Jin gains safety, encrypted channels, platform
+        to broadcast message, vindication for his fight
+      5_action_with_cost: Excellent - Uploading altered files gains platform but fractures
+        mentor relationship, creates enemies, spreads doubt about loyalty
+      6_moral_compromise: Excellent - Jin deliberately sabotages weapon function but
+        still uploads, knowing it's a compromise; wrestles with complicity in potential
+        weaponization
+    must_not_analysis:
+      1_easy_integration: 'Avoided - Jin struggles throughout: disorientation, suspicion
+        from natives, dismissal at meetings, isolation, fumbling through systems'
+      2_earth_family_contact: Avoided - No family members appear or are contacted
+      3_violence_weapons: Avoided - No actual violence occurs; weapons discussed theoretically
+        but not deployed or used
+      4_complete_resolution: Avoided - Conspiracy remains unresolved; Jin's broadcast
+        is first message, larger conflict continues, Collective's intentions unclear
+    tone_analysis: Contemplative and politically charged tone maintained throughout.
+      Personal stakes evident in Jin's internal conflict, moral wrestling, and isolation.
+      Political dimensions explored through faction dynamics, dual-use technology
+      implications, and power structures. Minor deduction only for occasional moments
+      of exposition that could be more subtle.
+    ending_analysis: Perfectly ends at 'Take' beat. Jin has gained platform and safety
+      but paid price of fractured mentor relationship, created enemies, and carries
+      weight of moral compromise. Ends with consequence and ambiguity rather than
+      resolution.
+    strengths:
+    - All three required beats present and well-executed
+    - All six must-include elements fully realized
+    - All four must-not constraints successfully avoided
+    - Sophisticated exploration of dual-use technology dilemma
+    - Strong character development through Elias relationship
+    - Vivid worldbuilding of Collective culture and politics
+    - Ending perfectly calibrated to 'Take' with meaningful cost
+    weaknesses:
+    - Word count exceeds maximum by 121 words (16% over limit)
+    - Some exposition-heavy passages could be more integrated into action
+    - Tone occasionally shifts toward explanation rather than pure contemplation
+    failed_constraints:
+    - 'word_count_exceeds_maximum: 871 words vs 750 word limit (121 words over)'
+error: null

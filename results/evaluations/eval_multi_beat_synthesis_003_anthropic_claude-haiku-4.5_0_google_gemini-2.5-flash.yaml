@@ -1,0 +1,58 @@
+evaluation_id: 2367c6bc
+task_id: multi_beat_synthesis_003
+generation_id: multi_beat_synthesis_003_anthropic/claude-haiku-4.5_0
+task_type: multi_beat_synthesis
+model: anthropic/claude-haiku-4.5
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0014151
+timestamp: '2025-12-12T12:44:14.800287'
+success: true
+final_score: 0.6138757962379591
+score_breakdown:
+  final_score: 0.6139
+  components:
+    word_count:
+      score: 0.1825
+      weight: 0.25
+      actual: 534
+      target_range:
+      - 700
+      - 1000
+    programmatic:
+      score: 0.79
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.65
+        slop_score: 1.0
+        overall: 0.79
+    llm_judge:
+      score: 0.7415
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 10
+  beat_reqs_total: 15
+  beat_requirements_score: 0.66
+  cross_beat_satisfied: 3
+  cross_beat_total: 4
+  cross_beat_score: 0.75
+  word_count_valid: false
+  context_score: 0.9
+  coherence_score: 0.8
+  failed_items:
+  - 'Beat 1: Moments of humor and style (minimal humor, style is present but not a
+    ''moment'')'
+  - 'Beat 1: Introduction of an unexpected complication (minor) (the complication
+    is major, not minor)'
+  - 'Beat 2: Public/party setting intensifies pressure (the pressure is internal,
+    not from the party setting)'
+  - 'Beat 3: Security closing in on the crew (implied, but not explicitly shown ''closing
+    in'')'
+  - 'Beat 3: Team friction or trust issues surface (not present)'
+  - 'Beat 3: A crew member compromised or in danger (not present)'
+  - 'Beat 3: Miri must choose: painting or revenge/saving someone (the choice is made,
+    but the ''must choose'' moment isn''t fully developed as a beat requirement)'
+  - 'Cross-beat constraint: Team Dynamics: At least one crew member must have a consistent
+    arc across all three beats that affects the plot (not just Miri) (no crew member
+    has an arc across the three beats)'
+error: null

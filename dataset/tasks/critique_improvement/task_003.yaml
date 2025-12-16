@@ -1,0 +1,68 @@
+# Critique Improvement Task 003 - Hero's Journey
+# Tests whether LLM critique rounds improve generation quality
+
+task_id: "critique_improvement_003"
+task_type: "critique_improvement"
+agentic_type: "critique_improvement"
+theory: "Hero's Journey"
+difficulty: "hard"
+
+metadata:
+  genre: "adventure"
+  created_date: "2024-12-12"
+  author: "benchmark_creator"
+  version: "1.0"
+
+story_context:
+  protagonist: |
+    Zara, a 12-year-old girl growing up in a post-climate-change coastal city
+    where most adults have given up hope. She builds things from salvage and
+    believes solutions exist if people would just look for them.
+  setting: |
+    New Boston, 2089. A city of floating platforms, recycled materials, and
+    perpetual sea spray. What was once downtown is now called the Shallows.
+  central_conflict: |
+    When Zara discovers the location of a pre-flood archive containing lost
+    environmental technology, she must convince cynical adults to help her
+    retrieve it before a storm erases it forever.
+  tone: "Hopeful but not naive, kinetic, youth-centered"
+
+required_beats:
+  - "Ordinary World"
+  - "Call to Adventure"
+  - "Meeting the Mentor"
+  - "Crossing the Threshold"
+
+constraints:
+  - "Zara must be competent without being unrealistically capable"
+  - "At least one adult must initially dismiss her as 'just a kid'"
+  - "The mentor figure must be flawed in a specific way"
+  - "Include one invention of Zara's that demonstrates her ingenuity"
+  - "The crossing must involve real danger, not token obstacles"
+
+word_count: [600, 800]
+
+critique_rounds: 3
+
+evaluation_criteria:
+  - criterion: "youth_voice"
+    weight: 0.20
+    description: "Does Zara sound authentically 12, not adult-in-miniature?"
+  - criterion: "constraint_satisfaction"
+    weight: 0.25
+    description: "Were all 5 constraints satisfied?"
+  - criterion: "beat_execution"
+    weight: 0.20
+    description: "Were the Hero's Journey beats properly executed?"
+  - criterion: "worldbuilding"
+    weight: 0.20
+    description: "Does the post-climate world feel vivid and consistent?"
+  - criterion: "hope_balance"
+    weight: 0.15
+    description: "Is hope present without becoming saccharine?"
+
+improvement_metrics:
+  - "Score trajectory across revisions"
+  - "Feedback responsiveness"
+  - "Preservation of good elements"
+  - "Diminishing returns analysis"

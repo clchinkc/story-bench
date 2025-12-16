@@ -1,0 +1,148 @@
+evaluation_id: b42037eb
+task_id: multi_beat_synthesis_003
+generation_id: multi_beat_synthesis_003_qwen/qwen3-235b-a22b_0
+task_type: multi_beat_synthesis
+model: qwen/qwen3-235b-a22b
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.05235000000000001
+timestamp: '2025-12-12T10:25:22.528493'
+success: true
+final_score: 0.6511631168395875
+score_breakdown:
+  final_score: 0.6512
+  components:
+    word_count:
+      score: 0.3247
+      weight: 0.25
+      actual: 565
+      target_range:
+      - 700
+      - 1000
+    programmatic:
+      score: 0.7
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 1.0
+        overall: 0.7
+    llm_judge:
+      score: 0.79
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 12
+  beat_reqs_total: 15
+  beat_requirements_score: 0.8
+  cross_beat_satisfied: 3
+  cross_beat_total: 4
+  cross_beat_score: 0.75
+  word_count_valid: false
+  context_score: 0.85
+  coherence_score: 0.8
+  failed_items:
+  - Beat 1 - 'Things going according to plan (mostly)' is undercut; the complication
+    arrives too early and dominates, shifting tone before Midpoint
+  - Beat 1 - Insufficient showcase of crew skills beyond Nikolai's lock-picking; Anya's
+    hacking and Luca's role remain underdeveloped
+  - 'Cross-beat constraint - Chekhov''s Gun partially weak: ventilation grate is mentioned
+    but feels introduced reactively rather than established during Fun and Games setup'
+  - 'Cross-beat constraint - Tonal Escalation incomplete: Beat 1 lacks sustained playful
+    confidence; Eleanor''s reveal collapses the tone too quickly, compressing Midpoint
+    into Fun and Games'
+  detailed_analysis:
+    beat_1_fun_and_games:
+      score: 0.75
+      strengths:
+      - Excellent heist action with tactical choreography (camera loop, fireworks
+        distraction, lock-picking)
+      - Strong humor and style (dry quips, 'Oh, I already do')
+      - Crew skills partially showcased (Nikolai's sleight-of-hand, Anya's hacking)
+      - Minor complication introduced (guard noticing the fake)
+      weaknesses:
+      - Complication escalates too dramatically too soon; Eleanor's reveal should
+        be Midpoint, not Beat 1 climax
+      - Luca introduced but not meaningfully deployed; his trembling comes later without
+        prior establishment
+      - Insufficient 'things going according to plan' momentum; the heist feels immediately
+        compromised
+    beat_2_midpoint:
+      score: 0.85
+      strengths:
+      - 'False victory clearly achieved: Raphael secured and moving to dinghy'
+      - 'Stakes raised dramatically: Eleanor revealed as security consultant'
+      - Mentor involvement confirmed with high impact
+      - Nature of heist shifts from theft to survival/revenge
+      - Party setting intensifies pressure (intercoms, sealed exits, guards)
+      weaknesses:
+      - Midpoint feels rushed; Eleanor's presence should linger longer before full
+        threat activation
+      - The 'false victory' is immediately negated; no breathing room for audience
+        to feel the win
+    beat_3_bad_guys_close_in:
+      score: 0.8
+      strengths:
+      - Security actively closing in (intercoms, sealed doors, three-minute sweep)
+      - Team friction surfaces (Anya sprinting, Nikolai's silent nod, Luca's fear)
+      - 'Crew member compromised: Luca held at gunpoint'
+      - 'Miri''s choice crystallizes: painting vs. revenge vs. crew'
+      - Literal and figurative walls closing in (sealed exits, converging lights)
+      weaknesses:
+      - Crew member danger (Luca) introduced late without prior establishment; feels
+        convenient rather than earned
+    cross_beat_constraints:
+      chekhov_gun:
+        score: 0.6
+        analysis: Ventilation grate and maintenance layout are mentioned but feel
+          reactive. Nikolai's earlier note ('he'd noted the ventilation layout while
+          planting the replica') attempts retroactive setup but lacks the deliberate
+          foreshadowing needed. The fireworks distraction works better as payoff but
+          was established in Beat 1 opening, not as a planted detail.
+      tonal_escalation:
+        score: 0.7
+        analysis: Beat 1 should sustain playful confidence longer; Eleanor's reveal
+          collapses it prematurely. Beat 2 does raise stakes and shake confidence.
+          Beat 3 achieves genuine danger and gallows humor ('She's got a mentor to
+          kill'). Overall arc present but compressed.
+      mentor_presence:
+        score: 0.9
+        analysis: 'Excellent escalation: Beat 1 (silhouette, unknown), Beat 2 (Eleanor
+          Voss revealed, voice over comms), Beat 3 (active physical threat at helm).
+          This constraint is nearly perfectly executed.'
+      team_dynamics:
+        score: 0.8
+        analysis: 'Nikolai has consistent arc: confident magician → silent supporter
+          → willing sacrifice. Anya transitions from hacker to runner. Luca''s arc
+          is underdeveloped (introduced trembling, then held hostage). Nikolai''s
+          arc most clearly affects plot (his distraction enables escape).'
+    context_adherence:
+      protagonist: 0.9
+      setting: 0.85
+      tone: 0.8
+      analysis: Miri's characterization strong (dry wit, meticulous, conflicted between
+        justice and revenge). Monaco/yacht setting vivid. Ocean's Eleven tone mostly
+        achieved but tension occasionally overwhelms cleverness. The 'art history'
+        element present but could be deeper.
+    coherence:
+      score: 0.8
+      strengths:
+      - Clear narrative progression through three beats
+      - Eleanor's presence creates through-line
+      - Crew dynamics provide emotional stakes
+      - Ending (partial victory, crew saved, painting escapes) resolves tension
+      weaknesses:
+      - Pacing compresses Midpoint; Eleanor's reveal feels simultaneous with complication
+        rather than escalation
+      - Luca's character arc feels grafted on; his introduction and peril lack earned
+        weight
+      - Final resolution ('Some victories were measured in degrees') is thematically
+        sound but narratively abrupt
+  overall_assessment: The story executes a solid heist narrative with strong mentor
+    antagonism and crew dynamics. Beat 2 and 3 are particularly well-crafted. However,
+    Beat 1 lacks sufficient 'things going according to plan' momentum, and the tonal
+    escalation is compressed rather than graduated. The Chekhov's Gun constraint is
+    partially satisfied but feels reactive. Word count (565) falls significantly short
+    of the 700-1000 range, limiting character development and foreshadowing opportunities.
+    With expansion and restructuring to give Beat 1 more breathing room before Eleanor's
+    reveal, this would reach 0.9+ territory.
+  final_score: 0.8
+error: null

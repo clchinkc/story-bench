@@ -1,0 +1,66 @@
+evaluation_id: 378de2fc
+task_id: beat_revision_002
+generation_id: beat_revision_002_mistralai/ministral-14b-2512_0
+task_type: beat_revision
+model: mistralai/ministral-14b-2512
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.022755
+timestamp: '2025-12-13T13:30:53.674122'
+success: true
+final_score: 0.9384999999999999
+score_breakdown:
+  final_score: 0.9385
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 289
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.94
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.9
+        slop_score: 1.0
+        overall: 0.94
+    llm_judge:
+      score: 0.907
+      weight: 0.5
+llm_results:
+  diagnosis_score: 0.95
+  flaw_correction_score: 0.92
+  beat_satisfaction_score: 0.9
+  preservation_score: 1.0
+  preserved_count: 4
+  preserved_total: 4
+  required_preserved_score: 1.0
+  required_preserved_count: 4
+  required_preserved_total: 4
+  minimal_change_score: 0.65
+  word_count_valid: true
+  quality_score: 0.88
+  evidence: 'The model correctly diagnosed the core flaw: the original segment lacked
+    true hopelessness and still contained multiple viable options (fundraiser, grant,
+    new location, intact support system). The revision systematically eliminates all
+    escape routes: fundraiser cancelled, grant rejected, legal appeal deemed futile,
+    board members quitting, church basement rejected as inadequate. The model introduced
+    a betrayal element (Denise''s withholding about the grant timing) that isolates
+    Marcus emotionally and creates the ''whiff of death''—loss of trust, community,
+    identity, and marriage stability. All four required phrases are preserved verbatim
+    or near-verbatim: ''Marcus stared at the eviction notice in his hands'' (exact),
+    ''Thirty days to vacate the community center'' (exact), ''"There has to be something
+    we can do," said Denise'' (exact with added ''her voice trembling''), ''He rubbed
+    his temples'' (exact). All four preserved elements remain intact (Marcus, community
+    center, eviction, Denise). The revision expands the original by ~100 words (from
+    ~189 to ~289), which represents moderate rather than minimal changes. However,
+    the additions are surgical and purposeful—each new element directly addresses
+    a specific requirement of the All Is Lost beat. The writing quality is strong
+    with no new errors; emotional tone shifts convincingly from ''setback'' to ''devastation.''
+    Minor weakness: the betrayal by Denise, while effective, could be perceived as
+    slightly abrupt without prior setup, though this is acceptable for a standalone
+    segment. The revision successfully transforms the beat from ''disappointed but
+    hopeful'' to ''rock bottom with no visible path forward.'''
+error: null

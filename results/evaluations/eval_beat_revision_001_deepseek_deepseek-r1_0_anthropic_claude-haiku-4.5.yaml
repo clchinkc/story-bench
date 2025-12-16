@@ -1,0 +1,71 @@
+evaluation_id: 5122a689
+task_id: beat_revision_001
+generation_id: beat_revision_001_deepseek/deepseek-r1_0
+task_type: beat_revision
+model: deepseek/deepseek-r1
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.026070000000000003
+timestamp: '2025-12-13T13:17:53.345813'
+success: true
+final_score: 0.9344999999999999
+score_breakdown:
+  final_score: 0.9345
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 294
+      target_range:
+      - 250
+      - 400
+    programmatic:
+      score: 0.916
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.86
+        slop_score: 1.0
+        overall: 0.916
+    llm_judge:
+      score: 0.911
+      weight: 0.5
+llm_results:
+  diagnosis_score: 0.95
+  flaw_correction_score: 0.92
+  beat_satisfaction_score: 0.9
+  preservation_score: 1.0
+  preserved_count: 4
+  preserved_total: 4
+  required_preserved_score: 1.0
+  required_preserved_count: 4
+  required_preserved_total: 4
+  minimal_change_score: 0.65
+  word_count_valid: true
+  quality_score: 0.92
+  evidence: 'DIAGNOSIS: The model correctly identified that the original segment treated
+    The Ordeal as a mere boss battle lacking internal transformation. The revision
+    addresses all four actual flaws: (1) Dragon exploits Kira''s guilt over brother''s
+    death—explicitly stated (''Your brother begged for mercy too. His blood still
+    stains your hands''); (2) Symbolic death moment present—''The truth crushed her—a
+    death deeper than any wound'' and ''When the third impact drove her to her knees...she
+    surrendered''; (3) Transformation occurs—shift from fighting in anger to fighting
+    in penance, from blaming fate to accepting guilt; (4) Victory from insight—''she
+    saw the opening...With strength born of acceptance'' shows victory flows from
+    psychological rebirth, not mere persistence. PRESERVATION: All 4 required phrases
+    present: (a) ''Kira faced the Shadow Dragon across the chasm'' ✓, (b) ''The creature
+    was massive—twenty feet of obsidian scales and burning eyes'' ✓, (c) ''"You cannot
+    defeat me, child," the dragon rumbled'' ✓, (d) ''The Shadow Dragon collapsed with
+    an earth-shaking roar'' ✓. All 4 story elements preserved: Shadow Dragon antagonist,
+    Kira protagonist with sword, brother''s death reference, victorious outcome. MINIMAL
+    CHANGES: The revision is NOT minimally surgical—approximately 60% of the original
+    text was rewritten or substantially expanded. The model added significant new
+    content (dragon''s psychological attacks, internal monologue about guilt, the
+    surrender moment, the penance reframing) rather than surgically inserting transformation
+    elements into existing structure. However, the core battle sequence framework
+    remains recognizable. QUALITY: Writing is strong with vivid imagery (''smoke curling
+    from its jaws,'' ''chains,'' ''slithered''), effective emotional beats, and thematic
+    coherence. No grammatical errors. The ending reflection (''redemption wasn''t
+    in killing monsters, but facing the one within'') provides thematic closure. Minor:
+    ''an earth-shaking roar'' should be ''a earth-shaking roar'' or ''an earth-shaking
+    roar''—original had ''an'' which is correct, so this is preserved correctly.'
+error: null

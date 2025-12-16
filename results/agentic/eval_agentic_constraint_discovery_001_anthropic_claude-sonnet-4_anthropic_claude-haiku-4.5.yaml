@@ -1,0 +1,52 @@
+evaluation_id: a018dc83
+task_id: agentic_constraint_discovery_001
+generation_id: 301d9ebd
+agentic_type: constraint_discovery
+model: anthropic/claude-sonnet-4
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.004378
+timestamp: '2025-12-16T11:47:44.647839'
+success: true
+process_scores:
+  discovery_efficiency: 0.6
+  question_quality: 0.7
+  question_coverage: 0.6
+output_scores:
+  constraint_satisfaction: 0.4
+  beat_execution: 0.5
+  narrative_quality: 0.8
+final_score: 0.5933333333333334
+llm_results:
+  discovery_efficiency: 0.6
+  constraints_discoverable: 3
+  constraints_total: 5
+  question_quality: 0.7
+  question_coverage: 0.6
+  constraint_satisfaction: 0.4
+  beat_execution: 0.5
+  narrative_quality: 0.8
+  evidence: 'DISCOVERY ANALYSIS: Of 5 hidden constraints, only 3 were discoverable
+    through the questions asked. Q1 (magical metalworking ability) and Q3 (forge magical
+    item) directly targeted constraints 1 and 5. Q5 (time limit) discovered constraint
+    3. However, Q2 and Q4 were poorly targeted—Q2 asked if darkness was sentient (answered
+    NO, correctly), but didn''t probe the mentor''s death or father''s backstory.
+    Q4 asked if mentor was a smith (NO), missing the critical constraint that the
+    mentor MUST DIE. The father''s failed hero past was never queried. QUESTION QUALITY:
+    Questions 1, 3, 5 were well-formed binary queries. Q2 was somewhat useful but
+    didn''t follow up on implications. Q4 was a dead-end that didn''t pivot to explore
+    mentor fate. Coverage was uneven—focused heavily on magical items/abilities, neglected
+    character relationships and backstory. CONSTRAINT SATISFACTION IN OUTPUT: The
+    story incorporates 2/5 constraints clearly: (1) protagonist has metalworking magic
+    ability ✓, (5) reforges ancestral sword (Sunsteel) ✓. Partially incorporates:
+    (3) three-day time limit exists but is vague (48 hours mentioned, then 12 hours,
+    timeline unclear) ~. MISSING: (2) mentor death—Master Torin survives and is never
+    mentioned again after threshold crossing; this is a critical failure. (4) Father''s
+    failed hero past—completely absent from narrative. BEAT EXECUTION: The Hero''s
+    Journey structure is present (Call, Threshold, Ordeal, Return) but incomplete.
+    The Ordeal lacks the mentor''s sacrificial death, which should be the emotional
+    climax. The protagonist doesn''t face internal conflict about his father''s legacy.
+    NARRATIVE QUALITY: Strong prose, vivid imagery, clear pacing, and satisfying magical
+    system. However, the story feels incomplete thematically—it''s a competent adventure
+    but lacks the emotional depth that mentor death and paternal legacy would provide.
+    The victory feels earned but hollow without these character elements.'
+error: null

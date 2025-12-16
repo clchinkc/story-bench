@@ -1,0 +1,227 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Story Theory Benchmark Evaluation Schema",
+  "description": "Schema for validating evaluation results",
+  "definitions": {
+    "base_evaluation": {
+      "type": "object",
+      "properties": {
+        "overall_pass": {"type": "boolean"},
+        "evidence": {"type": "string"}
+      },
+      "required": ["overall_pass"]
+    }
+  },
+  "type": "object",
+  "properties": {
+    "evaluation_id": {
+      "type": "string"
+    },
+    "task_id": {
+      "type": "string"
+    },
+    "generation_id": {
+      "type": "string"
+    },
+    "task_type": {
+      "type": "string",
+      "enum": [
+        "beat_interpolation",
+        "beat_revision",
+        "constrained_continuation",
+        "theory_conversion",
+        "multi_beat_synthesis"
+      ]
+    },
+    "model": {
+      "type": "string"
+    },
+    "sample_index": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 2
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "evaluator_model": {
+      "type": "string"
+    },
+    "evaluation_cost": {
+      "type": "number",
+      "minimum": 0
+    }
+  },
+  "required": ["evaluation_id", "task_id", "generation_id", "task_type"],
+  "allOf": [
+    {
+      "if": {
+        "properties": {"task_type": {"const": "beat_interpolation"}}
+      },
+      "then": {
+        "properties": {
+          "results": {
+            "type": "object",
+            "properties": {
+              "beat_elements_present": {"type": "boolean"},
+              "word_count_valid": {"type": "boolean"},
+              "character_consistent": {"type": "boolean"},
+              "logical_bridge": {"type": "boolean"},
+              "setting_continuity": {"type": "boolean"},
+              "evidence": {"type": "string"},
+              "overall_pass": {"type": "boolean"}
+            },
+            "required": [
+              "beat_elements_present",
+              "word_count_valid",
+              "character_consistent",
+              "logical_bridge",
+              "setting_continuity",
+              "overall_pass"
+            ]
+          }
+        },
+        "required": ["results"]
+      }
+    },
+    {
+      "if": {
+        "properties": {"task_type": {"const": "beat_revision"}}
+      },
+      "then": {
+        "properties": {
+          "results": {
+            "type": "object",
+            "properties": {
+              "flaw_corrected": {"type": "boolean"},
+              "beat_definition_satisfied": {"type": "boolean"},
+              "preserved_elements": {"type": "boolean"},
+              "word_count_valid": {"type": "boolean"},
+              "no_new_errors": {"type": "boolean"},
+              "explanation": {"type": "string"},
+              "overall_pass": {"type": "boolean"}
+            },
+            "required": [
+              "flaw_corrected",
+              "beat_definition_satisfied",
+              "preserved_elements",
+              "word_count_valid",
+              "no_new_errors",
+              "overall_pass"
+            ]
+          }
+        },
+        "required": ["results"]
+      }
+    },
+    {
+      "if": {
+        "properties": {"task_type": {"const": "constrained_continuation"}}
+      },
+      "then": {
+        "properties": {
+          "results": {
+            "type": "object",
+            "properties": {
+              "constraints_checked": {
+                "type": "object",
+                "additionalProperties": {"type": "boolean"}
+              },
+              "constraints_passed": {"type": "integer"},
+              "constraints_total": {"type": "integer"},
+              "pass_rate": {"type": "number", "minimum": 0, "maximum": 1},
+              "failed_constraints": {
+                "type": "array",
+                "items": {"type": "string"}
+              },
+              "overall_pass": {"type": "boolean"}
+            },
+            "required": [
+              "constraints_checked",
+              "constraints_passed",
+              "constraints_total",
+              "pass_rate",
+              "overall_pass"
+            ]
+          }
+        },
+        "required": ["results"]
+      }
+    },
+    {
+      "if": {
+        "properties": {"task_type": {"const": "theory_conversion"}}
+      },
+      "then": {
+        "properties": {
+          "results": {
+            "type": "object",
+            "properties": {
+              "target_beats_present": {
+                "type": "object",
+                "additionalProperties": {"type": "boolean"}
+              },
+              "all_target_beats_present": {"type": "boolean"},
+              "core_preserved": {"type": "boolean"},
+              "word_count_valid": {"type": "boolean"},
+              "tone_maintained": {"type": "boolean"},
+              "structural_accuracy_score": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "overall_pass": {"type": "boolean"}
+            },
+            "required": [
+              "target_beats_present",
+              "all_target_beats_present",
+              "core_preserved",
+              "structural_accuracy_score",
+              "overall_pass"
+            ]
+          }
+        },
+        "required": ["results"]
+      }
+    },
+    {
+      "if": {
+        "properties": {"task_type": {"const": "multi_beat_synthesis"}}
+      },
+      "then": {
+        "properties": {
+          "results": {
+            "type": "object",
+            "properties": {
+              "beat_requirements": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "object",
+                  "additionalProperties": {"type": "boolean"}
+                }
+              },
+              "cross_beat_constraints": {
+                "type": "object",
+                "additionalProperties": {"type": "boolean"}
+              },
+              "all_cross_beat_satisfied": {"type": "boolean"},
+              "beat_specific_pass_rate": {"type": "number", "minimum": 0, "maximum": 1},
+              "word_count_valid": {"type": "boolean"},
+              "context_maintained": {"type": "boolean"},
+              "overall_pass": {"type": "boolean"}
+            },
+            "required": [
+              "beat_requirements",
+              "cross_beat_constraints",
+              "all_cross_beat_satisfied",
+              "beat_specific_pass_rate",
+              "overall_pass"
+            ]
+          }
+        },
+        "required": ["results"]
+      }
+    }
+  ]
+}

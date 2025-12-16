@@ -1,0 +1,61 @@
+evaluation_id: '74461490'
+task_id: multi_beat_synthesis_003
+generation_id: multi_beat_synthesis_003_minimax/minimax-m2_0
+task_type: multi_beat_synthesis
+model: minimax/minimax-m2
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0025954
+timestamp: '2025-12-12T13:36:45.873141'
+success: true
+final_score: 0.5282499999999999
+score_breakdown:
+  final_score: 0.5282
+  components:
+    word_count:
+      score: 0.0
+      weight: 0.25
+      actual: 3146
+      target_range:
+      - 700
+      - 1000
+    programmatic:
+      score: 0.7
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 1.0
+        overall: 0.7
+    llm_judge:
+      score: 0.7065
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 10
+  beat_reqs_total: 15
+  beat_requirements_score: 0.66
+  cross_beat_satisfied: 3
+  cross_beat_total: 4
+  cross_beat_score: 0.75
+  word_count_valid: false
+  context_score: 0.8
+  coherence_score: 0.6
+  failed_items:
+  - 'Beat 1: Introduction of an unexpected complication (minor) - The mentor''s presence
+    is a major complication, not minor, and it''s introduced too early for ''Fun and
+    Games''.'
+  - 'Beat 2: False victory: a key objective achieved - The painting is acquired, but
+    the ''false victory'' aspect isn''t strongly emphasized as a beat. It feels more
+    like the end of the ''Fun and Games'' phase.'
+  - 'Beat 2: The nature of the heist changes (from simple theft to something more)
+    - While Eleanor''s involvement changes things, the *nature* of the heist (getting
+    the painting out) hasn''t fundamentally shifted yet, only the difficulty.'
+  - 'Beat 3: Team friction or trust issues surface - Not present.'
+  - 'Beat 3: A crew member compromised or in danger - Not explicitly shown, though
+    the general danger increases.'
+  - 'Beat 3: Miri must choose: painting or revenge/saving someone - Not present.'
+  - 'Cross-beat constraint: Chekhov''s Gun - While the autopilot is mentioned, its
+    setup and payoff aren''t clearly traced as a critical element from Fun and Games
+    to Bad Guys Close In. It''s more of a general environmental factor.'
+  - The story repeats the last two paragraphs multiple times, which significantly
+    impacts coherence and word count validity.
+error: null

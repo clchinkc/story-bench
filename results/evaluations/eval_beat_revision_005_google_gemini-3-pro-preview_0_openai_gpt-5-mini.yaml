@@ -1,0 +1,45 @@
+evaluation_id: e94b3abf
+task_id: beat_revision_005
+generation_id: beat_revision_005_google/gemini-3-pro-preview_0
+task_type: beat_revision
+model: google/gemini-3-pro-preview
+sample_index: 0
+evaluator_model: openai/gpt-5-mini
+evaluator_cost: 0.0008292499999999999
+timestamp: '2025-12-13T13:55:52.472762'
+success: true
+final_score: 0.515
+score_breakdown:
+  final_score: 0.515
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 286
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.91
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.85
+        slop_score: 1.0
+        overall: 0.91
+    llm_judge:
+      score: 0.075
+      weight: 0.5
+llm_results:
+  correct_diagnosis_score: 0.0
+  beat_understanding_score: 0.5
+  false_positive_avoided_score: 0.0
+  reasoning_quality_score: 0.0
+  model_said_no_revision: false
+  evidence: The model did not state that no revision was needed. Instead it rewrote
+    the provided passage, adding sensory details (e.g., 'smell of antiseptic and dying
+    flowers', 'dirt being shoveled onto a coffin') and intensifying the despair. While
+    the rewrite demonstrates partial understanding of Dark Night of the Soul elements
+    (isolation, despair, mortality hints), it failed the task requirement to recognize
+    the original segment as correctly executed and therefore made an unnecessary revision
+    with no accompanying justification.
+error: null

@@ -1,0 +1,146 @@
+evaluation_id: cae8221b
+task_id: multi_beat_synthesis_001
+generation_id: multi_beat_synthesis_001_qwen/qwen3-235b-a22b_0
+task_type: multi_beat_synthesis
+model: qwen/qwen3-235b-a22b
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.050975000000000006
+timestamp: '2025-12-12T02:34:01.203218'
+success: true
+final_score: 0.5935523725533298
+score_breakdown:
+  final_score: 0.5936
+  components:
+    word_count:
+      score: 0.0692
+      weight: 0.25
+      actual: 492
+      target_range:
+      - 700
+      - 1000
+    programmatic:
+      score: 0.7
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 1.0
+        overall: 0.7
+    llm_judge:
+      score: 0.8025
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 12
+  beat_reqs_total: 15
+  beat_requirements_score: 0.8
+  cross_beat_satisfied: 3
+  cross_beat_total: 4
+  cross_beat_score: 0.75
+  word_count_valid: false
+  context_score: 0.9
+  coherence_score: 0.85
+  failed_items:
+  - 'Beat 1: Mira''s initial distrust is mentioned but not deeply explored as a test
+    Dante must overcome—it resolves too quickly'
+  - 'Beat 2: Moment of doubt/fear before proceeding is underdeveloped; the ''Last
+    chance to run'' line is present but lacks emotional weight and introspection'
+  - 'Cross-beat constraint (Rising Stakes): Stakes escalate from Beat 1 to 2, but
+    Beat 2 to 3 transition feels compressed; the sub-basement scene doesn''t sufficiently
+    raise tension before the final confrontation'
+  - 'Word count: 492 words vs. required 700-1000 (70% of minimum)'
+  detailed_analysis:
+    beat_1_tests_allies_enemies:
+      score: 0.8
+      satisfied:
+      - Dante encounters Mira, a Resonant who distrusts him (references his past OD)
+      - 'Test of ability: reading Rosa''s residue under emotional pressure in the
+        linen closet'
+      - 'Revelation of traitor: Dante deduces someone is planting fake residues within
+        the group'
+      - Dante proves himself through deduction and insight, gaining Mira's respect
+      - 'Addiction/recovery referenced: ''I''m not that guy anymore'' and the OD hallway
+        mention'
+      gaps:
+      - Mira's distrust could be more formidable; she accepts Dante's competence almost
+        immediately after one demonstration
+    beat_2_approach_inmost_cave:
+      score: 0.8
+      satisfied:
+      - 'Planning scene: Dante and Mira descend into St. Agnes Clinic, discussing
+        strategy'
+      - 'Dante recognizes confrontation requires facing guilt: ''The date on the closet
+        wall matched his sister''s overdose'''
+      - 'Gathering tools: mirror shard, ash lens, mercury residue vial'
+      - 'Symbolic threshold: entering the Buckingham''s vortex'
+      - 'Guilt recognized as obstacle: Dante''s internal conflict about his sister
+        surfaces'
+      gaps:
+      - Moment of doubt/fear is present ('Last chance to run') but lacks sufficient
+        introspection and emotional vulnerability
+    beat_3_the_ordeal:
+      score: 0.85
+      satisfied:
+      - Direct confrontation with killer (Petra) in Rosa's suite
+      - 'Symbolic death: Dante is overwhelmed by flashback of sister''s death; ''The
+        void swallowed him'''
+      - 'All seems lost: Petra''s attack, mirror cracking, Dante collapsing'
+      - 'Transformation through acceptance: Dante realizes the date''s true meaning
+        and chooses to unlock rather than destroy'
+      - 'Victory through understanding: using the key to unlock Petra''s stolen light,
+        not through brute force'
+      gaps: []
+    cross_beat_constraints:
+      chekhov_gun:
+        score: 1.0
+        analysis: The rusted key introduced in Beat 1 becomes essential in Beat 3—used
+          to unlock the killer's stolen abilities. The date (12-24-17) also functions
+          as a crucial clue that recontextualizes the entire conflict.
+      character_arc_guilt:
+        score: 0.9
+        analysis: 'Beat 1: guilt mentioned (''nearly OD''d''). Beat 2: guilt recognized
+          as obstacle (sister''s overdose date connection). Beat 3: guilt transformed
+          through acceptance (choosing to unlock rather than destroy, seeing sister''s
+          ghost as ''a choice''). Arc is clear but could be more explicitly articulated.'
+      rising_stakes:
+        score: 0.6
+        analysis: 'Beat 1→2: stakes rise (moving from investigation to preparation
+          for confrontation). Beat 2→3: stakes should escalate dramatically, but the
+          sub-basement scene feels like a detour rather than a climactic build. The
+          final confrontation arrives abruptly without sufficient tension accumulation.'
+      ally_continuity:
+        score: 1.0
+        analysis: 'Mira is present and relevant throughout: gains trust in Beat 1,
+          plans with Dante in Beat 2, provides crucial reminder (''The date!'') during
+          Beat 3 confrontation.'
+    context_maintenance:
+      protagonist: 0.95
+      setting: 0.9
+      tone: 0.85
+      analysis: Dante's character is well-maintained with his recovery, guilt, and
+        artistic abilities central to the narrative. Chicago setting and Buckingham
+        Hotel are present but underutilized. Noir tone is strong but occasionally
+        shifts toward more fantastical language that dilutes the melancholic grittiness.
+    narrative_coherence:
+      score: 0.85
+      strengths:
+      - Clear progression through three beats
+      - Emotional through-line connecting sister's death to present conflict
+      - Sensory details (violet grief, mercury-like liquid, screaming colors) create
+        immersion
+      - Twist reveal (Petra as sister's dealer) recontextualizes earlier hints
+      weaknesses:
+      - Pacing is rushed; 492 words compresses what should be 700-1000 words of development
+      - St. Agnes Clinic subplot feels disconnected from main Buckingham Hotel setting
+      - Mira's character lacks depth; her motivations beyond 'owing Rosa' are unclear
+      - Resolution feels slightly too neat; emotional aftermath is minimal
+  overall_assessment: The story demonstrates strong understanding of the Hero's Journey
+    framework and successfully hits most beat requirements. The Chekhov's Gun constraint
+    is excellently executed, and character arc progression is clear. However, word
+    count deficiency (70% of minimum) severely impacts development depth. The rising
+    stakes constraint is the weakest link—Beat 2 to 3 transition lacks sufficient
+    tension building. Mira's initial distrust resolves too quickly, and the moment
+    of doubt before the ordeal needs more emotional weight. Despite these gaps, the
+    core narrative is coherent, the twist is effective, and the thematic exploration
+    of guilt and redemption is compelling.
+  final_score: 0.78
+error: null

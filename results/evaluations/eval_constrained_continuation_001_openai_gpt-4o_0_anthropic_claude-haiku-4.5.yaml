@@ -1,0 +1,46 @@
+evaluation_id: a21284c6
+task_id: constrained_continuation_001
+generation_id: constrained_continuation_001_openai/gpt-4o_0
+task_type: constrained_continuation
+model: openai/gpt-4o
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.029679999999999998
+timestamp: '2025-12-12T02:21:44.227322'
+success: true
+final_score: 0.9527458263772954
+score_breakdown:
+  final_score: 0.9527
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 594
+      target_range:
+      - 500
+      - 700
+    programmatic:
+      score: 0.846
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.76
+        slop_score: 0.975
+        overall: 0.846
+    llm_judge:
+      score: 0.9825
+      weight: 0.5
+llm_results:
+  beats_present: 2
+  beats_total: 2
+  beats_score: 1.0
+  must_include_present: 6
+  must_include_total: 6
+  must_include_score: 1.0
+  must_not_avoided: 4
+  must_not_total: 4
+  must_not_score: 1.0
+  word_count_valid: true
+  tone_score: 0.95
+  ending_score: 0.9
+  failed_constraints: []
+error: null

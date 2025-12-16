@@ -1,0 +1,51 @@
+evaluation_id: eec45bf8
+task_id: beat_interpolation_002
+generation_id: beat_interpolation_002_openai/gpt-4o_0
+task_type: beat_interpolation
+model: openai/gpt-4o
+sample_index: 0
+evaluator_model: openai/gpt-5-mini
+evaluator_cost: 0.001175
+timestamp: '2025-12-12T13:34:03.151812'
+success: true
+final_score: 0.9655
+score_breakdown:
+  final_score: 0.9655
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 380
+      target_range:
+      - 250
+      - 400
+    programmatic:
+      score: 0.862
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.77
+        slop_score: 1.0
+        overall: 0.862
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: true
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: All four required elements are present (considering recanting, considering
+    authorities, internal duty-vs-sister conflict, and a tipping moment/conversation).
+    The piece functions clearly as the Debate beat—Sarah weighs options, seeks advice,
+    and ultimately commits to a course of action at the end. None of the forbidden
+    elements appear (no immediate rogue decision, no one else makes the decision,
+    she has not resigned yet, and there's no direct confrontation with Marchetti).
+    Character voice and setting remain consistent with the preceding scene, so no
+    deductions were necessary.
+error: null

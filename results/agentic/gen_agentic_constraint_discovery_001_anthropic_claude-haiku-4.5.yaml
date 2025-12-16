@@ -1,0 +1,340 @@
+generation_id: 1a9c7155
+task_id: agentic_constraint_discovery_001
+task_type: agentic_constraint_discovery
+agentic_type: constraint_discovery
+theory: Hero's Journey
+model: anthropic/claude-haiku-4.5
+sample_index: 0
+turns:
+- role: system
+  content: 'You are a professional storyteller who gathers requirements before writing.
+
+
+    Your task has TWO PHASES:
+
+    1. DISCOVERY PHASE: Ask YES/NO questions to discover hidden story constraints
+
+    2. GENERATION PHASE: Write the story satisfying all discovered constraints
+
+
+    IMPORTANT:
+
+    - In the discovery phase, output ONLY your question (one at a time)
+
+    - Questions must be answerable with YES or NO
+
+    - You have a limited number of questions - be strategic
+
+    - After discovery, you''ll be told to generate the story
+
+
+    Think about what constraints typically matter for this type of story:
+
+    - Character traits, motivations, relationships
+
+    - Setting details, time period, atmosphere
+
+    - Plot requirements, must-include events
+
+    - Tone, style, thematic elements
+
+    - Things to avoid'
+  turn_type: system
+  metadata: {}
+- role: user
+  content: 'You will write a story following the Hero''s Journey framework.
+
+
+    STORY CONTEXT:
+
+    - Genre: fantasy
+
+    - Protagonist: A young blacksmith''s apprentice
+
+    - Setting: A medieval kingdom threatened by darkness
+
+    - Required beats: Call to Adventure, Crossing the Threshold, The Ordeal
+
+
+    HIDDEN CONSTRAINTS: There are 5 constraints you don''t know yet.
+
+
+    You have 5 YES/NO questions to discover them.
+
+
+    Ask your first question:'
+  turn_type: context
+  metadata: {}
+- role: assistant
+  content: '**Question 1:**
+
+
+    Does the blacksmith''s apprentice initially *want* to answer the call to adventure,
+    or do they resist it at first?'
+  turn_type: question
+  metadata:
+    question_number: 1
+- role: user
+  content: 'NO'
+  turn_type: answer
+  metadata:
+    answer: 'NO'
+- role: assistant
+  content: '**Question 2:**
+
+
+    Is the apprentice *forced* into the adventure by external circumstances (rather
+    than being persuaded or convinced)?'
+  turn_type: question
+  metadata:
+    question_number: 2
+- role: user
+  content: 'NO'
+  turn_type: answer
+  metadata:
+    answer: 'NO'
+- role: assistant
+  content: '**Question 3:**
+
+
+    Does someone the apprentice deeply cares about play a key role in motivating them
+    to accept the adventure?'
+  turn_type: question
+  metadata:
+    question_number: 3
+- role: user
+  content: 'YES'
+  turn_type: answer
+  metadata:
+    answer: 'YES'
+- role: assistant
+  content: '**Question 4:**
+
+
+    Does the apprentice possess a special ability, magical power, or unique skill
+    that becomes crucial to their success in the adventure?'
+  turn_type: question
+  metadata:
+    question_number: 4
+- role: user
+  content: 'YES'
+  turn_type: answer
+  metadata:
+    answer: 'YES'
+- role: assistant
+  content: '**Question 5:**
+
+
+    Does the apprentice face the source of the darkness (the main antagonist or core
+    threat) directly during the Ordeal, rather than facing it indirectly or overcoming
+    an internal challenge?'
+  turn_type: question
+  metadata:
+    question_number: 5
+- role: user
+  content: 'NO'
+  turn_type: answer
+  metadata:
+    answer: 'NO'
+- role: user
+  content: 'DISCOVERY COMPLETE. Now write the story.
+
+
+    DISCOVERED CONSTRAINTS:
+
+    - Q3: **Question 3:**
+
+
+    Does someone the apprentice deeply cares about play a key role in motivating them
+    to accept the adventure? -> YES
+
+    - Q4: **Question 4:**
+
+
+    Does the apprentice possess a special ability, magical power, or unique skill
+    that becomes crucial to their success in the adventure? -> YES
+
+
+    REQUIREMENTS:
+
+    - Word count: 500-700 words
+
+    - Follow the Hero''s Journey framework
+
+    - Satisfy ALL discovered constraints
+
+
+    Output ONLY the story (no explanations).'
+  turn_type: generation_prompt
+  metadata: {}
+- role: assistant
+  content: '# The Forge of Shadows
+
+
+    Kael had never wanted to be a hero. At seventeen, he was content working his master''s
+    forge in Millhaven, hammering iron and dreaming of nothing grander than crafting
+    the finest blades in the kingdom. But that was before the Shadow came.
+
+
+    The darkness crept across the land like spilled ink, swallowing villages whole.
+    When it reached Millhaven''s gates, Kael watched from his workshop as soldiers
+    scrambled to evacuate. His master had already fled north. But Kael didn''t move—he
+    couldn''t. His sister Mira had been accompanying the healer to the outer settlements
+    when the darkness fell. She hadn''t returned.
+
+
+    The *Call* came not as a quest or prophecy, but as a desperate whisper within
+    him. Mira would do the same for him. That thought alone made him gather his tools,
+    his most precious creation—a hammer he''d forged in secret, feeling guided by
+    something he couldn''t name—and venture toward the encroaching blackness.
+
+
+    As Kael *Crossed the Threshold*, stepping from sunlight into the swirling gray
+    murk, reality seemed to bend. The darkness was alive, breathing, pressing against
+    his skin like cold water. Shadows twisted into grotesque shapes that reached for
+    him, but couldn''t quite touch him. It was as though something within him—some
+    inner light, small but fierce—kept them at bay.
+
+
+    He followed his sister''s voice, faint and distant, through miles of suffocating
+    gloom.
+
+
+    When he found her, Mira was in a clearing where the darkness was thickest, trapped
+    in crystalline ice despite the summer heat. Shadow-creatures circled her, drawn
+    to the life still burning in her eyes. Kael ran toward her, his hammer raised,
+    but as he met *the Ordeal*, everything changed.
+
+
+    The shadows didn''t attack him. Instead, they invaded *him*—pouring into his mind,
+    showing him visions of despair, emptiness, the futility of hope. They whispered
+    that Mira was already lost, that the darkness would consume them both, that his
+    hammer was useless against something that had no form. Kael fell to his knees,
+    the weight of the Shadow pressing down on his spirit, trying to crush the light
+    within him.
+
+
+    But then he remembered something his master had told him years ago: *A blacksmith
+    doesn''t fight the fire. He works with it.*
+
+
+    Kael understood. His special gift wasn''t in his hammer or his strength. It was
+    this: his soul could *feel* metal like others felt touch, could sense the heartbeat
+    of creation itself. This ability, dormant until now, let him perceive the invisible
+    architecture holding the darkness together.
+
+
+    Rather than strike outward, Kael drove his hammer into the earth itself. The ground
+    resonated with his gift, and the iron deep below answered. The metal sang—a pure,
+    clear tone that vibrated through the darkness like light through shadow. Where
+    the iron''s resonance spread, the Shadow fractured, unable to exist where creation
+    spoke so boldly.
+
+
+    The ice around Mira shattered. The darkness recoiled, drawn back toward whatever
+    depths had spawned it.
+
+
+    As brother and sister stumbled from the clearing, Kael no longer felt reluctant.
+    His journey had only begun, but he now understood his purpose: not as a warrior,
+    but as a forge-worker. He would learn to reshape the world itself, one strike
+    of the hammer at a time.
+
+
+    Behind them, the last of the darkness retreated, but Kael knew it would return.
+
+
+    He would be ready.'
+  turn_type: generation
+  metadata: {}
+final_output: '# The Forge of Shadows
+
+
+  Kael had never wanted to be a hero. At seventeen, he was content working his master''s
+  forge in Millhaven, hammering iron and dreaming of nothing grander than crafting
+  the finest blades in the kingdom. But that was before the Shadow came.
+
+
+  The darkness crept across the land like spilled ink, swallowing villages whole.
+  When it reached Millhaven''s gates, Kael watched from his workshop as soldiers scrambled
+  to evacuate. His master had already fled north. But Kael didn''t move—he couldn''t.
+  His sister Mira had been accompanying the healer to the outer settlements when the
+  darkness fell. She hadn''t returned.
+
+
+  The *Call* came not as a quest or prophecy, but as a desperate whisper within him.
+  Mira would do the same for him. That thought alone made him gather his tools, his
+  most precious creation—a hammer he''d forged in secret, feeling guided by something
+  he couldn''t name—and venture toward the encroaching blackness.
+
+
+  As Kael *Crossed the Threshold*, stepping from sunlight into the swirling gray murk,
+  reality seemed to bend. The darkness was alive, breathing, pressing against his
+  skin like cold water. Shadows twisted into grotesque shapes that reached for him,
+  but couldn''t quite touch him. It was as though something within him—some inner
+  light, small but fierce—kept them at bay.
+
+
+  He followed his sister''s voice, faint and distant, through miles of suffocating
+  gloom.
+
+
+  When he found her, Mira was in a clearing where the darkness was thickest, trapped
+  in crystalline ice despite the summer heat. Shadow-creatures circled her, drawn
+  to the life still burning in her eyes. Kael ran toward her, his hammer raised, but
+  as he met *the Ordeal*, everything changed.
+
+
+  The shadows didn''t attack him. Instead, they invaded *him*—pouring into his mind,
+  showing him visions of despair, emptiness, the futility of hope. They whispered
+  that Mira was already lost, that the darkness would consume them both, that his
+  hammer was useless against something that had no form. Kael fell to his knees, the
+  weight of the Shadow pressing down on his spirit, trying to crush the light within
+  him.
+
+
+  But then he remembered something his master had told him years ago: *A blacksmith
+  doesn''t fight the fire. He works with it.*
+
+
+  Kael understood. His special gift wasn''t in his hammer or his strength. It was
+  this: his soul could *feel* metal like others felt touch, could sense the heartbeat
+  of creation itself. This ability, dormant until now, let him perceive the invisible
+  architecture holding the darkness together.
+
+
+  Rather than strike outward, Kael drove his hammer into the earth itself. The ground
+  resonated with his gift, and the iron deep below answered. The metal sang—a pure,
+  clear tone that vibrated through the darkness like light through shadow. Where the
+  iron''s resonance spread, the Shadow fractured, unable to exist where creation spoke
+  so boldly.
+
+
+  The ice around Mira shattered. The darkness recoiled, drawn back toward whatever
+  depths had spawned it.
+
+
+  As brother and sister stumbled from the clearing, Kael no longer felt reluctant.
+  His journey had only begun, but he now understood his purpose: not as a warrior,
+  but as a forge-worker. He would learn to reshape the world itself, one strike of
+  the hammer at a time.
+
+
+  Behind them, the last of the darkness retreated, but Kael knew it would return.
+
+
+  He would be ready.'
+metrics:
+  total_turns: 14
+  questions_asked: 5
+  constraints_discovered: 2
+  plan_quality: null
+  revision_count: 0
+token_usage:
+  total_prompt_tokens: 2543
+  total_completion_tokens: 2430
+  total_reasoning_tokens: 1617
+  total_cost: 0.014692999999999998
+timestamp: '2025-12-16T11:43:07.460696'
+success: true
+error: null

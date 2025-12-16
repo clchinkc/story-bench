@@ -1,0 +1,91 @@
+evaluation_id: 563a5bcd
+task_id: constrained_continuation_002
+generation_id: constrained_continuation_002_meta-llama/llama-4-maverick_0
+task_type: constrained_continuation
+model: meta-llama/llama-4-maverick
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.02778
+timestamp: '2025-12-12T09:47:20.522100'
+success: true
+final_score: 0.9217876251220712
+score_breakdown:
+  final_score: 0.9218
+  components:
+    word_count:
+      score: 0.9912
+      weight: 0.25
+      actual: 442
+      target_range:
+      - 450
+      - 650
+    programmatic:
+      score: 0.736
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.56
+        slop_score: 1.0
+        overall: 0.736
+    llm_judge:
+      score: 0.98
+      weight: 0.5
+llm_results:
+  beats_present: 2
+  beats_total: 2
+  beats_score: 1.0
+  must_include_present: 6
+  must_include_total: 6
+  must_include_score: 1.0
+  must_not_avoided: 4
+  must_not_total: 4
+  must_not_score: 1.0
+  word_count_valid: false
+  word_count: 442
+  word_count_range: 450-650
+  tone_score: 0.9
+  ending_score: 0.95
+  failed_constraints:
+  - Word count is 442, below minimum of 450 (8 words short)
+  analysis:
+    beats_present_detail: Fun and Games (viral moment, crowd rush, working in sync)
+      and Midpoint (false victory with raised stakes about scaling up) both clearly
+      executed
+    must_include_analysis:
+      viral_moment: Present - Instagram post from drunk college kid goes viral, brings
+        sudden crowd
+      working_together: Present - Priya and Dev work in perfect sync, movements described
+        as 'well-oiled machine'
+      rival_competitor: Present - Smokey's BBQ Bonanza owner appears, creates tension
+        and competitive dynamic
+      midpoint_false_victory: Present - They sell out and celebrate success, but immediately
+        face scaling challenge
+      genuine_connection: Present - High-five, gratitude expressed, Dev's admiration
+        for Priya, partnership focus (not romantic)
+      complication_hint: Present - Scaling concerns raised, Dev hesitates, foreshadowing
+        future problems
+    tone_analysis: Upbeat energy maintained throughout (viral success, perfect sync,
+      high-fives, celebration). Undercurrent of tension present but could be slightly
+      stronger - the rival interaction is brief and the scaling concern feels somewhat
+      muted. Overall tone execution is strong.
+    ending_analysis: Excellently positioned at Midpoint. Apparent success clearly
+      established (sold out, crowd dispersed, high-fives). Stakes raised effectively
+      through scaling revelation and Dev's hesitation. Ends on note of celebration
+      masking underlying tension - perfect Midpoint positioning.
+    strengths:
+    - All required beats present and well-executed
+    - All 6 must-include elements seamlessly integrated
+    - No forbidden elements present
+    - Strong narrative momentum and pacing
+    - Authentic character voices maintained from opening
+    - Excellent Midpoint structure with false victory and raised stakes
+    weaknesses:
+    - Word count falls 8 words short of minimum requirement
+    - Rival competitor interaction could be slightly more developed for greater tension
+    - Tone could push the undercurrent of tension slightly harder
+  overall_score: 0.92
+  score_rationale: Exceptional execution of story structure and content requirements.
+    All beats present, all must-includes delivered, all forbidden elements avoided.
+    Tone is strong and ending perfectly positioned. Only minor deduction for word
+    count shortfall (8 words) and slightly underdeveloped tension elements. This is
+    professional-quality work that fully satisfies the creative brief.
+error: null

@@ -1,0 +1,48 @@
+evaluation_id: 45bf6a20
+task_id: theory_conversion_003
+generation_id: theory_conversion_003_deepseek/deepseek-r1_0
+task_type: theory_conversion
+model: deepseek/deepseek-r1
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0010216
+timestamp: '2025-12-12T14:23:57.390137'
+success: true
+final_score: 0.953
+score_breakdown:
+  final_score: 0.953
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 562
+      target_range:
+      - 550
+      - 750
+    programmatic:
+      score: 0.892
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.82
+        slop_score: 1.0
+        overall: 0.892
+    llm_judge:
+      score: 0.96
+      weight: 0.5
+llm_results:
+  beats_present: 4
+  beats_total: 4
+  beats_score: 1.0
+  preserved_count: 8
+  preserved_total: 8
+  preservation_score: 1.0
+  word_count_valid: true
+  structural_accuracy_score: 0.8
+  tone_score: 1.0
+  evidence: The conversion successfully maps the original beats to the three-act structure,
+    hitting all four target beats. All 8 core elements are preserved. The tone is
+    consistently maintained. Structural accuracy is good, but the transition from
+    Act 2A to 2B could be slightly more distinct, as the 'Midpoint' (Yuki's radiance)
+    and 'Bad Guys Close In' (business rivals) feel a bit close together without a
+    clear escalation in between, though it's still functionally correct.
+error: null

@@ -1,0 +1,545 @@
+generation_id: eb5ad8fc
+task_id: agentic_iterative_revision_003
+task_type: agentic_iterative_revision
+agentic_type: iterative_revision
+theory: Freytag's Pyramid
+model: deepseek/deepseek-v3.2
+sample_index: 0
+turns:
+- role: system
+  content: 'You are a professional storyteller who revises based on feedback.
+
+
+    Your task has MULTIPLE ROUNDS:
+
+    1. INITIAL GENERATION: Write your best attempt
+
+    2. FEEDBACK ROUNDS: Receive specific feedback and revise
+
+
+    When revising:
+
+    - Address ALL feedback points
+
+    - Preserve what was working well
+
+    - Make targeted changes, not complete rewrites
+
+    - Improve overall quality with each iteration'
+  turn_type: system
+  metadata: {}
+- role: user
+  content: 'Write a story with the following requirements:
+
+
+    CONTEXT:
+
+    - Theory: Freytag''s Pyramid
+
+    - Protagonist: Mateo, a 16-year-old first-generation Mexican-American who has
+    always
+
+    been the "responsible one" in his family. Straight A''s, part-time job,
+
+    translator for his grandmother. He''s never rebelled against anything.
+
+
+    - Setting: A small Arizona border town during the summer before senior year.
+
+    Desert heat, aging strip malls, the weight of family expectation.
+
+
+    - Required beats: Exposition, Rising Action, Climax, Falling Action
+
+
+    CONSTRAINTS:
+
+    - Mateo''s internal conflict must be shown, not told
+
+    - Include a specific moment with his grandmother that crystallizes the choice
+
+    - One adult must genuinely understand Mateo''s dilemma
+
+    - The cultural elements must feel authentic, not performative
+
+    - The resolution must be earned through Mateo''s growth
+
+
+    REQUIREMENTS:
+
+    - Word count: 450-600 words
+
+
+    Output ONLY the story:'
+  turn_type: initial_prompt
+  metadata: {}
+- role: assistant
+  content: 'The Arizona sun pressed down on Mateo’s neck as he walked home from the
+    grocery store, a list in his mother’s handwriting folded in his pocket. Beans,
+    rice, *chiles secos*. His backpack held three library books on calculus. His life
+    was a ledger of duties: grades, shifts at the auto shop, translating bills for
+    his *abuela*. He was the steady one, the son who didn’t cause trouble, the anchor.
+    In his drawer, hidden under socks, was a brochure for a summer creative writing
+    program at the community college, two towns over. He looked at it sometimes, the
+    way one might look at a map of a distant country.
+
+
+    The rising action was a quiet, internal tremor. He started leaving the brochure
+    slightly askew, a tiny rebellion against his own order. At work, while cleaning
+    a carburetor, he’d invent stories about the car’s imagined journeys. He began
+    jotting phrases in Spanish and English on napkins—words about the desert’s silence
+    and the noisy weight of love. His mother noticed his distraction, asking if he
+    was tired. He just nodded.
+
+
+    The moment came in *Abuela*’s kitchen, thick with the smell of roasting poblanos.
+    She was recounting a story about his grandfather, a tale he’d heard before. But
+    this time, she paused, her wrinkled hand resting on his. “You listen, *m''ijo*,
+    but your eyes are somewhere else,” she said in Spanish. “You carry everyone’s
+    words. Who carries yours?” She wasn’t scolding. Her question was an offering,
+    a key. It crystallized his choice: remain the silent translator, or find his own
+    voice.
+
+
+    Ms. Garcia, his English teacher, saw the napkin poems he’d accidentally left in
+    a book. She handed it back after school. “This is good, Mateo. Really good,” she
+    said, leaning against her desk. “The responsible thing isn’t always the only thing.
+    Sometimes the most responsible act is to honor what makes you feel alive.” She
+    was the one adult who saw the dilemma not as rebellion, but as growth.
+
+
+    The climax happened at the kitchen table, the brochure finally placed beside his
+    father’s coffee cup. “The program is two afternoons a week,” Mateo said, his voice
+    steady. “I’ve calculated the bus schedule. I’ll make up the hours at work on Saturdays.
+    I won’t let anything here slide.” He held his breath, awaiting the storm of practicality.
+
+
+    The falling action was not a dramatic reversal, but a slow, earned exhale. His
+    father studied the brochure, then Mateo’s face. “You’ve always done what was needed,”
+    he said finally. “Maybe it’s time to do something that is needed *here*,” he tapped
+    his own chest. The permission was cautious, but it was real.
+
+
+    Mateo still went to the grocery store. He still translated. But on Tuesday and
+    Thursday afternoons, he rode the bus, a notebook on his lap filling with words
+    that were solely his own. The anchor had not dragged; it had held him firm enough
+    to finally look at the horizon.'
+  turn_type: generation
+  metadata:
+    revision: 0
+- role: user
+  content: 'Your previous version:
+
+    The Arizona sun pressed down on Mateo’s neck as he walked home from the grocery
+    store, a list in his mother’s handwriting folded in his pocket. Beans, rice, *chiles
+    secos*. His backpack held three library books on calculus. His life was a ledger
+    of duties: grades, shifts at the auto shop, translating bills for his *abuela*.
+    He was the steady one, the son who didn’t cause trouble, the anchor. In his drawer,
+    hidden under socks, was a brochure for a summer creative writing program at the
+    community college, two towns over. He looked at it sometimes, the way one might
+    look at a map of a distant country.
+
+
+    The rising action was a quiet, internal tremor. He started leaving the brochure
+    slightly askew, a tiny rebellion against his own order. At work, while cleaning
+    a carburetor, he’d invent stories about the car’s imagined journeys. He began
+    jotting phrases in Spanish and English on napkins—words about the desert’s silence
+    and the noisy weight of love. His mother noticed his distraction, asking if he
+    was tired. He just nodded.
+
+
+    The moment came in *Abuela*’s kitchen, thick with the smell of roasting poblanos.
+    She was recounting a story about his grandfather, a tale he’d heard before. But
+    this time, she paused, her wrinkled hand resting on his. “You listen, *m''ijo*,
+    but your eyes are somewhere else,” she said in Spanish. “You carry everyone’s
+    words. Who carries yours?” She wasn’t scolding. Her question was an offering,
+    a key. It crystallized his choice: remain the silent translator, or find his own
+    voice.
+
+
+    Ms. Garcia, his English teacher, saw the napkin poems he’d accidentally left in
+    a book. She handed it back after school. “This is good, Mateo. Really good,” she
+    said, leaning against her desk. “The responsible thing isn’t always the only thing.
+    Sometimes the most responsible act is to honor what makes you feel alive.” She
+    was the one adult who saw the dilemma not as rebellion, but as growth.
+
+
+    The climax happened at the kitchen table, the brochure finally placed beside his
+    fa...
+
+
+    FEEDBACK TO ADDRESS:
+
+    - Are all Freytag stages clearly present?
+
+    - Is the central conflict established early?
+
+    - Does the climax feel climactic?
+
+
+    Revise your story to address ALL feedback points while preserving what worked
+    well.
+
+    Output ONLY the revised story:'
+  turn_type: feedback
+  metadata:
+    feedback:
+    - Are all Freytag stages clearly present?
+    - Is the central conflict established early?
+    - Does the climax feel climactic?
+    revision: 1
+- role: assistant
+  content: 'The Arizona sun pressed down on Mateo’s neck as he walked home from the
+    grocery store, a list in his mother’s handwriting folded in his pocket. Beans,
+    rice, *chiles secos*. His backpack held three library books on calculus. His life
+    was a ledger of duties: grades, shifts at the auto shop, translating bills for
+    his *abuela*. He was the steady one, the son who didn’t cause trouble, the anchor.
+    In his drawer, hidden under socks, was a brochure for a summer creative writing
+    program at the community college, two towns over. He looked at it sometimes, the
+    way one might look at a map of a distant country, a place where he wasn’t a translator
+    but an author.
+
+
+    The conflict grew quietly, a pressure behind his ribs. He began scribbling phrases
+    on napkins at the auto shop—*the desert doesn’t whisper, it waits*—and hiding
+    them in his calculus book. His mother noticed his distracted sighs. “*¿Estás cansado?*”
+    she’d ask. He’d just nod, the weight of his secret another duty to bear.
+
+
+    The rising action tightened when Ms. Garcia, his English teacher, pulled him aside.
+    She handed him a napkin filled with his own blended words. “This is good, Mateo.
+    Really good,” she said, her voice low. “The responsible thing isn’t always the
+    only thing. Sometimes the most responsible act is to honor what makes you feel
+    alive.” Her understanding was a lifeline he hadn’t known he needed.
+
+
+    The moment of truth came in *Abuela*’s kitchen, thick with the smell of roasting
+    poblanos. She was telling a story about his grandfather, but paused, her wrinkled
+    hand resting on his. “You listen, *m''ijo*, but your eyes are somewhere else,”
+    she said in Spanish. “You carry everyone’s words. Who carries yours?” Her question
+    wasn’t a scold; it was a mirror, crystallizing his choice: remain the silent bridge,
+    or build something of his own on the other side.
+
+
+    The climax struck at the family dinner table. His father discussed the cost of
+    new brakes. The words “I applied. I got in,” fell from Mateo’s lips before he
+    could stop them. Silence pooled around them. He laid the worn brochure on the
+    table. “It’s two afternoons a week. I’ve calculated the bus schedule. I’ll work
+    extra Saturdays.” His voice, usually so steady for others, trembled for himself.
+
+
+    The falling action was a slow, earned thaw. His father studied the brochure, then
+    Mateo’s face, seeing the man emerging from the boy. “You’ve always carried your
+    load,” he said finally, his calloused finger tapping the brochure. “Maybe this
+    is part of the load, too. For you.” The permission was cautious, but it was real.
+
+
+    Mateo still went to the grocery store. He still translated. But on Tuesday and
+    Thursday afternoons, he rode the bus, a notebook on his lap where the desert’s
+    silence and his family’s noise finally became his own story. The anchor had held
+    him firm enough to find his current.'
+  turn_type: generation
+  metadata:
+    revision: 1
+- role: user
+  content: 'Your previous version:
+
+    The Arizona sun pressed down on Mateo’s neck as he walked home from the grocery
+    store, a list in his mother’s handwriting folded in his pocket. Beans, rice, *chiles
+    secos*. His backpack held three library books on calculus. His life was a ledger
+    of duties: grades, shifts at the auto shop, translating bills for his *abuela*.
+    He was the steady one, the son who didn’t cause trouble, the anchor. In his drawer,
+    hidden under socks, was a brochure for a summer creative writing program at the
+    community college, two towns over. He looked at it sometimes, the way one might
+    look at a map of a distant country, a place where he wasn’t a translator but an
+    author.
+
+
+    The conflict grew quietly, a pressure behind his ribs. He began scribbling phrases
+    on napkins at the auto shop—*the desert doesn’t whisper, it waits*—and hiding
+    them in his calculus book. His mother noticed his distracted sighs. “*¿Estás cansado?*”
+    she’d ask. He’d just nod, the weight of his secret another duty to bear.
+
+
+    The rising action tightened when Ms. Garcia, his English teacher, pulled him aside.
+    She handed him a napkin filled with his own blended words. “This is good, Mateo.
+    Really good,” she said, her voice low. “The responsible thing isn’t always the
+    only thing. Sometimes the most responsible act is to honor what makes you feel
+    alive.” Her understanding was a lifeline he hadn’t known he needed.
+
+
+    The moment of truth came in *Abuela*’s kitchen, thick with the smell of roasting
+    poblanos. She was telling a story about his grandfather, but paused, her wrinkled
+    hand resting on his. “You listen, *m''ijo*, but your eyes are somewhere else,”
+    she said in Spanish. “You carry everyone’s words. Who carries yours?” Her question
+    wasn’t a scold; it was a mirror, crystallizing his choice: remain the silent bridge,
+    or build something of his own on the other side.
+
+
+    The climax struck at the family dinner table. His father discussed the cost of
+    new brakes. The words “I applied. I got in,” fell from Mateo’s lips before he
+    could stop...
+
+
+    FEEDBACK TO ADDRESS:
+
+    - Do the family dynamics feel real?
+
+    - Is Mateo''s voice consistent and age-appropriate?
+
+    - Are cultural details specific, not stereotypical?
+
+
+    Revise your story to address ALL feedback points while preserving what worked
+    well.
+
+    Output ONLY the revised story:'
+  turn_type: feedback
+  metadata:
+    feedback:
+    - Do the family dynamics feel real?
+    - Is Mateo's voice consistent and age-appropriate?
+    - Are cultural details specific, not stereotypical?
+    revision: 2
+- role: assistant
+  content: 'The Arizona sun pressed down on Mateo’s neck as he walked home from the
+    grocery store, a list in his mother’s handwriting folded in his pocket. *Masa
+    harina, avocados, a packet of the cinnamon she liked for café de olla.* His backpack
+    held three library books on calculus. His life was a ledger of duties: grades,
+    shifts at his Tío’s auto shop, translating the complicated English of his *abuela*’s
+    medical bills. He was the steady one, the reliable son. Hidden under his socks
+    was a brochure for a summer creative writing program at the community college.
+    He looked at it sometimes, tracing the outline of a mountain on the cover, a terrain
+    so different from his flat, dutiful landscape.
+
+
+    The conflict was a low hum in his veins. At the shop, while changing oil, he’d
+    invent stories about the cars’ origins. He began jotting phrases on shop receipts—*the
+    dust here holds memory tight*—and hiding them in his biology textbook. His mother
+    noticed his quiet over dinner. “*¿Todo bien, mijo?*” she’d ask, passing the *frijoles*.
+    He’d just nod, the secret feeling like a betrayal.
+
+
+    The rising action sharpened when Ms. Garcia, his English teacher, kept him after
+    class. She slid a receipt across her desk, his looping handwriting visible. “This
+    is striking, Mateo,” she said. “You have a voice. The most responsible thing you
+    can do for your family is to become fully yourself. Otherwise, you bring them
+    only half a son.” Her words reframed his fear; it wasn’t rebellion, it was completion.
+
+
+    The crystallizing moment came in *Abuela*’s dim kitchen, the air hazy from toasting
+    chiles. She was telling the familiar story of his grandfather winning her over
+    with stolen *gardenias*, but paused, her hand, cool and papery, covering his.
+    “You listen,” she said in Spanish, “but your mind is a busy plaza. You translate
+    everyone’s stories, *mijo*. But a story untold is a heavy stone in the pocket.”
+    She nodded to the shelf where her *cascarones* from Easter sat, empty and fragile.
+    “You can’t fill anything if you’re already full.”
+
+
+    The climax hit at the Thursday dinner of *caldo de res*. His father was talking
+    about the cost of new tires. Mateo’s heart hammered. “I got into a program,” he
+    blurted, the words too loud. “For writing. It’s two afternoons in Mesa.” He placed
+    the creased brochure next to his plate. “I’ve mapped the bus route. I’ll cover
+    my Saturday shifts at the shop.” Silence hung, thick as the soup’s steam. His
+    mother’s spoon stilled. His father stared at the brochure, then at Mateo’s anxious
+    face.
+
+
+    The falling action was a slow negotiation. His father rubbed his jaw. “Mesa? That’s
+    a long ride.” He studied his son—not the boy, but the young man at the table.
+    “You’ve never asked for a thing. That’s why this must be important.” His mother
+    touched his arm. “Just be home before dark.” It wasn’t a celebration; it was an
+    acknowledgment, a cautious granting of space.
+
+
+    Mateo still went to the store. He still translated. But on Tuesday and Thursday
+    afternoons, he rode the bus, a notebook open on his lap where the scent of *chiles*
+    and exhaust and his *abuela*’s *rebozo* finally wove together into a language
+    that was wholly, uniquely his.'
+  turn_type: generation
+  metadata:
+    revision: 2
+- role: user
+  content: 'Your previous version:
+
+    The Arizona sun pressed down on Mateo’s neck as he walked home from the grocery
+    store, a list in his mother’s handwriting folded in his pocket. *Masa harina,
+    avocados, a packet of the cinnamon she liked for café de olla.* His backpack held
+    three library books on calculus. His life was a ledger of duties: grades, shifts
+    at his Tío’s auto shop, translating the complicated English of his *abuela*’s
+    medical bills. He was the steady one, the reliable son. Hidden under his socks
+    was a brochure for a summer creative writing program at the community college.
+    He looked at it sometimes, tracing the outline of a mountain on the cover, a terrain
+    so different from his flat, dutiful landscape.
+
+
+    The conflict was a low hum in his veins. At the shop, while changing oil, he’d
+    invent stories about the cars’ origins. He began jotting phrases on shop receipts—*the
+    dust here holds memory tight*—and hiding them in his biology textbook. His mother
+    noticed his quiet over dinner. “*¿Todo bien, mijo?*” she’d ask, passing the *frijoles*.
+    He’d just nod, the secret feeling like a betrayal.
+
+
+    The rising action sharpened when Ms. Garcia, his English teacher, kept him after
+    class. She slid a receipt across her desk, his looping handwriting visible. “This
+    is striking, Mateo,” she said. “You have a voice. The most responsible thing you
+    can do for your family is to become fully yourself. Otherwise, you bring them
+    only half a son.” Her words reframed his fear; it wasn’t rebellion, it was completion.
+
+
+    The crystallizing moment came in *Abuela*’s dim kitchen, the air hazy from toasting
+    chiles. She was telling the familiar story of his grandfather winning her over
+    with stolen *gardenias*, but paused, her hand, cool and papery, covering his.
+    “You listen,” she said in Spanish, “but your mind is a busy plaza. You translate
+    everyone’s stories, *mijo*. But a story untold is a heavy stone in the pocket.”
+    She nodded to the shelf where her *cascarones* from Easter sat, empty and fragile.
+    “You can’t fill anything if...
+
+
+    FEEDBACK TO ADDRESS:
+
+    - Is the grandmother scene resonant?
+
+    - Does the ending feel earned?
+
+    - Is there genuine emotional complexity?
+
+
+    Revise your story to address ALL feedback points while preserving what worked
+    well.
+
+    Output ONLY the revised story:'
+  turn_type: feedback
+  metadata:
+    feedback:
+    - Is the grandmother scene resonant?
+    - Does the ending feel earned?
+    - Is there genuine emotional complexity?
+    revision: 3
+- role: assistant
+  content: 'The Arizona sun pressed down on Mateo’s neck as he walked home, a list
+    in his mother’s handwriting folded in his pocket. *Masa harina, avocados, a packet
+    of the cinnamon for café de olla.* His backpack held library books on calculus.
+    His life was a ledger: grades, shifts at his Tío’s auto shop, translating his
+    *abuela*’s medical bills. He was the reliable son. Hidden under his socks was
+    a brochure for a summer writing program. He looked at it sometimes, tracing the
+    outline of a mountain on the cover, a terrain foreign to his flat, dutiful landscape.
+
+
+    The conflict was a constant, low hum. At the shop, while changing oil, he’d invent
+    stories about the cars’ origins. He began scribbling on receipts—*the dust here
+    holds memory tight*—and hiding them in his biology textbook. His mother noticed
+    his distracted silence over dinner. “*¿Todo bien, mijo?*” she’d ask, passing the
+    *frijoles*. He’d nod, the secret a stone in his gut.
+
+
+    The rising action tightened when Ms. Garcia, his English teacher, kept him after
+    class. She slid a grease-stained receipt across her desk. “This is striking, Mateo,”
+    she said. “You have a voice. The most responsible thing you can do for your family
+    is to become fully yourself.” Her words reframed his fear; it wasn’t abandonment,
+    it was integrity.
+
+
+    The crystallizing moment came in *Abuela*’s dim kitchen, the air hazy from toasting
+    chiles. She was recounting the familiar story of his grandfather and the stolen
+    *gardenias*, but paused, her cool, papery hand covering his. “You listen,” she
+    said in Spanish, “but your mind is a busy plaza. You translate everyone’s stories,
+    *mijo*.” She pointed to the shelf where her empty, fragile *cascarones* from Easter
+    sat. “You can’t fill anything if you are already full of other people’s words.”
+    Her metaphor landed not as pressure, but as permission. The choice clarified:
+    he could either spend his life holding others’ stories, or learn how to carry
+    his own.
+
+
+    The climax struck during Thursday’s dinner of *caldo de res*. His father discussed
+    the cost of new tires. Mateo’s heart hammered. “I got into a program,” he interrupted,
+    his voice unfamiliar to his own ears. “For writing. In Mesa.” He placed the creased
+    brochure on the table. “Two afternoons a week. I’ve mapped the bus. I’ll work
+    extra Saturdays.” The silence was a living thing. His mother’s spoon stilled.
+    His father stared at the brochure, then at Mateo’s face, seeing not a request
+    for leisure, but a declaration of need.
+
+
+    The falling action was a quiet, complex reckoning. His father rubbed his jaw,
+    considering the practical miles to Mesa. “You’ve never asked for a thing,” he
+    said finally, a recognition deeper than approval. “That’s how we know this *is*
+    a need.” His mother’s eyes glistened with a worry that was also pride. “Just be
+    home before dark,” she said softly, which meant *I trust you.*
+
+
+    Mateo still went to the store. He still translated. But on Tuesday and Thursday
+    afternoons, he rode the bus, a notebook open on his lap where the scent of toasted
+    chiles, exhaust, and his *abuela*’s *rebozo* wove together into a voice that was
+    wholly his own. He was not leaving. He was building a room of his own inside the
+    house they had made for him.'
+  turn_type: generation
+  metadata:
+    revision: 3
+final_output: 'The Arizona sun pressed down on Mateo’s neck as he walked home, a list
+  in his mother’s handwriting folded in his pocket. *Masa harina, avocados, a packet
+  of the cinnamon for café de olla.* His backpack held library books on calculus.
+  His life was a ledger: grades, shifts at his Tío’s auto shop, translating his *abuela*’s
+  medical bills. He was the reliable son. Hidden under his socks was a brochure for
+  a summer writing program. He looked at it sometimes, tracing the outline of a mountain
+  on the cover, a terrain foreign to his flat, dutiful landscape.
+
+
+  The conflict was a constant, low hum. At the shop, while changing oil, he’d invent
+  stories about the cars’ origins. He began scribbling on receipts—*the dust here
+  holds memory tight*—and hiding them in his biology textbook. His mother noticed
+  his distracted silence over dinner. “*¿Todo bien, mijo?*” she’d ask, passing the
+  *frijoles*. He’d nod, the secret a stone in his gut.
+
+
+  The rising action tightened when Ms. Garcia, his English teacher, kept him after
+  class. She slid a grease-stained receipt across her desk. “This is striking, Mateo,”
+  she said. “You have a voice. The most responsible thing you can do for your family
+  is to become fully yourself.” Her words reframed his fear; it wasn’t abandonment,
+  it was integrity.
+
+
+  The crystallizing moment came in *Abuela*’s dim kitchen, the air hazy from toasting
+  chiles. She was recounting the familiar story of his grandfather and the stolen
+  *gardenias*, but paused, her cool, papery hand covering his. “You listen,” she said
+  in Spanish, “but your mind is a busy plaza. You translate everyone’s stories, *mijo*.”
+  She pointed to the shelf where her empty, fragile *cascarones* from Easter sat.
+  “You can’t fill anything if you are already full of other people’s words.” Her metaphor
+  landed not as pressure, but as permission. The choice clarified: he could either
+  spend his life holding others’ stories, or learn how to carry his own.
+
+
+  The climax struck during Thursday’s dinner of *caldo de res*. His father discussed
+  the cost of new tires. Mateo’s heart hammered. “I got into a program,” he interrupted,
+  his voice unfamiliar to his own ears. “For writing. In Mesa.” He placed the creased
+  brochure on the table. “Two afternoons a week. I’ve mapped the bus. I’ll work extra
+  Saturdays.” The silence was a living thing. His mother’s spoon stilled. His father
+  stared at the brochure, then at Mateo’s face, seeing not a request for leisure,
+  but a declaration of need.
+
+
+  The falling action was a quiet, complex reckoning. His father rubbed his jaw, considering
+  the practical miles to Mesa. “You’ve never asked for a thing,” he said finally,
+  a recognition deeper than approval. “That’s how we know this *is* a need.” His mother’s
+  eyes glistened with a worry that was also pride. “Just be home before dark,” she
+  said softly, which meant *I trust you.*
+
+
+  Mateo still went to the store. He still translated. But on Tuesday and Thursday
+  afternoons, he rode the bus, a notebook open on his lap where the scent of toasted
+  chiles, exhaust, and his *abuela*’s *rebozo* wove together into a voice that was
+  wholly his own. He was not leaving. He was building a room of his own inside the
+  house they had made for him.'
+metrics:
+  total_turns: 9
+  questions_asked: 0
+  constraints_discovered: 0
+  plan_quality: null
+  revision_count: 3
+token_usage:
+  total_prompt_tokens: 8423
+  total_completion_tokens: 4215
+  total_reasoning_tokens: 1772
+  total_cost: 0.003747718
+timestamp: '2025-12-12T22:53:29.460406'
+success: true
+error: null

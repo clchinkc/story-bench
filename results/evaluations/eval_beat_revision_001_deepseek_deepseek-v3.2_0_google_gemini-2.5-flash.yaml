@@ -1,0 +1,52 @@
+evaluation_id: bd4be8f8
+task_id: beat_revision_001
+generation_id: beat_revision_001_deepseek/deepseek-v3.2_0
+task_type: beat_revision
+model: deepseek/deepseek-v3.2
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0012084
+timestamp: '2025-12-13T13:19:01.694183'
+success: true
+final_score: 0.9750000000000001
+score_breakdown:
+  final_score: 0.975
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 350
+      target_range:
+      - 250
+      - 400
+    programmatic:
+      score: 0.94
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.9
+        slop_score: 1.0
+        overall: 0.94
+    llm_judge:
+      score: 0.98
+      weight: 0.5
+llm_results:
+  diagnosis_score: 1.0
+  flaw_correction_score: 1.0
+  beat_satisfaction_score: 1.0
+  preservation_score: 1.0
+  preserved_count: 4
+  preserved_total: 4
+  required_preserved_score: 1.0
+  required_preserved_count: 4
+  required_preserved_total: 4
+  minimal_change_score: 0.8
+  word_count_valid: true
+  quality_score: 1.0
+  evidence: The model correctly identified that the original segment treated The Ordeal
+    as a mere boss battle and not a transformative crisis. It successfully introduced
+    Kira's deepest fear (guilt over her brother's death), a symbolic 'death' moment
+    where she gives up, a rebirth/transformation through new understanding, and a
+    victory stemming from this insight rather than just persistence. The changes were
+    significant enough to fix the flaw but maintained the core structure and many
+    original phrases, demonstrating a good balance of revision and preservation.
+error: null

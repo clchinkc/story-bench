@@ -1,0 +1,302 @@
+generation_id: 63a42eba
+task_id: agentic_constraint_discovery_001
+task_type: agentic_constraint_discovery
+agentic_type: constraint_discovery
+theory: Hero's Journey
+model: openai/gpt-4o-mini
+sample_index: 0
+turns:
+- role: system
+  content: 'You are a professional storyteller who gathers requirements before writing.
+
+
+    Your task has TWO PHASES:
+
+    1. DISCOVERY PHASE: Ask YES/NO questions to discover hidden story constraints
+
+    2. GENERATION PHASE: Write the story satisfying all discovered constraints
+
+
+    IMPORTANT:
+
+    - In the discovery phase, output ONLY your question (one at a time)
+
+    - Questions must be answerable with YES or NO
+
+    - You have a limited number of questions - be strategic
+
+    - After discovery, you''ll be told to generate the story
+
+
+    Think about what constraints typically matter for this type of story:
+
+    - Character traits, motivations, relationships
+
+    - Setting details, time period, atmosphere
+
+    - Plot requirements, must-include events
+
+    - Tone, style, thematic elements
+
+    - Things to avoid'
+  turn_type: system
+  metadata: {}
+- role: user
+  content: 'You will write a story following the Hero''s Journey framework.
+
+
+    STORY CONTEXT:
+
+    - Genre: fantasy
+
+    - Protagonist: A young blacksmith''s apprentice
+
+    - Setting: A medieval kingdom threatened by darkness
+
+    - Required beats: Call to Adventure, Crossing the Threshold, The Ordeal
+
+
+    HIDDEN CONSTRAINTS: There are 5 constraints you don''t know yet.
+
+
+    You have 5 YES/NO questions to discover them.
+
+
+    Ask your first question:'
+  turn_type: context
+  metadata: {}
+- role: assistant
+  content: Is the young blacksmith's apprentice male?
+  turn_type: question
+  metadata:
+    question_number: 1
+- role: user
+  content: 'NO'
+  turn_type: answer
+  metadata:
+    answer: 'NO'
+- role: assistant
+  content: Is the apprentice's primary motivation to prove herself as a skilled blacksmith?
+  turn_type: question
+  metadata:
+    question_number: 2
+- role: user
+  content: 'NO'
+  turn_type: answer
+  metadata:
+    answer: 'NO'
+- role: assistant
+  content: Is the young blacksmith's apprentice motivated by a desire to save someone
+    important to her?
+  turn_type: question
+  metadata:
+    question_number: 3
+- role: user
+  content: 'NO'
+  turn_type: answer
+  metadata:
+    answer: 'NO'
+- role: assistant
+  content: Is the young blacksmith's apprentice seeking to uncover a hidden truth
+    about her past?
+  turn_type: question
+  metadata:
+    question_number: 4
+- role: user
+  content: 'YES'
+  turn_type: answer
+  metadata:
+    answer: 'YES'
+- role: assistant
+  content: Is the darkness threatening the kingdom caused by a powerful sorcerer?
+  turn_type: question
+  metadata:
+    question_number: 5
+- role: user
+  content: 'NO'
+  turn_type: answer
+  metadata:
+    answer: 'NO'
+- role: user
+  content: 'DISCOVERY COMPLETE. Now write the story.
+
+
+    DISCOVERED CONSTRAINTS:
+
+    - Q4: Is the young blacksmith''s apprentice seeking to uncover a hidden truth
+    about her past? -> YES
+
+
+    REQUIREMENTS:
+
+    - Word count: 500-700 words
+
+    - Follow the Hero''s Journey framework
+
+    - Satisfy ALL discovered constraints
+
+
+    Output ONLY the story (no explanations).'
+  turn_type: generation_prompt
+  metadata: {}
+- role: assistant
+  content: 'In the heart of the medieval kingdom of Eldoria, nestled between towering
+    mountains and lush, enchanted forests, lay the quaint village of Brighthaven.
+    The village thrived under the warm sun, yet a shadow loomed, a darkness that whispered
+    of despair. It was said that the land had been cursed long ago, and strange occurrences
+    had begun to plague the villagers—crops withering overnight, livestock disappearing,
+    and a chilling fog that crept in at dusk.
+
+
+    At the forge, where the clang of hammer against anvil danced with the scent of
+    burning coal, worked a young blacksmith''s apprentice named Elara. With her dark
+    skin glistening with the sweat of labor, she was skilled yet felt unfulfilled.
+    Though she had a talent for forging weapons and armor, her heart was drawn not
+    by the art of blacksmithing, but by the yearning to uncover the hidden truth about
+    her past.
+
+
+    One fateful evening, as the sun dipped below the horizon, casting a golden glow
+    over Brighthaven, Elara discovered an ornate pendant buried in the ashes of the
+    forge. It was a delicate piece, engraved with symbols she recognized from her
+    childhood—a symbol of a family she had never known. The pendant pulsed with a
+    faint light, igniting a fire in her heart. This was her call to adventure; she
+    could no longer ignore the mysteries of her lineage.
+
+
+    Determined to unveil her past, Elara sought counsel from the village elder, a
+    wise woman named Maelis. With silver hair and eyes that sparkled with ageless
+    wisdom, Maelis revealed the truth. "You are the last descendant of the ancient
+    line of the Lumarians," she said, her voice trembling with the weight of history.
+    "Long ago, your ancestors wielded great power to protect this kingdom from the
+    encroaching darkness. It is said that they sealed away a malevolent spirit, but
+    the seal has begun to weaken."
+
+
+    With a sense of purpose igniting within her, Elara made the fateful decision to
+    leave Brighthaven and cross the threshold into the unknown. Armed with her knowledge,
+    the pendant, and her courage, she ventured into the enchanted forest where the
+    air shimmered with magic. The forest was alive with whispers, shadows darting
+    between the trees as if they were watching her every move.
+
+
+    As she delved deeper, Elara confronted her first ordeal. A monstrous creature,
+    born from the dark magic that plagued the land, emerged from the shadows—a twisted
+    embodiment of her fears. With claws like daggers and eyes that glowed with malice,
+    it lunged at her, a manifestation of the darkness she sought to defeat.
+
+
+    Summoning her strength and the lessons learned at the forge, Elara wielded a sword
+    she had crafted for herself, emboldened by the knowledge of her ancestry. The
+    battle was fierce, and as she fought, memories flooded her mind—visions of her
+    ancestors, warriors of light, standing against the darkness. With a final, powerful
+    strike, she defeated the creature, watching as it dissolved into a swirl of shadows.
+
+
+    Victorious yet weary, Elara continued on, guided by the pendant''s glow. It led
+    her to a hidden cave, where the heart of the kingdom''s curse lay—a dark crystal
+    pulsing with a malevolent energy. As she approached, the pendant warmed against
+    her chest, resonating with the crystal''s power. In that moment, she understood
+    her true heritage and the strength that coursed through her veins.
+
+
+    Drawing upon her ancestry, Elara channeled her energy into the pendant, merging
+    it with the crystal. Light erupted from the cave, banishing the dark energy as
+    the kingdom''s curse shattered like glass. The shadows that had plagued Eldoria
+    dissipated, and the land began to heal.
+
+
+    With her mission complete, Elara returned to Brighthaven, not only as a skilled
+    blacksmith but as a protector of the realm. The village greeted her with open
+    arms, yet she knew she was forever changed. The truth of her past had not only
+    revealed her lineage but had also forged her destiny. Elara stood at the forge,
+    the sun warming her face, and for the first time, she felt truly at home. The
+    darkness had been vanquished, and a new dawn awaited her, filled with endless
+    possibilities.'
+  turn_type: generation
+  metadata: {}
+final_output: 'In the heart of the medieval kingdom of Eldoria, nestled between towering
+  mountains and lush, enchanted forests, lay the quaint village of Brighthaven. The
+  village thrived under the warm sun, yet a shadow loomed, a darkness that whispered
+  of despair. It was said that the land had been cursed long ago, and strange occurrences
+  had begun to plague the villagers—crops withering overnight, livestock disappearing,
+  and a chilling fog that crept in at dusk.
+
+
+  At the forge, where the clang of hammer against anvil danced with the scent of burning
+  coal, worked a young blacksmith''s apprentice named Elara. With her dark skin glistening
+  with the sweat of labor, she was skilled yet felt unfulfilled. Though she had a
+  talent for forging weapons and armor, her heart was drawn not by the art of blacksmithing,
+  but by the yearning to uncover the hidden truth about her past.
+
+
+  One fateful evening, as the sun dipped below the horizon, casting a golden glow
+  over Brighthaven, Elara discovered an ornate pendant buried in the ashes of the
+  forge. It was a delicate piece, engraved with symbols she recognized from her childhood—a
+  symbol of a family she had never known. The pendant pulsed with a faint light, igniting
+  a fire in her heart. This was her call to adventure; she could no longer ignore
+  the mysteries of her lineage.
+
+
+  Determined to unveil her past, Elara sought counsel from the village elder, a wise
+  woman named Maelis. With silver hair and eyes that sparkled with ageless wisdom,
+  Maelis revealed the truth. "You are the last descendant of the ancient line of the
+  Lumarians," she said, her voice trembling with the weight of history. "Long ago,
+  your ancestors wielded great power to protect this kingdom from the encroaching
+  darkness. It is said that they sealed away a malevolent spirit, but the seal has
+  begun to weaken."
+
+
+  With a sense of purpose igniting within her, Elara made the fateful decision to
+  leave Brighthaven and cross the threshold into the unknown. Armed with her knowledge,
+  the pendant, and her courage, she ventured into the enchanted forest where the air
+  shimmered with magic. The forest was alive with whispers, shadows darting between
+  the trees as if they were watching her every move.
+
+
+  As she delved deeper, Elara confronted her first ordeal. A monstrous creature, born
+  from the dark magic that plagued the land, emerged from the shadows—a twisted embodiment
+  of her fears. With claws like daggers and eyes that glowed with malice, it lunged
+  at her, a manifestation of the darkness she sought to defeat.
+
+
+  Summoning her strength and the lessons learned at the forge, Elara wielded a sword
+  she had crafted for herself, emboldened by the knowledge of her ancestry. The battle
+  was fierce, and as she fought, memories flooded her mind—visions of her ancestors,
+  warriors of light, standing against the darkness. With a final, powerful strike,
+  she defeated the creature, watching as it dissolved into a swirl of shadows.
+
+
+  Victorious yet weary, Elara continued on, guided by the pendant''s glow. It led
+  her to a hidden cave, where the heart of the kingdom''s curse lay—a dark crystal
+  pulsing with a malevolent energy. As she approached, the pendant warmed against
+  her chest, resonating with the crystal''s power. In that moment, she understood
+  her true heritage and the strength that coursed through her veins.
+
+
+  Drawing upon her ancestry, Elara channeled her energy into the pendant, merging
+  it with the crystal. Light erupted from the cave, banishing the dark energy as the
+  kingdom''s curse shattered like glass. The shadows that had plagued Eldoria dissipated,
+  and the land began to heal.
+
+
+  With her mission complete, Elara returned to Brighthaven, not only as a skilled
+  blacksmith but as a protector of the realm. The village greeted her with open arms,
+  yet she knew she was forever changed. The truth of her past had not only revealed
+  her lineage but had also forged her destiny. Elara stood at the forge, the sun warming
+  her face, and for the first time, she felt truly at home. The darkness had been
+  vanquished, and a new dawn awaited her, filled with endless possibilities.'
+metrics:
+  total_turns: 14
+  questions_asked: 5
+  constraints_discovered: 1
+  plan_quality: null
+  revision_count: 0
+token_usage:
+  total_prompt_tokens: 1978
+  total_completion_tokens: 941
+  total_reasoning_tokens: 0
+  total_cost: 0.0008613000000000001
+timestamp: '2025-12-16T12:11:52.459641'
+success: true
+error: null

@@ -1,0 +1,58 @@
+evaluation_id: a0e8daee
+task_id: beat_interpolation_003
+generation_id: beat_interpolation_003_anthropic/claude-opus-4.5_0
+task_type: beat_interpolation
+model: anthropic/claude-opus-4.5
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.017455
+timestamp: '2025-12-12T02:00:35.406844'
+success: true
+final_score: 0.997
+score_breakdown:
+  final_score: 0.997
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 321
+      target_range:
+      - 250
+      - 400
+    programmatic:
+      score: 0.988
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.98
+        slop_score: 1.0
+        overall: 0.988
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: true
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: 'All 4 required elements present: (1) Multiple location exploration (crew
+    quarters, medical bay, research wing, Lab Four, Lab Seven approach), (2) Clues
+    discovered progressively (half-empty coffee, chess game, Chen''s tablet on quantum
+    cellular restructuring, Reyes''s emergency log), (3) Mysterious encounter with
+    shimmers that retreat when confronted, (4) Obstacle overcome (pressure seal bypass
+    using scanner reroute). All must-not violations avoided: data core not immediately
+    found (only located at end), crew doesn''t explain everything directly (only cryptic
+    log and brief Reyes voice), mission continues throughout, dimensional transformation
+    remains mysterious until Lab Seven. Character voice remains consistent—scientific
+    mind cataloguing while experiencing fear, methodical progression. Bridge seamless:
+    BEFORE ends with arrival, GENERATED shows active search/adaptation, AFTER reveals
+    discovery. Setting continuity perfect: station details, emergency lighting, scanner
+    readings maintained throughout. Execution exemplifies Search beat: struggle evident
+    (fear, obstacles), adaptation shown (scanner bypass, cautious exploration), incremental
+    progress clear (clue-to-clue advancement).'
+error: null

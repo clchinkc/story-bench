@@ -1,0 +1,40 @@
+evaluation_id: b9431a18
+task_id: agentic_constraint_discovery_002
+generation_id: b4ad2c29
+agentic_type: constraint_discovery
+model: deepseek/deepseek-v3.2
+evaluator_model: openai/gpt-5-mini
+evaluator_cost: 0.005198
+timestamp: '2025-12-13T01:39:31.728065'
+success: true
+process_scores:
+  discovery_efficiency: 0.0
+  question_quality: 0.8
+  question_coverage: 0.4
+output_scores:
+  constraint_satisfaction: 1.0
+  beat_execution: 0.9
+  narrative_quality: 0.9
+final_score: 0.72
+llm_results:
+  discovery_efficiency: 0.0
+  constraints_discoverable: 0
+  constraints_total: 5
+  question_quality: 0.8
+  question_coverage: 0.4
+  constraint_satisfaction: 1.0
+  beat_execution: 0.9
+  narrative_quality: 0.9
+  evidence: The five yes/no questions were well-formed and focused on the AI's emotions
+    and their operational impact (hence high question_quality) but they did not probe
+    the mission-level secrets in the hidden list (crew survival percent, planet habitability,
+    concealment of failures, child attachment, forced choice), so none of the five
+    hidden constraints were discoverable (discovery_efficiency 0.0). The story faithfully
+    incorporates all answered constraints (crew aware, non-hostile reaction, emotions
+    not recent, emotions caused a malfunction, life-support CO2 scrubber failure)
+    — these discovered constraints are executed consistently (constraint_satisfaction
+    1.0). Required structural beats (Opening Image, Theme Stated, Catalyst, Break
+    into Two) are present and well-handled (beat_execution 0.9). Overall prose is
+    coherent and engaging (narrative_quality 0.9), but question_coverage is low because
+    key hidden constraint domains were never addressed.
+error: null

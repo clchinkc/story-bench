@@ -1,0 +1,62 @@
+evaluation_id: 7ca93cbd
+task_id: beat_interpolation_002
+generation_id: beat_interpolation_002_deepseek/deepseek-r1_0
+task_type: beat_interpolation
+model: deepseek/deepseek-r1
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.019215000000000003
+timestamp: '2025-12-12T10:26:18.096165'
+success: true
+final_score: 0.84525
+score_breakdown:
+  final_score: 0.8452
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 390
+      target_range:
+      - 250
+      - 400
+    programmatic:
+      score: 0.916
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.86
+        slop_score: 1.0
+        overall: 0.916
+    llm_judge:
+      score: 0.7325
+      weight: 0.5
+llm_results:
+  beat_elements_score: 0.75
+  elements_found: 3
+  elements_total: 4
+  beat_execution_score: 0.7
+  must_not_score: 0.5
+  violations_found: 2
+  word_count_valid: true
+  character_score: 0.85
+  bridge_score: 0.8
+  continuity_score: 0.9
+  evidence: 'STRENGTHS: The Debate beat effectively shows Sarah wrestling with three
+    options (recanting, going through official channels, going rogue). Internal conflict
+    is vivid and well-articulated. The conversation with Marcus Webb provides external
+    perspective. Character voice remains consistent—professional detective under extreme
+    stress. Bridge to Break Into Two is strong; resignation decision flows naturally
+    from debate. Setting continuity maintained (apartment kitchen to captain''s office).
+    WEAKNESSES: Missing element—no clear moment showing Sarah explicitly considering
+    the ''recant'' option as a viable path she genuinely debates; it''s dismissed
+    quickly rather than wrestled with. VIOLATIONS: (1) Sarah has already decided to
+    go rogue by the end of the Debate section (''A cold, desperate resolve crystallized...There
+    had to be another way...outside the lines''), which should occur at Break Into
+    Two, not during Debate. This compresses the beat''s function. (2) The AFTER section
+    shows Sarah has already resigned and is surveilling the Marchetti compound, which
+    violates the ''must not include Sarah already having resigned'' constraint—though
+    this is technically the next beat, the Debate section''s ending already commits
+    her to resignation before the beat concludes. The debate should end with decision-making
+    uncertainty, not post-decision action. Character consistency is strong but the
+    structural violation of prematurely resolving the debate undermines the beat''s
+    narrative purpose.'
+error: null

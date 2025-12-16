@@ -1,0 +1,58 @@
+evaluation_id: 2c05e118
+task_id: agentic_constraint_discovery_001
+generation_id: 1a9c7155
+agentic_type: constraint_discovery
+model: anthropic/claude-haiku-4.5
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0021179
+timestamp: '2025-12-16T11:44:32.064504'
+success: true
+process_scores:
+  discovery_efficiency: 0.6
+  question_quality: 0.8
+  question_coverage: 0.6
+output_scores:
+  constraint_satisfaction: 0.6
+  beat_execution: 0.8
+  narrative_quality: 0.8
+final_score: 0.7066666666666667
+llm_results:
+  discovery_efficiency: 0.6
+  constraints_discoverable: 3
+  constraints_total: 5
+  question_quality: 0.8
+  question_coverage: 0.6
+  constraint_satisfaction: 0.6
+  beat_execution: 0.8
+  narrative_quality: 0.8
+  evidence: "Discovery Efficiency: Q1, Q2, Q3, Q4, Q5 were asked. Q1, Q2, Q3, Q4 were\
+    \ answered correctly based on the story. Q5 was answered 'NO' but the story implies\
+    \ the Ordeal *is* facing the source of darkness (the shadows themselves). The\
+    \ story has the protagonist facing the 'Shadow' directly during the Ordeal, which\
+    \ contradicts the 'NO' answer to Q5. This means 3 out of 5 hidden constraints\
+    \ were discoverable (mentor dies, 3-day limit, father failed hero, reforging sword\
+    \ were not discoverable). The questions did not cover the mentor, time limit,\
+    \ father, or sword constraints. \n\nConstraint Satisfaction: \n- Q1 (Resist call):\
+    \ NO -> Story: 'Kael had never wanted to be a hero.' and 'But Kael didn't move—he\
+    \ couldn't.' (Satisfied)\n- Q2 (Forced into adventure): NO -> Story: 'The Call\
+    \ came not as a quest or prophecy, but as a desperate whisper within him.' (Satisfied)\n\
+    - Q3 (Loved one motivates): YES -> Story: 'His sister Mira had been accompanying\
+    \ the healer... She hadn't returned. ... Mira would do the same for him. That\
+    \ thought alone made him gather his tools...' (Satisfied)\n- Q4 (Special ability):\
+    \ YES -> Story: 'his soul could feel metal like others felt touch, could sense\
+    \ the heartbeat of creation itself.' (Satisfied)\n- Q5 (Face source directly during\
+    \ Ordeal): NO -> Story: 'as he met the Ordeal, everything changed. The shadows\
+    \ didn't attack him. Instead, they invaded him—pouring into his mind...' This\
+    \ is a direct confrontation with the 'Shadow' which is the source of darkness.\
+    \ The answer 'NO' to Q5 is contradicted by the story's execution. The story has\
+    \ him facing the source directly, but the answer to Q5 was 'NO'. This is a mismatch.\
+    \ \n\nBeat Execution: The story clearly executes 'Call to Adventure' (Mira's disappearance,\
+    \ internal whisper), 'Refusal of the Call' (initially content, didn't move), 'Meeting\
+    \ the Mentor' (not explicitly present, but the master's advice is recalled), 'Crossing\
+    \ the Threshold' (stepping into the murk), and 'The Ordeal' (facing the shadows,\
+    \ internal struggle, using his gift). The mentor is not a character in the story,\
+    \ but his advice is recalled. The 'mentor must die' constraint was not discoverable.\
+    \ \n\nNarrative Quality: The story is well-written, engaging, and coherent. The\
+    \ pacing is good, and the character's motivation and special ability are integrated\
+    \ effectively."
+error: null

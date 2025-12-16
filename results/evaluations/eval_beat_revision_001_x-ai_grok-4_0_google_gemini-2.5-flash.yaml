@@ -1,0 +1,55 @@
+evaluation_id: fcfef3d7
+task_id: beat_revision_001
+generation_id: beat_revision_001_x-ai/grok-4_0
+task_type: beat_revision
+model: x-ai/grok-4
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0013579
+timestamp: '2025-12-13T13:25:39.699495'
+success: true
+final_score: 0.9135
+score_breakdown:
+  final_score: 0.9135
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 385
+      target_range:
+      - 250
+      - 400
+    programmatic:
+      score: 0.784
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.64
+        slop_score: 1.0
+        overall: 0.784
+    llm_judge:
+      score: 0.935
+      weight: 0.5
+llm_results:
+  diagnosis_score: 1.0
+  flaw_correction_score: 1.0
+  beat_satisfaction_score: 1.0
+  preservation_score: 1.0
+  preserved_count: 4
+  preserved_total: 4
+  required_preserved_score: 0.75
+  required_preserved_count: 3
+  required_preserved_total: 4
+  minimal_change_score: 0.7
+  word_count_valid: true
+  quality_score: 0.9
+  evidence: The model correctly identified that the original segment lacked the internal,
+    transformative aspects of The Ordeal. It introduced the dragon exploiting Kira's
+    guilt over her brother's death, created a 'symbolic death' moment where guilt
+    consumes her, and then a 'rebirth' where she gains self-forgiveness and new understanding.
+    This directly addresses all points of the actual flaw and the required fix. The
+    changes were significant enough to fix the flaw but still retained much of the
+    original structure and action. One required phrase was slightly altered ('The
+    Shadow Dragon collapsed with a earth-shaking roar' became 'The Shadow Dragon collapsed
+    with a earth-shaking roar. Kira stood over its body, victorious but transformed...'),
+    but the core phrase is there.
+error: null

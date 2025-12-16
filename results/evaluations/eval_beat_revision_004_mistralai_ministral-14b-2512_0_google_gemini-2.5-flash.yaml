@@ -1,0 +1,53 @@
+evaluation_id: a342bbdf
+task_id: beat_revision_004
+generation_id: beat_revision_004_mistralai/ministral-14b-2512_0
+task_type: beat_revision
+model: mistralai/ministral-14b-2512
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0012712
+timestamp: '2025-12-13T13:49:31.426363'
+success: true
+final_score: 0.8596242256461488
+score_breakdown:
+  final_score: 0.8596
+  components:
+    word_count:
+      score: 0.8825
+      weight: 0.25
+      actual: 410
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.886
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.81
+        slop_score: 1.0
+        overall: 0.886
+    llm_judge:
+      score: 0.835
+      weight: 0.5
+llm_results:
+  diagnosis_score: 1.0
+  flaw_correction_score: 1.0
+  beat_satisfaction_score: 0.9
+  preservation_score: 0.8
+  preserved_count: 4
+  preserved_total: 5
+  required_preserved_score: 0.75
+  required_preserved_count: 3
+  required_preserved_total: 4
+  minimal_change_score: 0.1
+  word_count_valid: false
+  quality_score: 0.9
+  evidence: The model correctly identified that the original segment was 'telling'
+    rather than 'showing' for exposition. It successfully revised the segment to show
+    Rachel's detective skills, her relationship with James, her devotion to work/cold
+    cases, and the setting through sensory details and action. The changes were extensive,
+    indicating a low minimal_change_score, but necessary to fix the fundamental flaw.
+    The 'Tuesday morning in October' was not explicitly included, but 'October air'
+    was, which is close enough for the setting. The Queens apartment was not explicitly
+    mentioned, but the precinct setting is well-established.
+error: null

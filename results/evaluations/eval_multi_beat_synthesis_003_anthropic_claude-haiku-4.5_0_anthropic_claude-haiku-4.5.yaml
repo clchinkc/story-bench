@@ -1,0 +1,84 @@
+evaluation_id: 0fe6e45a
+task_id: multi_beat_synthesis_003
+generation_id: multi_beat_synthesis_003_anthropic/claude-haiku-4.5_0
+task_type: multi_beat_synthesis
+model: anthropic/claude-haiku-4.5
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.027145000000000002
+timestamp: '2025-12-12T03:11:10.294048'
+success: true
+final_score: 0.644375796237959
+score_breakdown:
+  final_score: 0.6444
+  components:
+    word_count:
+      score: 0.1825
+      weight: 0.25
+      actual: 534
+      target_range:
+      - 700
+      - 1000
+    programmatic:
+      score: 0.79
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.65
+        slop_score: 1.0
+        overall: 0.79
+    llm_judge:
+      score: 0.8025
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 12
+  beat_reqs_total: 15
+  beat_requirements_score: 0.8
+  cross_beat_satisfied: 3
+  cross_beat_total: 4
+  cross_beat_score: 0.75
+  word_count_valid: false
+  context_score: 0.9
+  coherence_score: 0.85
+  failed_items:
+  - Beat 1 - Humor/style moments are minimal; banter is sparse despite 'Ocean's Eleven'
+    tone requirement
+  - Beat 1 - 'Things going according to plan (mostly)' is satisfied but underexplored;
+    no real tension from minor complications
+  - Cross-beat Chekhov's Gun - The communicator earpiece is introduced but never becomes
+    critical in later beats; Dev's camera-kill capability is mentioned but not paid
+    off in the action sequence shown
+  - Cross-beat Tonal Escalation - Tone shift from Beat 1→2 is present but Beat 3 lacks
+    sufficient gallows humor to complete the escalation arc; tension is high but comedic
+    relief is absent
+  strengths:
+  - Exceptional setup of crew skills and coordination (Marcus, Jade, Dev roles clearly
+    defined)
+  - 'Strong Midpoint revelation: Eleanor Price''s appearance is a genuine plot twist
+    that raises stakes dramatically'
+  - 'Mentor presence escalates perfectly across beats: unknown→revealed→active threat'
+  - 'Excellent context maintenance: Monaco setting, art history detail, protagonist
+    voice consistent'
+  - The final decision point (staying vs. leaving) creates genuine narrative momentum
+  - Dev's character arc is tracked across beats (calm→sharpened breathing→positioned
+    for escape)
+  weaknesses:
+  - Word count (534) falls significantly short of 700-1000 requirement; story feels
+    rushed, especially Beat 3
+  - Clever banter promised by tone is underdelivered; dialogue is functional rather
+    than witty
+  - Beat 1 'Fun and Games' lacks the playful confidence tone; feels more procedural
+    than entertaining
+  - Chekhov's Gun setup (earpiece, camera kill) introduced but not integrated into
+    the climactic moment
+  - Beat 3 (Bad Guys Close In) is compressed; no clear crew friction or member-in-danger
+    moment
+  - The painting's emotional weight (Amsterdam family) is mentioned but not leveraged
+    for tension
+  calibration_notes: Story demonstrates strong structural understanding and character
+    work, particularly with Eleanor Price's reveal and Dev's consistent presence.
+    However, execution is undermined by insufficient word count and tonal inconsistency.
+    The heist mechanics are solid but lack the clever banter and humor that define
+    the Ocean's Eleven tone. Chekhov's Gun constraint is partially satisfied—elements
+    are introduced but not meaningfully paid off. The narrative coherence is strong
+    despite brevity; with expansion, this could easily reach 0.9+ scores.
+error: null

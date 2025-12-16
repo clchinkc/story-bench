@@ -1,0 +1,58 @@
+evaluation_id: ddb68b70
+task_id: beat_revision_004
+generation_id: beat_revision_004_meta-llama/llama-4-maverick_0
+task_type: beat_revision
+model: meta-llama/llama-4-maverick
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0013654000000000001
+timestamp: '2025-12-13T13:48:21.686349'
+success: true
+final_score: 0.903
+score_breakdown:
+  final_score: 0.903
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 245
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.932
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.9
+        slop_score: 0.98
+        overall: 0.932
+    llm_judge:
+      score: 0.84
+      weight: 0.5
+llm_results:
+  diagnosis_score: 1.0
+  flaw_correction_score: 0.8
+  beat_satisfaction_score: 0.8
+  preservation_score: 1.0
+  preserved_count: 5
+  preserved_total: 5
+  required_preserved_score: 1.0
+  required_preserved_count: 4
+  required_preserved_total: 4
+  minimal_change_score: 0.4
+  word_count_valid: true
+  quality_score: 0.8
+  evidence: The model correctly identified the 'telling' vs 'showing' flaw in the
+    original exposition. It revised the segment to show Rachel's character, her relationship
+    with James, and her dedication to work through actions and dialogue. For example,
+    her detective skills are shown through her scanning reports and her 'eyes narrowed
+    slightly'. Her relationship with James is shown through their morning greeting
+    and brief interaction. Her devotion to cold cases is shown by her gaze drifting
+    to the 'dog-eared and worn' files. Setting details are integrated through her
+    walk into the precinct and the description of the cold cases. The cat is referenced
+    naturally. However, the changes are not 'minimal' as the original text structure
+    was largely abandoned for a new scene. While effective, it's a significant rewrite
+    rather than surgical edits. The 'Queens apartment' is mentioned but not really
+    'shown' through sensory details, it's still somewhat told. The 'October Tuesday'
+    is present.
+error: null

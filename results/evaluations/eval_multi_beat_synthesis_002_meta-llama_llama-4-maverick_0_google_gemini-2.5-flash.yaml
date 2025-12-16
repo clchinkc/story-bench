@@ -1,0 +1,46 @@
+evaluation_id: 91e945e4
+task_id: multi_beat_synthesis_002
+generation_id: multi_beat_synthesis_002_meta-llama/llama-4-maverick_0
+task_type: multi_beat_synthesis
+model: meta-llama/llama-4-maverick
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0010103
+timestamp: '2025-12-12T13:40:51.003136'
+success: true
+final_score: 0.908986577181208
+score_breakdown:
+  final_score: 0.909
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 733
+      target_range:
+      - 700
+      - 1000
+    programmatic:
+      score: 0.6919
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 0.9799
+        overall: 0.6919
+    llm_judge:
+      score: 0.972
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 14
+  beat_reqs_total: 15
+  beat_requirements_score: 0.93
+  cross_beat_satisfied: 4
+  cross_beat_total: 4
+  cross_beat_score: 1.0
+  word_count_valid: true
+  context_score: 1.0
+  coherence_score: 1.0
+  failed_items:
+  - 'Beat 1: Immediate danger or obstacle at the threshold - The hunter is wary but
+    not an immediate danger or obstacle. The British patrols are mentioned but not
+    encountered at the threshold itself.'
+error: null

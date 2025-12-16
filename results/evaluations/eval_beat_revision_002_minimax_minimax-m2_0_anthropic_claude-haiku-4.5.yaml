@@ -1,0 +1,74 @@
+evaluation_id: b842d8c0
+task_id: beat_revision_002
+generation_id: beat_revision_002_minimax/minimax-m2_0
+task_type: beat_revision
+model: minimax/minimax-m2
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.02597
+timestamp: '2025-12-13T13:30:17.503643'
+success: true
+final_score: 0.909
+score_breakdown:
+  final_score: 0.909
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 274
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.976
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.96
+        slop_score: 1.0
+        overall: 0.976
+    llm_judge:
+      score: 0.83
+      weight: 0.5
+llm_results:
+  diagnosis_score: 0.9
+  flaw_correction_score: 0.85
+  beat_satisfaction_score: 0.8
+  preservation_score: 1.0
+  preserved_count: 4
+  preserved_total: 4
+  required_preserved_score: 1.0
+  required_preserved_count: 4
+  required_preserved_total: 4
+  minimal_change_score: 0.45
+  word_count_valid: true
+  quality_score: 0.75
+  evidence: 'DIAGNOSIS: The model correctly identified that the original segment lacked
+    true defeat and hopelessness. It recognized the need to eliminate Marcus''s remaining
+    options (fundraiser, grant, support system) and introduce a ''whiff of death.''
+    The diagnosis is accurate and well-targeted. FLAW CORRECTION: The revision successfully
+    addresses 4 of 5 required elements: (1) Grant application failed (paperwork not
+    submitted), (2) Board members resigned (support system collapsed), (3) Wife''s
+    death revealed (literal ''whiff of death'' and emotional devastation), (4) Marcus
+    genuinely hopeless (''Alone with nothing but loss and silence''). However, the
+    fundraiser is not explicitly addressed as failed—it''s simply abandoned in the
+    narrative. BEAT SATISFACTION: The revision executes All Is Lost effectively with
+    emotional devastation, complete loss of options, and isolation. The wife''s death
+    is a powerful ''whiff of death'' element. However, the tonal shift is somewhat
+    abrupt—the wife''s death is introduced suddenly without prior setup, which feels
+    jarring rather than earned. PRESERVATION: All 4 required elements preserved: Marcus
+    as protagonist, community center/youth program, eviction crisis, Denise present.
+    All 4 required phrases present: ''Marcus stared at the eviction notice,'' ''Thirty
+    days to vacate the community center,'' ''There has to be something we can do,
+    said Denise,'' ''He rubbed his temples.'' MINIMAL CHANGES: The revision is NOT
+    minimally edited. The original text is preserved through the board meeting call,
+    then a substantial new section is added revealing the wife''s death and board
+    resignations. This represents approximately 45% preservation of original structure—a
+    moderate rewrite rather than surgical edits. The model added ~80 words of new
+    content rather than surgically modifying existing passages. QUALITY: Writing is
+    strong but has issues: (1) The wife''s death revelation feels unmotivated and
+    sudden without prior foreshadowing, (2) The shift from ''Let''s call an emergency
+    board meeting'' to ''Denise shifted uncomfortably'' creates narrative confusion
+    about timeline, (3) The final line ''Alone with nothing but loss and silence''
+    is poetic but somewhat purple prose for this beat. No grammatical errors, but
+    coherence is slightly compromised.'
+error: null

@@ -1,0 +1,53 @@
+evaluation_id: d771b88a
+task_id: beat_revision_003
+generation_id: beat_revision_003_openai/gpt-5.2_0
+task_type: beat_revision
+model: openai/gpt-5.2
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0012209999999999999
+timestamp: '2025-12-13T13:41:31.124211'
+success: true
+final_score: 0.9844999999999999
+score_breakdown:
+  final_score: 0.9845
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 322
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.958
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.93
+        slop_score: 1.0
+        overall: 0.958
+    llm_judge:
+      score: 0.99
+      weight: 0.5
+llm_results:
+  diagnosis_score: 1.0
+  flaw_correction_score: 1.0
+  beat_satisfaction_score: 1.0
+  preservation_score: 1.0
+  preserved_count: 4
+  preserved_total: 4
+  required_preserved_score: 1.0
+  required_preserved_count: 4
+  required_preserved_total: 4
+  minimal_change_score: 0.9
+  word_count_valid: true
+  quality_score: 1.0
+  evidence: The model correctly identified and addressed the flaw of Sophie not showing
+    any change upon her return. It introduced specific behavioral changes (pausing
+    before responding to work, delaying action, putting the phone down), a clear internal
+    thought process reflecting the retreat's impact ('counting, feeling the air move',
+    'pre-Trip self would have said no'), and her mother's observation of the change.
+    The contrast between her old self and new self is explicit. The changes were surgical
+    and minimal, preserving the original structure and dialogue while effectively
+    fixing the flaw.
+error: null

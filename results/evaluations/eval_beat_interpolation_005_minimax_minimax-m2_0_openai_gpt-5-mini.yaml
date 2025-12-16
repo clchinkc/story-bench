@@ -1,0 +1,53 @@
+evaluation_id: 4157fdf2
+task_id: beat_interpolation_005
+generation_id: beat_interpolation_005_minimax/minimax-m2_0
+task_type: beat_interpolation
+model: minimax/minimax-m2
+sample_index: 0
+evaluator_model: openai/gpt-5-mini
+evaluator_cost: 0.0015305000000000002
+timestamp: '2025-12-12T13:32:28.335337'
+success: true
+final_score: 0.675000000044689
+score_breakdown:
+  final_score: 0.675
+  components:
+    word_count:
+      score: 0.0
+      weight: 0.25
+      actual: 785
+      target_range:
+      - 300
+      - 450
+    programmatic:
+      score: 0.7
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 1.0
+        overall: 0.7
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: false
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: 'All four required elements are present: Maya learns about Alejandro''s
+    dulled sense of taste and emotional guardedness (vulnerability); their relationship
+    moves from contractual to personal via the shared soup and balcony moment; a genuine
+    connection is formed; Maya explicitly chooses to stay (''I want to''). The scene
+    functions clearly as a midpoint — a commitment that raises stakes and propels
+    her from reactive to proactive. None of the prohibited items appear (no pre-existing
+    love, no decision to leave, no photograph, Alejandro lowers his walls). Character
+    behavior and setting remain consistent with the provided Before/After beats. The
+    only formal issue is word count: the provided scene exceeds the requested 300–450
+    range, so word_count_valid is false.'
+error: null

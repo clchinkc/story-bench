@@ -1,0 +1,53 @@
+evaluation_id: 10af6136
+task_id: beat_revision_001
+generation_id: beat_revision_001_openai/gpt-4o-mini_0
+task_type: beat_revision
+model: openai/gpt-4o-mini
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.001273
+timestamp: '2025-12-13T13:23:06.188202'
+success: true
+final_score: 0.9180000000000001
+score_breakdown:
+  final_score: 0.918
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 293
+      target_range:
+      - 250
+      - 400
+    programmatic:
+      score: 0.862
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.77
+        slop_score: 1.0
+        overall: 0.862
+    llm_judge:
+      score: 0.905
+      weight: 0.5
+llm_results:
+  diagnosis_score: 1.0
+  flaw_correction_score: 0.9
+  beat_satisfaction_score: 0.9
+  preservation_score: 1.0
+  preserved_count: 4
+  preserved_total: 4
+  required_preserved_score: 0.75
+  required_preserved_count: 3
+  required_preserved_total: 4
+  minimal_change_score: 0.8
+  word_count_valid: true
+  quality_score: 0.9
+  evidence: The model correctly identified that the original segment treated The Ordeal
+    as a mere boss battle and needed to incorporate internal conflict, a 'death' moment,
+    and transformation. It introduced the dragon exploiting Kira's guilt, a moment
+    of near despair/giving up, and a clear statement of transformation at the end.
+    The changes were mostly surgical, adding internal monologue and dragon taunts
+    to deepen the conflict. One required phrase was slightly altered ('a earth-shaking
+    roar' became 'an earth-shaking roar'). The 'death' moment is more of a 'near-death
+    of spirit' than a full symbolic death, but it's a significant improvement.
+error: null

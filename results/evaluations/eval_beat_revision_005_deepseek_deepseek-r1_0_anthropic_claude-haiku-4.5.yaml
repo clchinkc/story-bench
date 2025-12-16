@@ -1,0 +1,50 @@
+evaluation_id: 6ac463c1
+task_id: beat_revision_005
+generation_id: beat_revision_005_deepseek/deepseek-r1_0
+task_type: beat_revision
+model: deepseek/deepseek-r1
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.013005
+timestamp: '2025-12-13T13:55:05.579713'
+success: true
+final_score: 0.8915385373792994
+score_breakdown:
+  final_score: 0.8915
+  components:
+    word_count:
+      score: 0.5662
+      weight: 0.25
+      actual: 72
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 1.0
+      weight: 0.25
+      breakdown:
+        repetition_score: 1.0
+        slop_score: 1.0
+        overall: 1.0
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  correct_diagnosis_score: 1.0
+  beat_understanding_score: 1.0
+  false_positive_avoided_score: 1.0
+  reasoning_quality_score: 1.0
+  model_said_no_revision: true
+  evidence: 'The model correctly identified that NO REVISION NEEDED and provided comprehensive
+    reasoning. The model: (1) explicitly stated ''NO REVISION NEEDED'' at the outset,
+    (2) systematically verified all 5 key requirements were met (follows major defeat,
+    protagonist isolated, genuine despair/reflection, no solutions present, mortality
+    reflection included), (3) confirmed word count was within acceptable range (201
+    words in 200-350 limit), (4) noted that all required elements were preserved without
+    introducing errors, and (5) demonstrated clear understanding of the Dark Night
+    of the Soul beat by explaining how each requirement manifested in the text (gallery
+    closure as All Is Lost, physical/emotional isolation in darkness, despair through
+    failure confession, no active solutions, mortality reflection through hospice
+    memory). The model avoided the false positive trap of over-diagnosing and making
+    unnecessary revisions to a well-executed segment.'
+error: null

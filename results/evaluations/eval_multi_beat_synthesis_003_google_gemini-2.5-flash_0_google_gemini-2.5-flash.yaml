@@ -1,0 +1,48 @@
+evaluation_id: 69ceae6c
+task_id: multi_beat_synthesis_003
+generation_id: multi_beat_synthesis_003_google/gemini-2.5-flash_0
+task_type: multi_beat_synthesis
+model: google/gemini-2.5-flash
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0012174
+timestamp: '2025-12-12T13:51:14.014390'
+success: true
+final_score: 0.91041792782305
+score_breakdown:
+  final_score: 0.9104
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 812
+      target_range:
+      - 700
+      - 1000
+    programmatic:
+      score: 0.6977
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 0.9942
+        overall: 0.6977
+    llm_judge:
+      score: 0.972
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 14
+  beat_reqs_total: 15
+  beat_requirements_score: 0.93
+  cross_beat_satisfied: 4
+  cross_beat_total: 4
+  cross_beat_score: 1.0
+  word_count_valid: true
+  context_score: 1.0
+  coherence_score: 1.0
+  failed_items:
+  - 'Beat 1 (Fun and Games) - Introduction of an unexpected complication (minor):
+    While the security guard veering off course is an anomaly, it''s quickly resolved
+    and doesn''t feel like a ''complication'' that truly impacts the flow or introduces
+    a new element of challenge beyond a momentary hiccup. It''s too easily overcome
+    to be a true ''complication'' in the sense of setting up future issues.'
+error: null

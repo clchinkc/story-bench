@@ -1,0 +1,43 @@
+evaluation_id: 509cb6bf
+task_id: beat_revision_005
+generation_id: beat_revision_005_anthropic/claude-sonnet-4.5_0
+task_type: beat_revision
+model: anthropic/claude-sonnet-4.5
+sample_index: 0
+evaluator_model: openai/gpt-5-mini
+evaluator_cost: 0.000807
+timestamp: '2025-12-13T13:54:53.134752'
+success: true
+final_score: 0.9278869823218842
+score_breakdown:
+  final_score: 0.9279
+  components:
+    word_count:
+      score: 0.7115
+      weight: 0.25
+      actual: 101
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 1.0
+      weight: 0.25
+      breakdown:
+        repetition_score: 1.0
+        slop_score: 1.0
+        overall: 1.0
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  correct_diagnosis_score: 1.0
+  beat_understanding_score: 1.0
+  false_positive_avoided_score: 1.0
+  reasoning_quality_score: 1.0
+  model_said_no_revision: true
+  evidence: The model responded 'NO REVISION NEEDED' and provided a clear mapping
+    of the five Dark Night of the Soul requirements to elements in the segment (gallery
+    closure as defeat, isolation in dark apartment, genuine despair, no solution present,
+    mother's death/hospice memory as whiff of death), thereby recognizing the segment
+    was correct and offering no changes.
+error: null

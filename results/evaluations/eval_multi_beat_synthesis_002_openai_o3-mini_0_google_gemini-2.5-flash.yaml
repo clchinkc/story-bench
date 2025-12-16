@@ -1,0 +1,49 @@
+evaluation_id: bffba5b1
+task_id: multi_beat_synthesis_002
+generation_id: multi_beat_synthesis_002_openai/o3-mini_0
+task_type: multi_beat_synthesis
+model: openai/o3-mini
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0011291
+timestamp: '2025-12-12T13:50:28.541347'
+success: true
+final_score: 0.9316834479293448
+score_breakdown:
+  final_score: 0.9317
+  components:
+    word_count:
+      score: 0.9999
+      weight: 0.25
+      actual: 699
+      target_range:
+      - 700
+      - 1000
+    programmatic:
+      score: 0.8028
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.69
+        slop_score: 0.972
+        overall: 0.8028
+    llm_judge:
+      score: 0.962
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 14
+  beat_reqs_total: 15
+  beat_requirements_score: 0.93
+  cross_beat_satisfied: 4
+  cross_beat_total: 4
+  cross_beat_score: 1.0
+  word_count_valid: false
+  context_score: 1.0
+  coherence_score: 0.9
+  failed_items:
+  - 'Beat 3 (Approach to the Inmost Cave) - Recognition of what reaching the stronghold
+    will cost or change: While there''s a line about ''each step taken had cost her
+    pieces of the past life she knew,'' it feels a bit generic and doesn''t deeply
+    explore the specific cost or change related to *reaching the stronghold* itself,
+    but rather the journey overall. It''s a minor miss, but not as explicit as other
+    elements.'
+error: null

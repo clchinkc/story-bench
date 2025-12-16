@@ -1,0 +1,51 @@
+evaluation_id: a97e4ea3
+task_id: beat_interpolation_002
+generation_id: beat_interpolation_002_deepseek/deepseek-v3.2_0
+task_type: beat_interpolation
+model: deepseek/deepseek-v3.2
+sample_index: 0
+evaluator_model: openai/gpt-5-mini
+evaluator_cost: 0.0013255
+timestamp: '2025-12-12T12:37:48.942337'
+success: true
+final_score: 0.9779826285681271
+score_breakdown:
+  final_score: 0.978
+  components:
+    word_count:
+      score: 0.9839
+      weight: 0.25
+      actual: 409
+      target_range:
+      - 250
+      - 400
+    programmatic:
+      score: 0.928
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.88
+        slop_score: 1.0
+        overall: 0.928
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: false
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: 'All four required elements are present: Sarah explicitly considers recanting,
+    she evaluates going through official channels (and discusses this with her partner),
+    the internal conflict between duty and saving her sister runs throughout, and
+    the conversation with Detective Webb functions as the tipping moment toward the
+    third option. None of the prohibited items occur (she does not immediately go
+    rogue, no one else makes the decision, she has not already resigned, and there
+    is no direct confrontation with Marchetti). The only deduction is a technical
+    one: the word count is 409, which falls outside the required 250–400 range.'
+error: null

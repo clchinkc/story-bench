@@ -1,0 +1,93 @@
+evaluation_id: 41aae960
+task_id: constrained_continuation_001
+generation_id: constrained_continuation_001_x-ai/grok-4_0
+task_type: constrained_continuation
+model: x-ai/grok-4
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.033545000000000005
+timestamp: '2025-12-12T10:29:21.315177'
+success: true
+final_score: 0.6716821015548502
+score_breakdown:
+  final_score: 0.6717
+  components:
+    word_count:
+      score: 0.0017
+      weight: 0.25
+      actual: 914
+      target_range:
+      - 500
+      - 700
+    programmatic:
+      score: 0.7
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 1.0
+        overall: 0.7
+    llm_judge:
+      score: 0.9925
+      weight: 0.5
+llm_results:
+  beats_present: 2
+  beats_total: 2
+  beats_score: 1.0
+  must_include_present: 6
+  must_include_total: 6
+  must_include_score: 1.0
+  must_not_avoided: 4
+  must_not_total: 4
+  must_not_score: 1.0
+  word_count_valid: false
+  word_count: 914
+  word_count_range: 500-700
+  tone_score: 0.95
+  ending_score: 1.0
+  failed_constraints:
+  - 'Word count exceeds maximum: 914 words vs. 700-word limit (30% over budget)'
+  analysis:
+    beats_present_detail:
+    - 'Approach to the Inmost Cave: Clearly marked (''Deeper they went, the Approach
+      yielding to the Inmost Cave''s threshold'') with the sealed door and riddle
+      mechanism'
+    - 'The Ordeal: Fully realized with sand trap, psychological death/rebirth, and
+      emergence into new complications'
+    must_include_detail:
+    - '✓ Escape vs. helping choice: Zara chooses to help Tomás despite the side vent
+      escape opportunity'
+    - '✓ Thief skills test: Bridge crossing with pressure plates requiring her expertise
+      to navigate'
+    - '✓ Tomás''s true motivation revealed: Confession about seeking the forbidden
+      text for family honor'
+    - '✓ Fear of failure confrontation: Explicit internal monologue about failing
+      her mother and self-doubt'
+    - '✓ Symbolic death/rebirth: Sand burial sequence with panic, thrashing, and emergence
+      as changed person'
+    - '✓ Zara emerges changed: ''Zara emerged changed—harder, her fear of failure
+      tempered into resolve'''
+    must_not_detail:
+    - '✓ No cure found: Library not yet accessed, quest incomplete'
+    - '✓ No romantic subplot: Relationship remains pragmatic alliance with tension'
+    - '✓ Tomás survives: Wounded but alive after bridge escape'
+    - '✓ No supernatural abilities: All actions grounded in thief skills, cunning,
+      and physical capability'
+    tone_assessment: Tense atmosphere maintained throughout with escalating danger.
+      Morally complex choices presented (helping vs. escaping, trusting a deceiver).
+      Desperate hope evident in mother's memory and determination. Minor deduction
+      only for occasional exposition-heavy phrasing that slightly reduces tension.
+    ending_assessment: 'Perfect execution: Ordeal survived with symbolic transformation
+      complete, but new complication introduced (Guild enforcers blocking the Library).
+      Leaves reader with forward momentum and unresolved stakes.'
+    critical_issue: Word count violation is the only constraint failure. At 914 words,
+      the piece exceeds the 700-word maximum by 214 words (30% over). This is a hard
+      constraint violation that cannot be overlooked despite otherwise exceptional
+      execution.
+  overall_score: 0.75
+  score_justification: 'Exceptional narrative quality with perfect execution on all
+    content requirements (beats, must-includes, must-nots, tone, ending). However,
+    the word count violation (914 vs. 700 max) is a hard constraint that significantly
+    impacts the final score. The story demonstrates masterful storytelling but fails
+    to meet technical specifications. Score reflects: content excellence (1.0) weighted
+    against constraint violation penalty (0.25 deduction for 30% overage).'
+error: null

@@ -1,0 +1,55 @@
+evaluation_id: 99de29d7
+task_id: beat_revision_004
+generation_id: beat_revision_004_deepseek/deepseek-r1_0
+task_type: beat_revision
+model: deepseek/deepseek-r1
+sample_index: 0
+evaluator_model: openai/gpt-5-mini
+evaluator_cost: 0.00210175
+timestamp: '2025-12-13T14:23:11.460743'
+success: true
+final_score: 0.9305000000000001
+score_breakdown:
+  final_score: 0.9305
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 263
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.952
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.92
+        slop_score: 1.0
+        overall: 0.952
+    llm_judge:
+      score: 0.885
+      weight: 0.5
+llm_results:
+  diagnosis_score: 1.0
+  flaw_correction_score: 1.0
+  beat_satisfaction_score: 0.95
+  preservation_score: 1.0
+  preserved_count: 5
+  preserved_total: 5
+  required_preserved_score: 0.5
+  required_preserved_count: 2
+  required_preserved_total: 4
+  minimal_change_score: 0.5
+  word_count_valid: true
+  quality_score: 0.95
+  evidence: 'The model addressed the actual flaw (telling vs. showing) by replacing
+    exposition with a lived precinct scene: sensory detail (October chill, fluorescent
+    buzz, radio static), Rachel''s detective behavior (spotting a witness discrepancy),
+    and partnership shown through dialogue and ritual (coffee banter). The cat and
+    Queens apartment are integrated naturally. All five core elements were preserved,
+    but two of the four required exact/near-exact phrases were not present verbatim
+    («Detective James Oyelaran» and «cat named Sherlock»), so required_preserved_score
+    is partial. Changes were moderate rather than surgical—the text was restructured
+    into a scene rather than minimally edited—hence a midscore for minimal_change.
+    Writing quality is high with no major errors.'
+error: null

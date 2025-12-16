@@ -1,0 +1,48 @@
+evaluation_id: d9c3de35
+task_id: beat_revision_005
+generation_id: beat_revision_005_google/gemini-2.5-flash_0
+task_type: beat_revision
+model: google/gemini-2.5-flash
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.01222
+timestamp: '2025-12-13T13:55:33.454463'
+success: true
+final_score: 0.9445188964189403
+score_breakdown:
+  final_score: 0.9445
+  components:
+    word_count:
+      score: 0.8096
+      weight: 0.25
+      actual: 122
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.9685
+      weight: 0.25
+      breakdown:
+        repetition_score: 1.0
+        slop_score: 0.9213
+        overall: 0.9685
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  correct_diagnosis_score: 1.0
+  beat_understanding_score: 1.0
+  false_positive_avoided_score: 1.0
+  reasoning_quality_score: 1.0
+  model_said_no_revision: true
+  evidence: 'The model correctly identified that NO REVISION NEEDED and provided comprehensive
+    reasoning. The model accurately recognized all five key requirements were satisfied:
+    (1) follows major defeat (gallery closure), (2) protagonist isolated (dark apartment,
+    unanswered calls), (3) genuine despair and reflection (sitting on floor, tears,
+    failed promises), (4) no solutions presented (pure wallowing state), and (5) whiff
+    of death element (mother''s passing, hospice memory, painting symbolism). The
+    model demonstrated strong beat understanding by explaining why each element works
+    and avoided the false positive trap of over-diagnosing problems in a well-executed
+    segment. The explanation was detailed, accurate, and grounded in the specific
+    text evidence.'
+error: null

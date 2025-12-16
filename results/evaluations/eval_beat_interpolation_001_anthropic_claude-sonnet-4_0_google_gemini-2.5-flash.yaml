@@ -1,0 +1,50 @@
+evaluation_id: 0a763495
+task_id: beat_interpolation_001
+generation_id: beat_interpolation_001_anthropic/claude-sonnet-4_0
+task_type: beat_interpolation
+model: anthropic/claude-sonnet-4
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0010701
+timestamp: '2025-12-12T13:29:18.693734'
+success: true
+final_score: 0.979
+score_breakdown:
+  final_score: 0.979
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 281
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.916
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.86
+        slop_score: 1.0
+        overall: 0.916
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: true
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: All required elements are present and executed well. The mentor, Marcus,
+    is introduced and provides guidance (compass, satchel, wisdom about research skills).
+    Elena's doubt shifts from 'I don't know anything about magic or adventure' to
+    considering 'I'd research the problem.' Her librarian skills are explicitly framed
+    as useful. All 'must not' items are avoided. Character voices are consistent,
+    and the transition from the previous beat (Elena's refusal, haunted by the map)
+    and to the next (entering the forest with Marcus's gifts) is seamless.
+error: null

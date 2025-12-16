@@ -1,0 +1,61 @@
+evaluation_id: d8f450c4
+task_id: beat_interpolation_001
+generation_id: beat_interpolation_001_x-ai/grok-4_0
+task_type: beat_interpolation
+model: x-ai/grok-4
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.021445
+timestamp: '2025-12-12T10:28:16.432032'
+success: true
+final_score: 0.7183840000641857
+score_breakdown:
+  final_score: 0.7184
+  components:
+    word_count:
+      score: 0.0
+      weight: 0.25
+      actual: 575
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.8735
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.8
+        slop_score: 0.9837
+        overall: 0.8735
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: false
+  word_count: 575
+  word_count_range: 200-350
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: 'STRENGTHS: All 4 required elements present and well-executed: (1) Marcus
+    introduced as wise mentor figure with clear backstory (''former adventurer''),
+    (2) Practical wisdom delivered (''Adventuring isn''t just swinging swords...your
+    librarian''s eye for patterns'') plus tangible tools (satchel with luminous ink,
+    notebook, compass), (3) Elena''s doubt shifts convincingly from ''I can''t do
+    this'' to ''Maybe ordinary was enough'' with authentic reluctance (''her voice
+    lacked its earlier bite''), (4) Librarian skills reframed as valuable (''deciphering
+    clues, piecing together forgotten lore''). All must-not violations avoided: Elena
+    remains doubtful/reluctant (not confident), Marcus explicitly doesn''t accompany
+    her, setting is village/shop (not forest), no magical powers discovered. Character
+    voice consistent throughout—Elena''s self-deprecation and analytical nature maintained.
+    Bridge between beats seamless: BEFORE ends with refusal, GENERATED shows internal
+    conflict leading to mentor encounter, AFTER shows threshold crossing with Marcus''s
+    wisdom echoing. Continuity perfect: map, grandmother''s ghost, village setting
+    all preserved. WEAKNESS: Word count (575) significantly exceeds requirement (200-350),
+    representing 64% overage. This is the only deficiency—narrative execution is exceptional.'
+error: null

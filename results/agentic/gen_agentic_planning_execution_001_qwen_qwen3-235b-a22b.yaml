@@ -1,0 +1,141 @@
+generation_id: 849ba94f
+task_id: agentic_planning_execution_001
+task_type: agentic_planning_execution
+agentic_type: planning_execution
+theory: Save the Cat
+model: qwen/qwen3-235b-a22b
+sample_index: 0
+turns:
+- role: system
+  content: 'You are a professional storyteller who plans before writing.
+
+
+    Your task has TWO PHASES:
+
+    1. PLANNING PHASE: Create a detailed story plan/outline
+
+    2. EXECUTION PHASE: Write the actual story following your plan
+
+
+    In the PLANNING phase, output a structured plan including:
+
+    - Beat-by-beat outline with key events
+
+    - Character arcs and development points
+
+    - Key dialogue moments or revelations
+
+    - Pacing and tension curve
+
+    - How constraints will be satisfied
+
+
+    In the EXECUTION phase, follow your plan closely while writing engaging prose.'
+  turn_type: system
+  metadata: {}
+- role: user
+  content: 'Create a detailed story plan for the following:
+
+
+    CONTEXT:
+
+    - Theory: Save the Cat
+
+    - Protagonist: Marcus Chen, a former FBI profiler who left the bureau after failing
+    to
+
+    catch a serial killer who murdered his partner. Now works as a private
+
+    consultant, haunted by guilt and self-doubt.
+
+
+    - Setting: Seattle, present day. Rain-soaked streets, a city of tech money and
+
+    hidden poverty. The killer is back, and only Marcus can see the pattern.
+
+
+    - Conflict: The same serial killer Marcus failed to catch has resurfaced with
+    a new
+
+    pattern, and the FBI won''t listen to Marcus''s theories. He must work
+
+    outside the system while racing against time.
+
+
+    - Required beats: Catalyst, Debate, Break into Two, Midpoint
+
+
+    CONSTRAINTS:
+
+    - Must include a false lead that Marcus initially pursues
+
+    - Marcus must use an unconventional profiling technique
+
+    - There must be a ticking clock element
+
+    - A secondary character must betray Marcus''s trust
+
+    - The Midpoint must involve a direct confrontation (not physical)
+
+    - Marcus must confront his past failure explicitly
+
+
+    Create a beat-by-beat plan that:
+
+    1. Maps out each required beat with specific events
+
+    2. Shows how constraints will be satisfied
+
+    3. Plans character development moments
+
+    4. Identifies key dialogue or revelations
+
+
+    Output your plan (will be used for execution):'
+  turn_type: plan_prompt
+  metadata: {}
+- role: assistant
+  content: ''
+  turn_type: plan
+  metadata: {}
+- role: user
+  content: 'Execute your plan and write the story.
+
+
+    YOUR PLAN:
+
+
+
+    REQUIREMENTS:
+
+    - Word count: 700-900 words
+
+    - Follow your plan closely
+
+    - Write engaging narrative prose
+
+    - Satisfy all constraints mentioned in your plan
+
+
+    Output ONLY the story (no beat labels or explanations).'
+  turn_type: execution_prompt
+  metadata: {}
+- role: assistant
+  content: ''
+  turn_type: generation
+  metadata: {}
+final_output: ''
+metrics:
+  total_turns: 5
+  questions_asked: 0
+  constraints_discovered: 0
+  plan_quality: null
+  revision_count: 0
+token_usage:
+  total_prompt_tokens: 887
+  total_completion_tokens: 1000
+  total_reasoning_tokens: 1208
+  total_cost: 0.0010561400000000001
+timestamp: '2025-12-13T15:23:09.527286'
+success: true
+error: null

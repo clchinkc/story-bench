@@ -1,0 +1,50 @@
+evaluation_id: 520dc839
+task_id: beat_revision_004
+generation_id: beat_revision_004_google/gemini-2.5-flash_0
+task_type: beat_revision
+model: google/gemini-2.5-flash
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0010639
+timestamp: '2025-12-13T13:47:01.961220'
+success: true
+final_score: 0.972
+score_breakdown:
+  final_score: 0.972
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 270
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.988
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.98
+        slop_score: 1.0
+        overall: 0.988
+    llm_judge:
+      score: 0.95
+      weight: 0.5
+llm_results:
+  diagnosis_score: 1.0
+  flaw_correction_score: 1.0
+  beat_satisfaction_score: 1.0
+  preservation_score: 1.0
+  preserved_count: 5
+  required_preserved_score: 1.0
+  required_preserved_count: 4
+  required_preserved_total: 4
+  minimal_change_score: 0.5
+  word_count_valid: true
+  quality_score: 1.0
+  evidence: The model correctly identified the 'telling not showing' flaw in the original
+    exposition. It revised the segment to show Rachel's character, her relationship
+    with James, her dedication to cold cases, and the setting through sensory details
+    and action, rather than summary. The changes were moderate, transforming the narrative
+    style significantly while retaining core elements. All required preserved phrases
+    and elements are present.
+error: null

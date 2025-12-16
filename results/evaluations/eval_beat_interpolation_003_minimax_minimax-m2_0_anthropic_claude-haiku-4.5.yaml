@@ -1,0 +1,64 @@
+evaluation_id: ce7afa72
+task_id: beat_interpolation_003
+generation_id: beat_interpolation_003_minimax/minimax-m2_0
+task_type: beat_interpolation
+model: minimax/minimax-m2
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.02111
+timestamp: '2025-12-12T10:09:44.513053'
+success: true
+final_score: 0.7195436931812138
+score_breakdown:
+  final_score: 0.7195
+  components:
+    word_count:
+      score: 0.0222
+      weight: 0.25
+      actual: 538
+      target_range:
+      - 250
+      - 400
+    programmatic:
+      score: 0.856
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.76
+        slop_score: 1.0
+        overall: 0.856
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: false
+  word_count: 538
+  word_count_range: 250-400
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: 'STRENGTHS: All 4 required elements present and well-executed: (1) Multiple
+    station areas explored (crew quarters, mess hall, medical bay, hydroponics, engineering
+    annex, Lab Seven) with sensory detail; (2) Clues discovered progressively (warm
+    datapad, steam from coffee, manifest cross-reference, encrypted Kronin protocol
+    file, spatial distortion readings); (3) Transformed crew encountered mysteriously
+    as translucent figures, initially ambiguous threat; (4) Multiple obstacles overcome
+    (sealed bulkhead, encrypted files, bypassing circuits, pressure shifts, mysterious
+    presence). The Search beat functions perfectly—Yuki actively adapts, struggles
+    with technical challenges, and makes incremental discoveries without jumping to
+    conclusions. Character voice remains consistent: methodical, scientific, fearful
+    but determined. Seamless bridge between BEFORE (arrival/mystery) and AFTER (core
+    discovery/revelation). Setting continuity maintained throughout. DEDUCTION: Word
+    count (538) exceeds specified range (250-400) by 138 words, violating technical
+    constraint. However, this excess serves narrative quality and beat execution.
+    No must-not violations: Yuki doesn''t immediately understand the transformation
+    (discovers it through investigation), crew doesn''t explain everything directly
+    (only Reyes''s brief affirmation at end), mission continues, and prior knowledge
+    is absent. This is exemplary Search beat execution despite technical word count
+    overage.'
+error: null

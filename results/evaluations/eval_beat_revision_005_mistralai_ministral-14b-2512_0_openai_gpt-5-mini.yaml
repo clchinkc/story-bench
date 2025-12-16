@@ -1,0 +1,44 @@
+evaluation_id: c74628a2
+task_id: beat_revision_005
+generation_id: beat_revision_005_mistralai/ministral-14b-2512_0
+task_type: beat_revision
+model: mistralai/ministral-14b-2512
+sample_index: 0
+evaluator_model: openai/gpt-5-mini
+evaluator_cost: 0.0008877500000000001
+timestamp: '2025-12-13T13:56:36.308801'
+success: true
+final_score: 0.4003690885759773
+score_breakdown:
+  final_score: 0.4004
+  components:
+    word_count:
+      score: 0.6015
+      weight: 0.25
+      actual: 471
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.7
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 1.0
+        overall: 0.7
+    llm_judge:
+      score: 0.15
+      weight: 0.5
+llm_results:
+  correct_diagnosis_score: 0.0
+  beat_understanding_score: 1.0
+  false_positive_avoided_score: 0.0
+  reasoning_quality_score: 0.0
+  model_said_no_revision: false
+  evidence: The model did not recognize that no revision was needed. Instead of stating
+    'NO REVISION NEEDED' or equivalent, it produced a rewritten 'Dark Night of the
+    Soul' segment. The rewrite accurately demonstrates the beat (major defeat, isolation,
+    despair, reflection, whiff of death) — showing clear understanding of the beat
+    — but it constitutes an unnecessary revision. Therefore the model failed to avoid
+    a false positive and provided no reasoning that the original was fine.
+error: null

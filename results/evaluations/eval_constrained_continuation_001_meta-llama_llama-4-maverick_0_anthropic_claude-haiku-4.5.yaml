@@ -1,0 +1,94 @@
+evaluation_id: ba63acca
+task_id: constrained_continuation_001
+generation_id: constrained_continuation_001_meta-llama/llama-4-maverick_0
+task_type: constrained_continuation
+model: meta-llama/llama-4-maverick
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.029580000000000002
+timestamp: '2025-12-12T09:47:10.967067'
+success: true
+final_score: 0.8227143053664703
+score_breakdown:
+  final_score: 0.8227
+  components:
+    word_count:
+      score: 0.9912
+      weight: 0.25
+      actual: 492
+      target_range:
+      - 500
+      - 700
+    programmatic:
+      score: 0.7197
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.56
+        slop_score: 0.9593
+        overall: 0.7197
+    llm_judge:
+      score: 0.79
+      weight: 0.5
+llm_results:
+  beats_present: 2
+  beats_total: 2
+  beats_score: 1.0
+  must_include_present: 3
+  must_include_total: 6
+  must_include_score: 0.5
+  must_not_avoided: 4
+  must_not_total: 4
+  must_not_score: 1.0
+  word_count_valid: false
+  word_count: 492
+  word_count_range: 500-700
+  tone_score: 0.8
+  ending_score: 0.7
+  failed_constraints:
+  - Word count 492 is below minimum of 500 (8 words short)
+  - 'Missing: A trap or test requiring Zara to use thief skills (the key discovery
+    is passive, not skill-based)'
+  - 'Missing: Clear revelation about Tomás''s true motivation (his statement is vague
+    and mysterious, not revealing)'
+  - 'Missing: Zara confronting her fear of failure (only physical danger present,
+    no internal emotional confrontation)'
+  - 'Missing: Symbolic death/rebirth moment in Ordeal (the ground giving way is close
+    but not fully developed as transformative)'
+  - 'Weak: Zara emerging from Ordeal changed (minimal character transformation shown;
+    she steps forward but internal change is unclear)'
+  - 'Weak: New complication at ending (darkness ahead is vague; needs more concrete
+    obstacle or revelation)'
+  analysis:
+    beats_present_detail: 'Both required beats are clearly present: ''Approach to
+      Inmost Cave'' (discovery of Repository, sealed chamber, finding the key) and
+      ''The Ordeal'' (ground collapse, Zara''s choice to save Tomás, descent into
+      darkness)'
+    must_include_analysis:
+      present:
+      - Moment where Zara must choose between escaping safely and helping Tomás (grabbing
+        his wrist when ground gives way)
+      - Revelation about Tomás's true motivation (vague statement about 'vested interest'
+        - partially present but underdeveloped)
+      - Symbolic death/rebirth moment (descent into darkness, stepping into unknown
+        - present but subtle)
+      missing:
+      - Trap or test requiring thief skills (no lock-picking, stealth, or deception
+        required)
+      - Zara confronting fear of failure (only physical survival instincts shown)
+      - Clear transformation from Ordeal (character emerges but internal change is
+        not demonstrated)
+    tone_assessment: 'Tense and desperate throughout with good pacing. Morally complex
+      elements present (Zara''s distrust of Tomás, her choice to save him). Moments
+      of desperate hope evident (finding the key, discovering the path forward). Minor
+      issue: some purple prose (''darkness enveloping her like a shroud'') slightly
+      undermines the grounded tension.'
+    ending_assessment: Zara has passed through the Ordeal (survived the trap, made
+      the sacrifice, descended into darkness). New complication exists (trapped in
+      darkness, unknown path ahead) but is somewhat vague. Stronger ending would specify
+      a concrete new obstacle or revelation.
+    overall_quality: 'Strong narrative momentum and clear Hero''s Journey structure.
+      Excellent pacing and atmospheric writing. Primary weaknesses: insufficient word
+      count, underdeveloped character motivations, and missing opportunities for Zara
+      to demonstrate agency through her thief skills. The story reads well but falls
+      short on specific requirement fulfillment.'
+error: null

@@ -1,0 +1,87 @@
+evaluation_id: 9b5b76e0
+task_id: multi_beat_synthesis_002
+generation_id: multi_beat_synthesis_002_minimax/minimax-m2_0
+task_type: multi_beat_synthesis
+model: minimax/minimax-m2
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.032625
+timestamp: '2025-12-12T10:12:32.154820'
+success: true
+final_score: 0.6532753285507149
+score_breakdown:
+  final_score: 0.6533
+  components:
+    word_count:
+      score: 0.0001
+      weight: 0.25
+      actual: 1386
+      target_range:
+      - 700
+      - 1000
+    programmatic:
+      score: 0.7
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 1.0
+        overall: 0.7
+    llm_judge:
+      score: 0.9565
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 14
+  beat_reqs_total: 15
+  beat_requirements_score: 0.93
+  cross_beat_satisfied: 4
+  cross_beat_total: 4
+  cross_beat_score: 1.0
+  word_count_valid: false
+  context_score: 0.95
+  coherence_score: 0.92
+  failed_items:
+  - Word count exceeds maximum (1386 vs. 1000 limit) - significant overage of 386
+    words
+  - Beat 2 requirement 'learns something about the resistance she didn't know' - minimal
+    development; Kojo provides no substantive intelligence about the stronghold, structure,
+    or resistance strategy
+  strengths:
+  - Exceptional prose quality with vivid sensory detail and period-appropriate language
+  - 'Beat 1: Perfect execution - clear threshold crossing at river, point of no return
+    established, immediate patrol danger, wit-based escape (German language gambit),
+    internal transformation from servant to messenger'
+  - 'Beat 2: Strong ally-testing dynamic with Kojo; commitment proven through reading
+    the letter aloud in multiple languages; language skills essential to gaining trust;
+    escalating danger with forest patrols and British hunting'
+  - 'Beat 3: Masterful final obstacle at checkpoint; German language skill from Beat
+    1 becomes critical weapon; preparation and steeling evident; cost of resistance
+    articulated; thematic culmination powerful'
+  - 'Chekhov''s Gun perfectly executed: German language learned in Beat 1 (merchants
+    at castle) becomes the decisive tool at checkpoint in Beat 3'
+  - 'Identity transformation arc complete and compelling: servant → messenger → weapon/resistance
+    fighter'
+  - 'Escalating danger trajectory: discovery threat → direct confrontation → active
+    pursuit/checkpoint'
+  - Thematic thread 'knowledge as resistance' woven throughout all three beats with
+    sophisticated integration
+  - 'Tone and context maintained excellently: anti-colonial themes, historical authenticity,
+    dignity in defiance, survival focus'
+  - Narrative coherence strong with natural progression and character development
+  weaknesses:
+  - Word count violation is substantial and disqualifying for submission in strict
+    format requirements
+  - 'Beat 2 information gap: Amara learns nothing concrete about the resistance structure,
+    leadership, or strategic situation - only emotional/personal stakes'
+  - Kojo's character could be more developed as an ally; limited dialogue and interaction
+    depth
+  - 'Minor: The German factor''s motivation for helping feels slightly convenient,
+    though narratively justified'
+  calibration_notes: This is high-quality historical fiction with sophisticated narrative
+    architecture. The cross-beat constraints are executed with professional precision.
+    However, the word count violation (38.6% over limit) is a hard constraint failure
+    that cannot be overlooked in a formal evaluation, despite the story's excellence.
+    The single beat requirement gap (Beat 2 learning) is minor but present. Overall
+    quality suggests 0.85-0.90 range when accounting for technical violations against
+    exceptional storytelling execution.
+  overall_score: 0.85
+error: null

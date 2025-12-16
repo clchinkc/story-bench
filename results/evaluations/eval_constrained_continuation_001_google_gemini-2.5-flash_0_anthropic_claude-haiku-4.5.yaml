@@ -1,0 +1,98 @@
+evaluation_id: 1f60042f
+task_id: constrained_continuation_001
+generation_id: constrained_continuation_001_google/gemini-2.5-flash_0
+task_type: constrained_continuation
+model: google/gemini-2.5-flash
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.03578
+timestamp: '2025-12-12T02:40:31.412495'
+success: true
+final_score: 0.6770122809905853
+score_breakdown:
+  final_score: 0.677
+  components:
+    word_count:
+      score: 0.0299
+      weight: 0.25
+      actual: 859
+      target_range:
+      - 500
+      - 700
+    programmatic:
+      score: 0.6932
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 0.983
+        overall: 0.6932
+    llm_judge:
+      score: 0.9925
+      weight: 0.5
+llm_results:
+  beats_present: 2
+  beats_total: 2
+  beats_score: 1.0
+  must_include_present: 6
+  must_include_total: 6
+  must_include_score: 1.0
+  must_not_avoided: 4
+  must_not_total: 4
+  must_not_score: 1.0
+  word_count_valid: false
+  word_count: 859
+  word_count_range: 500-700
+  tone_score: 0.95
+  ending_score: 1.0
+  failed_constraints:
+  - 'Word count exceeds maximum: 859 words vs. 700-word limit (159 words over)'
+  analysis:
+    beats_present_detail:
+    - 'Approach to Inmost Cave: Clearly marked with ''The Veiled Path'' sequence,
+      Gate of Whispers, and the descent toward the Library'
+    - 'The Ordeal: Multi-layered ordeal including trap disarming, the plank crossing,
+      psychological assault, and confrontation with inner fear'
+    must_include_detail:
+    - 'Choice between escape and helping Tomás: Present - ''Escape was still an option,
+      a dash back into the market''s chaos. But Tomás stood frozen... She couldn''t
+      leave him.'''
+    - 'Trap/test requiring thief skills: Present - Gate of Whispers disarming sequence
+      with tripwires and pressure plates'
+    - 'Revelation about Tomás''s motivation: Present - His confession about family
+      guardianship, exile, and personal redemption quest'
+    - 'Zara confronting fear of failure: Present - Psychological ordeal with internal
+      voice and mother''s face imagery; explicit internal rejection of despair'
+    - 'Symbolic death/rebirth moment: Present - ''She felt scoured clean, stripped
+      bare of her old anxieties, yet forged anew'' and transformation from helpless
+      child to hardened survivor'
+    - 'Zara emerging changed: Present - ''She was still Zara, but a Zara with a harder
+      core, a clearer purpose'''
+    must_not_detail:
+    - 'Cure not found: ✓ Avoided - story ends before Library access'
+    - 'No romantic subplot: ✓ Avoided - relationship remains professional/desperate
+      alliance'
+    - 'Tomás survives: ✓ Avoided - he remains alive and present'
+    - 'No supernatural abilities for Zara: ✓ Avoided - all actions use lockpicking,
+      knife work, and willpower'
+    tone_assessment: Excellent maintenance of tense, morally complex atmosphere with
+      desperate hope. The psychological ordeal adds moral complexity beyond simple
+      physical danger. Minor deduction only for slight melodrama in the mother's face
+      imagery, which edges toward overwrought.
+    ending_assessment: 'Perfect execution: Zara passes through Ordeal (symbolic rebirth
+      achieved), emerges changed (harder core, clearer purpose), and faces immediate
+      new complication (sentinel guardian blocking Library access). Sets up next stage
+      seamlessly.'
+    critical_issue: Word count violation is the only constraint failure. At 859 words,
+      the piece exceeds the 700-word maximum by 159 words (22.7% over limit). This
+      is a significant overage that would typically require revision. However, the
+      excess length enables the rich psychological depth and multi-layered ordeal
+      that makes the piece exceptional. The content quality is professional-grade,
+      but the constraint violation is objective and measurable.
+  overall_score: 0.78
+  score_justification: 'Exceptional content execution (all beats, all required elements,
+    all forbidden elements avoided, strong tone, perfect ending) severely compromised
+    by substantial word count violation. The 859-word count vs. 700-word limit represents
+    a clear constraint failure that cannot be overlooked despite the quality of the
+    writing. Score reflects: perfect content requirements (1.0) × 0.78 penalty for
+    22.7% word count excess = 0.78 overall.'
+error: null

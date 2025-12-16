@@ -1,0 +1,48 @@
+evaluation_id: abe613c2
+task_id: beat_interpolation_001
+generation_id: beat_interpolation_001_mistralai/ministral-14b-2512_0
+task_type: beat_interpolation
+model: mistralai/ministral-14b-2512
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0010577
+timestamp: '2025-12-12T13:34:00.848096'
+success: true
+final_score: 0.687730196517267
+score_breakdown:
+  final_score: 0.6877
+  components:
+    word_count:
+      score: 0.0149
+      weight: 0.25
+      actual: 495
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.736
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.56
+        slop_score: 1.0
+        overall: 0.736
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: false
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: All required elements are present and all 'must not' conditions are avoided.
+    The beat is clearly executed, showing Elena meeting a mentor who provides guidance
+    and tools, while her doubt begins to shift. Character and continuity are strong,
+    and the bridge between beats is effective. The word count is over the specified
+    range, but this is a minor issue compared to the quality of the content.
+error: null

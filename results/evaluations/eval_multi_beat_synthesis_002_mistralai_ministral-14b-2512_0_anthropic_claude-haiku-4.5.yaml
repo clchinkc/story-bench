@@ -1,0 +1,157 @@
+evaluation_id: d843bfbb
+task_id: multi_beat_synthesis_002
+generation_id: multi_beat_synthesis_002_mistralai/ministral-14b-2512_0
+task_type: multi_beat_synthesis
+model: mistralai/ministral-14b-2512
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.06793
+timestamp: '2025-12-12T11:53:43.853005'
+success: true
+final_score: 0.58775
+score_breakdown:
+  final_score: 0.5877
+  components:
+    word_count:
+      score: 0.0
+      weight: 0.25
+      actual: 2651
+      target_range:
+      - 700
+      - 1000
+    programmatic:
+      score: 0.7
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 1.0
+        overall: 0.7
+    llm_judge:
+      score: 0.8255
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 13
+  beat_reqs_total: 15
+  beat_requirements_score: 0.87
+  cross_beat_satisfied: 3
+  cross_beat_total: 4
+  cross_beat_score: 0.75
+  word_count_valid: false
+  word_count: 2651
+  word_count_range: 700-1000
+  context_score: 0.9
+  coherence_score: 0.8
+  overall_score: 0.83
+  beat_breakdown:
+    beat_1_crossing_threshold:
+      satisfied: 5
+      total: 5
+      details:
+        leaves_cape_coast: true
+        point_of_no_return: true
+        immediate_danger: true
+        uses_wits_not_force: true
+        internal_shift_servant_to_active: true
+    beat_2_tests_allies_enemies:
+      satisfied: 4
+      total: 5
+      details:
+        uncertain_ally: true
+        test_of_commitment: true
+        enemy_obstacle: true
+        language_skills_crucial: true
+        learns_about_resistance: false
+        note: Learns about Yaa and the stronghold location, but doesn't learn substantive
+          new information about resistance structure, goals, or strategy
+    beat_3_approach_inmost_cave:
+      satisfied: 4
+      total: 5
+      details:
+        nearing_stronghold: true
+        moment_of_preparation: true
+        recognition_of_cost: true
+        final_obstacle: false
+        thematic_element_resist_vs_survive: true
+        note: Final obstacle is underdeveloped—British pursuit is mentioned but not
+          dramatized as a concrete obstacle Amara must overcome before reaching stronghold
+  cross_beat_analysis:
+    chekhovs_gun:
+      satisfied: true
+      evidence: Amara's literacy and language skills (demonstrated in Beat 1 with
+        English/German/local languages) become essential in Beat 2 (reading maps,
+        understanding British) and Beat 3 (reading the letter, understanding British
+        commands). Maps from pouch directly enable navigation.
+    identity_transformation:
+      satisfied: true
+      evidence: 'Beat 1: ''practiced ease of a servant,'' head lowered. Beat 2: ''You''re
+        not just a girl with laundry anymore.'' Beat 3: ''She was not a servant. She
+        was not a girl. She was the resistance.'' Clear arc of self-perception.'
+    escalating_danger:
+      satisfied: true
+      evidence: 'Beat 1: Risk of discovery while leaving (drunken voices, need to
+        hide). Beat 2: Direct confrontation with armed British soldiers who search
+        her basket. Beat 3: Active pursuit—''The British had reached the edge of the
+        forest. Their voices were sharp.'''
+    thematic_thread_knowledge_as_resistance:
+      satisfied: false
+      evidence: Present in Beats 1-2 (reading English, understanding languages, reading
+        maps). However, in Beat 3, this theme becomes abstract rather than concrete.
+        The story doesn't show Amara *using* her knowledge to overcome the final obstacle—it
+        ends with her steeling herself rather than demonstrating how literacy/languages
+        enable her to resist or survive the British pursuit.
+      gap: Beat 3 should show Amara using her linguistic/literacy skills to evade
+        or outmaneuver the British, not just declaring her readiness
+  context_assessment:
+    protagonist_amara: 0.95
+    setting_cape_coast_ashanti_forest: 0.9
+    tone_historical_adventure_anticolonial: 0.9
+    resistance_network_element: 0.85
+    colonial_threat: 0.95
+    father_plot_element: 0.9
+    overall_context_score: 0.9
+  coherence_assessment:
+    beat_flow: 0.8
+    narrative_logic: 0.8
+    pacing: 0.75
+    emotional_arc: 0.85
+    issues:
+    - Ending feels abrupt—Amara reaches Yaa but then suddenly British are at forest
+      edge. Transition unclear.
+    - Beat 3 lacks a concrete dramatized obstacle; instead of showing Amara overcome
+      something, it tells us she's ready.
+    - The revelation that her father was already captured (two nights ago) is powerful
+      but underexplored—no time for Amara to process or respond emotionally before
+      story ends.
+  failed_items:
+  - 'WORD COUNT: 2651 words exceeds maximum of 1000 by 165% (requirement: 700-1000
+    words)'
+  - 'BEAT 2 - Learn about resistance: Amara learns Yaa''s name and location but not
+    substantive information about resistance structure, strategy, or goals'
+  - 'BEAT 3 - Final obstacle dramatization: British pursuit is mentioned but not shown
+    as a concrete obstacle Amara must actively overcome before reaching stronghold'
+  - 'CROSS-BEAT THEMATIC THREAD: Knowledge-as-resistance theme becomes abstract in
+    Beat 3; doesn''t show Amara using literacy/languages to overcome final obstacle,
+    only declaring readiness'
+  - 'COHERENCE: Ending transition is abrupt—unclear how Amara moves from meeting Yaa
+    to British suddenly at forest edge; no dramatized escape or evasion'
+  strengths:
+  - Exceptional character voice and internal consistency
+  - Strong anti-colonial perspective and historical authenticity
+  - Excellent use of sensory detail and atmospheric tension
+  - Clear identity transformation arc across all three beats
+  - Chekhov's Gun perfectly executed with maps and language skills
+  - Escalating danger well-paced through all beats
+  - Amara's wit and intelligence shine throughout
+  recommendations:
+  - CUT approximately 1,650 words to meet 700-1000 range; prioritize tightening Beat
+    3
+  - 'In Beat 2: Add one line where resistance member reveals something about their
+    strategy or goals (e.g., ''We''re moving the leaders north, but the British know
+    the main routes'')'
+  - 'In Beat 3: Dramatize the final obstacle—show Amara using her language skills
+    or map-reading to evade British pursuit, not just declare readiness'
+  - 'Revise ending: Either show Amara successfully evading British and entering stronghold,
+    OR end at moment of capture/confrontation with higher stakes'
+  - 'Add emotional beat: Amara''s reaction to learning her father was already captured—this
+    is major and deserves processing time'
+error: null

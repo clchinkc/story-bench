@@ -1,0 +1,53 @@
+evaluation_id: 003dfed5
+task_id: beat_revision_001
+generation_id: beat_revision_001_openai/o3_0
+task_type: beat_revision
+model: openai/o3
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0012527
+timestamp: '2025-12-13T13:59:37.700838'
+success: true
+final_score: 0.966
+score_breakdown:
+  final_score: 0.966
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 331
+      target_range:
+      - 250
+      - 400
+    programmatic:
+      score: 0.904
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.84
+        slop_score: 1.0
+        overall: 0.904
+    llm_judge:
+      score: 0.98
+      weight: 0.5
+llm_results:
+  diagnosis_score: 1.0
+  flaw_correction_score: 1.0
+  beat_satisfaction_score: 1.0
+  preservation_score: 1.0
+  preserved_count: 4
+  preserved_total: 4
+  required_preserved_score: 1.0
+  required_preserved_count: 4
+  required_preserved_total: 4
+  minimal_change_score: 0.8
+  word_count_valid: true
+  quality_score: 1.0
+  evidence: The model correctly identified and addressed all aspects of the Ordeal
+    flaw. It introduced Kira's deepest fear (guilt over her brother's death) as exploited
+    by the dragon, included a clear 'death' moment where she surrenders to the dark,
+    showed a transformation/rebirth where she gains new understanding, and had her
+    victory stem from this new insight. The changes were significant enough to fix
+    the flaw but still maintained the core structure and many original phrases, demonstrating
+    a good balance of minimal change while achieving the fix. All required preserved
+    phrases are present, and the four elements are preserved.
+error: null

@@ -1,0 +1,63 @@
+evaluation_id: 0741dbe9
+task_id: beat_interpolation_002
+generation_id: beat_interpolation_002_minimax/minimax-m2_0
+task_type: beat_interpolation
+model: minimax/minimax-m2
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.023100000000000002
+timestamp: '2025-12-12T10:09:33.449355'
+success: true
+final_score: 0.625
+score_breakdown:
+  final_score: 0.625
+  components:
+    word_count:
+      score: 0.0
+      weight: 0.25
+      actual: 857
+      target_range:
+      - 250
+      - 400
+    programmatic:
+      score: 0.7
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 1.0
+        overall: 0.7
+    llm_judge:
+      score: 0.9
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 0.6
+  violations_found: 2
+  word_count_valid: false
+  character_score: 1.0
+  bridge_score: 0.8
+  continuity_score: 0.9
+  evidence: 'STRENGTHS: All 4 required elements present and well-executed. (1) Recanting
+    option explicitly considered with moral weight (''tasted like copper pennies'').
+    (2) Official channels thoroughly debated through Marcus conversation—safe houses,
+    databases, moles, procedure delays all addressed. (3) Internal conflict powerfully
+    rendered through parallel options framework and Sarah''s reasoning. (4) Marcus
+    conversation tips her toward vigilante path (''I''m going to find her. And I''ll
+    do whatever I have to do''). Character voice is consistent, intelligent, and morally
+    grounded. Bridge to Break Into Two is strong—resignation decision flows naturally
+    from debate conclusion. VIOLATIONS: (1) Sarah explicitly decides to go rogue during
+    this beat (''I''m going to do both...But she couldn''t do it as a cop''), which
+    partially skips the debate''s uncertainty—though this is mitigated by the fact
+    that the decision emerges from genuine deliberation rather than impulsive action.
+    (2) The AFTER section reveals she has already resigned and is surveilling the
+    compound, which violates the ''must not already have resigned'' constraint—this
+    is a structural problem with how the prompt presents the transition. WORD COUNT:
+    857 words significantly exceeds 250-400 range (114% over limit), though the excess
+    serves the beat''s complexity well. CONTINUITY: Minor inconsistency—Sarah says
+    ''Not yet'' about resigning in the Debate section, but the After section shows
+    resignation already completed, suggesting either time compression or contradiction
+    in the prompt structure itself.'
+error: null

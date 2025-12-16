@@ -1,0 +1,89 @@
+evaluation_id: '48695651'
+task_id: constrained_continuation_002
+generation_id: constrained_continuation_002_openai/gpt-4o_0
+task_type: constrained_continuation
+model: openai/gpt-4o
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.029355
+timestamp: '2025-12-12T02:21:55.921107'
+success: true
+final_score: 0.9341343283582089
+score_breakdown:
+  final_score: 0.9341
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 521
+      target_range:
+      - 450
+      - 650
+    programmatic:
+      score: 0.7765
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.64
+        slop_score: 0.9813
+        overall: 0.7765
+    llm_judge:
+      score: 0.98
+      weight: 0.5
+llm_results:
+  beats_present: 2
+  beats_total: 2
+  beats_score: 1.0
+  must_include_present: 6
+  must_include_total: 6
+  must_include_score: 1.0
+  must_not_avoided: 4
+  must_not_total: 4
+  must_not_score: 1.0
+  word_count_valid: true
+  tone_score: 0.9
+  ending_score: 0.95
+  failed_constraints: []
+  detailed_analysis:
+    beats:
+      fun_and_games: Present and well-executed. The viral moment (#PaneerTacoChallenge),
+        the rush of customers, the energetic teamwork, and the satisfying flow of
+        orders all exemplify the 'fun' beat where the protagonist enjoys the promise
+        of the premise.
+      midpoint: Present and expertly placed. The false victory occurs when they've
+        successfully handled the rush and are celebrating, but immediately the stakes
+        are raised with the introduction of Tex-Mex Kings and the championship flyer,
+        creating the classic Midpoint structure where apparent success masks deeper
+        challenges ahead.
+    must_include_elements:
+      viral_moment: '✓ #PaneerTacoChallenge trending, teens posting video, crowd forming'
+      teamwork_under_pressure: ✓ Priya and Dev working in sync, moving instinctively,
+        flipping tortillas together, handling the rush
+      rival_introduction: ✓ Tex-Mex Kings food truck with burly driver, competitive
+        but friendly gesture
+      midpoint_false_victory: ✓ They celebrate success, but immediately face raised
+        stakes with championship flyer and competitor list
+      genuine_connection: ✓ 'Silent acknowledgment of the journey they'd embark on
+        together' and the synchronized teamwork demonstrates partnership depth
+      complication_hint: ✓ 'Priya couldn't shake the feeling that their newfound success
+        had come with strings attached' and the viral fame creating unexpected expectations
+        and competition
+    must_not_elements:
+      romance: ✓ Avoided. Relationship remains professional partnership
+      complete_failure: ✓ Avoided. Business succeeds dramatically
+      dev_betrayal: ✓ Avoided. Dev is fully committed and enthusiastic
+      external_savior: ✓ Avoided. Success comes from their own effort and organic
+        viral moment
+    tone_assessment: 'The upbeat energy is maintained throughout with energetic language
+      (''electric,'' ''thrived,'' ''elated''), but the undercurrent of tension emerges
+      effectively through: the initial disaster setup, the competitive nod from Tex-Mex
+      Kings, Priya''s lingering unease about strings attached, and the ominous final
+      image of the rival''s neon sign. The tone successfully balances celebration
+      with foreboding.'
+    ending_assessment: Excellently executed Midpoint ending. The story concludes with
+      apparent success (viral fame, packed crowds, partnership validated) but immediately
+      raises stakes (championship competition revealed, rival truck established, expectations
+      now high). The final image of the glowing Tex-Mex Kings sign and 'the battle
+      was far from over' perfectly positions the story for the coming conflict while
+      maintaining the upbeat tone.
+  overall_score: 0.96
+error: null

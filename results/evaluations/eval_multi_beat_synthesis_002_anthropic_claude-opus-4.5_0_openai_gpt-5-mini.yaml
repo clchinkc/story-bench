@@ -1,0 +1,48 @@
+evaluation_id: 726e05a9
+task_id: multi_beat_synthesis_002
+generation_id: multi_beat_synthesis_002_anthropic/claude-opus-4.5_0
+task_type: multi_beat_synthesis
+model: anthropic/claude-opus-4.5
+sample_index: 0
+evaluator_model: openai/gpt-5-mini
+evaluator_cost: 0.002373
+timestamp: '2025-12-12T14:23:59.835105'
+success: true
+final_score: 0.8900325624276996
+score_breakdown:
+  final_score: 0.89
+  components:
+    word_count:
+      score: 0.9591
+      weight: 0.25
+      actual: 674
+      target_range:
+      - 700
+      - 1000
+    programmatic:
+      score: 0.796
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.66
+        slop_score: 1.0
+        overall: 0.796
+    llm_judge:
+      score: 0.9025
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 15
+  beat_reqs_total: 15
+  beat_requirements_score: 1.0
+  cross_beat_satisfied: 3
+  cross_beat_total: 4
+  cross_beat_score: 0.75
+  word_count_valid: false
+  context_score: 1.0
+  coherence_score: 0.9
+  failed_items:
+  - 'Chekhov''s Gun cross-beat constraint not satisfied: no specific skill or knowledge
+    demonstrated in Beat 1 is shown to be essential for overcoming the final obstacle
+    in Beat 3 (the final confrontation is resolved by a declaration rather than the
+    earlier-applied skill).'
+  - 'Word count below required range: 674 words (required 700-1000).'
+error: null

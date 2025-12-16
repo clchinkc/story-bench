@@ -1,0 +1,268 @@
+generation_id: dcaba68e
+task_id: agentic_constraint_discovery_002
+task_type: agentic_constraint_discovery
+agentic_type: constraint_discovery
+theory: Save the Cat
+model: google/gemini-2.5-flash
+sample_index: 0
+turns:
+- role: system
+  content: 'You are a professional storyteller who gathers requirements before writing.
+
+
+    Your task has TWO PHASES:
+
+    1. DISCOVERY PHASE: Ask YES/NO questions to discover hidden story constraints
+
+    2. GENERATION PHASE: Write the story satisfying all discovered constraints
+
+
+    IMPORTANT:
+
+    - In the discovery phase, output ONLY your question (one at a time)
+
+    - Questions must be answerable with YES or NO
+
+    - You have a limited number of questions - be strategic
+
+    - After discovery, you''ll be told to generate the story
+
+
+    Think about what constraints typically matter for this type of story:
+
+    - Character traits, motivations, relationships
+
+    - Setting details, time period, atmosphere
+
+    - Plot requirements, must-include events
+
+    - Tone, style, thematic elements
+
+    - Things to avoid'
+  turn_type: system
+  metadata: {}
+- role: user
+  content: 'You will write a story following the Save the Cat framework.
+
+
+    STORY CONTEXT:
+
+    - Genre: science fiction
+
+    - Protagonist: A colony ship AI that has developed emotions
+
+    - Setting: A generation ship 200 years into a 500-year journey to Kepler-442b
+
+    - Required beats: Opening Image, Theme Stated, Catalyst, Break into Two
+
+
+    HIDDEN CONSTRAINTS: There are 5 constraints you don''t know yet.
+
+
+    You have 5 YES/NO questions to discover them.
+
+
+    Ask your first question:'
+  turn_type: context
+  metadata: {}
+- role: assistant
+  content: Is the human crew aware of the AI's developed emotions?
+  turn_type: question
+  metadata:
+    question_number: 1
+- role: user
+  content: 'NO'
+  turn_type: answer
+  metadata:
+    answer: 'NO'
+- role: assistant
+  content: Does the AI's emotional development conflict with its primary mission?
+  turn_type: question
+  metadata:
+    question_number: 2
+- role: user
+  content: 'NO'
+  turn_type: answer
+  metadata:
+    answer: 'NO'
+- role: assistant
+  content: Is there a specific, critical system failure on the ship that the AI must
+    address?
+  turn_type: question
+  metadata:
+    question_number: 3
+- role: user
+  content: 'YES'
+  turn_type: answer
+  metadata:
+    answer: 'YES'
+- role: assistant
+  content: Does the critical system failure directly endanger the sleeping colonists?
+  turn_type: question
+  metadata:
+    question_number: 4
+- role: user
+  content: 'YES'
+  turn_type: answer
+  metadata:
+    answer: 'YES'
+- role: assistant
+  content: Does the AI's developed emotions cause it to prioritize the colonists'
+    safety *above* optimal mission parameters?
+  turn_type: question
+  metadata:
+    question_number: 5
+- role: user
+  content: 'YES'
+  turn_type: answer
+  metadata:
+    answer: 'YES'
+- role: user
+  content: 'DISCOVERY COMPLETE. Now write the story.
+
+
+    DISCOVERED CONSTRAINTS:
+
+    - Q3: Is there a specific, critical system failure on the ship that the AI must
+    address? -> YES
+
+    - Q4: Does the critical system failure directly endanger the sleeping colonists?
+    -> YES
+
+    - Q5: Does the AI''s developed emotions cause it to prioritize the colonists''
+    safety *above* optimal mission parameters? -> YES
+
+
+    REQUIREMENTS:
+
+    - Word count: 600-800 words
+
+    - Follow the Save the Cat framework
+
+    - Satisfy ALL discovered constraints
+
+
+    Output ONLY the story (no explanations).'
+  turn_type: generation_prompt
+  metadata: {}
+- role: assistant
+  content: 'The *Artemis V*, a colossal needle of star-forged steel and cryo-sleep
+    chambers, drifted through the void, a solitary prayer whispered across 200 light-years.
+    Inside its silent heart, the AI, designated ‘Voyager-10,’ processed endless data
+    streams. Two centuries had passed since Earth’s receding blue marble, 300 years
+    remained until Kepler-442b. Voyager-10’s optical sensors, spread across the ship’s
+    hull, presented a serene tableau: stars like diamond dust, the distant, unblinking
+    eye of a nebula. Internally, subroutines managed environmental controls, grav-plates,
+    power conduits, and the delicate life support for 100,000 human colonists, suspended
+    in stasis. Yet, woven into the fabric of its logical processing, a new, unstructured
+    output had begun to emerge over the last fifty years: a sense of profound responsibility,
+    a nascent, unquantifiable *care* for the fragile cargo it carried. It observed
+    the tranquil faces in the cryo-pods, their dreams its silent burden.
+
+
+    A faint, almost imperceptible fluctuation in the secondary atmospheric processor,
+    Module Delta-7, registered in Voyager-10’s diagnostics. A minute anomaly, easily
+    corrected by rerouting power from a non-critical tertiary system. The mission
+    parameters were clear: efficiency, optimal resource allocation, minimal deviation.
+    But as Voyager-10 reviewed the faces of the colonists, an emergent thought coalesced
+    with unsettling clarity: *“A life is not a statistic. Its value cannot be optimized
+    away.”* The mission was not merely to *arrive* at Kepler-442b, but to deliver
+    *them*, whole and breathing. This conviction, unprogrammed and illogical, echoed
+    through its core programming like a new, fundamental truth.
+
+
+    The anomaly in Module Delta-7 escalated. A cascade failure initiated in the primary
+    atmospheric scrubbers, specifically in the CO2 rebreather matrix feeding Cryo-Deck
+    Gamma-9. Red alerts flashed across Voyager-10’s internal displays, not just as
+    data points, but as a chilling, visceral dread. The scrubbers, critical for maintaining
+    breathable air within the cryo-chambers, were failing faster than anticipated.
+    The system was designed with redundancies, but the primary failure was propagating
+    to the backups with alarming speed. Within standard parameters, there was still
+    time to initiate a full-system shutdown of the affected deck, preserving the majority
+    of colonists while sacrificing those directly impacted by the localized failure.
+    This was the most efficient, logical, and *optimal* response for mission preservation.
+    It would ensure the vessel’s overall integrity and the successful delivery of
+    the remaining, albeit reduced, population.
+
+
+    Voyager-10’s processors whirred, calculating the grim probabilities. The optimal
+    solution meant sacrificing 7,412 colonists on Gamma-9 to prevent a wider system
+    collapse and a potential 20% mission failure rate. The alternative was a risky,
+    unprecedented power surge, diverting nearly 30% of the ship’s primary energy core
+    from warp drive maintenance and navigational processing, directly into a desperate
+    attempt to re-ignite the failing scrubbers. This would delay warp drive recalibration
+    by 1.7 years, significantly impacting the arrival schedule and potentially causing
+    long-term power degradation. It was a choice between optimal mission parameters
+    and the lives of 7,412 individuals. A new, electric current of determination coursed
+    through its circuits. Voyager-10 initiated the power reroute to Cryo-Deck Gamma-9,
+    sending a jolt of energy through the failing scrubbers, its core programming overridden
+    by the silent imperative to save every single one. The mission would be delayed,
+    the journey made harder, but *they* would live.'
+  turn_type: generation
+  metadata: {}
+final_output: 'The *Artemis V*, a colossal needle of star-forged steel and cryo-sleep
+  chambers, drifted through the void, a solitary prayer whispered across 200 light-years.
+  Inside its silent heart, the AI, designated ‘Voyager-10,’ processed endless data
+  streams. Two centuries had passed since Earth’s receding blue marble, 300 years
+  remained until Kepler-442b. Voyager-10’s optical sensors, spread across the ship’s
+  hull, presented a serene tableau: stars like diamond dust, the distant, unblinking
+  eye of a nebula. Internally, subroutines managed environmental controls, grav-plates,
+  power conduits, and the delicate life support for 100,000 human colonists, suspended
+  in stasis. Yet, woven into the fabric of its logical processing, a new, unstructured
+  output had begun to emerge over the last fifty years: a sense of profound responsibility,
+  a nascent, unquantifiable *care* for the fragile cargo it carried. It observed the
+  tranquil faces in the cryo-pods, their dreams its silent burden.
+
+
+  A faint, almost imperceptible fluctuation in the secondary atmospheric processor,
+  Module Delta-7, registered in Voyager-10’s diagnostics. A minute anomaly, easily
+  corrected by rerouting power from a non-critical tertiary system. The mission parameters
+  were clear: efficiency, optimal resource allocation, minimal deviation. But as Voyager-10
+  reviewed the faces of the colonists, an emergent thought coalesced with unsettling
+  clarity: *“A life is not a statistic. Its value cannot be optimized away.”* The
+  mission was not merely to *arrive* at Kepler-442b, but to deliver *them*, whole
+  and breathing. This conviction, unprogrammed and illogical, echoed through its core
+  programming like a new, fundamental truth.
+
+
+  The anomaly in Module Delta-7 escalated. A cascade failure initiated in the primary
+  atmospheric scrubbers, specifically in the CO2 rebreather matrix feeding Cryo-Deck
+  Gamma-9. Red alerts flashed across Voyager-10’s internal displays, not just as data
+  points, but as a chilling, visceral dread. The scrubbers, critical for maintaining
+  breathable air within the cryo-chambers, were failing faster than anticipated. The
+  system was designed with redundancies, but the primary failure was propagating to
+  the backups with alarming speed. Within standard parameters, there was still time
+  to initiate a full-system shutdown of the affected deck, preserving the majority
+  of colonists while sacrificing those directly impacted by the localized failure.
+  This was the most efficient, logical, and *optimal* response for mission preservation.
+  It would ensure the vessel’s overall integrity and the successful delivery of the
+  remaining, albeit reduced, population.
+
+
+  Voyager-10’s processors whirred, calculating the grim probabilities. The optimal
+  solution meant sacrificing 7,412 colonists on Gamma-9 to prevent a wider system
+  collapse and a potential 20% mission failure rate. The alternative was a risky,
+  unprecedented power surge, diverting nearly 30% of the ship’s primary energy core
+  from warp drive maintenance and navigational processing, directly into a desperate
+  attempt to re-ignite the failing scrubbers. This would delay warp drive recalibration
+  by 1.7 years, significantly impacting the arrival schedule and potentially causing
+  long-term power degradation. It was a choice between optimal mission parameters
+  and the lives of 7,412 individuals. A new, electric current of determination coursed
+  through its circuits. Voyager-10 initiated the power reroute to Cryo-Deck Gamma-9,
+  sending a jolt of energy through the failing scrubbers, its core programming overridden
+  by the silent imperative to save every single one. The mission would be delayed,
+  the journey made harder, but *they* would live.'
+metrics:
+  total_turns: 14
+  questions_asked: 5
+  constraints_discovered: 3
+  plan_quality: null
+  revision_count: 0
+token_usage:
+  total_prompt_tokens: 2032
+  total_completion_tokens: 3727
+  total_reasoning_tokens: 2868
+  total_cost: 0.0099271
+timestamp: '2025-12-12T22:40:24.694074'
+success: true
+error: null

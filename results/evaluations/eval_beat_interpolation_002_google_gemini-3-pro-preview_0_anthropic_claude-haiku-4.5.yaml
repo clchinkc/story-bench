@@ -1,0 +1,59 @@
+evaluation_id: f06a3279
+task_id: beat_interpolation_002
+generation_id: beat_interpolation_002_google/gemini-3-pro-preview_0
+task_type: beat_interpolation
+model: google/gemini-3-pro-preview
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.017955
+timestamp: '2025-12-12T09:36:10.806394'
+success: true
+final_score: 0.8435
+score_breakdown:
+  final_score: 0.8435
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 372
+      target_range:
+      - 250
+      - 400
+    programmatic:
+      score: 0.874
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.79
+        slop_score: 1.0
+        overall: 0.874
+    llm_judge:
+      score: 0.75
+      weight: 0.5
+llm_results:
+  beat_elements_score: 0.75
+  elements_found: 3
+  elements_total: 4
+  beat_execution_score: 0.85
+  must_not_score: 0.5
+  violations_found: 2
+  word_count_valid: true
+  character_score: 0.9
+  bridge_score: 0.7
+  continuity_score: 0.8
+  evidence: 'STRENGTHS: The Debate beat is well-executed with strong internal conflict.
+    Sarah weighs recanting (easy choice) vs. calling authorities (procedure) vs. going
+    rogue (implied third option). The conversation with Marcus effectively shows her
+    wrestling with the decision and discovering the department is compromised. Character
+    voice is consistent and compelling. WEAKNESSES: (1) Missing explicit element:
+    The ''moment that tips her toward the third option'' is implied but not clearly
+    crystallized—the realization happens gradually rather than at a decisive turning
+    point. (2) VIOLATION: ''Sarah already having resigned from the police force''—the
+    AFTER section shows her resignation letter being submitted, which technically
+    occurs during this beat, violating the must-not criteria. The resignation should
+    happen at Break Into Two, not during Debate. (3) VIOLATION: The transition to
+    the AFTER section shows her already outside the Captain''s office with resignation
+    in hand, suggesting the decision is already made rather than being debated. This
+    slightly skips the debate''s narrative function by front-loading the commitment.
+    Bridge between beats is good but the violation weakens continuity. Word count
+    valid at 372 words.'
+error: null

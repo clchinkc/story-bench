@@ -1,0 +1,69 @@
+evaluation_id: 37404b21
+task_id: multi_beat_synthesis_003
+generation_id: multi_beat_synthesis_003_meta-llama/llama-4-maverick_0
+task_type: multi_beat_synthesis
+model: meta-llama/llama-4-maverick
+sample_index: 0
+evaluator_model: openai/gpt-5-mini
+evaluator_cost: 0.0024107499999999997
+timestamp: '2025-12-12T14:19:57.501507'
+success: true
+final_score: 0.40154220175876837
+score_breakdown:
+  final_score: 0.4015
+  components:
+    word_count:
+      score: 0.0175
+      weight: 0.25
+      actual: 444
+      target_range:
+      - 700
+      - 1000
+    programmatic:
+      score: 0.802
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.67
+        slop_score: 1.0
+        overall: 0.802
+    llm_judge:
+      score: 0.3933
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 8
+  beat_reqs_total: 15
+  beat_requirements_score: 0.5333333333333333
+  cross_beat_satisfied: 0
+  cross_beat_total: 4
+  cross_beat_score: 0.0
+  word_count_valid: false
+  context_score: 0.8
+  coherence_score: 0.6
+  failed_items:
+  - 'Beat 1: Lack of clear moments of humor/dry wit—tone is stylish but not playful/confidently
+    humorous as required.'
+  - 'Beat 2: No false victory or clear midpoint ''win'' is shown; the narrative skips
+    a distinct false victory beat.'
+  - 'Beat 3: Security does not actually close in on the crew—no escalating security
+    pressure described.'
+  - 'Beat 3: No team friction or trust issues surface; crew remains cohesive without
+    conflict.'
+  - 'Beat 3: No crew member is shown compromised or in explicit danger.'
+  - 'Beat 3: Miri is not forced to choose between the painting and saving/revenge
+    for someone—no decisive dilemma.'
+  - 'Beat 3: The walls do not literally/figuratively close in—the sense of entrapment/genuine
+    danger is underdeveloped.'
+  - 'Cross-beat (Chekhov''s Gun): A setup (e.g., Lena hacking or a planned exit route)
+    established in Fun & Games is not paid off or used critically in Bad Guys Close
+    In.'
+  - 'Cross-beat (Tonal Escalation): Tone does not clearly shift across the three beats
+    from playful confidence to shaken stakes to gallows humor; Beat 3 lacks the required
+    tonal gallows-humor escalation.'
+  - 'Cross-beat (Mentor Presence): Mentor is revealed late but is not shown as background
+    in Beat 1 and does not exhibit a clear, increasing presence across all three beats.'
+  - 'Cross-beat (Team Dynamics): No crew member has a clear, consistent arc that affects
+    the plot across all three beats.'
+  - 'Context omission: Miri''s full backstory (wrongful accusation, blacklisting,
+    moral rationale for stealing) is not referenced—context is present but incomplete.'
+  - 'Word count: Generated output is ~444 words, outside requested 700-1000 range.'
+error: null

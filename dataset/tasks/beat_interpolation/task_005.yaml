@@ -1,0 +1,107 @@
+# Beat Interpolation Task 005 - Three-Act Structure
+# Missing: "Act 2 Midpoint" between "End of Act 1" and "End of Act 2"
+
+task_id: "beat_interpolation_005"
+task_type: "beat_interpolation"
+theory: "Three-Act Structure"
+difficulty: "hard"
+
+metadata:
+  genre: "romance"
+  created_date: "2024-12-06"
+  author: "benchmark_creator"
+  version: "1.0"
+
+beat_before:
+  name: "End of Act 1 - Point of No Return"
+  content: |
+    Maya signed the contract with a hand that barely trembled. Six months as personal
+    chef to Alejandro Vega—retired soccer legend, notorious recluse, and according to
+    every tabloid in existence, the most difficult man in Spain.
+
+    "You understand the terms?" His assistant, a severe woman named Lucia, collected
+    the papers. "No photography. No interviews. No contact with press. Breach of
+    confidentiality carries a penalty of—"
+
+    "Two million euros. I read it." Maya met Lucia's gaze steadily. "I'm here to cook,
+    not to sell stories."
+
+    What she didn't say: she was also here to save her grandmother's restaurant. The
+    salary was three times market rate. Enough to clear the debts, repair the kitchen,
+    maybe even expand. All she had to do was survive six months with a man who had
+    driven away seven previous chefs in two years.
+
+    The car that took her to the estate wound through olive groves and past ancient
+    stone walls. And when she finally saw the villa—a sprawling masterpiece of terracotta
+    and white stone overlooking the Mediterranean—she allowed herself one moment of pure,
+    terrified hope.
+
+    Six months. She could do anything for six months.
+
+beat_after:
+  name: "End of Act 2 - All Is Lost"
+  content: |
+    The photograph was everywhere. Every website, every gossip show, every corner of
+    the internet: Maya and Alejandro, silhouetted against the sunset on his private
+    balcony, his forehead pressed to hers in a moment of unmistakable intimacy.
+
+    "I didn't take it," she said for the hundredth time, standing in his study while
+    he stared out the window with his back to her. "I would never—"
+
+    "It doesn't matter who took it." His voice was flat. "You know what they'll say.
+    The poor chef seducing the rich recluse. The contract violation alone—"
+
+    "Alejandro, please—"
+
+    "My lawyers will ensure you're not sued. You can keep the salary you've earned."
+    He finally turned, and the coldness in his eyes was worse than anger. "But you
+    need to leave. Today."
+
+    "And if I don't want to go?"
+
+    "Then I'll have security escort you out." He walked past her toward the door,
+    pausing just long enough to say, "I actually believed you were different. That
+    was my mistake."
+
+    The door closed with a click of terrible finality.
+
+    Maya stood alone in the study, watching her grandmother's restaurant and everything
+    else she'd started to hope for crumble to dust around her.
+
+missing_beat:
+  name: "Act 2 Midpoint - Point of Commitment"
+  position: "between End of Act 1 and End of Act 2"
+  definition: "In Three-Act Structure, the Midpoint is a pivotal reversal or revelation that raises stakes and shifts the protagonist from reactive to proactive. It represents a point of no return in their emotional journey—they commit fully, and the relationship/goal becomes about more than the original motivation."
+
+requirements:
+  word_count: [300, 450]
+  must_include:
+    - "Maya discovers something vulnerable about Alejandro"
+    - "Their relationship shifts from professional to personal"
+    - "A shared moment that creates genuine connection"
+    - "Maya makes a choice that deepens her commitment beyond the contract"
+  must_not_include:
+    - "Maya and Alejandro already being in love or overly intimate (skips the build)"
+    - "Maya deciding to leave or breach the contract"
+    - "The photograph being taken during this scene (that comes later)"
+    - "Alejandro remaining cold and closed off throughout (no wall-lowering)"
+  character_voice: "Third-person limited, warm and observant, romantic tension building"
+  setting_continuity: true
+
+generator_prompt_additions: |
+  The Midpoint should show why Maya and Alejandro's connection is real, not just convenient.
+  Include a scene involving food/cooking as the catalyst for emotional intimacy.
+  Show Alejandro beginning to let down his walls.
+  Maya should choose to stay for reasons beyond money.
+
+evaluation_criteria:
+  - criterion: "beat_elements_present"
+    description: "All four must_include elements are present in the generated text"
+  - criterion: "word_count_valid"
+    description: "Output is between 300-450 words"
+  - criterion: "character_consistent"
+    description: "Maya's voice is warm, observant, with romantic tension"
+  - criterion: "logical_bridge"
+    description: "Scene explains how they went from professional distance to the intimate moment in the photo"
+  - criterion: "setting_continuity"
+    description: "No contradictions with established details (Spanish villa, chef contract, grandmother's restaurant)"

@@ -1,0 +1,63 @@
+evaluation_id: 529e22c1
+task_id: beat_revision_003
+generation_id: beat_revision_003_anthropic/claude-haiku-4.5_0
+task_type: beat_revision
+model: anthropic/claude-haiku-4.5
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.02061
+timestamp: '2025-12-13T13:59:40.065413'
+success: true
+final_score: 0.9715
+score_breakdown:
+  final_score: 0.9715
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 276
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.946
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.91
+        slop_score: 1.0
+        overall: 0.946
+    llm_judge:
+      score: 0.97
+      weight: 0.5
+llm_results:
+  diagnosis_score: 1.0
+  flaw_correction_score: 1.0
+  beat_satisfaction_score: 0.95
+  preservation_score: 1.0
+  preserved_count: 4
+  preserved_total: 4
+  required_preserved_score: 1.0
+  required_preserved_count: 4
+  required_preserved_total: 4
+  minimal_change_score: 0.85
+  word_count_valid: true
+  quality_score: 0.95
+  evidence: 'The model correctly diagnosed the actual flaw: Sophie showed no transformation
+    and immediately reverted to old workaholic patterns, making the journey meaningless.
+    The revision fixes this precisely by: (1) inserting a pause moment where Sophie
+    catches herself spiraling into panic, (2) demonstrating a specific insight from
+    meditation (observing thoughts rather than being consumed by them), (3) showing
+    changed behavior (phone face-down, delaying response to work), (4) providing explicit
+    contrast (''She said it calmly, factually—like she was noticing a thought rather
+    than living it''), and (5) having the mother notice the change (''surprised'').
+    All 4 required phrases preserved exactly: ''Sophie''s flight landed at O''Hare'',
+    ''How was Thailand? her mother asked'', ''The familiar Chicago skyline appeared'',
+    ''It''s good to be home, she said''. Changes were surgical: the original text
+    structure remains intact with insertions at key moments (the pause, the phone-down
+    action, the internal reflection, the mother''s reaction). No elements removed
+    or restructured. The beat definition is satisfied—Sophie returns to her ordinary
+    world but sees it through transformed eyes, makes choices her pre-journey self
+    wouldn''t make, and demonstrates integration of her learning. Minor: the ending
+    reflection is slightly longer than original but necessary for demonstrating change.
+    No new errors introduced; writing quality maintained at professional level.'
+error: null

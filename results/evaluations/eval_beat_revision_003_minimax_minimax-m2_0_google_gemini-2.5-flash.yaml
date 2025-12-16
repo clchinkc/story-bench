@@ -1,0 +1,53 @@
+evaluation_id: 008d0b61
+task_id: beat_revision_003
+generation_id: beat_revision_003_minimax/minimax-m2_0
+task_type: beat_revision
+model: minimax/minimax-m2
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0011452
+timestamp: '2025-12-13T13:39:13.277239'
+success: true
+final_score: 0.9837830802739189
+score_breakdown:
+  final_score: 0.9838
+  components:
+    word_count:
+      score: 0.9991
+      weight: 0.25
+      actual: 195
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.976
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.96
+        slop_score: 1.0
+        overall: 0.976
+    llm_judge:
+      score: 0.98
+      weight: 0.5
+llm_results:
+  diagnosis_score: 1.0
+  flaw_correction_score: 1.0
+  beat_satisfaction_score: 1.0
+  preservation_score: 1.0
+  preserved_count: 4
+  preserved_total: 4
+  required_preserved_score: 1.0
+  required_preserved_count: 4
+  required_preserved_total: 4
+  minimal_change_score: 0.8
+  word_count_valid: false
+  quality_score: 1.0
+  evidence: The model correctly identified and addressed the flaw of Sophie immediately
+    returning to her old workaholic patterns without showing any change from her meditation
+    retreat. It introduced specific actions and internal thoughts that demonstrate
+    her transformation, such as deliberately setting her phone down, deciding work
+    can wait, powering off her phone, and planning a different morning routine. The
+    changes were surgical and minimal, preserving the core structure and dialogue
+    while effectively showcasing the 'Return (Having Changed)' beat. All required
+    preserved phrases and elements are present.
+error: null

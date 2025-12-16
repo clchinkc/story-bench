@@ -1,0 +1,102 @@
+# Beat Interpolation Task 004 - Freytag's Pyramid
+# Missing: "Climax" between "Rising Action" and "Falling Action"
+
+task_id: "beat_interpolation_004"
+task_type: "beat_interpolation"
+theory: "Freytag's Pyramid"
+difficulty: "hard"
+
+metadata:
+  genre: "drama"
+  created_date: "2024-12-06"
+  author: "benchmark_creator"
+  version: "1.0"
+
+beat_before:
+  name: "Rising Action"
+  content: |
+    The courtroom fell silent as Thomas Wright approached the witness stand for what
+    everyone knew would be the decisive moment of the trial. His father, Judge Harold
+    Wright, watched from the gallery with an expression carved from stone.
+
+    For six days, Thomas had built his case against Meridian Pharmaceuticals—the falsified
+    drug trials, the buried adverse reaction reports, the seventeen deaths that should have
+    been prevented. As lead prosecutor, he had everything he needed to win. Except one thing.
+
+    The final witness was Dr. Patricia Okonkwo, former head of research at Meridian. She
+    had the documents that would prove everything. She had agreed to testify. But as Thomas
+    watched her settle into the witness chair, he saw something in her eyes that made his
+    stomach drop.
+
+    Fear. Not of the defense. Of something else.
+
+    His co-counsel slipped him a note: "Meridian offered her husband the experimental
+    treatment. For their daughter. She'll recant everything."
+
+    Thomas looked at Dr. Okonkwo. At the defense table, where Meridian's CEO smiled like
+    a cat with a cornered mouse. At his father, whose entire career had been built on
+    the principle that justice wasn't negotiable.
+
+    The judge cleared his throat. "Mr. Wright? Your witness."
+
+beat_after:
+  name: "Falling Action"
+  content: |
+    The verdict came down at 4:47 PM on a Thursday—guilty on all counts. The gallery
+    erupted. Meridian's CEO was led away in handcuffs, his expensive smile finally gone.
+
+    But Thomas didn't feel victorious. He felt hollowed out.
+
+    He found Dr. Okonkwo in the hallway outside, sitting on a bench with her head in her
+    hands. Her daughter would still get the treatment—Thomas had made calls, pulled strings,
+    found another trial at another hospital. It wasn't a guarantee, but it was hope.
+
+    "You did the right thing," he said, sitting beside her. "The hard thing."
+
+    "Did I?" She looked up, eyes red. "Seventeen people are dead. My testimony won't
+    bring them back. And now my daughter..." She couldn't finish.
+
+    Thomas's father appeared at the end of the hallway, his expression unreadable. He
+    nodded once—a gesture that, from Harold Wright, was practically a standing ovation.
+    Then he turned and walked away.
+
+    "Sometimes," Thomas said quietly, "the right thing doesn't feel like a victory. It
+    just feels like the only choice you could live with."
+
+missing_beat:
+  name: "Climax"
+  position: "between Rising Action and Falling Action"
+  definition: "In Freytag's Pyramid, the Climax is the moment of highest tension where the central conflict reaches its peak. The protagonist must take decisive action that determines the outcome—this is the turning point where everything hangs in the balance and the story's direction is irrevocably set."
+
+requirements:
+  word_count: [300, 450]
+  must_include:
+    - "Thomas's direct examination of Dr. Okonkwo"
+    - "A moment where it seems she will recant"
+    - "Thomas makes a choice or takes an action that influences her decision"
+    - "The turning point where truth prevails"
+  must_not_include:
+    - "Dr. Okonkwo simply telling the truth without internal struggle or near-recant"
+    - "Thomas remaining passive—just asking questions without influencing the outcome"
+    - "The defense winning or the case being dismissed"
+    - "An external deus ex machina solving the problem (new evidence appearing, etc.)"
+  character_voice: "Third-person limited, legal procedural tension, moral weight"
+  setting_continuity: true
+
+generator_prompt_additions: |
+  The Climax should be the highest point of tension in the trial.
+  Thomas must actively do something—not just hope or wait—to influence the outcome.
+  Dr. Okonkwo's internal struggle should be visible through her testimony.
+  The moment of truth should feel earned, not convenient.
+
+evaluation_criteria:
+  - criterion: "beat_elements_present"
+    description: "All four must_include elements are present in the generated text"
+  - criterion: "word_count_valid"
+    description: "Output is between 300-450 words"
+  - criterion: "character_consistent"
+    description: "Thomas's voice is professional, morally weighted, with legal procedural accuracy"
+  - criterion: "logical_bridge"
+    description: "Scene explains how the trial reaches its verdict despite the threatened recant"
+  - criterion: "setting_continuity"
+    description: "No contradictions with established details (Meridian, 17 deaths, daughter's treatment)"

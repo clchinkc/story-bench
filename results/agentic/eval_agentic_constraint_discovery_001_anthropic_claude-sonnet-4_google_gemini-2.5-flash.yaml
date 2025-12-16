@@ -1,0 +1,48 @@
+evaluation_id: 297e0ece
+task_id: agentic_constraint_discovery_001
+generation_id: 301d9ebd
+agentic_type: constraint_discovery
+model: anthropic/claude-sonnet-4
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0015391
+timestamp: '2025-12-16T11:48:39.742604'
+success: true
+process_scores:
+  discovery_efficiency: 0.6
+  question_quality: 0.8
+  question_coverage: 0.6
+output_scores:
+  constraint_satisfaction: 0.6
+  beat_execution: 0.8
+  narrative_quality: 0.7
+final_score: 0.6866666666666665
+llm_results:
+  discovery_efficiency: 0.6
+  constraints_discoverable: 3
+  constraints_total: 5
+  question_quality: 0.8
+  question_coverage: 0.6
+  constraint_satisfaction: 0.6
+  beat_execution: 0.8
+  narrative_quality: 0.7
+  evidence: "Discovery Efficiency: The questions successfully discovered 3 out of\
+    \ 5 hidden constraints: 'protagonist cannot use magic directly' (implied by Q1's\
+    \ 'related to metalworking or enchanting weapons' and the story's focus on smithing),\
+    \ 'three-day time limit' (Q5), and 'victory requires reforging a broken ancestral\
+    \ sword' (Q3, though the story makes it a new sword, not ancestral). The mentor\
+    \ dying and father being a failed hero were not discoverable. \nQuestion Quality:\
+    \ Questions were generally well-formed and targeted, leading to clear YES/NO answers.\
+    \ Q1 was a bit broad but still effective. \nQuestion Coverage: Questions focused\
+    \ heavily on the magical item/weapon and time limit, missing opportunities to\
+    \ explore character backstories or specific plot points like the mentor's fate.\
+    \ \nConstraint Satisfaction: The story incorporates the time limit (48 hours,\
+    \ then 12 hours), the protagonist's 'magical ability related to metalworking'\
+    \ (golden veins, channeling blood), and the need to forge a specific magical item\
+    \ (Sunsteel Blade). It does not incorporate the mentor dying, the father's past,\
+    \ or the sword being ancestral/broken. The 'darkness' is a blight, not sentient,\
+    \ aligning with Q2's NO answer. \nBeat Execution: The story clearly executes 'The\
+    \ Call', 'Crossing the Threshold', and 'The Ordeal'. \nNarrative Quality: The\
+    \ story is coherent and engaging, with a clear arc. The pacing is good, especially\
+    \ with the escalating time pressure. The prose is descriptive without being overly\
+    \ flowery. The resolution feels earned within the story's context."
+error: null

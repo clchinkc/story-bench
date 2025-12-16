@@ -1,0 +1,62 @@
+evaluation_id: ba512113
+task_id: beat_interpolation_001
+generation_id: beat_interpolation_001_openai/gpt-5.1_0
+task_type: beat_interpolation
+model: openai/gpt-5.1
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.02134
+timestamp: '2025-12-12T13:37:08.400135'
+success: true
+final_score: 0.6928324251633071
+score_breakdown:
+  final_score: 0.6928
+  components:
+    word_count:
+      score: 0.0001
+      weight: 0.25
+      actual: 572
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.7713
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.63
+        slop_score: 0.9832
+        overall: 0.7713
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: false
+  word_count: 572
+  word_count_range: 200-350
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  overall_score: 0.8
+  evidence: 'STRENGTHS: All four required elements present and well-executed: (1)
+    Marcus introduced as established mentor figure with credibility (''grey at the
+    temples'', owns curiosity shop, knows about Thornwood); (2) Practical wisdom provided
+    (''forest tests intentions, not abilities'', ''Trust what you know'') plus tangible
+    tools (satchel, compass); (3) Elena''s doubt shifts convincingly from ''I can''t
+    do this'' to reluctant acceptance (''Fear hadn''t lessened, but it had shifted'');
+    (4) Librarian skills reframed as asset (''navigate labyrinths of information'',
+    ''see patterns'', ''ask better questions''). All must-not items avoided: Elena
+    remains doubtful/reluctant, Marcus explicitly refuses to accompany her, setting
+    is kitchen/shop (not forest), no magical powers discovered. Character voice consistent—Elena''s
+    internal conflict and practical nature maintained throughout. Bridge between beats
+    seamless: BEFORE shows refusal, GENERATED shows mentor encounter shifting perspective,
+    AFTER shows threshold crossing. Continuity perfect: same map, same satchel, same
+    compass, same emotional arc. DEDUCTION: Word count (572) significantly exceeds
+    350-word maximum by 63%, violating explicit constraint. This is a material structural
+    violation despite excellent narrative quality.'
+error: null

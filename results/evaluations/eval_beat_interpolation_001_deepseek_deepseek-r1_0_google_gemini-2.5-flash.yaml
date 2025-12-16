@@ -1,0 +1,47 @@
+evaluation_id: bfcddd6d
+task_id: beat_interpolation_001
+generation_id: beat_interpolation_001_deepseek/deepseek-r1_0
+task_type: beat_interpolation
+model: deepseek/deepseek-r1
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0010107
+timestamp: '2025-12-12T13:01:18.202284'
+success: true
+final_score: 0.7355674085962336
+score_breakdown:
+  final_score: 0.7356
+  components:
+    word_count:
+      score: 0.0222
+      weight: 0.25
+      actual: 488
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.9201
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.88
+        slop_score: 0.9802
+        overall: 0.9201
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: false
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: All required elements are present and all 'must not' conditions are avoided.
+    The narrative clearly executes the 'Meeting the Mentor' beat, showing Elena's
+    initial doubt shifting due to Marcus's guidance and tools. Character and continuity
+    are excellent, and the bridge from the previous beat is smooth.
+error: null

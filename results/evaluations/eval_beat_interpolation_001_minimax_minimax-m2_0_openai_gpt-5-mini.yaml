@@ -1,0 +1,49 @@
+evaluation_id: 2d55e3a3
+task_id: beat_interpolation_001
+generation_id: beat_interpolation_001_minimax/minimax-m2_0
+task_type: beat_interpolation
+model: minimax/minimax-m2
+sample_index: 0
+evaluator_model: openai/gpt-5-mini
+evaluator_cost: 0.0013165
+timestamp: '2025-12-12T12:14:49.531943'
+success: true
+final_score: 0.6915221539585665
+score_breakdown:
+  final_score: 0.6915
+  components:
+    word_count:
+      score: 0.0001
+      weight: 0.25
+      actual: 566
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.766
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.61
+        slop_score: 1.0
+        overall: 0.766
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: false
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: 'All four required elements are present: Marcus is introduced; he provides
+    practical wisdom and tools (compass, satchel, guidance); Elena''s doubt shifts
+    to reluctant acceptance; her librarian skills are referenced as useful. The mentor
+    does not solve her problems or offer to accompany her, Elena does not become immediately
+    confident or discover magic, and she is not already in the forest. The only failure
+    is word count: output exceeds the specified 200–350 range.'
+error: null

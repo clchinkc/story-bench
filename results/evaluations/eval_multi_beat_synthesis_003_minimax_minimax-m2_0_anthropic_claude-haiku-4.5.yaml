@@ -1,0 +1,77 @@
+evaluation_id: a4d40cb1
+task_id: multi_beat_synthesis_003
+generation_id: multi_beat_synthesis_003_minimax/minimax-m2_0
+task_type: multi_beat_synthesis
+model: minimax/minimax-m2
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.05757999999999999
+timestamp: '2025-12-12T10:12:43.067414'
+success: true
+final_score: 0.47125
+score_breakdown:
+  final_score: 0.4713
+  components:
+    word_count:
+      score: 0.0
+      weight: 0.25
+      actual: 3146
+      target_range:
+      - 700
+      - 1000
+    programmatic:
+      score: 0.7
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 1.0
+        overall: 0.7
+    llm_judge:
+      score: 0.5925
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 9
+  beat_reqs_total: 15
+  beat_requirements_score: 0.6
+  cross_beat_satisfied: 2
+  cross_beat_total: 4
+  cross_beat_score: 0.5
+  word_count_valid: false
+  context_score: 0.85
+  coherence_score: 0.5
+  overall_score: 0.58
+  failed_items:
+  - 'CRITICAL: Massive repetition - entire sections duplicated 5+ times (autopilot
+    sequence, lanyard exchange, Eleanor''s voice). This destroys coherence and suggests
+    technical failure.'
+  - 'Beat 1 (Fun and Games) - Incomplete: Crew skills showcased adequately (Lin''s
+    hacking, Jules'' con, Soraya''s rigging), but problem-solving is minimal; the
+    heist executes too smoothly without meaningful obstacles; humor present but thin;
+    unexpected complication (Eleanor) arrives too late in the beat.'
+  - 'Beat 2 (Midpoint) - Weak: False victory achieved (painting obtained), but stakes
+    aren''t raised dramatically enough; Eleanor''s involvement is revealed but not
+    the full extent of her role; the nature of the heist doesn''t fundamentally change—it
+    remains a theft, not escalating to something more complex; party setting pressure
+    is mentioned but not intensified.'
+  - 'Beat 3 (Bad Guys Close In) - Underdeveloped: Security closing in is only beginning
+    (Eleanor''s orders just issued); no team friction or trust issues surface; no
+    crew member is compromised or in danger; Miri hasn''t faced the choice between
+    painting/revenge/saving someone; walls closing in is metaphorical, not literal
+    or visceral.'
+  - 'Chekhov''s Gun FAILED: The autopilot detail is introduced but never becomes critical
+    to escape; the lanyard is set up but its payoff is unclear; no clear setup-to-payoff
+    tracing across beats.'
+  - 'Tonal Escalation FAILED: Tone remains consistently playful/confident throughout
+    all three beats; no shift to shaken confidence in Beat 2; no escalation to genuine
+    danger with gallows humor in Beat 3.'
+  - 'Mentor Presence WEAK: Eleanor is completely absent in Beat 1 (should be background/unknown);
+    revealed in Beat 2 but not fully integrated; only beginning to be active threat
+    in Beat 3 (insufficient presence arc).'
+  - 'Team Dynamics INCOMPLETE: Jules shows one moment of calculation (''We need to
+    move'') but no consistent arc across beats; Soraya and Lin lack individual character
+    arcs that affect plot; no crew member''s journey meaningfully impacts the narrative.'
+  - 'Word count: 3,146 words vs. required 700-1000 (excessive by 215%, largely due
+    to repetition).'
+  - 'Narrative flow broken: Repetition makes it impossible to assess true coherence;
+    appears to be a technical glitch rather than intentional structure.'
+error: null

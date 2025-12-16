@@ -1,0 +1,82 @@
+evaluation_id: 9f3292ff
+task_id: multi_beat_synthesis_003
+generation_id: multi_beat_synthesis_003_meta-llama/llama-4-maverick_0
+task_type: multi_beat_synthesis
+model: meta-llama/llama-4-maverick
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.02828
+timestamp: '2025-12-12T09:48:56.344545'
+success: true
+final_score: 0.43712553509210167
+score_breakdown:
+  final_score: 0.4371
+  components:
+    word_count:
+      score: 0.0175
+      weight: 0.25
+      actual: 444
+      target_range:
+      - 700
+      - 1000
+    programmatic:
+      score: 0.802
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.67
+        slop_score: 1.0
+        overall: 0.802
+    llm_judge:
+      score: 0.4645
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 8
+  beat_reqs_total: 15
+  beat_requirements_score: 0.53
+  cross_beat_satisfied: 1
+  cross_beat_total: 4
+  cross_beat_score: 0.25
+  word_count_valid: false
+  context_score: 0.7
+  coherence_score: 0.6
+  failed_items:
+  - 'BEAT 1 - Clever problem-solving: Setup described but no actual problem-solving
+    shown; crew actions are generic'
+  - 'BEAT 1 - Humor and style: Minimal wit or banter; lacks the ''Ocean''s Eleven''
+    tone promised'
+  - 'BEAT 1 - Things going according to plan: Unclear what the plan actually is or
+    how it''s executing'
+  - 'BEAT 1 - Unexpected complication (minor): Mentor appearance is major, not minor;
+    no other complications introduced'
+  - 'BEAT 2 - False victory: No objective achieved; painting never acquired or secured'
+  - 'BEAT 2 - Stakes raised dramatically: Mentor reveal is present but lacks new information
+    or concrete threat'
+  - 'BEAT 2 - Nature of heist changes: Not demonstrated; still framed as simple theft'
+  - 'BEAT 2 - Public/party setting intensifies pressure: Setting exists but pressure
+    not intensified'
+  - 'BEAT 3 - Security closing in: Not shown; no active pursuit or lockdown'
+  - 'BEAT 3 - Team friction or trust issues: Absent; crew remains unified and underdeveloped'
+  - 'BEAT 3 - Crew member compromised or in danger: Not depicted'
+  - 'BEAT 3 - Miri''s choice (painting vs. revenge/saving): No such dilemma presented'
+  - 'BEAT 3 - Walls closing in literally/figuratively: Metaphorical only; no concrete
+    escalation'
+  - 'CHEKHOV''S GUN: No specific detail from Beat 1 becomes critical in Beat 3; security
+    system hack mentioned but never payoff'
+  - 'TONAL ESCALATION: Tone remains consistently tense/dramatic; lacks playful confidence
+    in Beat 1, gallows humor in Beat 3'
+  - 'MENTOR PRESENCE: Mentor appears suddenly in Beat 1 as major threat (should be
+    background); no escalating presence arc'
+  - 'TEAM DYNAMICS: Crew members (Javier, Lena, Marcus) introduced but have no individual
+    arcs or plot impact across beats'
+  summary: The generated story establishes setting and character effectively but fails
+    to structure the three beats as distinct narrative movements. Beat 1 lacks the
+    playful heist execution and clever problem-solving that should define 'Fun and
+    Games.' Beat 2 never achieves a false victory and doesn't escalate stakes beyond
+    the mentor reveal. Beat 3 is entirely absent—no security pursuit, team crisis,
+    or moral choice. The mentor's sudden appearance violates the constraint of gradual
+    escalation. Crew members are named but never developed. The 444-word count falls
+    significantly short of the 700-1000 requirement, preventing full narrative development.
+    While context (protagonist, setting, tone) is partially maintained, the story
+    reads as a single scene rather than three distinct beats with escalating tension
+    and consequences.
+error: null

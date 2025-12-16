@@ -1,0 +1,84 @@
+evaluation_id: '52979892'
+task_id: constrained_continuation_003
+generation_id: constrained_continuation_003_deepseek/deepseek-v3.2_0
+task_type: constrained_continuation
+model: deepseek/deepseek-v3.2
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.027469999999999998
+timestamp: '2025-12-12T10:52:42.238975'
+success: true
+final_score: 0.9049915551212147
+score_breakdown:
+  final_score: 0.905
+  components:
+    word_count:
+      score: 0.7827
+      weight: 0.25
+      actual: 508
+      target_range:
+      - 550
+      - 750
+    programmatic:
+      score: 0.8523
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.76
+        slop_score: 0.9907
+        overall: 0.8523
+    llm_judge:
+      score: 0.9925
+      weight: 0.5
+llm_results:
+  beats_present: 3
+  beats_total: 3
+  beats_score: 1.0
+  must_include_present: 6
+  must_include_total: 6
+  must_include_score: 1.0
+  must_not_avoided: 4
+  must_not_total: 4
+  must_not_score: 1.0
+  word_count_valid: false
+  word_count: 508
+  word_count_range: 550-750
+  tone_score: 0.95
+  ending_score: 1.0
+  failed_constraints:
+  - word_count_508_below_minimum_550
+  analysis:
+    beats_analysis: 'All three required beats are present and well-executed: SEARCH
+      (Jin seeking relevance and belonging in the Collective, struggling with negotiation
+      and immediate priorities vs. grand ideals); FIND (discovery of the complete
+      dataset revealing the true reason for suppression—Lanthanum-9 and potential
+      resource war); TAKE (Jin accepts the Pragmatists'' deal, gaining a broadcast
+      platform but compromising his original mission by endorsing separatism).'
+    must_include_analysis: 1) Jin navigating Collective politics—excellently shown
+      through Kael's guidance and faction dynamics; 2) Mentor figure—Kael serves this
+      role perfectly, offering pragmatic truths; 3) Unexpected discovery—the revelation
+      that suppression was justified by preventing resource war, not just profit;
+      4) Finding what he thinks he wants—the broadcast platform and voice; 5) Action
+      with cost/consequence—accepting the Pragmatists' deal; 6) Moral compromise—framing
+      Earth's tragedy as inevitable and abandoning it rhetorically.
+    must_not_analysis: 1) Easy integration avoided—Jin explicitly struggles for relevance
+      and negotiation; 2) No Earth family contact—successfully avoided; 3) No violence/weapons—successfully
+      avoided; 4) Conspiracy unresolved—the plot remains open, with only partial understanding
+      gained.
+    tone_analysis: Contemplative and politically charged tone is maintained throughout.
+      Personal stakes are evident (Jin's exile, his moral crisis). The prose is introspective
+      and weighted with ethical complexity. Minor deduction only for occasional moments
+      that could be slightly more reflective, but overall excellent calibration.
+    ending_analysis: Perfect execution of 'Take' ending. Jin has gained a platform
+      and voice (something) but paid with moral compromise and purpose entanglement
+      (price). The final image of 'ash in his mouth' and 'forever entangled with a
+      colder, harder hope' crystallizes the cost. Ends precisely at the Take beat
+      without resolution.
+    critical_issue: Word count is 508, falling 42 words short of the 550-word minimum.
+      This is a clear constraint violation, though the content quality is exceptional.
+  overall_assessment: Exceptional storytelling with perfect beat execution and all
+    required elements seamlessly integrated. The narrative voice is sophisticated,
+    the moral dilemma is genuinely complex, and the ending lands with appropriate
+    weight. The sole failure is the word count shortfall, which is a technical constraint
+    violation despite the quality of the work.
+  final_score: 0.85
+error: null

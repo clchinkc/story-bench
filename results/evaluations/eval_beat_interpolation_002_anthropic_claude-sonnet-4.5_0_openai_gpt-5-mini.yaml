@@ -1,0 +1,53 @@
+evaluation_id: d0c8b32a
+task_id: beat_interpolation_002
+generation_id: beat_interpolation_002_anthropic/claude-sonnet-4.5_0
+task_type: beat_interpolation
+model: anthropic/claude-sonnet-4.5
+sample_index: 0
+evaluator_model: openai/gpt-5-mini
+evaluator_cost: 0.0013650000000000001
+timestamp: '2025-12-12T12:19:14.493838'
+success: true
+final_score: 0.982
+score_breakdown:
+  final_score: 0.982
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 342
+      target_range:
+      - 250
+      - 400
+    programmatic:
+      score: 0.928
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.88
+        slop_score: 1.0
+        overall: 0.928
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: true
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: 'All four required elements are present: (1) Sarah explicitly considers
+    recanting and its consequences; (2) she considers official channels (Marcus recommends
+    protective detail/FBI) and rejects them; (3) the internal duty-vs-family conflict
+    is articulated (''I can''t testify... I can''t recant...''); (4) a pivotal conversation
+    with Marcus crystallizes her conclusion and leads to her planning an exit strategy
+    toward going rogue. None of the must-not items occur (no immediate rogue decision
+    at the start, no one else makes the choice, she has not already resigned, and
+    there is no direct confrontation with Marchetti). Character voice and continuity
+    are consistent and the scene effectively bridges the catalyst to the subsequent
+    Break Into Two by ending with her committed plan to leave the department.'
+error: null

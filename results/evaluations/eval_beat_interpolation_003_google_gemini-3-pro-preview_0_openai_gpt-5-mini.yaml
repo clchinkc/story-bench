@@ -1,0 +1,51 @@
+evaluation_id: 974daae4
+task_id: beat_interpolation_003
+generation_id: beat_interpolation_003_google/gemini-3-pro-preview_0
+task_type: beat_interpolation
+model: google/gemini-3-pro-preview
+sample_index: 0
+evaluator_model: openai/gpt-5-mini
+evaluator_cost: 0.001457
+timestamp: '2025-12-12T13:15:31.502594'
+success: true
+final_score: 0.9701843838717074
+score_breakdown:
+  final_score: 0.9702
+  components:
+    word_count:
+      score: 0.9077
+      weight: 0.25
+      actual: 422
+      target_range:
+      - 250
+      - 400
+    programmatic:
+      score: 0.988
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.98
+        slop_score: 1.0
+        overall: 0.988
+    llm_judge:
+      score: 0.9925
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: false
+  character_score: 1.0
+  bridge_score: 0.95
+  continuity_score: 1.0
+  evidence: 'All four required elements are present: exploration of multiple areas
+    (mess hall, Medical Bay, maintenance ladder/research level, approach to Lab Seven),
+    discovery of medical logs showing biometrics, encounters with shimmering/distortion
+    forms of the crew, and overcoming obstacles (manual override, climbing vibrating
+    ladder). No forbidden items appear (no immediate data-core discovery or explanations,
+    no departure, no prior knowledge). Word count is out of the requested range. Minor
+    deduction to bridge_score (0.95) for a slight abruptness in transition into the
+    research corridor/Lab Seven—otherwise the beat functions and continuity are solid.'
+error: null

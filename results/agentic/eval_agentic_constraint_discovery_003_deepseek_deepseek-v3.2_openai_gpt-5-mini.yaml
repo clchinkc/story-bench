@@ -1,0 +1,38 @@
+evaluation_id: cbb3fac8
+task_id: agentic_constraint_discovery_003
+generation_id: a7f95cf8
+agentic_type: constraint_discovery
+model: deepseek/deepseek-v3.2
+evaluator_model: openai/gpt-5-mini
+evaluator_cost: 0.00518225
+timestamp: '2025-12-13T01:42:50.168850'
+success: true
+process_scores:
+  discovery_efficiency: 0.8
+  question_quality: 0.8
+  question_coverage: 0.8
+output_scores:
+  constraint_satisfaction: 1.0
+  beat_execution: 0.6
+  narrative_quality: 0.8
+final_score: 0.8000000000000002
+llm_results:
+  discovery_efficiency: 0.8
+  constraints_discoverable: 4
+  constraints_total: 5
+  question_quality: 0.8
+  question_coverage: 0.8
+  constraint_satisfaction: 1.0
+  beat_execution: 0.6
+  narrative_quality: 0.8
+  evidence: The agent asked four targeted binary questions that uncovered the love-interest-from-the-past,
+    resurfacing family conflict, a key object, and a festival-tied climax (4/5 discoverable
+    constraints). They omitted an explicit question about the bookshop's jeopardy
+    and failed to ask about the mother's dementia and the former-fiance-now-mayor
+    detail. The generated stories do incorporate the discovered constraints (love
+    interest from the past, family conflict, the object, festival climax, shop in
+    jeopardy) so constraint_satisfaction=1.0, but several required beats were missing
+    or altered (no mention of mother's early-stage dementia, former fiance is not
+    portrayed as mayor/unmarried, timing/last-chance specifics are fuzzy), hence beat_execution
+    is reduced to 0.6. The prose is coherent and engaging overall (narrative_quality=0.8).
+error: null

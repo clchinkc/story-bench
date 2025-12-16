@@ -1,0 +1,63 @@
+evaluation_id: cde08019
+task_id: beat_interpolation_002
+generation_id: beat_interpolation_002_anthropic/claude-opus-4.5_0
+task_type: beat_interpolation
+model: anthropic/claude-opus-4.5
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.01925
+timestamp: '2025-12-12T02:00:26.143685'
+success: true
+final_score: 0.9424999999999999
+score_breakdown:
+  final_score: 0.9425
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 324
+      target_range:
+      - 250
+      - 400
+    programmatic:
+      score: 1.0
+      weight: 0.25
+      breakdown:
+        repetition_score: 1.0
+        slop_score: 1.0
+        overall: 1.0
+    llm_judge:
+      score: 0.885
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 0.5
+  violations_found: 2
+  word_count_valid: true
+  character_score: 1.0
+  bridge_score: 0.8
+  continuity_score: 0.9
+  evidence: 'STRENGTHS: All 4 required elements present and well-executed. (1) Recanting
+    option explicitly considered with moral weight (''families of his seven confirmed
+    victims''). (2) Official channels thoroughly debated through Marcus conversation
+    (''FBI has resources...jurisdictional nightmare''). (3) Internal conflict powerfully
+    rendered through physical reaction and hesitation (''couldn''t quite discard it'').
+    (4) The warehouse recognition moment serves as the tipping point toward the third
+    option. Beat function executed perfectly—Sarah wrestles with genuine alternatives
+    before committing. Character voice remains consistent and authentic throughout.
+    VIOLATIONS: (1) Sarah has already decided to resign and is executing it (''resignation
+    letter in one hand and her badge in the other'') in the AFTER section, which violates
+    ''Sarah already having resigned from the police force'' during the Debate beat
+    itself. (2) The AFTER section shows her already outside Morrison''s office with
+    letter in hand, which technically means the decision is made before the beat ends,
+    compressing the debate''s narrative space. However, the GENERATED section (the
+    actual Debate beat) avoids this—the decision happens at the end of the Debate,
+    not during it. The violation appears in the bridge/transition rather than the
+    beat itself. MINOR: Bridge is strong but the transition to ''Break Into Two''
+    happens slightly abruptly; could use one more sentence of reflection. Continuity
+    maintained well—warehouse detail callbacks, timeline (70 hours), character relationships
+    all consistent.'
+error: null

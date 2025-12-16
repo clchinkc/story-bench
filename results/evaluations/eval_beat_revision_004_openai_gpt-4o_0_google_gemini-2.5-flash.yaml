@@ -1,0 +1,54 @@
+evaluation_id: b48279d8
+task_id: beat_revision_004
+generation_id: beat_revision_004_openai/gpt-4o_0
+task_type: beat_revision
+model: openai/gpt-4o
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0012491999999999998
+timestamp: '2025-12-13T13:49:59.616516'
+success: true
+final_score: 0.9161660079051384
+score_breakdown:
+  final_score: 0.9162
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 245
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.9447
+      weight: 0.25
+      breakdown:
+        repetition_score: 1.0
+        slop_score: 0.8617
+        overall: 0.9447
+    llm_judge:
+      score: 0.86
+      weight: 0.5
+llm_results:
+  diagnosis_score: 1.0
+  flaw_correction_score: 1.0
+  beat_satisfaction_score: 0.8
+  preservation_score: 1.0
+  preserved_count: 5
+  required_preserved_score: 1.0
+  required_preserved_count: 4
+  minimal_change_score: 0.2
+  word_count_valid: true
+  quality_score: 0.8
+  evidence: The model correctly identified the 'telling' vs 'showing' flaw and revised
+    the segment to demonstrate Rachel's traits through action, dialogue, and sensory
+    details. It shows her detective skills (observing James, cold case files), her
+    relationship with James (wordless nod), her devotion to work (cold cases, ritual),
+    and setting (precinct buzz, coffee taste). The changes were extensive, essentially
+    a rewrite, rather than minimal surgical edits, hence the lower minimal_change_score.
+    However, the quality of the revision is good, and it successfully addresses the
+    core flaw. The 'unaware that this ordinary Tuesday held the spark that would soon
+    unravel everything she knew' is a bit too on-the-nose for exposition, hinting
+    at future plot rather than establishing the status quo, which slightly lowers
+    the beat satisfaction score.
+error: null

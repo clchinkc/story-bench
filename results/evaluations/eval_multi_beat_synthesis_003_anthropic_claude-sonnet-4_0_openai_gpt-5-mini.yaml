@@ -1,0 +1,51 @@
+evaluation_id: c5b271fe
+task_id: multi_beat_synthesis_003
+generation_id: multi_beat_synthesis_003_anthropic/claude-sonnet-4_0
+task_type: multi_beat_synthesis
+model: anthropic/claude-sonnet-4
+sample_index: 0
+evaluator_model: openai/gpt-5-mini
+evaluator_cost: 0.00258375
+timestamp: '2025-12-12T14:27:52.486558'
+success: true
+final_score: 0.6463053503743421
+score_breakdown:
+  final_score: 0.6463
+  components:
+    word_count:
+      score: 0.1209
+      weight: 0.25
+      actual: 515
+      target_range:
+      - 700
+      - 1000
+    programmatic:
+      score: 0.6893
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 0.9733
+        overall: 0.6893
+    llm_judge:
+      score: 0.8875
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 15
+  beat_reqs_total: 15
+  beat_requirements_score: 1.0
+  cross_beat_satisfied: 3
+  cross_beat_total: 4
+  cross_beat_score: 0.75
+  word_count_valid: false
+  context_score: 0.9
+  coherence_score: 0.9
+  failed_items:
+  - 'Word count outside required range: 515 words (required 700-1000).'
+  - 'Chekhov''s Gun payoff is weak: a setup detail from Fun and Games (pressure-sensitive
+    floor / camera loop) is not clearly used as the critical solution during Bad Guys
+    Close In — the tech skills are reused but the earlier specific detail isn''t paid
+    off as a traceable payoff.'
+  - 'Team friction is present but muted: conflict between crew members (beyond panic/hesitation)
+    is not strongly developed, reducing emotional stakes in Beat 3.'
+  - Tonal shift to explicit gallows humor in Beat 3 is subtle rather than pronounced.
+error: null

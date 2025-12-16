@@ -1,0 +1,47 @@
+evaluation_id: a78b6e43
+task_id: beat_interpolation_004
+generation_id: beat_interpolation_004_meta-llama/llama-4-maverick_0
+task_type: beat_interpolation
+model: meta-llama/llama-4-maverick
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0009630000000000001
+timestamp: '2025-12-12T13:16:34.069313'
+success: true
+final_score: 0.84375
+score_breakdown:
+  final_score: 0.8438
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 404
+      target_range:
+      - 300
+      - 450
+    programmatic:
+      score: 0.7
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 1.0
+        overall: 0.7
+    llm_judge:
+      score: 0.8375
+      weight: 0.5
+llm_results:
+  beat_elements_score: 0.75
+  elements_found: 3
+  elements_total: 4
+  beat_execution_score: 0.8
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: true
+  character_score: 0.8
+  bridge_score: 0.8
+  continuity_score: 1.0
+  evidence: The element 'A moment where it seems she will recant' is not explicitly
+    present. While she is fearful, there isn't a clear moment where she is about to
+    back out before Thomas intervenes. Thomas's action is more supportive than directly
+    influencing a decision to recant.
+error: null

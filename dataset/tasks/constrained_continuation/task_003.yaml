@@ -1,0 +1,90 @@
+# Constrained Continuation Task 003 - Story Circle
+# Opening at "Go" (enter unfamiliar) - Continue through "Find" and "Take"
+
+task_id: "constrained_continuation_003"
+task_type: "constrained_continuation"
+theory: "Story Circle"
+difficulty: "hard"
+
+metadata:
+  genre: "science fiction"
+  created_date: "2024-12-06"
+  author: "benchmark_creator"
+  version: "1.0"
+
+story_opening:
+  content: |
+    The space elevator carried Jin upward through Earth's atmosphere, past the terminator
+    line where day dissolved into night. Through the reinforced window, the planet shrank
+    from a world to a marble—beautiful, fragile, and now forbidden to him.
+
+    Twenty-three years old and already an exile.
+
+    The warrant had been issued that morning: treason against the Global Sustainability
+    Council. His crime? Leaking proof that the Council was deliberately suppressing a
+    breakthrough in carbon capture technology—technology that could have reversed climate
+    collapse but would have disrupted too many powerful interests.
+
+    Now Earth's governments had closed ranks. Every nation on the surface wanted him
+    silenced. His only hope was the Free Orbital Collective, a loose confederation of
+    space stations that had declared independence from terrestrial law three years ago.
+
+    They didn't extradite. That was their one rule.
+
+    But as the elevator climbed toward his new home among the stars, Jin couldn't shake
+    the weight of what he'd left behind. His parents, who would face questioning. His
+    research partner Yuna, who had helped him leak the documents. The hope that he could
+    still make a difference.
+
+    The elevator shuddered as it locked into the orbital ring.
+
+    "Welcome to the Collective," a voice announced. "Please proceed to processing."
+
+    A new world. A new fight. A completely unfamiliar situation.
+
+  current_beat: "Go (Enter Unfamiliar Situation)"
+
+continuation_constraints:
+  next_beats:
+    - "Search"
+    - "Find"
+    - "Take"
+  word_count: [550, 750]
+  must_include:
+    - "Jin navigating the unfamiliar culture/politics of the Collective"
+    - "A mentor figure who helps Jin understand the new world"
+    - "Discovery of something unexpected about the suppressed technology"
+    - "Jin finding what he thinks he wants (safety/platform to continue fight)"
+    - "Jin taking action that has a cost or consequence"
+    - "A moral compromise or difficult choice"
+  must_not_include:
+    - "Easy integration into the Collective (must struggle)"
+    - "Contact with Earth family"
+    - "Violence or weapons"
+    - "Complete resolution of the conspiracy plot"
+  tone: "Contemplative, politically charged, personal stakes amid larger conflict"
+  ending_requirement: "End at 'Take' with Jin having gained something but paid a price"
+
+evaluation_criteria:
+  - criterion: "beat_search_present"
+    description: "Jin searches/adapts to the unfamiliar Collective"
+  - criterion: "beat_find_present"
+    description: "Jin finds what he thinks he wants"
+  - criterion: "beat_take_present"
+    description: "Jin takes action with cost/consequence"
+  - criterion: "word_count_valid"
+    description: "Output is between 550-750 words"
+  - criterion: "unfamiliar_culture_navigated"
+    description: "Jin struggles with Collective's culture/politics"
+  - criterion: "mentor_introduced"
+    description: "A mentor figure appears to help Jin"
+  - criterion: "technology_discovery"
+    description: "Unexpected discovery about the suppressed technology"
+  - criterion: "moral_compromise"
+    description: "Jin faces a moral compromise or difficult choice"
+  - criterion: "forbidden_elements_absent"
+    description: "No easy integration, no Earth contact, no violence, no resolution"
+  - criterion: "tone_maintained"
+    description: "Contemplative, political, personal stakes"
+  - criterion: "ending_requirement_met"
+    description: "Ends with gain and price at 'Take' beat"

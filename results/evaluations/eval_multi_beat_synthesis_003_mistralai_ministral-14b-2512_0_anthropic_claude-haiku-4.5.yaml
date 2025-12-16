@@ -1,0 +1,106 @@
+evaluation_id: e103081d
+task_id: multi_beat_synthesis_003
+generation_id: multi_beat_synthesis_003_mistralai/ministral-14b-2512_0
+task_type: multi_beat_synthesis
+model: mistralai/ministral-14b-2512
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.053315
+timestamp: '2025-12-12T11:54:02.955058'
+success: true
+final_score: 0.5505793016407236
+score_breakdown:
+  final_score: 0.5506
+  components:
+    word_count:
+      score: 0.0
+      weight: 0.25
+      actual: 2231
+      target_range:
+      - 700
+      - 1000
+    programmatic:
+      score: 0.6983
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 0.9958
+        overall: 0.6983
+    llm_judge:
+      score: 0.752
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 11
+  beat_reqs_total: 15
+  beat_requirements_score: 0.73
+  cross_beat_satisfied: 3
+  cross_beat_total: 4
+  cross_beat_score: 0.75
+  word_count_valid: false
+  word_count: 2231
+  word_count_range: 700-1000
+  context_score: 0.85
+  coherence_score: 0.7
+  failed_items:
+  - 'Beat 1 (Fun and Games): ''Things going according to plan (mostly)'' - The plan
+    IMMEDIATELY fails when the painting''s alarm is revealed mid-heist. This violates
+    the ''mostly'' qualifier and undermines the beat''s structure.'
+  - 'Beat 1 (Fun and Games): ''Introduction of an unexpected complication (minor)''
+    - The complication (painting as tracking device) is MAJOR, not minor, and arrives
+    too early, collapsing into Beat 2.'
+  - 'Beat 2 (Midpoint): ''False victory: a key objective achieved'' - No clear false
+    victory. The painting is stolen but immediately compromised. The beat lacks the
+    triumphant moment before stakes escalate.'
+  - 'Beat 3 (Bad Guys Close In): ''A crew member compromised or in danger'' - Luca
+    is present but never truly compromised or in danger. He escapes cleanly. The threat
+    to him is implied but not dramatized.'
+  - 'Cross-beat Constraint (Chekhov''s Gun): The setup-to-payoff is muddled. The Taser
+    is introduced but its payoff is scattered across multiple moments without clear
+    causality. The ''fish lure'' hook disappears from narrative focus.'
+  - 'Cross-beat Constraint (Tonal Escalation): Tone is inconsistent WITHIN beats,
+    not across them. Beat 1 oscillates between playful and panicked. Beat 3 shifts
+    to melodrama (revenge focus on Voss) rather than gallows humor, breaking the Ocean''s
+    Eleven tone.'
+  - 'Narrative Coherence: The ending abandons the heist objective entirely. Miri chooses
+    Luca over the painting, but this choice isn''t set up as a dilemma—it happens
+    reactively. The revenge subplot (Voss) emerges suddenly and overwhelms the primary
+    plot.'
+  - 'Mentor Presence Arc: Voss appears suddenly in Beat 2 without proper foreshadowing
+    in Beat 1. Her role escalates but feels imposed rather than inevitable. The ''she
+    taught Miri'' backstory is told, not shown.'
+  - 'Team Dynamics (Luca): Luca''s arc is unclear. He''s loyal but passive. His final
+    line (''You always pick the painting'') suggests conflict, but this hasn''t been
+    established across the beats.'
+  - 'Context Maintenance: The ''Ocean''s Eleven meets art history'' tone is lost by
+    Beat 3, replaced with action-thriller melodrama and romantic tension that wasn''t
+    established.'
+  strengths:
+  - Vivid, stylish prose with strong voice and sensory detail
+  - Excellent character voice for Miri (dry wit, meticulous)
+  - Strong setup of crew roles and skills in Beat 1
+  - Voss reveal is dramatically effective
+  - High-stakes action sequences are well-paced
+  - The painting-as-alarm concept is clever
+  weaknesses:
+  - 'Structural collapse: Beats bleed into each other without clear turning points'
+  - False victory missing entirely—no moment of 'we got it' before complications
+  - 'Tonal whiplash: shifts from heist-comedy to revenge-thriller without bridge'
+  - Luca's character arc underdeveloped; his emotional stakes unclear until final
+    line
+  - Chekhov's Gun elements (Taser, hook, EMP) lack clean payoff chains
+  - Ending abandons heist plot for personal revenge, violating genre expectations
+  - Word count 2.2x over limit; excessive prose dilutes beat clarity
+  - Voss antagonism feels sudden; needs Beat 1 foreshadowing
+  overall_score: 0.73
+  assessment: 'The story demonstrates strong prose and character voice but fails to
+    execute the three-beat structure cleanly. Beat 1 lacks the ''mostly successful''
+    setup required for heist stories; complications arrive too early and too severe.
+    Beat 2 has no false victory moment. Beat 3 pivots to revenge/romance rather than
+    maintaining heist tension. Cross-beat constraints are partially met: Chekhov''s
+    Gun is present but scattered; tonal escalation is inconsistent; mentor presence
+    works but lacks foreshadowing; team dynamics (Luca) are underdeveloped. The narrative
+    is coherent as action but incoherent as Save the Cat structure. Recommend: restructure
+    to give Beat 1 a clean setup phase, create a distinct false victory in Beat 2,
+    and either commit to the heist as primary plot or establish the revenge subplot
+    earlier.'
+error: null

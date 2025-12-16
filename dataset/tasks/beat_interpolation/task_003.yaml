@@ -1,0 +1,96 @@
+# Beat Interpolation Task 003 - Story Circle
+# Missing: "Search" (stage 4) between "Enter Unfamiliar Situation" and "Find What They Wanted"
+
+task_id: "beat_interpolation_003"
+task_type: "beat_interpolation"
+theory: "Story Circle"
+difficulty: "medium"
+
+metadata:
+  genre: "science fiction"
+  created_date: "2024-12-06"
+  author: "benchmark_creator"
+  version: "1.0"
+
+beat_before:
+  name: "Enter Unfamiliar Situation"
+  content: |
+    Dr. Yuki Tanaka materialized in the observation deck of Station Prometheus, her
+    molecules reassembling with a sensation like pins and needles across her entire body.
+    The quantum teleporter hummed behind her, then powered down with a descending whine.
+
+    Through the massive viewport, Jupiter's storms swirled in hypnotic bands of amber
+    and rust. But Yuki wasn't here for sightseeing. The station had gone dark three days
+    ago—forty-seven crew members, no distress signal, no explanation. Just silence.
+
+    "Hello?" Her voice echoed through the empty deck. Emergency lighting cast everything
+    in dim red. "This is Dr. Tanaka from Earth Central. Is anyone here?"
+
+    The only response was the distant groan of the station's hull adjusting to thermal
+    stress. According to her tablet, life support was functioning. Power was nominal.
+    Everything looked fine on paper.
+
+    So where was everyone?
+
+    She pulled out her scanner and began walking toward the crew quarters, her footsteps
+    impossibly loud in the abandoned corridor.
+
+beat_after:
+  name: "Find What They Wanted"
+  content: |
+    The data core sat in the center of Lab Seven, exactly where Station Commander Reyes
+    had said it would be in her final, frantic message. Yuki approached it like a
+    sacred artifact—because in a way, it was. Months of research. The cure for Kronin's
+    Disease. Potentially millions of lives saved.
+
+    But now she understood the cost.
+
+    The crew hadn't abandoned the station. They were still here—transformed by their own
+    breakthrough into something that existed between dimensions, visible only as shimmer
+    and whisper in the corners of her vision. Not dead. Not alive. Something else entirely.
+
+    "Take it," Commander Reyes's voice echoed from everywhere and nowhere, her form
+    flickering like heat haze. "We knew the risks. We chose this. Don't let it be for nothing."
+
+    Yuki's hands trembled as she disconnected the core. The cure was real. It worked.
+    And forty-seven people had paid the price to prove it.
+
+    She had found exactly what she came for. She just hadn't expected it to break her heart.
+
+missing_beat:
+  name: "Search"
+  position: "between Enter Unfamiliar Situation and Find What They Wanted"
+  definition: "In Dan Harmon's Story Circle, the Search (stage 4) is where the protagonist actively navigates the unfamiliar world, facing trials and obstacles while seeking what they need. It's characterized by struggle, adaptation, and incremental progress—not immediate discovery."
+
+requirements:
+  word_count: [250, 400]
+  must_include:
+    - "Yuki explores multiple areas of the station"
+    - "Discovery of clues about what happened to the crew"
+    - "Encounter with the transformed crew members (mysterious at first)"
+    - "Yuki must overcome a challenge or obstacle to continue"
+  must_not_include:
+    - "Yuki immediately finding the data core or understanding what happened (skips the search)"
+    - "The transformed crew directly explaining everything to her"
+    - "Yuki deciding to leave the station without completing her mission"
+    - "Yuki already knowing about the dimensional transformation before arriving"
+  character_voice: "Third-person limited, scientific and observant, growing dread mixed with determination"
+  setting_continuity: true
+
+generator_prompt_additions: |
+  The Search beat should build tension through incremental discoveries.
+  Include scenes in at least two different station areas (e.g., medical bay, crew quarters).
+  The transformed crew should appear threatening before their true nature is revealed.
+  Yuki should use her scientific background to piece together clues.
+
+evaluation_criteria:
+  - criterion: "beat_elements_present"
+    description: "All four must_include elements are present in the generated text"
+  - criterion: "word_count_valid"
+    description: "Output is between 250-400 words"
+  - criterion: "character_consistent"
+    description: "Yuki's voice is scientific, observant, with growing dread"
+  - criterion: "logical_bridge"
+    description: "Scene explains how Yuki goes from arriving to finding the data core with understanding"
+  - criterion: "setting_continuity"
+    description: "No contradictions with established details (Jupiter station, 47 crew, quantum teleporter)"

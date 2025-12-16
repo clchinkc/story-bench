@@ -1,0 +1,70 @@
+evaluation_id: 1d2e8e95
+task_id: beat_interpolation_001
+generation_id: beat_interpolation_001_mistralai/ministral-14b-2512_0
+task_type: beat_interpolation
+model: mistralai/ministral-14b-2512
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.024025
+timestamp: '2025-12-12T11:50:49.617937'
+success: true
+final_score: 0.687730196517267
+score_breakdown:
+  final_score: 0.6877
+  components:
+    word_count:
+      score: 0.0149
+      weight: 0.25
+      actual: 495
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.736
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.56
+        slop_score: 1.0
+        overall: 0.736
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: false
+  word_count: 495
+  word_count_range: 200-350
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: 'STRENGTHS: All 4 required elements present and well-executed: (1) Marcus
+    introduced as mentor with clear credentials (former cartographer, thief, rune-reader);
+    (2) Practical wisdom provided (''forest tests intentions, not abilities'') and
+    tangible tools (compass, satchel, supplies, parchment map); (3) Elena''s doubt
+    shifts convincingly from ''I can''t do this'' to ''wrong''s better than never
+    trying'' - reluctant acceptance achieved; (4) Librarian skills reframed as asset
+    (''you know how to find things''). All 4 must-not items avoided: Elena remains
+    doubtful/hesitant (not confident/eager), Marcus explicitly does not accompany
+    her, setting is The Curious Compass shop (not forest), no magical powers discovered.
+    Character voice consistent throughout - Elena''s internal conflict and librarian
+    perspective maintained. Bridge between beats seamless: BEFORE ends with refusal
+    and walking away; GENERATED shows her returning to seek guidance; AFTER shows
+    her at forest threshold ready to cross. Continuity perfect: Marcus''s gifts (compass,
+    satchel, supplies) referenced in AFTER; mentor''s wisdom echoed in Elena''s thoughts.
+    DEDUCTION: Word count (495) exceeds requirement (200-350) by 41%, which is significant
+    but does not affect narrative quality or beat execution. This is a technical violation
+    only.'
+  overall_assessment: Exceptional execution of the Meeting the Mentor beat. The generated
+    content masterfully introduces Marcus as a credible, mysterious mentor figure
+    who provides both practical tools and psychological reframing. Elena's character
+    arc within this beat is particularly strong—her doubt doesn't vanish but transforms
+    into cautious willingness. The dialogue feels natural and reveals character through
+    interaction. The only issue is word count excess, which appears to reflect the
+    writer's commitment to rich detail rather than carelessness. This would score
+    1.0 for narrative quality despite the technical word count violation.
+error: null

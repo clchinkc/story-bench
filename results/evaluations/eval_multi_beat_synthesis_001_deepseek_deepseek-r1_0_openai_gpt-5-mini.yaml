@@ -1,0 +1,47 @@
+evaluation_id: 769440da
+task_id: multi_beat_synthesis_001
+generation_id: multi_beat_synthesis_001_deepseek/deepseek-r1_0
+task_type: multi_beat_synthesis
+model: deepseek/deepseek-r1
+sample_index: 0
+evaluator_model: openai/gpt-5-mini
+evaluator_cost: 0.00213275
+timestamp: '2025-12-12T13:37:50.953081'
+success: true
+final_score: 0.6293879973599988
+score_breakdown:
+  final_score: 0.6294
+  components:
+    word_count:
+      score: 0.0464
+      weight: 0.25
+      actual: 477
+      target_range:
+      - 700
+      - 1000
+    programmatic:
+      score: 0.6961
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 0.9903
+        overall: 0.6961
+    llm_judge:
+      score: 0.8875
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 15
+  beat_reqs_total: 15
+  beat_requirements_score: 1.0
+  cross_beat_satisfied: 3
+  cross_beat_total: 4
+  cross_beat_score: 0.75
+  word_count_valid: false
+  context_score: 0.9
+  coherence_score: 0.9
+  failed_items:
+  - word_count out of required range (477; required 700-1000)
+  - 'Chekhov''s Gun not satisfied: no object or detail introduced in Beat 1 is essential
+    to resolving the Ordeal in Beat 3. (The vial that disables the machine is introduced
+    in Beat 2 rather than Beat 1.)'
+error: null

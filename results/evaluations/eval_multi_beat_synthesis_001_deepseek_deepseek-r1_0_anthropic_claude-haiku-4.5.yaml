@@ -1,0 +1,130 @@
+evaluation_id: 1dbbca69
+task_id: multi_beat_synthesis_001
+generation_id: multi_beat_synthesis_001_deepseek/deepseek-r1_0
+task_type: multi_beat_synthesis
+model: deepseek/deepseek-r1
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.04558
+timestamp: '2025-12-12T10:28:33.687699'
+success: true
+final_score: 0.6008879973599989
+score_breakdown:
+  final_score: 0.6009
+  components:
+    word_count:
+      score: 0.0464
+      weight: 0.25
+      actual: 477
+      target_range:
+      - 700
+      - 1000
+    programmatic:
+      score: 0.6961
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 0.9903
+        overall: 0.6961
+    llm_judge:
+      score: 0.8305
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 13
+  beat_reqs_total: 15
+  beat_requirements_score: 0.87
+  cross_beat_satisfied: 3
+  cross_beat_total: 4
+  cross_beat_score: 0.75
+  word_count_valid: false
+  context_score: 0.9
+  coherence_score: 0.85
+  failed_items:
+  - 'Beat 1: Preparation/gathering tools scene is minimal—Lena provides the vial but
+    lacks a fuller preparation montage or information-gathering sequence'
+  - 'Cross-beat constraint (Rising Stakes): Stakes escalate from Beat 1→2 adequately,
+    but Beat 2→3 transition feels compressed; the tunnel descent and killer reveal
+    happen too quickly without sufficient tension building'
+  - 'Word count: 477 words vs. required 700-1000 (68% of minimum); story is significantly
+    underdeveloped, particularly in Beat 2 (Approach to Inmost Cave) which receives
+    only 2-3 sentences'
+  detailed_scoring:
+    beat_1_tests_allies_enemies:
+      score: 0.9
+      satisfied:
+      - Dante encounters Lena who distrusts him initially ('junkie who sees pretty
+        colors')
+      - 'Test of ability under pressure: reading emotions through crimson mist during
+        attack'
+      - 'Enemy revealed: Marco as traitor working with killer (purple betrayal shards)'
+      - Dante proves himself through his unique ability, gaining Lena's trust ('You
+        saw what I couldn't')
+      - 'Addiction/recovery referenced as strength: ''Sobriety lets me see clearly'''
+      gaps:
+      - Lena's initial distrust could be more developed; her thaw happens quickly
+    beat_2_approach_inmost_cave:
+      score: 0.7
+      satisfied:
+      - 'Planning scene: tunnel map, meeting location identified'
+      - Dante recognizes confrontation requires facing sister's death guilt
+      - 'Preparation: Lena gives Rosa''s vial (''For courage'')'
+      - 'Moment of doubt: Dante freezes at threshold, guilt swirls at his feet'
+      - 'Symbolic threshold: rusted service door, descent into underworld'
+      gaps:
+      - Beat 2 is severely compressed (only ~80 words); lacks depth in planning dialogue,
+        emotional processing, or information gathering about the killer's methods
+    beat_3_the_ordeal:
+      score: 0.95
+      satisfied:
+      - 'Direct confrontation: killer emerges, Marco revealed as pawn'
+      - 'Symbolic death: killer''s revelation about sister (''screamed your name''),
+        guilt crashes over Dante, he buckles'
+      - 'All seems lost: killer seizes Lena, machine activates with stolen emotions'
+      - 'Transformation through acceptance: ''he couldn''t save his sister, but he
+        could break the cycle'''
+      - 'Victory through understanding: recognizes betrayal pattern powers device,
+        uses vial strategically'
+      gaps: []
+    cross_beat_chekhov_gun:
+      score: 1.0
+      analysis: Rosa's vial introduced in Beat 2 as preparation tool becomes essential
+        in Beat 3 to short-circuit the machine and defeat the killer. Excellent payoff.
+    cross_beat_character_arc:
+      score: 0.9
+      analysis: 'Guilt progression: Beat 1 (mentioned as ''accusation stung''), Beat
+        2 (recognized as obstacle—''descending into the night his sister died''),
+        Beat 3 (transformed—''not as chains, but as compass points''). Arc is clear
+        and satisfying, though could use more explicit emotional processing in Beat
+        2.'
+    cross_beat_rising_stakes:
+      score: 0.6
+      analysis: 'Beat 1→2: Stakes rise from personal accusation to planned confrontation
+        with killer. Beat 2→3: Stakes should escalate dramatically but transition
+        is abrupt. Killer''s revelation about sister is powerful, but the compressed
+        timeline undermines tension building. Machine threat and Lena''s capture raise
+        stakes, but pacing feels rushed.'
+    cross_beat_ally_continuity:
+      score: 1.0
+      analysis: 'Lena present and essential throughout: gains trust in Beat 1, plans
+        with Dante in Beat 2, fights alongside him in Beat 3, serves as emotional
+        anchor (''her hand on his shoulder was an anchor''). Excellent continuity.'
+    context_maintenance:
+      score: 0.9
+      analysis: 'Protagonist (Dante), setting (Buckingham Hotel, Chicago underworld),
+        tone (noir-tinged, melancholic, redemptive) all maintained excellently. Resonant
+        abilities clearly demonstrated. Serial killer threat established. Only minor:
+        killer''s face remains obscured, limiting character depth.'
+    coherence:
+      score: 0.85
+      analysis: Narrative flows logically across beats with strong emotional throughlines.
+        Guilt motif weaves throughout. However, severe word count compression creates
+        pacing issues—Beat 2 feels rushed, making the transition to Beat 3 feel abrupt
+        rather than inevitable. Dialogue and sensory details are vivid but sparse.
+  overall_assessment: Strong thematic execution and excellent beat structure within
+    the compressed format. All major story elements present and functional. Primary
+    weakness is word count (68% of minimum), which severely underdevelops Beat 2 and
+    compresses rising stakes. The story demonstrates clear understanding of Hero's
+    Journey and cross-beat constraints, but needs 200-300 additional words to fully
+    realize its potential, particularly in the Approach to Inmost Cave beat.
+  estimated_full_score: 0.78
+error: null

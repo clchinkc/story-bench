@@ -1,0 +1,51 @@
+evaluation_id: 770d7e46
+task_id: beat_interpolation_003
+generation_id: beat_interpolation_003_meta-llama/llama-4-maverick_0
+task_type: beat_interpolation
+model: meta-llama/llama-4-maverick
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0010808
+timestamp: '2025-12-12T12:25:13.114962'
+success: true
+final_score: 0.9923974358974359
+score_breakdown:
+  final_score: 0.9924
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 303
+      target_range:
+      - 250
+      - 400
+    programmatic:
+      score: 0.9696
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.96
+        slop_score: 0.984
+        overall: 0.9696
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: true
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: 'All required elements are present: Yuki explores multiple areas (crew
+    quarters, mess hall, medical bay, lab), discovers clues (Dr. Patel''s log, Commander
+    Reyes''s message), encounters transformed crew members (shadow, figures coalescing),
+    and overcomes a challenge (using scanner, running, mapping energy readings). All
+    ''must not'' items are avoided. The beat clearly executes the ''Search'' function
+    by having Yuki actively investigate and face obstacles without immediately finding
+    the solution. Character and continuity are consistent, and it bridges well to
+    the ''After'' beat by setting up the discovery of the data core in Lab Seven.'
+error: null

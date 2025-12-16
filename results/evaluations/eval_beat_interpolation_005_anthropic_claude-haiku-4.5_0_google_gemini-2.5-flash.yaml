@@ -1,0 +1,47 @@
+evaluation_id: 28431d25
+task_id: beat_interpolation_005
+generation_id: beat_interpolation_005_anthropic/claude-haiku-4.5_0
+task_type: beat_interpolation
+model: anthropic/claude-haiku-4.5
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0009664999999999999
+timestamp: '2025-12-12T12:31:07.848518'
+success: true
+final_score: 0.9775
+score_breakdown:
+  final_score: 0.9775
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 433
+      target_range:
+      - 300
+      - 450
+    programmatic:
+      score: 0.91
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.85
+        slop_score: 1.0
+        overall: 0.91
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: true
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: All required elements are present and well-executed. The 'must not' items
+    are successfully avoided. Character voices are consistent, and the scene seamlessly
+    bridges the previous and subsequent beats, showing a clear progression in their
+    relationship and commitment.
+error: null

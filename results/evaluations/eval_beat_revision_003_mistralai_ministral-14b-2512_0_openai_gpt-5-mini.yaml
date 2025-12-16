@@ -1,0 +1,57 @@
+evaluation_id: 536e8b4d
+task_id: beat_revision_003
+generation_id: beat_revision_003_mistralai/ministral-14b-2512_0
+task_type: beat_revision
+model: mistralai/ministral-14b-2512
+sample_index: 0
+evaluator_model: openai/gpt-5-mini
+evaluator_cost: 0.001768
+timestamp: '2025-12-13T13:39:23.532664'
+success: true
+final_score: 0.9533051118210862
+score_breakdown:
+  final_score: 0.9533
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 298
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.9332
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.91
+        slop_score: 0.9681
+        overall: 0.9332
+    llm_judge:
+      score: 0.94
+      weight: 0.5
+llm_results:
+  diagnosis_score: 1.0
+  flaw_correction_score: 1.0
+  beat_satisfaction_score: 0.95
+  preservation_score: 1.0
+  preserved_count: 4
+  preserved_total: 4
+  required_preserved_score: 1.0
+  required_preserved_count: 4
+  required_preserved_total: 4
+  minimal_change_score: 0.6
+  word_count_valid: true
+  quality_score: 0.9
+  evidence: 'The model addressed the correct flaw: Sophie lacked any visible change
+    on return. The revision shows concretely changed behavior (doesn''t check email,
+    declines to answer Linda, holds silence), names a lesson from the retreat (sitting
+    with discomfort/silence), includes a physical/behavioral marker (not pulling out
+    her phone, lighter chest), and creates contrast with her former self. The mother
+    notices (a glance and later a humm), satisfying the requirement that the change
+    be visible to others. Required elements and key phrases were preserved verbatim
+    or near-verbatim. Changes were moderate rather than purely surgical: structure
+    and characters were kept, but several lines were rephrased and new reflective
+    beats added, so minimal_change_score is below 1.0. Writing quality is good with
+    no new errors, though the mother''s recognition could be slightly more explicit,
+    so beat_satisfaction and quality scores are just under perfect.'
+error: null

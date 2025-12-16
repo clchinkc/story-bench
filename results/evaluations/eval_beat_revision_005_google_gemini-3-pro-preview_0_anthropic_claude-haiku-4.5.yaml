@@ -1,0 +1,51 @@
+evaluation_id: 0071b368
+task_id: beat_revision_005
+generation_id: beat_revision_005_google/gemini-3-pro-preview_0
+task_type: beat_revision
+model: google/gemini-3-pro-preview
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.01523
+timestamp: '2025-12-13T13:55:45.049575'
+success: true
+final_score: 0.5375000000000001
+score_breakdown:
+  final_score: 0.5375
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 286
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.91
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.85
+        slop_score: 1.0
+        overall: 0.91
+    llm_judge:
+      score: 0.12
+      weight: 0.5
+llm_results:
+  correct_diagnosis_score: 0.0
+  beat_understanding_score: 0.8
+  false_positive_avoided_score: 0.0
+  reasoning_quality_score: 0.0
+  model_said_no_revision: false
+  evidence: 'The model completely failed the primary task. It was presented with an
+    ORIGINAL SEGMENT that was correctly executed and needed NO revision. Instead of
+    recognizing this and stating ''NO REVISION NEEDED'', the model provided a REWRITTEN
+    VERSION of the segment. This is a false positive - an unnecessary revision of
+    already well-executed material. The model rewrote the passage, adding phrases
+    like ''It was a complete, humiliating dismantling of her life''s work,'' ''her
+    voice already half-ghost,'' ''like dirt being shoveled onto a coffin,'' and ''the
+    paralysis of failure swallow her whole.'' While the rewrite demonstrates good
+    understanding of the Dark Night of the Soul beat (0.8 score for beat understanding
+    - it shows comprehension of despair, isolation, reflection, and mortality elements),
+    it fundamentally misses the instruction: this segment was CORRECTLY EXECUTED and
+    should not have been revised. The model over-diagnosed and over-corrected, treating
+    a well-crafted passage as if it needed improvement when it did not.'
+error: null

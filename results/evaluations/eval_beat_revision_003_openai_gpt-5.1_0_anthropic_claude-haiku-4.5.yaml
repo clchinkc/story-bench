@@ -1,0 +1,66 @@
+evaluation_id: eb510d5b
+task_id: beat_revision_003
+generation_id: beat_revision_003_openai/gpt-5.1_0
+task_type: beat_revision
+model: openai/gpt-5.1
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.021990000000000003
+timestamp: '2025-12-13T13:40:44.254440'
+success: true
+final_score: 0.9744999999999999
+score_breakdown:
+  final_score: 0.9745
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 301
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.958
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.93
+        slop_score: 1.0
+        overall: 0.958
+    llm_judge:
+      score: 0.97
+      weight: 0.5
+llm_results:
+  diagnosis_score: 1.0
+  flaw_correction_score: 1.0
+  beat_satisfaction_score: 0.95
+  preservation_score: 1.0
+  preserved_count: 4
+  preserved_total: 4
+  required_preserved_score: 1.0
+  required_preserved_count: 4
+  required_preserved_total: 4
+  minimal_change_score: 0.85
+  word_count_valid: true
+  quality_score: 0.95
+  evidence: 'The model correctly diagnosed the actual flaw: Sophie showed no transformation
+    and immediately reverted to old workaholic patterns, making the journey meaningless.
+    The revision fixes this precisely by: (1) inserting the meditation teacher''s
+    voice (''Notice the urge. Breathe. Choose.'') as integrated insight, (2) showing
+    Sophie actively choosing differently—locking the phone instead of opening email,
+    deciding to delay work response, (3) demonstrating behavioral change through physical
+    markers (phone in bag not hand, letting it buzz), (4) creating clear contrast
+    between old automatic response (''You know how it is'') and new conscious choice,
+    (5) having the mother explicitly notice the change (''That''s new''). All 4 required
+    phrases preserved exactly: ''Sophie''s flight landed at O''Hare'', ''How was Thailand?
+    her mother asked'', ''The familiar Chicago skyline appeared'', ''It''s good to
+    be home, she said''. The changes were surgical—the model inserted transformation
+    evidence into the existing structure rather than rewriting. The new material (meditation
+    teacher''s voice, the breathing moment, phone placement, mother''s observation,
+    final reflection on ''thin new space between urgency and action'') integrates
+    seamlessly. Minor: the ending reflection is slightly more literary/introspective
+    than the original''s simpler tone, but this elevates rather than contradicts the
+    beat requirement. The revision fully executes Return (Having Changed) by showing
+    Sophie seeing her world ''as if someone had wiped a film from the glass'' and
+    making a conscious decision about how to live within her routine—the journey integrated
+    into her being.'
+error: null

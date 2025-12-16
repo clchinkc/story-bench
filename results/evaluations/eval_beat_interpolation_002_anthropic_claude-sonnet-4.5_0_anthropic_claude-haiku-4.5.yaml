@@ -1,0 +1,61 @@
+evaluation_id: be6c3127
+task_id: beat_interpolation_002
+generation_id: beat_interpolation_002_anthropic/claude-sonnet-4.5_0
+task_type: beat_interpolation
+model: anthropic/claude-sonnet-4.5
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.018255
+timestamp: '2025-12-12T03:22:35.131614'
+success: true
+final_score: 0.84825
+score_breakdown:
+  final_score: 0.8482
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 342
+      target_range:
+      - 250
+      - 400
+    programmatic:
+      score: 0.928
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.88
+        slop_score: 1.0
+        overall: 0.928
+    llm_judge:
+      score: 0.7325
+      weight: 0.5
+llm_results:
+  beat_elements_score: 0.75
+  elements_found: 3
+  elements_total: 4
+  beat_execution_score: 0.7
+  must_not_score: 0.5
+  violations_found: 2
+  word_count_valid: true
+  character_score: 0.85
+  bridge_score: 0.8
+  continuity_score: 0.9
+  evidence: 'STRENGTHS: Strong execution of internal conflict (duty vs. sister), clear
+    consideration of recanting option, explicit debate about official channels vs.
+    going rogue, Marcus Webb conversation effectively represents the ''seek advice''
+    element. Character voice remains consistent and compelling throughout. Good bridge
+    to Break Into Two beat with resignation decision. WEAKNESSES: Missing the fourth
+    required element—no clear moment that tips her toward the third option (going
+    rogue while keeping testimony). The decision feels somewhat abrupt; we see her
+    conclude ''there is no good option'' but lack a specific catalyst within the debate
+    that crystallizes the vigilante path. VIOLATIONS: (1) Sarah has already mentally
+    committed to going rogue by mid-beat (''began planning her exit strategy''), which
+    slightly skips the true debate function. (2) The AFTER section shows her already
+    having resigned and sitting outside the Marchetti compound, which violates the
+    ''must not include Sarah already having resigned'' constraint—though this is technically
+    in the AFTER section, the transition is too clean and suggests the resignation
+    happened during this beat rather than at its conclusion. The beat should end with
+    the decision to resign, not with her already outside the compound. CONTINUITY:
+    Setting and character consistency maintained well. The apartment-to-office-to-car
+    progression is logical.'
+error: null

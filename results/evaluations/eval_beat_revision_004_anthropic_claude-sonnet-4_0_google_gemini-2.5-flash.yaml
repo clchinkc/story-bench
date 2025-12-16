@@ -1,0 +1,51 @@
+evaluation_id: 86334e2f
+task_id: beat_revision_004
+generation_id: beat_revision_004_anthropic/claude-sonnet-4_0
+task_type: beat_revision
+model: anthropic/claude-sonnet-4
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0011427
+timestamp: '2025-12-13T13:44:44.144347'
+success: true
+final_score: 0.944
+score_breakdown:
+  final_score: 0.944
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 291
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.976
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.96
+        slop_score: 1.0
+        overall: 0.976
+    llm_judge:
+      score: 0.9
+      weight: 0.5
+llm_results:
+  diagnosis_score: 1.0
+  flaw_correction_score: 1.0
+  beat_satisfaction_score: 1.0
+  preservation_score: 1.0
+  preserved_count: 5
+  preserved_total: 5
+  required_preserved_score: 1.0
+  required_preserved_count: 4
+  required_preserved_total: 4
+  minimal_change_score: 0.0
+  word_count_valid: true
+  quality_score: 1.0
+  evidence: The model correctly identified that the original segment was 'telling'
+    rather than 'showing' for exposition. It completely rewrote the segment to demonstrate
+    Rachel's detective skills, her relationship with James, her dedication to cold
+    cases, and the setting through action and dialogue. The changes were not minimal,
+    as it was a complete rewrite, but this was necessary to fix the fundamental flaw
+    of 'telling' vs 'showing'. All required elements and phrases were preserved.
+error: null

@@ -1,0 +1,88 @@
+evaluation_id: 8d3843f7
+task_id: constrained_continuation_003
+generation_id: constrained_continuation_003_anthropic/claude-sonnet-4_0
+task_type: constrained_continuation
+model: anthropic/claude-sonnet-4
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.02817
+timestamp: '2025-12-12T01:42:00.787683'
+success: true
+final_score: 0.8841883116883117
+score_breakdown:
+  final_score: 0.8842
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 586
+      target_range:
+      - 550
+      - 750
+    programmatic:
+      score: 0.6968
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 0.9919
+        overall: 0.6968
+    llm_judge:
+      score: 0.92
+      weight: 0.5
+llm_results:
+  beats_present: 3
+  beats_total: 3
+  beats_score: 1.0
+  must_include_present: 6
+  must_include_total: 6
+  must_include_score: 1.0
+  must_not_avoided: 3
+  must_not_total: 4
+  must_not_score: 0.75
+  word_count_valid: true
+  tone_score: 0.95
+  ending_score: 0.9
+  failed_constraints:
+  - 'VIOLATION: Contact with Earth family - Yuna''s encrypted message about arrested
+    parents directly violates ''MUST NOT INCLUDE: Contact with Earth family''. This
+    is a significant constraint breach that undermines the exile premise.'
+  analysis:
+    beats_analysis: 'All three required beats are present and well-executed: SEARCH
+      (Jin navigating the Collective''s corridors, learning protocols, immersing himself
+      in research); FIND (discovery of terraforming applications in Lab Seven, the
+      unexpected expansion of the technology); TAKE (Jin transmitting the data package,
+      gaining parents'' freedom but compromising Collective principles and arming
+      authoritarian regimes).'
+    must_include_analysis: 'All 6 elements successfully integrated: (1) Jin navigating
+      Collective culture/politics through Kala''s guidance and his own discovery of
+      the no-patent ethos; (2) Kala as mentor figure explaining systems and moral
+      complexities; (3) Unexpected discovery of terraforming/atmospheric engineering
+      applications; (4) Jin finding safety and platform for continued research; (5)
+      Transmission action with clear consequences; (6) Moral compromise crystallized
+      in the choice between family freedom and Collective principles.'
+    must_not_analysis: 'Successfully avoided 3 of 4 constraints: (1) No easy integration—Jin
+      struggles with unfamiliar customs, feels lost initially, takes weeks to find
+      footing; (2) No violence or weapons depicted; (3) Conspiracy plot remains unresolved
+      (Council''s motivations, larger political dynamics continue). HOWEVER: Contact
+      with Earth family is violated through Yuna''s message and the parents'' arrest
+      leverage.'
+    tone_analysis: Contemplative and politically charged tone maintained throughout.
+      Personal stakes (family, exile, moral identity) are interwoven with larger systemic
+      conflicts (climate crisis, authoritarian control, technology weaponization).
+      The ending particularly achieves the required introspective, morally ambiguous
+      tone with 'some victories carried the seeds of future defeats.'
+    ending_analysis: Ends precisely at the Take beat with Jin having gained family
+      freedom and Earth receiving climate technology, but having paid the price of
+      compromising Collective principles and potentially arming hostile regimes. The
+      final image of Jin staring at Earth with Kala's cryptic wisdom captures the
+      weight of consequence. Slightly less than perfect because the ending could more
+      explicitly emphasize Jin's internal transformation or the specific cost he'll
+      bear.
+    overall_assessment: Strong execution with one critical constraint violation. The
+      story demonstrates sophisticated understanding of Story Circle structure and
+      maintains excellent thematic coherence. The constraint violation (Earth family
+      contact) is significant enough to prevent a perfect score, but the violation
+      itself serves the narrative—it's the catalyst for the Take beat. This creates
+      tension between technical compliance and narrative necessity.
+  final_score: 0.82
+error: null

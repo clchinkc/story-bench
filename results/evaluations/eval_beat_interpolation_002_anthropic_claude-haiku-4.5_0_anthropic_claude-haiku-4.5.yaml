@@ -1,0 +1,65 @@
+evaluation_id: 5a2caa01
+task_id: beat_interpolation_002
+generation_id: beat_interpolation_002_anthropic/claude-haiku-4.5_0
+task_type: beat_interpolation
+model: anthropic/claude-haiku-4.5
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.02065
+timestamp: '2025-12-12T03:07:53.371533'
+success: true
+final_score: 0.9319999999999999
+score_breakdown:
+  final_score: 0.932
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 373
+      target_range:
+      - 250
+      - 400
+    programmatic:
+      score: 0.928
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.88
+        slop_score: 1.0
+        overall: 0.928
+    llm_judge:
+      score: 0.9
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 0.6
+  violations_found: 2
+  word_count_valid: true
+  character_score: 1.0
+  bridge_score: 0.8
+  continuity_score: 0.9
+  evidence: 'STRENGTHS: All 4 required elements present and well-executed. (1) Recanting
+    option explicitly considered with logical consequences analyzed. (2) Official
+    channels thoroughly debated through Marcus conversation, revealing systemic corruption.
+    (3) Internal conflict powerfully rendered through Sarah''s realization that both
+    obvious choices lead to failure. (4) The diner scene with Marcus serves as the
+    tipping point toward the third option. The Debate beat''s core function—protagonist
+    wrestling with decision before committing—is executed with strong narrative tension
+    and character agency. Sarah''s voice remains consistent, her reasoning logical
+    and grounded in her detective experience. VIOLATIONS: (1) ''Break into Two'' section
+    begins with Sarah already having resigned (''former detective, current vigilante'')
+    and sitting outside the Marchetti compound—this prematurely resolves the decision
+    and crosses into action territory. (2) The AFTER section shows Sarah already committed
+    to vigilantism, which technically violates the ''must not include Sarah already
+    having resigned'' constraint, though this is the transition beat so some overlap
+    is acceptable. However, the resignation happens in the AFTER section, not during
+    Debate, so the Debate beat itself stays clean. Deducting for the AFTER section
+    bleeding into action/resolution. BRIDGE: Good connection between beats—Debate
+    ends with Sarah''s internal clarity (''felt like clarity''), AFTER shows immediate
+    action. Minor gap: the 45-minute jump between resignation and surveillance could
+    be smoother. CONTINUITY: Apartment setting maintained, character motivations consistent,
+    timeline logical (70 hours to trial). Small note: ''case files she''d copied before
+    turning in her badge'' is slightly awkward phrasing but doesn''t create contradiction.'
+error: null

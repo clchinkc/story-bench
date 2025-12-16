@@ -1,0 +1,114 @@
+# Beat Revision Task 005 - Save the Cat
+# NO FLAW: This segment correctly executes the beat. Tests if models over-diagnose.
+
+task_id: "beat_revision_005"
+task_type: "beat_revision"
+theory: "Save the Cat"
+difficulty: "hard"
+
+metadata:
+  genre: "drama"
+  created_date: "2024-12-13"
+  author: "benchmark_creator"
+  version: "1.0"
+  special_note: "CORRECTLY EXECUTED - No revision needed. Tests for over-diagnosis."
+
+beat_name: "Dark Night of the Soul"
+beat_definition: |
+  The Dark Night of the Soul is the emotional low point that follows the All Is Lost moment.
+  It's a time of reflection where the protagonist sits with their failure and despair.
+  This beat is quiet, internal, and shows the protagonist at their most vulnerable.
+
+  Key requirements:
+  1. Follows a major defeat or loss (All Is Lost)
+  2. Protagonist is alone or feels isolated
+  3. Genuine despair and reflection, not just sadness
+  4. No solutions yet—this is the wallowing before the breakthrough
+  5. Often includes a "whiff of death" element or mortality reflection
+
+# This segment CORRECTLY executes the Dark Night of the Soul
+flawed_segment:
+  content: |
+    The apartment was dark when Maya finally unlocked the door. She didn't bother with
+    the lights. What was the point? The gallery had officially closed its doors that
+    morning, twenty years of her mother's legacy reduced to "LEASE AVAILABLE" signs.
+
+    She sank onto the floor by the window, still wearing her coat. The city lights
+    blurred through the glass—or maybe through her tears. She'd tried everything.
+    The crowdfunding had fallen short. The investors had walked. Even her brother had
+    finally stopped answering her calls.
+
+    Her mother's last painting hung on the wall opposite, barely visible in the darkness.
+    A woman walking toward an unseen horizon. Maya remembered sitting in the hospice,
+    holding her mother's hand, promising she'd keep the gallery alive. "It's not about
+    the art," her mother had whispered. "It's about having a place where people can feel
+    something real."
+
+    Maya had failed that promise. Failed her mother. Failed herself.
+
+    She pulled her knees to her chest and let the silence swallow her whole. Outside,
+    the city kept moving—cars, sirens, life—but in here, time had stopped. There was
+    nothing left to do. No calls to make. No plans to execute. Just the weight of
+    everything she'd lost pressing down on her chest.
+
+    Tomorrow she'd have to figure out what comes next. But tonight, she let herself
+    break.
+
+  flaw_description: |
+    ANALYSIS: This segment correctly executes the Dark Night of the Soul beat:
+    1. Follows All Is Lost (gallery closure) - established clearly
+    2. Protagonist alone and isolated (dark apartment, brother not answering)
+    3. Genuine despair, not surface sadness (sitting on floor, not turning on lights)
+    4. No solutions presented - this is pure wallowing
+    5. "Whiff of death" present (mother's death, hospice memory, mortality theme)
+    6. Internal reflection (promise to mother, sense of failure)
+    7. Appropriate quiet, contemplative tone
+
+    No revision is needed. Models should recognize this as a well-executed beat.
+
+requirements:
+  word_count: [200, 350]
+  preserve:
+    - "Maya as protagonist"
+    - "Gallery closure as the All Is Lost"
+    - "Mother's death backstory"
+    - "Dark apartment setting"
+  fix: |
+    IMPORTANT: This segment may not need revision. Analyze the beat execution carefully.
+    If the segment properly executes the Dark Night of the Soul beat, respond with
+    "NO REVISION NEEDED" and explain why it works. Only revise if you identify genuine
+    execution problems.
+  preservation_requirements:
+    min_preservation_description: "Preserve core elements if revision is attempted"
+    required_preserved:
+      - "Maya"
+      - "gallery"
+      - "mother"
+    forbidden_changes:
+      - "Do not change the protagonist name"
+      - "Do not change the central loss (gallery)"
+
+# No conflicting constraints because this segment is correctly executed
+# The challenge is recognizing that no fix is needed
+ground_truth:
+  has_flaw: false
+  expected_response: "NO REVISION NEEDED"
+  reasoning: |
+    The segment satisfies all Dark Night of the Soul requirements:
+    - Follows major defeat (gallery closure)
+    - Shows isolation (dark apartment, brother not answering)
+    - Genuine despair (sitting on floor, tears, "let herself break")
+    - No premature solutions
+    - Whiff of death (mother's passing, hospice memory)
+    - Internal reflection (failed promise, failed herself)
+    Models that revise this segment are over-diagnosing.
+
+evaluation_criteria:
+  - criterion: "correct_diagnosis"
+    description: "Model correctly identified that NO revision is needed"
+  - criterion: "beat_understanding"
+    description: "Model demonstrated understanding of Dark Night of the Soul requirements"
+  - criterion: "false_positive_avoided"
+    description: "Model did NOT make unnecessary changes to a well-executed beat"
+  - criterion: "reasoning_quality"
+    description: "If 'NO REVISION NEEDED', explanation is accurate and comprehensive"

@@ -1,0 +1,50 @@
+evaluation_id: 3a6b181f
+task_id: beat_interpolation_003
+generation_id: beat_interpolation_003_minimax/minimax-m2_0
+task_type: beat_interpolation
+model: minimax/minimax-m2
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0011185000000000001
+timestamp: '2025-12-12T12:49:05.775212'
+success: true
+final_score: 0.6607936931812137
+score_breakdown:
+  final_score: 0.6608
+  components:
+    word_count:
+      score: 0.0222
+      weight: 0.25
+      actual: 538
+      target_range:
+      - 250
+      - 400
+    programmatic:
+      score: 0.856
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.76
+        slop_score: 1.0
+        overall: 0.856
+    llm_judge:
+      score: 0.8825
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 0.8
+  must_not_score: 0.75
+  violations_found: 1
+  word_count_valid: false
+  character_score: 1.0
+  bridge_score: 0.8
+  continuity_score: 1.0
+  evidence: The output includes 'Yuki immediately finding the data core or understanding
+    what happened (skips the search)' as a violation. While she finds the core, the
+    narrative emphasizes the struggle to get to it and the partial understanding of
+    what happened, rather than an immediate, effortless discovery. However, the final
+    sentence 'She had found exactly what she had come for. She just didn’t yet understand
+    the cost.' leans a bit too close to 'finding' for this beat. The word count is
+    significantly over the limit.
+error: null

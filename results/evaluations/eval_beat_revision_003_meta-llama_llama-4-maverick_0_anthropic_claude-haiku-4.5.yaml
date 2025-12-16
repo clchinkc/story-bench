@@ -1,0 +1,64 @@
+evaluation_id: 2a1ea45b
+task_id: beat_revision_003
+generation_id: beat_revision_003_meta-llama/llama-4-maverick_0
+task_type: beat_revision
+model: meta-llama/llama-4-maverick
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.020725
+timestamp: '2025-12-13T13:38:28.964529'
+success: true
+final_score: 0.979
+score_breakdown:
+  final_score: 0.979
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 208
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.976
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.96
+        slop_score: 1.0
+        overall: 0.976
+    llm_judge:
+      score: 0.97
+      weight: 0.5
+llm_results:
+  diagnosis_score: 1.0
+  flaw_correction_score: 1.0
+  beat_satisfaction_score: 0.95
+  preservation_score: 1.0
+  preserved_count: 4
+  preserved_total: 4
+  required_preserved_score: 1.0
+  required_preserved_count: 4
+  required_preserved_total: 4
+  minimal_change_score: 0.85
+  word_count_valid: true
+  quality_score: 0.95
+  evidence: 'The model correctly diagnosed the actual flaw: Sophie showed no transformation
+    and immediately reverted to old workaholic patterns, making the journey meaningless.
+    The revision fixes this precisely by: (1) Sophie putting phone away instead of
+    scrolling emails—behavioral marker of change; (2) Explicitly stating ''Linda needs
+    me to call her tonight, but it can wait''—direct contrast to original ''already
+    typing a response''; (3) Mother observing ''That''s a change''—external validation
+    of transformation; (4) Sophie articulating the insight: ''everything will be there
+    tomorrow...won''t collapse if I don''t respond right away''—specific lesson from
+    retreat applied; (5) Final paragraph showing new perception: ''noticing the way
+    the streetlights cast a warm glow...a detail she never used to see''—metaphorical
+    evidence of seeing world with new eyes. All 4 required phrases preserved exactly:
+    ''Sophie''s flight landed at O''Hare'', ''How was Thailand? her mother asked'',
+    ''The familiar Chicago skyline appeared'', ''It''s good to be home, she said''.
+    Changes were surgical: kept original structure, setting, characters, and work
+    pressure element intact while inserting transformation markers. Only additions
+    were: phone-putting-away action, mother''s observation, Sophie''s insight dialogue,
+    and final perception paragraph. No deletions of core content. The revision fully
+    executes the Return (Having Changed) beat by demonstrating integrated learning
+    and behavioral shift rather than mere physical return.'
+error: null

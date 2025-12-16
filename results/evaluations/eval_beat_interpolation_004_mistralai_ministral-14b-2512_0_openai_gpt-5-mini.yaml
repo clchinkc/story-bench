@@ -1,0 +1,55 @@
+evaluation_id: cc7f0ca1
+task_id: beat_interpolation_004
+generation_id: beat_interpolation_004_mistralai/ministral-14b-2512_0
+task_type: beat_interpolation
+model: mistralai/ministral-14b-2512
+sample_index: 0
+evaluator_model: openai/gpt-5-mini
+evaluator_cost: 0.00181475
+timestamp: '2025-12-12T14:28:30.174066'
+success: true
+final_score: 0.9095226180350926
+score_breakdown:
+  final_score: 0.9095
+  components:
+    word_count:
+      score: 0.9761
+      weight: 0.25
+      actual: 461
+      target_range:
+      - 300
+      - 450
+    programmatic:
+      score: 0.802
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.67
+        slop_score: 1.0
+        overall: 0.802
+    llm_judge:
+      score: 0.93
+      weight: 0.5
+llm_results:
+  beat_elements_score: 0.75
+  elements_found: 3
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: false
+  character_score: 1.0
+  bridge_score: 0.95
+  continuity_score: 1.0
+  evidence: 'Three of four required elements are present: (1) Thomas''s direct examination
+    is clear, (2) Thomas takes decisive action (offers independent trial/support)
+    that influences Dr. Okonkwo, and (3) the turning point where truth prevails is
+    explicit (her confession). Missing is an explicit moment where it seems she will
+    recant—the scene conveys fear and hesitation but not a clear near-recant beat,
+    so I deducted one quarter. All "must not" items are avoided (no passive Thomas,
+    no deus ex machina, defense does not win, and Dr. Okonkwo does not simply tell
+    the truth without struggle). Character behavior and setting continuity are consistent.
+    A small deduction in bridge_score (0.05) reflects that the climax could have shown
+    a more unmistakable, cinematic near-recant to strengthen the immediate pivot into
+    the falling action. Additionally, the provided word_count (461) is out of the
+    required 300–450 range.'
+error: null

@@ -1,0 +1,53 @@
+evaluation_id: 1eb8efae
+task_id: multi_beat_synthesis_003
+generation_id: multi_beat_synthesis_003_openai/gpt-4o-mini_0
+task_type: multi_beat_synthesis
+model: openai/gpt-4o-mini
+sample_index: 0
+evaluator_model: openai/gpt-5-mini
+evaluator_cost: 0.00287125
+timestamp: '2025-12-12T14:44:33.433800'
+success: true
+final_score: 0.8556146759847523
+score_breakdown:
+  final_score: 0.8556
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 763
+      target_range:
+      - 700
+      - 1000
+    programmatic:
+      score: 0.6975
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 0.9936
+        overall: 0.6975
+    llm_judge:
+      score: 0.8625
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 15
+  beat_reqs_total: 15
+  beat_requirements_score: 1.0
+  cross_beat_satisfied: 3
+  cross_beat_total: 4
+  cross_beat_score: 0.75
+  word_count_valid: true
+  context_score: 0.8
+  coherence_score: 0.8
+  failed_items:
+  - 'Chekhov''s Gun: The escape route (''the emergency exit Jake had pointed out earlier'')
+    is used critically during the ''Bad Guys Close In'' beat but was not established
+    during ''Fun and Games''—the setup-to-payoff trace is broken.'
+  - 'Context omission: The scene does not explicitly state the painting''s provenance
+    (Renaissance work stolen by the Nazis) nor strongly foreground Miri''s motive
+    of returning stolen works to rightful owners, which were key contextual elements
+    in the brief.'
+  - 'Tonal escalation mild shortfall: While tone does escalate overall, the requested
+    shift to ''gallows humor'' in the third beat is underdeveloped—Beat 3 mostly moves
+    to straight danger with limited darkly comic counterpoint.'
+error: null

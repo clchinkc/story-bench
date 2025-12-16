@@ -1,0 +1,48 @@
+evaluation_id: db1f5c1a
+task_id: beat_interpolation_001
+generation_id: beat_interpolation_001_openai/gpt-5.2_0
+task_type: beat_interpolation
+model: openai/gpt-5.2
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0010188999999999999
+timestamp: '2025-12-12T12:32:51.753008'
+success: true
+final_score: 0.888219549559618
+score_breakdown:
+  final_score: 0.8882
+  components:
+    word_count:
+      score: 0.6429
+      weight: 0.25
+      actual: 397
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.91
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.85
+        slop_score: 1.0
+        overall: 0.91
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: false
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: All required elements are present and all 'must not' conditions are avoided.
+    The narrative effectively executes the 'Meeting the Mentor' beat, showing Elena's
+    reluctant acceptance and the mentor's guidance. Character voice and continuity
+    are strong. The bridge from 'Refusal' to 'Meeting the Mentor' is well-handled,
+    and the transition to 'Crossing the Threshold' is also smooth.
+error: null

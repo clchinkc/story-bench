@@ -1,0 +1,97 @@
+evaluation_id: eeb110f8
+task_id: constrained_continuation_002
+generation_id: constrained_continuation_002_openai/gpt-5.1_0
+task_type: constrained_continuation
+model: openai/gpt-5.1
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.03544
+timestamp: '2025-12-12T10:10:55.230595'
+success: true
+final_score: 0.6712500008234284
+score_breakdown:
+  final_score: 0.6713
+  components:
+    word_count:
+      score: 0.0
+      weight: 0.25
+      actual: 1025
+      target_range:
+      - 450
+      - 650
+    programmatic:
+      score: 0.7
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 1.0
+        overall: 0.7
+    llm_judge:
+      score: 0.9925
+      weight: 0.5
+llm_results:
+  beats_present: 2
+  beats_total: 2
+  beats_score: 1.0
+  must_include_present: 6
+  must_include_total: 6
+  must_include_score: 1.0
+  must_not_avoided: 4
+  must_not_total: 4
+  must_not_score: 1.0
+  word_count_valid: false
+  word_count: 1025
+  word_count_range: 450-650
+  tone_score: 0.95
+  ending_score: 1.0
+  failed_constraints:
+  - Word count exceeds maximum by 375 words (1025 vs 650 limit)
+  analysis:
+    beats_present_detail:
+    - 'Fun and Games: Viral livestream moment, blogger''s positive review, street-wrapping
+      line, creative problem-solving under pressure, block party atmosphere, customer
+      enthusiasm'
+    - 'Midpoint: False victory revealed—profitable success and Championship qualification
+      achieved, but hidden clause discovered that raises stakes dramatically (6-month
+      shutdown if they don''t place top 3)'
+    must_include_detail:
+    - '1. Viral moment: Blogger livestream with cheese-pull TikTok clip goes viral,
+      drives immediate customer surge'
+    - '2. Priya & Dev teamwork: Seamless rhythm during rush, shoulder bumps, mutual
+      appreciation moment (''I know I drag you into ridiculous ideas''), collaborative
+      problem-solving'
+    - '3. Rival competitor: Anjali Rao arrives with Masala & Mesquite truck, established
+      legend, competitive tension (''Question is whether you''ll still be standing'')'
+    - '4. Midpoint false victory: Championship qualification email arrives, profit
+      confirmed, then legalese clause reveals 6-month shutdown penalty for non-top-3
+      placement'
+    - '5. Genuine partnership connection: Dev''s steady hands during crisis, Priya''s
+      gratitude moment, mutual respect (''None of this exists without her obsession''),
+      shared vulnerability about stakes'
+    - '6. Complication hint: Non-compete clause creates existential threat—success
+      now carries catastrophic failure risk'
+    tone_assessment: Upbeat energy maintained throughout (exclamation points, dynamic
+      action, celebratory moments) with building tension undercurrent (Dev's anxiety,
+      Anjali's veiled threat, final paragraph's dread). Minor deduction only for slightly
+      uneven tension pacing in middle section.
+    ending_assessment: 'Perfect Midpoint execution: apparent victory (profitable,
+      qualified, viral success) immediately undercut by raised stakes revelation (6-month
+      shutdown clause). Ends on tension and uncertainty, exactly as required.'
+    strengths:
+    - Excellent dialogue with personality and humor
+    - Strong sensory details (electric pink bus, mirrored sunglasses, cheese-pull
+      visuals)
+    - Natural character dynamics and chemistry
+    - Compelling rival introduction with immediate threat
+    - Masterful stakes escalation in final paragraphs
+    weaknesses:
+    - Significant word count violation (+57% over limit) undermines constraint adherence
+    - Could be tightened by 375 words without losing essential beats or character
+      moments
+  overall_score: 0.78
+  score_rationale: Exceptional execution of all narrative requirements (beats, inclusions,
+    exclusions, tone, ending) with professional-quality writing. However, substantial
+    word count violation (1025 vs 650 max) is a hard constraint failure that prevents
+    higher scoring. The content itself deserves ~0.95, but constraint violation drops
+    final score to 0.78 (good work with significant technical issue).
+error: null

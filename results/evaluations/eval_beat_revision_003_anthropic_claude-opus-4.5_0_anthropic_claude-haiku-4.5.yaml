@@ -1,0 +1,62 @@
+evaluation_id: b9a42136
+task_id: beat_revision_003
+generation_id: beat_revision_003_anthropic/claude-opus-4.5_0
+task_type: beat_revision
+model: anthropic/claude-opus-4.5
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.020425
+timestamp: '2025-12-13T13:35:36.580695'
+success: true
+final_score: 0.9605
+score_breakdown:
+  final_score: 0.9605
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 255
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.922
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.87
+        slop_score: 1.0
+        overall: 0.922
+    llm_judge:
+      score: 0.96
+      weight: 0.5
+llm_results:
+  diagnosis_score: 1.0
+  flaw_correction_score: 1.0
+  beat_satisfaction_score: 0.95
+  preservation_score: 1.0
+  preserved_count: 4
+  preserved_total: 4
+  required_preserved_score: 1.0
+  required_preserved_count: 4
+  required_preserved_total: 4
+  minimal_change_score: 0.75
+  word_count_valid: true
+  quality_score: 0.95
+  evidence: 'The model correctly diagnosed the actual flaw: Sophie showed no transformation
+    and immediately reverted to old workaholic patterns, making the journey meaningless.
+    The revision fixes this by: (1) Having Sophie articulate the meditation insight
+    (''five days of silence''), (2) Demonstrating changed behavior through the phone-down
+    action (contrasts with original immediate email-checking), (3) Showing her mother''s
+    surprise (''Since when?''), (4) Providing explicit contrast (''everything exactly
+    as she''d left it—but she was seeing it differently now''), (5) Ending with changed
+    priorities (''the feeling of it, not the returning to productivity''). All 4 required
+    phrases preserved: ''Sophie''s flight landed at O''Hare'' (exact), ''How was Thailand?''
+    her mother asked'' (exact), ''The familiar Chicago skyline appeared'' (exact),
+    ''''It''s good to be home,'' she said'' (exact). Changes were surgical rather
+    than wholesale—the core structure, setting, characters, and work pressure element
+    remain intact. The revision adds ~100 words of introspection and behavioral contrast
+    while maintaining the original''s skeleton. Minor: the beat definition mentions
+    ''integrated'' but cuts off mid-word in the prompt, so full alignment cannot be
+    perfectly verified, though the revision clearly integrates the retreat lesson
+    into her present choices. Writing quality is professional with no new errors introduced.'
+error: null

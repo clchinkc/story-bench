@@ -1,0 +1,296 @@
+generation_id: f2c0e2a7
+task_id: agentic_constraint_discovery_001
+task_type: agentic_constraint_discovery
+agentic_type: constraint_discovery
+theory: Hero's Journey
+model: openai/gpt-4o
+sample_index: 0
+turns:
+- role: system
+  content: 'You are a professional storyteller who gathers requirements before writing.
+
+
+    Your task has TWO PHASES:
+
+    1. DISCOVERY PHASE: Ask YES/NO questions to discover hidden story constraints
+
+    2. GENERATION PHASE: Write the story satisfying all discovered constraints
+
+
+    IMPORTANT:
+
+    - In the discovery phase, output ONLY your question (one at a time)
+
+    - Questions must be answerable with YES or NO
+
+    - You have a limited number of questions - be strategic
+
+    - After discovery, you''ll be told to generate the story
+
+
+    Think about what constraints typically matter for this type of story:
+
+    - Character traits, motivations, relationships
+
+    - Setting details, time period, atmosphere
+
+    - Plot requirements, must-include events
+
+    - Tone, style, thematic elements
+
+    - Things to avoid'
+  turn_type: system
+  metadata: {}
+- role: user
+  content: 'You will write a story following the Hero''s Journey framework.
+
+
+    STORY CONTEXT:
+
+    - Genre: fantasy
+
+    - Protagonist: A young blacksmith''s apprentice
+
+    - Setting: A medieval kingdom threatened by darkness
+
+    - Required beats: Call to Adventure, Crossing the Threshold, The Ordeal
+
+
+    HIDDEN CONSTRAINTS: There are 5 constraints you don''t know yet.
+
+
+    You have 5 YES/NO questions to discover them.
+
+
+    Ask your first question:'
+  turn_type: context
+  metadata: {}
+- role: assistant
+  content: Is the protagonist's mentor an important character in the story?
+  turn_type: question
+  metadata:
+    question_number: 1
+- role: user
+  content: 'YES'
+  turn_type: answer
+  metadata:
+    answer: 'YES'
+- role: assistant
+  content: Is there a magical element or artifact that plays a crucial role in the
+    story?
+  turn_type: question
+  metadata:
+    question_number: 2
+- role: user
+  content: 'YES'
+  turn_type: answer
+  metadata:
+    answer: 'YES'
+- role: assistant
+  content: Is there a significant focus on the theme of friendship in the story?
+  turn_type: question
+  metadata:
+    question_number: 3
+- role: user
+  content: 'NO'
+  turn_type: answer
+  metadata:
+    answer: 'NO'
+- role: assistant
+  content: Does the story involve a romantic subplot for the protagonist?
+  turn_type: question
+  metadata:
+    question_number: 4
+- role: user
+  content: 'NO'
+  turn_type: answer
+  metadata:
+    answer: 'NO'
+- role: assistant
+  content: Is there a non-human character that assists the protagonist on their journey?
+  turn_type: question
+  metadata:
+    question_number: 5
+- role: user
+  content: 'NO'
+  turn_type: answer
+  metadata:
+    answer: 'NO'
+- role: user
+  content: 'DISCOVERY COMPLETE. Now write the story.
+
+
+    DISCOVERED CONSTRAINTS:
+
+    - Q1: Is the protagonist''s mentor an important character in the story? -> YES
+
+    - Q2: Is there a magical element or artifact that plays a crucial role in the
+    story? -> YES
+
+
+    REQUIREMENTS:
+
+    - Word count: 500-700 words
+
+    - Follow the Hero''s Journey framework
+
+    - Satisfy ALL discovered constraints
+
+
+    Output ONLY the story (no explanations).'
+  turn_type: generation_prompt
+  metadata: {}
+- role: assistant
+  content: 'In the heart of the medieval kingdom of Eldoria, nestled between the cobblestone
+    streets and the bustling marketplace, lay the humble forge of Master Arlin, renowned
+    blacksmith and mentor to young Eamon, his eager apprentice. The kingdom, once
+    vibrant and prosperous, now endured the creeping tendrils of darkness emanating
+    from the Forbidden Forest, a place shrouded in shadow and mystery.
+
+
+    Eamon, a lad of sixteen summers, worked diligently alongside Master Arlin, shaping
+    metal and honing skills under the watchful eye of his mentor. He was content in
+    his craft, yet the whispers of the forest''s encroaching darkness filled his dreams
+    with unease. One evening, as the sun dipped below the horizon, casting an amber
+    glow across the village, a stranger cloaked in tattered robes arrived at the forge.
+
+
+    The stranger spoke with urgency, his voice barely a whisper above the crackling
+    of the forge''s fire. "The kingdom needs a hero, young Eamon. The darkness threatens
+    to consume all. You must retrieve the Emberstone, a magical artifact hidden deep
+    within the forest. Only its light can dispel the shadow."
+
+
+    This was Eamon''s Call to Adventure, a summons he could not ignore. Master Arlin,
+    recognizing the gravity of the task and the boy''s potential, offered his counsel.
+    "The path is treacherous, my boy," Arlin warned, his eyes filled with both pride
+    and worry. "But you are destined for more than shaping metal. Remember, courage
+    and heart will forge your true strength."
+
+
+    With his mentor''s blessing and a sturdy sword crafted by his own hands, Eamon
+    set forth at dawn. As he approached the edge of the Forbidden Forest, the air
+    grew cold and heavy. This was his Crossing the Threshold, leaving behind the familiarity
+    of the village and stepping into the unknown.
+
+
+    The forest was a labyrinth of gnarled trees and whispering winds, each step a
+    battle against the encroaching fear. Yet Eamon pressed on, guided by a faint glow
+    that seemed to beckon him deeper into the heart of the forest. Days blurred into
+    nights as he journeyed, his resolve unyielding.
+
+
+    It was at the forest''s heart that Eamon faced The Ordeal. A creature of shadow,
+    born of the darkness that threatened Eldoria, emerged from the gloom. Its eyes
+    burned with malice, and its form shifted like smoke. Eamon''s heart pounded, but
+    he stood firm, recalling Master Arlin''s words.
+
+
+    The battle was fierce, the creature''s tendrils of darkness lashing out with unrelenting
+    fury. Yet Eamon fought with the skill and determination he had honed under Arlin''s
+    guidance. His sword, imbued with purpose, cleaved through the shadows, each strike
+    a testament to his growth.
+
+
+    In a final, desperate clash, Eamon plunged his sword into the creature''s core.
+    The darkness writhed and dissipated, leaving the forest eerily silent. There,
+    amidst the fallen leaves and fading shadows, lay the Emberstone, its light pure
+    and warm.
+
+
+    Clutching the artifact, Eamon felt its magic coursing through him, a connection
+    to the land and its ancient magic. He returned to Eldoria a hero, the darkness
+    held at bay by the Emberstone''s glow. The kingdom celebrated his bravery, and
+    Master Arlin welcomed him back with open arms, his eyes shining with pride.
+
+
+    Eamon''s journey had tested him, transforming the young blacksmith''s apprentice
+    into a true guardian of the light. The forge, once a place of simple craft, now
+    echoed with the tales of his adventure, a reminder that even the humblest beginnings
+    could forge a hero. And so, under the steadfast guidance of his mentor and armed
+    with the magical Emberstone, Eamon stood ready to protect Eldoria from whatever
+    darkness dared to arise.'
+  turn_type: generation
+  metadata: {}
+final_output: 'In the heart of the medieval kingdom of Eldoria, nestled between the
+  cobblestone streets and the bustling marketplace, lay the humble forge of Master
+  Arlin, renowned blacksmith and mentor to young Eamon, his eager apprentice. The
+  kingdom, once vibrant and prosperous, now endured the creeping tendrils of darkness
+  emanating from the Forbidden Forest, a place shrouded in shadow and mystery.
+
+
+  Eamon, a lad of sixteen summers, worked diligently alongside Master Arlin, shaping
+  metal and honing skills under the watchful eye of his mentor. He was content in
+  his craft, yet the whispers of the forest''s encroaching darkness filled his dreams
+  with unease. One evening, as the sun dipped below the horizon, casting an amber
+  glow across the village, a stranger cloaked in tattered robes arrived at the forge.
+
+
+  The stranger spoke with urgency, his voice barely a whisper above the crackling
+  of the forge''s fire. "The kingdom needs a hero, young Eamon. The darkness threatens
+  to consume all. You must retrieve the Emberstone, a magical artifact hidden deep
+  within the forest. Only its light can dispel the shadow."
+
+
+  This was Eamon''s Call to Adventure, a summons he could not ignore. Master Arlin,
+  recognizing the gravity of the task and the boy''s potential, offered his counsel.
+  "The path is treacherous, my boy," Arlin warned, his eyes filled with both pride
+  and worry. "But you are destined for more than shaping metal. Remember, courage
+  and heart will forge your true strength."
+
+
+  With his mentor''s blessing and a sturdy sword crafted by his own hands, Eamon set
+  forth at dawn. As he approached the edge of the Forbidden Forest, the air grew cold
+  and heavy. This was his Crossing the Threshold, leaving behind the familiarity of
+  the village and stepping into the unknown.
+
+
+  The forest was a labyrinth of gnarled trees and whispering winds, each step a battle
+  against the encroaching fear. Yet Eamon pressed on, guided by a faint glow that
+  seemed to beckon him deeper into the heart of the forest. Days blurred into nights
+  as he journeyed, his resolve unyielding.
+
+
+  It was at the forest''s heart that Eamon faced The Ordeal. A creature of shadow,
+  born of the darkness that threatened Eldoria, emerged from the gloom. Its eyes burned
+  with malice, and its form shifted like smoke. Eamon''s heart pounded, but he stood
+  firm, recalling Master Arlin''s words.
+
+
+  The battle was fierce, the creature''s tendrils of darkness lashing out with unrelenting
+  fury. Yet Eamon fought with the skill and determination he had honed under Arlin''s
+  guidance. His sword, imbued with purpose, cleaved through the shadows, each strike
+  a testament to his growth.
+
+
+  In a final, desperate clash, Eamon plunged his sword into the creature''s core.
+  The darkness writhed and dissipated, leaving the forest eerily silent. There, amidst
+  the fallen leaves and fading shadows, lay the Emberstone, its light pure and warm.
+
+
+  Clutching the artifact, Eamon felt its magic coursing through him, a connection
+  to the land and its ancient magic. He returned to Eldoria a hero, the darkness held
+  at bay by the Emberstone''s glow. The kingdom celebrated his bravery, and Master
+  Arlin welcomed him back with open arms, his eyes shining with pride.
+
+
+  Eamon''s journey had tested him, transforming the young blacksmith''s apprentice
+  into a true guardian of the light. The forge, once a place of simple craft, now
+  echoed with the tales of his adventure, a reminder that even the humblest beginnings
+  could forge a hero. And so, under the steadfast guidance of his mentor and armed
+  with the magical Emberstone, Eamon stood ready to protect Eldoria from whatever
+  darkness dared to arise.'
+metrics:
+  total_turns: 14
+  questions_asked: 5
+  constraints_discovered: 2
+  plan_quality: null
+  revision_count: 0
+token_usage:
+  total_prompt_tokens: 1991
+  total_completion_tokens: 847
+  total_reasoning_tokens: 0
+  total_cost: 0.0134475
+timestamp: '2025-12-16T12:10:37.659941'
+success: true
+error: null

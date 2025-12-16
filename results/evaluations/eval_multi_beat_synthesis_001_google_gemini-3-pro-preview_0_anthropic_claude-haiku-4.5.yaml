@@ -1,0 +1,153 @@
+evaluation_id: 53705bd3
+task_id: multi_beat_synthesis_001
+generation_id: multi_beat_synthesis_001_google/gemini-3-pro-preview_0
+task_type: multi_beat_synthesis
+model: google/gemini-3-pro-preview
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.057409999999999996
+timestamp: '2025-12-12T09:38:28.586277'
+success: true
+final_score: 0.6854591254395349
+score_breakdown:
+  final_score: 0.6855
+  components:
+    word_count:
+      score: 0.1353
+      weight: 0.25
+      actual: 1180
+      target_range:
+      - 700
+      - 1000
+    programmatic:
+      score: 0.6935
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 0.9838
+        overall: 0.6935
+    llm_judge:
+      score: 0.9565
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 14
+  beat_reqs_total: 15
+  beat_requirements_score: 0.93
+  cross_beat_satisfied: 4
+  cross_beat_total: 4
+  cross_beat_score: 1.0
+  word_count_valid: false
+  context_score: 0.95
+  coherence_score: 0.92
+  overall_score: 0.93
+  failed_items:
+  - Word count exceeds maximum (1180 vs 1000 limit) - significant violation of technical
+    constraint
+  detailed_analysis:
+    beat_1_tests_allies_enemies:
+      score: 0.95
+      satisfied:
+      - Dante encounters Silas, a Resonant who initially distrusts him ('Turn around,
+        junkie')
+      - 'Test of ability under pressure: identifying the screamer rune on the staircase'
+      - 'Revelation of traitor: Kael is revealed to be feeding the killer information'
+      - Dante proves himself by detecting the trap, gaining Silas's respect ('Useful')
+      - 'Addiction/recovery referenced throughout: phantom itch, three years clean,
+        ''liability'' accusation'
+      notes: All five requirements fully satisfied with strong integration
+    beat_2_approach_to_inmost_cave:
+      score: 0.9
+      satisfied:
+      - 'Planning scene: Silas and Dante discuss strategy in the elevator (''We need
+        a plan'')'
+      - 'Dante recognizes guilt as obstacle: ''I''m a buffet for him'' - the Hollow
+        Man feeds on regret'
+      - 'Preparation: gathering the spray can tool, discussing the killer''s nature'
+      - 'Moment of doubt: ''I can''t lock it down'' - Dante admits vulnerability before
+        descent'
+      - 'Symbolic threshold: elevator descent into ''suffocating dark'' and boiler
+        room'
+      notes: All five requirements satisfied; planning is somewhat brief but functional
+    beat_3_the_ordeal:
+      score: 0.95
+      satisfied:
+      - 'Direct confrontation: Dante faces the Hollow Man in the boiler room'
+      - 'Symbolic death: psychic attack forces Dante into memory of Mia''s overdose,
+        guilt overwhelming'
+      - 'All seems lost: ''he was going to die here, just another junkie lost to the
+        city'''
+      - 'Transformation through acceptance: ''He wasn''t fighting the guilt anymore.
+        He was accepting it'''
+      - 'Victory through understanding: Dante realizes guilt proves love, uses this
+        insight to defeat killer'
+      notes: Exceptionally well-executed ordeal sequence with genuine emotional stakes
+    chekhov_gun:
+      score: 1.0
+      satisfied: true
+      analysis: Rosa's spray can ('Gold Standard') introduced in Beat 1 as memento
+        becomes the essential weapon in Beat 3. The can's specific properties (neutralizing
+        emotional static, containing harvested hope) are crucial to defeating the
+        Hollow Man. This is masterfully integrated.
+    character_arc_progression:
+      score: 1.0
+      satisfied: true
+      beat_1: Guilt mentioned as phantom itch, addiction history, 'liability' status
+      beat_2: 'Guilt explicitly recognized as obstacle: ''I''m a buffet for him,''
+        Silas warns about hesitation'
+      beat_3: 'Guilt transformed: ''The pain of losing Mia was the proof that he had
+        loved her'' - acceptance becomes strength'
+      analysis: Clear three-stage progression from background trauma to recognized
+        obstacle to integrated strength
+    rising_stakes:
+      score: 1.0
+      satisfied: true
+      beat_1_stakes: Dante must prove himself worthy to enter the hunt; risk of rejection
+      beat_2_stakes: Descending into killer's lair; confrontation is inevitable and
+        dangerous
+      beat_3_stakes: Direct combat with killer; Silas is incapacitated; Dante faces
+        psychic annihilation
+      analysis: Stakes escalate logically from social/personal to physical to existential
+    ally_continuity:
+      score: 1.0
+      satisfied: true
+      beat_1: Silas introduced, gains respect for Dante
+      beat_2: Silas present, planning with Dante, descending together
+      beat_3: Silas fights alongside Dante, is incapacitated but remains relevant
+        to narrative
+      analysis: Silas maintains consistent presence and relevance throughout all three
+        beats
+    context_maintenance:
+      score: 0.95
+      analysis: 'Protagonist: Dante''s voice, abilities, and recovery arc are authentic
+        throughout. Setting: Buckingham Hotel, Chicago underworld, boiler room descent
+        all maintain noir-urban-fantasy atmosphere. Tone: Melancholic, determined,
+        redemptive arc clearly present. Minor deduction only for slightly exceeding
+        word count which affects pacing perception.'
+    coherence:
+      score: 0.92
+      analysis: Narrative flows naturally from encounter to descent to confrontation.
+        Emotional logic is sound. Silas's role could be slightly more developed in
+        Beat 2 planning, but overall the three beats form a cohesive unit. The spray
+        can connection is elegant. Pacing is strong despite word count excess.
+  strengths:
+  - Exceptional execution of the Ordeal beat with genuine psychological depth
+  - Perfect integration of Chekhov's Gun principle with Rosa's spray can
+  - Clear character arc showing guilt transformation across all three beats
+  - Strong ally continuity with Silas maintaining relevance throughout
+  - Authentic noir tone with melancholic determination
+  - Effective use of synesthetic imagery (colors, shapes, emotional residue)
+  - Rising stakes that escalate logically from social to existential
+  - 'Powerful thematic resonance: redemption through acceptance rather than denial'
+  weaknesses:
+  - Word count violation (1180 vs 1000 max) - 18% over limit
+  - Beat 2 planning sequence is somewhat compressed; could benefit from more dialogue
+    between Dante and Silas
+  - Kael's characterization as traitor is revealed but not deeply explored
+  - 'Minor: Silas''s incapacitation in Beat 3 reduces his agency in the final confrontation'
+  recommendation: This is a strong submission that successfully executes the Hero's
+    Journey framework with sophisticated emotional depth. The story demonstrates mastery
+    of the monomyth structure, particularly in the Ordeal sequence. The primary issue
+    is technical (word count), not narrative quality. With minor trimming to 1000
+    words or fewer, this would be exceptional work. The cross-beat constraints are
+    all satisfied at high quality, and the character arc is genuinely moving.
+error: null

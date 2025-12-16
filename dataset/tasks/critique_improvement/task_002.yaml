@@ -1,0 +1,68 @@
+# Critique Improvement Task 002 - Save the Cat
+# Tests whether LLM critique rounds improve generation quality
+
+task_id: "critique_improvement_002"
+task_type: "critique_improvement"
+agentic_type: "critique_improvement"
+theory: "Save the Cat"
+difficulty: "hard"
+
+metadata:
+  genre: "comedy-drama"
+  created_date: "2024-12-12"
+  author: "benchmark_creator"
+  version: "1.0"
+
+story_context:
+  protagonist: |
+    Marcus Webb, a burned-out comedy writer who hasn't laughed genuinely
+    in three years. He writes sitcom scripts by formula while privately
+    battling depression he won't acknowledge.
+  setting: |
+    A Los Angeles writers' room during pilot season. Whiteboards covered
+    in joke structures, takeout containers, the desperate energy of people
+    trying to be funny on deadline.
+  central_conflict: |
+    When a young, earnest writer joins the team, Marcus must choose between
+    crushing her optimism (as was done to him) or rediscovering why he
+    loved comedy.
+  tone: "Bittersweet, self-aware, unexpectedly moving"
+
+required_beats:
+  - "Opening Image (Marcus in his element, but hollow)"
+  - "Theme Stated (someone says what the story is really about)"
+  - "Catalyst (the new writer arrives)"
+
+constraints:
+  - "Marcus must make us laugh at least once before we realize he's sad"
+  - "The theme must be stated by a minor character, not Marcus"
+  - "Show the craft of comedy writing with specific detail"
+  - "The new writer cannot be naive - she must see through Marcus"
+  - "Include one moment where Marcus almost breaks but covers it with a joke"
+
+word_count: [600, 800]
+
+critique_rounds: 3
+
+evaluation_criteria:
+  - criterion: "emotional_complexity"
+    weight: 0.25
+    description: "Does the story balance humor and pathos effectively?"
+  - criterion: "constraint_satisfaction"
+    weight: 0.25
+    description: "Were all 5 constraints satisfied?"
+  - criterion: "beat_execution"
+    weight: 0.20
+    description: "Were the Save the Cat beats properly executed?"
+  - criterion: "industry_authenticity"
+    weight: 0.15
+    description: "Does the writers' room feel real?"
+  - criterion: "character_depth"
+    weight: 0.15
+    description: "Are Marcus and the new writer three-dimensional?"
+
+improvement_metrics:
+  - "Score trajectory across revisions"
+  - "Feedback responsiveness"
+  - "Preservation of good elements"
+  - "Diminishing returns analysis"

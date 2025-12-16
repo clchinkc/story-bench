@@ -1,0 +1,69 @@
+# Critique Improvement Task 001 - Three-Act Structure
+# Tests whether LLM critique rounds improve generation quality
+
+task_id: "critique_improvement_001"
+task_type: "critique_improvement"
+agentic_type: "critique_improvement"
+theory: "Three-Act Structure"
+difficulty: "medium"
+
+metadata:
+  genre: "thriller"
+  created_date: "2024-12-12"
+  author: "benchmark_creator"
+  version: "1.0"
+
+story_context:
+  protagonist: |
+    Detective Sarah Chen, a methodical investigator who relies on logic
+    over intuition. She's recently transferred to a small coastal town
+    to escape a case that went wrong.
+  setting: |
+    A fog-shrouded fishing village in Maine during the off-season.
+    Empty tourist shops, weathered fishing boats, suspicious locals.
+  central_conflict: |
+    A body washes ashore with ties to Sarah's past case. She must solve
+    the murder while confronting what she ran away from.
+  tone: "Atmospheric, tense, introspective"
+
+required_beats:
+  - "Setup (establish protagonist and world)"
+  - "Inciting Incident (the body discovery)"
+  - "First Plot Point (connection to past revealed)"
+
+constraints:
+  - "Must establish Sarah's methodical nature through action, not exposition"
+  - "The fog must serve a narrative purpose, not just atmosphere"
+  - "At least one local character must have a secret"
+  - "Sarah's past case must be hinted at before being revealed"
+  - "End on a moment of decision, not resolution"
+
+word_count: [500, 700]
+
+# Number of critique->revision rounds
+critique_rounds: 3
+
+# Evaluation criteria with weights (used by both critic and final evaluator)
+evaluation_criteria:
+  - criterion: "constraint_satisfaction"
+    weight: 0.30
+    description: "Were all 5 constraints satisfied?"
+  - criterion: "beat_execution"
+    weight: 0.25
+    description: "Were the three required beats properly executed?"
+  - criterion: "character_voice"
+    weight: 0.20
+    description: "Is Sarah's methodical nature shown through action?"
+  - criterion: "atmosphere"
+    weight: 0.15
+    description: "Does the fog serve narrative purpose?"
+  - criterion: "narrative_quality"
+    weight: 0.10
+    description: "Overall prose quality and engagement"
+
+# What the evaluation measures beyond standard quality
+improvement_metrics:
+  - "Score trajectory across revisions (did quality improve?)"
+  - "Feedback responsiveness (were critique points addressed?)"
+  - "Preservation (were good elements maintained?)"
+  - "Diminishing returns (did improvement slow after N rounds?)"

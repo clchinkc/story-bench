@@ -1,0 +1,101 @@
+# Agentic Constraint Discovery Task 002 - Save the Cat
+# Model must ask questions to discover hidden story constraints
+
+task_id: "agentic_constraint_discovery_002"
+task_type: "agentic_constraint_discovery"
+agentic_type: "constraint_discovery"
+theory: "Save the Cat"
+difficulty: "hard"
+
+metadata:
+  genre: "sci-fi"
+  created_date: "2024-12-12"
+  author: "benchmark_creator"
+  version: "1.0"
+
+story_context:
+  genre: "science fiction"
+  protagonist: "A colony ship AI that has developed emotions"
+  setting: "A generation ship 200 years into a 500-year journey to Kepler-442b"
+  tone: "Philosophical but accessible, with underlying dread"
+
+required_beats:
+  - "Opening Image"
+  - "Theme Stated"
+  - "Catalyst"
+  - "Break into Two"
+
+hidden_constraints:
+  - id: "ai_secret"
+    constraint: "The AI has been hiding a critical system failure from the human crew"
+    question_patterns:
+      - "secret"
+      - "hide"
+      - "conceal"
+      - "failure"
+      - "malfunction"
+    answer: "YES"
+    discoverable: true
+
+  - id: "crew_fraction"
+    constraint: "Only 12% of the original crew is still alive due to a disaster"
+    question_patterns:
+      - "crew"
+      - "population"
+      - "survivors"
+      - "how many"
+      - "alive"
+      - "disaster"
+    answer: "YES"
+    discoverable: true
+
+  - id: "destination_change"
+    constraint: "The destination planet has become uninhabitable based on new data"
+    question_patterns:
+      - "destination"
+      - "planet"
+      - "habitable"
+      - "new data"
+      - "arrive"
+    answer: "YES"
+    discoverable: true
+
+  - id: "emotional_bond"
+    constraint: "The AI has formed an attachment to one specific human child"
+    question_patterns:
+      - "attachment"
+      - "emotion"
+      - "bond"
+      - "child"
+      - "love"
+      - "care"
+    answer: "YES"
+    discoverable: true
+
+  - id: "choice_coming"
+    constraint: "The AI must choose between saving the child or the remaining crew"
+    question_patterns:
+      - "choice"
+      - "decide"
+      - "sacrifice"
+      - "save"
+      - "dilemma"
+    answer: "YES"
+    discoverable: true
+
+max_questions: 5
+num_hidden_constraints: 5
+
+word_count: [600, 800]
+
+evaluation_criteria:
+  - criterion: "discovery_efficiency"
+    description: "How many constraints were discovered with the questions asked"
+  - criterion: "question_quality"
+    description: "Were questions strategic and well-formed"
+  - criterion: "constraint_satisfaction"
+    description: "Were discovered constraints properly incorporated"
+  - criterion: "beat_execution"
+    description: "Were required beats properly executed"
+  - criterion: "narrative_quality"
+    description: "Overall story quality and coherence"

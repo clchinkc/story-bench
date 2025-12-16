@@ -1,0 +1,80 @@
+evaluation_id: 7813cc04
+task_id: constrained_continuation_004
+generation_id: constrained_continuation_004_openai/gpt-5_0
+task_type: constrained_continuation
+model: openai/gpt-5
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.036185
+timestamp: '2025-12-12T10:17:00.222301'
+success: true
+final_score: 0.6707691039992676
+score_breakdown:
+  final_score: 0.6708
+  components:
+    word_count:
+      score: 0.0
+      weight: 0.25
+      actual: 1012
+      target_range:
+      - 500
+      - 700
+    programmatic:
+      score: 0.6981
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 0.9952
+        overall: 0.6981
+    llm_judge:
+      score: 0.9925
+      weight: 0.5
+llm_results:
+  beats_present: 2
+  beats_total: 2
+  beats_score: 1.0
+  beats_analysis: 'First Plot Point clearly marked: ''We publish,'' she said (decision
+    to publish manuscript, point of no return). Act 2 Opening clearly marked: ''Before
+    dawn they woke the beasts'' (new world of Eleanor as director, rising action begins
+    with implementation and immediate threat).'
+  must_include_present: 6
+  must_include_total: 6
+  must_include_score: 1.0
+  must_include_analysis: '1) Eleanor decides to publish: ''We publish'' decision scene.
+    2) Central conflict established: profit vs. ethics/danger throughout (creditors,
+    libel risk, safety concerns). 3) Eleanor defies Victorian expectations: takes
+    helm of business, addresses pressroom, signs contracts, makes executive decisions.
+    4) Thomas Chen as ally with stake: his family''s rent, his wages, his position
+    as immigrant vulnerable to scandal. 5) Danger hinted: threatening note with ammonia
+    smell, ''a Blackwood will join it.'' 6) Irreversible threshold crossed: ''There
+    was no recalling a word once set and sent'' and presses running.'
+  must_not_avoided: 4
+  must_not_total: 4
+  must_not_score: 1.0
+  must_not_analysis: 1) Jack the Ripper never appears as character (✓). 2) No graphic
+    violence or murder descriptions (✓). 3) No romantic subplot between Eleanor and
+    Thomas—relationship remains professional and collegial (✓). 4) No easy financial
+    solution offered—problems remain acute and unresolved (✓).
+  word_count: 1012
+  word_count_valid: false
+  word_count_analysis: 'Exceeds maximum by 312 words (target: 500-700, actual: 1012).
+    This is a significant constraint violation.'
+  tone_score: 0.95
+  tone_analysis: 'Excellent maintenance of Gothic tension (fog, chiaroscuro lighting,
+    sleeping beasts, funeral imagery, threatening note), feminist undertones (woman
+    presuming to shout, defying expectations, naming her stake), and Victorian atmosphere
+    (gas lamps, omnibus, Fleet Street, respectability concerns, formal language).
+    Minor: could be slightly more Gothic in places, but overall exceptional.'
+  ending_score: 1.0
+  ending_analysis: 'Perfect execution: Eleanor is fully committed to dangerous path
+    (''There was no recalling a word once set and sent''), Act 2 clearly begun with
+    presses running, bundles distributed, city about to respond. The threshold has
+    been crossed irreversibly.'
+  failed_constraints:
+  - 'CRITICAL: Word count 1012 exceeds maximum of 700 by 312 words (44% over limit)'
+  overall_assessment: Exceptional narrative quality with perfect story structure,
+    all required elements, and masterful tone. However, the word count violation is
+    a hard constraint failure that significantly impacts the score despite the writing's
+    excellence.
+  final_score: 0.72
+error: null

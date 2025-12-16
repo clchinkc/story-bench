@@ -1,0 +1,63 @@
+evaluation_id: 045c6170
+task_id: beat_revision_003
+generation_id: beat_revision_003_deepseek/deepseek-r1_0
+task_type: beat_revision
+model: deepseek/deepseek-r1
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.020405
+timestamp: '2025-12-13T13:36:53.971969'
+success: true
+final_score: 0.982
+score_breakdown:
+  final_score: 0.982
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 222
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.988
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.98
+        slop_score: 1.0
+        overall: 0.988
+    llm_judge:
+      score: 0.97
+      weight: 0.5
+llm_results:
+  diagnosis_score: 1.0
+  flaw_correction_score: 1.0
+  beat_satisfaction_score: 0.95
+  preservation_score: 1.0
+  preserved_count: 4
+  preserved_total: 4
+  required_preserved_score: 1.0
+  required_preserved_count: 4
+  required_preserved_total: 4
+  minimal_change_score: 0.85
+  word_count_valid: true
+  quality_score: 0.95
+  evidence: 'The model correctly diagnosed the actual flaw: Sophie showed no transformation
+    and immediately reverted to old workaholic patterns, making the journey meaningless.
+    The revision fixes this precisely by: (1) Adding the meditation insight (''As
+    the monks had taught her''), (2) Demonstrating changed behavior through action
+    (silencing phone, choosing to wait until morning), (3) Showing internal struggle
+    then resolution (thumb hovering, then breathing), (4) Including mother''s notice
+    of change (''Your mother blinked''), (5) Contrasting old self (would have called
+    Linda immediately) with new self (lets it rest). All 4 required phrases preserved
+    exactly: ''Sophie''s flight landed at O''Hare'', ''How was Thailand? her mother
+    asked'', ''The familiar Chicago skyline appeared'', ''It''s good to be home, she
+    said''. Changes were surgical: inserted meditation breathing technique, replaced
+    phone-scrolling with phone-silencing, added mother''s reaction, expanded final
+    paragraph to show new perception of familiar world. The new material (approximately
+    80 words added/modified) integrates seamlessly into original structure. No new
+    errors introduced. Writing quality elevated through sensory details (''sugar in
+    hot water'', ''streetlights reflected like floating lanterns'', ''city''s hum
+    felt like breath''). Beat execution now complete: Return shows physical return
+    + clear transformation + behavioral proof + integrated lesson + external validation.'
+error: null

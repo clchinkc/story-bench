@@ -1,0 +1,50 @@
+evaluation_id: 0f588d5a
+task_id: multi_beat_synthesis_002
+generation_id: multi_beat_synthesis_002_mistralai/ministral-14b-2512_0
+task_type: multi_beat_synthesis
+model: mistralai/ministral-14b-2512
+sample_index: 0
+evaluator_model: openai/gpt-5-mini
+evaluator_cost: 0.00316475
+timestamp: '2025-12-12T14:07:42.505593'
+success: true
+final_score: 0.6699999999999999
+score_breakdown:
+  final_score: 0.67
+  components:
+    word_count:
+      score: 0.0
+      weight: 0.25
+      actual: 2651
+      target_range:
+      - 700
+      - 1000
+    programmatic:
+      score: 0.7
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 1.0
+        overall: 0.7
+    llm_judge:
+      score: 0.99
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 15
+  beat_reqs_total: 15
+  beat_requirements_score: 1.0
+  cross_beat_satisfied: 4
+  cross_beat_total: 4
+  cross_beat_score: 1.0
+  word_count_valid: false
+  context_score: 1.0
+  coherence_score: 0.9
+  failed_items:
+  - Word count falls outside the requested range (generated ~2651 words; required
+    700-1000).
+  - Repetition and redundancy in phrasing (e.g., repeated 'not just a girl' beats)
+    weakens pacing and diminishes some emotional beats.
+  - Some supporting elements are underdeveloped (Yaa and the resistance's internal
+    structure/background receive limited detail), which reduces the dramatic payoff
+    of the final approach.
+error: null

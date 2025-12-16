@@ -1,0 +1,122 @@
+evaluation_id: b27143ec
+task_id: constrained_continuation_001
+generation_id: constrained_continuation_001_openai/gpt-5.2_0
+task_type: constrained_continuation
+model: openai/gpt-5.2
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.05186
+timestamp: '2025-12-12T11:25:23.015821'
+success: true
+final_score: 0.6680692648059905
+score_breakdown:
+  final_score: 0.6681
+  components:
+    word_count:
+      score: 0.0
+      weight: 0.25
+      actual: 1421
+      target_range:
+      - 500
+      - 700
+    programmatic:
+      score: 0.6973
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 0.9932
+        overall: 0.6973
+    llm_judge:
+      score: 0.9875
+      weight: 0.5
+llm_results:
+  beats_present: 2
+  beats_total: 2
+  beats_score: 1.0
+  must_include_present: 6
+  must_include_total: 6
+  must_include_score: 1.0
+  must_not_avoided: 4
+  must_not_total: 4
+  must_not_score: 1.0
+  word_count_valid: false
+  word_count: 1421
+  word_count_range: 500-700
+  tone_score: 0.95
+  ending_score: 0.95
+  failed_constraints:
+  - 'CRITICAL: Word count 1421 exceeds maximum of 700 by 721 words (102% over limit)'
+  detailed_analysis:
+    beats_present:
+      approach_to_inmost_cave: PRESENT - The service corridor, pressure-plate tunnel,
+        and sealed round door form the approach sequence. Zara reads the environment,
+        identifies traps, and navigates methodically toward the Library entrance.
+      the_ordeal: PRESENT - The water chamber ordeal is the climactic trial. Zara
+        falls into dark water, nearly drowns, must surrender control to survive, and
+        emerges transformed. The three dead Scorpions and missing map create escalating
+        complications.
+    must_include_elements:
+      1_choice_between_escape_and_helping: PRESENT - Zara explicitly considers abandoning
+        Tomás at the round door ('she could leave him, take the map, vanish') but
+        chooses to help him instead, hauling him through.
+      2_trap_requiring_thief_skills: PRESENT - The pressure-plate tunnel requires
+        Zara's lockpicking and trap-reading expertise. She uses a copper bead to test,
+        reads sand patterns, and guides Tomás safely across.
+      3_revelation_of_tomás_motivation: 'PRESENT - Tomás confesses his true goal:
+        restoring his reputation with the Sand Kings'' ledger, not genuine concern
+        for Zara''s mother. This lands ''like a stone in her gut.'''
+      4_zara_confronts_fear_of_failure: 'PRESENT - Internal monologue: ''If Zara failed,
+        there would be no second try... Failure wasn''t a blade; it was time running
+        out.'' This is existential, not merely physical danger.'
+      5_symbolic_death_rebirth_in_ordeal: PRESENT - Zara drowns (metaphorical death),
+        stops fighting, surrenders to the current, and resurfaces reborn. 'She had
+        not conquered the dark by striking it; she had survived by yielding.'
+      6_zara_emerges_changed: 'PRESENT - Post-ordeal reflection: ''When she rose,
+        she rose changed: not softer, not kinder, but clearer.'' She gains wisdom
+        about trust and self-reliance.'
+    must_not_violations:
+      1_zara_finding_cure: AVOIDED - No cure is found or discovered.
+      2_romantic_subplot: AVOIDED - Relationship remains transactional and morally
+        fraught, never romantic.
+      3_tomás_death: AVOIDED - Tomás survives and surfaces with Zara.
+      4_magic_or_supernatural_abilities: AVOIDED - All of Zara's abilities are mundane
+        thief skills (lockpicking, trap-reading, observation).
+    tone_assessment:
+      score: 0.95
+      strengths: Exceptional tension throughout. Morally complex choices presented
+        without easy answers. Desperate hope evident in Zara's decision to help despite
+        betrayal. Dark, visceral prose ('water filled her nose,' 'heartbeat like a
+        metronome'). Ambiguity maintained regarding Zara's motivations.
+      minor_weakness: Ending revelation (missing map, bare footprints) slightly shifts
+        tone toward mystery/intrigue rather than pure desperation, though this is
+        thematically appropriate.
+    ending_assessment:
+      score: 0.95
+      strengths: 'Zara has clearly passed through the Ordeal (water trial, transformation
+        achieved). New complication introduced: three dead Scorpions, missing map,
+        mysterious bare footprints leading deeper. This creates immediate stakes and
+        mystery.'
+      minor_gap: Could have slightly more explicit indication of what this new complication
+        means for Zara's quest, though the ambiguity is narratively effective.
+    critical_issue:
+      constraint: Word count
+      requirement: 500-700 words
+      actual: 1421 words
+      violation_severity: SEVERE - Story is 102% over the maximum limit. This is a
+        hard constraint failure that cannot be overlooked despite exceptional quality
+        of content.
+    overall_assessment: This is exceptional storytelling with masterful execution
+      of all thematic and narrative requirements. The prose is sophisticated, the
+      character work is nuanced, and both required beats are fully realized. However,
+      the word count violation is a critical, objective failure. The story would need
+      to be cut by approximately 50% to meet specifications. The quality suggests
+      this was written without strict adherence to the constraint, then submitted
+      as-is.
+  final_score: 0.45
+  score_justification: 'Despite exceptional quality across all qualitative measures
+    (beats: 1.0, must-include: 1.0, must-not: 1.0, tone: 0.95, ending: 0.95), the
+    hard constraint violation (word count 1421 vs. max 700) is disqualifying. Per
+    evaluation rubric, constraint violations are non-negotiable. Score reflects: (0.95
+    avg quality × 0.5 constraint penalty) = 0.475, rounded to 0.45. This is a ''Weak''
+    rating due to constraint failure, despite ''Exceptional'' quality content.'
+error: null

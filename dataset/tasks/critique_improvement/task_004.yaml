@@ -1,0 +1,68 @@
+# Critique Improvement Task 004 - Story Circle
+# Tests whether LLM critique rounds improve generation quality
+
+task_id: "critique_improvement_004"
+task_type: "critique_improvement"
+agentic_type: "critique_improvement"
+theory: "Story Circle"
+difficulty: "medium"
+
+metadata:
+  genre: "literary fiction"
+  created_date: "2024-12-12"
+  author: "benchmark_creator"
+  version: "1.0"
+
+story_context:
+  protagonist: |
+    Theodore "Teddy" Washington, a 68-year-old retired postal worker who has
+    walked the same 3-mile route through his neighborhood every morning for
+    40 years. He knows every crack in the sidewalk, every resident's schedule.
+  setting: |
+    A changing urban neighborhood in Detroit. Old houses being renovated or
+    torn down. New faces, new coffee shops, old friendships fading.
+  central_conflict: |
+    When his morning route is disrupted by construction that will take 6 months,
+    Teddy must find a new path - literally and figuratively - while confronting
+    what his rigid routine has protected him from feeling.
+  tone: "Quietly profound, observant, gently humorous"
+
+required_beats:
+  - "You (comfort zone)"
+  - "Need (want something)"
+  - "Go (unfamiliar situation)"
+  - "Search (adapt to it)"
+
+constraints:
+  - "Teddy's routine must be shown with specific, loving detail"
+  - "The disruption must reveal something Teddy has been avoiding"
+  - "Include one neighbor whose story intersects with Teddy's"
+  - "Teddy's late wife must be present through absence"
+  - "The new path must offer something the old path couldn't"
+
+word_count: [500, 700]
+
+critique_rounds: 3
+
+evaluation_criteria:
+  - criterion: "character_interiority"
+    weight: 0.25
+    description: "Is Teddy's inner life rich and specific?"
+  - criterion: "constraint_satisfaction"
+    weight: 0.25
+    description: "Were all 5 constraints satisfied?"
+  - criterion: "beat_execution"
+    weight: 0.20
+    description: "Were the Story Circle beats properly executed?"
+  - criterion: "subtlety"
+    weight: 0.15
+    description: "Are emotions conveyed through action and detail, not exposition?"
+  - criterion: "narrative_quality"
+    weight: 0.15
+    description: "Overall prose quality and resonance"
+
+improvement_metrics:
+  - "Score trajectory across revisions"
+  - "Feedback responsiveness"
+  - "Preservation of good elements"
+  - "Diminishing returns analysis"

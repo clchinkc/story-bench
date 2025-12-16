@@ -1,0 +1,48 @@
+evaluation_id: d8bce00f
+task_id: beat_interpolation_002
+generation_id: beat_interpolation_002_meta-llama/llama-4-maverick_0
+task_type: beat_interpolation
+model: meta-llama/llama-4-maverick
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.000962
+timestamp: '2025-12-12T12:59:10.532040'
+success: true
+final_score: 0.90525
+score_breakdown:
+  final_score: 0.9052
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 349
+      target_range:
+      - 250
+      - 400
+    programmatic:
+      score: 0.946
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.91
+        slop_score: 1.0
+        overall: 0.946
+    llm_judge:
+      score: 0.8375
+      weight: 0.5
+llm_results:
+  beat_elements_score: 0.75
+  elements_found: 3
+  elements_total: 4
+  beat_execution_score: 0.8
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: true
+  character_score: 0.8
+  bridge_score: 0.8
+  continuity_score: 1.0
+  evidence: The output covers Sarah considering going to authorities/official channels,
+    her internal conflict, and her decision to take a third option. However, it doesn't
+    explicitly show her considering recanting her testimony, which was the direct
+    demand from the Catalyst beat. While implied by her internal conflict, it's not
+    directly addressed as a 'pro/con' option.
+error: null

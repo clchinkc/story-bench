@@ -1,0 +1,73 @@
+evaluation_id: 2a2815df
+task_id: multi_beat_synthesis_003
+generation_id: multi_beat_synthesis_003_meta-llama/llama-4-maverick_0
+task_type: multi_beat_synthesis
+model: meta-llama/llama-4-maverick
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.002091
+timestamp: '2025-12-12T14:21:06.226226'
+success: true
+final_score: 0.436958868425435
+score_breakdown:
+  final_score: 0.437
+  components:
+    word_count:
+      score: 0.0175
+      weight: 0.25
+      actual: 444
+      target_range:
+      - 700
+      - 1000
+    programmatic:
+      score: 0.802
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.67
+        slop_score: 1.0
+        overall: 0.802
+    llm_judge:
+      score: 0.4642
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 7
+  beat_reqs_total: 15
+  beat_requirements_score: 0.4666666666666667
+  cross_beat_satisfied: 1
+  cross_beat_total: 4
+  cross_beat_score: 0.25
+  word_count_valid: false
+  context_score: 0.8
+  coherence_score: 0.7
+  failed_items:
+  - 'Beat 1 (Fun and Games): Clever problem-solving that delivers on the heist premise
+    (not shown, just stated it''s a ''flawless heist'')'
+  - 'Beat 1 (Fun and Games): Moments of humor and style (lacking, very straightforward
+    description)'
+  - 'Beat 1 (Fun and Games): Things going according to plan (mostly) (implied, but
+    not explicitly shown beyond initial setup)'
+  - 'Beat 2 (Midpoint): False victory: a key objective achieved (the painting is ''within
+    her grasp'' but not yet achieved)'
+  - 'Beat 2 (Midpoint): Stakes raised dramatically—new information or threat (the
+    mentor''s appearance is the new threat, but not ''new information'' in the sense
+    of plot twist beyond her presence)'
+  - 'Beat 2 (Midpoint): Miri discovers her mentor is involved (or the full extent)
+    (mentor is revealed, but ''full extent'' of involvement isn''t clear)'
+  - 'Beat 2 (Midpoint): The nature of the heist changes (from simple theft to something
+    more) (stated that it''s a ''fight for survival'' but not shown how the nature
+    of the heist itself changes)'
+  - 'Beat 2 (Midpoint): Public/party setting intensifies pressure (the setting is
+    there, but the pressure isn''t explicitly intensified beyond the mentor''s appearance)'
+  - 'Beat 3 (Bad Guys Close In): Security closing in on the crew (not shown, only
+    the mentor appears)'
+  - 'Beat 3 (Bad Guys Close In): Team friction or trust issues surface (not shown)'
+  - 'Beat 3 (Bad Guys Close In): A crew member compromised or in danger (not shown)'
+  - 'Beat 3 (Bad Guys Close In): Miri must choose: painting or revenge/saving someone
+    (not shown)'
+  - 'Beat 3 (Bad Guys Close In): The walls literally and figuratively closing in (not
+    shown, only stated ''battleground'')'
+  - 'Chekhov''s Gun: No detail established in Beat 1 becomes critical in Beat 3.'
+  - 'Tonal Escalation: Beat 1 isn''t particularly ''playful confidence'', and the
+    shift to ''genuine danger'' in Beat 3 is more stated than shown.'
+  - 'Team Dynamics: No consistent arc for a crew member across all three beats.'
+error: null

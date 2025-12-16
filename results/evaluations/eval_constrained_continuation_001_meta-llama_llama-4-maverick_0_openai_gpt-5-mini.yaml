@@ -1,0 +1,59 @@
+evaluation_id: 1d517334
+task_id: constrained_continuation_001
+generation_id: constrained_continuation_001_meta-llama/llama-4-maverick_0
+task_type: constrained_continuation
+model: meta-llama/llama-4-maverick
+sample_index: 0
+evaluator_model: openai/gpt-5-mini
+evaluator_cost: 0.00208225
+timestamp: '2025-12-12T14:18:22.046521'
+success: true
+final_score: 0.7552143053714704
+score_breakdown:
+  final_score: 0.7552
+  components:
+    word_count:
+      score: 0.9912
+      weight: 0.25
+      actual: 492
+      target_range:
+      - 500
+      - 700
+    programmatic:
+      score: 0.7197
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.56
+        slop_score: 0.9593
+        overall: 0.7197
+    llm_judge:
+      score: 0.655
+      weight: 0.5
+llm_results:
+  beats_present: 2
+  beats_total: 2
+  beats_score: 1.0
+  must_include_present: 1
+  must_include_total: 6
+  must_include_score: 0.1666666667
+  must_not_avoided: 4
+  must_not_total: 4
+  must_not_score: 1.0
+  word_count_valid: false
+  tone_score: 0.7
+  ending_score: 0.5
+  failed_constraints:
+  - word_count outside required range (492 words; required 500-700)
+  - No explicit moment where Zara must choose between escaping safely and helping
+    Tomás
+  - No trap/test that clearly requires Zara to use her thief skills (lockpicking,
+    disabling traps, stealthful bypass, etc.)
+  - No clear revelation about Tomás's true motivation for helping (only hinted as
+    'vested interest')
+  - Zara does not explicitly confront her fear of failure (the text shows determination
+    but not confrontation of failure-related fear)
+  - No symbolic death/rebirth moment during the Ordeal
+  - Ordeal is underdeveloped—while an emergency occurs (Tomás nearly falls) it is
+    not rendered as a full crucible, so the ending requirement is only partially satisfied
+    (Zara shows some change but the new complication is not clearly presented)
+error: null

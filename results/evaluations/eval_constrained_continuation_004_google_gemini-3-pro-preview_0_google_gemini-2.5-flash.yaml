@@ -1,0 +1,47 @@
+evaluation_id: 650ff7f1
+task_id: constrained_continuation_004
+generation_id: constrained_continuation_004_google/gemini-3-pro-preview_0
+task_type: constrained_continuation
+model: google/gemini-3-pro-preview
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0009716
+timestamp: '2025-12-12T12:59:33.670015'
+success: true
+final_score: 0.823159641044086
+score_breakdown:
+  final_score: 0.8232
+  components:
+    word_count:
+      score: 0.6166
+      weight: 0.25
+      actual: 759
+      target_range:
+      - 500
+      - 700
+    programmatic:
+      score: 0.736
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.56
+        slop_score: 1.0
+        overall: 0.736
+    llm_judge:
+      score: 0.97
+      weight: 0.5
+llm_results:
+  beats_present: 2
+  beats_total: 2
+  beats_score: 1.0
+  must_include_present: 6
+  must_include_total: 6
+  must_include_score: 1.0
+  must_not_avoided: 4
+  must_not_total: 4
+  must_not_score: 1.0
+  word_count_valid: false
+  tone_score: 0.8
+  ending_score: 1.0
+  failed_constraints:
+  - word_count
+error: null

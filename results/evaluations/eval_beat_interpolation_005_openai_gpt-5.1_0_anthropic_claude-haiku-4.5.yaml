@@ -1,0 +1,64 @@
+evaluation_id: f7f8d24d
+task_id: beat_interpolation_005
+generation_id: beat_interpolation_005_openai/gpt-5.1_0
+task_type: beat_interpolation
+model: openai/gpt-5.1
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.022574999999999998
+timestamp: '2025-12-12T10:10:12.230313'
+success: true
+final_score: 0.7411858283012887
+score_breakdown:
+  final_score: 0.7412
+  components:
+    word_count:
+      score: 0.0247
+      weight: 0.25
+      actual: 586
+      target_range:
+      - 300
+      - 450
+    programmatic:
+      score: 0.94
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.9
+        slop_score: 1.0
+        overall: 0.94
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: false
+  word_count: 586
+  word_count_range: 300-450
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: 'STRENGTHS: All 4 required elements present and executed excellently:
+    (1) Maya discovers Alejandro''s vulnerability—the hand tremor, his fear of public
+    perception, his isolation rooted in trauma; (2) Relationship shifts from professional
+    to personal—moves from rejected plates to intimate kitchen conversation; (3) Shared
+    moment creates genuine connection—the cocido scene with softened defenses, physical
+    proximity, emotional honesty; (4) Maya commits beyond contract—she actively chooses
+    to help (''we adapt''), moves from transactional to relational motivation. The
+    beat perfectly executes the narrative function: Alejandro lowers his walls, Maya
+    shifts from reactive (cooking what''s on menu) to proactive (cooking what heals),
+    and both characters cross an emotional point of no return. All must-not items
+    avoided: they''re not in love yet (connection is genuine but nascent), Maya doesn''t
+    leave or breach contract, photo isn''t taken during scene, Alejandro does lower
+    his walls. Character voices remain consistent—Maya''s directness, Alejandro''s
+    guarded-then-vulnerable arc. Bridge is seamless: BEFORE shows contract signing/stakes;
+    GENERATED shows the emotional breakthrough that makes those stakes personal; AFTER
+    shows the external consequence that tests that commitment. Setting continuity
+    perfect: kitchen established, staff sent home, intimate space maintained. DEDUCTION:
+    Word count exceeds range by 136 words (586 vs 300-450 max), which is a technical
+    requirement violation but doesn''t affect narrative quality.'
+error: null

@@ -1,0 +1,146 @@
+evaluation_id: 389b30e8
+task_id: multi_beat_synthesis_003
+generation_id: multi_beat_synthesis_003_openai/gpt-5.1_0
+task_type: multi_beat_synthesis
+model: openai/gpt-5.1
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.06544
+timestamp: '2025-12-12T10:13:03.165505'
+success: true
+final_score: 0.653020009199632
+score_breakdown:
+  final_score: 0.653
+  components:
+    word_count:
+      score: 0.0
+      weight: 0.25
+      actual: 2090
+      target_range:
+      - 700
+      - 1000
+    programmatic:
+      score: 0.6991
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 0.9977
+        overall: 0.6991
+    llm_judge:
+      score: 0.9565
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 14
+  beat_reqs_total: 15
+  beat_requirements_score: 0.93
+  cross_beat_satisfied: 4
+  cross_beat_total: 4
+  cross_beat_score: 1.0
+  word_count_valid: false
+  context_score: 0.95
+  coherence_score: 0.92
+  overall_score: 0.93
+  failed_items:
+  - Word count exceeds range (2090 vs. 700-1000 max) - significant overage at 109%
+    of limit
+  detailed_breakdown:
+    beat_1_fun_and_games:
+      score: 0.95
+      satisfied: 5
+      notes: 'Exceptional execution. Showcases crew skills (Jules'' hacking, Dani''s
+        infiltration, Rafa''s bartending), clever problem-solving (fantasy football
+        exploit, laser spoofing, lipstick device), abundant humor (dry wit throughout,
+        ''partridge in a pear tree,'' ''emotional honesty'' with elevator), plan execution
+        (smooth infiltration, replica swap setup), minor complication (unknown security
+        consultant mentioned). Only minor issue: complication feels slightly underdeveloped
+        at this stage.'
+    beat_2_midpoint:
+      score: 0.95
+      satisfied: 5
+      notes: Masterfully executed. False victory achieved (painting secured in tube,
+        replica hung). Stakes explode (Elena revealed as security consultant, live
+        demonstration announced, system integrity sweep initiated). Mentor fully revealed
+        with personal history (framing, testimony, buried career). Heist transforms
+        from clean theft to survival mission. Party setting weaponized (live feed,
+        guest audience, public spectacle). Sorokin's announcement creates perfect
+        pressure cooker.
+    beat_3_bad_guys_close_in:
+      score: 0.9
+      satisfied: 4
+      notes: 'Strong execution with one gap. Security closing in (alarms, door locks,
+        teams converging). Team friction emerges (Dani''s claustrophobia, Rafa''s
+        desperation). Crew member compromised (Dani trapped in dumbwaiter). Muri faces
+        critical choice (painting vs. saving Dani). Walls closing in (literal locks,
+        strobing lights, narrowing corridors). Missing element: Miri''s internal conflict
+        about revenge vs. rescue could be more explicit—the choice is clear but her
+        emotional stakes regarding Elena could deepen.'
+    chekhov_gun:
+      score: 1.0
+      satisfied: true
+      notes: Perfect execution. The dumbwaiter shaft established in Beat 1 ('sticky,'
+        'coffin,' 'ghost exit') becomes critical in Beat 3. Dani's earlier mapping
+        and Rafa's reluctance create setup; the stuck dumbwaiter and manual override
+        become the plot pivot. Audience can trace setup to payoff clearly.
+    tonal_escalation:
+      score: 1.0
+      satisfied: true
+      notes: 'Excellent progression. Beat 1: playful confidence (''Your data sets
+        are always inspiring,'' ''flirted with an elevator,'' ''partridge in a pear
+        tree''). Beat 2: confidence shaken (''name hit Miri like a dropped scaffold,''
+        ''thin ice,'' ''confidence didn''t feel like a costume''). Beat 3: genuine
+        danger with gallows humor (''Congratulations, you''ve been promoted to corpse,''
+        ''if I die here I''m haunting your next restoration''). Humor darkens appropriately.'
+    mentor_presence:
+      score: 1.0
+      satisfied: true
+      notes: 'Perfectly calibrated escalation. Beat 1: Elena unknown, only mentioned
+        as ''private security consultant'' with ''terrifying posture.'' Beat 2: Elena
+        revealed by name, her voice enters the channel, personal history surfaces
+        (framing, testimony). Beat 3: Elena is active threat, predicting Miri''s moves,
+        speaking directly to her, hunting her. Presence increases with each beat.'
+    team_dynamics:
+      score: 1.0
+      satisfied: true
+      notes: 'Dani''s arc is consistent and plot-critical. Beat 1: competent, confident
+        (''sweet-talked'' the dumbwaiter). Beat 2: first crack shows (hands trembling,
+        hesitation about enclosed spaces). Beat 3: vulnerability becomes plot driver
+        (trapped, panicked, forcing Miri''s choice). Her arc directly affects the
+        heist''s trajectory and Miri''s decision-making.'
+    context_maintenance:
+      score: 0.95
+      notes: 'Protagonist (Miri) remains consistent—dry wit, meticulous, ethical thief.
+        Setting (Monaco yacht during Grand Prix) vivid and maintained. Tone (Ocean''s
+        Eleven meets art history) perfectly balanced. Only minor: could emphasize
+        the ''art history'' element slightly more in dialogue, though the Madonna
+        description is excellent.'
+    narrative_coherence:
+      score: 0.92
+      notes: 'Beats flow naturally with clear cause-and-effect. Transitions smooth
+        (plan execution → announcement → lockdown). Character motivations clear. Pacing
+        accelerates appropriately. Minor issue: the jump from ''Elena''s integrity
+        sweep'' to ''she bypassed three decks'' feels slightly abrupt—could use one
+        more beat of Jules'' warning to build tension.'
+  strengths:
+  - Exceptional dialogue—witty, character-revealing, tonal
+  - Vivid sensory details (teak deck, brass plaque, strobing lights)
+  - Perfect Chekhov's Gun execution with dumbwaiter
+  - Elena's reveal is genuinely shocking and personal
+  - Crew dynamics feel authentic and stakes feel earned
+  - Tonal escalation is masterfully handled
+  - Mentor antagonist presence increases perfectly across beats
+  - Heist mechanics are clear and clever without exposition dumps
+  weaknesses:
+  - Word count significantly exceeds limit (2090 vs. 1000 max)
+  - Miri's emotional stakes regarding Elena/revenge could be more explicit in Beat
+    3
+  - One transition (Elena's system jump) feels slightly rushed
+  - Could emphasize 'art history' element more in dialogue
+  recommendations:
+  - 'Cut approximately 1,090 words—prioritize trimming: some crew banter in Beat 1,
+    reduce Elena''s monologue, condense technical explanations'
+  - Add one line in Beat 3 where Miri explicitly acknowledges the revenge temptation
+    before choosing rescue
+  - Smooth the 'bypassed three decks' transition with intermediate Jules warning
+  - Include one art-historical reference in dialogue (e.g., provenance detail, restoration
+    technique) to deepen tone
+error: null

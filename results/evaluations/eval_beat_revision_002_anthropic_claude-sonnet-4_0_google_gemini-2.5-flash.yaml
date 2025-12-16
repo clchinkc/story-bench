@@ -1,0 +1,56 @@
+evaluation_id: 4954e310
+task_id: beat_revision_002
+generation_id: beat_revision_002_anthropic/claude-sonnet-4_0
+task_type: beat_revision
+model: anthropic/claude-sonnet-4
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0013423999999999999
+timestamp: '2025-12-13T13:27:12.362494'
+success: true
+final_score: 0.982
+score_breakdown:
+  final_score: 0.982
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 271
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.988
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.98
+        slop_score: 1.0
+        overall: 0.988
+    llm_judge:
+      score: 0.97
+      weight: 0.5
+llm_results:
+  diagnosis_score: 1.0
+  flaw_correction_score: 1.0
+  beat_satisfaction_score: 1.0
+  preservation_score: 1.0
+  preserved_count: 4
+  preserved_total: 4
+  required_preserved_score: 1.0
+  required_preserved_count: 4
+  required_preserved_total: 4
+  minimal_change_score: 0.7
+  word_count_valid: true
+  quality_score: 1.0
+  evidence: 'The model correctly identified that the original segment failed to convey
+    a true ''All Is Lost'' moment. It addressed all points of the actual flaw: the
+    fundraiser/grant failed (board voted no more fundraising, grant denied), a personal
+    loss/betrayal isolated Marcus (Denise leaving, board betrayal, wife''s text about
+    losing the house), Marcus genuinely gave up hope (''nothing left''), and there''s
+    a strong ''whiff of death'' (loss of life''s work, family homelessness, identity/purpose).
+    The changes were significant enough to fix the flaw but retained the core structure
+    and opening lines, making it a good balance of minimal change and effective correction.
+    All required preserved phrases are present, and the forbidden changes were avoided.
+    The writing quality is excellent, enhancing the emotional impact without introducing
+    new errors.'
+error: null

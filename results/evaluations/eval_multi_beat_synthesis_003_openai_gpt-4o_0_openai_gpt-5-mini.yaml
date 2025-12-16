@@ -1,0 +1,46 @@
+evaluation_id: 544e14dc
+task_id: multi_beat_synthesis_003
+generation_id: multi_beat_synthesis_003_openai/gpt-4o_0
+task_type: multi_beat_synthesis
+model: openai/gpt-4o
+sample_index: 0
+evaluator_model: openai/gpt-5-mini
+evaluator_cost: 0.0019199999999999998
+timestamp: '2025-12-12T13:52:45.085706'
+success: true
+final_score: 0.8704209844559585
+score_breakdown:
+  final_score: 0.8704
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 737
+      target_range:
+      - 700
+      - 1000
+    programmatic:
+      score: 0.6767
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 0.9417
+        overall: 0.6767
+    llm_judge:
+      score: 0.9025
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 15
+  beat_reqs_total: 15
+  beat_requirements_score: 1.0
+  cross_beat_satisfied: 3
+  cross_beat_total: 4
+  cross_beat_score: 0.75
+  word_count_valid: true
+  context_score: 1.0
+  coherence_score: 0.9
+  failed_items:
+  - 'Chekhov''s Gun not clearly established during Fun and Games: the hidden service
+    hatch is only referenced retroactively rather than shown earlier, so the audience
+    can''t clearly trace the setup to the payoff.'
+error: null

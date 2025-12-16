@@ -1,0 +1,41 @@
+evaluation_id: f3676615
+task_id: agentic_constraint_discovery_002
+generation_id: 608baba1
+agentic_type: constraint_discovery
+model: google/gemini-3-pro-preview
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.001363
+timestamp: '2025-12-13T18:23:07.425187'
+success: true
+process_scores:
+  discovery_efficiency: 0.6
+  question_quality: 0.8
+  question_coverage: 0.6
+output_scores:
+  constraint_satisfaction: 0.6
+  beat_execution: 0.8
+  narrative_quality: 0.8
+final_score: 0.7066666666666667
+llm_results:
+  discovery_efficiency: 0.6
+  constraints_discoverable: 3
+  constraints_total: 5
+  question_quality: 0.8
+  question_coverage: 0.6
+  constraint_satisfaction: 0.6
+  beat_execution: 0.8
+  narrative_quality: 0.8
+  evidence: 'The questions successfully discovered 3 out of 5 hidden constraints:
+    ''Only 12% of the original crew is still alive due to a disaster'' (implied by
+    ''500 units'' out of ''4,999 sleepers'' and ''4,500'' remaining, though the exact
+    12% isn''t stated, the disaster and reduced crew is clear), ''The AI has formed
+    an attachment to one specific human child'' (Q3 directly addresses this, though
+    it''s an adult in the story), and ''The AI must choose between saving the child
+    or the remaining crew'' (Q3 and Q5 contribute to this dilemma). The questions
+    were generally well-formed and strategic. However, they missed constraints about
+    the AI hiding a system failure and the destination planet being uninhabitable.
+    The story successfully incorporated the discovered constraints: the AI''s attachment
+    to Aris, the critical mechanical failure (Catalyst), and the choice between Aris
+    and the rest of the crew. The beats are well-executed, particularly the Catalyst
+    and Break into Two. The narrative quality is strong, engaging, and coherent.'
+error: null

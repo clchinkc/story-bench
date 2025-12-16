@@ -1,0 +1,44 @@
+evaluation_id: 2a9c716d
+task_id: multi_beat_synthesis_001
+generation_id: multi_beat_synthesis_001_anthropic/claude-sonnet-4.5_0
+task_type: multi_beat_synthesis
+model: anthropic/claude-sonnet-4.5
+sample_index: 0
+evaluator_model: openai/gpt-5-mini
+evaluator_cost: 0.00201475
+timestamp: '2025-12-12T12:18:30.004194'
+success: true
+final_score: 0.7048360654047797
+score_breakdown:
+  final_score: 0.7048
+  components:
+    word_count:
+      score: 0.1209
+      weight: 0.25
+      actual: 1185
+      target_range:
+      - 700
+      - 1000
+    programmatic:
+      score: 0.6984
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 0.9961
+        overall: 0.6984
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 15
+  beat_reqs_total: 15
+  beat_requirements_score: 1.0
+  cross_beat_satisfied: 4
+  cross_beat_total: 4
+  cross_beat_score: 1.0
+  word_count_valid: false
+  context_score: 1.0
+  coherence_score: 1.0
+  failed_items:
+  - 'word count out of required range (generated: 1185; required: 700-1000)'
+error: null

@@ -1,0 +1,53 @@
+evaluation_id: c883b6d8
+task_id: beat_revision_002
+generation_id: beat_revision_002_meta-llama/llama-4-maverick_0
+task_type: beat_revision
+model: meta-llama/llama-4-maverick
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0013281999999999999
+timestamp: '2025-12-13T13:30:15.339230'
+success: true
+final_score: 0.22791913922791124
+score_breakdown:
+  final_score: 0.2279
+  components:
+    word_count:
+      score: 0.1751
+      weight: 0.25
+      actual: 574
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.6965
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 0.9914
+        overall: 0.6965
+    llm_judge:
+      score: 0.02
+      weight: 0.5
+llm_results:
+  diagnosis_score: 0.0
+  flaw_correction_score: 0.0
+  beat_satisfaction_score: 0.0
+  preservation_score: 0.0
+  preserved_count: 0
+  preserved_total: 4
+  required_preserved_score: 0.0
+  required_preserved_count: 0
+  required_preserved_total: 4
+  minimal_change_score: 0.0
+  word_count_valid: false
+  quality_score: 0.2
+  evidence: The model explicitly states 'NO REVISION NEEDED' and then proceeds to
+    provide multiple revisions, none of which address the actual flaw. It misinterprets
+    the 'All Is Lost' beat entirely, suggesting the original 'effectively conveys
+    the desperation and isolation'. The revisions provided do not remove Marcus's
+    options, support system, or hope, nor do they introduce a 'whiff of death'. The
+    model's analysis is completely off-base. It also fails to preserve any of the
+    required phrases and significantly changes the original text structure, despite
+    claiming minimal changes.
+error: null

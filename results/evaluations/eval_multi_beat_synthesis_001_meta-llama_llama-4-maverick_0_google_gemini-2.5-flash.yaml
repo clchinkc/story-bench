@@ -1,0 +1,47 @@
+evaluation_id: 59111d67
+task_id: multi_beat_synthesis_001
+generation_id: multi_beat_synthesis_001_meta-llama/llama-4-maverick_0
+task_type: multi_beat_synthesis
+model: meta-llama/llama-4-maverick
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0012051
+timestamp: '2025-12-12T12:57:42.844605'
+success: true
+final_score: 0.8985
+score_breakdown:
+  final_score: 0.8985
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 974
+      target_range:
+      - 700
+      - 1000
+    programmatic:
+      score: 0.7
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 1.0
+        overall: 0.7
+    llm_judge:
+      score: 0.947
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 14
+  beat_reqs_total: 15
+  beat_requirements_score: 0.93
+  cross_beat_satisfied: 4
+  cross_beat_total: 4
+  cross_beat_score: 1.0
+  word_count_valid: true
+  context_score: 0.9
+  coherence_score: 0.9
+  failed_items:
+  - 'Beat 1: Revelation of an enemy within the Resonant community (a traitor) - The
+    killer is revealed to be a Resonant, but not necessarily ''within'' the community
+    in a way that implies betrayal from an established member. It''s more an external
+    threat who happens to be a Resonant.'
+error: null

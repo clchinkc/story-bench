@@ -1,0 +1,98 @@
+evaluation_id: c70a39ee
+task_id: constrained_continuation_003
+generation_id: constrained_continuation_003_anthropic/claude-haiku-4.5_0
+task_type: constrained_continuation
+model: anthropic/claude-haiku-4.5
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.03182
+timestamp: '2025-12-12T03:09:20.461300'
+success: true
+final_score: 0.9212499999999999
+score_breakdown:
+  final_score: 0.9212
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 662
+      target_range:
+      - 550
+      - 750
+    programmatic:
+      score: 0.7
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 1.0
+        overall: 0.7
+    llm_judge:
+      score: 0.9925
+      weight: 0.5
+llm_results:
+  beats_present: 3
+  beats_total: 3
+  beats_score: 1.0
+  must_include_present: 6
+  must_include_total: 6
+  must_include_score: 1.0
+  must_not_avoided: 4
+  must_not_total: 4
+  must_not_score: 1.0
+  word_count_valid: true
+  tone_score: 0.95
+  ending_score: 1.0
+  failed_constraints: []
+  detailed_analysis:
+    beats_analysis:
+      Search: Present and well-executed. Jin navigates the Collective's political
+        systems, learns from Keiko, and searches through the research archive for
+        truth about the suppressed technology.
+      Find: Present and impactful. Jin discovers Korsakov's finished algorithm and
+        realizes the conspiracy is deeper than he thought—the Council didn't just
+        suppress innovation, they erased the researcher.
+      Take: Present with clear cost. Jin chooses to broadcast the data, gaining a
+        platform but losing his freedom; he's confined to the research sector with
+        suspended credentials. The price is immediate and personal.
+    must_include_analysis:
+      1_unfamiliar_culture: Excellent. Jin struggles with the Collective's consensus-based
+        decision-making, glacial processes, and fundamentally different power structures
+        compared to Earth's centralized authority.
+      2_mentor_figure: Strong. Keiko serves as guide and mentor—she explains the Collective's
+        politics, grants access to restricted materials, and helps Jin understand
+        the stakes of his choices.
+      3_unexpected_discovery: Excellent. The revelation that Korsakov already solved
+        the problem (not a prototype but finished technology) and was likely killed
+        for it expands the conspiracy beyond Jin's initial understanding.
+      4_finds_what_wanted: Present. Jin gains what he sought—a platform to continue
+        fighting, access to broadcast the truth, and refuge from Earth's persecution.
+      5_takes_action_with_cost: Excellent. Jin chooses to publish despite Keiko's
+        warning about becoming a combatant. The immediate consequence is confinement
+        and credential suspension.
+      6_moral_compromise: Strong. Jin must choose between safety/anonymity in the
+        Collective versus becoming a target by publishing. He chooses action knowing
+        it will make him vulnerable, accepting conditional safety.
+    must_not_analysis:
+      1_easy_integration: Successfully avoided. Jin struggles throughout—processing
+        station dehumanization, cramped quarters, bewilderment at political complexity,
+        eventual confinement.
+      2_earth_family_contact: Successfully avoided. No communication with parents
+        or Yuna; only references to their suffering as motivation.
+      3_violence_weapons: Successfully avoided. Conflict is entirely political and
+        informational; no physical confrontation.
+      4_complete_resolution: Successfully avoided. The conspiracy remains open-ended;
+        Korsakov's fate unclear, Council's response unknown, broader implications
+        unresolved.
+    tone_assessment: Contemplative and politically charged throughout. The narrative
+      maintains introspective moments (Jin's hollow realization, watching Earth as
+      accusation) while building political tension. Personal stakes are vivid—the
+      cost to Jin is emotional and existential, not just circumstantial. Minor deduction
+      only because the ending could have lingered slightly longer in Jin's internal
+      reflection.
+    ending_assessment: 'Perfect execution of ''Take'' beat. Jin has gained the platform
+      he wanted but paid the price of confinement and lost freedom. The final image—watching
+      Earth turn while realizing the true cost of resistance—crystallizes the paradox:
+      he won but lost. Ends exactly at the Take beat with both gain and price clearly
+      established.'
+  overall_score: 0.99
+error: null

@@ -1,0 +1,56 @@
+evaluation_id: 4d9500a5
+task_id: theory_conversion_002
+generation_id: theory_conversion_002_openai/gpt-5_0
+task_type: theory_conversion
+model: openai/gpt-5
+sample_index: 0
+evaluator_model: openai/gpt-5-mini
+evaluator_cost: 0.001829
+timestamp: '2025-12-12T14:02:53.792750'
+success: true
+final_score: 0.6756142041151223
+score_breakdown:
+  final_score: 0.6756
+  components:
+    word_count:
+      score: 0.0025
+      weight: 0.25
+      actual: 1008
+      target_range:
+      - 600
+      - 800
+    programmatic:
+      score: 0.7
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 1.0
+        overall: 0.7
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beats_present: 12
+  beats_total: 12
+  beats_score: 1.0
+  preserved_count: 7
+  preserved_total: 7
+  preservation_score: 1.0
+  word_count_valid: false
+  structural_accuracy_score: 1.0
+  tone_score: 1.0
+  evidence: 'All 12 Campbell beats are clearly present and ordered: Ordinary World
+    (teaching in village), Call (spring dries/dreams), Refusal (offers other potters/denial),
+    Meeting the Mentor (Sura and grandmother’s journal), Crossing (leaves for mountain),
+    Tests/Allies/Enemies (weather, shepherd, doubts, cracked cup), Approach to Inmost
+    Cave (ruined shrine/kiln), Ordeal (struggle to surrender/control while throwing),
+    Reward (the finished vessel), Road Back (descent with vessel), Resurrection (inner
+    transformation as water returns), Return with Elixir (teaches differently, spring
+    restored). All 7 required elements are preserved (Maya, pottery, grandmother’s
+    legacy, mountain shrine journey, dried spring, theme of surrendering control,
+    Maya’s transformation). Tone is quiet and meditative throughout. The only deduction
+    is word_count_valid=false: the provided converted text exceeds the specified 600–800
+    word range (not within required limits). Minor note: the Mentor role is distributed
+    between Sura and the journal, but this still satisfies the Meeting-the-Mentor
+    stage.'
+error: null

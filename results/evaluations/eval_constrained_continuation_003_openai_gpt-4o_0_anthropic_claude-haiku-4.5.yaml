@@ -1,0 +1,92 @@
+evaluation_id: 6a4d76f5
+task_id: constrained_continuation_003
+generation_id: constrained_continuation_003_openai/gpt-4o_0
+task_type: constrained_continuation
+model: openai/gpt-4o
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.030365
+timestamp: '2025-12-12T02:22:05.784573'
+success: true
+final_score: 0.9173860123647604
+score_breakdown:
+  final_score: 0.9174
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 621
+      target_range:
+      - 550
+      - 750
+    programmatic:
+      score: 0.6845
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 0.9614
+        overall: 0.6845
+    llm_judge:
+      score: 0.9925
+      weight: 0.5
+llm_results:
+  beats_present: 3
+  beats_total: 3
+  beats_score: 1.0
+  must_include_present: 6
+  must_include_total: 6
+  must_include_score: 1.0
+  must_not_avoided: 4
+  must_not_total: 4
+  must_not_score: 1.0
+  word_count_valid: true
+  tone_score: 0.95
+  ending_score: 1.0
+  failed_constraints: []
+  detailed_analysis:
+    beats_analysis:
+      Search: Present - Jin navigates Collective politics with Clara's guidance, learning
+        the landscape and key players through introduction to scientists, activists,
+        smugglers
+      Find: Present - Jin discovers the suppressed carbon capture technology could
+        transform the Collective's energy systems, not just Earth's climate; realizes
+        his platform comes with polarizing consequences
+      Take: Present - Jin shares research with secretive group outside Collective
+        oversight, gaining council voice but losing control of his work and his 'purity
+        of purpose'
+    must_include_analysis:
+      1_navigating_unfamiliar_culture: Strong - Detailed portrayal of Jin as 'ghost'
+        in corridors, learning Collective's labyrinthine politics, constant wariness,
+        clash between idealism and pragmatism
+      2_mentor_figure: 'Strong - Clara is well-developed: grizzled engineer, silver-haired,
+        sharp-eyed, guides Jin through politics, shares crucial information, presents
+        moral dilemma'
+      3_unexpected_discovery: 'Strong - Technology''s dual application: not just climate
+        solution but energy stabilizer for Collective; reveals factional power dynamics
+        Jin hadn''t anticipated'
+      4_finds_what_he_wants: Strong - Jin gains platform for his findings and voice
+        in council, but realizes it comes with polarization and loss of control
+      5_action_with_cost: 'Strong - Sharing research with secretive group has explicit
+        cost: loss of control, entanglement in orbital politics, compromise of principles'
+      6_moral_compromise: 'Strong - Central tension: Jin chooses to involve group
+        outside oversight, knowing research might be twisted, sacrificing purity for
+        pragmatic influence'
+    must_not_analysis:
+      1_easy_integration: 'Avoided - Jin struggles throughout: wary, on guard, idealism
+        clashes with pragmatism, presence polarizes community, constant tension'
+      2_earth_family_contact: Avoided - No family members mentioned or contacted
+      3_violence_weapons: Avoided - No violence or weapons present; conflict is political
+        and ideological
+      4_complete_resolution: Avoided - Conspiracy remains unresolved; Jin's position
+        is 'precarious foothold,' uncertainty persists, only 'flicker of hope' remains
+    tone_assessment: Contemplative and politically charged tone maintained throughout.
+      Personal stakes evident in Jin's internal conflict and moral dilemmas. Introspective
+      passages ('Jin grappled with the choice,' 'weight of compromise pressed heavily')
+      balance political intrigue. Minor deduction only for occasional moments where
+      political complexity could be slightly deeper.
+    ending_assessment: 'Perfect alignment with ''Take'' requirement. Story ends precisely
+      at the moment Jin has gained something (platform, council voice) but paid a
+      price (lost innocence, compromised principles, lost control of work). Final
+      paragraph crystallizes this: ''gained a platform but lost his innocence.'' No
+      premature resolution; uncertainty and consequence remain foregrounded.'
+error: null

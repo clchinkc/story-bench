@@ -1,0 +1,54 @@
+evaluation_id: c4620ec0
+task_id: beat_interpolation_003
+generation_id: beat_interpolation_003_mistralai/ministral-14b-2512_0
+task_type: beat_interpolation
+model: mistralai/ministral-14b-2512
+sample_index: 0
+evaluator_model: openai/gpt-5-mini
+evaluator_cost: 0.00180875
+timestamp: '2025-12-12T12:35:16.865064'
+success: true
+final_score: 0.6970569871816431
+score_breakdown:
+  final_score: 0.6971
+  components:
+    word_count:
+      score: 0.0072
+      weight: 0.25
+      actual: 557
+      target_range:
+      - 250
+      - 400
+    programmatic:
+      score: 0.796
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.66
+        slop_score: 1.0
+        overall: 0.796
+    llm_judge:
+      score: 0.9925
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: false
+  character_score: 1.0
+  bridge_score: 0.95
+  continuity_score: 1.0
+  evidence: 'All four required elements are present: Yuki explores multiple areas
+    (corridors, crew quarters, medical bay, mess hall), discovers clues (patient log
+    ''Dimensional integration successful'', oxygen anomaly, crystallized syringes),
+    encounters transformed crew as mysterious apparitions/whispers, and faces obstacles
+    (sealed doors, sabotaged generators, a sliding panel). The scene functions clearly
+    as the Search beat—gradual discovery, trials, and adaptation—so execution and
+    character consistency score highly. No prohibited items appear (no immediate data-core
+    discovery or full explanations from the transformed crew; Yuki does not leave;
+    she did not know about the transformation prior to arrival). The sole deduction
+    is formal: the provided word count (557) exceeds the specified 250–400 range,
+    so word_count_valid is false.'
+error: null

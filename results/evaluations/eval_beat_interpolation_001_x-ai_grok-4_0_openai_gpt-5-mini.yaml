@@ -1,0 +1,50 @@
+evaluation_id: 9cf25c8f
+task_id: beat_interpolation_001
+generation_id: beat_interpolation_001_x-ai/grok-4_0
+task_type: beat_interpolation
+model: x-ai/grok-4
+sample_index: 0
+evaluator_model: openai/gpt-5-mini
+evaluator_cost: 0.0016952500000000001
+timestamp: '2025-12-12T13:50:30.300233'
+success: true
+final_score: 0.7183840000641857
+score_breakdown:
+  final_score: 0.7184
+  components:
+    word_count:
+      score: 0.0
+      weight: 0.25
+      actual: 575
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.8735
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.8
+        slop_score: 0.9837
+        overall: 0.8735
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: false
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: 'All four required elements are present: Marcus is introduced by name;
+    he offers practical wisdom and tangible tools (satchel with items); Marcus reframes
+    Elena''s librarian skills as useful; Elena''s doubt shifts toward reluctant acceptance
+    rather than immediate confidence. None of the prohibited items appear (no instant
+    confidence, no mentor accompaniment/solutions, Elena is not placed in/near the
+    forest during this beat, and she does not discover magical powers). The only deduction
+    is that the output length (≈575 words) exceeds the required 200–350 word range.'
+error: null

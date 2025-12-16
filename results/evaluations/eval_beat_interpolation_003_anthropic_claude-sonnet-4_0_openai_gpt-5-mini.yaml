@@ -1,0 +1,52 @@
+evaluation_id: 55f1967f
+task_id: beat_interpolation_003
+generation_id: beat_interpolation_003_anthropic/claude-sonnet-4_0
+task_type: beat_interpolation
+model: anthropic/claude-sonnet-4
+sample_index: 0
+evaluator_model: openai/gpt-5-mini
+evaluator_cost: 0.0013585
+timestamp: '2025-12-12T13:52:02.914169'
+success: true
+final_score: 0.997
+score_breakdown:
+  final_score: 0.997
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 304
+      target_range:
+      - 250
+      - 400
+    programmatic:
+      score: 0.988
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.98
+        slop_score: 1.0
+        overall: 0.988
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: true
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: 'All four required elements are present: multiple areas explored (crew
+    quarters, medical bay, corridors), clues discovered (patient files, Dr. Chen''s
+    cut-off log), mysterious encounters with transformed crew (shadows, whispers,
+    shifting forms), and an obstacle overcome (using a plasma torch to buy time).
+    None of the prohibited items occur: she does not immediately find the data core
+    in the Search passage, the crew do not explain everything, she does not leave,
+    and she did not arrive already knowing the transformation (she deduces it from
+    evidence). Setting and character behavior remain consistent and the passage effectively
+    bridges the Before and After beats.'
+error: null

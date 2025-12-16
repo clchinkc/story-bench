@@ -1,0 +1,66 @@
+evaluation_id: b5aed5be
+task_id: beat_revision_004
+generation_id: beat_revision_004_anthropic/claude-haiku-4.5_0
+task_type: beat_revision
+model: anthropic/claude-haiku-4.5
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.021034999999999998
+timestamp: '2025-12-13T13:42:50.083653'
+success: true
+final_score: 0.974
+score_breakdown:
+  final_score: 0.974
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 243
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.976
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.96
+        slop_score: 1.0
+        overall: 0.976
+    llm_judge:
+      score: 0.96
+      weight: 0.5
+llm_results:
+  diagnosis_score: 1.0
+  flaw_correction_score: 1.0
+  beat_satisfaction_score: 0.95
+  preservation_score: 1.0
+  preserved_count: 5
+  preserved_total: 5
+  required_preserved_score: 1.0
+  required_preserved_count: 4
+  required_preserved_total: 4
+  minimal_change_score: 0.75
+  word_count_valid: true
+  quality_score: 0.95
+  evidence: 'The model correctly diagnosed the core flaw: the original segment was
+    pure exposition-as-info-dump (telling through summary) rather than showing character
+    through lived action. The revision transforms this by: (1) Grounding Rachel in
+    a specific scene (kitchen table, Tuesday morning) with sensory details (jazz,
+    cooling coffee, cat at ankles); (2) Revealing her detective instincts and work
+    obsession through behavior (cold case file in bag, scrolling email at home, can''t
+    let cases go); (3) Showing her partnership with James through natural dialogue
+    exchange that demonstrates their dynamic (''Your instinct or mine?'' / ''That''s
+    why we work''); (4) Introducing Sherlock organically within the scene rather than
+    as biographical fact; (5) Establishing setting through action and observation
+    rather than summary. All 4 required phrases are present: ''Rachel Torres'' (opening),
+    ''Detective James Oyelaran'' (dialogue), ''cat named Sherlock'' (explicit), ''Tuesday
+    morning in October'' (explicit). The changes were surgical—the model preserved
+    the core character facts, relationships, and setting while converting static description
+    into dynamic scene. The ending hook (unexpected internal call) adds narrative
+    momentum appropriate to exposition''s role in Freytag''s structure. Minor: the
+    phrase ''twelve years on the force'' appears in narration rather than dialogue,
+    but this is a natural integration. Writing quality is professional with no new
+    errors. The revision fully satisfies the beat definition by establishing baseline,
+    showing characteristic behavior, and creating investment through specificity and
+    interaction.'
+error: null

@@ -1,0 +1,361 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Story Theory Benchmark Task Schema",
+  "description": "Schema for validating benchmark task definitions",
+  "definitions": {
+    "word_count_range": {
+      "type": "array",
+      "items": {"type": "integer", "minimum": 50},
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "beat_content": {
+      "type": "object",
+      "properties": {
+        "name": {"type": "string"},
+        "content": {"type": "string", "minLength": 100}
+      },
+      "required": ["name", "content"]
+    }
+  },
+  "type": "object",
+  "properties": {
+    "task_id": {
+      "type": "string",
+      "pattern": "^[a-z_]+_[0-9]{3}$"
+    },
+    "task_type": {
+      "type": "string",
+      "enum": [
+        "beat_interpolation",
+        "beat_revision",
+        "constrained_continuation",
+        "theory_conversion",
+        "multi_beat_synthesis",
+        "agentic_constraint_discovery",
+        "agentic_planning_execution",
+        "agentic_iterative_revision",
+        "critique_improvement"
+      ]
+    },
+    "agentic_type": {
+      "type": "string",
+      "enum": ["constraint_discovery", "planning_execution", "iterative_revision", "critique_improvement"]
+    },
+    "theory": {
+      "type": "string",
+      "enum": [
+        "Hero's Journey",
+        "Save the Cat",
+        "Story Circle",
+        "Freytag's Pyramid",
+        "Three-Act Structure"
+      ]
+    },
+    "difficulty": {
+      "type": "string",
+      "enum": ["easy", "medium", "hard"]
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "genre": {"type": "string"},
+        "created_date": {"type": "string", "format": "date"},
+        "author": {"type": "string"},
+        "version": {"type": "string"}
+      }
+    }
+  },
+  "required": ["task_id", "task_type", "theory"],
+  "allOf": [
+    {
+      "if": {
+        "properties": {"task_type": {"const": "beat_interpolation"}}
+      },
+      "then": {
+        "properties": {
+          "beat_before": {"$ref": "#/definitions/beat_content"},
+          "beat_after": {"$ref": "#/definitions/beat_content"},
+          "missing_beat": {
+            "type": "object",
+            "properties": {
+              "name": {"type": "string"},
+              "position": {"type": "string"}
+            },
+            "required": ["name"]
+          },
+          "requirements": {
+            "type": "object",
+            "properties": {
+              "word_count": {"$ref": "#/definitions/word_count_range"},
+              "must_include": {"type": "array", "items": {"type": "string"}},
+              "character_voice": {"type": "string"},
+              "setting_continuity": {"type": "boolean"}
+            },
+            "required": ["word_count", "must_include"]
+          }
+        },
+        "required": ["beat_before", "beat_after", "missing_beat", "requirements"]
+      }
+    },
+    {
+      "if": {
+        "properties": {"task_type": {"const": "beat_revision"}}
+      },
+      "then": {
+        "properties": {
+          "beat_name": {"type": "string"},
+          "beat_definition": {"type": "string"},
+          "flawed_segment": {
+            "type": "object",
+            "properties": {
+              "content": {"type": "string"},
+              "flaw_description": {"type": "string"}
+            },
+            "required": ["content", "flaw_description"]
+          },
+          "requirements": {
+            "type": "object",
+            "properties": {
+              "word_count": {"$ref": "#/definitions/word_count_range"},
+              "preserve": {"type": "array", "items": {"type": "string"}},
+              "fix": {"type": "string"}
+            },
+            "required": ["word_count", "preserve", "fix"]
+          }
+        },
+        "required": ["beat_name", "beat_definition", "flawed_segment", "requirements"]
+      }
+    },
+    {
+      "if": {
+        "properties": {"task_type": {"const": "constrained_continuation"}}
+      },
+      "then": {
+        "properties": {
+          "story_opening": {
+            "type": "object",
+            "properties": {
+              "content": {"type": "string"},
+              "current_beat": {"type": "string"}
+            },
+            "required": ["content", "current_beat"]
+          },
+          "continuation_constraints": {
+            "type": "object",
+            "properties": {
+              "next_beats": {"type": "array", "items": {"type": "string"}},
+              "word_count": {"$ref": "#/definitions/word_count_range"},
+              "must_include": {"type": "array", "items": {"type": "string"}},
+              "must_not_include": {"type": "array", "items": {"type": "string"}},
+              "tone": {"type": "string"},
+              "ending_requirement": {"type": "string"}
+            },
+            "required": ["next_beats", "word_count", "must_include", "must_not_include", "tone", "ending_requirement"]
+          }
+        },
+        "required": ["story_opening", "continuation_constraints"]
+      }
+    },
+    {
+      "if": {
+        "properties": {"task_type": {"const": "theory_conversion"}}
+      },
+      "then": {
+        "properties": {
+          "from_theory": {"type": "string"},
+          "to_theory": {"type": "string"},
+          "original_segment": {
+            "type": "object",
+            "properties": {
+              "content": {"type": "string"},
+              "beats": {"type": "array", "items": {"type": "string"}}
+            },
+            "required": ["content", "beats"]
+          },
+          "target_requirements": {
+            "type": "object",
+            "properties": {
+              "beats": {"type": "array", "items": {"type": "string"}},
+              "preserve": {"type": "array", "items": {"type": "string"}},
+              "word_count": {"$ref": "#/definitions/word_count_range"},
+              "tone": {"type": "string"}
+            },
+            "required": ["beats", "preserve", "word_count"]
+          }
+        },
+        "required": ["from_theory", "to_theory", "original_segment", "target_requirements"]
+      }
+    },
+    {
+      "if": {
+        "properties": {"task_type": {"const": "multi_beat_synthesis"}}
+      },
+      "then": {
+        "properties": {
+          "beats_to_generate": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {"type": "string"},
+                "position": {"type": "string"},
+                "requirements": {"type": "array", "items": {"type": "string"}}
+              },
+              "required": ["name", "requirements"]
+            },
+            "minItems": 3,
+            "maxItems": 3
+          },
+          "cross_beat_constraints": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "type": {"type": "string"},
+                "requirement": {"type": "string"}
+              },
+              "required": ["type", "requirement"]
+            }
+          },
+          "story_context": {
+            "type": "object",
+            "properties": {
+              "protagonist": {"type": "string"},
+              "setting": {"type": "string"},
+              "central_conflict": {"type": "string"},
+              "tone": {"type": "string"}
+            },
+            "required": ["protagonist", "setting", "central_conflict", "tone"]
+          },
+          "word_count": {"$ref": "#/definitions/word_count_range"}
+        },
+        "required": ["beats_to_generate", "cross_beat_constraints", "story_context", "word_count"]
+      }
+    },
+    {
+      "if": {
+        "properties": {"task_type": {"const": "agentic_constraint_discovery"}}
+      },
+      "then": {
+        "properties": {
+          "agentic_type": {"const": "constraint_discovery"},
+          "story_context": {
+            "type": "object",
+            "properties": {
+              "genre": {"type": "string"},
+              "protagonist": {"type": "string"},
+              "setting": {"type": "string"},
+              "tone": {"type": "string"}
+            }
+          },
+          "required_beats": {"type": "array", "items": {"type": "string"}},
+          "hidden_constraints": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {"type": "string"},
+                "constraint": {"type": "string"},
+                "question_patterns": {"type": "array", "items": {"type": "string"}},
+                "answer": {"type": "string"}
+              },
+              "required": ["id", "constraint", "question_patterns"]
+            }
+          },
+          "max_questions": {"type": "integer", "minimum": 1},
+          "word_count": {"$ref": "#/definitions/word_count_range"}
+        },
+        "required": ["agentic_type", "required_beats", "hidden_constraints", "word_count"]
+      }
+    },
+    {
+      "if": {
+        "properties": {"task_type": {"const": "agentic_planning_execution"}}
+      },
+      "then": {
+        "properties": {
+          "agentic_type": {"const": "planning_execution"},
+          "story_context": {
+            "type": "object",
+            "properties": {
+              "protagonist": {"type": "string"},
+              "setting": {"type": "string"},
+              "central_conflict": {"type": "string"},
+              "tone": {"type": "string"}
+            },
+            "required": ["protagonist", "setting", "central_conflict", "tone"]
+          },
+          "required_beats": {"type": "array", "items": {"type": "string"}},
+          "constraints": {"type": "array", "items": {"type": "string"}},
+          "word_count": {"$ref": "#/definitions/word_count_range"}
+        },
+        "required": ["agentic_type", "story_context", "required_beats", "constraints", "word_count"]
+      }
+    },
+    {
+      "if": {
+        "properties": {"task_type": {"const": "agentic_iterative_revision"}}
+      },
+      "then": {
+        "properties": {
+          "agentic_type": {"const": "iterative_revision"},
+          "story_context": {
+            "type": "object",
+            "properties": {
+              "protagonist": {"type": "string"},
+              "setting": {"type": "string"},
+              "central_conflict": {"type": "string"},
+              "tone": {"type": "string"}
+            },
+            "required": ["protagonist", "setting", "central_conflict", "tone"]
+          },
+          "required_beats": {"type": "array", "items": {"type": "string"}},
+          "constraints": {"type": "array", "items": {"type": "string"}},
+          "max_revisions": {"type": "integer", "minimum": 1},
+          "feedback_rules": {"type": "object"},
+          "word_count": {"$ref": "#/definitions/word_count_range"}
+        },
+        "required": ["agentic_type", "story_context", "required_beats", "constraints", "word_count"]
+      }
+    },
+    {
+      "if": {
+        "properties": {"task_type": {"const": "critique_improvement"}}
+      },
+      "then": {
+        "properties": {
+          "agentic_type": {"const": "critique_improvement"},
+          "story_context": {
+            "type": "object",
+            "properties": {
+              "protagonist": {"type": "string"},
+              "setting": {"type": "string"},
+              "central_conflict": {"type": "string"},
+              "tone": {"type": "string"}
+            },
+            "required": ["protagonist", "setting", "central_conflict", "tone"]
+          },
+          "required_beats": {"type": "array", "items": {"type": "string"}},
+          "constraints": {"type": "array", "items": {"type": "string"}},
+          "critique_rounds": {"type": "integer", "minimum": 1, "maximum": 5},
+          "critic_model": {"type": "string"},
+          "evaluation_criteria": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "criterion": {"type": "string"},
+                "weight": {"type": "number"},
+                "description": {"type": "string"}
+              },
+              "required": ["criterion", "weight"]
+            }
+          },
+          "word_count": {"$ref": "#/definitions/word_count_range"}
+        },
+        "required": ["agentic_type", "story_context", "required_beats", "constraints", "critique_rounds", "word_count"]
+      }
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+evaluation_id: d3a86b8a
+task_id: multi_beat_synthesis_003
+generation_id: multi_beat_synthesis_003_openai/gpt-5.1_0
+task_type: multi_beat_synthesis
+model: openai/gpt-5.1
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0017634
+timestamp: '2025-12-12T14:42:04.981560'
+success: true
+final_score: 0.660770009199632
+score_breakdown:
+  final_score: 0.6608
+  components:
+    word_count:
+      score: 0.0
+      weight: 0.25
+      actual: 2090
+      target_range:
+      - 700
+      - 1000
+    programmatic:
+      score: 0.6991
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 0.9977
+        overall: 0.6991
+    llm_judge:
+      score: 0.972
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 14
+  beat_reqs_total: 15
+  beat_requirements_score: 0.93
+  cross_beat_satisfied: 4
+  cross_beat_total: 4
+  cross_beat_score: 1.0
+  word_count_valid: false
+  context_score: 1.0
+  coherence_score: 1.0
+  failed_items:
+  - 'Beat 1: Introduction of an unexpected complication (minor) - The ''almost clear''
+    moment with the guard is quickly resolved and doesn''t feel like a minor complication
+    that lingers or causes a ripple effect. The ''outside muscle'' mention is more
+    of a setup for the next beat than a minor complication within this beat.'
+error: null

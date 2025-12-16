@@ -1,0 +1,70 @@
+evaluation_id: 18aa68ec
+task_id: beat_revision_004
+generation_id: beat_revision_004_openai/gpt-4o-mini_0
+task_type: beat_revision
+model: openai/gpt-4o-mini
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.02336
+timestamp: '2025-12-13T13:50:02.521825'
+success: true
+final_score: 0.9205
+score_breakdown:
+  final_score: 0.9205
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 286
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.982
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.97
+        slop_score: 1.0
+        overall: 0.982
+    llm_judge:
+      score: 0.85
+      weight: 0.5
+llm_results:
+  diagnosis_score: 0.9
+  flaw_correction_score: 0.85
+  beat_satisfaction_score: 0.85
+  preservation_score: 1.0
+  preserved_count: 5
+  preserved_total: 5
+  required_preserved_score: 1.0
+  required_preserved_count: 4
+  required_preserved_total: 4
+  minimal_change_score: 0.4
+  word_count_valid: true
+  quality_score: 0.9
+  evidence: 'DIAGNOSIS: The model correctly identified the core flaw—excessive telling
+    through info-dump rather than showing through scene and action. The revision demonstrates
+    strong understanding by: (1) grounding Rachel in a specific moment (apartment
+    window with coffee), (2) revealing her detective instincts through behavior (scanning
+    the street, mind racing through cases), (3) showing her relationship with James
+    through dialogue and interaction rather than summary, (4) incorporating sensory
+    details (coffee aroma, morning light, cat''s green eyes), (5) naturally weaving
+    in the cat and her devotion to cold cases through action. FLAW CORRECTION: The
+    revision successfully converts telling to showing in ~85% of cases. Minor weakness:
+    some residual telling remains (''She admired James''s knack...three years together
+    forged a bond'') that could have been shown more purely through dialogue/action.
+    BEAT SATISFACTION: Exposition is well-executed—establishes setting, protagonist
+    through behavior, relationships through interaction, and creates investment in
+    Rachel''s character and her obsession with cases. The final line (''It was a Tuesday
+    morning in October when everything changed'') effectively signals the inciting
+    incident is imminent. PRESERVATION: All 5 elements preserved perfectly: Detective
+    Rachel Torres (protagonist), Detective James Oyelaran (partner), cat named Sherlock,
+    Queens apartment, October Tuesday timing. All 4 required phrases present verbatim
+    or near-exact. MINIMAL CHANGE ASSESSMENT: This is a MODERATE-TO-SUBSTANTIAL rewrite
+    (0.4 score), not minimal surgical edits. The original structure was largely abandoned—the
+    info-dump paragraphs were replaced with a scene-based narrative. While this was
+    the correct fix, it violates the ''minimal modification'' constraint. A more surgical
+    approach would have kept more of the original phrasing while converting it to
+    scene. QUALITY: Writing is professional, no new errors introduced, prose flows
+    naturally with good sensory detail and pacing.'
+error: null

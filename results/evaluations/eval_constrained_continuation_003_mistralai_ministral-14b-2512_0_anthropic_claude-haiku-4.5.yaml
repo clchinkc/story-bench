@@ -1,0 +1,117 @@
+evaluation_id: 723b7fb5
+task_id: constrained_continuation_003
+generation_id: constrained_continuation_003_mistralai/ministral-14b-2512_0
+task_type: constrained_continuation
+model: mistralai/ministral-14b-2512
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.048175
+timestamp: '2025-12-12T11:52:19.485073'
+success: true
+final_score: 0.6659240547588006
+score_breakdown:
+  final_score: 0.6659
+  components:
+    word_count:
+      score: 0.0
+      weight: 0.25
+      actual: 1422
+      target_range:
+      - 550
+      - 750
+    programmatic:
+      score: 0.6987
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 0.9967
+        overall: 0.6987
+    llm_judge:
+      score: 0.9825
+      weight: 0.5
+llm_results:
+  beats_present: 3
+  beats_total: 3
+  beats_score: 1.0
+  must_include_present: 6
+  must_include_total: 6
+  must_include_score: 1.0
+  must_not_avoided: 4
+  must_not_total: 4
+  must_not_score: 1.0
+  word_count_valid: false
+  word_count: 1422
+  word_count_range: 550-750
+  tone_score: 0.95
+  ending_score: 0.9
+  overall_score: 0.85
+  analysis:
+    beats_analysis:
+      search: Jin navigates the processing hub, encounters bureaucracy, meets Elias
+        and Yuna. Actively searching for safety and understanding of the Collective's
+        systems.
+      find: Discovery of the prototype station, the suppressed carbon capture experiments,
+        evidence of deliberate sabotage and cover-up. Jin finds what he sought (proof)
+        but also unexpected truth about the Collective's complicity.
+      take: 'Jin accepts the wrist-mounted drive containing evidence. The cost: he
+        must choose between escape or staying to fight, must work within the Collective''s
+        power structures, and must make a moral compromise by potentially collaborating
+        with those who built the technology in shadows.'
+    must_include_analysis:
+      1_unfamiliar_culture: Extensive navigation of Collective bureaucracy, holographic
+        systems, security protocols, cultural distrust of Earth refugees. Jin struggles
+        with the maze-like corridors and incomprehensible languages.
+      2_mentor_figure: Elias serves as guide and mentor—explains the system, reveals
+        the pattern of disappearances, provides access, and offers philosophical guidance
+        about choices.
+      3_unexpected_discovery: The prototype isn't just hidden; it's deliberately sabotaged.
+        The Collective itself is complicit in the cover-up, not a true refuge. This
+        subverts Jin's expectations.
+      4_finds_what_wanted: Jin obtains the evidence/drive he needs to continue his
+        fight and expose the truth—his immediate goal of finding proof.
+      5_action_with_cost: Taking the drive means committing to a dangerous path, potential
+        conflict with the Collective, moral compromise, and loss of anonymity/safety.
+      6_moral_compromise: Jin must choose between escape or fighting; must potentially
+        work with those complicit in the conspiracy; must accept that the 'safe haven'
+        is morally compromised.
+    must_not_analysis:
+      1_easy_integration: AVOIDED—Jin faces immediate suspicion, bureaucratic obstacles,
+        flagged requests, and is told he has only two days to prove usefulness or
+        leave.
+      2_earth_family_contact: AVOIDED—No family members appear or are contacted.
+      3_violence_weapons: AVOIDED—No combat, weapons use, or physical violence occurs.
+      4_complete_resolution: AVOIDED—The conspiracy remains unresolved. Jin has evidence
+        but hasn't exposed it; the larger plot continues; his situation remains precarious.
+    tone_assessment: Contemplative and introspective throughout. Politically charged
+      with themes of power, corruption, and institutional betrayal. Personal stakes
+      are high (exile, identity, survival) amid the larger conflict (climate technology
+      suppression). The prose maintains philosophical weight while building tension.
+      Minor deduction only for occasional moments where tension slightly overshadows
+      contemplation.
+    ending_assessment: Ends precisely at the 'Take' beat with Jin accepting the drive.
+      He has gained evidence and clarity about the conspiracy, but paid the price
+      of moral compromise, loss of safety, and commitment to a dangerous path. The
+      ending is ambiguous about his next move, which appropriately reflects the Story
+      Circle's 'Take' phase—he's obtained something but must now face consequences.
+      Slight deduction for not fully crystallizing the specific price he'll pay going
+      forward.
+    critical_issues:
+    - 'WORD COUNT EXCEEDS LIMIT: 1422 words vs. 550-750 range. This is a significant
+      constraint violation (+89% over maximum). The story is nearly double the required
+      length.'
+    strengths:
+    - All three Story Circle beats present and well-executed
+    - All six required elements seamlessly integrated
+    - All four forbidden elements successfully avoided
+    - Sophisticated worldbuilding with believable sci-fi politics
+    - Strong character development and mentor relationship
+    - Excellent tone maintenance throughout
+    - Compelling moral complexity and stakes
+    - Effective use of dialogue and sensory detail
+    weaknesses:
+    - Significant word count violation (nearly 2x the maximum)
+    - Could be tightened substantially without losing narrative quality
+    - Some redundancy in exposition (Elias and Yuna both explain similar concepts)
+  failed_constraints:
+  - 'word_count_exceeded: 1422 words vs. required 550-750 (89% over limit)'
+error: null

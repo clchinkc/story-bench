@@ -1,0 +1,81 @@
+evaluation_id: 8d926578
+task_id: constrained_continuation_004
+generation_id: constrained_continuation_004_meta-llama/llama-4-maverick_0
+task_type: constrained_continuation
+model: meta-llama/llama-4-maverick
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.025505
+timestamp: '2025-12-12T09:47:37.361171'
+success: true
+final_score: 0.8836999999999999
+score_breakdown:
+  final_score: 0.8837
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 593
+      target_range:
+      - 500
+      - 700
+    programmatic:
+      score: 0.7
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 1.0
+        overall: 0.7
+    llm_judge:
+      score: 0.9174
+      weight: 0.5
+llm_results:
+  beats_present: 2
+  beats_total: 2
+  beats_score: 1.0
+  must_include_present: 5
+  must_include_total: 6
+  must_include_score: 0.833
+  must_not_avoided: 4
+  must_not_total: 4
+  must_not_score: 1.0
+  word_count_valid: true
+  tone_score: 0.85
+  ending_score: 0.9
+  failed_constraints:
+  - 'PARTIAL: Thomas Chen''s personal stake in the outcome is underdeveloped - his
+    role is primarily supportive rather than showing how the decision affects him
+    directly or what he stands to gain/lose'
+  analysis:
+    beats_present_detail: First Plot Point clearly established when Eleanor decides
+      to publish the manuscript (point of no return - committing the printing house's
+      resources to a controversial project). Act 2 Opening begins with 'With the decision
+      made, Eleanor's thoughts turned to the task ahead' - new world of editing, oversight,
+      and publication process clearly initiated.
+    must_include_analysis:
+      1_decision_to_publish: PRESENT - 'I want to publish it,' she said, her voice
+        firm and resolute.
+      2_central_conflict: PRESENT - Profit vs. ethics/danger established through the
+        controversial Whitechapel manuscript and the financial desperation driving
+        the decision.
+      3_defying_expectations: PRESENT - Eleanor stepping into business leadership
+        role explicitly defies Victorian gender norms ('Eleanor had spent twenty-six
+        years being told that business was not a woman's domain').
+      4_thomas_as_ally: WEAK - Thomas is present and supportive, but his personal
+        stake is not clearly established. We see his approval but not what he stands
+        to gain or lose.
+      5_hint_of_danger: PRESENT - 'The Whitechapel Murders' title, sensationalism,
+        'darkness itself was watching her every move,' and the implicit danger of
+        publishing controversial content about real murders.
+      6_threshold_crossed: PRESENT - Publishing decision is irreversible; she's committed
+        resources and reputation to a dangerous path.
+    tone_assessment: 'Gothic tension maintained throughout with fog, shadows, darkness
+      imagery. Feminist undertones strong in Eleanor''s defiance and determination.
+      Victorian atmosphere well-established. Minor weakness: some passages become
+      slightly overwrought with metaphor (''darkness receding,'' ''story unfolded
+      within her'') which occasionally dilutes rather than intensifies the tension.'
+    ending_assessment: Strong conclusion with Eleanor committed to dangerous path
+      and Act 2 clearly begun. The final paragraphs establish rising action (editing,
+      oversight, publication process ahead). Ending successfully positions her as
+      having crossed the point of no return.
+error: null

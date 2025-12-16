@@ -1,0 +1,155 @@
+evaluation_id: a5a3fa9f
+task_id: multi_beat_synthesis_001
+generation_id: multi_beat_synthesis_001_deepseek/deepseek-v3.2_0
+task_type: multi_beat_synthesis
+model: deepseek/deepseek-v3.2
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.05596
+timestamp: '2025-12-12T10:53:31.903070'
+success: true
+final_score: 0.8683624874639518
+score_breakdown:
+  final_score: 0.8684
+  components:
+    word_count:
+      score: 0.8623
+      weight: 0.25
+      actual: 1049
+      target_range:
+      - 700
+      - 1000
+    programmatic:
+      score: 0.6982
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 0.9955
+        overall: 0.6982
+    llm_judge:
+      score: 0.9565
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 14
+  beat_reqs_total: 15
+  beat_requirements_score: 0.93
+  cross_beat_satisfied: 4
+  cross_beat_total: 4
+  cross_beat_score: 1.0
+  word_count_valid: false
+  context_score: 0.95
+  coherence_score: 0.92
+  overall_score: 0.93
+  failed_items:
+  - Word count exceeds maximum (1049 vs 1000 limit) - minor technical violation
+  detailed_breakdown:
+    beat_1_tests_allies_enemies:
+      score: 0.95
+      satisfied:
+      - Dante encounters Leo, a distrustful Resonant who initially suspects him
+      - 'Test of ability under pressure: filtering emotional residue while grieving
+        and under scrutiny'
+      - 'Revelation of traitor: enforcer''s mark on lighter reveals community betrayal'
+      - Dante proves himself through successful emotional reading of the crime scene
+      - 'Addiction/recovery explicitly referenced: ''three years clean,'' chemical
+        ghost, old craving for silence'
+      notes: All five requirements fully satisfied with strong integration
+    beat_2_approach_inmost_cave:
+      score: 0.95
+      satisfied:
+      - 'Planning scene: Leo and Dante map victims, analyze pattern, discuss killer''s
+        resonance harvesting'
+      - Dante realizes confrontation requires facing guilt about Lila and his failure
+      - 'Preparation: goggles provided as tool, lighter identified as key, strategy
+        formulated'
+      - 'Moment of doubt/fear: ''The old itch for a chemical escape screaming in his
+        veins'''
+      - 'Symbolic threshold: rusted door to boiler room with palpable dread, crossing
+        into danger'
+      notes: All five requirements satisfied; threshold crossing is particularly effective
+    beat_3_the_ordeal:
+      score: 0.9
+      satisfied:
+      - 'Direct confrontation: killer revealed in boiler room, demands Dante''s surrender'
+      - 'Symbolic death: Dante overwhelmed, drowning in tar-black void, ''death of
+        hope'''
+      - 'All seems lost: Leo pinned, Silas helpless, Dante on knees, goggles shattered'
+      - 'Transformation through acceptance: Dante accepts guilt as anchor, recognizes
+        it makes him ''specific'''
+      - 'Victory through understanding: killer defeated not by strength but by showing
+        him mundane love he cannot consume'
+      notes: All five requirements satisfied; transformation is nuanced and earned
+    chekhov_gun:
+      score: 1.0
+      satisfied: true
+      analysis: The silver lighter introduced in Beat 1 as evidence becomes the crucial
+        tool in Beat 3. Its 'sterile' nature and the mundane habit of thumb-on-flint
+        friction become the key to defeating the killer. This is masterfully executed—the
+        lighter is both literal object and metaphorical anchor.
+    character_arc_guilt:
+      score: 1.0
+      satisfied: true
+      progression:
+        beat_1: 'Guilt mentioned as stain: ''stain of the slide clings to a man'''
+        beat_2: 'Guilt recognized as obstacle: ''The guilt will drown you if you let
+          it'' and Dante realizes he was ''hiding from the fact that I didn''t save
+          her'''
+        beat_3: 'Guilt transformed: accepted as anchor, becomes source of specificity
+          and strength rather than weakness'
+    rising_stakes:
+      score: 1.0
+      satisfied: true
+      analysis: 'Beat 1: Investigation and discovery (moderate stakes). Beat 2: Planning
+        to confront killer, personal realization of connection to Lila (higher stakes).
+        Beat 3: Direct confrontation with killer, moment of complete defeat, existential
+        threat (highest stakes). Clear escalation throughout.'
+    ally_continuity:
+      score: 1.0
+      satisfied: true
+      analysis: 'Leo appears in all three beats: Beat 1 (initial meeting, test), Beat
+        2 (planning, providing tools and wisdom), Beat 3 (present in confrontation,
+        pinned but still relevant, helps subdue killer). Continuity is seamless.'
+    context_maintenance:
+      score: 0.95
+      analysis: 'Protagonist (Dante Reyes) fully realized with addiction recovery
+        arc. Setting (Buckingham Hotel, boiler room) vivid and atmospheric. Tone (noir-tinged,
+        melancholic, determined) consistent throughout. Hidden Resonant underworld
+        well-established. Only minor: could have slightly more Chicago-specific detail,
+        but not required.'
+    narrative_coherence:
+      score: 0.92
+      analysis: 'Beats flow naturally from investigation to planning to confrontation.
+        Emotional logic is strong. One minor issue: the killer''s motivation (why
+        he targets Resonants, why he knew Lila) could be slightly clearer, though
+        the narrative suggests he''s a Resonant himself. Overall structure is tight
+        and purposeful.'
+    technical_issues:
+      word_count: 1049 words (exceeds 1000-word maximum by 49 words)
+      severity: Minor - content quality is not compromised; this is a formatting constraint
+        violation only
+  strengths:
+  - Exceptional integration of Chekhov's Gun principle—lighter is both plot device
+    and thematic anchor
+  - 'Sophisticated character arc: guilt transforms from weakness to strength through
+    acceptance'
+  - Vivid sensory language and emotional visualization (colors, shapes, void-black
+    energy)
+  - Strong noir tone maintained throughout with melancholic but determined voice
+  - All three beats present with clear narrative progression and rising stakes
+  - Ally (Leo) meaningfully present across all beats with consistent characterization
+  - Ordeal sequence is psychologically complex—victory through understanding rather
+    than force
+  - Recovery/addiction arc woven naturally into ability mechanics and character motivation
+  weaknesses:
+  - Word count exceeds limit by 49 words (minor technical issue)
+  - Killer's backstory and motivation could be slightly more explicit (though suggested)
+  - Silas the traitor feels somewhat underdeveloped—his role is functional but not
+    deeply explored
+  calibration_notes: This is a strong submission that satisfies all substantive requirements
+    with sophistication. The Chekhov's Gun execution is particularly impressive—the
+    lighter functions as both literal evidence and metaphorical representation of
+    mundane human persistence. The guilt arc is earned and psychologically sound.
+    The only issue is the word count overage, which is a technical constraint violation
+    but does not reflect on narrative quality. Score reflects near-exceptional execution
+    with minor technical flaw.
+error: null

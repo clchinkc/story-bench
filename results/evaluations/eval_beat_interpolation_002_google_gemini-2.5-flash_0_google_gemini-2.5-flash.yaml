@@ -1,0 +1,46 @@
+evaluation_id: d54f5758
+task_id: beat_interpolation_002
+generation_id: beat_interpolation_002_google/gemini-2.5-flash_0
+task_type: beat_interpolation
+model: google/gemini-2.5-flash
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0009048
+timestamp: '2025-12-12T14:31:17.806202'
+success: true
+final_score: 0.9730760233918129
+score_breakdown:
+  final_score: 0.9731
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 336
+      target_range:
+      - 250
+      - 400
+    programmatic:
+      score: 0.8923
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.84
+        slop_score: 0.9708
+        overall: 0.8923
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: true
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: All required elements are present and well-executed. The 'must not' items
+    are successfully avoided. The character's internal conflict is central to the
+    beat, and the bridge to the next beat is clear and logical.
+error: null

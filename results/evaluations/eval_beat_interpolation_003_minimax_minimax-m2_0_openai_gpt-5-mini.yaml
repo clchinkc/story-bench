@@ -1,0 +1,53 @@
+evaluation_id: 9dd2486e
+task_id: beat_interpolation_003
+generation_id: beat_interpolation_003_minimax/minimax-m2_0
+task_type: beat_interpolation
+model: minimax/minimax-m2
+sample_index: 0
+evaluator_model: openai/gpt-5-mini
+evaluator_cost: 0.00191625
+timestamp: '2025-12-12T12:48:44.760618'
+success: true
+final_score: 0.6482936931812138
+score_breakdown:
+  final_score: 0.6483
+  components:
+    word_count:
+      score: 0.0222
+      weight: 0.25
+      actual: 538
+      target_range:
+      - 250
+      - 400
+    programmatic:
+      score: 0.856
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.76
+        slop_score: 1.0
+        overall: 0.856
+    llm_judge:
+      score: 0.8575
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 0.7
+  must_not_score: 0.75
+  violations_found: 1
+  word_count_valid: false
+  character_score: 1.0
+  bridge_score: 0.8
+  continuity_score: 1.0
+  evidence: 'All four required elements are present: Yuki explores multiple areas
+    (quarters, mess, corridors, lab), discovers medical logs indicating dimensional
+    phase-locking, encounters translucent transformed crew, and overcomes obstacles
+    (locked bulkhead, rerouting power, finding Reyes'' shutdown code). Deduction:
+    one must-not was violated — the Search section ends with Yuki finding the data
+    core (prematurely moving into the ''Find'' beat), so must_not_score is reduced
+    to 0.75 (1 of 4 must-not items violated). Word count is invalid (538, outside
+    250–400). Character behavior and setting continuity are consistent. The passage
+    executes the Search beat well (trials, adaptation, progress) but bleeds into the
+    next beat, so execution and bridge scores are slightly reduced.'
+error: null

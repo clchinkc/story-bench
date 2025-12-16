@@ -1,0 +1,65 @@
+evaluation_id: eb79f64d
+task_id: beat_revision_003
+generation_id: beat_revision_003_google/gemini-3-pro-preview_0
+task_type: beat_revision
+model: google/gemini-3-pro-preview
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.021615
+timestamp: '2025-12-13T13:38:03.342843'
+success: true
+final_score: 0.965
+score_breakdown:
+  final_score: 0.965
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 305
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.94
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.9
+        slop_score: 1.0
+        overall: 0.94
+    llm_judge:
+      score: 0.96
+      weight: 0.5
+llm_results:
+  diagnosis_score: 1.0
+  flaw_correction_score: 1.0
+  beat_satisfaction_score: 0.95
+  preservation_score: 1.0
+  preserved_count: 4
+  preserved_total: 4
+  required_preserved_score: 1.0
+  required_preserved_count: 4
+  required_preserved_total: 4
+  minimal_change_score: 0.75
+  word_count_valid: true
+  quality_score: 0.95
+  evidence: 'The model correctly diagnosed the actual flaw: Sophie showed no transformation
+    and immediately reverted to old workaholic patterns, making the journey meaningless.
+    The revision fixes this comprehensively: (1) Sophie experiences the panic response
+    but consciously chooses differently—turning off her phone rather than reflexively
+    responding; (2) A specific insight is integrated (''the sky didn''t fall just
+    because she wasn''t holding it up''); (3) Physical markers of change are clear—shoulders
+    dropping, holding down power button, zipping phone away; (4) Contrast is explicit
+    between ''before the trip'' behavior and present choice; (5) Mother notices the
+    difference (''Everything okay?'' and the comfortable silence). All 4 required
+    phrases preserved exactly: ''Sophie''s flight landed at O''Hare'', ''How was Thailand?
+    her mother asked'', ''The familiar Chicago skyline appeared'', ''It''s good to
+    be home, she said''. The changes were surgical—the model kept the scene structure,
+    dialogue framework, and setting intact while inserting the transformation evidence.
+    The only substantial additions were the internal monologue about the monk, the
+    phone-turning-off action, and the final reflection. No new errors introduced;
+    prose quality improved with sensory details (''shoulders dropping two inches'',
+    ''the rigid steel, the frantic grid of lights''). Minor: the revision is slightly
+    longer than minimal (305 words vs. original ~180), but this is justified by the
+    complexity of showing internal change. The beat execution is near-perfect—demonstrates
+    Return with clear evidence of Change.'
+error: null

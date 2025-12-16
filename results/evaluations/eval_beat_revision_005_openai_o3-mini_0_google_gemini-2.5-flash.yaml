@@ -1,0 +1,43 @@
+evaluation_id: db4877d1
+task_id: beat_revision_005
+generation_id: beat_revision_005_openai/o3-mini_0
+task_type: beat_revision
+model: openai/o3-mini
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.000835
+timestamp: '2025-12-13T13:58:36.052398'
+success: true
+final_score: 0.528375
+score_breakdown:
+  final_score: 0.5284
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 307
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.8735
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.81
+        slop_score: 0.9688
+        overall: 0.8735
+    llm_judge:
+      score: 0.12
+      weight: 0.5
+llm_results:
+  correct_diagnosis_score: 0.0
+  beat_understanding_score: 0.8
+  false_positive_avoided_score: 0.0
+  reasoning_quality_score: 0.0
+  model_said_no_revision: false
+  evidence: The model did not recognize the segment was fine. It rewrote the segment,
+    indicating it believed a revision was needed. While the rewrite itself is good
+    and incorporates the 'whiff of death' more explicitly, the original segment already
+    met all criteria, including the 'whiff of death' through the mother's passing
+    and the hospice memory. The model over-diagnosed.
+error: null

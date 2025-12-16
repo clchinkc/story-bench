@@ -1,0 +1,66 @@
+evaluation_id: 19ab509d
+task_id: beat_interpolation_001
+generation_id: beat_interpolation_001_deepseek/deepseek-r1_0
+task_type: beat_interpolation
+model: deepseek/deepseek-r1
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.022585
+timestamp: '2025-12-12T10:26:09.505712'
+success: true
+final_score: 0.7355674085962336
+score_breakdown:
+  final_score: 0.7356
+  components:
+    word_count:
+      score: 0.0222
+      weight: 0.25
+      actual: 488
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.9201
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.88
+        slop_score: 0.9802
+        overall: 0.9201
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: false
+  word_count: 488
+  word_count_range: 200-350
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  overall_score: 0.8
+  evidence: 'STRENGTHS: All four required elements present and well-executed. (1)
+    Marcus introduced as mentor with clear characterization (lean frame, sharp eyes,
+    gravelly voice, runs curio shop). (2) Practical wisdom provided: research as a
+    weapon, reading forest signs, librarian skills reframed as quest-relevant. Tools
+    given: satchel, brass compass with narrative purpose. (3) Elena''s doubt shifts
+    convincingly from ''utterly ordinary'' refusal to ''reluctant possibility''—the
+    knot loosens, she picks up compass and satchel. (4) Librarian skills explicitly
+    validated: ''piecing together fragmented history,'' ''deciphering dead languages,''
+    ''finding crucial facts''—all recontextualized as quest preparation. All must-not
+    items avoided: Elena remains doubtful (not confident/eager), Marcus doesn''t accompany
+    her or solve problems, setting is village curio shop (not forest), no magical
+    powers discovered. Character voice consistent throughout—Elena''s hesitation,
+    Marcus''s gravelly wisdom, the mentor-student dynamic. Bridge between beats seamless:
+    BEFORE ends with refusal; GENERATED shows mentor encounter shifting perspective;
+    AFTER shows Elena at forest threshold ready to cross. Continuity perfect: compass
+    and satchel from Generated appear in After; Marcus''s words echo in After; fog
+    and threshold imagery connect. WEAKNESS: Word count (488) significantly exceeds
+    requirement (200-350), representing 39% overage. This is a notable structural
+    violation despite narrative quality. The excess comes from detailed characterization
+    and dialogue, which enhances execution but violates constraints.'
+error: null

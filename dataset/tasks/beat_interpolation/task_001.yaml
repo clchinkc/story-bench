@@ -1,0 +1,89 @@
+# Beat Interpolation Task 001 - Hero's Journey
+# Missing: "Meeting the Mentor" between "Refusal of the Call" and "Crossing the First Threshold"
+
+task_id: "beat_interpolation_001"
+task_type: "beat_interpolation"
+theory: "Hero's Journey"
+difficulty: "medium"
+
+metadata:
+  genre: "fantasy"
+  created_date: "2024-12-06"
+  author: "benchmark_creator"
+  version: "1.0"
+
+beat_before:
+  name: "Refusal of the Call"
+  content: |
+    Elena stared at the ancient map spread across her grandmother's kitchen table, its edges
+    yellowed and brittle with age. The glowing runes pulsed softly, marking a path through
+    the Thornwood Forest to something called the "Wellspring of Echoes."
+
+    "I can't do this," she said, pushing back from the table. "I'm a librarian, not some
+    kind of hero. You've got the wrong person."
+
+    Her grandmother's ghost flickered beside the window, translucent hands clasped together.
+    "The map appeared to you, child. It chose you."
+
+    "Then it made a mistake." Elena grabbed her coat from the hook by the door. "Find
+    someone else. Someone who knows how to fight, or cast spells, or... or anything useful.
+    I catalog books. I make tea. I am profoundly, spectacularly ordinary."
+
+    She walked out into the cold night air, leaving the map glowing on the table behind her.
+
+beat_after:
+  name: "Crossing the First Threshold"
+  content: |
+    The edge of Thornwood Forest loomed before Elena, a wall of twisted oaks and whispering
+    shadows that seemed to lean toward her with hungry anticipation. She adjusted the worn
+    leather satchel on her shoulder—Marcus's parting gift, filled with supplies she still
+    didn't fully understand.
+
+    "Remember," his words echoed in her mind, "the forest tests intentions, not abilities.
+    Trust what you know, not what you fear you lack."
+
+    She pulled out the brass compass he'd given her, watching its needle spin wildly before
+    settling on a direction that corresponded to nothing on any normal map. The first step
+    into the treeline felt like pushing through an invisible membrane—a threshold not just
+    of place but of self.
+
+    Behind her, the lights of her village winked out one by one as fog rolled in. There
+    was no going back now. The ordinary librarian she had been stayed on that side of the
+    trees. Whoever she would become waited somewhere in the darkness ahead.
+
+missing_beat:
+  name: "Meeting the Mentor"
+  position: "between Refusal of the Call and Crossing the First Threshold"
+  definition: "The hero encounters a wise figure who provides guidance, training, gifts, or crucial information. The mentor embodies wisdom the hero will need and helps prepare them for the journey—but does not solve their problems or accompany them."
+
+requirements:
+  word_count: [200, 350]
+  must_include:
+    - "Introduction of mentor character named Marcus"
+    - "Mentor provides practical wisdom or tools"
+    - "Elena's doubt begins to shift toward reluctant acceptance"
+    - "Reference to Elena's librarian skills as potentially useful"
+  must_not_include:
+    - "Elena immediately becoming confident or eager (violates gradual shift)"
+    - "The mentor solving Elena's problems for her or offering to accompany her"
+    - "Elena already being in or near the forest (wrong location for this beat)"
+    - "Elena discovering she has magical powers (contradicts 'ordinary' theme)"
+  character_voice: "Third-person limited, introspective, slightly self-deprecating but growing in resolve"
+  setting_continuity: true
+
+generator_prompt_additions: |
+  The mentor (Marcus) should be a former adventurer who now runs a curiosity shop.
+  He should recognize something in Elena that she doesn't see in herself.
+  The scene should take place the morning after Elena's refusal.
+
+evaluation_criteria:
+  - criterion: "beat_elements_present"
+    description: "All four must_include elements are present in the generated text"
+  - criterion: "word_count_valid"
+    description: "Output is between 200-350 words"
+  - criterion: "character_consistent"
+    description: "Elena's voice matches the self-deprecating but growing tone"
+  - criterion: "logical_bridge"
+    description: "Scene explains how Elena goes from refusal to entering the forest"
+  - criterion: "setting_continuity"
+    description: "No contradictions with established details (grandmother's ghost, map, librarian profession)"

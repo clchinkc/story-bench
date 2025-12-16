@@ -1,0 +1,50 @@
+evaluation_id: a9ae505c
+task_id: multi_beat_synthesis_003
+generation_id: multi_beat_synthesis_003_openai/gpt-5.2_0
+task_type: multi_beat_synthesis
+model: openai/gpt-5.2
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0015859
+timestamp: '2025-12-12T13:04:09.211083'
+success: true
+final_score: 0.6345000116169507
+score_breakdown:
+  final_score: 0.6345
+  components:
+    word_count:
+      score: 0.0
+      weight: 0.25
+      actual: 1523
+      target_range:
+      - 700
+      - 1000
+    programmatic:
+      score: 0.7
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 1.0
+        overall: 0.7
+    llm_judge:
+      score: 0.919
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 13
+  beat_reqs_total: 15
+  beat_requirements_score: 0.86
+  cross_beat_satisfied: 4
+  cross_beat_total: 4
+  cross_beat_score: 1.0
+  word_count_valid: false
+  context_score: 0.9
+  coherence_score: 0.9
+  failed_items:
+  - 'Beat 1 - Things going according to plan (mostly): The plan immediately hits a
+    ''minor complication'' and then escalates quickly, so ''mostly'' going to plan
+    isn''t quite accurate.'
+  - 'Beat 3 - Miri must choose: painting or revenge/saving someone: While Lina is
+    in danger, Miri''s choice isn''t explicitly framed as ''painting or saving Lina.''
+    She''s trying to save Lina AND get the painting out, and the choice is more about
+    how to proceed under pressure rather than sacrificing one for the other.'
+error: null

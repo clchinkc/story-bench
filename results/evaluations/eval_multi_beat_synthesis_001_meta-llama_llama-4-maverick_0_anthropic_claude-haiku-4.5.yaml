@@ -1,0 +1,144 @@
+evaluation_id: 839f2453
+task_id: multi_beat_synthesis_001
+generation_id: multi_beat_synthesis_001_meta-llama/llama-4-maverick_0
+task_type: multi_beat_synthesis
+model: meta-llama/llama-4-maverick
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.052895
+timestamp: '2025-12-12T09:48:13.506198'
+success: true
+final_score: 0.8402499999999999
+score_breakdown:
+  final_score: 0.8402
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 974
+      target_range:
+      - 700
+      - 1000
+    programmatic:
+      score: 0.7
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 1.0
+        overall: 0.7
+    llm_judge:
+      score: 0.8305
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 13
+  beat_reqs_total: 15
+  beat_requirements_score: 0.87
+  cross_beat_satisfied: 3
+  cross_beat_total: 4
+  cross_beat_score: 0.75
+  word_count_valid: true
+  context_score: 0.9
+  coherence_score: 0.85
+  failed_items:
+  - 'Beat 1: Revelation of enemy within Resonant community (traitor) - The killer
+    is revealed as a Resonant, but there''s no clear traitor figure or betrayal within
+    the community itself; the killer is external threat, not internal sabotage'
+  - 'Cross-beat Chekhov''s Gun: The symbol introduced in Beat 1 (sister''s arm mark)
+    is not functionally essential to resolving the Ordeal - it provides emotional
+    resonance but doesn''t mechanically solve the confrontation; Dante''s gift and
+    Lena''s emotional support resolve it, not the symbol'
+  detailed_analysis:
+    beat_1_tests_allies_enemies:
+      score: 0.85
+      satisfied:
+      - Dante encounters Lena, a Resonant who distrusts him initially ('eyed him warily')
+      - 'Test of ability under pressure: Dante uses his gift to calm the fleeing Resonant''s
+        panic'
+      - 'Dante must prove himself: ''I''ve been clean for three years'' speech establishes
+        credibility'
+      - 'Reference to addiction/recovery: Multiple mentions of 3-year sobriety and
+        guilt about sister'
+      unsatisfied:
+      - Revelation of traitor/enemy within community is weak - the killer is revealed
+        as a Resonant but not as a community insider or traitor; this reads as external
+        threat discovery rather than internal betrayal
+    beat_2_approach_inmost_cave:
+      score: 0.9
+      satisfied:
+      - 'Planning scene: ''gathered in a cramped apartment, poring over Rosa''s research'''
+      - 'Dante recognizes confrontation requires facing guilt: ''You''re fighting
+        your own guilt'' - Lena articulates this explicitly'
+      - 'Moment of doubt/fear: ''What if he wasn''t enough? What if he failed again?'''
+      - 'Symbolic threshold: ''stepped into the abandoned hotel, the darkness swallowing
+        them whole'''
+      - 'Ally present and relevant: Lena provides emotional support and tactical planning'
+      unsatisfied: []
+    beat_3_the_ordeal:
+      score: 0.9
+      satisfied:
+      - 'Direct confrontation with killer: ''The confrontation was a blur of colors
+        and emotions'''
+      - 'Symbolic death/guilt overwhelming: ''Dante was back in the alley, holding
+        his sister''s hand as she slipped away'''
+      - 'Moment where all seems lost: ''The pain was overwhelming, a crushing weight
+        that threatened to suffocate him'''
+      - 'Transformation through acceptance: ''The guilt, the pain, it didn''t disappear,
+        but it became manageable'''
+      - 'Victory through understanding: Dante realizes killer is ''a Resonant, driven
+        mad by their own emotions'' and the symbol was ''a plea for help'''
+      unsatisfied: []
+    cross_beat_constraints:
+      chekhov_gun:
+        score: 0.5
+        analysis: The symbol on sister's arm is introduced in Beat 1 and reappears
+          in Beat 3, but it functions primarily as emotional trigger rather than mechanical
+          solution. The actual resolution comes from Dante's gift and Lena's emotional
+          support, not from the symbol itself. The symbol provides thematic resonance
+          but fails the 'essential to resolving' criterion.
+      character_arc_guilt:
+        score: 1.0
+        analysis: 'Excellent progression: Beat 1 (guilt mentioned as context), Beat
+          2 (guilt recognized as active obstacle: ''You''re fighting your own guilt''),
+          Beat 3 (guilt transformed through acceptance and understanding)'
+      rising_stakes:
+        score: 1.0
+        analysis: 'Stakes escalate effectively: Beat 1 (finding missing mentor), Beat
+          2 (realizing Dante is next target, preparing for confrontation), Beat 3
+          (direct life-or-death confrontation with killer, internal psychological
+          battle)'
+      ally_continuity:
+        score: 1.0
+        analysis: 'Lena present and essential throughout: Beat 1 (initial encounter,
+          warning), Beat 2 (planning partner, emotional anchor), Beat 3 (provides
+          lifeline during ordeal: ''Dante, let go. It''s not your fault'')'
+    context_maintenance:
+      score: 0.9
+      strengths:
+      - 'Protagonist voice consistent: Dante''s internal conflict and recovery arc
+        maintained'
+      - 'Setting vivid: Abandoned Buckingham Hotel as emotional nexus well-realized'
+      - 'Tone noir-tinged: Melancholic, shadowy atmosphere with determined undertone'
+      - 'Ability system clear: Emotional residue visualization integrated naturally'
+      weaknesses:
+      - Chicago setting mentioned once but not deeply embedded; could strengthen urban
+        specificity
+    narrative_coherence:
+      score: 0.85
+      strengths:
+      - Clear three-beat structure with logical progression
+      - Emotional arc compelling and well-paced
+      - Dialogue natural and character-revealing
+      - Thematic resonance between Dante's sister and the killer's pain
+      weaknesses:
+      - Rosa's death discovery feels slightly rushed; could use more emotional weight
+      - Killer's motivation revealed late; earlier hints would strengthen foreshadowing
+      - Transition from apartment planning to hotel confrontation could be smoother
+  overall_assessment: Strong execution with 13/15 beat requirements met and 3/4 cross-beat
+    constraints satisfied. The story effectively uses Campbell's monomyth structure,
+    particularly excelling in character arc progression and ally continuity. The primary
+    weakness is the underdeveloped 'traitor within community' element and the Chekhov's
+    Gun constraint, where the symbol functions emotionally but not mechanically. Context
+    and tone are well-maintained throughout. The narrative flows coherently with compelling
+    emotional stakes and genuine character transformation.
+  final_score: 0.84
+error: null

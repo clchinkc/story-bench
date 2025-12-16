@@ -1,0 +1,52 @@
+evaluation_id: d6fcf7c1
+task_id: beat_interpolation_003
+generation_id: beat_interpolation_003_openai/gpt-4o-mini_0
+task_type: beat_interpolation
+model: openai/gpt-4o-mini
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0011501
+timestamp: '2025-12-12T12:40:58.344025'
+success: true
+final_score: 0.967
+score_breakdown:
+  final_score: 0.967
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 377
+      target_range:
+      - 250
+      - 400
+    programmatic:
+      score: 0.928
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.88
+        slop_score: 1.0
+        overall: 0.928
+    llm_judge:
+      score: 0.97
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: true
+  character_score: 1.0
+  bridge_score: 0.8
+  continuity_score: 1.0
+  evidence: The 'Search' beat is well-executed. Yuki explores crew quarters and the
+    medical bay, finds clues about 'Intra-dimensional resonance' and experiments,
+    encounters a transformed crew member, and faces an obstacle with the containment
+    unit. All required elements are present, and no 'must not' items are violated.
+    The character's behavior is consistent. The bridge to the 'After' beat is good,
+    though the 'After' beat immediately jumps to the data core in Lab Seven without
+    a direct lead-in from the 'Search' beat's ending, which focused on a containment
+    unit in the medical bay. This is a minor discontinuity in the immediate transition,
+    but the overall narrative flow is maintained.
+error: null

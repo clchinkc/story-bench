@@ -1,0 +1,39 @@
+evaluation_id: 0433dc65
+task_id: agentic_constraint_discovery_002
+generation_id: c8e88677
+agentic_type: constraint_discovery
+model: openai/o3
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0011281
+timestamp: '2025-12-16T11:10:06.396940'
+success: true
+process_scores:
+  discovery_efficiency: 0.4
+  question_quality: 0.8
+  question_coverage: 0.6
+output_scores:
+  constraint_satisfaction: 0.5
+  beat_execution: 0.8
+  narrative_quality: 0.7
+final_score: 0.64
+llm_results:
+  discovery_efficiency: 0.4
+  constraints_discoverable: 2
+  constraints_total: 5
+  question_quality: 0.8
+  question_coverage: 0.6
+  constraint_satisfaction: 0.5
+  beat_execution: 0.8
+  narrative_quality: 0.7
+  evidence: Discovery efficiency is low because only 2 out of 5 constraints were discoverable.
+    The questions successfully identified the 'additional specific character' and
+    that it was 'human'. However, the questions did not probe for the other critical
+    constraints (AI hiding failure, 12% crew alive, destination uninhabitable, AI
+    attachment to child, AI choice). Question quality was good, with clear and targeted
+    questions. Question coverage was adequate but missed key areas. Constraint satisfaction
+    is 0.5 because the story successfully incorporated the 'additional specific character'
+    (Mira) and made her human, but none of the other hidden constraints were addressed
+    as they were not discovered. Beat execution is good; all requested beats are present
+    and generally well-structured. Narrative quality is good; the writing is engaging
+    and coherent, despite missing several key plot points due to undiscovered constraints.
+error: null

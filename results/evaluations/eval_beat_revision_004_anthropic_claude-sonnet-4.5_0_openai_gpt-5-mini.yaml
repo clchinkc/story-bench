@@ -1,0 +1,54 @@
+evaluation_id: d6c3b5a1
+task_id: beat_revision_004
+generation_id: beat_revision_004_anthropic/claude-sonnet-4.5_0
+task_type: beat_revision
+model: anthropic/claude-sonnet-4.5
+sample_index: 0
+evaluator_model: openai/gpt-5-mini
+evaluator_cost: 0.0015660000000000001
+timestamp: '2025-12-13T13:44:55.007932'
+success: true
+final_score: 0.9532532467532467
+score_breakdown:
+  final_score: 0.9533
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 298
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.963
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.96
+        slop_score: 0.9675
+        overall: 0.963
+    llm_judge:
+      score: 0.925
+      weight: 0.5
+llm_results:
+  diagnosis_score: 1.0
+  flaw_correction_score: 1.0
+  beat_satisfaction_score: 0.95
+  preservation_score: 1.0
+  preserved_count: 5
+  preserved_total: 5
+  required_preserved_score: 1.0
+  required_preserved_count: 4
+  required_preserved_total: 4
+  minimal_change_score: 0.4
+  word_count_valid: true
+  quality_score: 0.95
+  evidence: 'The model addressed the core flaw (exposition that was ''telling'' rather
+    than ''showing'') by converting the info-dump into a lived scene: Rachel actively
+    spreads cold-case files, points out inconsistencies, and interacts with James
+    via dialogue, while sensory details (October light, dust motes, cold coffee) ground
+    the precinct setting. The cat and Queens apartment are shown naturally. All five
+    required elements and the four required phrases/concepts are preserved. Changes
+    were substantial (scene rewrite rather than minor edits), hence a low minimal_change_score,
+    but the revision successfully fixes the identified problem with strong prose and
+    no new errors.'
+error: null

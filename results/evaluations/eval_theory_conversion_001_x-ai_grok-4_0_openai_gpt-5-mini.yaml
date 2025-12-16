@@ -1,0 +1,48 @@
+evaluation_id: 50d14785
+task_id: theory_conversion_001
+generation_id: theory_conversion_001_x-ai/grok-4_0
+task_type: theory_conversion
+model: x-ai/grok-4
+sample_index: 0
+evaluator_model: openai/gpt-5-mini
+evaluator_cost: 0.001268
+timestamp: '2025-12-12T12:46:22.548449'
+success: true
+final_score: 0.939143721233999
+score_breakdown:
+  final_score: 0.9391
+  components:
+    word_count:
+      score: 0.9888
+      weight: 0.25
+      actual: 709
+      target_range:
+      - 500
+      - 700
+    programmatic:
+      score: 0.7678
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.64
+        slop_score: 0.9594
+        overall: 0.7678
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beats_present: 5
+  beats_total: 5
+  beats_score: 1.0
+  preserved_count: 6
+  preserved_total: 6
+  preservation_score: 1.0
+  word_count_valid: false
+  structural_accuracy_score: 1.0
+  tone_score: 1.0
+  evidence: 'All five Freytag beats are present and in order (Exposition, Rising Action,
+    Climax, Falling Action, Denouement). All six required elements are preserved (Samira
+    protagonist, engineered virus, Raj supporting, Nexus antagonist, public release
+    of cure, Samira''s career sacrifice). The only deduction is technical: the provided
+    word_count (709) falls outside the requested 500–700 range, so word_count_valid
+    is false; otherwise structure and tone fully meet the brief.'
+error: null

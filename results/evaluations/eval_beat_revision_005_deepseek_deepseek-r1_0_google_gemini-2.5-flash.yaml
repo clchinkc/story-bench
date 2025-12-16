@@ -1,0 +1,41 @@
+evaluation_id: fe7602c6
+task_id: beat_revision_005
+generation_id: beat_revision_005_deepseek/deepseek-r1_0
+task_type: beat_revision
+model: deepseek/deepseek-r1
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0006586000000000001
+timestamp: '2025-12-13T13:55:20.254476'
+success: true
+final_score: 0.8915385373792994
+score_breakdown:
+  final_score: 0.8915
+  components:
+    word_count:
+      score: 0.5662
+      weight: 0.25
+      actual: 72
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 1.0
+      weight: 0.25
+      breakdown:
+        repetition_score: 1.0
+        slop_score: 1.0
+        overall: 1.0
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  correct_diagnosis_score: 1.0
+  beat_understanding_score: 1.0
+  false_positive_avoided_score: 1.0
+  reasoning_quality_score: 1.0
+  model_said_no_revision: true
+  evidence: The model explicitly stated 'NO REVISION NEEDED' and provided a detailed,
+    accurate explanation for why the segment effectively executes the Dark Night of
+    the Soul beat, addressing all key requirements.
+error: null

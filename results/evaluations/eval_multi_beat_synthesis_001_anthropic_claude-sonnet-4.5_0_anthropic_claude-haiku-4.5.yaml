@@ -1,0 +1,150 @@
+evaluation_id: 8289cbeb
+task_id: multi_beat_synthesis_001
+generation_id: multi_beat_synthesis_001_anthropic/claude-sonnet-4.5_0
+task_type: multi_beat_synthesis
+model: anthropic/claude-sonnet-4.5
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.054665
+timestamp: '2025-12-12T03:24:49.978060'
+success: true
+final_score: 0.6830860654047797
+score_breakdown:
+  final_score: 0.6831
+  components:
+    word_count:
+      score: 0.1209
+      weight: 0.25
+      actual: 1185
+      target_range:
+      - 700
+      - 1000
+    programmatic:
+      score: 0.6984
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 0.9961
+        overall: 0.6984
+    llm_judge:
+      score: 0.9565
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 14
+  beat_reqs_total: 15
+  beat_requirements_score: 0.93
+  cross_beat_satisfied: 4
+  cross_beat_total: 4
+  cross_beat_score: 1.0
+  word_count_valid: false
+  context_score: 0.95
+  coherence_score: 0.92
+  overall_score: 0.93
+  failed_items:
+  - 'Word count exceeds maximum: 1185 words vs. 1000-word limit (185 words over)'
+  detailed_analysis:
+    beat_1_tests_allies_enemies:
+      score: 0.95
+      satisfied:
+      - Dante encounters Elise, a Resonant who distrusts him initially ('Want a medal
+        or just my trust?')
+      - 'Test of ability under pressure: reading the crime scene photo and identifying
+        the killer''s signature'
+      - 'Revelation of traitor: Marcus Chen identified as the rat feeding information
+        to the killer'
+      - Dante proves himself by offering his NA chip as evidence of his genuine recovery
+      - 'Addiction/recovery deeply relevant: his three-year sobriety contrasted with
+        Elise''s suspicion, his NA chip as proof'
+      notes: All five requirements fully satisfied with strong integration of recovery
+        theme
+    beat_2_approach_inmost_cave:
+      score: 0.95
+      satisfied:
+      - 'Planning scene: blueprints, strategy discussion about the new moon gathering'
+      - Dante recognizes confrontation requires facing guilt about sister in the Heart
+        Chamber
+      - 'Preparation: gathering iron filings, mirrors, Rosa''s voice recording'
+      - 'Moment of doubt: Elise offers alternative (''We could find another way''),
+        Dante acknowledges the pain ahead'
+      - 'Symbolic threshold: crossing the Buckingham''s broken entrance at midnight'
+      notes: All five requirements met with strong atmospheric and emotional setup
+    beat_3_the_ordeal:
+      score: 0.9
+      satisfied:
+      - 'Direct confrontation: killer revealed as the dealer from sister''s death,
+        Marcus Chen present'
+      - 'Symbolic death: Dante drowning in accumulated guilt, ''dying'' emotionally,
+        on his knees'
+      - 'All seems lost: killer''s power overwhelming, Elise falling, Dante paralyzed
+        by guilt tsunami'
+      - 'Transformation through acceptance: Dante admits ''I couldn''t save her''
+        and accepts his limitations'
+      - 'Victory through understanding: Dante recognizes guilt as evidence of love,
+        transforms it, killer defeated by own weapon'
+      notes: All five requirements satisfied; victory is psychological/spiritual rather
+        than physical, which aligns with the noir-tinged redemption arc
+    chekhov_gun:
+      score: 1.0
+      satisfied: true
+      analysis: The NA chip introduced in Beat 1 as proof of recovery becomes essential
+        in Beat 3. Dante uses it to channel three years of accumulated resilience,
+        which defeats the killer's stolen power. The chip transforms from character
+        evidence to literal weapon.
+    character_arc_progression:
+      score: 1.0
+      satisfied: true
+      beat_1: Guilt mentioned as reason for suspicion ('chasing oblivion in a needle')
+      beat_2: Guilt recognized as obstacle ('you'll face every piece of guilt you're
+        carrying')
+      beat_3: Guilt transformed through acceptance ('Guilt means we cared. That you
+        can't take.')
+      analysis: Clear three-stage evolution from suppressed guilt → acknowledged obstacle
+        → integrated strength
+    rising_stakes:
+      score: 1.0
+      satisfied: true
+      beat_1_stakes: Personal suspicion, proving trustworthiness to one ally
+      beat_2_stakes: Planning to stop a serial killer targeting entire Resonant community
+        at gathering
+      beat_3_stakes: Dante's life, Elise's life, all Resonants at the gathering, confronting
+        the man responsible for sister's death
+      analysis: Stakes escalate from interpersonal to community-wide to existential/personal
+        trauma
+    ally_continuity:
+      score: 1.0
+      satisfied: true
+      beat_1: Elise introduced, tests Dante, becomes ally
+      beat_2: Elise and Dante plan together, she warns him about the Heart Chamber
+      beat_3: Elise fights Marcus while Dante confronts killer; Dante catches her
+        as she falls
+      analysis: Elise present and actively relevant throughout all three beats
+    context_maintenance:
+      score: 0.95
+      analysis: 'Protagonist (Dante Reyes, 28, recovering addict, emotional residue
+        ability) consistently portrayed. Setting (Buckingham Hotel, Chicago underworld
+        of Resonants) vividly realized. Tone (noir-tinged, melancholic, redemption-focused)
+        maintained throughout. Sister''s death and guilt woven throughout. Only minor:
+        could have slightly more explicit Chicago setting details.'
+    narrative_coherence:
+      score: 0.92
+      analysis: 'Beats flow logically: suspicion → alliance → planning → confrontation.
+        Emotional logic is strong. Pacing is tight. Minor issue: the killer''s identity
+        reveal (the dealer) feels slightly compressed in the final beat—could have
+        been foreshadowed more explicitly in Beat 1 or 2 for maximum impact.'
+    strengths:
+    - Exceptional integration of recovery/addiction theme throughout all beats
+    - Sophisticated use of emotional residue as both plot device and metaphor for
+      guilt
+    - Strong character voice and noir atmosphere
+    - Chekhov's Gun perfectly executed with the NA chip
+    - Psychological victory over physical combat aligns with character and theme
+    - Elise is a well-developed ally with her own arc
+    - The Heart Chamber as literal and metaphorical inmost cave
+    weaknesses:
+    - Word count exceeds limit by 185 words (significant structural issue)
+    - Killer's identity reveal could use more foreshadowing
+    - Marcus Chen's role feels slightly underdeveloped—he's present but not deeply
+      characterized
+    - Could expand on the mechanics of how Dante channels the NA chip's power for
+      clarity
+error: null

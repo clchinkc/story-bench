@@ -1,0 +1,50 @@
+evaluation_id: 56c43d3b
+task_id: beat_interpolation_005
+generation_id: beat_interpolation_005_openai/gpt-4o-mini_0
+task_type: beat_interpolation
+model: openai/gpt-4o-mini
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0011413
+timestamp: '2025-12-12T14:44:30.504481'
+success: true
+final_score: 0.9570859464098935
+score_breakdown:
+  final_score: 0.9571
+  components:
+    word_count:
+      score: 0.9668
+      weight: 0.25
+      actual: 463
+      target_range:
+      - 300
+      - 450
+    programmatic:
+      score: 0.9616
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.95
+        slop_score: 0.9789
+        overall: 0.9616
+    llm_judge:
+      score: 0.95
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: false
+  character_score: 0.8
+  bridge_score: 0.8
+  continuity_score: 1.0
+  evidence: Word count is slightly over the limit. Character score is 0.8 because
+    while the shift in Alejandro is well-executed, his initial 'I don't eat much these
+    days' feels a little too quickly overcome by the 'just a taste' suggestion, given
+    his established reclusive nature. Bridge score is 0.8 because it sets up the emotional
+    connection well, but the 'All Is Lost' beat feels like a very sharp turn from
+    this moment, implying a significant event happened between them that isn't fully
+    foreshadowed here beyond the general 'deeper connection'.
+error: null

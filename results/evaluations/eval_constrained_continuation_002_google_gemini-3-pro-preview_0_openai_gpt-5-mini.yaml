@@ -1,0 +1,46 @@
+evaluation_id: 62d66788
+task_id: constrained_continuation_002
+generation_id: constrained_continuation_002_google/gemini-3-pro-preview_0
+task_type: constrained_continuation
+model: google/gemini-3-pro-preview
+sample_index: 0
+evaluator_model: openai/gpt-5-mini
+evaluator_cost: 0.00122425
+timestamp: '2025-12-12T13:15:00.452133'
+success: true
+final_score: 0.953389694041868
+score_breakdown:
+  final_score: 0.9534
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 598
+      target_range:
+      - 450
+      - 650
+    programmatic:
+      score: 0.8136
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.7
+        slop_score: 0.9839
+        overall: 0.8136
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beats_present: 2
+  beats_total: 2
+  beats_score: 1.0
+  must_include_present: 6
+  must_include_total: 6
+  must_include_score: 1.0
+  must_not_avoided: 4
+  must_not_total: 4
+  must_not_score: 1.0
+  word_count_valid: true
+  tone_score: 1.0
+  ending_score: 1.0
+  failed_constraints: []
+error: null

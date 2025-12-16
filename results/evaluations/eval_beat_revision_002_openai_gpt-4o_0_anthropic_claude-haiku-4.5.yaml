@@ -1,0 +1,63 @@
+evaluation_id: eb71dcf6
+task_id: beat_revision_002
+generation_id: beat_revision_002_openai/gpt-4o_0
+task_type: beat_revision
+model: openai/gpt-4o
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.021054999999999997
+timestamp: '2025-12-13T13:31:24.297534'
+success: true
+final_score: 0.952
+score_breakdown:
+  final_score: 0.952
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 251
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.964
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.94
+        slop_score: 1.0
+        overall: 0.964
+    llm_judge:
+      score: 0.922
+      weight: 0.5
+llm_results:
+  diagnosis_score: 0.9
+  flaw_correction_score: 0.95
+  beat_satisfaction_score: 0.92
+  preservation_score: 1.0
+  preserved_count: 4
+  preserved_total: 4
+  required_preserved_score: 1.0
+  required_preserved_count: 4
+  required_preserved_total: 4
+  minimal_change_score: 0.75
+  word_count_valid: true
+  quality_score: 0.93
+  evidence: 'The model correctly diagnosed the core flaw: the original segment lacked
+    true desperation and had multiple remaining options/support systems. The revision
+    systematically eliminates all escape routes: (1) fundraiser explicitly fails (donations
+    at 50%), (2) grant rejected via email, (3) personal/financial pressure added (son''s
+    school fees), (4) betrayal/isolation via Denise''s defection to the developer,
+    (5) emotional devastation conveyed (''room spin,'' ''utterly alone,'' ''weight
+    of world crashing''). All four required phrases preserved verbatim: ''Marcus stared
+    at the eviction notice in his hands,'' ''Thirty days to vacate the community center,''
+    ''"There has to be something we can do," said Denise,'' ''He rubbed his temples.''
+    All four story elements preserved: Marcus as protagonist, community center setting,
+    eviction crisis, Denise present. Changes were surgical—the model inserted specific
+    failures and the betrayal revelation while maintaining original dialogue structure
+    and opening. The revision achieves the ''whiff of death'' through loss of identity
+    (program ending), loss of ally (Denise''s betrayal), and loss of financial security
+    (family pressure). Marcus moves from ''maybe we can try'' to genuine hopelessness.
+    Minimal rewrite approach: ~60% original text retained, ~40% new content strategically
+    inserted. Writing quality maintained with no grammatical errors; emotional escalation
+    feels earned and organic.'
+error: null

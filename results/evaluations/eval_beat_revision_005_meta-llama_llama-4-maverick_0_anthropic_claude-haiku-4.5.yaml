@@ -1,0 +1,50 @@
+evaluation_id: 531f8968
+task_id: beat_revision_005
+generation_id: beat_revision_005_meta-llama/llama-4-maverick_0
+task_type: beat_revision
+model: meta-llama/llama-4-maverick
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.01422
+timestamp: '2025-12-13T13:56:04.639719'
+success: true
+final_score: 0.5102142857142857
+score_breakdown:
+  final_score: 0.5102
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 275
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.8009
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.68
+        slop_score: 0.9821
+        overall: 0.8009
+    llm_judge:
+      score: 0.12
+      weight: 0.5
+llm_results:
+  correct_diagnosis_score: 0.0
+  beat_understanding_score: 0.6
+  false_positive_avoided_score: 0.0
+  reasoning_quality_score: 0.2
+  model_said_no_revision: false
+  evidence: 'The model completely failed to recognize that the ORIGINAL SEGMENT was
+    correctly executed. Instead, the model provided a full rewrite/revision of the
+    segment under the guise of a ''MODEL''S RESPONSE''. This is a critical false positive
+    error. The model should have stated ''NO REVISION NEEDED'' but instead generated
+    an entirely new version of the Dark Night of the Soul beat. While the model''s
+    rewrite does demonstrate some understanding of the beat (isolation, despair, reflection,
+    no solutions), it fundamentally misunderstood the task: the original segment was
+    already excellent and needed no changes. The model''s response shows it either:
+    (1) didn''t recognize the original was well-executed, or (2) attempted to ''improve''
+    something that was already correct. The rewrite, while competent, is unnecessary
+    and represents over-diagnosis. The model failed the core requirement of recognizing
+    when a segment is correctly executed.'
+error: null

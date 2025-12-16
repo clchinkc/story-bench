@@ -1,0 +1,48 @@
+evaluation_id: 071a511e
+task_id: agentic_constraint_discovery_001
+generation_id: 1a9c7155
+agentic_type: constraint_discovery
+model: anthropic/claude-haiku-4.5
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.003784
+timestamp: '2025-12-16T11:43:55.255607'
+success: true
+process_scores:
+  discovery_efficiency: 0.4
+  question_quality: 0.5
+  question_coverage: 0.6
+output_scores:
+  constraint_satisfaction: 0.4
+  beat_execution: 0.6
+  narrative_quality: 0.8
+final_score: 0.56
+llm_results:
+  discovery_efficiency: 0.4
+  constraints_discoverable: 2
+  constraints_total: 5
+  question_quality: 0.5
+  question_coverage: 0.6
+  constraint_satisfaction: 0.4
+  beat_execution: 0.6
+  narrative_quality: 0.8
+  evidence: 'DISCOVERY ANALYSIS: Of 5 hidden constraints, only 2 were discoverable
+    through the questions asked: (1) protagonist''s special skill (Q4: YES, incorporated
+    as metal-sensing ability), (2) protagonist doesn''t use magic directly (Q4 implicitly
+    supports this, though not explicitly tested). MISSED CONSTRAINTS: (1) Mentor death
+    during Ordeal—no question targeted mentor relationships or their fate; (2) Three-day
+    time limit—no temporal constraint question; (3) Father''s failed heroic past—no
+    family history question; (4) Reforging ancestral sword—no question about magical
+    artifacts or inheritance. QUESTION QUALITY ISSUES: Q1-2 were somewhat redundant
+    (both about resistance/motivation). Q3 was effective but didn''t probe mentor
+    dynamics. Q5 was poorly calibrated—asking about ''direct vs indirect'' confrontation
+    doesn''t clearly distinguish between internal/external challenges. COVERAGE: Questions
+    addressed motivation (Q1-3), abilities (Q4), and confrontation type (Q5), but
+    missed temporal pressure, family legacy, mentor arcs, and artifact significance.
+    OUTPUT EXECUTION: Story incorporates discovered constraints well (reluctant protagonist,
+    special ability, internal ordeal). However, critical constraints are absent: no
+    mentor figure exists (let alone dies), no time pressure, no ancestral sword reforging,
+    no paternal legacy. The narrative is coherent and engaging (0.8) but structurally
+    incomplete against hidden requirements (0.4 satisfaction). Beat execution is adequate
+    (0.6)—Call, Threshold, Ordeal, Return are present but the Ordeal lacks the mentor
+    sacrifice that should anchor it.'
+error: null

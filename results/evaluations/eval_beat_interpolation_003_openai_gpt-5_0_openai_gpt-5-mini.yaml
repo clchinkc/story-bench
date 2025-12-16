@@ -1,0 +1,51 @@
+evaluation_id: 0d6ce1ad
+task_id: beat_interpolation_003
+generation_id: beat_interpolation_003_openai/gpt-5_0
+task_type: beat_interpolation
+model: openai/gpt-5
+sample_index: 0
+evaluator_model: openai/gpt-5-mini
+evaluator_cost: 0.00130225
+timestamp: '2025-12-12T13:39:31.759751'
+success: true
+final_score: 0.9795862020603552
+score_breakdown:
+  final_score: 0.9796
+  components:
+    word_count:
+      score: 0.9303
+      weight: 0.25
+      actual: 419
+      target_range:
+      - 250
+      - 400
+    programmatic:
+      score: 0.988
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.98
+        slop_score: 1.0
+        overall: 0.988
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: false
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: 'All four required elements are present: multiple explored areas (quarters,
+    Medical, supply bay, corridor), clues (paused recording, notes on oscillation,
+    Kronin''s Disease), mysterious encounters with transformed crew (distortions,
+    whispers, humanoid shapes), and obstacles overcome (sealed biohazard door, radiation
+    lockdown, spoofing panels, scanner bursts). The passage functions clearly as the
+    ''Search'' beat, advancing through trials and incremental progress toward Lab
+    Seven. No forbidden items appear. The only deduction: word count is 419, which
+    is outside the required 250–400 range.'
+error: null

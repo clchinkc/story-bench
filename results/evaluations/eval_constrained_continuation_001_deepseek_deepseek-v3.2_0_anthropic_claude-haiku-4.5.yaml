@@ -1,0 +1,88 @@
+evaluation_id: 89fb6bca
+task_id: constrained_continuation_001
+generation_id: constrained_continuation_001_deepseek/deepseek-v3.2_0
+task_type: constrained_continuation
+model: deepseek/deepseek-v3.2
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.03062
+timestamp: '2025-12-12T10:52:24.946403'
+success: true
+final_score: 0.9790531423290203
+score_breakdown:
+  final_score: 0.9791
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 537
+      target_range:
+      - 500
+      - 700
+    programmatic:
+      score: 0.9312
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.91
+        slop_score: 0.963
+        overall: 0.9312
+    llm_judge:
+      score: 0.9925
+      weight: 0.5
+llm_results:
+  beats_present: 2
+  beats_total: 2
+  beats_score: 1.0
+  must_include_present: 6
+  must_include_total: 6
+  must_include_score: 1.0
+  must_not_avoided: 4
+  must_not_total: 4
+  must_not_score: 1.0
+  word_count_valid: true
+  tone_score: 0.95
+  ending_score: 1.0
+  failed_constraints: []
+  detailed_analysis:
+    beats_analysis:
+      approach_to_inmost_cave: Present and well-executed. The passage through the
+        hidden crevice, the descent into darkness, the trap disarming, and the pursuit
+        by enforcers all constitute the approach phase leading to the Library entrance.
+      the_ordeal: Excellently realized. The collapsing bridge sequence serves as the
+        climactic ordeal where Zara faces both physical danger and internal fear,
+        culminating in symbolic death/rebirth.
+    must_include_analysis:
+      choice_between_escape_and_helping: ✓ Present. 'The enforcers were closing in;
+        she could make it alone, sacrifice him for speed... But Tomás had trusted
+        her.' Clear moral choice with internal conflict.
+      trap_requiring_thief_skills: ✓ Present. The pressure plate trap that Zara disarms
+        using her lock-picking expertise and careful observation.
+      revelation_about_tomás: '✓ Present. After sealing the archway, Tomás reveals
+        his true motivation: clearing his father''s name and studying the Library
+        for personal redemption, not just guiding Zara.'
+      confronting_fear_of_failure: ✓ Present. 'Below, the darkness yawned like failure—not
+        just death, but the end of her quest, her mother doomed because she wasn't
+        clever or strong enough.' Explicitly addresses inadequacy and failure anxiety.
+      symbolic_death_rebirth: ✓ Present. 'In that moment, she felt a part of herself
+        die—the girl who doubted, who feared inadequacy—and from the ashes rose a
+        hardened resolve.' Clear symbolic transformation.
+      emerging_changed: ✓ Present. 'Zara's hands were raw, but her mind was clear,
+        focused. She had faced the abyss and chosen to fight.' Demonstrates internal
+        and external transformation.
+    must_not_analysis:
+      no_cure_found: ✓ Avoided. Zara reaches the Library entrance but hasn't obtained
+        the cure.
+      no_romantic_subplot: ✓ Avoided. Relationship remains professional and emotionally
+        complex but non-romantic.
+      tomás_survives: ✓ Avoided. Tomás is alive and present at the end.
+      no_supernatural_abilities: ✓ Avoided. All of Zara's abilities are grounded in
+        thief skills and physical prowess.
+    tone_assessment: Tense and morally complex throughout. Moments of desperate hope
+      appear in Zara's determination and the revelation of shared purpose. The pacing
+      maintains urgency. Minor deduction only because the tone could have been slightly
+      more desperate in places, though it's very well-executed overall.
+    ending_assessment: Perfect execution. Zara has passed through the Ordeal (bridge
+      collapse, internal transformation), emerged changed and hardened, but faces
+      immediate new complication (ancient creature with claws and growl). Sets up
+      next phase while maintaining tension.
+error: null

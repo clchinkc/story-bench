@@ -1,0 +1,53 @@
+evaluation_id: 4e72fa43
+task_id: multi_beat_synthesis_002
+generation_id: multi_beat_synthesis_002_openai/gpt-4o-mini_0
+task_type: multi_beat_synthesis
+model: openai/gpt-4o-mini
+sample_index: 0
+evaluator_model: openai/gpt-5-mini
+evaluator_cost: 0.0027445
+timestamp: '2025-12-12T12:14:16.201340'
+success: true
+final_score: 0.8175550122249389
+score_breakdown:
+  final_score: 0.8176
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 811
+      target_range:
+      - 700
+      - 1000
+    programmatic:
+      score: 0.6902
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 0.9756
+        overall: 0.6902
+    llm_judge:
+      score: 0.79
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 15
+  beat_reqs_total: 15
+  beat_requirements_score: 1.0
+  cross_beat_satisfied: 2
+  cross_beat_total: 4
+  cross_beat_score: 0.5
+  word_count_valid: true
+  context_score: 0.9
+  coherence_score: 0.8
+  failed_items:
+  - 'Chekhov''s Gun: The specific skill shown at the threshold (Beat 1) — primarily
+    listening/observation and stealth — does not become essential for overcoming the
+    final obstacle in Beat 3, which is resolved through language/diplomacy with the
+    dog. The story does not demonstrate the same skill in Beat 1 that is used decisively
+    in Beat 3.'
+  - 'Escalating Danger: The required escalation of physical danger across beats is
+    not fully clear. Beat 1 shows threat of discovery, Beat 2 shows potential confrontation
+    (soldiers spotted), but Beat 3''s final obstacle is a hunting dog rather than
+    an active pursuit or imminent capture by colonial forces, so the sequence does
+    not clearly reach ''active pursuit/imminent capture.'''
+error: null

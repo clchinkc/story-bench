@@ -1,0 +1,63 @@
+evaluation_id: ec689d14
+task_id: beat_interpolation_003
+generation_id: beat_interpolation_003_deepseek/deepseek-r1_0
+task_type: beat_interpolation
+model: deepseek/deepseek-r1
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.01953
+timestamp: '2025-12-12T10:26:25.577689'
+success: true
+final_score: 0.9999500049996667
+score_breakdown:
+  final_score: 1.0
+  components:
+    word_count:
+      score: 0.9998
+      weight: 0.25
+      actual: 249
+      target_range:
+      - 250
+      - 400
+    programmatic:
+      score: 1.0
+      weight: 0.25
+      breakdown:
+        repetition_score: 1.0
+        slop_score: 1.0
+        overall: 1.0
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: false
+  word_count: 249
+  word_count_range: 250-400
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: 'STRENGTHS: All 4 required elements present and well-executed: (1) Multiple
+    station areas explored (crew quarters, medical bay, corridor, Lab Seven); (2)
+    Clues discovered progressively (overturned chairs, personal logs, phase-shift
+    trials, biobeds, equations on whiteboards); (3) Transformed crew encountered mysteriously
+    (shimmer figures, fragmented whispers, flickering humanoids—identity unclear);
+    (4) Obstacle overcome (coolant leak, emergency bulkheads, rewiring circuits under
+    pressure). The Search beat functions authentically—Yuki actively adapts, struggles,
+    and makes incremental discoveries rather than immediately understanding. All must-not
+    violations avoided: she doesn''t find the core yet (only locates Lab Seven), crew
+    doesn''t explain everything (only whispers), she commits to mission, and she arrives
+    without prior knowledge. Character voice remains consistent—scientific, methodical,
+    increasingly unsettled. Seamless bridge from BEFORE (arrival/mystery) to GENERATED
+    (exploration/discovery) to AFTER (core location/revelation). Setting continuity
+    perfect—same station, escalating stakes, logical progression through spaces. MINOR
+    DEDUCTION: Word count 249 falls 1 word short of 250-400 range, technically invalid
+    per specifications, though negligible impact on narrative quality.'
+  overall_assessment: Exceptional execution of the Search beat with only a trivial
+    word count shortfall
+error: null

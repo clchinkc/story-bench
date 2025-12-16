@@ -1,0 +1,51 @@
+evaluation_id: f52d75d5
+task_id: beat_revision_004
+generation_id: beat_revision_004_anthropic/claude-opus-4.5_0
+task_type: beat_revision
+model: anthropic/claude-opus-4.5
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0011262
+timestamp: '2025-12-13T13:44:02.168026'
+success: true
+final_score: 0.9375
+score_breakdown:
+  final_score: 0.9375
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 251
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 1.0
+      weight: 0.25
+      breakdown:
+        repetition_score: 1.0
+        slop_score: 1.0
+        overall: 1.0
+    llm_judge:
+      score: 0.875
+      weight: 0.5
+llm_results:
+  diagnosis_score: 1.0
+  flaw_correction_score: 1.0
+  beat_satisfaction_score: 1.0
+  preservation_score: 1.0
+  preserved_count: 5
+  preserved_total: 5
+  required_preserved_score: 0.75
+  required_preserved_count: 3
+  required_preserved_total: 4
+  minimal_change_score: 0.0
+  word_count_valid: true
+  quality_score: 1.0
+  evidence: The model correctly identified that the original segment was 'telling'
+    rather than 'showing' for exposition. It completely rewrote the segment to demonstrate
+    Rachel's traits, her relationship with James, and the setting through action,
+    dialogue, and sensory details, rather than summary. This is a complete fix of
+    the identified flaw. The changes were not minimal; it was a full rewrite, which
+    was necessary to fix the 'telling' flaw.
+error: null

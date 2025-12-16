@@ -1,0 +1,53 @@
+evaluation_id: 08dee950
+task_id: beat_revision_003
+generation_id: beat_revision_003_google/gemini-2.5-flash_0
+task_type: beat_revision
+model: google/gemini-2.5-flash
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0011479
+timestamp: '2025-12-13T13:38:00.884779'
+success: true
+final_score: 0.992
+score_breakdown:
+  final_score: 0.992
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 210
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.988
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.98
+        slop_score: 1.0
+        overall: 0.988
+    llm_judge:
+      score: 0.99
+      weight: 0.5
+llm_results:
+  diagnosis_score: 1.0
+  flaw_correction_score: 1.0
+  beat_satisfaction_score: 1.0
+  preservation_score: 1.0
+  preserved_count: 4
+  preserved_total: 4
+  required_preserved_score: 1.0
+  required_preserved_count: 4
+  required_preserved_total: 4
+  minimal_change_score: 0.9
+  word_count_valid: true
+  quality_score: 1.0
+  evidence: The model correctly identified and addressed the flaw that Sophie showed
+    no evidence of transformation upon her return. It introduced specific behavioral
+    changes (hesitating with the phone, choosing not to respond to work emails immediately)
+    and internal reflection (seeing things differently, a sense of peace) that directly
+    contrast with her previous workaholic tendencies. The mother's observation is
+    also included. The changes were surgical and minimal, focusing precisely on the
+    flaw without rewriting large sections. All required preserved phrases and elements
+    are present.
+error: null

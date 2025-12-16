@@ -1,0 +1,47 @@
+evaluation_id: 9caf486b
+task_id: beat_interpolation_002
+generation_id: beat_interpolation_002_qwen/qwen3-235b-a22b_0
+task_type: beat_interpolation
+model: qwen/qwen3-235b-a22b
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0009463
+timestamp: '2025-12-12T13:33:11.992993'
+success: true
+final_score: 0.9865
+score_breakdown:
+  final_score: 0.9865
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 303
+      target_range:
+      - 250
+      - 400
+    programmatic:
+      score: 0.946
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.91
+        slop_score: 1.0
+        overall: 0.946
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: true
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: The generated text perfectly captures the Debate beat. Sarah considers
+    recanting, going to authorities, and her internal conflict is clear. The interaction
+    with Marcus, and her suspicion of Ruiz and even Marcus, tips her towards the 'third
+    option' of going rogue. All 'must not' items are avoided.
+error: null

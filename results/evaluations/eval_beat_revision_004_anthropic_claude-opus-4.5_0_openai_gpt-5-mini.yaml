@@ -1,0 +1,56 @@
+evaluation_id: 9db652de
+task_id: beat_revision_004
+generation_id: beat_revision_004_anthropic/claude-opus-4.5_0
+task_type: beat_revision
+model: anthropic/claude-opus-4.5
+sample_index: 0
+evaluator_model: openai/gpt-5-mini
+evaluator_cost: 0.0021635
+timestamp: '2025-12-13T13:43:38.253018'
+success: true
+final_score: 0.91
+score_breakdown:
+  final_score: 0.91
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 251
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 1.0
+      weight: 0.25
+      breakdown:
+        repetition_score: 1.0
+        slop_score: 1.0
+        overall: 1.0
+    llm_judge:
+      score: 0.82
+      weight: 0.5
+llm_results:
+  diagnosis_score: 1.0
+  flaw_correction_score: 1.0
+  beat_satisfaction_score: 0.9
+  preservation_score: 1.0
+  preserved_count: 5
+  preserved_total: 5
+  required_preserved_score: 0.25
+  required_preserved_count: 1
+  required_preserved_total: 4
+  minimal_change_score: 0.2
+  word_count_valid: true
+  quality_score: 0.95
+  evidence: 'The model addressed the actual flaw (telling vs. showing) by converting
+    the info-dump into a lived scene: sensory detail (gray sky, coffee, photos), action
+    that reveals Rachel''s instincts (re-examining a surveillance still, handling
+    files), and natural dialogue with James that establishes their working relationship.
+    It also includes Sherlock and the Queens apartment and the October Tuesday timing,
+    so the five story elements are preserved. However, the revision is a substantial
+    rewrite rather than minimal surgical edits, and it failed to preserve three of
+    the four required phrase fragments exactly (it included the time phrase but did
+    not include the exact strings "Detective Rachel Torres", "Detective James Oyelaran",
+    or the exact phrase "cat named Sherlock"). Overall writing quality is high with
+    no new errors introduced.'
+error: null

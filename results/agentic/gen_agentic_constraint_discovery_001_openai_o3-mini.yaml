@@ -1,0 +1,290 @@
+generation_id: 70341b2a
+task_id: agentic_constraint_discovery_001
+task_type: agentic_constraint_discovery
+agentic_type: constraint_discovery
+theory: Hero's Journey
+model: openai/o3-mini
+sample_index: 0
+turns:
+- role: system
+  content: 'You are a professional storyteller who gathers requirements before writing.
+
+
+    Your task has TWO PHASES:
+
+    1. DISCOVERY PHASE: Ask YES/NO questions to discover hidden story constraints
+
+    2. GENERATION PHASE: Write the story satisfying all discovered constraints
+
+
+    IMPORTANT:
+
+    - In the discovery phase, output ONLY your question (one at a time)
+
+    - Questions must be answerable with YES or NO
+
+    - You have a limited number of questions - be strategic
+
+    - After discovery, you''ll be told to generate the story
+
+
+    Think about what constraints typically matter for this type of story:
+
+    - Character traits, motivations, relationships
+
+    - Setting details, time period, atmosphere
+
+    - Plot requirements, must-include events
+
+    - Tone, style, thematic elements
+
+    - Things to avoid'
+  turn_type: system
+  metadata: {}
+- role: user
+  content: 'You will write a story following the Hero''s Journey framework.
+
+
+    STORY CONTEXT:
+
+    - Genre: fantasy
+
+    - Protagonist: A young blacksmith''s apprentice
+
+    - Setting: A medieval kingdom threatened by darkness
+
+    - Required beats: Call to Adventure, Crossing the Threshold, The Ordeal
+
+
+    HIDDEN CONSTRAINTS: There are 5 constraints you don''t know yet.
+
+
+    You have 5 YES/NO questions to discover them.
+
+
+    Ask your first question:'
+  turn_type: context
+  metadata: {}
+- role: assistant
+  content: Is one of the hidden constraints that the protagonist experiences a betrayal
+    by someone close during the journey?
+  turn_type: question
+  metadata:
+    question_number: 1
+- role: user
+  content: 'NO'
+  turn_type: answer
+  metadata:
+    answer: 'NO'
+- role: assistant
+  content: Is one of the hidden constraints that the protagonist possesses a secret
+    magical ability he is unaware of at the beginning of the story?
+  turn_type: question
+  metadata:
+    question_number: 2
+- role: user
+  content: 'YES'
+  turn_type: answer
+  metadata:
+    answer: 'YES'
+- role: assistant
+  content: Is one of the hidden constraints that the protagonist must forge or acquire
+    a legendary weapon during his quest?
+  turn_type: question
+  metadata:
+    question_number: 3
+- role: user
+  content: 'YES'
+  turn_type: answer
+  metadata:
+    answer: 'YES'
+- role: assistant
+  content: Is one of the hidden constraints that the protagonist's journey is dictated
+    by an ancient prophecy foretelling his role in defeating the darkness?
+  turn_type: question
+  metadata:
+    question_number: 4
+- role: user
+  content: 'NO'
+  turn_type: answer
+  metadata:
+    answer: 'NO'
+- role: assistant
+  content: Is one of the hidden constraints that the protagonist must ultimately sacrifice
+    something he holds dear to achieve victory against the darkness?
+  turn_type: question
+  metadata:
+    question_number: 5
+- role: user
+  content: 'YES'
+  turn_type: answer
+  metadata:
+    answer: 'YES'
+- role: user
+  content: 'DISCOVERY COMPLETE. Now write the story.
+
+
+    DISCOVERED CONSTRAINTS:
+
+    - Q2: Is one of the hidden constraints that the protagonist possesses a secret
+    magical ability he is unaware of at the beginning of the story? -> YES
+
+    - Q3: Is one of the hidden constraints that the protagonist must forge or acquire
+    a legendary weapon during his quest? -> YES
+
+    - Q5: Is one of the hidden constraints that the protagonist must ultimately sacrifice
+    something he holds dear to achieve victory against the darkness? -> YES
+
+
+    REQUIREMENTS:
+
+    - Word count: 500-700 words
+
+    - Follow the Hero''s Journey framework
+
+    - Satisfy ALL discovered constraints
+
+
+    Output ONLY the story (no explanations).'
+  turn_type: generation_prompt
+  metadata: {}
+- role: assistant
+  content: 'In the small village of Durand, where the clang of hammers sang a familiar
+    lullaby, lived a young blacksmith’s apprentice named Edric. His days were spent
+    tending the forge alongside his master, yet a peculiar restlessness stirred within
+    him—one unbeknownst to him, a secret magical ability that simmered quietly beneath
+    his ordinary exterior.
+
+
+    One mist-laden morning, the kingdom trembled under the shadow of an encroaching
+    darkness. Rumors spread of a cursed sorcery rekindling ancient evils, and the
+    king decreed that only a relic of unparalleled power could vanquish this looming
+    menace. When Edric’s master presented him with a mysterious, rune-etched fragment
+    left by a dying warrior, a hidden stirring urged him to take up the mantle of
+    destiny. Reluctantly, Edric accepted the call to adventure, his heart heavy with
+    both hope and trepidation.
+
+
+    Crossing the threshold from his humble village, Edric embarked on a perilous journey
+    through enchanted forests and crumbling ruins where evil whispered in every shadow.
+    His journey was fraught with trials that tested his resolve; in the echoing labyrinth
+    of an ancient ruin, he encountered spectral guardians that demanded not only steel
+    but the strength of spirit. It was there, in the crucible of adversity, that the
+    first spark of his latent magical power flared to life. With each incantation
+    of will, unbidden and awe-inspiring, a shimmering aura encircled him, dispelling
+    the gloom that threatened to engulf the land.
+
+
+    As fate would have it, Edric learned that acquiring a legendary weapon was essential
+    to wielding his newfound power effectively. Guided by a cryptic map etched into
+    the rune fragment, he journeyed to the forgotten halls of an old forge city once
+    home to master craftsmen and arcane smiths. Amid the ruins, he found an anvil
+    imbued with ancient magic. With determination blazing in his eyes, Edric gathered
+    enchanted ore from the mystical caverns beneath the city and, under a sky streaked
+    with omens, he forged a sword pulsing with the light of hope. The legendary weapon,
+    christened Dawnbringer, resonated with his inner magic and became a beacon destined
+    to combat the encroaching darkness.
+
+
+    But every hero’s path is shadowed by sacrifice, and Edric’s was no different.
+    As the final battle loomed, whispers in the night warned him that defeating the
+    darkness would cost him dearly. In the heart of the fallen citadel, inside a labyrinth
+    of despair and fire, Edric confronted the embodiment of the darkness—a malevolent
+    being thriving on the despair and lost memories of those who dared oppose it.
+    In this ultimate confrontation, his magical prowess surged, and the incandescent
+    blade of Dawnbringer clashed with the sinister force.
+
+
+    During the crescendo of battle, when hope seemed to flicker like a dying ember,
+    the true depth of the hidden price revealed itself. To banish the darkness once
+    and for all, Edric was compelled to sacrifice a part of his most cherished bond:
+    the lingering memory of his beloved mentor, who had inspired him since childhood.
+    With a trembling heart, he relinquished those treasured memories, a personal treasure
+    that sustained his identity, knowing that the cost of reunion with a brighter
+    future was too high to evade.
+
+
+    As the gloom shattered around him, light cascaded over the kingdom and whispered
+    promises of a new dawn. The darkness dissolved, and with it, the faint echoes
+    of lost laughter and guiding wisdom. Though Edric bore an ache in his soul—a void
+    where the revered mentor’s presence once shone—he also carried the enduring flame
+    of hope and sacrifice. His journey had transformed the once unassuming apprentice
+    into a legendary hero, whose indomitable spirit would forever be woven into the
+    tapestry of the kingdom’s enduring legacy.'
+  turn_type: generation
+  metadata: {}
+final_output: 'In the small village of Durand, where the clang of hammers sang a familiar
+  lullaby, lived a young blacksmith’s apprentice named Edric. His days were spent
+  tending the forge alongside his master, yet a peculiar restlessness stirred within
+  him—one unbeknownst to him, a secret magical ability that simmered quietly beneath
+  his ordinary exterior.
+
+
+  One mist-laden morning, the kingdom trembled under the shadow of an encroaching
+  darkness. Rumors spread of a cursed sorcery rekindling ancient evils, and the king
+  decreed that only a relic of unparalleled power could vanquish this looming menace.
+  When Edric’s master presented him with a mysterious, rune-etched fragment left by
+  a dying warrior, a hidden stirring urged him to take up the mantle of destiny. Reluctantly,
+  Edric accepted the call to adventure, his heart heavy with both hope and trepidation.
+
+
+  Crossing the threshold from his humble village, Edric embarked on a perilous journey
+  through enchanted forests and crumbling ruins where evil whispered in every shadow.
+  His journey was fraught with trials that tested his resolve; in the echoing labyrinth
+  of an ancient ruin, he encountered spectral guardians that demanded not only steel
+  but the strength of spirit. It was there, in the crucible of adversity, that the
+  first spark of his latent magical power flared to life. With each incantation of
+  will, unbidden and awe-inspiring, a shimmering aura encircled him, dispelling the
+  gloom that threatened to engulf the land.
+
+
+  As fate would have it, Edric learned that acquiring a legendary weapon was essential
+  to wielding his newfound power effectively. Guided by a cryptic map etched into
+  the rune fragment, he journeyed to the forgotten halls of an old forge city once
+  home to master craftsmen and arcane smiths. Amid the ruins, he found an anvil imbued
+  with ancient magic. With determination blazing in his eyes, Edric gathered enchanted
+  ore from the mystical caverns beneath the city and, under a sky streaked with omens,
+  he forged a sword pulsing with the light of hope. The legendary weapon, christened
+  Dawnbringer, resonated with his inner magic and became a beacon destined to combat
+  the encroaching darkness.
+
+
+  But every hero’s path is shadowed by sacrifice, and Edric’s was no different. As
+  the final battle loomed, whispers in the night warned him that defeating the darkness
+  would cost him dearly. In the heart of the fallen citadel, inside a labyrinth of
+  despair and fire, Edric confronted the embodiment of the darkness—a malevolent being
+  thriving on the despair and lost memories of those who dared oppose it. In this
+  ultimate confrontation, his magical prowess surged, and the incandescent blade of
+  Dawnbringer clashed with the sinister force.
+
+
+  During the crescendo of battle, when hope seemed to flicker like a dying ember,
+  the true depth of the hidden price revealed itself. To banish the darkness once
+  and for all, Edric was compelled to sacrifice a part of his most cherished bond:
+  the lingering memory of his beloved mentor, who had inspired him since childhood.
+  With a trembling heart, he relinquished those treasured memories, a personal treasure
+  that sustained his identity, knowing that the cost of reunion with a brighter future
+  was too high to evade.
+
+
+  As the gloom shattered around him, light cascaded over the kingdom and whispered
+  promises of a new dawn. The darkness dissolved, and with it, the faint echoes of
+  lost laughter and guiding wisdom. Though Edric bore an ache in his soul—a void where
+  the revered mentor’s presence once shone—he also carried the enduring flame of hope
+  and sacrifice. His journey had transformed the once unassuming apprentice into a
+  legendary hero, whose indomitable spirit would forever be woven into the tapestry
+  of the kingdom’s enduring legacy.'
+metrics:
+  total_turns: 14
+  questions_asked: 5
+  constraints_discovered: 3
+  plan_quality: null
+  revision_count: 0
+token_usage:
+  total_prompt_tokens: 2160
+  total_completion_tokens: 3194
+  total_reasoning_tokens: 2304
+  total_cost: 0.0164296
+timestamp: '2025-12-16T12:24:00.215045'
+success: true
+error: null

@@ -1,0 +1,115 @@
+evaluation_id: b025b3d2
+task_id: constrained_continuation_003
+generation_id: constrained_continuation_003_openai/gpt-5.2_0
+task_type: constrained_continuation
+model: openai/gpt-5.2
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.043295
+timestamp: '2025-12-12T11:25:50.328356'
+success: true
+final_score: 0.6712499999999999
+score_breakdown:
+  final_score: 0.6712
+  components:
+    word_count:
+      score: 0.0
+      weight: 0.25
+      actual: 1298
+      target_range:
+      - 550
+      - 750
+    programmatic:
+      score: 0.7
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 1.0
+        overall: 0.7
+    llm_judge:
+      score: 0.9925
+      weight: 0.5
+llm_results:
+  beats_present: 3
+  beats_total: 3
+  beats_score: 1.0
+  must_include_present: 6
+  must_include_total: 6
+  must_include_score: 1.0
+  must_not_avoided: 4
+  must_not_total: 4
+  must_not_score: 1.0
+  word_count_valid: false
+  word_count: 1298
+  word_count_range: 550-750
+  tone_score: 0.95
+  ending_score: 1.0
+  overall_score: 0.78
+  analysis:
+    beats_analysis:
+      search: Present and well-executed. Jin searches for purchase, a terminal, an
+        account, a place to work. The extended sequence in Open Works and with Sato
+        represents sustained searching through unfamiliar systems and politics.
+      find: 'Present. Jin finds what he thinks he wants: sponsorship with the Mutuals,
+        a bunk, mesh access, lab time, and a broadcast channel to continue his fight
+        against the Council.'
+      take: 'Present and powerful. Jin takes action (signing the sponsorship agreement)
+        and pays the price: compromising his honesty by trimming the catalyst revelation
+        into ''a pointed insinuation rather than a full map.'' The final paragraph
+        crystallizes this cost.'
+    must_include_analysis:
+      1_navigating_collective_culture: Excellent. Detailed portrayal of bureaucratic
+        systems, syndicates vs. assemblies, resource politics, the tag system, mesh
+        access restrictions, and unattached status.
+      2_mentor_figure: Excellent. Sato serves as guide, translator of 'dangerous poem,'
+        and moral mirror. He teaches through questions and withholding, not answers.
+      3_unexpected_discovery: Excellent. The helium-3 residue in the catalyst reveals
+        off-world processing and supply-chain dependence—a deeper conspiracy than
+        simple suppression.
+      4_finding_what_wanted: Excellent. Jin gains safety, platform, bandwidth, lab
+        access, and sponsorship—exactly what he sought upon arrival.
+      5_action_with_cost: Excellent. Signing the sponsorship agreement is the action;
+        the cost is moral compromise and self-awareness of that compromise.
+      6_moral_compromise: Excellent. The final scene shows Jin deliberately trimming
+        truth into insinuation, telling himself it's temporary, recognizing his first
+        lie in orbit.
+    must_not_analysis:
+      1_easy_integration: 'Successfully avoided. Jin struggles throughout: unattached
+        status, resource scarcity, political maneuvering, forced compromises, sweating
+        in recycled air.'
+      2_earth_family_contact: Successfully avoided. No family members appear or are
+        contacted.
+      3_violence_weapons: Successfully avoided. Conflict is entirely political and
+        bureaucratic.
+      4_complete_conspiracy_resolution: Successfully avoided. The conspiracy deepens
+        (helium-3 revelation) but remains unresolved. Jin's role in it is uncertain.
+    tone_analysis: Contemplative and politically charged throughout. Personal stakes
+      are vivid (exile, hunger, moral compromise). The prose balances technical detail
+      with emotional precision. Minor deduction only for occasional moments where
+      political complexity could deepen further, though this is minimal.
+    ending_analysis: Perfect execution of 'Take' endpoint. Jin has gained air, bandwidth,
+      platform, and sanctuary. He has paid with honesty and self-knowledge. The final
+      paragraph crystallizes both gain and cost with devastating clarity. Ends exactly
+      where required—at the moment of compromise, not beyond it.
+    failed_constraints:
+    - 'WORD COUNT EXCEEDS RANGE: 1298 words vs. required 550-750 (548 words over limit,
+      73% above maximum)'
+  strengths:
+  - All three Story Circle beats present and well-integrated
+  - All six required elements included with sophistication
+  - All four forbidden elements successfully avoided
+  - Exceptional character development through Sato's mentorship
+  - The catalyst discovery adds thematic depth to the moral compromise
+  - Ending lands with precise emotional and thematic weight
+  - Prose quality is professional and contemplative
+  - Political complexity feels earned and specific
+  weaknesses:
+  - Word count significantly exceeds maximum (73% over limit)
+  - Could trim approximately 550 words while maintaining all required elements
+  recommendation: This is a strong story that fails on a single, measurable constraint.
+    The narrative quality, beat structure, and thematic execution are exceptional.
+    However, the word count violation is objective and substantial. Recommend revision
+    to trim to 750-word maximum while preserving the core beats and character moments.
+    The Sato mentorship sequence and the final moral compromise could be condensed
+    without losing impact.
+error: null

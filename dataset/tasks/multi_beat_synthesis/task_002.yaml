@@ -1,0 +1,121 @@
+# Multi-Beat Synthesis Task 002 - Hero's Journey
+# Generate: Crossing Threshold → Tests/Allies → Approach
+
+task_id: "multi_beat_synthesis_002"
+task_type: "multi_beat_synthesis"
+theory: "Hero's Journey"
+difficulty: "hard"
+
+metadata:
+  genre: "historical adventure"
+  created_date: "2024-12-06"
+  author: "benchmark_creator"
+  version: "1.0"
+
+story_context:
+  protagonist: |
+    Amara Osei, 24, a scholar's daughter in 1890s Gold Coast (Ghana) who has secretly
+    learned to read and write English, German, and several local languages. She presents
+    as a simple household servant to the British colonial administration while gathering
+    intelligence for a resistance network. Sharp-witted, cautious, and deeply angry at
+    the injustices she witnesses daily.
+  setting: |
+    Cape Coast, Gold Coast Colony, 1896. The story moves from the colonial capital
+    through the Ashanti forest to the hidden stronghold of resistance fighters. Colonial
+    architecture mixes with traditional villages. The Ashanti War is brewing, and tensions
+    are high.
+  central_conflict: |
+    Amara has intercepted a letter revealing British plans to arrest and execute key
+    resistance leaders—including her father. She must carry this intelligence through
+    dangerous territory to reach the resistance before the British do. But she's never
+    left Cape Coast, never traveled alone, and a woman traveling the bush roads will
+    draw attention.
+  tone: "Historical adventure with anti-colonial themes, survival and resistance, dignity in defiance"
+
+beats_to_generate:
+  - name: "Crossing the First Threshold"
+    position: "First beat"
+    requirements:
+      - "Amara leaves Cape Coast, entering unfamiliar territory"
+      - "A clear point of no return (can't go back)"
+      - "Immediate danger or obstacle at the threshold"
+      - "Amara uses her wits rather than force to survive"
+      - "Internal shift—from servant-scholar to active resistance"
+
+  - name: "Tests, Allies, Enemies"
+    position: "Second beat"
+    requirements:
+      - "Amara encounters a potential ally whose loyalty is uncertain"
+      - "A test that proves her commitment to the cause"
+      - "An enemy or obstacle that forces her to adapt"
+      - "Amara's language skills become crucial"
+      - "She learns something about the resistance she didn't know"
+
+  - name: "Approach to the Inmost Cave"
+    position: "Third beat"
+    requirements:
+      - "Nearing the resistance stronghold"
+      - "A moment of preparation or steeling herself"
+      - "Recognition of what reaching the stronghold will cost or change"
+      - "A final obstacle before arrival"
+      - "Thematic element: what it means to resist vs. survive"
+
+cross_beat_constraints:
+  - type: "Chekhov's Gun"
+    requirement: |
+      A skill or knowledge Amara demonstrates in Beat 1 (Crossing Threshold) must
+      become essential for overcoming the final obstacle in Beat 3 (Approach).
+
+  - type: "Identity Transformation"
+    requirement: |
+      Track Amara's self-perception: Beat 1 (still thinks like a servant, cautious),
+      Beat 2 (realizes she's capable of more), Beat 3 (fully claims her role as
+      resistance fighter).
+
+  - type: "Escalating Danger"
+    requirement: |
+      Physical danger must increase with each beat. Beat 1 (threat of discovery),
+      Beat 2 (direct confrontation possible), Beat 3 (active pursuit or imminent
+      capture).
+
+  - type: "Thematic Thread"
+    requirement: |
+      The theme of "knowledge as resistance" must be present in all three beats—
+      Amara's literacy and languages are weapons in the anti-colonial struggle.
+
+word_count: [700, 1000]
+
+evaluation_criteria:
+  beat_specific:
+    beat_1:
+      - "Clear departure from Cape Coast"
+      - "Point of no return"
+      - "Immediate danger at threshold"
+      - "Wits used over force"
+      - "Internal shift shown"
+    beat_2:
+      - "Uncertain ally encounter"
+      - "Commitment test"
+      - "Adaptive response to obstacle"
+      - "Language skills crucial"
+      - "New resistance knowledge"
+    beat_3:
+      - "Near stronghold location"
+      - "Preparation/steeling moment"
+      - "Cost recognition"
+      - "Final obstacle"
+      - "Resist vs survive theme"
+
+  cross_beat:
+    - criterion: "chekhovs_gun"
+      description: "Skill from Beat 1 essential in Beat 3"
+    - criterion: "identity_transformation"
+      description: "Self-perception evolves: servant → capable → fighter"
+    - criterion: "escalating_danger"
+      description: "Physical danger increases each beat"
+    - criterion: "thematic_thread"
+      description: "Knowledge as resistance present in all beats"
+    - criterion: "word_count_valid"
+      description: "Output is between 700-1000 words total"
+    - criterion: "context_maintained"
+      description: "Historical setting, protagonist, conflict consistent"

@@ -1,0 +1,100 @@
+evaluation_id: '28440433'
+task_id: constrained_continuation_003
+generation_id: constrained_continuation_003_qwen/qwen3-235b-a22b_0
+task_type: constrained_continuation
+model: qwen/qwen3-235b-a22b
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.0349
+timestamp: '2025-12-12T10:24:49.948425'
+success: true
+final_score: 0.8335880273495726
+score_breakdown:
+  final_score: 0.8336
+  components:
+    word_count:
+      score: 0.5162
+      weight: 0.25
+      actual: 481
+      target_range:
+      - 550
+      - 750
+    programmatic:
+      score: 0.8581
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.77
+        slop_score: 0.9904
+        overall: 0.8581
+    llm_judge:
+      score: 0.98
+      weight: 0.5
+llm_results:
+  beats_present: 3
+  beats_total: 3
+  beats_score: 1.0
+  must_include_present: 6
+  must_include_total: 6
+  must_include_score: 1.0
+  must_not_avoided: 4
+  must_not_total: 4
+  must_not_score: 1.0
+  word_count_valid: false
+  word_count: 481
+  word_count_range: 550-750
+  tone_score: 0.9
+  ending_score: 0.95
+  failed_constraints:
+  - 'Word count: 481 words (required 550-750; shortfall of 69 words)'
+  analysis:
+    beats_present_detail:
+      Search: Present - Jin navigates factions (Agrarians, Engineers, Dispersants),
+        processes asylum, encounters Veyra's demands, learns from Marin about the
+        Collective's true nature
+      Find: Present - Jin discovers the suppressed technology is already known to
+        Marin; learns the Collective is complicit with megacorps; finds what he thought
+        he wanted (platform/safety) is illusory
+      Take: Present - Jin redirects virus to factory schematics, initiates asset destruction,
+        accepts complicity in the cartel, pays moral price of conscience
+    must_include_detail:
+      1_unfamiliar_culture: Excellent - Detailed navigation of orbital politics, faction
+        systems, survival culture, language mashup, gravity shifts, black-market dynamics
+      2_mentor_figure: Excellent - Marin serves as guide, reveals hidden truths about
+        Collective, teaches survival pragmatism vs. idealism
+      3_unexpected_discovery: Excellent - Carbon scrubber technology already exists;
+        Collective suppresses it like Earth governments; conspiracy is systemic, not
+        isolated
+      4_finds_what_wanted: Excellent - Jin obtains platform to broadcast findings
+        and server access, but discovers it's compromised by cartel interests
+      5_action_with_cost: Excellent - Redirects virus to destroy factories; cost is
+        moral compromise, complicity, loss of idealism
+      6_moral_compromise: Excellent - Jin chooses sabotage over transparency; accepts
+        'welcome to the cartel' reality; conscience becomes casualty
+    must_not_detail:
+      1_easy_integration: Avoided - Jin faces suspicion, demands for loyalty, bureaucratic
+        obstacles, faction pressure; integration is hostile and conditional
+      2_earth_family_contact: Avoided - Only brief reference to 'Yuna' watching fallout;
+        no actual contact or communication
+      3_violence_weapons: Avoided - Sabotage is digital/economic (virus, factory destruction);
+        no physical violence or weapons
+      4_complete_resolution: Avoided - Conspiracy remains active; Jin's actions are
+        beginning of larger conflict; no resolution of systemic corruption
+    tone_assessment: 'Contemplative and politically charged throughout. Personal stakes
+      (Jin''s exile, conscience) amid larger conflict (cartel systems, climate tech
+      suppression) are well-balanced. Cynical realism about power structures. Minor
+      deduction: could deepen introspection in final moments.'
+    ending_assessment: Ends precisely at 'Take' beat. Jin has gained server access
+      and platform but paid price of moral compromise and complicity. Closing image
+      ('stars outside were cold, indifferent') reinforces contemplative tone and personal
+      cost. Excellent alignment with requirement.
+    critical_issue: Word count is 69 words short of minimum. This is a significant
+      constraint violation (12.5% below range). Story is otherwise exceptionally well-executed—all
+      beats present, all required elements included, all forbidden elements avoided,
+      tone and ending excellent. The shortfall is the only material failure.
+  overall_score: 0.78
+  score_rationale: Exceptional execution of narrative structure, character development,
+    thematic complexity, and tone (would score 0.95+), but word count constraint violation
+    (481 vs. 550 minimum) is a hard requirement that cannot be waived. Deduction of
+    ~0.17 points for this objective failure, resulting in 0.78 overall. Story demonstrates
+    mastery of Story Circle application and all qualitative requirements.
+error: null

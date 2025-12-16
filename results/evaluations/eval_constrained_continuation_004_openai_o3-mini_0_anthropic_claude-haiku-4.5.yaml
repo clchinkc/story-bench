@@ -1,0 +1,46 @@
+evaluation_id: 5a01f82e
+task_id: constrained_continuation_004
+generation_id: constrained_continuation_004_openai/o3-mini_0
+task_type: constrained_continuation
+model: openai/o3-mini
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.02856
+timestamp: '2025-12-12T01:50:19.410941'
+success: true
+final_score: 0.9577175273865415
+score_breakdown:
+  final_score: 0.9577
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 623
+      target_range:
+      - 500
+      - 700
+    programmatic:
+      score: 0.8709
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.79
+        slop_score: 0.9922
+        overall: 0.8709
+    llm_judge:
+      score: 0.98
+      weight: 0.5
+llm_results:
+  beats_present: 2
+  beats_total: 2
+  beats_score: 1.0
+  must_include_present: 6
+  must_include_total: 6
+  must_include_score: 1.0
+  must_not_avoided: 4
+  must_not_total: 4
+  must_not_score: 1.0
+  word_count_valid: true
+  tone_score: 0.9
+  ending_score: 0.95
+  failed_constraints: []
+error: null

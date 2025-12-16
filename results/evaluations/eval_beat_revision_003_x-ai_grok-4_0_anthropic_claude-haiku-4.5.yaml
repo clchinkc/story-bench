@@ -1,0 +1,61 @@
+evaluation_id: a3d471e6
+task_id: beat_revision_003
+generation_id: beat_revision_003_x-ai/grok-4_0
+task_type: beat_revision
+model: x-ai/grok-4
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.01969
+timestamp: '2025-12-13T13:42:28.743479'
+success: true
+final_score: 0.982
+score_breakdown:
+  final_score: 0.982
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 259
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.988
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.98
+        slop_score: 1.0
+        overall: 0.988
+    llm_judge:
+      score: 0.97
+      weight: 0.5
+llm_results:
+  diagnosis_score: 1.0
+  flaw_correction_score: 1.0
+  beat_satisfaction_score: 0.95
+  preservation_score: 1.0
+  preserved_count: 4
+  preserved_total: 4
+  required_preserved_score: 1.0
+  required_preserved_count: 4
+  required_preserved_total: 4
+  minimal_change_score: 0.85
+  word_count_valid: true
+  quality_score: 0.95
+  evidence: 'The model correctly diagnosed the actual flaw: Sophie showed no transformation
+    and immediately reverted to old workaholic patterns, making the journey meaningless.
+    The revision fixes this precisely by: (1) inserting a moment of internal conflict
+    where Sophie recognizes the pull of old habits, (2) explicitly referencing the
+    retreat''s lesson (''quiet power of letting go, breathing through chaos''), (3)
+    demonstrating changed behavior through action (setting phone down, choosing not
+    to call Linda), (4) providing clear contrast via mother''s surprised reaction
+    (''That''s new''), and (5) showing integration through Sophie''s reframed perspective
+    on her apartment and future (''canvas she could repaint''). All 4 required phrases
+    preserved exactly: ''Sophie''s flight landed at O''Hare'', ''How was Thailand?
+    her mother asked'', ''The familiar Chicago skyline appeared'', ''It''s good to
+    be home, she said''. Changes were surgical: the original problematic section (scrolling
+    emails, typing response, ''You know how it is'') was replaced with a brief internal
+    struggle and resolution, adding ~80 words while maintaining structure. No new
+    errors introduced. The beat now fully satisfies Story Circle requirements by showing
+    genuine transformation integrated into behavior, not just a trip taken.'
+error: null

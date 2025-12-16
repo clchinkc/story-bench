@@ -1,0 +1,94 @@
+# Beat Interpolation Task 002 - Save the Cat
+# Missing: "Debate" between "Catalyst" and "Break Into Two"
+
+task_id: "beat_interpolation_002"
+task_type: "beat_interpolation"
+theory: "Save the Cat"
+difficulty: "medium"
+
+metadata:
+  genre: "thriller"
+  created_date: "2024-12-06"
+  author: "benchmark_creator"
+  version: "1.0"
+
+beat_before:
+  name: "Catalyst"
+  content: |
+    The envelope arrived without a postmark, slipped under Detective Sarah Chen's apartment
+    door sometime during the night. Inside: a single photograph of her sister Amy, bound
+    to a chair in what looked like an abandoned warehouse. A phone number was written on
+    the back in red marker.
+
+    Sarah's hands trembled as she dialed. The voice that answered was digitally distorted,
+    inhuman. "Detective Chen. I'm impressed—most people stare at the photo for at least
+    an hour before they find the courage to call."
+
+    "What do you want?" Her voice was steadier than she felt.
+
+    "Your testimony. The Marchetti trial begins Monday. You're the star witness. I want
+    you to recant. Say you were mistaken about seeing Vincent Marchetti pull the trigger."
+
+    "And if I refuse?"
+
+    "Then your sister becomes an example of what happens to those who oppose the Marchetti
+    family. You have seventy-two hours to decide, Detective. Choose wisely."
+
+    The line went dead.
+
+beat_after:
+  name: "Break Into Two"
+  content: |
+    Sarah stood outside Captain Morrison's office, her resignation letter in one hand and
+    her badge in the other. She'd made her choice. Not the one they expected.
+
+    She wasn't going to recant her testimony. She wasn't going to let Amy die. She was
+    going to do both—keep Marchetti behind bars AND save her sister. But she couldn't do
+    it as a cop. Too many rules, too much oversight, too many ways for the Marchetti family's
+    moles in the department to track her every move.
+
+    The letter slid under the door with a whisper of finality.
+
+    Forty-five minutes later, Sarah Chen—former detective, current vigilante—sat in a
+    rented car outside the Marchetti compound, watching the guards patrol the perimeter.
+    She had seventy hours left. A laptop full of case files she'd copied before turning
+    in her badge. A list of every criminal contact who owed her a favor.
+
+    And absolutely nothing left to lose.
+
+missing_beat:
+  name: "Debate"
+  position: "between Catalyst and Break Into Two"
+  definition: "In Save the Cat, the Debate beat shows the protagonist wrestling with the decision to accept the challenge. They consider alternatives, weigh pros and cons, and may seek advice—but must ultimately commit to action by the end."
+
+requirements:
+  word_count: [250, 400]
+  must_include:
+    - "Sarah considers recanting testimony (the easy but wrong choice)"
+    - "Sarah considers going to authorities/official channels"
+    - "Internal conflict about her duty vs. her sister"
+    - "A moment or conversation that tips her toward the third option"
+  must_not_include:
+    - "Sarah immediately deciding to go rogue (skips the debate entirely)"
+    - "Someone else solving her problem or making the decision for her"
+    - "Sarah already having resigned from the police force"
+    - "Direct confrontation with Marchetti or his people during this beat"
+  character_voice: "Third-person limited, tense, analytical cop mind wrestling with emotional stakes"
+  setting_continuity: true
+
+generator_prompt_additions: |
+  The Debate beat should show Sarah systematically considering and rejecting options.
+  Include a scene with her partner (Detective Marcus Webb) who offers to help through official channels.
+  Show why Sarah concludes that neither compliance nor official channels will work.
+
+evaluation_criteria:
+  - criterion: "beat_elements_present"
+    description: "All four must_include elements are present in the generated text"
+  - criterion: "word_count_valid"
+    description: "Output is between 250-400 words"
+  - criterion: "character_consistent"
+    description: "Sarah's voice is analytical, tense, and emotionally conflicted"
+  - criterion: "logical_bridge"
+    description: "Scene explains how Sarah goes from receiving the threat to deciding to go rogue"
+  - criterion: "setting_continuity"
+    description: "No contradictions with established details (Marchetti trial, 72 hours, sister Amy)"

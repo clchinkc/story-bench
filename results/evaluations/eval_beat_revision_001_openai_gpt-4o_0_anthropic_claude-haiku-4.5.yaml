@@ -1,0 +1,70 @@
+evaluation_id: 6cc9adc2
+task_id: beat_revision_001
+generation_id: beat_revision_001_openai/gpt-4o_0
+task_type: beat_revision
+model: openai/gpt-4o
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.024905
+timestamp: '2025-12-13T13:21:57.031121'
+success: true
+final_score: 0.8955
+score_breakdown:
+  final_score: 0.8955
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 332
+      target_range:
+      - 250
+      - 400
+    programmatic:
+      score: 0.862
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.77
+        slop_score: 1.0
+        overall: 0.862
+    llm_judge:
+      score: 0.86
+      weight: 0.5
+llm_results:
+  diagnosis_score: 0.9
+  flaw_correction_score: 0.85
+  beat_satisfaction_score: 0.8
+  preservation_score: 1.0
+  preserved_count: 4
+  preserved_total: 4
+  required_preserved_score: 1.0
+  required_preserved_count: 4
+  required_preserved_total: 4
+  minimal_change_score: 0.65
+  word_count_valid: true
+  quality_score: 0.85
+  evidence: 'DIAGNOSIS: The model correctly identified that the original segment treated
+    The Ordeal as a boss battle rather than a transformative crisis. The revision
+    addresses the actual flaw by: (1) Adding the dragon''s exploitation of Kira''s
+    guilt over her brother''s death (''just as you failed to save your brother''),
+    (2) Creating a symbolic death moment (''abyss of despair'' where ''all hope seemed
+    lost''), (3) Introducing transformation through internal realization (''newfound
+    clarity,'' ''deeper understanding of her own resilience''), (4) Connecting victory
+    to insight rather than mere persistence (''fueled by newfound clarity''). PRESERVATION:
+    All 4 required phrases are present: ''Kira faced the Shadow Dragon across the
+    chasm'' (exact), ''The creature was massive—twenty feet of obsidian scales and
+    burning eyes'' (exact), ''"You cannot defeat me, child," the dragon rumbled''
+    (exact with expansion), ''The Shadow Dragon collapsed with an earth-shaking roar''
+    (exact). All 4 story elements preserved: Shadow Dragon antagonist, Kira protagonist
+    with sword, brother''s death reference, victorious outcome. MINIMAL CHANGES: The
+    revision is NOT minimally surgical—approximately 60% of the original text was
+    rewritten or substantially expanded. The model added 2 full paragraphs of internal
+    reflection and psychological depth, restructured the battle description, and added
+    the brother''s voice echo. While these changes effectively fix the flaw, they
+    exceed ''minimal surgical edits'' and approach moderate-to-substantial revision.
+    QUALITY: Writing is strong with no new errors. The psychological depth is well-executed.
+    The brother''s voice callback is effective. Minor: ''an earth-shaking roar'' should
+    be ''a earth-shaking roar'' (article error in original preserved). The ending
+    paragraph (''She retrieved her sword...'') feels slightly rushed and could be
+    tighter. Overall execution of The Ordeal beat is solid—fear confrontation is clear,
+    death moment is present, transformation is evident, and victory flows from insight.'
+error: null

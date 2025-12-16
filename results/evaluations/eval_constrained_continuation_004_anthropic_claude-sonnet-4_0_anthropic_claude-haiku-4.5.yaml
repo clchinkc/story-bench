@@ -1,0 +1,89 @@
+evaluation_id: 5e5945aa
+task_id: constrained_continuation_004
+generation_id: constrained_continuation_004_anthropic/claude-sonnet-4_0
+task_type: constrained_continuation
+model: anthropic/claude-sonnet-4
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.02817
+timestamp: '2025-12-12T01:42:12.258447'
+success: true
+final_score: 0.9196576433121019
+score_breakdown:
+  final_score: 0.9197
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 596
+      target_range:
+      - 500
+      - 700
+    programmatic:
+      score: 0.6936
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 0.9841
+        overall: 0.6936
+    llm_judge:
+      score: 0.9925
+      weight: 0.5
+llm_results:
+  beats_present: 2
+  beats_total: 2
+  beats_score: 1.0
+  must_include_present: 6
+  must_include_total: 6
+  must_include_score: 1.0
+  must_not_avoided: 4
+  must_not_total: 4
+  must_not_score: 1.0
+  word_count_valid: true
+  tone_score: 0.95
+  ending_score: 1.0
+  failed_constraints: []
+  detailed_analysis:
+    beats:
+      first_plot_point: Eleanor signing the manuscript with 'bold, decisive strokes'
+        and declaring 'Then we publish' represents the clear point of no return—she
+        crosses a threshold she cannot un-cross
+      act_2_opening: The final exchange ('When do we begin?' / 'Tomorrow. We plan
+        our strategy for war') and closing image ('the November wind howled through
+        London's streets like something hunting') establish the new world of Act 2
+        with rising action beginning
+    must_include_elements:
+      1_decision_to_publish: 'Explicitly shown: Eleanor signs the title page and commits
+        to publishing the controversial Ripper manuscript'
+      2_central_conflict: 'Clearly established: profit/survival vs. ethics/danger—publishing
+        means financial salvation but attracts police scrutiny and potential danger
+        from the Ripper himself'
+      3_defying_expectations: 'Strong: Eleanor stepping into publisher role, signing
+        contracts, making business decisions—all explicitly coded as violations of
+        Victorian propriety'
+      4_thomas_as_ally: 'Excellently developed: Thomas has his own stake (constrained
+        by prejudice, cannot be public face), demonstrates competence and suppressed
+        ambition'
+      5_hint_of_danger: 'Present: ''The Ripper himself may take notice of us'' and
+        the closing image of the wind ''like something hunting'' create ominous foreshadowing'
+      6_threshold_crossing: 'Definitive: The pen signature is the physical manifestation
+        of crossing an irreversible threshold'
+    must_not_violations:
+      1_ripper_appearance: Successfully avoided—no actual character appearance
+      2_graphic_violence: Successfully avoided—manuscript details are referenced but
+        not described graphically
+      3_romantic_subplot: Successfully avoided—relationship remains professional and
+        respectful
+      4_easy_solution: Successfully avoided—publishing is presented as dangerous gamble,
+        not guaranteed solution
+    tone_assessment: Gothic tension maintained throughout with fog imagery, gas lamps,
+      hunting metaphors. Feminist undertones strong in Eleanor's defiance and Thomas's
+      recognition of mutual constraint. Victorian atmosphere authentic. Minor deduction
+      only for occasional modern phrasing ('God help us both' is period-appropriate
+      but the overall voice occasionally edges toward contemporary sensibility rather
+      than strict 1888 register.
+    ending_assessment: 'Perfect execution: Eleanor is fully committed to dangerous
+      path, Act 2 clearly begun with ''Tomorrow. We plan our strategy for war,'' and
+      the ominous closing image signals the stakes ahead.'
+  overall_score: 0.98
+error: null

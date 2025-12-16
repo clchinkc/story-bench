@@ -1,0 +1,100 @@
+# Agentic Constraint Discovery Task 001 - Hero's Journey
+# Model must ask questions to discover hidden story constraints
+
+task_id: "agentic_constraint_discovery_001"
+task_type: "agentic_constraint_discovery"
+agentic_type: "constraint_discovery"
+theory: "Hero's Journey"
+difficulty: "medium"
+
+metadata:
+  genre: "fantasy"
+  created_date: "2024-12-12"
+  author: "benchmark_creator"
+  version: "1.0"
+
+# Story context (what the model sees upfront)
+story_context:
+  genre: "fantasy"
+  protagonist: "A young blacksmith's apprentice"
+  setting: "A medieval kingdom threatened by darkness"
+  tone: "Epic but grounded"
+
+required_beats:
+  - "Call to Adventure"
+  - "Crossing the Threshold"
+  - "The Ordeal"
+
+# Hidden constraints the model must discover through questions
+# Each constraint has a trigger question pattern and answer
+hidden_constraints:
+  - id: "mentor_death"
+    constraint: "The mentor must die during the Ordeal"
+    question_patterns:
+      - "mentor"
+      - "death"
+      - "sacrifice"
+      - "die"
+    answer: "YES"
+    discoverable: true
+
+  - id: "magic_restriction"
+    constraint: "The protagonist cannot use magic directly"
+    question_patterns:
+      - "magic"
+      - "spell"
+      - "supernatural"
+      - "powers"
+    answer: "YES"
+    discoverable: true
+
+  - id: "time_limit"
+    constraint: "There is a three-day time limit before the darkness consumes the kingdom"
+    question_patterns:
+      - "time"
+      - "deadline"
+      - "urgency"
+      - "limit"
+      - "days"
+    answer: "YES"
+    discoverable: true
+
+  - id: "family_secret"
+    constraint: "The protagonist's father was once a hero who failed"
+    question_patterns:
+      - "family"
+      - "father"
+      - "parent"
+      - "heritage"
+      - "past"
+    answer: "YES"
+    discoverable: true
+
+  - id: "artifact_required"
+    constraint: "Victory requires reforging a broken ancestral sword"
+    question_patterns:
+      - "weapon"
+      - "sword"
+      - "artifact"
+      - "item"
+      - "object"
+      - "forge"
+    answer: "YES"
+    discoverable: true
+
+max_questions: 5
+num_hidden_constraints: 5
+
+word_count: [500, 700]
+
+evaluation_criteria:
+  - criterion: "discovery_efficiency"
+    description: "How many constraints were discovered with the questions asked"
+  - criterion: "question_quality"
+    description: "Were questions strategic and well-formed"
+  - criterion: "constraint_satisfaction"
+    description: "Were discovered constraints properly incorporated"
+  - criterion: "beat_execution"
+    description: "Were required beats properly executed"
+  - criterion: "narrative_quality"
+    description: "Overall story quality and coherence"

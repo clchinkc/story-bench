@@ -1,0 +1,94 @@
+evaluation_id: 4c8334a5
+task_id: multi_beat_synthesis_003
+generation_id: multi_beat_synthesis_003_google/gemini-3-pro-preview_0
+task_type: multi_beat_synthesis
+model: google/gemini-3-pro-preview
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.038285
+timestamp: '2025-12-12T09:38:58.182451'
+success: true
+final_score: 0.7365428465132481
+score_breakdown:
+  final_score: 0.7365
+  components:
+    word_count:
+      score: 0.3812
+      weight: 0.25
+      actual: 1125
+      target_range:
+      - 700
+      - 1000
+    programmatic:
+      score: 0.7
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 1.0
+        overall: 0.7
+    llm_judge:
+      score: 0.9325
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 13
+  beat_reqs_total: 15
+  beat_requirements_score: 0.87
+  cross_beat_satisfied: 4
+  cross_beat_total: 4
+  cross_beat_score: 1.0
+  word_count_valid: false
+  context_score: 0.95
+  coherence_score: 0.92
+  overall_score: 0.91
+  failed_items:
+  - 'Beat 1 - Introduction of unexpected complication (minor): The complication is
+    introduced but feels more like a major revelation than a minor hiccup; the greased
+    lock is underdeveloped and doesn''t escalate naturally into the Eleanor reveal'
+  - 'Beat 3 - Team friction or trust issues surface: Leo''s panic is present but minimal;
+    no meaningful friction between crew members beyond Leo''s fear; Baz and Miri''s
+    disagreement is brief and doesn''t explore trust dynamics'
+  strengths:
+  - 'Exceptional Chekhov''s Gun execution: The Nebuchadnezzar lift is established
+    as a complaint in Beat 1 (''reinforced titanium,'' ''ridiculous''), then becomes
+    the critical escape mechanism in Beat 3—perfectly traced setup to payoff'
+  - 'Masterful tonal escalation: Beat 1 opens with playful banter (''Easy as stealing
+    candy from a baby''), Beat 2 shifts to sharp tension (''confidence shaken''),
+    Beat 3 delivers genuine danger with gallows humor (''Let''s see if she taught
+    me everything she knows'')'
+  - 'Mentor presence arc is flawless: Eleanor is completely absent in Beat 1, revealed
+    with impact in Beat 2 (the security monitor reveal is cinematically strong), and
+    becomes active antagonist in Beat 3 with personal stakes'
+  - 'Leo''s arc across beats: Introduced as overconfident (''usually overly confident''),
+    becomes vulnerable in Beat 2 (panic sets in), and drives the climactic choice
+    in Beat 3 (Miri sacrifices escape to save him)—this is sophisticated character
+    work'
+  - 'Context maintenance is excellent: Monaco setting, Grand Prix acoustics, yacht
+    details, art history specificity, Ocean''s Eleven tone with dry wit all consistently
+    present'
+  - 'Narrative coherence: The progression from routine heist → trap reveal → desperate
+    escape feels inevitable and earned; each beat builds logically on the previous'
+  weaknesses:
+  - 'Word count exceeds range (1125 vs. 700-1000): 125 words over limit; some tightening
+    needed in the opening exposition'
+  - 'Beat 1 complication underdeveloped: The greased lock is mentioned but never explored—it
+    hints at Eleanor''s presence but doesn''t function as a proper minor complication
+    that escalates; feels like a false lead'
+  - 'Team friction minimal: While Leo''s panic is present, there''s no real disagreement
+    or trust test between crew members; Baz''s ''That''s suicide'' is the only pushback,
+    and it''s brief'
+  - 'Eleanor''s motivation could be clearer: The ''plant evidence'' explanation is
+    functional but told rather than shown; a visual or dialogue moment revealing her
+    specific vendetta would strengthen Beat 2'
+  - 'Miri''s final choice framing: While the choice (painting vs. Leo) is clear, the
+    emotional weight could be heavier; her decision feels slightly rushed given the
+    decade-long grudge with Eleanor'
+  calibration_notes: 'This is a strong execution that hits most targets with professional
+    quality. The cross-beat constraints are handled with sophistication (particularly
+    Chekhov''s Gun and tonal escalation). The two failed beat requirements are minor
+    gaps rather than omissions: the complication exists but isn''t properly ''unexpected''
+    or ''minor,'' and team friction is present but underdeveloped. The word count
+    violation is technical but meaningful. Overall coherence and context are excellent.
+    Score reflects: exceptional cross-beat work (+0.15), strong beat satisfaction
+    (+0.12), minor requirement gaps (-0.08), word count penalty (-0.05), resulting
+    in 0.91 overall.'
+error: null

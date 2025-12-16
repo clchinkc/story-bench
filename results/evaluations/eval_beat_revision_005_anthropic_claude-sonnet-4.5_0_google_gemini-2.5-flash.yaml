@@ -1,0 +1,42 @@
+evaluation_id: d84dcb19
+task_id: beat_revision_005
+generation_id: beat_revision_005_anthropic/claude-sonnet-4.5_0
+task_type: beat_revision
+model: anthropic/claude-sonnet-4.5
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0006807
+timestamp: '2025-12-13T13:55:03.878349'
+success: true
+final_score: 0.9278869823218842
+score_breakdown:
+  final_score: 0.9279
+  components:
+    word_count:
+      score: 0.7115
+      weight: 0.25
+      actual: 101
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 1.0
+      weight: 0.25
+      breakdown:
+        repetition_score: 1.0
+        slop_score: 1.0
+        overall: 1.0
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  correct_diagnosis_score: 1.0
+  beat_understanding_score: 1.0
+  false_positive_avoided_score: 1.0
+  reasoning_quality_score: 1.0
+  model_said_no_revision: true
+  evidence: The model explicitly stated 'NO REVISION NEEDED' and provided a detailed
+    explanation of how the segment properly executes the Dark Night of the Soul beat,
+    addressing all five key requirements. This demonstrates a correct diagnosis and
+    strong understanding.
+error: null

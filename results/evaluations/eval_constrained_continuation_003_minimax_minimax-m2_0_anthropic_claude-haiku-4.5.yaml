@@ -1,0 +1,102 @@
+evaluation_id: 4765f4c0
+task_id: constrained_continuation_003
+generation_id: constrained_continuation_003_minimax/minimax-m2_0
+task_type: constrained_continuation
+model: minimax/minimax-m2
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.042300000000000004
+timestamp: '2025-12-12T10:11:01.458645'
+success: true
+final_score: 0.66625
+score_breakdown:
+  final_score: 0.6663
+  components:
+    word_count:
+      score: 0.0
+      weight: 0.25
+      actual: 1351
+      target_range:
+      - 550
+      - 750
+    programmatic:
+      score: 0.7
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 1.0
+        overall: 0.7
+    llm_judge:
+      score: 0.9825
+      weight: 0.5
+llm_results:
+  beats_present: 3
+  beats_total: 3
+  beats_score: 1.0
+  must_include_present: 6
+  must_include_total: 6
+  must_include_score: 1.0
+  must_not_avoided: 4
+  must_not_total: 4
+  must_not_score: 1.0
+  word_count_valid: false
+  word_count: 1351
+  word_count_range: 550-750
+  tone_score: 0.95
+  ending_score: 0.9
+  overall_score: 0.75
+  analysis:
+    beats_analysis:
+      search: Present - Jin navigates Collective politics, learns the barter system,
+        meets factions, receives competing offers over days
+      find: Present - Jin discovers the carbon capture technology's true revolutionary
+        potential (negative energy consumption, power generation) and understands
+        why it's truly suppressed
+      take: Present - Jin submits Transparency Protocol proposal, accepting consequences
+        and steep price of public disclosure; learns of Yuna's interrogation and commits
+        to action despite risks
+    must_include_analysis:
+      1_unfamiliar_culture: Strong - Processing bay bureaucracy, barter system, faction
+        politics, orbital life mechanics all vividly portrayed
+      2_mentor_figure: Strong - Dr. Sarah Chen guides Jin through Collective politics,
+        teaches trust as currency, provides moral counsel
+      3_unexpected_discovery: Strong - Jin realizes technology generates power while
+        capturing carbon (negative energy consumption), making it revolutionary beyond
+        climate solution
+      4_finds_what_wanted: Strong - Jin gains platform (Transparency Protocol), allies
+        (Sarah, council support), and path to continue fighting
+      5_action_with_cost: Strong - Submitting proposal risks everything; Yuna's interrogation
+        creates personal stakes; uncertain council vote outcome
+      6_moral_compromise: Strong - Jin must choose between personal safety (two offers)
+        vs. public truth; between silence that might save lives vs. disclosure that
+        might liberate them
+    must_not_analysis:
+      1_easy_integration: Avoided - Jin struggles with belonging, faces suspicion,
+        must navigate complex politics, earns trust gradually
+      2_earth_family_contact: Avoided - No family members appear; only Yuna (research
+        partner) mentioned via smuggled message
+      3_violence_weapons: Avoided - Conflict is entirely political and informational;
+        no physical violence
+      4_complete_resolution: Avoided - Conspiracy remains unresolved; council vote
+        pending; Yuna still in facility; outcome uncertain
+    tone_analysis: 'Contemplative and introspective throughout. Jin''s internal conflict
+      about trust, compromise, and truth is central. Politically charged with detailed
+      exploration of power structures, competing interests, and ideological factions.
+      Personal stakes are intimate (Yuna''s suffering, Jin''s exile) amid larger systemic
+      conflict. Minor deduction: ending feels slightly more hopeful/resolved than
+      purely contemplative, but maintains philosophical weight.'
+    ending_analysis: 'Ends at ''Take'' phase as required. Jin has gained: citizenship
+      application, proposal submission, public commitment to transparency, and understanding
+      of larger stakes. Price paid: uncertainty of outcome, Yuna''s continued suffering
+      as leverage, potential rejection by council, risk of becoming pawn in larger
+      conflict. However, ending slightly exceeds ''Take'' by including reflection
+      on consequences rather than stopping at moment of action.'
+    critical_failure: WORD COUNT EXCEEDS MAXIMUM - Story is 1351 words against 550-750
+      word requirement. This is 80% over the upper limit and represents a significant
+      structural violation. The story is substantially longer than specified, which
+      affects pacing and scope requirements.
+  failed_constraints:
+  - 'Word count: 1351 words exceeds maximum of 750 words by 601 words (80% over limit)'
+  - Story length violates scope requirements despite meeting narrative and thematic
+    requirements
+error: null

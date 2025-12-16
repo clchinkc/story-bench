@@ -1,0 +1,43 @@
+evaluation_id: 87f56130
+task_id: multi_beat_synthesis_002
+generation_id: multi_beat_synthesis_002_minimax/minimax-m2_0
+task_type: multi_beat_synthesis
+model: minimax/minimax-m2
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0011250000000000001
+timestamp: '2025-12-12T13:21:29.456794'
+success: true
+final_score: 0.675025328550715
+score_breakdown:
+  final_score: 0.675
+  components:
+    word_count:
+      score: 0.0001
+      weight: 0.25
+      actual: 1386
+      target_range:
+      - 700
+      - 1000
+    programmatic:
+      score: 0.7
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 1.0
+        overall: 0.7
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 15
+  beat_reqs_total: 15
+  beat_requirements_score: 1.0
+  cross_beat_satisfied: 4
+  cross_beat_total: 4
+  cross_beat_score: 1.0
+  word_count_valid: false
+  context_score: 1.0
+  coherence_score: 1.0
+  failed_items: []
+error: null

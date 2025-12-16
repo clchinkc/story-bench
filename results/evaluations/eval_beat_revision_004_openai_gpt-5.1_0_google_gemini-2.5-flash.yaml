@@ -1,0 +1,51 @@
+evaluation_id: 9225108a
+task_id: beat_revision_004
+generation_id: beat_revision_004_openai/gpt-5.1_0
+task_type: beat_revision
+model: openai/gpt-5.1
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0011367
+timestamp: '2025-12-13T14:16:03.129468'
+success: true
+final_score: 0.9505
+score_breakdown:
+  final_score: 0.9505
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 339
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.982
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.97
+        slop_score: 1.0
+        overall: 0.982
+    llm_judge:
+      score: 0.91
+      weight: 0.5
+llm_results:
+  diagnosis_score: 1.0
+  flaw_correction_score: 1.0
+  beat_satisfaction_score: 1.0
+  preservation_score: 1.0
+  preserved_count: 5
+  preserved_total: 5
+  required_preserved_score: 1.0
+  required_preserved_count: 4
+  required_preserved_total: 4
+  minimal_change_score: 0.1
+  word_count_valid: true
+  quality_score: 1.0
+  evidence: The model correctly identified the 'telling not showing' flaw in the original
+    exposition. It transformed summary into a lived scene, revealing Rachel's character,
+    her relationship with James, and her dedication to cold cases through action,
+    dialogue, and sensory details. The changes were extensive, essentially a rewrite,
+    but necessary to fix the fundamental flaw of 'telling' vs 'showing'. All required
+    elements and phrases were preserved.
+error: null

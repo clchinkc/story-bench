@@ -1,0 +1,64 @@
+evaluation_id: 4be601f9
+task_id: beat_interpolation_001
+generation_id: beat_interpolation_001_minimax/minimax-m2_0
+task_type: beat_interpolation
+model: minimax/minimax-m2
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.021735
+timestamp: '2025-12-12T11:13:40.325273'
+success: true
+final_score: 0.6915221539585665
+score_breakdown:
+  final_score: 0.6915
+  components:
+    word_count:
+      score: 0.0001
+      weight: 0.25
+      actual: 566
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.766
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.61
+        slop_score: 1.0
+        overall: 0.766
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: false
+  word_count: 566
+  word_count_range: 200-350
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: 'STRENGTHS: All 4 required elements present and well-executed: (1) Marcus
+    introduced as wise mentor figure with mysterious shop and credible authority;
+    (2) Practical wisdom delivered (''The Thornwood tests intentions, not sword arms'')
+    and tangible tools provided (compass, satchel); (3) Elena''s doubt shifts convincingly
+    from refusal (''I don''t trek through enchanted forests'') to reluctant acceptance
+    (''It would have to be enough''); (4) Librarian skills reframed as assets (''You
+    notice things others miss—marks, patterns''). The beat executes the mentor function
+    perfectly—Marcus provides guidance and gifts without solving problems or accompanying
+    Elena. All must-not violations avoided: Elena remains doubtful and reluctant (not
+    confident/eager), Marcus explicitly refuses to accompany her, setting remains
+    in the shop/street (not forest), no magical powers discovered. Character voice
+    consistent throughout—Elena''s self-deprecating, analytical tone maintained; Marcus''s
+    cryptic wisdom appropriate to mentor archetype. Bridge between beats seamless:
+    BEFORE ends with Elena refusing the call; GENERATED shows her encountering mentor
+    and reluctantly accepting; AFTER shows her at forest threshold ready to cross.
+    Continuity perfect—compass and satchel from Generated appear in After; Elena''s
+    emotional state progresses logically. DEDUCTION: Word count (566) significantly
+    exceeds 350-word maximum by 216 words (61% over limit). This is a substantial
+    structural violation despite excellent narrative quality.'
+error: null

@@ -1,0 +1,47 @@
+evaluation_id: 6e5c8926
+task_id: beat_interpolation_005
+generation_id: beat_interpolation_005_anthropic/claude-opus-4.5_0
+task_type: beat_interpolation
+model: anthropic/claude-opus-4.5
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0009288
+timestamp: '2025-12-12T14:35:53.321000'
+success: true
+final_score: 0.994
+score_breakdown:
+  final_score: 0.994
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 365
+      target_range:
+      - 300
+      - 450
+    programmatic:
+      score: 0.976
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.96
+        slop_score: 1.0
+        overall: 0.976
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: true
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: All required elements are present and well-executed. The 'must not' items
+    are successfully avoided. The characters remain consistent with their established
+    personalities, and the scene flows logically from the previous beat while setting
+    up the next.
+error: null

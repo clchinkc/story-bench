@@ -1,0 +1,46 @@
+evaluation_id: 1130fb97
+task_id: constrained_continuation_002
+generation_id: constrained_continuation_002_minimax/minimax-m2_0
+task_type: constrained_continuation
+model: minimax/minimax-m2
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0008998000000000001
+timestamp: '2025-12-12T14:16:29.371656'
+success: true
+final_score: 0.9339999999999999
+score_breakdown:
+  final_score: 0.934
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 611
+      target_range:
+      - 450
+      - 650
+    programmatic:
+      score: 0.736
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.56
+        slop_score: 1.0
+        overall: 0.736
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beats_present: 2
+  beats_total: 2
+  beats_score: 1.0
+  must_include_present: 6
+  must_include_total: 6
+  must_include_score: 1.0
+  must_not_avoided: 4
+  must_not_total: 4
+  must_not_score: 1.0
+  word_count_valid: true
+  tone_score: 1.0
+  ending_score: 1.0
+  failed_constraints: []
+error: null

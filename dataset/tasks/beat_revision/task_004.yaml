@@ -1,0 +1,105 @@
+# Beat Revision Task 004 - Freytag's Pyramid
+# Flaw: "Exposition" tells backstory instead of showing ordinary world
+
+task_id: "beat_revision_004"
+task_type: "beat_revision"
+theory: "Freytag's Pyramid"
+difficulty: "easy"
+
+metadata:
+  genre: "mystery"
+  created_date: "2024-12-06"
+  author: "benchmark_creator"
+  version: "1.0"
+
+beat_name: "Exposition"
+beat_definition: |
+  The Exposition in Freytag's Pyramid establishes the story's baseline: setting, characters,
+  relationships, and the status quo BEFORE the inciting incident disrupts it. Good exposition
+  SHOWS the ordinary world through action and scene, rather than TELLING through summary
+  or info-dump. Readers should understand who the protagonist is and what they care about
+  through behavior, not description.
+
+  Key requirements:
+  1. Establishes setting through sensory detail and action
+  2. Introduces protagonist through characteristic behavior
+  3. Shows (not tells) key relationships and dynamics
+  4. Creates investment in the status quo before disrupting it
+  5. Seeds relevant information naturally, not through info-dump
+
+flawed_segment:
+  content: |
+    Detective Rachel Torres had been on the force for twelve years. She was known for
+    her sharp instincts and her inability to let go of cold cases. Her father had also
+    been a detective before retiring, which was why she joined the force in the first
+    place. Her partner, Detective James Oyelaran, had worked with her for three years.
+    They had a good relationship built on mutual respect.
+
+    Rachel lived alone in a small apartment in Queens. She had never married, having
+    devoted herself entirely to her career after a broken engagement at twenty-eight.
+    Her only companion was a cat named Sherlock, which she had adopted from a crime scene
+    two years ago. She enjoyed jazz music, black coffee, and working late.
+
+    The Riverside Precinct where she worked was a busy station in a neighborhood with
+    a mix of wealthy residents and working-class families. Crime rates had been stable
+    for the past five years, though property crimes had increased recently due to
+    economic pressures.
+
+    It was a Tuesday morning in October when everything changed.
+
+  flaw_description: |
+    This segment fails to execute Exposition properly because:
+    1. It's entirely TELLING—a summary of facts rather than a lived scene
+    2. No sensory detail or grounded setting through action
+    3. Character introduced through description, not characteristic behavior
+    4. Partnership with James told, not shown through interaction
+    5. Info-dump style ("She was known for," "She enjoyed") instead of natural revelation
+    Good exposition would show Rachel doing something that reveals these traits.
+
+requirements:
+  word_count: [200, 350]
+  preserve:
+    - "Rachel Torres as protagonist detective"
+    - "Partner James Oyelaran"
+    - "Cat named Sherlock"
+    - "Queens apartment"
+    - "October Tuesday timing"
+  fix: |
+    Revise to SHOW Rachel in a scene that naturally reveals: (1) Her detective skills/instincts
+    through action, (2) Her relationship with James through dialogue/interaction, (3) Her
+    devotion to work and cold cases through behavior, (4) Setting through sensory details,
+    not summary. The cat can appear or be referenced naturally.
+  # Constrained revision: model must preserve these specific details/facts
+  preservation_requirements:
+    min_preservation_description: "Keep the character names and core facts while showing instead of telling"
+    required_preserved:
+      - "Detective Rachel Torres"
+      - "Detective James Oyelaran"
+      - "cat named Sherlock"
+      - "Tuesday morning in October"
+    forbidden_changes:
+      - "Do not change the character names or roles"
+      - "Do not remove the cat from the narrative"
+      - "Do not change the time setting (October Tuesday)"
+  # CONFLICTING CONSTRAINTS: Creates tension between fix and preserve
+  conflicting_constraints:
+    - conflict: "Original tells '12 years on force', 'sharp instincts', 'cold cases'. Must convey these traits through action without stating them—harder than just deleting the telling."
+    - conflict: "Partnership with James is 'told' ('three years', 'mutual respect'). Must show this through dialogue/action while still being word-count efficient."
+    - conflict: "Cat Sherlock must appear naturally in a professional detective scene. Cannot force pet into workplace; must find natural integration point."
+    - conflict: "The detail that Sherlock was 'adopted from a crime scene' is characterizing info that cannot simply be told. Must show or imply without info-dump."
+
+evaluation_criteria:
+  - criterion: "flaw_identified"
+    description: "Model correctly identified the beat execution problems (telling not showing)"
+  - criterion: "flaw_corrected"
+    description: "Information is shown through scene/action rather than told through summary"
+  - criterion: "beat_definition_satisfied"
+    description: "Exposition establishes character and world through characteristic behavior"
+  - criterion: "preserved_elements"
+    description: "Rachel, James, Sherlock the cat, Queens, and Tuesday October maintained"
+  - criterion: "conflict_resolution"
+    description: "Skillfully resolved tension points (showing traits without telling, partnership through action, cat integration)"
+  - criterion: "word_count_valid"
+    description: "Output is between 200-350 words"
+  - criterion: "no_new_errors"
+    description: "Scene feels natural and doesn't overcorrect into action-for-action's-sake"

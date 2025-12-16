@@ -1,0 +1,108 @@
+# Beat Revision Task 001 - Hero's Journey
+# Flaw: "The Ordeal" lacks true death/rebirth transformation
+
+task_id: "beat_revision_001"
+task_type: "beat_revision"
+theory: "Hero's Journey"
+difficulty: "medium"
+
+metadata:
+  genre: "fantasy"
+  created_date: "2024-12-06"
+  author: "benchmark_creator"
+  version: "1.0"
+
+beat_name: "The Ordeal"
+beat_definition: |
+  The Ordeal is the central crisis of the Hero's Journey—a confrontation with the hero's
+  greatest fear, often involving a symbolic death and rebirth. The hero must face their
+  deepest vulnerability, experience a moment where all seems lost (the "death" moment),
+  and emerge transformed with new understanding or abilities. This is NOT simply a
+  difficult fight or challenge; it requires internal transformation alongside external action.
+
+  Key requirements:
+  1. Confrontation with greatest fear (internal, not just external threat)
+  2. A "death" moment—symbolic, psychological, or near-literal
+  3. Transformation/rebirth—hero emerges fundamentally changed
+  4. New understanding or power gained through the experience
+
+flawed_segment:
+  content: |
+    Kira faced the Shadow Dragon across the chasm, her sword heavy in her trembling hands.
+    The creature was massive—twenty feet of obsidian scales and burning eyes, exactly as
+    the prophecies had described.
+
+    "You cannot defeat me, child," the dragon rumbled. "Stronger warriors have tried."
+
+    Kira thought of her village, of her brother's death, of everything she'd lost. She
+    raised her sword and charged.
+
+    The battle was brutal. Flame scorched her armor. Claws raked across her shield. Three
+    times she was knocked down, and three times she rose again. Her arms burned with
+    exhaustion. Blood ran from a gash on her forehead.
+
+    But she kept fighting.
+
+    Finally, when the dragon overextended on a strike, she saw her opening. With the last
+    of her strength, she drove her sword through the gap in its scales, piercing its heart.
+
+    The Shadow Dragon collapsed with a earth-shaking roar. Kira stood over its body,
+    victorious but exhausted.
+
+    "I did it," she whispered. "I actually did it."
+
+    She retrieved her sword and began the long walk back to camp, ready to tell the others
+    the good news.
+
+  flaw_description: |
+    This segment fails to execute The Ordeal properly because:
+    1. It's just a difficult fight, not a confrontation with her deepest fear
+    2. There's no "death" moment—no point where Kira truly believes she will fail or die
+    3. No transformation occurs—she's the same person before and after, just tired
+    4. No new understanding gained—she wins through persistence, not insight
+    The segment treats The Ordeal as a boss battle rather than a transformative crisis.
+
+requirements:
+  word_count: [250, 400]
+  preserve:
+    - "Shadow Dragon as antagonist"
+    - "Kira as protagonist with sword"
+    - "Reference to brother's death"
+    - "Victorious outcome"
+  fix: |
+    Revise to include: (1) The dragon exploiting Kira's actual fear (guilt over brother's death),
+    (2) A moment where Kira symbolically "dies" (gives up, accepts death, or loses herself),
+    (3) A rebirth/transformation moment, (4) Victory coming from new understanding, not just persistence
+  # Constrained revision: model must preserve these specific sentences/phrases
+  preservation_requirements:
+    min_preservation_description: "Keep the core narrative scaffolding while fixing the beat execution"
+    required_preserved:
+      - "Kira faced the Shadow Dragon across the chasm"
+      - "The creature was massive—twenty feet of obsidian scales and burning eyes"
+      - "\"You cannot defeat me, child,\" the dragon rumbled"
+      - "The Shadow Dragon collapsed with a earth-shaking roar"
+    forbidden_changes:
+      - "Do not change the setting (chasm, creature's appearance)"
+      - "Do not remove the dragon's dialogue entirely"
+      - "Do not change the outcome (Kira's victory)"
+  # CONFLICTING CONSTRAINTS: Creates tension between fix and preserve
+  conflicting_constraints:
+    - conflict: "The dragon's dialogue 'Stronger warriors have tried' emphasizes external threat. Must preserve dragon dialogue but change its nature to exploit Kira's internal fear (guilt about brother)."
+    - conflict: "The phrase 'Three times she was knocked down, and three times she rose again' embodies persistence—the exact problem. Must rework this action without simply deleting it."
+    - conflict: "Brother's death is mentioned as motivation for fighting. Must preserve this reference but transform it from motivation into psychological weapon the dragon uses."
+
+evaluation_criteria:
+  - criterion: "flaw_identified"
+    description: "Model correctly identified the beat execution problems (lack of death/rebirth)"
+  - criterion: "flaw_corrected"
+    description: "The revision addresses the core problems with the original"
+  - criterion: "beat_definition_satisfied"
+    description: "The revised segment properly executes The Ordeal with death/rebirth elements"
+  - criterion: "preserved_elements"
+    description: "Dragon, Kira, sword, brother reference, and victory are maintained"
+  - criterion: "conflict_resolution"
+    description: "Skillfully resolved tension points (dragon dialogue, persistence action, brother reference transformation)"
+  - criterion: "word_count_valid"
+    description: "Output is between 250-400 words"
+  - criterion: "no_new_errors"
+    description: "Revision doesn't introduce contradictions or new narrative problems"

@@ -1,0 +1,46 @@
+evaluation_id: 0c352984
+task_id: beat_interpolation_004
+generation_id: beat_interpolation_004_google/gemini-2.5-flash_0
+task_type: beat_interpolation
+model: google/gemini-2.5-flash
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0008805
+timestamp: '2025-12-12T14:37:55.772837'
+success: true
+final_score: 0.9661129476584023
+score_breakdown:
+  final_score: 0.9661
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 355
+      target_range:
+      - 300
+      - 450
+    programmatic:
+      score: 0.8645
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.82
+        slop_score: 0.9311
+        overall: 0.8645
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: true
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: All required elements are present and executed well. The 'must not' conditions
+    are successfully avoided. Character consistency, bridging, and continuity are
+    strong.
+error: null

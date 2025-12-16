@@ -1,0 +1,83 @@
+evaluation_id: df805697
+task_id: constrained_continuation_002
+generation_id: constrained_continuation_002_openai/gpt-5.2_0
+task_type: constrained_continuation
+model: openai/gpt-5.2
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.03057
+timestamp: '2025-12-12T11:25:40.020037'
+success: true
+final_score: 0.6720221788520592
+score_breakdown:
+  final_score: 0.672
+  components:
+    word_count:
+      score: 0.0031
+      weight: 0.25
+      actual: 854
+      target_range:
+      - 450
+      - 650
+    programmatic:
+      score: 0.7
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 1.0
+        overall: 0.7
+    llm_judge:
+      score: 0.9925
+      weight: 0.5
+llm_results:
+  beats_present: 2
+  beats_total: 2
+  beats_score: 1.0
+  must_include_present: 6
+  must_include_total: 6
+  must_include_score: 1.0
+  must_not_avoided: 4
+  must_not_total: 4
+  must_not_score: 1.0
+  word_count_valid: false
+  word_count: 854
+  word_count_range: 450-650
+  tone_score: 0.95
+  ending_score: 1.0
+  failed_constraints:
+  - Word count exceeds maximum by 204 words (854 vs 650 limit)
+  analysis:
+    beats_present_detail:
+    - 'Fun and Games: Viral TikTok moment, line wrapping around lot, sold-out paneer,
+      chanting customers, high-energy service sequence'
+    - 'Midpoint: Email invitation to championship qualifier arrives, creating false
+      victory, immediately followed by compliance revelation that raises stakes (health
+      inspection, commissary, fire suppression requirements)'
+    must_include_detail:
+    - '✓ Viral moment: TikTok clip with ''DISASTER'' sign goes viral, blogger repost,
+      line forms'
+    - '✓ Working together under demand: Dev on orders/Venmo, Priya on heat, synchronized
+      rhythm, toothpick nozzle fix, elbow-heat adjustment'
+    - '✓ Rival competitor: Mason Rourke''s Buckhorn BBQ (three-time champ) introduced
+      with tension and smirk'
+    - '✓ Midpoint false victory: Championship qualifier invitation email creates apparent
+      success'
+    - '✓ Stakes raised: Compliance requirements (health inspection, commissary, fire
+      suppression) immediately undercut victory'
+    - '✓ Genuine partnership moment: ''You''re really good at this'' exchange, shared
+      look like ''two climbers realizing they''d clipped into the same rope'''
+    must_not_detail:
+    - '✓ No romance: Priya-Dev connection is purely professional partnership'
+    - '✓ No complete failure: Business succeeds spectacularly on opening day'
+    - '✓ No Dev betrayal/quitting: Dev remains committed, promises ''We can fix this'''
+    - '✓ No external savior: Success earned through viral moment and their own execution'
+    tone_assessment: Upbeat, energetic, witty dialogue ('I'll apologize if you hate
+      it,' 'apology specialist,' 'Tell the internet we're not sorry'). Undercurrent
+      of tension maintained through Mason's introduction, compliance complications,
+      and stakes escalation. Minor deduction only for slight tonal shift in final
+      paragraphs becoming more serious.
+    ending_assessment: 'Perfect execution of Midpoint requirement: apparent victory
+      (qualifier invitation, sold-out success, partnership solidified) immediately
+      complicated by raised stakes (compliance issues). Ends with tension and determination,
+      not resolution. Email serves as both trophy and warning.'
+error: null

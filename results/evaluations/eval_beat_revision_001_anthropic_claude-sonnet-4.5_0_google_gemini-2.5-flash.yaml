@@ -1,0 +1,55 @@
+evaluation_id: 43b33f22
+task_id: beat_revision_001
+generation_id: beat_revision_001_anthropic/claude-sonnet-4.5_0
+task_type: beat_revision
+model: anthropic/claude-sonnet-4.5
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0013607
+timestamp: '2025-12-13T13:17:51.107417'
+success: true
+final_score: 0.9455
+score_breakdown:
+  final_score: 0.9455
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 331
+      target_range:
+      - 250
+      - 400
+    programmatic:
+      score: 0.892
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.82
+        slop_score: 1.0
+        overall: 0.892
+    llm_judge:
+      score: 0.945
+      weight: 0.5
+llm_results:
+  diagnosis_score: 1.0
+  flaw_correction_score: 1.0
+  beat_satisfaction_score: 1.0
+  preservation_score: 1.0
+  preserved_count: 4
+  preserved_total: 4
+  required_preserved_score: 0.75
+  required_preserved_count: 3
+  required_preserved_total: 4
+  minimal_change_score: 0.7
+  word_count_valid: true
+  quality_score: 1.0
+  evidence: The model correctly identified that the original segment treated The Ordeal
+    as a mere boss battle and not a transformative crisis. It successfully integrated
+    Kira's deepest fear (guilt over her brother's death) into the dragon's dialogue,
+    created a clear 'death' moment where she shatters under the weight of her guilt,
+    and then provided a rebirth/transformation through her brother's last words and
+    a new understanding of her purpose. Victory then comes from this new insight,
+    not just persistence. The changes were significant enough to fix the flaw but
+    still maintained much of the original structure and narrative flow. One required
+    phrase was slightly altered ('The Shadow Dragon collapsed with an earth-shaking
+    roar' vs 'The Shadow Dragon collapsed with a earth-shaking roar').
+error: null

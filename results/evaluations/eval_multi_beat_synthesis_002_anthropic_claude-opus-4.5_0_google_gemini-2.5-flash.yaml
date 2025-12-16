@@ -1,0 +1,50 @@
+evaluation_id: 2e5431bb
+task_id: multi_beat_synthesis_002
+generation_id: multi_beat_synthesis_002_anthropic/claude-opus-4.5_0
+task_type: multi_beat_synthesis
+model: anthropic/claude-opus-4.5
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0011651
+timestamp: '2025-12-12T14:24:41.404128'
+success: true
+final_score: 0.9107825624276995
+score_breakdown:
+  final_score: 0.9108
+  components:
+    word_count:
+      score: 0.9591
+      weight: 0.25
+      actual: 674
+      target_range:
+      - 700
+      - 1000
+    programmatic:
+      score: 0.796
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.66
+        slop_score: 1.0
+        overall: 0.796
+    llm_judge:
+      score: 0.944
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 13
+  beat_reqs_total: 15
+  beat_requirements_score: 0.86
+  cross_beat_satisfied: 4
+  cross_beat_total: 4
+  cross_beat_score: 1.0
+  word_count_valid: false
+  context_score: 1.0
+  coherence_score: 1.0
+  failed_items:
+  - 'Beat 1: Immediate danger or obstacle at the threshold (The checkpoint is described
+    as a ''gap between duty and distraction'' rather than an immediate danger Amara
+    has to overcome with wit. She slips through, implying ease rather than a challenge.)'
+  - 'Beat 3: Recognition of what reaching the stronghold will cost or change (While
+    she acknowledges the danger, the story doesn''t explicitly show her recognizing
+    the personal cost or transformation reaching the stronghold will bring, beyond
+    the immediate threat.)'
+error: null

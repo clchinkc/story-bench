@@ -1,0 +1,51 @@
+evaluation_id: 0f280b25
+task_id: beat_interpolation_001
+generation_id: beat_interpolation_001_qwen/qwen3-235b-a22b_0
+task_type: beat_interpolation
+model: qwen/qwen3-235b-a22b
+sample_index: 0
+evaluator_model: openai/gpt-5-mini
+evaluator_cost: 0.0013822499999999998
+timestamp: '2025-12-12T13:25:08.716864'
+success: true
+final_score: 0.991
+score_breakdown:
+  final_score: 0.991
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 327
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.964
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.94
+        slop_score: 1.0
+        overall: 0.964
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: true
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: 'All four required elements are present: Marcus is introduced by name;
+    he provides practical tools (satchel, compass, ink, journal) and pragmatic wisdom;
+    Elena''s doubt shifts toward reluctant acceptance (swallows, compass steadies,
+    thinks of cataloging); her librarian skills are explicitly referenced as useful.
+    None of the forbidden items occur: she does not become immediately confident,
+    Marcus does not solve her problems or offer to accompany her, the scene is set
+    in the curiosity shop (not the forest), and Elena does not discover magical powers.
+    Setting and character behavior remain consistent with prior beat.'
+error: null

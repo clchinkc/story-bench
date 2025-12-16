@@ -1,0 +1,91 @@
+evaluation_id: 3e132090
+task_id: multi_beat_synthesis_003
+generation_id: multi_beat_synthesis_003_anthropic/claude-opus-4.5_0
+task_type: multi_beat_synthesis
+model: anthropic/claude-opus-4.5
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.034755
+timestamp: '2025-12-12T02:03:14.880983'
+success: true
+final_score: 0.8912499999999999
+score_breakdown:
+  final_score: 0.8912
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 721
+      target_range:
+      - 700
+      - 1000
+    programmatic:
+      score: 0.7
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 1.0
+        overall: 0.7
+    llm_judge:
+      score: 0.9325
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 13
+  beat_reqs_total: 15
+  beat_requirements_score: 0.87
+  cross_beat_satisfied: 4
+  cross_beat_total: 4
+  cross_beat_score: 1.0
+  word_count_valid: true
+  context_score: 0.95
+  coherence_score: 0.92
+  failed_items:
+  - 'Beat 1 - ''Things going according to plan (mostly)'': The plan deteriorates significantly
+    by mid-passage with the discovery of military-grade encryption and Helena''s presence.
+    While this serves the narrative, it undercuts the ''mostly successful'' requirement
+    of Fun and Games, which should establish crew competence before complications.'
+  - 'Beat 3 - ''Public/party setting intensifies pressure'': The action has moved
+    entirely to lower decks/engine room. While the Grand Prix roaring past provides
+    atmospheric callback, the immediate setting lacks the glamorous party pressure
+    that should characterize this beat''s escalation.'
+  strengths:
+  - 'Exceptional Chekhov''s Gun execution: The engine room exit is established as
+    Miri''s planned route, then revealed as Helena''s playbook, creating perfect setup-payoff
+    mechanics.'
+  - 'Masterful tonal escalation: Beat 1 opens with dry wit (''Belong hard enough and
+    doors opened themselves''), Beat 2 shifts to tension (''The name hit like ice
+    water''), Beat 3 becomes existential dread (''The painting or Ava'').'
+  - 'Mentor presence perfectly calibrated: Helena moves from unknown (Beat 1) → revealed
+    as antagonist (Beat 2: ''She''s been waiting for you specifically'') → active
+    threat (Beat 3: direct confrontation).'
+  - 'Leo''s arc is consistent and plot-critical: Serves as voice of reason in Beat
+    1 (technical support), becomes concerned in Beat 2 (warns about encryption), actively
+    opposes Miri''s revenge impulse in Beat 3 (moral anchor).'
+  - 'Context maintenance is near-perfect: Miri''s dry wit, meticulous planning, and
+    moral complexity shine throughout. Monaco setting, yacht, Grand Prix all woven
+    naturally.'
+  - 'Clever problem-solving demonstrated: Keycard lift, retinal scan spoofing, fire
+    suppression distraction—all show crew competence.'
+  - 'Stakes raised dramatically: From ''retrieve painting'' to ''Helena designed the
+    security'' to ''choose between mission and crew member''.'
+  - 'Coherence: The narrative flows logically from reconnaissance → execution → complication
+    → moral crisis.'
+  weaknesses:
+  - 'Beat 1 complications arrive too quickly: The military encryption discovery and
+    Helena reveal happen within the same passage, compressing the ''mostly successful''
+    phase.'
+  - 'Ava''s characterization is thin: While Leo has clear arc and voice, Ava remains
+    functional rather than dimensional across the beats.'
+  - 'The final cliffhanger, while effective, leaves the actual choice unresolved:
+    Narratively sound for a three-beat excerpt, but the ''painting or Ava'' dilemma
+    isn''t explored enough to fully land the emotional weight.'
+  - 'Minor: ''Montblanc pen'' detail is clever but the retinal scan transfer via contact
+    lens feels slightly underexplained for plausibility.'
+  calibration_notes: 'Scored 0.87 on beat requirements (13/15) rather than 0.9+ because
+    two requirements are genuinely underserved, not just subtly handled. The cross-beat
+    constraints are executed with professional precision—this is where the excerpt
+    excels. Context score 0.95 (not 1.0) because Ava lacks dimension. Coherence 0.92
+    because the pacing is slightly rushed in Beat 1. Overall, this is a strong 0.8-0.85
+    range story: it satisfies the core brief with sophistication, but has minor structural
+    gaps that prevent ''exceptional'' rating.'
+error: null

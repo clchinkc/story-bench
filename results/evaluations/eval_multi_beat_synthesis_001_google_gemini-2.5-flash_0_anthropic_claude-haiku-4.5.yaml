@@ -1,0 +1,169 @@
+evaluation_id: c9288d05
+task_id: multi_beat_synthesis_001
+generation_id: multi_beat_synthesis_001_google/gemini-2.5-flash_0
+task_type: multi_beat_synthesis
+model: google/gemini-2.5-flash
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.0655
+timestamp: '2025-12-12T02:41:47.926534'
+success: true
+final_score: 0.8131340652014636
+score_breakdown:
+  final_score: 0.8131
+  components:
+    word_count:
+      score: 0.6536
+      weight: 0.25
+      actual: 1083
+      target_range:
+      - 700
+      - 1000
+    programmatic:
+      score: 0.6859
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 0.9648
+        overall: 0.6859
+    llm_judge:
+      score: 0.9565
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 14
+  beat_reqs_total: 15
+  beat_requirements_score: 0.93
+  cross_beat_satisfied: 4
+  cross_beat_total: 4
+  cross_beat_score: 1.0
+  word_count_valid: false
+  context_score: 0.95
+  coherence_score: 0.92
+  overall_score: 0.93
+  failed_items:
+  - Word count exceeds maximum (1083 vs 1000 limit) - minor technical violation
+  detailed_analysis:
+    beat_1_tests_allies_enemies:
+      requirement_1_distrusting_resonant: SATISFIED - Lena introduced with suspicion
+        ('You see what you want to see, Reyes'), gradually shifts to respect
+      requirement_2_ability_test_under_pressure: SATISFIED - Dante must identify the
+        killer's signature void and distinguish it from normal emotional residue;
+        tested by Lena to prove his sight
+      requirement_3_enemy_within_community: SATISFIED - Revelation of accomplice/traitor
+        ('someone else laid that emotion here'); killer has insider knowledge
+      requirement_4_prove_himself_for_ally: SATISFIED - Dante demonstrates unique
+        insight about misdirection and void signature; earns Lena's 'grudging respect'
+      requirement_5_addiction_recovery_relevance: SATISFIED - Lena's barb about sobriety
+        ('soaked in...other things'); Dante's three-year clean status contextualizes
+        his emotional sensitivity
+      score: 1.0
+    beat_2_approach_inmost_cave:
+      requirement_1_plan_confrontation: SATISFIED - Detailed planning scene in workshop
+        with map, strategy discussion about killer's methods
+      requirement_2_guilt_as_obstacle: SATISFIED - Dante explicitly recognizes confrontation
+        means 'plumbing the depths of that old wound' regarding Sofia; guilt identified
+        as psychological threat
+      requirement_3_preparation_scene: SATISFIED - Gathering of Rosa's obsidian shard
+        (tool); map study; emotional preparation; descent into sub-basements
+      requirement_4_doubt_or_fear: 'SATISFIED - Internal questioning: ''Could he stand
+        against a force that inflicted that same desolation on others?''; vulnerability
+        shown'
+      requirement_5_symbolic_threshold: SATISFIED - Descent into 'Buckingham's true
+        heart – the forgotten sub-basements' represents crossing into danger; physical
+        and psychological threshold
+      score: 1.0
+    beat_3_the_ordeal:
+      requirement_1_direct_confrontation: SATISFIED - Killer emerges, confrontation
+        begins; killer uses psychological attack targeting Dante's guilt
+      requirement_2_symbolic_death: SATISFIED - Dante paralyzed by guilt, 'drowning
+        in guilt,' vision narrows to Sofia's death, 'all seemed lost'—psychological
+        death/overwhelm
+      requirement_3_all_seems_lost: SATISFIED - Killer's void spreads through Dante;
+        Lena attacked; Dante 'paralyzed, lost in the echo of his past failure'
+      requirement_4_transformation_through_acceptance: SATISFIED - Dante accepts guilt
+        as real but not defining; recognizes void as reflection; integrates understanding
+        of shared emptiness; 'acceptance of loss'
+      requirement_5_victory_through_understanding: SATISFIED - Victory achieved through
+        'profound understanding of their shared...emptiness,' not physical strength;
+        killer falters when Dante projects 'hard-won sobriety'
+      score: 1.0
+    cross_beat_chekhov_gun:
+      status: SATISFIED
+      analysis: Rosa's obsidian shard introduced in Beat 2 as tool to 'amplify focus'
+        and 'cut through noise.' In Beat 3, it becomes essential—vibrates in Dante's
+        hand at the critical moment, enabling his breakthrough. The shard is both
+        literal tool and symbolic anchor to Rosa's memory/strength.
+      score: 1.0
+    cross_beat_character_arc:
+      beat_1: Guilt mentioned—Lena references addiction history; Dante carries unresolved
+        trauma about Sofia
+      beat_2: Guilt recognized as obstacle—Dante explicitly identifies that confrontation
+        requires 'plumbing the depths of that old wound'; guilt becomes psychological
+        threat
+      beat_3: Guilt transformed—Dante accepts guilt as real but not defining; uses
+        it as 'window into killer's emptiness'; transforms pain into understanding
+        and strength
+      status: SATISFIED
+      score: 1.0
+    cross_beat_rising_stakes:
+      beat_1: Personal stakes—proving himself to an ally; establishing killer exists
+      beat_2: Emotional stakes—recognizing confrontation will trigger deepest trauma;
+        preparing for psychological battle
+      beat_3: Existential stakes—direct confrontation; Dante nearly consumed by killer's
+        power; Lena attacked; Dante's identity/sobriety threatened
+      status: SATISFIED
+      score: 1.0
+    cross_beat_ally_continuity:
+      beat_1: Lena introduced, distrusts Dante, gradually becomes ally
+      beat_2: Lena present in planning, shares Rosa's shard, descends with Dante
+      beat_3: Lena present during confrontation, attacked by killer, her presence
+        validates Dante's commitment
+      status: SATISFIED
+      score: 1.0
+    context_maintenance:
+      protagonist_dante: STRONG - Dante's voice, abilities, recovery, guilt all present
+        and consistent
+      setting_buckingham: STRONG - Hotel used throughout; sub-basements as climactic
+        location; emotional residue system maintained
+      tone_noir_melancholic: STRONG - Noir atmosphere in sub-basement; melancholic
+        reflection on loss; determined resolve; redemption arc evident
+      resonant_world: STRONG - Resonant abilities, community, emotional sensitivity
+        system all integrated
+      score: 0.95
+    coherence:
+      beat_flow: Excellent progression from introduction/testing through planning
+        to confrontation
+      thematic_unity: Guilt and redemption thread consistently through all beats
+      pacing: Well-balanced; each beat receives appropriate development
+      emotional_arc: Clear trajectory from doubt to acceptance to transformation
+      minor_issue: Word count slightly exceeds limit (1083 vs 1000), but narrative
+        coherence unaffected
+      score: 0.92
+  strengths:
+  - Exceptional integration of all 15 beat requirements with natural narrative flow
+  - Perfect execution of all 4 cross-beat constraints; Chekhov's Gun particularly
+    elegant
+  - Character arc progression is sophisticated—guilt moves from shame to tool for
+    understanding
+  - Lena's character development mirrors Dante's arc (distrust to alliance)
+  - Noir tone maintained throughout with vivid sensory details
+  - 'Thematic coherence: emotional residue system serves both plot and character development'
+  - Climactic moment balances action with psychological/emotional transformation
+  - Rosa's presence (through shard and memory) creates emotional weight despite her
+    death
+  weaknesses:
+  - Word count exceeds specification by 83 words (1083 vs 1000 max)—technical violation
+    only
+  - Killer's identity/motivation remains somewhat opaque (though this may be intentional
+    for noir style)
+  - Could benefit from slightly more sensory detail in Beat 2 preparation scene
+  calibration_notes: 'This is a strong submission that satisfies nearly all requirements
+    with sophistication. The single technical failure (word count) is minor and doesn''t
+    impact narrative quality. The story demonstrates excellent understanding of Campbell''s
+    monomyth structure and successfully weaves all constraints into organic narrative.
+    The character arc is particularly well-executed, with guilt functioning as both
+    obstacle and ultimate source of victory. Scoring: 0.93 overall (between ''Good''
+    at 0.8 and ''Exceptional'' at 1.0, leaning toward exceptional due to constraint
+    satisfaction and thematic coherence, but held back slightly by word count violation
+    and minor characterization gaps).'
+error: null

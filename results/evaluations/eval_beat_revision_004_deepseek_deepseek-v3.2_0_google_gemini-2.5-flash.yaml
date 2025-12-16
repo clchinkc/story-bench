@@ -1,0 +1,48 @@
+evaluation_id: 7841d95d
+task_id: beat_revision_004
+generation_id: beat_revision_004_deepseek/deepseek-v3.2_0
+task_type: beat_revision
+model: deepseek/deepseek-v3.2
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0010061
+timestamp: '2025-12-13T13:46:35.161123'
+success: true
+final_score: 0.9726958525345623
+score_breakdown:
+  final_score: 0.9727
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 212
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.9908
+      weight: 0.25
+      breakdown:
+        repetition_score: 1.0
+        slop_score: 0.977
+        overall: 0.9908
+    llm_judge:
+      score: 0.95
+      weight: 0.5
+llm_results:
+  diagnosis_score: 1.0
+  flaw_correction_score: 1.0
+  beat_satisfaction_score: 1.0
+  preservation_score: 1.0
+  preserved_count: 5
+  required_preserved_score: 1.0
+  required_preserved_count: 4
+  minimal_change_score: 0.5
+  word_count_valid: true
+  quality_score: 1.0
+  evidence: The model correctly identified and addressed the 'telling vs. showing'
+    flaw in the exposition. It transformed summary into a scene, showing Rachel's
+    dedication to cold cases, her interaction with James, and her home life with Sherlock.
+    The changes were significant enough to create a scene, moving beyond 'minimal
+    surgical edits' but not a complete rewrite of the core information.
+error: null

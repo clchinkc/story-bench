@@ -1,0 +1,68 @@
+evaluation_id: 9e2fdd47
+task_id: multi_beat_synthesis_003
+generation_id: multi_beat_synthesis_003_minimax/minimax-m2_0
+task_type: multi_beat_synthesis
+model: minimax/minimax-m2
+sample_index: 0
+evaluator_model: openai/gpt-5-mini
+evaluator_cost: 0.003821
+timestamp: '2025-12-12T13:36:00.716274'
+success: true
+final_score: 0.41910000000000003
+score_breakdown:
+  final_score: 0.4191
+  components:
+    word_count:
+      score: 0.0
+      weight: 0.25
+      actual: 3146
+      target_range:
+      - 700
+      - 1000
+    programmatic:
+      score: 0.7
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 1.0
+        overall: 0.7
+    llm_judge:
+      score: 0.4882
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 11
+  beat_reqs_total: 15
+  beat_requirements_score: 0.733
+  cross_beat_satisfied: 0
+  cross_beat_total: 4
+  cross_beat_score: 0.0
+  word_count_valid: false
+  context_score: 0.9
+  coherence_score: 0.6
+  failed_items:
+  - 'Beat 3 — Team friction or trust issues surface: No clear conflict or tension
+    within the crew is shown.'
+  - 'Beat 3 — A crew member compromised or in danger: No one is shown captured, exposed,
+    or endangered.'
+  - 'Beat 3 — Miri must choose: painting or revenge/saving someone: No pivotal choice
+    is presented.'
+  - 'Beat 3 — The walls literally and figuratively closing in: The sense of genuine
+    entrapment/escalation is minimal.'
+  - 'Cross-beat — Chekhov''s Gun payoff missing: Details introduced in Fun & Games
+    (e.g., the autopilot shift/text) are not used as a critical payoff during the
+    closing-in section.'
+  - 'Cross-beat — Tonal escalation incomplete: Tone moves from playful to raised stakes
+    but never reaches clear genuine danger/gallows-humor in Beat 3.'
+  - 'Cross-beat — Mentor presence not fully active in Beat 3: Eleanor is revealed
+    and issues orders, but does not become an active, escalating threat by Beat 3
+    as required.'
+  - 'Cross-beat — Team dynamics arc across beats not established: No single crew member
+    demonstrates a sustained arc across all three beats that meaningfully affects
+    the outcome.'
+  - Coherence — Repetition and duplicated paragraphs severely undermine narrative
+    flow and clarity.
+  - Structural — Story ends (or stops) before Bad Guys Close In is fully developed
+    or resolved, leaving several beat requirements under-addressed.
+  - Word count — Exceeds required range (provided word_count=3146), so word_count_valid
+    is false.
+error: null

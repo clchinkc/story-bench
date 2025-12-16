@@ -1,0 +1,62 @@
+evaluation_id: 55dbe353
+task_id: beat_interpolation_001
+generation_id: beat_interpolation_001_openai/gpt-5.2_0
+task_type: beat_interpolation
+model: openai/gpt-5.2
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.020235
+timestamp: '2025-12-12T11:24:14.514760'
+success: true
+final_score: 0.888219549559618
+score_breakdown:
+  final_score: 0.8882
+  components:
+    word_count:
+      score: 0.6429
+      weight: 0.25
+      actual: 397
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.91
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.85
+        slop_score: 1.0
+        overall: 0.91
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: false
+  word_count: 397
+  word_count_range: 200-350
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: 'STRENGTHS: All 4 required elements present and well-executed: (1) Marcus
+    introduced with vivid characterization (gray hair, precise movements, measured
+    demeanor); (2) Practical wisdom delivered through compass, notebook, charcoal—tools
+    that leverage Elena''s librarian strengths rather than compensating for them;
+    (3) Elena''s doubt shifts convincingly from ''I''m not—'' to accepting responsibility
+    (''reluctantly, so did she''); (4) Librarian skills explicitly reframed as assets
+    (''You notice patterns. You read what others skim''). All must-not violations
+    avoided: Elena remains doubtful and hesitant, Marcus explicitly does not accompany
+    her, setting remains in the shop/village (not forest), no magical powers discovered.
+    Character voice is consistent—Elena''s self-deprecation, Marcus''s measured wisdom,
+    the library metaphors throughout. Bridge between beats is seamless: BEFORE ends
+    with Elena refusing and walking out; GENERATED shows her returning with guilt,
+    meeting Marcus, receiving tools; AFTER shows her at forest edge with those tools,
+    ready to cross threshold. Continuity perfect: same map, same grandmother''s house
+    reference, same compass and satchel. DEDUCTION: Word count (397) exceeds maximum
+    (350) by 47 words, violating the technical requirement. However, this is a minor
+    technical violation that does not compromise narrative quality or beat execution.'
+error: null

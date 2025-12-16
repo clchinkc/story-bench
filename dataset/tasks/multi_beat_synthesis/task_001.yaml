@@ -1,0 +1,119 @@
+# Multi-Beat Synthesis Task 001 - Hero's Journey
+# Generate: Tests, Allies, Enemies → Approach → Ordeal
+
+task_id: "multi_beat_synthesis_001"
+task_type: "multi_beat_synthesis"
+theory: "Hero's Journey"
+difficulty: "hard"
+
+metadata:
+  genre: "urban fantasy"
+  created_date: "2024-12-06"
+  author: "benchmark_creator"
+  version: "1.0"
+
+story_context:
+  protagonist: |
+    Dante Reyes, 28, a former street artist who discovered he can see the emotional
+    residue left by strong feelings—visible as colors and shapes that cling to places
+    and objects. A recovering addict, three years clean, carrying guilt about his
+    younger sister's death from an overdose he couldn't prevent.
+  setting: |
+    Contemporary Chicago, but with a hidden underworld of "Resonants"—people with
+    emotional sensitivity abilities. The main location is the abandoned Buckingham
+    Hotel, now a nexus of accumulated emotional energy where the city's Resonants
+    gather.
+  central_conflict: |
+    A serial killer is targeting Resonants, draining their abilities and leaving
+    them emotionally hollow. Dante is drawn into the hunt when the killer's latest
+    victim is his mentor, Rosa, who taught him to control his gift. The killer seems
+    to know Dante specifically—and may be connected to his sister's death.
+  tone: "Noir-tinged urban fantasy, melancholic but determined, redemption arc"
+
+beats_to_generate:
+  - name: "Tests, Allies, Enemies"
+    position: "First beat"
+    requirements:
+      - "Dante encounters another Resonant who distrusts him initially"
+      - "A test of Dante's ability—using his gift under pressure"
+      - "Revelation of an enemy within the Resonant community (a traitor)"
+      - "Dante must prove himself to gain an ally"
+      - "Reference to Dante's addiction/recovery as relevant to his character"
+
+  - name: "Approach to the Inmost Cave"
+    position: "Second beat"
+    requirements:
+      - "Dante and his new ally plan how to confront the killer"
+      - "Dante realizes the confrontation will require facing his guilt about his sister"
+      - "Preparation scene—gathering tools, information, or courage"
+      - "A moment of doubt or fear before proceeding"
+      - "Symbolic threshold—entering a dangerous space"
+
+  - name: "The Ordeal"
+    position: "Third beat"
+    requirements:
+      - "Direct confrontation with the killer or their trap"
+      - "Dante experiences symbolic death—his guilt overwhelming him"
+      - "A moment where all seems lost"
+      - "Transformation through acceptance (of guilt, loss, or truth)"
+      - "Victory through understanding, not just strength"
+
+cross_beat_constraints:
+  - type: "Chekhov's Gun"
+    requirement: |
+      An object or detail introduced in Beat 1 (Tests, Allies, Enemies) must be
+      essential to resolving the Ordeal in Beat 3. Example: a specific ability,
+      tool, or piece of information that seems minor at first.
+
+  - type: "Character Arc Progression"
+    requirement: |
+      Dante's relationship with his guilt must evolve across all three beats:
+      Beat 1 (guilt mentioned), Beat 2 (guilt recognized as obstacle), Beat 3
+      (guilt transformed or accepted).
+
+  - type: "Rising Stakes"
+    requirement: |
+      Each beat must raise the stakes higher than the previous one. The tension
+      and danger must escalate continuously.
+
+  - type: "Ally Continuity"
+    requirement: |
+      The ally gained in Beat 1 must be present and relevant in both Beat 2
+      (planning) and Beat 3 (confrontation).
+
+word_count: [700, 1000]
+
+evaluation_criteria:
+  beat_specific:
+    beat_1:
+      - "Distrustful Resonant encounter present"
+      - "Dante's ability tested under pressure"
+      - "Traitor/enemy revealed"
+      - "Alliance formed"
+      - "Addiction/recovery referenced"
+    beat_2:
+      - "Planning scene with ally"
+      - "Sister guilt recognized as obstacle"
+      - "Preparation shown"
+      - "Doubt/fear moment"
+      - "Symbolic threshold crossing"
+    beat_3:
+      - "Killer confrontation"
+      - "Symbolic death through guilt"
+      - "All is lost moment"
+      - "Transformation through acceptance"
+      - "Victory through understanding"
+
+  cross_beat:
+    - criterion: "chekhovs_gun"
+      description: "Element from Beat 1 is essential in Beat 3"
+    - criterion: "guilt_arc_progression"
+      description: "Guilt evolves: mentioned → recognized → transformed"
+    - criterion: "rising_stakes"
+      description: "Stakes escalate across all three beats"
+    - criterion: "ally_continuity"
+      description: "Ally present and relevant in all three beats"
+    - criterion: "word_count_valid"
+      description: "Output is between 700-1000 words total"
+    - criterion: "context_maintained"
+      description: "Protagonist, setting, conflict, and tone consistent"

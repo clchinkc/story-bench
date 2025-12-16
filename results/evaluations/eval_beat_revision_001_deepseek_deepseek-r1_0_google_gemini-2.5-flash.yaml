@@ -1,0 +1,54 @@
+evaluation_id: f59f7db1
+task_id: beat_revision_001
+generation_id: beat_revision_001_deepseek/deepseek-r1_0
+task_type: beat_revision
+model: deepseek/deepseek-r1
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0012939
+timestamp: '2025-12-13T13:18:32.235449'
+success: true
+final_score: 0.9565000000000001
+score_breakdown:
+  final_score: 0.9565
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 294
+      target_range:
+      - 250
+      - 400
+    programmatic:
+      score: 0.916
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.86
+        slop_score: 1.0
+        overall: 0.916
+    llm_judge:
+      score: 0.955
+      weight: 0.5
+llm_results:
+  diagnosis_score: 1.0
+  flaw_correction_score: 1.0
+  beat_satisfaction_score: 1.0
+  preservation_score: 1.0
+  preserved_count: 4
+  preserved_total: 4
+  required_preserved_score: 0.75
+  required_preserved_count: 3
+  required_preserved_total: 4
+  minimal_change_score: 0.8
+  word_count_valid: true
+  quality_score: 1.0
+  evidence: The model correctly identified that the original segment treated The Ordeal
+    as a mere boss battle and not a transformative crisis. It successfully integrated
+    Kira's deepest fear (guilt over her brother's death) into the dragon's dialogue,
+    created a clear 'death' moment where she is crushed by the truth of her guilt,
+    and showed a transformation where she gains new understanding and acceptance.
+    The victory then stems from this new insight. The changes were surgical, focusing
+    on the dialogue and Kira's internal state during the battle, while largely preserving
+    the action beats. One required phrase was slightly altered ('a earth-shaking roar'
+    instead of 'an earth-shaking roar').
+error: null

@@ -1,0 +1,180 @@
+evaluation_id: 1e4023c0
+task_id: multi_beat_synthesis_001
+generation_id: multi_beat_synthesis_001_openai/gpt-5.1_0
+task_type: multi_beat_synthesis
+model: openai/gpt-5.1
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.07905
+timestamp: '2025-12-12T10:12:15.145012'
+success: true
+final_score: 0.6532499999999999
+score_breakdown:
+  final_score: 0.6532
+  components:
+    word_count:
+      score: 0.0
+      weight: 0.25
+      actual: 2327
+      target_range:
+      - 700
+      - 1000
+    programmatic:
+      score: 0.7
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 1.0
+        overall: 0.7
+    llm_judge:
+      score: 0.9565
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 14
+  beat_reqs_total: 15
+  beat_requirements_score: 0.93
+  cross_beat_satisfied: 4
+  cross_beat_total: 4
+  cross_beat_score: 1.0
+  word_count_valid: false
+  context_score: 0.95
+  coherence_score: 0.92
+  overall_score: 0.93
+  failed_items:
+  - 'Word count: 2327 words exceeds maximum of 1000 (story is 2.3x target length)'
+  detailed_analysis:
+    beat_1_tests_allies_enemies:
+      score: 0.95
+      satisfied:
+      - Dante encounters Mina, a Resonant who initially distrusts him (box cutter
+        threat, accusation of being traitor)
+      - 'Test of ability under pressure: navigating the violet emotional collapse
+        in the corridor, demonstrating control Rosa taught him'
+      - 'Revelation of traitor: Mina reveals someone inside the council sold Rosa
+        out to the killer'
+      - 'Dante proves himself: survives the collapse, explains his presence, shows
+        the sobriety chip as evidence of character'
+      - 'Addiction/recovery referenced: sobriety chip, three years clean, internal
+        struggle with craving during the collapse'
+      notes: All five requirements fully satisfied with strong integration
+    beat_2_approach_inmost_cave:
+      score: 0.95
+      satisfied:
+      - 'Planning scene: Mina and Dante gather cassettes, blueprints, master key,
+        chalk; discuss strategy'
+      - 'Guilt recognition as obstacle: Dante explicitly states ''If this guy uses
+        emotions as weapons, he''ll use her. Use what I did—what I didn''t do'''
+      - 'Preparation with tools and courage: gathering physical items and emotional
+        fortification'
+      - 'Moment of doubt: ''The thought of stepping into that much feeling made his
+        stomach flip''; hesitation at the stairwell'
+      - 'Symbolic threshold: climbing the service stairwell to the sealed thirteenth
+        floor, the fire door that ''thrummed under his palm'''
+      notes: All five requirements satisfied; doubt scene is subtle but present
+    beat_3_the_ordeal:
+      score: 0.9
+      satisfied:
+      - 'Direct confrontation: Dante faces the killer in the ballroom; killer reveals
+        himself and begins feeding'
+      - 'Symbolic death/overwhelming guilt: Isa''s death replayed on loop, guilt ''black
+        and viscous, trying to drag him under''; Dante sinks to knees'
+      - 'All seems lost: killer feeding from both Dante and Mina, Mina choked/silenced,
+        chip slips from Dante''s hand'
+      - 'Transformation through acceptance: Dante accepts he wasn''t god, wasn''t
+        enough but also wasn''t responsible for Isa''s entire fate; opens himself
+        fully to grief'
+      - 'Victory through understanding: Dante''s acceptance of his guilt paradoxically
+        weakens the killer''s power; killer cannot parse genuine, multifaceted emotion'
+      notes: All five requirements satisfied; victory is psychological/emotional rather
+        than physical, fitting the noir-fantasy tone
+    chekhov_gun:
+      score: 1.0
+      analysis: 'The sobriety chip introduced in Beat 1 becomes essential in Beat
+        3. Its ''blank spot'' where no residue clings serves as both literal and metaphorical
+        anchor. In the ordeal, Dante uses it to ground himself (''He closed his hand
+        over the chip, anchoring himself in its blank spot where no color lived'').
+        The chip''s refusal to hold emotional residue becomes the mechanism by which
+        Dante can walk through the killer''s trap—it parts the colors ''like a stone
+        in water.'' The object is perfectly calibrated: introduced as character detail,
+        becomes tactical tool, resolves the climax.'
+    character_arc_progression:
+      score: 1.0
+      beat_1: 'Guilt mentioned: Dante carries ''guilt about his younger sister''s
+        death''; internal struggle with craving during collapse shows guilt''s power'
+      beat_2: 'Guilt recognized as obstacle: ''If this guy uses emotions as weapons,
+        he''ll use her. Use what I didn''t do.'' Dante explicitly identifies guilt
+        as vulnerability the killer will exploit'
+      beat_3: 'Guilt transformed: Dante moves from self-blame (''I killed her'') to
+        acceptance (''I wasn''t enough. But I wasn''t god either''). He reframes Isa''s
+        death as her own journey, not his failure. This acceptance paradoxically becomes
+        his strength.'
+      analysis: Arc is complete and organic; guilt evolves from background trauma
+        → active obstacle → integrated wisdom
+    rising_stakes:
+      score: 1.0
+      beat_1: 'Local danger: violet collapse in corridor; immediate physical threat;
+        Dante and Mina could die in seconds'
+      beat_2: 'Existential stakes: multiple Resonants dead; traitor within community;
+        killer growing stronger; Dante must confront the source of his deepest trauma'
+      beat_3: 'Psychological annihilation: killer can drain Resonants of all feeling;
+        Dante''s guilt weaponized against him; both Dante and Mina being consumed;
+        the ballroom itself is a nexus of accumulated city trauma'
+      analysis: Stakes escalate from immediate/physical → systemic/emotional → existential/psychological.
+        Each beat raises the ante.
+    ally_continuity:
+      score: 1.0
+      beat_1: Mina introduced, distrusts Dante, becomes ally after he proves himself
+      beat_2: Mina present throughout planning; gathers tools with Dante; provides
+        emotional support and strategic insight
+      beat_3: Mina present in confrontation; her ability to 'hear lies' provides tactical
+        advantage; she's also being drained by killer, raising personal stakes; her
+        observation 'he can't parse it' is crucial to understanding the killer's weakness
+      analysis: Mina is not a one-scene ally; she's integrated throughout with evolving
+        relevance
+    context_maintenance:
+      score: 0.95
+      protagonist: Dante's voice, perspective, and internal struggle maintained throughout;
+        recovery journey central to narrative
+      setting: Buckingham Hotel vividly rendered; emotional residue as visible phenomenon
+        consistently applied; noir tone present in language and atmosphere
+      tone: Melancholic but determined maintained; noir-tinged language ('bleeding
+        heart,' 'dead radios,' 'fossil of opulence'); redemption arc evident
+      minor_note: Could have included more Chicago-specific details, but setting is
+        clear enough
+    narrative_coherence:
+      score: 0.92
+      strengths:
+      - Smooth transition from Beat 1 (encounter) to Beat 2 (planning) via decision
+        to pursue killer
+      - Beat 2 preparation logically leads to Beat 3 confrontation
+      - 'Emotional logic is consistent: guilt → vulnerability → acceptance → strength'
+      - Dialogue and action reinforce character development
+      minor_issues:
+      - Killer's identity/backstory introduced late (Beat 3); could have been foreshadowed
+        in Beat 2
+      - Mina's specific role in final confrontation slightly unclear (she's present
+        but mostly observing)
+    technical_execution:
+      prose_quality: 0.95
+      imagery: Exceptional use of color/synesthesia metaphors; emotional residue visualized
+        consistently and vividly
+      dialogue: Natural, reveals character and plot; Mina's voice distinct from Dante's
+      pacing: Generally strong, though length issue affects overall assessment
+      sensory_detail: 'Strong: tactile (chip''s weight), olfactory (chemical sweetness),
+        visual (colors), auditory (Mina''s hearing)'
+  summary: 'This is a strong, well-crafted narrative that satisfies 14 of 15 beat
+    requirements and all 4 cross-beat constraints. The story demonstrates sophisticated
+    understanding of the Hero''s Journey structure, particularly in how it adapts
+    the Ordeal to psychological/emotional rather than purely physical conflict. Dante''s
+    character arc is organic and earned. The sobriety chip functions as an elegant
+    Chekhov''s Gun. Mina is a well-integrated ally with genuine agency. The noir tone
+    is maintained throughout, and the setting is vivid and consistent. The primary
+    failure is the word count: at 2327 words, the story exceeds the 1000-word maximum
+    by 133%, which is a significant structural violation. Despite this, the narrative
+    quality is high—this reads like a polished excerpt from a longer work. If edited
+    to fit the word limit, this would likely score 0.95+.'
+  recommendation: 'STRONG PASS with caveat: Exceptional narrative quality and structure,
+    but word count violation is material. Recommend resubmission at target length
+    (700-1000 words) with judicious cuts to opening/closing sections while preserving
+    the core three-beat structure.'
+error: null

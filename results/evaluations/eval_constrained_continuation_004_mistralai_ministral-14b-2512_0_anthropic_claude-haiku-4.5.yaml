@@ -1,0 +1,100 @@
+evaluation_id: 3220c53e
+task_id: constrained_continuation_004
+generation_id: constrained_continuation_004_mistralai/ministral-14b-2512_0
+task_type: constrained_continuation
+model: mistralai/ministral-14b-2512
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.037945
+timestamp: '2025-12-12T13:41:30.998338'
+success: true
+final_score: 0.6646345029239766
+score_breakdown:
+  final_score: 0.6646
+  components:
+    word_count:
+      score: 0.0
+      weight: 0.25
+      actual: 1311
+      target_range:
+      - 500
+      - 700
+    programmatic:
+      score: 0.6985
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 0.9963
+        overall: 0.6985
+    llm_judge:
+      score: 0.98
+      weight: 0.5
+llm_results:
+  beats_present: 2
+  beats_total: 2
+  beats_score: 1.0
+  must_include_present: 6
+  must_include_total: 6
+  must_include_score: 1.0
+  must_not_avoided: 4
+  must_not_total: 4
+  must_not_score: 1.0
+  word_count_valid: false
+  word_count: 1311
+  word_count_range: 500-700
+  tone_score: 0.9
+  ending_score: 0.95
+  failed_constraints:
+  - 'CRITICAL: Word count 1311 exceeds maximum of 700 by 611 words (87% over limit)'
+  analysis:
+    beats_present_detail:
+    - 'First Plot Point (Point of No Return): Eleanor''s declaration ''We publish
+      it. Every word.'' - clear commitment to dangerous path'
+    - 'Act 2 Opening (Rising Action): Holloway''s arrival and Eleanor''s confrontation
+      with him, establishing the stakes and beginning active conflict'
+    must_include_detail:
+    - '✓ Eleanor making decision to publish: Explicit and emphatic (''We publish it.
+      Every word.'')'
+    - '✓ Central conflict established: Profit vs. ethics/danger clearly articulated
+      through creditor pressure and manuscript content'
+    - '✓ Eleanor defying Victorian expectations: Stepping into business leadership,
+      making unilateral decisions, rejecting traditional female passivity'
+    - '✓ Thomas Chen as key ally: Positioned as essential partner with printing expertise
+      and personal stake in company survival'
+    - '✓ Danger hint: Multiple references to threats, names in manuscript, Holloway''s
+      ominous final line about the Ripper'
+    - '✓ Threshold crossed: Eleanor explicitly recognizes the irreversible nature
+      of her choice (''one she could not uncross'')'
+    must_not_detail:
+    - '✓ No Jack the Ripper character appearance: Manuscript discussed but killer
+      never appears as character'
+    - '✓ No graphic violence: Manuscript content referenced abstractly, no explicit
+      descriptions'
+    - '✓ No romantic subplot: Eleanor-Thomas relationship remains professional and
+      collaborative'
+    - '✓ No easy solution: Financial crisis remains unresolved; publishing is a gamble,
+      not a guaranteed fix'
+    tone_assessment: 'Gothic tension maintained throughout with fog, shadows, gaslight,
+      and ominous atmosphere. Feminist undertones strong: Eleanor''s rebellion against
+      patriarchal constraints, her agency in seizing control, rejection of invisibility.
+      Victorian atmosphere well-established through language, setting details, and
+      social constraints. Minor deduction for occasional modern phrasing (''damn the
+      consequences'') that slightly breaks period voice.'
+    ending_assessment: 'Excellent execution: Eleanor is fully committed to dangerous
+      path, Act 2 clearly begun with active conflict (Holloway''s arrival), rising
+      stakes established, and forward momentum established (''Then we begin''). The
+      ending perfectly positions the story for escalating complications in Act 2.'
+    critical_issue: The submission dramatically exceeds word count constraints. At
+      1311 words, it is 87% over the 700-word maximum. This is a severe structural
+      violation that would typically result in rejection in professional contexts.
+      The content quality is high, but the constraint violation is objective and measurable.
+  overall_score: 0.52
+  score_rationale: 'While the narrative demonstrates exceptional quality in plot structure,
+    character development, tone, and thematic execution (scoring 0.9-1.0 on qualitative
+    measures), the word count violation is a critical, objective failure. The piece
+    is nearly twice the maximum allowed length. In professional evaluation, constraint
+    violations of this magnitude typically result in automatic rejection regardless
+    of content quality. The 0.52 score reflects: high qualitative performance (0.95
+    average) severely penalized by the quantifiable constraint failure (word count
+    represents ~25-30% of evaluation weight in strict rubrics).'
+error: null

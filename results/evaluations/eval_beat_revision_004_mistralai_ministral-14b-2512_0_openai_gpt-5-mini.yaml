@@ -1,0 +1,58 @@
+evaluation_id: 3508bfd8
+task_id: beat_revision_004
+generation_id: beat_revision_004_mistralai/ministral-14b-2512_0
+task_type: beat_revision
+model: mistralai/ministral-14b-2512
+sample_index: 0
+evaluator_model: openai/gpt-5-mini
+evaluator_cost: 0.00219775
+timestamp: '2025-12-13T13:49:08.912493'
+success: true
+final_score: 0.8071242256461488
+score_breakdown:
+  final_score: 0.8071
+  components:
+    word_count:
+      score: 0.8825
+      weight: 0.25
+      actual: 410
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.886
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.81
+        slop_score: 1.0
+        overall: 0.886
+    llm_judge:
+      score: 0.73
+      weight: 0.5
+llm_results:
+  diagnosis_score: 1.0
+  flaw_correction_score: 1.0
+  beat_satisfaction_score: 0.9
+  preservation_score: 0.6
+  preserved_count: 3
+  preserved_total: 5
+  required_preserved_score: 0.0
+  required_preserved_count: 0
+  required_preserved_total: 4
+  minimal_change_score: 0.0
+  word_count_valid: false
+  quality_score: 0.9
+  evidence: The revision clearly addressed the actual flaw (it converted telling into
+    showing by placing Detective Rachel Torres in a lived scene with sensory detail,
+    action, and interaction with Detective James Oyelaran and the cat Sherlock). It
+    shows her fixation on cold cases through behavior (manipulating a photo, internal
+    circling of cases) and establishes setting via smells, sound, and precinct activity.
+    However, the edit is a near-complete rewrite rather than a minimal surgical change
+    (minimal_change_score=0.0). It failed to preserve two of the five required elements
+    (Queens apartment and the explicit 'Tuesday morning' timing) and none of the four
+    exact required phrases were present (e.g., "Detective Rachel Torres", "Detective
+    James Oyelaran", "cat named Sherlock", "Tuesday morning in October"). Word count
+    provided with the submission was outside the allowed range (word_count_valid=false).
+    Overall writing quality is high with no major new errors, but the constrained-preservation
+    requirements were not met.
+error: null

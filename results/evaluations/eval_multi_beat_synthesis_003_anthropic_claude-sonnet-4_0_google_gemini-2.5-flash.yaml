@@ -1,0 +1,52 @@
+evaluation_id: 2e354136
+task_id: multi_beat_synthesis_003
+generation_id: multi_beat_synthesis_003_anthropic/claude-sonnet-4_0
+task_type: multi_beat_synthesis
+model: anthropic/claude-sonnet-4
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0012881
+timestamp: '2025-12-12T14:28:27.306085'
+success: true
+final_score: 0.6435553503743421
+score_breakdown:
+  final_score: 0.6436
+  components:
+    word_count:
+      score: 0.1209
+      weight: 0.25
+      actual: 515
+      target_range:
+      - 700
+      - 1000
+    programmatic:
+      score: 0.6893
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 0.9733
+        overall: 0.6893
+    llm_judge:
+      score: 0.882
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 11
+  beat_reqs_total: 15
+  beat_requirements_score: 0.73
+  cross_beat_satisfied: 4
+  cross_beat_total: 4
+  cross_beat_score: 1.0
+  word_count_valid: false
+  context_score: 1.0
+  coherence_score: 0.9
+  failed_items:
+  - 'Beat 1: Moments of humor and style (present but could be stronger, more explicit)'
+  - 'Beat 2: The nature of the heist changes (from simple theft to something more)
+    - while the stakes change, the *nature* of the heist itself (getting the painting)
+    hasn''t fundamentally shifted yet, just the difficulty.'
+  - 'Beat 3: Team friction or trust issues surface (not present)'
+  - 'Beat 3: A crew member compromised or in danger (not explicitly shown, though
+    Chen is in a precarious position, it''s not a direct ''compromise'')'
+  - 'Beat 3: Miri must choose: painting or revenge/saving someone (the choice is more
+    about the painting vs. escape, not revenge or saving a specific person yet)'
+error: null

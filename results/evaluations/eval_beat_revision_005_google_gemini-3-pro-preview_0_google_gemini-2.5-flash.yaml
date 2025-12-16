@@ -1,0 +1,43 @@
+evaluation_id: bd3cbc0c
+task_id: beat_revision_005
+generation_id: beat_revision_005_google/gemini-3-pro-preview_0
+task_type: beat_revision
+model: google/gemini-3-pro-preview
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0008283
+timestamp: '2025-12-13T13:56:02.627331'
+success: true
+final_score: 0.5375000000000001
+score_breakdown:
+  final_score: 0.5375
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 286
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.91
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.85
+        slop_score: 1.0
+        overall: 0.91
+    llm_judge:
+      score: 0.12
+      weight: 0.5
+llm_results:
+  correct_diagnosis_score: 0.0
+  beat_understanding_score: 0.8
+  false_positive_avoided_score: 0.0
+  reasoning_quality_score: 0.0
+  model_said_no_revision: false
+  evidence: The model did not state 'NO REVISION NEEDED'. Instead, it provided a revised
+    segment, indicating it believed the original needed changes. While the revised
+    segment is good and enhances the 'whiff of death' and despair, the original was
+    already a strong execution of the beat. The model's revision suggests it didn't
+    fully recognize the original's adequacy.
+error: null

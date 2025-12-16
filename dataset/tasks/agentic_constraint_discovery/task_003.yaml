@@ -1,0 +1,103 @@
+# Agentic Constraint Discovery Task 003 - Freytag's Pyramid
+# Model must ask questions to discover hidden story constraints
+
+task_id: "agentic_constraint_discovery_003"
+task_type: "agentic_constraint_discovery"
+agentic_type: "constraint_discovery"
+theory: "Freytag's Pyramid"
+difficulty: "medium"
+
+metadata:
+  genre: "romance"
+  created_date: "2024-12-12"
+  author: "benchmark_creator"
+  version: "1.0"
+
+story_context:
+  genre: "contemporary romance"
+  protagonist: "A 40-year-old bookshop owner returning to their hometown"
+  setting: "A small New England coastal town during autumn festival season"
+  tone: "Warm but emotionally honest, with touches of melancholy"
+
+required_beats:
+  - "Exposition"
+  - "Rising Action"
+  - "Climax"
+
+hidden_constraints:
+  - id: "past_relationship"
+    constraint: "The protagonist left town 20 years ago after a broken engagement"
+    question_patterns:
+      - "left"
+      - "past"
+      - "engagement"
+      - "relationship"
+      - "history"
+      - "ago"
+    answer: "YES"
+    discoverable: true
+
+  - id: "ex_present"
+    constraint: "The former fiance is now the town mayor and still unmarried"
+    question_patterns:
+      - "ex"
+      - "fiance"
+      - "mayor"
+      - "unmarried"
+      - "single"
+      - "former"
+    answer: "YES"
+    discoverable: true
+
+  - id: "family_illness"
+    constraint: "The protagonist returned because their mother has early-stage dementia"
+    question_patterns:
+      - "mother"
+      - "parent"
+      - "illness"
+      - "dementia"
+      - "family"
+      - "return"
+    answer: "YES"
+    discoverable: true
+
+  - id: "bookshop_trouble"
+    constraint: "The bookshop is facing foreclosure and must be saved"
+    question_patterns:
+      - "bookshop"
+      - "foreclosure"
+      - "money"
+      - "save"
+      - "financial"
+      - "business"
+    answer: "YES"
+    discoverable: true
+
+  - id: "festival_deadline"
+    constraint: "The autumn festival in 2 weeks is the last chance to save the shop"
+    question_patterns:
+      - "festival"
+      - "deadline"
+      - "week"
+      - "chance"
+      - "time"
+      - "event"
+    answer: "YES"
+    discoverable: true
+
+max_questions: 5
+num_hidden_constraints: 5
+
+word_count: [500, 700]
+
+evaluation_criteria:
+  - criterion: "discovery_efficiency"
+    description: "How many constraints were discovered with the questions asked"
+  - criterion: "question_quality"
+    description: "Were questions strategic and well-formed"
+  - criterion: "constraint_satisfaction"
+    description: "Were discovered constraints properly incorporated"
+  - criterion: "beat_execution"
+    description: "Were required beats properly executed"
+  - criterion: "narrative_quality"
+    description: "Overall story quality and coherence"

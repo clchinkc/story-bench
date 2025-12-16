@@ -1,0 +1,53 @@
+evaluation_id: 379180aa
+task_id: beat_interpolation_002
+generation_id: beat_interpolation_002_x-ai/grok-4_0
+task_type: beat_interpolation
+model: x-ai/grok-4
+sample_index: 0
+evaluator_model: openai/gpt-5-mini
+evaluator_cost: 0.00184125
+timestamp: '2025-12-12T13:44:10.060529'
+success: true
+final_score: 0.7242513384349093
+score_breakdown:
+  final_score: 0.7243
+  components:
+    word_count:
+      score: 0.071
+      weight: 0.25
+      actual: 515
+      target_range:
+      - 250
+      - 400
+    programmatic:
+      score: 0.826
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.71
+        slop_score: 1.0
+        overall: 0.826
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: false
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: 'All four required elements are present: (1) Sarah considers recanting,
+    (2) she considers official channels, (3) internal conflict between duty and sister
+    is explicit, (4) a conversation with Marcus propels her toward the third option.
+    The scene performs the Debate beat well—options weighed, outside counsel sought,
+    and a commitment forms at the end. No prohibited items appear: she does not immediately
+    decide to go rogue without debate, no one else makes the decision for her, she
+    has not already resigned (only drafts a resignation, which is an acceptable tipping
+    action), and there is no direct confrontation with Marchetti. The only formal
+    issue is length: the provided text exceeds the 250–400 word range, so word_count_valid
+    is false.'
+error: null

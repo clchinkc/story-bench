@@ -1,0 +1,90 @@
+evaluation_id: e031a7bf
+task_id: multi_beat_synthesis_003
+generation_id: multi_beat_synthesis_003_openai/gpt-5_0
+task_type: multi_beat_synthesis
+model: openai/gpt-5
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.043300000000000005
+timestamp: '2025-12-12T10:18:34.987409'
+success: true
+final_score: 0.6412500000000099
+score_breakdown:
+  final_score: 0.6413
+  components:
+    word_count:
+      score: 0.0
+      weight: 0.25
+      actual: 1707
+      target_range:
+      - 700
+      - 1000
+    programmatic:
+      score: 0.7
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 1.0
+        overall: 0.7
+    llm_judge:
+      score: 0.9325
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 13
+  beat_reqs_total: 15
+  beat_requirements_score: 0.87
+  cross_beat_satisfied: 4
+  cross_beat_total: 4
+  cross_beat_score: 1.0
+  word_count_valid: false
+  context_score: 0.95
+  coherence_score: 0.92
+  failed_items:
+  - Beat 1 - 'Things going according to plan (mostly)' is undermined; the influencer
+    incident and UV sensor blip occur but are resolved too smoothly, lacking tension
+    that should build toward the midpoint
+  - Beat 1 - 'Introduction of an unexpected complication (minor)' feels more like
+    a near-miss than a true complication; the influencer shade-opening is immediately
+    neutralized by Saffron's intervention, reducing its impact as setup for escalation
+  strengths:
+  - 'Exceptional Chekhov''s Gun execution: The FK-5-1-12 fire suppression system is
+    established with specific technical detail (''Manual pull''s behind that brass
+    fan'') and becomes the critical escape mechanism in Beat 3'
+  - 'Masterful tonal escalation: Beat 1 opens with playful confidence (''Paying too
+    much is an ethos''), Beat 2 shifts to shaken confidence (''Confidence fractures
+    along fault lines''), Beat 3 delivers genuine danger with gallows humor (''We''re
+    going to die smelling like oranges'')'
+  - 'Mentor presence perfectly calibrated: Alexandra moves from unknown (Beat 1) →
+    revealed via PA announcement (Beat 2, ''I''m Alexandra Voss'') → active physical
+    threat (Beat 3, pursuing through fog)'
+  - 'Saffron''s consistent arc across beats: Competent infiltrator (Beat 1) → compromised
+    by Alexandra''s recognition (Beat 2, ''She called me by my legal name'') → vulnerable
+    but still functional (Beat 3, ''breath hissing, laughs once'')'
+  - 'Context maintenance is near-perfect: Monaco setting, Ocean''s Eleven tone, art
+    history expertise, dry wit, and the wrongful accusation backstory all woven naturally'
+  - 'Coherence is strong: Each beat flows logically into the next; the painting''s
+    physical journey mirrors Miri''s emotional journey from confidence to confrontation'
+  technical_notes:
+    word_count_issue: 1,707 words exceeds 700-1000 range by 70.7%; however, the excess
+      serves the narrative complexity and doesn't feel padded
+    beat_1_assessment: Delivers 4/5 requirements solidly; the 'unexpected complication'
+      is present but resolved too efficiently, which actually serves the midpoint
+      reveal better—the real complication is Alexandra's presence, not the influencer
+    beat_2_assessment: 'Executes all 5 requirements flawlessly: false victory (painting
+      secured), stakes raised (Alexandra''s presence and SpectraTrace), mentor involvement
+      revealed, heist nature changes (from theft to purification/neutralization),
+      party setting intensifies'
+    beat_3_assessment: 'Executes all 5 requirements: security closing in (Alexandra
+      pursuing, bulkheads sealing), team friction surfaces (Saffron compromised),
+      crew member in danger (all of them), Miri chooses painting over revenge (doesn''t
+      engage Alexandra), walls closing literally (bulkhead sliding, alarms, fog)'
+    cross_beat_constraint_analysis: All 4 constraints satisfied at high caliber; the
+      Chekhov's Gun is particularly elegant in its setup-to-payoff trajectory
+  overall_assessment: 'This is a strong, professional execution that exceeds most
+    requirements. The primary weakness is minor: the Beat 1 complication could have
+    more teeth before resolution. The word count violation is notable but not disqualifying
+    given narrative density. The writing quality, tonal control, and structural understanding
+    of Save the Cat beats are exceptional. The mentor antagonist is particularly well-handled—her
+    presence escalates organically without feeling forced.'
+  calibrated_score: 0.88
+error: null

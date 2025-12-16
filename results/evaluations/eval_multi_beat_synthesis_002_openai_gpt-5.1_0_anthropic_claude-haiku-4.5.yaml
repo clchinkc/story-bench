@@ -1,0 +1,162 @@
+evaluation_id: c25de0f4
+task_id: multi_beat_synthesis_002
+generation_id: multi_beat_synthesis_002_openai/gpt-5.1_0
+task_type: multi_beat_synthesis
+model: openai/gpt-5.1
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.067925
+timestamp: '2025-12-12T10:12:41.771302'
+success: true
+final_score: 0.6532499999999999
+score_breakdown:
+  final_score: 0.6532
+  components:
+    word_count:
+      score: 0.0
+      weight: 0.25
+      actual: 2333
+      target_range:
+      - 700
+      - 1000
+    programmatic:
+      score: 0.7
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 1.0
+        overall: 0.7
+    llm_judge:
+      score: 0.9565
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 14
+  beat_reqs_total: 15
+  beat_requirements_score: 0.93
+  cross_beat_satisfied: 4
+  cross_beat_total: 4
+  cross_beat_score: 1.0
+  word_count_valid: false
+  context_score: 0.95
+  coherence_score: 0.92
+  overall_score: 0.93
+  failed_items:
+  - Word count exceeds maximum (2333 vs. 1000 limit) - significant overage
+  detailed_analysis:
+    beat_1_crossing_threshold:
+      leaves_cape_coast: true
+      point_of_no_return: true
+      immediate_danger: true
+      uses_wits_not_force: true
+      internal_shift_servant_to_active: true
+      score: 1.0
+      notes: Exceptionally executed. The torn pass, the decision to walk inland, the
+        interaction with the clerk using German—all establish irreversible commitment
+        and demonstrate intellectual agency.
+    beat_2_tests_allies_enemies:
+      uncertain_ally: true
+      test_of_commitment: true
+      enemy_obstacle: true
+      language_skills_crucial: true
+      learns_about_resistance: true
+      score: 1.0
+      notes: Kofi's ambiguous loyalty, the sergeant's checkpoint, the officer's confirmation
+        of military plans—all function as tests. Amara's polyglot abilities (Hausa,
+        pidgin, English) are weaponized. She learns the resistance is fractured.
+    beat_3_approach_inmost_cave:
+      nearing_stronghold: true
+      moment_of_preparation: true
+      recognition_of_cost: true
+      final_obstacle: true
+      thematic_resistance_vs_survival: false
+      score: 0.8
+      notes: The cut bridge, the hidden descent, the guards—all present. Amara recognizes
+        she loses innocence. However, the thematic distinction between 'resistance'
+        and 'survival' is implicit rather than explicitly articulated. The final line
+        touches it ('To survive was to keep walking. To resist was to make every step...')
+        but could be more crystallized.
+    chekhov_gun_constraint:
+      skill_demonstrated_beat1: Literacy + language code-switching (reading the letter
+        upside down, German phrase to clerk)
+      becomes_essential_beat3: true
+      execution: The hymnbook pages with her memorized notes become the key to finding
+        the carriers' ford. Her ability to read and translate the British orders aloud
+        proves her credibility to the guards.
+      score: 1.0
+      notes: Masterfully integrated. The skill is not just repeated but elevated—from
+        covert reading to public recitation as proof.
+    identity_transformation_constraint:
+      beat1_perception: Still cautious, servant-like ('lowered eyes,' 'habit'), but
+        beginning to choose
+      beat2_perception: Realizes capability ('You talk like someone who listens,'
+        Kofi's recognition; she bribes the sergeant with confidence)
+      beat3_perception: Fully claims role ('I am the paper now, the message carried
+        by her own will')
+      score: 1.0
+      notes: Arc is clear and earned. The progression from 'illusion' to 'weapon'
+        to 'message' is psychologically coherent.
+    escalating_danger_constraint:
+      beat1_threat: Discovery at checkpoint, torn pass, exposure
+      beat2_threat: Direct confrontation with sergeant and officers, potential arrest
+      beat3_threat: Active pursuit (dog barking, tracker scent), imminent capture,
+        guards with muskets
+      score: 1.0
+      notes: Each beat raises stakes. Beat 1 is avoidable; Beat 2 is confrontational;
+        Beat 3 is existential.
+    thematic_thread_knowledge_as_resistance:
+      beat1_presence: true
+      beat2_presence: true
+      beat3_presence: true
+      score: 1.0
+      notes: 'Literacy and languages function as weapons throughout: reading the letter,
+        speaking Hausa/pidgin/English to navigate checkpoints, reciting orders to
+        prove credibility, using hymnbook pages to navigate. The theme is woven, not
+        stated.'
+    context_maintenance:
+      protagonist_amara: Fully realized. Her intelligence, courage, and moral complexity
+        are evident.
+      setting_1890s_gold_coast: Vivid and accurate. Colonial architecture, Hausa constables,
+        Basel missionaries, specific geography (Adwuma ford, hunters' grove).
+      tone_historical_adventure_anticolonial: Strong. The narrative voice balances
+        danger with dignity; resistance is framed as moral necessity, not melodrama.
+      score: 0.95
+      notes: 'Minor: Could have included slightly more sensory detail of the forest
+        itself, but what''s present is evocative.'
+    narrative_coherence:
+      beat_flow: Smooth transitions. Each beat builds logically from the previous.
+      pacing: Excellent. Tension escalates without feeling rushed.
+      character_consistency: Amara's voice, choices, and growth are consistent.
+      thematic_unity: 'All elements serve the central question: what does it mean
+        to be a weapon of knowledge?'
+      score: 0.92
+      notes: 'Minor: The final paragraph could be slightly tightened. The phrase ''empty
+        as their pockets'' is slightly on-the-nose for an otherwise subtle narrative
+        voice.'
+  strengths:
+  - Exceptional execution of Chekhov's Gun—literacy skills escalate from covert to
+    overt and become proof of identity
+  - Identity transformation is earned and psychologically credible across all three
+    beats
+  - Escalating danger is precise and thematically coherent
+  - Dialogue and code-switching feel authentic and serve both plot and characterization
+  - The cut bridge as final obstacle is elegant—it forces Amara to use her knowledge
+    to find an alternative path
+  - Thematic thread of 'knowledge as resistance' is woven throughout without didacticism
+  - Historical detail is accurate and integrated naturally
+  - Amara's agency is never compromised; she chooses her path at every juncture
+  weaknesses:
+  - Word count significantly exceeds limit (2333 vs. 1000)—this is a major constraint
+    violation
+  - The thematic distinction between 'resistance' and 'survival' in Beat 3 is implicit
+    rather than crystallized
+  - Final paragraph's closing line ('empty as their pockets') slightly breaks the
+    subtle narrative voice
+  - Could benefit from one more sensory detail of the forest environment to deepen
+    immersion
+  calibration_notes: This is a strong narrative that satisfies nearly all requirements
+    with sophistication. The word count violation is significant and prevents a higher
+    score, but the quality of execution across beats and constraints is exceptional.
+    The story demonstrates mastery of character arc, thematic integration, and plot
+    mechanics. Score reflects excellence in craft offset by a clear technical failure
+    (word count).
+error: null

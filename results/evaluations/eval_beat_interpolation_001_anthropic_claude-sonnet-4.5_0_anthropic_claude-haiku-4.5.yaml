@@ -1,0 +1,57 @@
+evaluation_id: 0070d720
+task_id: beat_interpolation_001
+generation_id: beat_interpolation_001_anthropic/claude-sonnet-4.5_0
+task_type: beat_interpolation
+model: anthropic/claude-sonnet-4.5
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.017079999999999998
+timestamp: '2025-12-12T03:22:28.898591'
+success: true
+final_score: 0.997
+score_breakdown:
+  final_score: 0.997
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 279
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.988
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.98
+        slop_score: 1.0
+        overall: 0.988
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: true
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: 'All four required elements present: (1) Marcus Thorne introduced as mentor
+    character with clear wisdom-keeper attributes; (2) practical wisdom delivered
+    through compass gift and reframing Elena''s librarian skills as navigation/pattern-recognition;
+    (3) Elena''s doubt shifts from ''I''m nobody'' to ''Maybe it hadn''t been entirely
+    wrong'' showing reluctant acceptance; (4) explicit connection between cataloging/cross-referencing
+    and forest survival. All must-not violations avoided: Elena remains doubtful and
+    hesitant (not confident/eager), Marcus provides guidance but explicitly doesn''t
+    accompany her or solve problems, setting is market district/shop (not forest),
+    no magical powers discovered. Character voice maintains Elena''s self-doubt while
+    showing subtle openness. Bridge between beats is seamless—Elena enters shop running
+    from guilt, exits with compass and reframed perspective, leading naturally to
+    threshold crossing. Continuity perfect: compass from GENERATED beat appears in
+    AFTER beat, Marcus''s words echo in Elena''s mind, satchel described identically,
+    location progression logical (market→forest edge).'
+error: null

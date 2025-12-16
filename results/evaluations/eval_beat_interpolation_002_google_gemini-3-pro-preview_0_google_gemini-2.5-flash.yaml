@@ -1,0 +1,49 @@
+evaluation_id: 49be6727
+task_id: beat_interpolation_002
+generation_id: beat_interpolation_002_google/gemini-3-pro-preview_0
+task_type: beat_interpolation
+model: google/gemini-3-pro-preview
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0010338
+timestamp: '2025-12-12T12:35:14.216370'
+success: true
+final_score: 0.9685
+score_breakdown:
+  final_score: 0.9685
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 372
+      target_range:
+      - 250
+      - 400
+    programmatic:
+      score: 0.874
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.79
+        slop_score: 1.0
+        overall: 0.874
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: true
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: The generated text perfectly captures the Debate beat. Sarah considers
+    recanting, then going to the authorities, and finally, through internal conflict
+    and a conversation with Marcus, commits to a third, 'rogue' option. All required
+    elements are present, and all 'must not' conditions are avoided. The character's
+    internal struggle and the progression of her decision-making are well-executed,
+    leading directly into the 'Break into Two' beat.
+error: null

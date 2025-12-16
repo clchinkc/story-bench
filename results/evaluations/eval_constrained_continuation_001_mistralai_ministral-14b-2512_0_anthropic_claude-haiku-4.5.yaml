@@ -1,0 +1,85 @@
+evaluation_id: 4581ca8e
+task_id: constrained_continuation_001
+generation_id: constrained_continuation_001_mistralai/ministral-14b-2512_0
+task_type: constrained_continuation
+model: mistralai/ministral-14b-2512
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.0349
+timestamp: '2025-12-12T11:51:58.063892'
+success: true
+final_score: 0.6349499999999999
+score_breakdown:
+  final_score: 0.6349
+  components:
+    word_count:
+      score: 0.0
+      weight: 0.25
+      actual: 1661
+      target_range:
+      - 500
+      - 700
+    programmatic:
+      score: 0.7
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 1.0
+        overall: 0.7
+    llm_judge:
+      score: 0.9199
+      weight: 0.5
+llm_results:
+  beats_present: 2
+  beats_total: 2
+  beats_score: 1.0
+  must_include_present: 5
+  must_include_total: 6
+  must_include_score: 0.833
+  must_not_avoided: 4
+  must_not_total: 4
+  must_not_score: 1.0
+  word_count_valid: false
+  word_count: 1661
+  word_count_range: 500-700
+  tone_score: 0.9
+  ending_score: 0.85
+  failed_constraints:
+  - 'CRITICAL: Word count 1661 exceeds maximum of 700 by 961 words (137% over limit)'
+  - 'MISSING: Zara confronting her fear of failure (not just physical danger) - while
+    she has internal doubt moments, there''s no clear confrontation with the core
+    fear of inadequacy; the narrative focuses more on physical challenges and external
+    threats than psychological reckoning'
+  strengths:
+  - Both required beats (Approach to Inmost Cave, The Ordeal) are clearly present
+    and well-executed
+  - Excellent tension and pacing throughout with desperate hope woven in
+  - 'Strong choice moment: Zara choosing to help Tomás despite danger (constraint
+    met)'
+  - 'Trap/test requiring thief skills: Guardian encounter and net mechanics (constraint
+    met)'
+  - Tomás's revelation about being a scribe/historian with hidden knowledge (constraint
+    met)
+  - 'Symbolic death/rebirth: Guardian defeat and transformation of understanding (constraint
+    met)'
+  - 'Zara emerges changed: shifts from physical strength to intellectual/perceptive
+    power (constraint met)'
+  - All forbidden elements successfully avoided - no cure found, no romance, Tomás
+    survives, no supernatural abilities for Zara
+  - Tone is consistently tense with moral complexity and desperate hope
+  - 'Ending delivers complication: symbols/riddle ahead suggests new challenge beyond
+    the Ordeal'
+  - Excellent character voice and visceral action sequences
+  weaknesses:
+  - Severely exceeds word count constraint - nearly 2.4x the maximum allowed
+  - Fear of failure confrontation is implicit rather than explicit - Zara doubts herself
+    but doesn't directly confront the core psychological fear
+  - The narrative could be tightened significantly without losing impact
+  - Some redundancy in action sequences that could be condensed
+  overall_assessment: Exceptional storytelling with professional-quality prose, complete
+    beat coverage, and all required elements present except one. However, the critical
+    word count violation (1661 vs 700 max) is a major constraint failure that cannot
+    be overlooked. The missing explicit fear-of-failure confrontation is a secondary
+    issue. If word count were within range, this would score 0.9+; the violation drops
+    it significantly.
+error: null

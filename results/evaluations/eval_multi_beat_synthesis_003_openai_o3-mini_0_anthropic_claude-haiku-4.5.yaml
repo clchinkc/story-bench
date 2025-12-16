@@ -1,0 +1,150 @@
+evaluation_id: f7a97371
+task_id: multi_beat_synthesis_003
+generation_id: multi_beat_synthesis_003_openai/o3-mini_0
+task_type: multi_beat_synthesis
+model: openai/o3-mini
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.05362
+timestamp: '2025-12-12T01:51:22.666368'
+success: true
+final_score: 0.8707914742273049
+score_breakdown:
+  final_score: 0.8708
+  components:
+    word_count:
+      score: 0.9494
+      weight: 0.25
+      actual: 671
+      target_range:
+      - 700
+      - 1000
+    programmatic:
+      score: 0.6978
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.52
+        slop_score: 0.9644
+        overall: 0.6978
+    llm_judge:
+      score: 0.918
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 13
+  beat_reqs_total: 15
+  beat_requirements_score: 0.87
+  cross_beat_satisfied: 4
+  cross_beat_total: 4
+  cross_beat_score: 1.0
+  word_count_valid: false
+  context_score: 0.9
+  coherence_score: 0.85
+  failed_items:
+  - 'Word count: 671 words falls short of 700-1000 range requirement (29 words under
+    minimum)'
+  - 'Beat 1 - Things going according to plan (mostly): While the heist executes smoothly
+    initially, the comms glitch is introduced too early and creates ambiguity about
+    whether things are truly ''mostly'' on plan; the beat lacks a clear moment of
+    confident success before complications'
+  detailed_analysis:
+    beat_1_fun_and_games:
+      score: 0.85
+      satisfied:
+      - 'Showcasing skills: Lila''s camera disabling, Jasper''s lock-picking, Miri''s
+        social infiltration all demonstrated'
+      - 'Clever problem-solving: Service corridor route, camera bypass, practiced
+        flourish of retrieval'
+      - 'Humor and style: ''Final curtain call,'' wry banter, smirks, gallows humor
+        later'
+      - 'Introduction of complication: Comms glitch foreshadows trouble'
+      gaps:
+      - Things going according to plan lacks clarity—the glitch arrives before a clear
+        moment of triumph, muddying whether the plan is actually working
+    beat_2_midpoint:
+      score: 0.9
+      satisfied:
+      - 'False victory: Painting secured in custom case—objective achieved'
+      - 'Stakes raised: Elena''s appearance transforms job into moral/personal minefield'
+      - 'Mentor revealed: Elena Laurent emerges from shadows, her betrayal explicitly
+        connected'
+      - 'Nature changes: From ''flawless operation'' to survival mission with personal
+        vendetta'
+      - 'Party setting intensifies: Glitter/ostentation now crackles with threat;
+        elegant halls become treacherous'
+      gaps: []
+    beat_3_bad_guys_close_in:
+      score: 0.9
+      satisfied:
+      - 'Security closing in: Alarms echo, security forces converge, footsteps signal
+        approaching squad'
+      - 'Team friction: Jasper pinned, crew hesitates, anxious glances exchanged,
+        undercurrent of distrust'
+      - 'Crew member compromised: Jasper trapped behind doors, in imminent danger'
+      - 'Miri''s choice: Explicitly stated—''crushing demand of choosing between priceless
+        painting...and saving Jasper'''
+      - 'Walls closing in: Literal (narrow corridors, converging security) and figurative
+        (Elena''s pursuit, moral pressure)'
+      gaps: []
+    cross_beat_constraints:
+      chekhov_gun:
+        score: 1.0
+        analysis: 'Jasper''s scouted service corridor exit route (Beat 1) becomes
+          the critical lifeline in Beat 3. Setup: ''a route he''d scouted earlier
+          and insisted would be their secret exit if anything fizzled.'' Payoff: ''The
+          very exit route Jasper had earlier identified...suddenly emerged as a lifeline.''
+          Clear cause-and-effect.'
+      tonal_escalation:
+        score: 1.0
+        analysis: 'Beat 1: ''confidence of a cat burglar,'' ''well-oiled machine,''
+          ''half-smile.'' Beat 2: ''bitter twist,'' ''measured dread,'' ''fraught
+          whispers.'' Beat 3: ''gallows humor,'' ''desperate plea,'' ''genuine danger.''
+          Progression is clear and earned.'
+      mentor_presence:
+        score: 1.0
+        analysis: 'Beat 1: Elena absent/unknown (only comms glitch hints at trouble).
+          Beat 2: Elena revealed, emerges from shadows, her betrayal explained. Beat
+          3: Elena active threat, ''relentless specter in pursuit,'' ''predatory glee,''
+          voice as ''measured barb.'' Escalation is precise.'
+      team_dynamics:
+        score: 1.0
+        analysis: 'Jasper''s arc: Beat 1—calm, competent scout (''insisted would be
+          their secret exit''). Beat 2—hesitates, exchanges anxious glances. Beat
+          3—pinned, trapped, becomes the moral pivot point forcing Miri''s choice.
+          His progression directly affects plot stakes and Miri''s decision-making.'
+    context_adherence:
+      protagonist: 0.95
+      analysis_protagonist: 'Miri''s character is well-maintained: dry wit evident
+        (''Seems our exit plan''s come in handy, after all''), meticulous planning
+        shown throughout, wrongful accusation context informs her moral struggle with
+        Elena.'
+      setting: 0.9
+      analysis_setting: Monaco Grand Prix yacht setting is vivid and consistent. 'Glittering
+        corridors,' 'champagne glasses,' 'polished floor,' 'elegant halls' all reinforce
+        the glamorous-yet-dangerous environment.
+      tone: 0.85
+      analysis_tone: Ocean's Eleven meets art history tone is mostly achieved. Clever
+        banter present, tension beneath glamour evident. However, the prose occasionally
+        becomes overwrought ('moral minefield,' 'relentless specter') which slightly
+        undercuts the lighter Ocean's Eleven vibe in places.
+    narrative_coherence:
+      score: 0.85
+      strengths:
+      - Clear progression from heist execution → revelation → escape
+      - Emotional stakes escalate logically (job → personal vendetta → survival)
+      - Crew dynamics ground the action in character relationships
+      - Elena's presence ties past trauma to present danger
+      weaknesses:
+      - The comms glitch in Beat 1 creates slight narrative ambiguity—it's unclear
+        if this is a minor hiccup or foreshadowing of larger sabotage
+      - Transition between Beat 2 and Beat 3 could be smoother; the shift from 'Elena
+        appears' to 'alarms echo' happens quickly without intermediate escalation
+        steps
+  overall_score: 0.88
+  summary: Strong execution of Save the Cat structure with excellent cross-beat constraint
+    satisfaction. All four constraints are fully met, particularly the Chekhov's Gun
+    setup/payoff and Jasper's character arc. Beat requirements are nearly complete
+    (13/15), with only minor gaps in Beat 1's 'things going according to plan' clarity.
+    The primary technical failure is word count (29 words short). Narrative coherence
+    is high, context is well-maintained, and tonal escalation is precise. The story
+    successfully balances heist thrills with personal stakes and mentor antagonism.
+error: null

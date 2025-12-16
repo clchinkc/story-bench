@@ -1,0 +1,62 @@
+evaluation_id: be67c191
+task_id: beat_interpolation_002
+generation_id: beat_interpolation_002_openai/gpt-4o-mini_0
+task_type: beat_interpolation
+model: openai/gpt-4o-mini
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.019575000000000002
+timestamp: '2025-12-12T01:15:05.185230'
+success: true
+final_score: 0.8302499999999999
+score_breakdown:
+  final_score: 0.8302
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 384
+      target_range:
+      - 250
+      - 400
+    programmatic:
+      score: 0.856
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.76
+        slop_score: 1.0
+        overall: 0.856
+    llm_judge:
+      score: 0.7325
+      weight: 0.5
+llm_results:
+  beat_elements_score: 0.75
+  elements_found: 3
+  elements_total: 4
+  beat_execution_score: 0.7
+  must_not_score: 0.5
+  violations_found: 2
+  word_count_valid: true
+  character_score: 0.85
+  bridge_score: 0.8
+  continuity_score: 0.9
+  evidence: 'ELEMENTS FOUND: (1) Sarah considers recanting testimony as ''easy way
+    out'' - explicit. (2) Sarah considers going to authorities (Captain Morrison,
+    pushing for protection) - explicit via Marcus''s suggestion. (3) Internal conflict
+    about duty vs. sister''s life - strong throughout (''what good was justice if
+    it cost her sister''s life''). (4) MISSING: No clear moment/conversation that
+    tips her toward the third option (going rogue). The decision appears to crystallize
+    internally without a definitive catalyst within the debate itself. MUST-NOT VIOLATIONS:
+    (1) Sarah ''had to take matters into her own hands'' and ''resolve hardened''
+    suggests she''s already decided to go rogue during the debate, which skips the
+    actual wrestling with the decision. (2) The AFTER section reveals she''s already
+    resigned and become a ''vigilante,'' indicating the decision was made before or
+    during this beat rather than being the culmination. This violates the spirit of
+    the Debate beat where the commitment should come at the END, not during. STRENGTHS:
+    Excellent internal monologue, strong character voice, good pacing, natural dialogue
+    with Marcus. The conflict is genuine and emotionally resonant. WEAKNESSES: The
+    beat conflates internal realization with external commitment; by the end of the
+    generated text, Sarah has already decided to act alone, which belongs in Break
+    Into Two, not Debate. The transition feels rushed rather than earned through genuine
+    debate.'
+error: null

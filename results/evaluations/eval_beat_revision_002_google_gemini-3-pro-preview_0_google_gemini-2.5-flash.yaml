@@ -1,0 +1,53 @@
+evaluation_id: 88275fbb
+task_id: beat_revision_002
+generation_id: beat_revision_002_google/gemini-3-pro-preview_0
+task_type: beat_revision
+model: google/gemini-3-pro-preview
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0012309999999999999
+timestamp: '2025-12-13T13:29:45.867327'
+success: true
+final_score: 0.976
+score_breakdown:
+  final_score: 0.976
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 296
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.964
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.94
+        slop_score: 1.0
+        overall: 0.964
+    llm_judge:
+      score: 0.97
+      weight: 0.5
+llm_results:
+  diagnosis_score: 1.0
+  flaw_correction_score: 1.0
+  beat_satisfaction_score: 1.0
+  preservation_score: 1.0
+  preserved_count: 4
+  preserved_total: 4
+  required_preserved_score: 1.0
+  required_preserved_count: 4
+  required_preserved_total: 4
+  minimal_change_score: 0.7
+  word_count_valid: true
+  quality_score: 1.0
+  evidence: The model correctly identified that the original segment failed to convey
+    a true 'All Is Lost' moment. It addressed the flaw by systematically removing
+    Marcus's options (fundraiser, grant), isolating him (wife leaving, Denise leaving),
+    and creating a 'whiff of death' (loss of family, purpose, and support system).
+    The changes were significant enough to fix the flaw but still maintained the core
+    setup and characters, indicating a good balance between fixing the problem and
+    preserving the original structure. The writing quality is excellent, effectively
+    conveying the despair required for the beat.
+error: null

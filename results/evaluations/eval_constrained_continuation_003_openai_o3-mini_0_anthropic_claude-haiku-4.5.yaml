@@ -1,0 +1,92 @@
+evaluation_id: 341b4292
+task_id: constrained_continuation_003
+generation_id: constrained_continuation_003_openai/o3-mini_0
+task_type: constrained_continuation
+model: openai/o3-mini
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.029240000000000002
+timestamp: '2025-12-12T01:50:09.663358'
+success: true
+final_score: 0.9369943609022556
+score_breakdown:
+  final_score: 0.937
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 650
+      target_range:
+      - 550
+      - 750
+    programmatic:
+      score: 0.763
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.62
+        slop_score: 0.9774
+        overall: 0.763
+    llm_judge:
+      score: 0.9925
+      weight: 0.5
+llm_results:
+  beats_present: 3
+  beats_total: 3
+  beats_score: 1.0
+  must_include_present: 6
+  must_include_total: 6
+  must_include_score: 1.0
+  must_not_avoided: 4
+  must_not_total: 4
+  must_not_score: 1.0
+  word_count_valid: true
+  word_count: 651
+  tone_score: 0.95
+  ending_score: 1.0
+  failed_constraints: []
+  detailed_analysis:
+    beats_analysis:
+      Search: Present - Jin navigates meetings, clandestine gatherings, and technical
+        councils; learns political intrigue and power structures through Mara's guidance
+      Find: Present - Discovery of the suppressed carbon capture technology's true
+        capabilities, including unintended ecosystem-altering effects and cosmic radiation
+        energy potential
+      Take: Present - Jin uploads confidential data and reconfigures fail-safes, consciously
+        trading comfort/safety for uncertain transformative change; pays ethical and
+        personal price
+    must_include_analysis:
+      1_unfamiliar_culture: Excellent - Jin's disorientation in orbital corridors,
+        incomprehensible symbols, fluid cultural rules, zero gravity environment all
+        vividly portrayed
+      2_mentor_figure: Excellent - Mara serves as seasoned guide, former sustainable
+        energy scholar, explains political dynamics and power structures
+      3_unexpected_discovery: Excellent - Technology can alter planetary ecosystems
+        AND generate energy from cosmic radiation; unintended side effects suppressed
+        by Council
+      4_finds_what_wanted: Excellent - Jin gains secure foothold in Collective and
+        platform to continue his fight against the Council
+      5_action_with_cost: Excellent - Data upload and fail-safe reconfiguration; trembling
+        hands, systemic disruption risk, ethical compromise explicitly stated
+      6_moral_compromise: Excellent - Jin consciously compromises safety protocols,
+        risks lives in fragile orbit, trades personal safety for uncertain promise
+    must_not_analysis:
+      1_easy_integration: 'Successfully avoided - Jin experiences clear struggle:
+        disorientation, anxiety, need for mentorship, complex political navigation'
+      2_earth_family_contact: Successfully avoided - No family members mentioned or
+        contacted
+      3_violence_weapons: Successfully avoided - Conflict is political/ideological,
+        no physical violence or weapons depicted
+      4_complete_resolution: Successfully avoided - Conspiracy remains unresolved;
+        Jin's action is beginning of larger conflict, not conclusion
+    tone_assessment: Contemplative and politically charged tone maintained throughout.
+      Personal stakes clearly established (exile, treason warrant, ethical dilemmas).
+      Internal conflict and moral questioning permeate the narrative. Minor deduction
+      only for occasional moments where tension could be heightened further.
+    ending_assessment: 'Perfect alignment with ''Take'' requirement. Story ends at
+      the moment of Jin''s decisive action with clear acknowledgment of price paid:
+      ''consciously trading his own comfort and safety for the uncertain promise of
+      transformative change.'' Mara''s solemn nod and heavy silence emphasize the
+      weight of consequence. Jin has gained platform and foothold but at ethical cost—exactly
+      as specified.'
+  overall_score: 0.99
+error: null

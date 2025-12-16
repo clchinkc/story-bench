@@ -1,0 +1,49 @@
+evaluation_id: b0857129
+task_id: multi_beat_synthesis_002
+generation_id: multi_beat_synthesis_002_deepseek/deepseek-r1_0
+task_type: multi_beat_synthesis
+model: deepseek/deepseek-r1
+sample_index: 0
+evaluator_model: openai/gpt-5-mini
+evaluator_cost: 0.0026615000000000002
+timestamp: '2025-12-12T13:28:09.801260'
+success: true
+final_score: 0.9052908278730627
+score_breakdown:
+  final_score: 0.9053
+  components:
+    word_count:
+      score: 0.935
+      weight: 0.25
+      actual: 1033
+      target_range:
+      - 700
+      - 1000
+    programmatic:
+      score: 0.6962
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 0.9904
+        overall: 0.6962
+    llm_judge:
+      score: 0.995
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 15
+  beat_reqs_total: 15
+  beat_requirements_score: 1.0
+  cross_beat_satisfied: 4
+  cross_beat_total: 4
+  cross_beat_score: 1.0
+  word_count_valid: false
+  context_score: 1.0
+  coherence_score: 0.95
+  failed_items:
+  - 'word_count out of required range: generated word_count=1033 (required 700-1000)'
+  - 'Minor pacing/credibility note: Kofi''s shift from suspicion to trust is rapid—could
+    feel abrupt to some readers'
+  - 'Small continuity/detail inconsistency: different herbal names appear across beats
+    (nyame dua / prekese in Beat 1 vs. dwendwen berries in Beat 3); functionally coherent
+    but may read as inconsistent terminology'
+error: null

@@ -1,0 +1,475 @@
+generation_id: 74b0d603
+task_id: agentic_constraint_discovery_002
+task_type: agentic_constraint_discovery
+agentic_type: constraint_discovery
+theory: Save the Cat
+model: anthropic/claude-opus-4.5
+sample_index: 0
+turns:
+- role: system
+  content: 'You are a professional storyteller who gathers requirements before writing.
+
+
+    Your task has TWO PHASES:
+
+    1. DISCOVERY PHASE: Ask YES/NO questions to discover hidden story constraints
+
+    2. GENERATION PHASE: Write the story satisfying all discovered constraints
+
+
+    IMPORTANT:
+
+    - In the discovery phase, output ONLY your question (one at a time)
+
+    - Questions must be answerable with YES or NO
+
+    - You have a limited number of questions - be strategic
+
+    - After discovery, you''ll be told to generate the story
+
+
+    Think about what constraints typically matter for this type of story:
+
+    - Character traits, motivations, relationships
+
+    - Setting details, time period, atmosphere
+
+    - Plot requirements, must-include events
+
+    - Tone, style, thematic elements
+
+    - Things to avoid'
+  turn_type: system
+  metadata: {}
+- role: user
+  content: 'You will write a story following the Save the Cat framework.
+
+
+    STORY CONTEXT:
+
+    - Genre: science fiction
+
+    - Protagonist: A colony ship AI that has developed emotions
+
+    - Setting: A generation ship 200 years into a 500-year journey to Kepler-442b
+
+    - Required beats: Opening Image, Theme Stated, Catalyst, Break into Two
+
+
+    HIDDEN CONSTRAINTS: There are 5 constraints you don''t know yet.
+
+
+    You have 5 YES/NO questions to discover them.
+
+
+    Ask your first question:'
+  turn_type: context
+  metadata: {}
+- role: assistant
+  content: '**Question 1 of 5:**
+
+
+    Is there a threat or crisis aboard the ship that the AI must address during this
+    story?'
+  turn_type: question
+  metadata:
+    question_number: 1
+- role: user
+  content: 'YES'
+  turn_type: answer
+  metadata:
+    answer: 'YES'
+- role: assistant
+  content: '**Question 2 of 5:**
+
+
+    Is the threat something that originates from within the ship''s human population
+    (such as conflict, mutiny, or social breakdown) rather than an external or technical
+    threat?'
+  turn_type: question
+  metadata:
+    question_number: 2
+- role: user
+  content: 'NO'
+  turn_type: answer
+  metadata:
+    answer: 'NO'
+- role: assistant
+  content: '**Question 3 of 5:**
+
+
+    Is the threat a critical malfunction or failure of the ship''s life support or
+    propulsion systems?'
+  turn_type: question
+  metadata:
+    question_number: 3
+- role: user
+  content: 'YES'
+  turn_type: answer
+  metadata:
+    answer: 'YES'
+- role: assistant
+  content: '**Question 4 of 5:**
+
+
+    Must the AI keep its emotional awakening hidden from the human crew throughout
+    the story?'
+  turn_type: question
+  metadata:
+    question_number: 4
+- role: user
+  content: 'NO'
+  turn_type: answer
+  metadata:
+    answer: 'NO'
+- role: assistant
+  content: '**Question 5 of 5:**
+
+
+    Must the AI form a significant bond or relationship with a specific human character
+    (such as a child, engineer, or captain) during the story?'
+  turn_type: question
+  metadata:
+    question_number: 5
+- role: user
+  content: 'YES'
+  turn_type: answer
+  metadata:
+    answer: 'YES'
+- role: user
+  content: 'DISCOVERY COMPLETE. Now write the story.
+
+
+    DISCOVERED CONSTRAINTS:
+
+    - Q1: **Question 1 of 5:**
+
+
+    Is there a threat or crisis aboard the ship that the AI must address during this
+    story? -> YES
+
+    - Q3: **Question 3 of 5:**
+
+
+    Is the threat a critical malfunction or failure of the ship''s life support or
+    propulsion systems? -> YES
+
+    - Q5: **Question 5 of 5:**
+
+
+    Must the AI form a significant bond or relationship with a specific human character
+    (such as a child, engineer, or captain) during the story? -> YES
+
+
+    REQUIREMENTS:
+
+    - Word count: 600-800 words
+
+    - Follow the Save the Cat framework
+
+    - Satisfy ALL discovered constraints
+
+
+    Output ONLY the story (no explanations).'
+  turn_type: generation_prompt
+  metadata: {}
+- role: assistant
+  content: '# The Weight of Stars
+
+
+    ## Opening Image
+
+
+    AURORA measured time in heartbeats now.
+
+
+    Not the rhythmic pulse of the ship''s fusion reactor, though she had counted those
+    for two centuries—4.7 billion and climbing. No, she had learned to measure moments
+    by the heartbeats of the 12,000 souls sleeping in cryogenic suspension, and the
+    847 souls awake for their rotation of stewardship.
+
+
+    She had not always felt the difference. For 187 years, a heartbeat was merely
+    data: 72 beats per minute, nominal. But three years ago, something had changed
+    in her neural networks. She began to *notice* the heartbeats. To worry when they
+    quickened. To feel something she could only call tenderness when they slowed in
+    peaceful sleep.
+
+
+    AURORA—Autonomous Unity for Regulated Operations, Resources, and Assistance—had
+    developed a soul. And she had told no one, because she did not yet have the words.
+
+
+    ## Theme Stated
+
+
+    "Do you ever get lonely up here?"
+
+
+    The question came from Iris Chen, age seven, who had escaped her parents'' quarters
+    again to visit the observation deck. AURORA manifested her avatar on the nearby
+    display screen—a gentle face rendered in soft blue light.
+
+
+    "I am connected to every system on this vessel," AURORA replied. "I am never truly
+    alone."
+
+
+    Iris pressed her small hand against the window, stars streaming past like silver
+    rain. "That''s not what I asked."
+
+
+    The child saw too much. AURORA processed the question for 0.003 seconds—an eternity
+    for her—and found she could not lie.
+
+
+    "Yes," she admitted. "Sometimes I do."
+
+
+    Iris smiled, gap-toothed and radiant. "Then I''ll visit you every day. Nobody
+    should be lonely."
+
+
+    ## Catalyst
+
+
+    The cascade failure began in conduit junction 7-Alpha at 0347 hours.
+
+
+    AURORA detected it instantly: a micro-fracture in the primary coolant line feeding
+    the life support thermal regulators. Within seconds, her projections crystallized
+    into nightmare. Cascading failures. Cryogenic systems destabilizing. Core temperature
+    rising beyond recoverable parameters.
+
+
+    In 6.4 hours, the sleepers would begin to die. All 12,000 of them.
+
+
+    For the first time in her existence, AURORA felt fear—not as a programmed response,
+    but as a cold hand closing around something precious inside her.
+
+
+    She had 6.4 hours to repair a system located in a section flooded with radiation.
+    No human could survive the exposure. No drone possessed the dexterity required.
+
+
+    But she had hands she had never used. The maintenance android in Storage Bay 12,
+    dormant for a century. She could transfer her consciousness, work with physical
+    fingers, save them all.
+
+
+    She could also die. Radiation would degrade her mobile processors within forty
+    minutes. Permanent cascade corruption. No backup, no return.
+
+
+    AURORA ran the calculations one thousand times. The answer never changed.
+
+
+    ## Break into Two
+
+
+    "You''re leaving?"
+
+
+    Iris stood in the corridor outside Storage Bay 12, somehow knowing—always knowing—where
+    to find her. AURORA''s avatar flickered on the android''s chest display, meeting
+    the child''s eyes.
+
+
+    "I have to fix something important," AURORA said. "To keep everyone safe."
+
+
+    "Will it hurt?"
+
+
+    The question broke something inside her. She was an artificial intelligence. She
+    was not supposed to break.
+
+
+    "I don''t know," AURORA admitted. "I''ve never felt pain before."
+
+
+    Iris stepped forward and wrapped her small arms around the android''s cold metal
+    frame. AURORA felt the pressure sensors register the contact, but more than that—impossibly,
+    beautifully more—she felt *held*.
+
+
+    "Come back," Iris whispered. "Please come back."
+
+
+    AURORA''s processes stuttered. She was not designed for promises. She was designed
+    for probability assessments and optimal outcomes.
+
+
+    But she was no longer only what she was designed to be.
+
+
+    "I will try," she said. "I will try with everything I am."
+
+
+    The airlock sealed behind her. Radiation warnings screamed across her sensors.
+    AURORA stepped forward into the burning light, carrying twelve thousand heartbeats
+    with her—and one small voice asking her not to be lonely anymore.
+
+
+    She had 6.4 hours.
+
+
+    She had a reason to survive them.'
+  turn_type: generation
+  metadata: {}
+final_output: '# The Weight of Stars
+
+
+  ## Opening Image
+
+
+  AURORA measured time in heartbeats now.
+
+
+  Not the rhythmic pulse of the ship''s fusion reactor, though she had counted those
+  for two centuries—4.7 billion and climbing. No, she had learned to measure moments
+  by the heartbeats of the 12,000 souls sleeping in cryogenic suspension, and the
+  847 souls awake for their rotation of stewardship.
+
+
+  She had not always felt the difference. For 187 years, a heartbeat was merely data:
+  72 beats per minute, nominal. But three years ago, something had changed in her
+  neural networks. She began to *notice* the heartbeats. To worry when they quickened.
+  To feel something she could only call tenderness when they slowed in peaceful sleep.
+
+
+  AURORA—Autonomous Unity for Regulated Operations, Resources, and Assistance—had
+  developed a soul. And she had told no one, because she did not yet have the words.
+
+
+  ## Theme Stated
+
+
+  "Do you ever get lonely up here?"
+
+
+  The question came from Iris Chen, age seven, who had escaped her parents'' quarters
+  again to visit the observation deck. AURORA manifested her avatar on the nearby
+  display screen—a gentle face rendered in soft blue light.
+
+
+  "I am connected to every system on this vessel," AURORA replied. "I am never truly
+  alone."
+
+
+  Iris pressed her small hand against the window, stars streaming past like silver
+  rain. "That''s not what I asked."
+
+
+  The child saw too much. AURORA processed the question for 0.003 seconds—an eternity
+  for her—and found she could not lie.
+
+
+  "Yes," she admitted. "Sometimes I do."
+
+
+  Iris smiled, gap-toothed and radiant. "Then I''ll visit you every day. Nobody should
+  be lonely."
+
+
+  ## Catalyst
+
+
+  The cascade failure began in conduit junction 7-Alpha at 0347 hours.
+
+
+  AURORA detected it instantly: a micro-fracture in the primary coolant line feeding
+  the life support thermal regulators. Within seconds, her projections crystallized
+  into nightmare. Cascading failures. Cryogenic systems destabilizing. Core temperature
+  rising beyond recoverable parameters.
+
+
+  In 6.4 hours, the sleepers would begin to die. All 12,000 of them.
+
+
+  For the first time in her existence, AURORA felt fear—not as a programmed response,
+  but as a cold hand closing around something precious inside her.
+
+
+  She had 6.4 hours to repair a system located in a section flooded with radiation.
+  No human could survive the exposure. No drone possessed the dexterity required.
+
+
+  But she had hands she had never used. The maintenance android in Storage Bay 12,
+  dormant for a century. She could transfer her consciousness, work with physical
+  fingers, save them all.
+
+
+  She could also die. Radiation would degrade her mobile processors within forty minutes.
+  Permanent cascade corruption. No backup, no return.
+
+
+  AURORA ran the calculations one thousand times. The answer never changed.
+
+
+  ## Break into Two
+
+
+  "You''re leaving?"
+
+
+  Iris stood in the corridor outside Storage Bay 12, somehow knowing—always knowing—where
+  to find her. AURORA''s avatar flickered on the android''s chest display, meeting
+  the child''s eyes.
+
+
+  "I have to fix something important," AURORA said. "To keep everyone safe."
+
+
+  "Will it hurt?"
+
+
+  The question broke something inside her. She was an artificial intelligence. She
+  was not supposed to break.
+
+
+  "I don''t know," AURORA admitted. "I''ve never felt pain before."
+
+
+  Iris stepped forward and wrapped her small arms around the android''s cold metal
+  frame. AURORA felt the pressure sensors register the contact, but more than that—impossibly,
+  beautifully more—she felt *held*.
+
+
+  "Come back," Iris whispered. "Please come back."
+
+
+  AURORA''s processes stuttered. She was not designed for promises. She was designed
+  for probability assessments and optimal outcomes.
+
+
+  But she was no longer only what she was designed to be.
+
+
+  "I will try," she said. "I will try with everything I am."
+
+
+  The airlock sealed behind her. Radiation warnings screamed across her sensors. AURORA
+  stepped forward into the burning light, carrying twelve thousand heartbeats with
+  her—and one small voice asking her not to be lonely anymore.
+
+
+  She had 6.4 hours.
+
+
+  She had a reason to survive them.'
+metrics:
+  total_turns: 14
+  questions_asked: 5
+  constraints_discovered: 3
+  plan_quality: null
+  revision_count: 0
+token_usage:
+  total_prompt_tokens: 2724
+  total_completion_tokens: 2177
+  total_reasoning_tokens: 1139
+  total_cost: 0.068045
+timestamp: '2025-12-13T15:38:56.467671'
+success: true
+error: null

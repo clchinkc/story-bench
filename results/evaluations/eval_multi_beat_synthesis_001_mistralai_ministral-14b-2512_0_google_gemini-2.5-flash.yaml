@@ -1,0 +1,45 @@
+evaluation_id: 37516b70
+task_id: multi_beat_synthesis_001
+generation_id: multi_beat_synthesis_001_mistralai/ministral-14b-2512_0
+task_type: multi_beat_synthesis
+model: mistralai/ministral-14b-2512
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0012067000000000002
+timestamp: '2025-12-12T14:29:50.766464'
+success: true
+final_score: 0.8259323506233551
+score_breakdown:
+  final_score: 0.8259
+  components:
+    word_count:
+      score: 0.7132
+      weight: 0.25
+      actual: 1074
+      target_range:
+      - 700
+      - 1000
+    programmatic:
+      score: 0.6966
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 0.9914
+        overall: 0.6966
+    llm_judge:
+      score: 0.947
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 14
+  beat_reqs_total: 15
+  beat_requirements_score: 0.93
+  cross_beat_satisfied: 4
+  cross_beat_total: 4
+  cross_beat_score: 1.0
+  word_count_valid: false
+  context_score: 0.9
+  coherence_score: 0.9
+  failed_items:
+  - 'Beat 1: Revelation of an enemy within the Resonant community (a traitor) - The
+    killer is revealed to be a stranger, not a Resonant traitor.'
+error: null

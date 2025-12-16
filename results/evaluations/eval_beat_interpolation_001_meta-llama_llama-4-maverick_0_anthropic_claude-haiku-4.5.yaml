@@ -1,0 +1,62 @@
+evaluation_id: 84682a04
+task_id: beat_interpolation_001
+generation_id: beat_interpolation_001_meta-llama/llama-4-maverick_0
+task_type: beat_interpolation
+model: meta-llama/llama-4-maverick
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.01939
+timestamp: '2025-12-12T09:46:06.779816'
+success: true
+final_score: 0.968
+score_breakdown:
+  final_score: 0.968
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 276
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.922
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.87
+        slop_score: 1.0
+        overall: 0.922
+    llm_judge:
+      score: 0.975
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: true
+  character_score: 0.95
+  bridge_score: 0.9
+  continuity_score: 0.95
+  evidence: 'STRENGTHS: All 4 required elements present and well-executed: (1) Marcus
+    introduced as mentor with clear characterization (curio shop owner, knowing demeanor,
+    twinkling eyes); (2) Practical wisdom provided (''forest tests intentions, not
+    abilities,'' ''trust what you know'') plus tangible gifts (satchel, compass, tea);
+    (3) Elena''s doubt shifts convincingly from skepticism to curiosity (''initial
+    skepticism slowly giving way to curiosity''); (4) Librarian skills implicitly
+    validated through Marcus''s comment about ''noticing fraying edges'' and seeing
+    ''threads.'' All must-not violations avoided: Elena remains uncertain/reluctant,
+    Marcus doesn''t accompany her or solve problems, setting is shop (not forest),
+    no magical powers discovered. Character voice consistent—Elena remains vulnerable
+    and questioning. Bridge between beats is strong: BEFORE shows refusal, GENERATED
+    shows acceptance beginning, AFTER shows her at threshold ready to cross. Minor
+    deductions: (1) Character score -0.05 for Marcus feeling slightly archetypal/generic
+    in delivery, though this is appropriate for mentor role; (2) Bridge score -0.1
+    because the transition between GENERATED and AFTER skips the actual decision moment
+    (though this may be intentional narrative pacing); (3) Continuity score -0.05
+    for minor temporal ambiguity (''previous day''s events'' not explicitly connected
+    to grandmother scene, though context is clear). Overall execution is professional
+    and meets all calibration standards for ''Exceptional'' range.'
+error: null

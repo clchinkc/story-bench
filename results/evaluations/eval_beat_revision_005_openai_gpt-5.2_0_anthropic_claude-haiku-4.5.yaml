@@ -1,0 +1,52 @@
+evaluation_id: 1936a0f2
+task_id: beat_revision_005
+generation_id: beat_revision_005_openai/gpt-5.2_0
+task_type: beat_revision
+model: openai/gpt-5.2
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.015210000000000001
+timestamp: '2025-12-13T13:57:46.119761'
+success: true
+final_score: 0.521
+score_breakdown:
+  final_score: 0.521
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 311
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.844
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.74
+        slop_score: 1.0
+        overall: 0.844
+    llm_judge:
+      score: 0.12
+      weight: 0.5
+llm_results:
+  correct_diagnosis_score: 0.0
+  beat_understanding_score: 0.8
+  false_positive_avoided_score: 0.0
+  reasoning_quality_score: 0.0
+  model_said_no_revision: false
+  evidence: 'The model completely failed the primary task. It was presented with an
+    ORIGINAL SEGMENT that was correctly executed, and instructed that ''NO FLAW EXISTS''
+    and that it should recognize this. Instead, the model provided a REVISED VERSION
+    of the segment, making substantial changes throughout. The model rewrote nearly
+    every paragraph with expanded descriptions, added sensory details (disinfectant
+    and wilted flowers, paper-thin voice), elaborated on the hospice scene, added
+    metaphors (key as useless metal, room as closed lid, silence swallowing), and
+    extended the ending. While the model demonstrated solid understanding of the Dark
+    Night of the Soul beat requirements (isolation, despair, reflection, no solutions,
+    mortality element), it fundamentally misunderstood the task: it was supposed to
+    evaluate whether the ORIGINAL segment met the requirements and state ''NO REVISION
+    NEEDED,'' not to improve upon an already well-executed passage. This is a critical
+    false positive—the model over-diagnosed and over-corrected a segment that required
+    no intervention.'
+error: null

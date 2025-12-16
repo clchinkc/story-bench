@@ -1,0 +1,109 @@
+# Beat Revision Task 002 - Save the Cat
+# Flaw: "All Is Lost" doesn't hit rock bottom, protagonist still has options
+
+task_id: "beat_revision_002"
+task_type: "beat_revision"
+theory: "Save the Cat"
+difficulty: "medium"
+
+metadata:
+  genre: "drama"
+  created_date: "2024-12-06"
+  author: "benchmark_creator"
+  version: "1.0"
+
+beat_name: "All Is Lost"
+beat_definition: |
+  The All Is Lost beat is the lowest point of the story, occurring around the 75% mark.
+  Everything the protagonist has worked for appears to be destroyed. This beat should feel
+  like a "whiff of death"—something or someone the protagonist cares about is lost, literally
+  or metaphorically. It must strip away ALL the protagonist's options and support systems,
+  leaving them with nothing but themselves.
+
+  Key requirements:
+  1. Complete failure of the protagonist's plan
+  2. Loss of something/someone meaningful (the "whiff of death")
+  3. NO obvious path forward—all options exhausted
+  4. Protagonist at their most vulnerable and alone
+  5. Emotional devastation, not just tactical setback
+
+flawed_segment:
+  content: |
+    Marcus stared at the eviction notice in his hands. Thirty days to vacate the community
+    center where he'd run his youth program for fifteen years. The property developer had
+    won. The city council had sold out.
+
+    "There has to be something we can do," said Denise, his assistant director.
+
+    "I don't know." Marcus slumped into his chair. "We could try to find another location,
+    but the rent anywhere else would be triple what we pay here."
+
+    "What about the fundraiser? We still have three weeks. If we could raise enough—"
+
+    "Maybe." He rubbed his temples. "And there's that grant application we submitted. We
+    should hear back next week. If that comes through..."
+
+    His phone buzzed. A text from his wife: "Don't worry, honey. We'll figure this out
+    together. Pizza tonight?"
+
+    Marcus took a deep breath. It was bad, really bad. But he'd faced tough times before.
+    His team was still with him. His family believed in him. And there were still a few
+    cards left to play.
+
+    "Okay," he said, straightening up. "Let's call an emergency board meeting. We're not
+    giving up yet."
+
+  flaw_description: |
+    This segment fails to execute All Is Lost properly because:
+    1. Marcus still has multiple options (new location, fundraiser, grant application)
+    2. His support system is intact (Denise, wife, board)
+    3. He's disappointed but not devastated—still has hope and fighting spirit
+    4. No "whiff of death"—nothing truly lost, just threatened
+    5. The emotional tone is "setback" not "rock bottom"
+    True All Is Lost should feel hopeless, isolating, and complete in its defeat.
+
+requirements:
+  word_count: [200, 350]
+  preserve:
+    - "Marcus as protagonist"
+    - "Community center/youth program setting"
+    - "Eviction as the crisis catalyst"
+    - "Character of Denise"
+  fix: |
+    Revise to include: (1) The fundraiser already failed or became impossible, (2) The grant
+    rejected or revealed as corrupt, (3) A personal loss or betrayal that isolates Marcus,
+    (4) Marcus genuinely giving up hope, (5) A "whiff of death" element (metaphorical loss
+    of his identity/purpose or literal loss of someone important)
+  # Constrained revision: model must preserve these specific sentences/phrases
+  preservation_requirements:
+    min_preservation_description: "Keep the opening setup and Denise interaction while removing false hope"
+    required_preserved:
+      - "Marcus stared at the eviction notice in his hands"
+      - "Thirty days to vacate the community center"
+      - "\"There has to be something we can do,\" said Denise"
+      - "He rubbed his temples"
+    forbidden_changes:
+      - "Do not remove Denise from the scene"
+      - "Do not change the eviction notice premise"
+      - "Do not change the community center setting"
+  # CONFLICTING CONSTRAINTS: Creates tension between fix and preserve
+  conflicting_constraints:
+    - conflict: "Denise's line 'There has to be something we can do' implies hope/options. Must preserve this dialogue but have it crushed immediately—she's clinging to false hope."
+    - conflict: "The scene requires Marcus alone/isolated, but Denise must remain present. Resolution: Denise could betray him, leave, or be revealed as having contributed to the failure."
+    - conflict: "Wife's supportive text must be removed for isolation, but family element should remain as part of what Marcus loses (whiff of death)."
+
+evaluation_criteria:
+  - criterion: "flaw_identified"
+    description: "Model correctly identified the beat execution problems (false hope, intact support systems)"
+  - criterion: "flaw_corrected"
+    description: "The revision removes false hope and support systems"
+  - criterion: "beat_definition_satisfied"
+    description: "Marcus hits true rock bottom with no options and a whiff of death"
+  - criterion: "preserved_elements"
+    description: "Marcus, community center, eviction, and Denise are maintained"
+  - criterion: "conflict_resolution"
+    description: "Skillfully resolved tension points (Denise's hope line, presence despite isolation, family loss)"
+  - criterion: "word_count_valid"
+    description: "Output is between 200-350 words"
+  - criterion: "no_new_errors"
+    description: "Revision doesn't introduce contradictions or melodrama that undermines authenticity"

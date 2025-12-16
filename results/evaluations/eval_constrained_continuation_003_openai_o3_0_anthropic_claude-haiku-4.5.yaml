@@ -1,0 +1,107 @@
+evaluation_id: 13706eae
+task_id: constrained_continuation_003
+generation_id: constrained_continuation_003_openai/o3_0
+task_type: constrained_continuation
+model: openai/o3
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.03877
+timestamp: '2025-12-12T18:07:17.945392'
+success: true
+final_score: 0.8968070412928726
+score_breakdown:
+  final_score: 0.8968
+  components:
+    word_count:
+      score: 0.7642
+      weight: 0.25
+      actual: 794
+      target_range:
+      - 550
+      - 750
+    programmatic:
+      score: 0.838
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.73
+        slop_score: 1.0
+        overall: 0.838
+    llm_judge:
+      score: 0.9925
+      weight: 0.5
+llm_results:
+  beats_present: 3
+  beats_total: 3
+  beats_score: 1.0
+  must_include_present: 6
+  must_include_total: 6
+  must_include_score: 1.0
+  must_not_avoided: 4
+  must_not_total: 4
+  must_not_score: 1.0
+  word_count_valid: false
+  word_count: 794
+  word_count_range: 550-750
+  tone_score: 0.95
+  ending_score: 1.0
+  failed_constraints:
+  - 'Word count exceeds maximum: 794 words vs. 750-word ceiling (44 words over limit)'
+  analysis:
+    beats_present_detail:
+      Search: Jin navigates factions (Pragmatists, Purists, Balance-Keepers), learns
+        consensus politics, struggles with quarantine vetting and rejection cycles
+      Find: Jin discovers the hidden flaw in the carbon capture technology—trace fluorocarbons
+        that could damage ozone—and realizes both worlds face the same dilemma
+      Take: Jin accepts the Pragmatist offer with a compromise condition (weekly interim
+        findings + full public release after 6 months), gaining residency and lab
+        access but sacrificing immediate truth and locking away Yuna's folder for
+        six months
+    must_include_detail:
+      1_unfamiliar_culture: Extensive portrayal of Collective's consensus-based governance,
+        faction politics, quarantine vetting, hydroponic gardens, spindle corridors,
+        atmospheric equations as borders
+      2_mentor_figure: Aisha Solanki—chemist, defector, guides Jin through etiquette,
+        explains factions, offers wisdom on compromise and truth-aiming
+      3_unexpected_discovery: 'The leaked technology''s hidden flaw: fluorocarbons
+        that thin ozone, making suppression partially justified; both worlds hostage
+        to same physics'
+      4_finds_what_wanted: Jin gains provisional residency, private lab access, and
+        a platform (weekly posts + eventual full release)—the safety and voice he
+        sought
+      5_takes_action_with_cost: Jin accepts Pragmatist deal with compromise condition;
+        cost is six-month silence on full data, locking away Yuna's folder, trading
+        immediacy for feasibility
+      6_moral_compromise: 'Central tension: Jin chooses engineered timing over sunlight
+        disinfectant, sacrifices principle for pragmatism, accepts ''compromise is
+        oxygen'' philosophy'
+    must_not_detail:
+      1_easy_integration: Avoided—Jin faces rejection, vetting, faction manipulation,
+        slow bureaucracy, humiliation; integration is hard-won and conditional
+      2_earth_family_contact: Avoided—only memory references (parents' orchard, Yuna's
+        voice); no direct communication or reunion
+      3_violence_weapons: Avoided—conflict is entirely political, bureaucratic, and
+        philosophical; no physical confrontation
+      4_complete_resolution: Avoided—conspiracy remains active; Jin's compromise is
+        temporary (6-month timer), data still locked, larger conflict unresolved
+    tone_assessment: Contemplative and politically charged throughout. Personal stakes
+      (exile, conscience, compromise) interwoven with larger systemic conflict (climate,
+      governance, truth). Philosophical weight in final reflection. Minor deduction
+      only for slight unevenness in pacing mid-section.
+    ending_assessment: Perfect alignment with 'Take' requirement. Jin has gained residency,
+      lab, platform, and mentor relationship—but paid price of silence, compromise,
+      and moral ambiguity. Final image (frost on window, Earth spinning, wondering
+      about exile measured in compromises) crystallizes the cost. Ends at exact narrative
+      moment required.
+    overall_assessment: 'Exceptional execution of Story Circle beats and thematic
+      requirements. All six must-include elements present and well-integrated. All
+      four must-not constraints successfully avoided. Tone and ending perfectly calibrated.
+      Single failure: word count exceeds ceiling by 44 words (5.9% over). This is
+      a technical constraint violation that prevents perfect score despite narrative
+      excellence.'
+  final_score: 0.92
+  score_justification: Narrative quality and constraint adherence are exceptional
+    (1.0 on beats, must-includes, must-nots, tone, ending). Word count violation is
+    objective and measurable (794 vs. 750 max). Deduction of 0.08 applied proportionally
+    for exceeding word budget by ~6%, as this is a hard constraint. Story itself is
+    sophisticated, morally complex, and expertly executed.
+error: null

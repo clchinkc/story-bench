@@ -1,0 +1,47 @@
+evaluation_id: aec96723
+task_id: beat_interpolation_002
+generation_id: beat_interpolation_002_openai/o3-mini_0
+task_type: beat_interpolation
+model: openai/o3-mini
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0009142
+timestamp: '2025-12-12T14:43:11.513961'
+success: true
+final_score: 0.997
+score_breakdown:
+  final_score: 0.997
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 319
+      target_range:
+      - 250
+      - 400
+    programmatic:
+      score: 0.988
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.98
+        slop_score: 1.0
+        overall: 0.988
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: true
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: All required elements are present and well-executed. The 'Debate' function
+    is clearly fulfilled as Sarah wrestles with options before making a decision.
+    No 'must not' items were violated. Character and continuity are strong, and the
+    bridge to the 'After' beat is seamless.
+error: null

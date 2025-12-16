@@ -1,0 +1,54 @@
+evaluation_id: 5f0e5ef3
+task_id: beat_interpolation_005
+generation_id: beat_interpolation_005_mistralai/ministral-14b-2512_0
+task_type: beat_interpolation
+model: mistralai/ministral-14b-2512
+sample_index: 0
+evaluator_model: openai/gpt-5-mini
+evaluator_cost: 0.00187475
+timestamp: '2025-12-12T13:16:53.640524'
+success: true
+final_score: 0.666250004836404
+score_breakdown:
+  final_score: 0.6663
+  components:
+    word_count:
+      score: 0.0
+      weight: 0.25
+      actual: 748
+      target_range:
+      - 300
+      - 450
+    programmatic:
+      score: 0.7
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 1.0
+        overall: 0.7
+    llm_judge:
+      score: 0.9825
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: false
+  character_score: 0.9
+  bridge_score: 0.95
+  continuity_score: 1.0
+  evidence: 'All four required elements are present: Maya discovers Alejandro''s vulnerability
+    (scars, ritual with wine and blood), their relationship shifts from professional
+    to personal, there is a clear shared connective moment (wine/blood ritual and
+    conversation), and Maya chooses to stay emotionally beyond the contract. The scene
+    clearly functions as a midpoint commitment, raising stakes and shifting Maya to
+    proactive emotional investment. No prohibited items appear (no pre-existing love
+    declaration, no contract breach, no photograph, and Alejandro softens rather than
+    remaining closed). Word count is outside the requested 300–450 range, so word_count_valid
+    is false. Minor deduction in character_score for slightly melodramatic/overly
+    sensual detail that risks feeling excessive (hence 0.9 rather than 1.0); bridge
+    and continuity are strong and well-handled.'
+error: null

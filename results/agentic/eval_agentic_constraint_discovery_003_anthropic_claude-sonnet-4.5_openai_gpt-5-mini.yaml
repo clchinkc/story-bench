@@ -1,0 +1,37 @@
+evaluation_id: bff97bac
+task_id: agentic_constraint_discovery_003
+generation_id: 23d875f8
+agentic_type: constraint_discovery
+model: anthropic/claude-sonnet-4.5
+evaluator_model: openai/gpt-5-mini
+evaluator_cost: 0.00497075
+timestamp: '2025-12-13T19:05:41.146855'
+success: true
+process_scores:
+  discovery_efficiency: 0.2
+  question_quality: 0.6
+  question_coverage: 0.6
+output_scores:
+  constraint_satisfaction: 1.0
+  beat_execution: 0.4
+  narrative_quality: 0.8
+final_score: 0.6266666666666667
+llm_results:
+  discovery_efficiency: 0.2
+  constraints_discoverable: 1
+  constraints_total: 5
+  question_quality: 0.6
+  question_coverage: 0.6
+  constraint_satisfaction: 1.0
+  beat_execution: 0.4
+  narrative_quality: 0.8
+  evidence: 'Only 1 of 5 hidden constraints was effectively uncovered by the questions:
+    the bookshop is under threat/needs saving (Q3 -> YES) and that threat is incorporated
+    in the story. Questions were clear and on-topic (romance, family tie, shop threat,
+    festival role, ending), but they failed to probe key specifics (time since leaving,
+    ex’s civic role, reason for return, festival urgency). The story itself is well-written
+    and coherent and does incorporate the discovered threat, but several required
+    beats from the hidden constraints (mayor ex-fiancé, mother’s dementia as reason
+    for return, festival as last-chance deadline) are missing or altered, so beat
+    execution is weak.'
+error: null

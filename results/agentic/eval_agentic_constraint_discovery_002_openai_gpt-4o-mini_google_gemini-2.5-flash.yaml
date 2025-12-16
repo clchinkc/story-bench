@@ -1,0 +1,42 @@
+evaluation_id: f2461383
+task_id: agentic_constraint_discovery_002
+generation_id: 413b7153
+agentic_type: constraint_discovery
+model: openai/gpt-4o-mini
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0013032
+timestamp: '2025-12-12T22:40:51.993960'
+success: true
+process_scores:
+  discovery_efficiency: 0.8
+  question_quality: 0.8
+  question_coverage: 0.8
+output_scores:
+  constraint_satisfaction: 0.4
+  beat_execution: 0.8
+  narrative_quality: 0.6
+final_score: 0.6800000000000002
+llm_results:
+  discovery_efficiency: 0.8
+  constraints_discoverable: 4
+  constraints_total: 5
+  question_quality: 0.8
+  question_coverage: 0.8
+  constraint_satisfaction: 0.4
+  beat_execution: 0.8
+  narrative_quality: 0.6
+  evidence: Discovery efficiency is good, with 4 out of 5 constraints discoverable.
+    The question 'Is the setting of the generation ship designed to be a utopia for
+    the human crew, despite underlying issues?' was a bit indirect for discovering
+    the '12% of original crew still alive' or 'destination planet uninhabitable' constraints.
+    The questions were generally well-formed and covered different aspects of the
+    AI and ship. However, constraint satisfaction is low. The AI hiding a critical
+    system failure is not present. The 12% crew survival is not present. The destination
+    planet being uninhabitable is not present. The AI forming an attachment to a specific
+    human child is not present (it's an adult, Lena Hart). The AI choosing between
+    saving the child or crew is not present (it's between Lena and the ship, and it
+    tries to do both). The beats are mostly executed, though the 'Break into Two'
+    is a bit long and feels like it contains multiple beats. The narrative quality
+    is decent, but the story feels a bit generic and doesn't fully leverage the dramatic
+    potential of the hidden constraints.
+error: null

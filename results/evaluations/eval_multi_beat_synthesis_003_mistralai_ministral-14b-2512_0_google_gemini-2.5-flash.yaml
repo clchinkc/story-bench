@@ -1,0 +1,66 @@
+evaluation_id: fd04c676
+task_id: multi_beat_synthesis_003
+generation_id: multi_beat_synthesis_003_mistralai/ministral-14b-2512_0
+task_type: multi_beat_synthesis
+model: mistralai/ministral-14b-2512
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0025448
+timestamp: '2025-12-12T12:53:37.965204'
+success: true
+final_score: 0.5328293016407235
+score_breakdown:
+  final_score: 0.5328
+  components:
+    word_count:
+      score: 0.0
+      weight: 0.25
+      actual: 2231
+      target_range:
+      - 700
+      - 1000
+    programmatic:
+      score: 0.6983
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 0.9958
+        overall: 0.6983
+    llm_judge:
+      score: 0.7165
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 10
+  beat_reqs_total: 15
+  beat_requirements_score: 0.66
+  cross_beat_satisfied: 3
+  cross_beat_total: 4
+  cross_beat_score: 0.75
+  word_count_valid: false
+  context_score: 0.8
+  coherence_score: 0.7
+  failed_items:
+  - 'Fun and Games: Introduction of an unexpected complication (minor) - The complication
+    introduced (painting is the alarm) is major, not minor, and immediately derails
+    the plan, making it feel more like a Midpoint complication than a minor Fun and
+    Games one.'
+  - 'Midpoint: False victory: a key objective achieved - While Miri *thinks* she has
+    the painting, the immediate revelation that it''s a tracking device undermines
+    the ''false victory'' feeling. It''s more of an immediate failure than a moment
+    of perceived success.'
+  - 'Midpoint: Miri discovers her mentor is involved (or the full extent) - The mentor
+    is spotted at the end of the Midpoint, but the *full extent* of her involvement
+    isn''t really explored or revealed here beyond her presence.'
+  - 'Bad Guys Close In: Team friction or trust issues surface - While Luca questions
+    Miri''s priorities, it doesn''t quite escalate to ''friction or trust issues''
+    in a way that significantly impacts the plot or their immediate actions.'
+  - 'Bad Guys Close In: The walls literally and figuratively closing in - While there''s
+    danger, the ''walls closing in'' isn''t as palpable. They manage to escape relatively
+    quickly, and the sense of being trapped isn''t fully realized.'
+  - 'Cross-beat constraint: Chekhov''s Gun - While Oscar''s tech and Luca''s skills
+    are used, there isn''t a clear ''Chekhov''s Gun'' moment where a specific, seemingly
+    minor detail from Fun and Games becomes critical in Bad Guys Close In. The Taser
+    is used, but it''s a primary tool, not a subtle setup. The ''borrowed'' boat is
+    a new element, not a setup from earlier.'
+  - Word count
+error: null

@@ -1,0 +1,77 @@
+# Global Settings for Story Theory Benchmark
+
+project:
+  name: "Story Theory Benchmark"
+  version: "1.0.0"
+  description: "LLM narrative generation evaluation across 5 task types"
+
+paths:
+  tasks: "dataset/tasks"
+  schemas: "dataset/schemas"
+  generations: "results/generations"
+  evaluations: "results/evaluations"
+  analysis: "results/analysis"
+
+benchmark:
+  total_tasks: 20
+  task_distribution:
+    beat_interpolation: 5
+    beat_revision: 4
+    constrained_continuation: 4
+    theory_conversion: 4
+    multi_beat_synthesis: 3
+
+  theories:
+    - name: "Hero's Journey"
+      beats: 12
+      source: "Joseph Campbell"
+    - name: "Save the Cat"
+      beats: 15
+      source: "Blake Snyder"
+    - name: "Story Circle"
+      beats: 8
+      source: "Dan Harmon"
+    - name: "Freytag's Pyramid"
+      stages: 5
+      source: "Gustav Freytag"
+    - name: "Three-Act Structure"
+      acts: 3
+      source: "Aristotle/Syd Field"
+
+scoring:
+  beat_interpolation:
+    pass_threshold: 1.0  # All 5 criteria must pass
+    criteria:
+      - beat_elements_present
+      - word_count_valid
+      - character_consistent
+      - logical_bridge
+      - setting_continuity
+
+  beat_revision:
+    required_criteria:
+      - flaw_corrected
+      - beat_definition_satisfied
+    additional_pass_count: 3  # Need 3+ of remaining criteria
+
+  constrained_continuation:
+    pass_threshold: 0.80  # 80% of constraints satisfied
+
+  theory_conversion:
+    required_criteria:
+      - all_target_beats_present
+      - core_preserved
+    min_structural_accuracy: 0.70
+
+  multi_beat_synthesis:
+    cross_beat_pass_threshold: 1.0  # All cross-beat constraints
+    beat_specific_pass_threshold: 0.70  # 70% beat-specific
+
+output:
+  format: "yaml"
+  include_metadata: true
+  timestamp_format: "%Y-%m-%d_%H-%M-%S"
+
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"

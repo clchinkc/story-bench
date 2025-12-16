@@ -1,0 +1,52 @@
+evaluation_id: 90384be6
+task_id: multi_beat_synthesis_003
+generation_id: multi_beat_synthesis_003_anthropic/claude-haiku-4.5_0
+task_type: multi_beat_synthesis
+model: anthropic/claude-haiku-4.5
+sample_index: 0
+evaluator_model: openai/gpt-5-mini
+evaluator_cost: 0.0024017500000000002
+timestamp: '2025-12-12T12:43:47.646384'
+success: true
+final_score: 0.662709129577959
+score_breakdown:
+  final_score: 0.6627
+  components:
+    word_count:
+      score: 0.1825
+      weight: 0.25
+      actual: 534
+      target_range:
+      - 700
+      - 1000
+    programmatic:
+      score: 0.79
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.65
+        slop_score: 1.0
+        overall: 0.79
+    llm_judge:
+      score: 0.8392
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 13
+  beat_reqs_total: 15
+  beat_requirements_score: 0.8666666667
+  cross_beat_satisfied: 3
+  cross_beat_total: 4
+  cross_beat_score: 0.75
+  word_count_valid: false
+  context_score: 1.0
+  coherence_score: 0.8
+  failed_items:
+  - 'Beat 3: Team friction or trust issues do not clearly surface as a conflict between
+    crew members—there is tension but no explicit friction or trust breakdown.'
+  - 'Beat 3: No crew member is shown compromised or clearly in immediate danger; the
+    requirement that a crew member be compromised/dangered is unmet.'
+  - 'Cross-beat (Chekhov''s Gun): A specific detail established in Fun and Games (e.g.,
+    a security measure, exit route, or crew skill) is not paid off as a critical element
+    during Bad Guys Close In—the setup-to-payoff linkage is weak.'
+  - 'Word count: Generated piece is 534 words, which is outside the required 700–1000
+    word range.'
+error: null

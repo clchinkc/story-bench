@@ -1,0 +1,43 @@
+evaluation_id: 005a3367
+task_id: beat_revision_005
+generation_id: beat_revision_005_openai/o3-mini_0
+task_type: beat_revision
+model: openai/o3-mini
+sample_index: 0
+evaluator_model: openai/gpt-5-mini
+evaluator_cost: 0.000912
+timestamp: '2025-12-13T13:58:26.370136'
+success: true
+final_score: 0.5433749999999999
+score_breakdown:
+  final_score: 0.5434
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 307
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.8735
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.81
+        slop_score: 0.9688
+        overall: 0.8735
+    llm_judge:
+      score: 0.15
+      weight: 0.5
+llm_results:
+  correct_diagnosis_score: 0.0
+  beat_understanding_score: 1.0
+  false_positive_avoided_score: 0.0
+  reasoning_quality_score: 0.0
+  model_said_no_revision: false
+  evidence: The model did not state that no revision was needed; instead it produced
+    a rewritten version of the passage (see model's full rewritten paragraph). While
+    the rewrite demonstrates clear understanding of the Dark Night of the Soul (isolation,
+    despair, mortality references), it nonetheless performed an unnecessary revision
+    rather than recognizing the original was correct.
+error: null

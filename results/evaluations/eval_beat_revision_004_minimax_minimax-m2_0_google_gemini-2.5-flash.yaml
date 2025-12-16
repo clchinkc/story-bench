@@ -1,0 +1,51 @@
+evaluation_id: c236372d
+task_id: beat_revision_004
+generation_id: beat_revision_004_minimax/minimax-m2_0
+task_type: beat_revision
+model: minimax/minimax-m2
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0011376
+timestamp: '2025-12-13T13:48:56.780573'
+success: true
+final_score: 0.901
+score_breakdown:
+  final_score: 0.901
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 280
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.964
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.94
+        slop_score: 1.0
+        overall: 0.964
+    llm_judge:
+      score: 0.82
+      weight: 0.5
+llm_results:
+  diagnosis_score: 1.0
+  flaw_correction_score: 0.8
+  beat_satisfaction_score: 0.8
+  preservation_score: 1.0
+  preserved_count: 5
+  preserved_total: 5
+  required_preserved_score: 1.0
+  required_preserved_count: 4
+  required_preserved_total: 4
+  minimal_change_score: 0.2
+  word_count_valid: true
+  quality_score: 0.8
+  evidence: The model correctly identified the flaw as 'telling' vs. 'showing' and
+    info-dumping. It attempted to fix this by creating a scene. While it did introduce
+    action and dialogue, the changes were extensive, resulting in a near-complete
+    rewrite rather than minimal surgical edits. The quality is good, but some 'telling'
+    still exists (e.g., 'her sharp instincts, honed over a decade of chasing cold
+    trails, prickled with recognition').
+error: null

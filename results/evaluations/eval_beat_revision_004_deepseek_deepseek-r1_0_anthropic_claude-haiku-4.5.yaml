@@ -1,0 +1,68 @@
+evaluation_id: ab69184b
+task_id: beat_revision_004
+generation_id: beat_revision_004_deepseek/deepseek-r1_0
+task_type: beat_revision
+model: deepseek/deepseek-r1
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.023299999999999998
+timestamp: '2025-12-13T13:45:14.555949'
+success: true
+final_score: 0.963
+score_breakdown:
+  final_score: 0.963
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 263
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.952
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.92
+        slop_score: 1.0
+        overall: 0.952
+    llm_judge:
+      score: 0.95
+      weight: 0.5
+llm_results:
+  diagnosis_score: 1.0
+  flaw_correction_score: 1.0
+  beat_satisfaction_score: 0.95
+  preservation_score: 1.0
+  preserved_count: 5
+  preserved_total: 5
+  required_preserved_score: 1.0
+  required_preserved_count: 4
+  required_preserved_total: 4
+  minimal_change_score: 0.65
+  word_count_valid: true
+  quality_score: 0.95
+  evidence: 'DIAGNOSIS: Model correctly identified the core flaw—exposition was pure
+    info-dump/telling rather than showing through scene and action. The revision demonstrates
+    clear understanding by transforming static character summary into a dynamic precinct
+    scene. FLAW CORRECTION: Fully addressed. Original problems eliminated: (1) Now
+    SHOWS Rachel''s detective instincts through action (circling witness discrepancy
+    everyone missed), (2) Partnership with James revealed through natural dialogue
+    and familiar ritual (coffee, banter, three-year familiarity), (3) Devotion to
+    cold cases demonstrated through behavior (not looking up, refusing to let it breathe),
+    (4) Setting grounded in sensory detail (October chill, fluorescent buzz, stale
+    coffee, radio static), (5) Cat integrated naturally via desk photo and dialogue
+    reference. PRESERVATION: All 5 required elements intact—Rachel Torres (protagonist),
+    James Oyelaran (partner), Sherlock (cat), Queens setting, October Tuesday timing.
+    All 4 required phrases present: ''Detective Rachel Torres,'' ''Detective James
+    Oyelaran,'' ''cat named Sherlock'' (via ''tabby she''d rescued''), ''Tuesday morning
+    in October.'' MINIMAL CHANGE ASSESSMENT: Score 0.65 reflects moderate restructuring.
+    While the model preserved core character names, relationships, and setting, it
+    substantially reorganized the narrative from summary paragraphs into a scene-based
+    structure. This is NOT a surgical edit—it''s a conceptual rewrite from telling
+    to showing. However, this level of change is appropriate and necessary given the
+    severity of the original flaw. The model did not add new characters, change roles,
+    or alter the fundamental story trajectory. QUALITY: Writing is professional, sensory-rich,
+    and introduces the inciting incident hook effectively. No new errors introduced.
+    Dialogue feels natural. Pacing accelerates appropriately toward the disruption.'
+error: null

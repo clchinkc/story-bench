@@ -1,0 +1,49 @@
+evaluation_id: 6b18fa16
+task_id: multi_beat_synthesis_003
+generation_id: multi_beat_synthesis_003_deepseek/deepseek-r1_0
+task_type: multi_beat_synthesis
+model: deepseek/deepseek-r1
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0011091
+timestamp: '2025-12-12T12:37:14.438472'
+success: true
+final_score: 0.6554340857642619
+score_breakdown:
+  final_score: 0.6554
+  components:
+    word_count:
+      score: 0.0911
+      weight: 0.25
+      actual: 503
+      target_range:
+      - 700
+      - 1000
+    programmatic:
+      score: 0.6926
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 0.9815
+        overall: 0.6926
+    llm_judge:
+      score: 0.919
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 13
+  beat_reqs_total: 15
+  beat_requirements_score: 0.86
+  cross_beat_satisfied: 4
+  cross_beat_total: 4
+  cross_beat_score: 1.0
+  word_count_valid: false
+  context_score: 0.9
+  coherence_score: 0.9
+  failed_items:
+  - 'Beat 1: Things going according to plan (mostly) - The plan goes awry fairly quickly
+    with the pressure-sensitive floor tiles and then the secondary motion sensors,
+    making it less ''mostly'' according to plan.'
+  - 'Beat 3: Team friction or trust issues surface - While Leo is in danger, there
+    isn''t explicit ''friction or trust issues'' among the team members; it''s more
+    about Miri making a difficult choice.'
+error: null

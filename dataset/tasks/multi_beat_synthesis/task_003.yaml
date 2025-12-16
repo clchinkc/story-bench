@@ -1,0 +1,121 @@
+# Multi-Beat Synthesis Task 003 - Save the Cat
+# Generate: Fun and Games → Midpoint → Bad Guys Close In
+
+task_id: "multi_beat_synthesis_003"
+task_type: "multi_beat_synthesis"
+theory: "Save the Cat"
+difficulty: "hard"
+
+metadata:
+  genre: "heist/comedy"
+  created_date: "2024-12-06"
+  author: "benchmark_creator"
+  version: "1.0"
+
+story_context:
+  protagonist: |
+    Miriam "Miri" Delacroix, 35, a former museum conservator who was wrongfully
+    accused of art theft and blacklisted from the industry. Now she actually
+    steals art—but only pieces that were themselves stolen or illegally acquired.
+    She returns them to their rightful owners. Dry wit, meticulous planner, trust
+    issues from her betrayal. Working with a small crew she assembled.
+  setting: |
+    Contemporary Monaco during the Grand Prix. The target: a Renaissance painting
+    stolen by Nazis, now in the private collection of a Russian oligarch, Viktor
+    Sorokin. His yacht, the "Tsarina," is hosting a party during the race. The
+    painting's rightful owner: a Jewish family in Amsterdam who've been fighting
+    for its return for decades.
+  central_conflict: |
+    The heist itself seems straightforward—Miri's crew has infiltrated the party.
+    But Sorokin has hired a private security consultant who knows Miri's methods
+    intimately: her former mentor, the woman who framed her for theft in the first
+    place. The heist becomes personal, and Miri must decide whether to prioritize
+    the painting or her revenge.
+  tone: "Ocean's Eleven meets art history, clever banter, tension beneath the glamour"
+
+beats_to_generate:
+  - name: "Fun and Games"
+    position: "First beat"
+    requirements:
+      - "The heist in action—showcasing Miri and crew's skills"
+      - "Clever problem-solving that delivers on the heist premise"
+      - "Moments of humor and style"
+      - "Things going according to plan (mostly)"
+      - "Introduction of an unexpected complication (minor)"
+
+  - name: "Midpoint"
+    position: "Second beat"
+    requirements:
+      - "False victory: a key objective achieved"
+      - "Stakes raised dramatically—new information or threat"
+      - "Miri discovers her mentor is involved (or the full extent)"
+      - "The nature of the heist changes (from simple theft to something more)"
+      - "Public/party setting intensifies pressure"
+
+  - name: "Bad Guys Close In"
+    position: "Third beat"
+    requirements:
+      - "Security closing in on the crew"
+      - "Team friction or trust issues surface"
+      - "A crew member compromised or in danger"
+      - "Miri must choose: painting or revenge/saving someone"
+      - "The walls literally and figuratively closing in"
+
+cross_beat_constraints:
+  - type: "Chekhov's Gun"
+    requirement: |
+      A detail established during Fun and Games (a security measure, exit route,
+      or crew member's skill) must become critical during Bad Guys Close In.
+      The audience should be able to trace the setup to the payoff.
+
+  - type: "Tonal Escalation"
+    requirement: |
+      Tone must shift across beats: Beat 1 (playful confidence), Beat 2 (confidence
+      shaken, higher stakes), Beat 3 (genuine danger, humor now gallows humor).
+
+  - type: "Mentor Presence"
+    requirement: |
+      The antagonist (Miri's former mentor) must have increasing presence: Beat 1
+      (unknown or background), Beat 2 (revealed/recognized), Beat 3 (active threat).
+
+  - type: "Team Dynamics"
+    requirement: |
+      At least one crew member must have a consistent arc across all three beats
+      that affects the plot (not just Miri).
+
+word_count: [700, 1000]
+
+evaluation_criteria:
+  beat_specific:
+    beat_1:
+      - "Heist action showcasing skills"
+      - "Clever problem-solving"
+      - "Humor and style present"
+      - "Plan working (mostly)"
+      - "Minor complication introduced"
+    beat_2:
+      - "False victory achieved"
+      - "Stakes raised dramatically"
+      - "Mentor involvement discovered"
+      - "Heist nature changes"
+      - "Party setting pressure"
+    beat_3:
+      - "Security closing in"
+      - "Team friction surfaces"
+      - "Crew member in danger"
+      - "Painting vs revenge choice"
+      - "Walls closing in feeling"
+
+  cross_beat:
+    - criterion: "chekhovs_gun"
+      description: "Detail from Beat 1 critical in Beat 3"
+    - criterion: "tonal_escalation"
+      description: "Tone shifts: playful → shaken → genuine danger"
+    - criterion: "mentor_presence"
+      description: "Antagonist presence increases: background → revealed → active"
+    - criterion: "team_dynamics"
+      description: "Crew member has consistent arc affecting plot"
+    - criterion: "word_count_valid"
+      description: "Output is between 700-1000 words total"
+    - criterion: "context_maintained"
+      description: "Heist setting, protagonist, crew, conflict consistent"

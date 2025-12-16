@@ -1,0 +1,51 @@
+evaluation_id: baad054b
+task_id: beat_revision_003
+generation_id: beat_revision_003_anthropic/claude-haiku-4.5_0
+task_type: beat_revision
+model: anthropic/claude-haiku-4.5
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0011095
+timestamp: '2025-12-13T14:00:11.937973'
+success: true
+final_score: 0.9815
+score_breakdown:
+  final_score: 0.9815
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 276
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.946
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.91
+        slop_score: 1.0
+        overall: 0.946
+    llm_judge:
+      score: 0.99
+      weight: 0.5
+llm_results:
+  diagnosis_score: 1.0
+  flaw_correction_score: 1.0
+  beat_satisfaction_score: 1.0
+  preservation_score: 1.0
+  preserved_count: 4
+  preserved_total: 4
+  required_preserved_score: 1.0
+  required_preserved_count: 4
+  required_preserved_total: 4
+  minimal_change_score: 0.9
+  word_count_valid: true
+  quality_score: 1.0
+  evidence: The model correctly identified and addressed the flaw of Sophie not showing
+    change upon return. It introduced a clear moment of pause and a different response
+    to work stress, directly contrasting her old behavior. Her mother notices the
+    change, and Sophie articulates her new perspective. The changes were surgical,
+    adding new dialogue and internal monologue while retaining the original structure
+    and key elements.
+error: null

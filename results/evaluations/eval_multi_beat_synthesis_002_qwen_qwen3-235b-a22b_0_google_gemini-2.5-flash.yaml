@@ -1,0 +1,43 @@
+evaluation_id: dd1271a6
+task_id: multi_beat_synthesis_002
+generation_id: multi_beat_synthesis_002_qwen/qwen3-235b-a22b_0
+task_type: multi_beat_synthesis
+model: qwen/qwen3-235b-a22b
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.000924
+timestamp: '2025-12-12T13:09:10.816151'
+success: true
+final_score: 0.958
+score_breakdown:
+  final_score: 0.958
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 733
+      target_range:
+      - 700
+      - 1000
+    programmatic:
+      score: 0.832
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.72
+        slop_score: 1.0
+        overall: 0.832
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 15
+  beat_reqs_total: 15
+  beat_requirements_score: 1.0
+  cross_beat_satisfied: 4
+  cross_beat_total: 4
+  cross_beat_score: 1.0
+  word_count_valid: true
+  context_score: 1.0
+  coherence_score: 1.0
+  failed_items: []
+error: null

@@ -1,0 +1,42 @@
+evaluation_id: 30df67c7
+task_id: beat_revision_005
+generation_id: beat_revision_005_anthropic/claude-haiku-4.5_0
+task_type: beat_revision
+model: anthropic/claude-haiku-4.5
+sample_index: 0
+evaluator_model: openai/gpt-5-mini
+evaluator_cost: 0.00075975
+timestamp: '2025-12-13T13:53:59.180692'
+success: true
+final_score: 0.5208043874482576
+score_breakdown:
+  final_score: 0.5208
+  components:
+    word_count:
+      score: 0.9932
+      weight: 0.25
+      actual: 186
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.94
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.9
+        slop_score: 1.0
+        overall: 0.94
+    llm_judge:
+      score: 0.075
+      weight: 0.5
+llm_results:
+  correct_diagnosis_score: 0.0
+  beat_understanding_score: 0.5
+  false_positive_avoided_score: 0.0
+  reasoning_quality_score: 0.0
+  model_said_no_revision: false
+  evidence: The model produced a rewritten version of the segment instead of declaring
+    'NO REVISION NEEDED.' It altered wording (e.g., added 'Tomorrow she'd figure out
+    what comes next. Tonight, she let herself break.') and made no explicit claim
+    that the original beat was correct. No explanatory reasoning was provided.
+error: null

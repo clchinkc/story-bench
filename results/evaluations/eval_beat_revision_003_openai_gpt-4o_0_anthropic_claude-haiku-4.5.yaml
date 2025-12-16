@@ -1,0 +1,60 @@
+evaluation_id: 4fe8fe98
+task_id: beat_revision_003
+generation_id: beat_revision_003_openai/gpt-4o_0
+task_type: beat_revision
+model: openai/gpt-4o
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.018945
+timestamp: '2025-12-13T13:39:43.651246'
+success: true
+final_score: 0.9319652801889315
+score_breakdown:
+  final_score: 0.932
+  components:
+    word_count:
+      score: 0.9999
+      weight: 0.25
+      actual: 198
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.988
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.98
+        slop_score: 1.0
+        overall: 0.988
+    llm_judge:
+      score: 0.87
+      weight: 0.5
+llm_results:
+  diagnosis_score: 0.9
+  flaw_correction_score: 0.85
+  beat_satisfaction_score: 0.8
+  preservation_score: 1.0
+  preserved_count: 4
+  preserved_total: 4
+  required_preserved_score: 1.0
+  required_preserved_count: 4
+  required_preserved_total: 4
+  minimal_change_score: 0.75
+  word_count_valid: false
+  quality_score: 0.85
+  evidence: 'The model correctly diagnosed the core flaw: Sophie showed no transformation
+    despite the journey, immediately reverting to workaholic patterns. The revision
+    addresses this by: (1) adding explicit insight (''learned to let go''), (2) showing
+    changed behavior (turning phone face-down, choosing to delay work), (3) providing
+    maternal contrast (''her mother noticing something different''), (4) demonstrating
+    new priorities through action. All 4 required phrases preserved exactly: ''Sophie''s
+    flight landed at O''Hare'', ''How was Thailand? her mother asked'', ''The familiar
+    Chicago skyline appeared'', ''It''s good to be home, she said''. Changes were
+    surgical: added ''transformative'' and ''let go'' dialogue, inserted phone-turning
+    action, changed ''You know how it is'' to ''You know, maybe it can'', added reflection
+    on city lights and peace. However, word count (198) falls short of 200-350 requirement
+    by 2 words—a minor constraint violation. The revision successfully demonstrates
+    Return (Having Changed) through behavioral contrast and integrated learning, though
+    could be slightly more elaborate to meet word count and deepen the transformation''s
+    specificity.'
+error: null

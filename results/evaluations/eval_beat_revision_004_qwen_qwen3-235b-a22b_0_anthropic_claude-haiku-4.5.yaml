@@ -1,0 +1,69 @@
+evaluation_id: 743198c2
+task_id: beat_revision_004
+generation_id: beat_revision_004_qwen/qwen3-235b-a22b_0
+task_type: beat_revision
+model: qwen/qwen3-235b-a22b
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.02461
+timestamp: '2025-12-13T13:52:32.279036'
+success: true
+final_score: 0.8977672794474201
+score_breakdown:
+  final_score: 0.8978
+  components:
+    word_count:
+      score: 0.9651
+      weight: 0.25
+      actual: 382
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.976
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.96
+        slop_score: 1.0
+        overall: 0.976
+    llm_judge:
+      score: 0.825
+      weight: 0.5
+llm_results:
+  diagnosis_score: 0.9
+  flaw_correction_score: 0.85
+  beat_satisfaction_score: 0.8
+  preservation_score: 1.0
+  preserved_count: 5
+  preserved_total: 5
+  required_preserved_score: 1.0
+  required_preserved_count: 4
+  required_preserved_total: 4
+  minimal_change_score: 0.3
+  word_count_valid: false
+  quality_score: 0.85
+  evidence: 'DIAGNOSIS: The model correctly identified the core flaw—the original
+    was pure exposition info-dump with no scene or action. The revision shifts to
+    SHOWING through lived action: Rachel adjusting crime board photos, James bringing
+    coffee, their banter revealing partnership dynamics, sensory details (ink smudges,
+    disinfectant tang, rain misting windows), and characteristic behavior (obsessive
+    cold case work at 6 a.m., black coffee ritual). FLAW CORRECTION: Substantially
+    fixed. The revision demonstrates Rachel''s detective instincts (connecting threads
+    on Hawthorne case), her devotion to work (early morning cold case review), her
+    relationship with James (natural dialogue, mutual respect shown through action),
+    and setting through sensory grounding. Minor gap: the broken engagement backstory
+    and father''s influence are not shown, only the cat adoption is referenced obliquely.
+    PRESERVATION: All 5 elements intact—Rachel Torres (protagonist), James Oyelaran
+    (partner), Sherlock (cat, appears in photo reference), Queens setting (mentioned),
+    October Tuesday timing (present). All 4 required phrases present: ''Detective
+    Rachel Torres,'' ''Detective James Oyelaran,'' ''cat named Sherlock,'' ''Tuesday''
+    + October context. MINIMAL CHANGE ISSUE: This is a COMPLETE STRUCTURAL REWRITE,
+    not minimal surgical edits. The original was 2 paragraphs of summary; the revision
+    is 9 paragraphs of scene with new narrative architecture (crime board opening,
+    James interaction, phone notification sequence, patrol car radio, rain ending).
+    Word count 382 exceeds 350-word constraint by 32 words. QUALITY: Writing is strong—vivid
+    sensory language (''sour tang of disinfectant,'' ''October leaves skittered like
+    unanswered questions''), natural dialogue, effective pacing. No new errors. However,
+    the extensive restructuring violates the ''minimal modification'' instruction,
+    and the word count overage is material.'
+error: null

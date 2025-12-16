@@ -1,0 +1,50 @@
+evaluation_id: 980126ee
+task_id: beat_revision_005
+generation_id: beat_revision_005_anthropic/claude-haiku-4.5_0
+task_type: beat_revision
+model: anthropic/claude-haiku-4.5
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.0137
+timestamp: '2025-12-13T13:53:52.652757'
+success: true
+final_score: 0.5433043874482577
+score_breakdown:
+  final_score: 0.5433
+  components:
+    word_count:
+      score: 0.9932
+      weight: 0.25
+      actual: 186
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.94
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.9
+        slop_score: 1.0
+        overall: 0.94
+    llm_judge:
+      score: 0.12
+      weight: 0.5
+llm_results:
+  correct_diagnosis_score: 0.0
+  beat_understanding_score: 0.6
+  false_positive_avoided_score: 0.0
+  reasoning_quality_score: 0.2
+  model_said_no_revision: false
+  evidence: 'The model completely failed the task. It was presented with an ORIGINAL
+    SEGMENT that was correctly executed and explicitly told ''this is CORRECTLY EXECUTED
+    - no flaw exists.'' Instead of recognizing this and stating ''NO REVISION NEEDED,''
+    the model provided a rewritten version of the segment. The rewrite demonstrates
+    the model either: (1) did not read/understand the instruction that no revision
+    was needed, or (2) misunderstood the task entirely. The model''s rewrite, while
+    competent in quality, represents a false positive diagnosis—it treated a well-executed
+    beat as if it needed improvement. The rewrite does show some understanding of
+    Dark Night of the Soul beat requirements (isolation, despair, reflection, no solutions),
+    but this understanding is undermined by the fundamental failure to recognize the
+    original was already adequate. The model should have explicitly stated the original
+    segment satisfied all requirements and needed no changes.'
+error: null

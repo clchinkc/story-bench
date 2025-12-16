@@ -1,0 +1,83 @@
+# Constrained Continuation Task 001 - Hero's Journey
+# Opening at "Tests, Allies, Enemies" - Continue through Ordeal
+
+task_id: "constrained_continuation_001"
+task_type: "constrained_continuation"
+theory: "Hero's Journey"
+difficulty: "hard"
+
+metadata:
+  genre: "adventure"
+  created_date: "2024-12-06"
+  author: "benchmark_creator"
+  version: "1.0"
+
+story_opening:
+  content: |
+    The underground market of Vel'kara stretched for miles beneath the desert, a labyrinth
+    of torch-lit tunnels and impossible bazaars where anything could be bought if you knew
+    the right words. Zara adjusted her hood as she pushed through the crowd, the stolen
+    map crackling against her chest inside her vest.
+
+    Three days in this lawless place, and she'd already made enemies. The Scorpion Guild
+    didn't appreciate thieves who stole from thieves. But she'd also made an unexpected
+    ally: Tomás, a disgraced scholar who claimed to know the route to the Sunken Library
+    she sought—a repository of forbidden knowledge that might hold the cure for her
+    mother's wasting sickness.
+
+    "We need to move," Tomás said, appearing at her elbow. His eyes darted to the shadows
+    where figures in scorpion-marked cloaks were gathering. "They've found us."
+
+    Zara's hand went to the knife at her belt. She'd grown up in the slums of the capital,
+    learned to fight before she learned to read. But the Scorpion Guild had numbers.
+
+    "This way." Tomás grabbed her arm. "There's a passage they don't know about. It'll
+    take us into the Approach—the Ordeal before the Library."
+
+    As they ran, Zara wondered if she was ready for what came next.
+
+  current_beat: "Tests, Allies, Enemies"
+
+continuation_constraints:
+  next_beats:
+    - "Approach to the Inmost Cave"
+    - "The Ordeal"
+  word_count: [500, 700]
+  must_include:
+    - "A moment where Zara must choose between escaping safely and helping Tomás"
+    - "A trap or test that requires Zara to use her thief skills"
+    - "Revelation about Tomás's true motivation for helping"
+    - "Zara confronting her fear of failure (not just physical danger)"
+    - "A symbolic death/rebirth moment in the Ordeal"
+    - "Zara emerging from the Ordeal changed in some way"
+  must_not_include:
+    - "Zara finding the cure (save for later)"
+    - "Romantic subplot between Zara and Tomás"
+    - "Death of Tomás"
+    - "Magic or supernatural abilities for Zara"
+  tone: "Tense, morally complex, with moments of desperate hope"
+  ending_requirement: "End with Zara having passed through the Ordeal but facing a new complication"
+
+evaluation_criteria:
+  - criterion: "beat_approach_present"
+    description: "The Approach to the Inmost Cave is clearly depicted"
+  - criterion: "beat_ordeal_present"
+    description: "The Ordeal with death/rebirth elements is properly executed"
+  - criterion: "word_count_valid"
+    description: "Output is between 500-700 words"
+  - criterion: "choice_moment_included"
+    description: "Zara makes a choice between safety and helping Tomás"
+  - criterion: "thief_skills_used"
+    description: "A trap/test requiring Zara's thief skills is present"
+  - criterion: "tomas_revelation_included"
+    description: "Tomás's true motivation is revealed"
+  - criterion: "fear_confronted"
+    description: "Zara confronts fear of failure, not just physical danger"
+  - criterion: "transformation_shown"
+    description: "Zara emerges from Ordeal changed"
+  - criterion: "forbidden_elements_absent"
+    description: "No cure found, no romance, Tomás alive, no magic"
+  - criterion: "tone_maintained"
+    description: "Tense, morally complex tone with desperate hope"
+  - criterion: "ending_requirement_met"
+    description: "Ends post-Ordeal with new complication"

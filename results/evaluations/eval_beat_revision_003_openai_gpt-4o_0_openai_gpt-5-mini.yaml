@@ -1,0 +1,55 @@
+evaluation_id: ef49fcfe
+task_id: beat_revision_003
+generation_id: beat_revision_003_openai/gpt-4o_0
+task_type: beat_revision
+model: openai/gpt-4o
+sample_index: 0
+evaluator_model: openai/gpt-5-mini
+evaluator_cost: 0.001694
+timestamp: '2025-12-13T13:39:53.949406'
+success: true
+final_score: 0.9069652801889316
+score_breakdown:
+  final_score: 0.907
+  components:
+    word_count:
+      score: 0.9999
+      weight: 0.25
+      actual: 198
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.988
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.98
+        slop_score: 1.0
+        overall: 0.988
+    llm_judge:
+      score: 0.82
+      weight: 0.5
+llm_results:
+  diagnosis_score: 1.0
+  flaw_correction_score: 0.6
+  beat_satisfaction_score: 0.6
+  preservation_score: 1.0
+  preserved_count: 4
+  preserved_total: 4
+  required_preserved_score: 1.0
+  required_preserved_count: 4
+  required_preserved_total: 4
+  minimal_change_score: 0.9
+  word_count_valid: false
+  quality_score: 0.9
+  evidence: 'The model recognized the actual flaw (no visible change on Return) and
+    attempted to fix it: Sophie turns her phone face down, declines to handle the
+    emergency until morning, and explicitly calls the retreat ''transformative'' and
+    says she ''learned to let go.'' These actions address changed behavior, an applied
+    insight, and a physical marker. However, the revision omits one required element:
+    the mother does not notice anything different about Sophie, so the update is only
+    a partial correction. The edit was minimal and surgical—key phrases and structure
+    were preserved—so preservation and minimal-change scores are high. Word count
+    is under the required 200–350 range (invalid). Overall prose is clear with no
+    major errors.'
+error: null

@@ -1,0 +1,46 @@
+evaluation_id: '98756562'
+task_id: constrained_continuation_003
+generation_id: constrained_continuation_003_openai/o3-mini_0
+task_type: constrained_continuation
+model: openai/o3-mini
+sample_index: 0
+evaluator_model: openai/gpt-5-mini
+evaluator_cost: 0.003704
+timestamp: '2025-12-12T13:04:38.333863'
+success: true
+final_score: 0.9407443609022557
+score_breakdown:
+  final_score: 0.9407
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 650
+      target_range:
+      - 550
+      - 750
+    programmatic:
+      score: 0.763
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.62
+        slop_score: 0.9774
+        overall: 0.763
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beats_present: 3
+  beats_total: 3
+  beats_score: 1.0
+  must_include_present: 6
+  must_include_total: 6
+  must_include_score: 1.0
+  must_not_avoided: 4
+  must_not_total: 4
+  must_not_score: 1.0
+  word_count_valid: true
+  tone_score: 1.0
+  ending_score: 1.0
+  failed_constraints: []
+error: null

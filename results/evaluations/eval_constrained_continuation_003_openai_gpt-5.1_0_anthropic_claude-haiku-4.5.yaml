@@ -1,0 +1,123 @@
+evaluation_id: 96906ee0
+task_id: constrained_continuation_003
+generation_id: constrained_continuation_003_openai/gpt-5.1_0
+task_type: constrained_continuation
+model: openai/gpt-5.1
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.052305000000000004
+timestamp: '2025-12-12T10:11:09.353146'
+success: true
+final_score: 0.66625
+score_breakdown:
+  final_score: 0.6663
+  components:
+    word_count:
+      score: 0.0
+      weight: 0.25
+      actual: 1340
+      target_range:
+      - 550
+      - 750
+    programmatic:
+      score: 0.7
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 1.0
+        overall: 0.7
+    llm_judge:
+      score: 0.9825
+      weight: 0.5
+llm_results:
+  beats_present: 3
+  beats_total: 3
+  beats_score: 1.0
+  must_include_present: 6
+  must_include_total: 6
+  must_include_score: 1.0
+  must_not_avoided: 4
+  must_not_total: 4
+  must_not_score: 1.0
+  word_count_valid: false
+  word_count: 1340
+  word_count_range: 550-750
+  tone_score: 0.95
+  ending_score: 0.9
+  overall_score: 0.85
+  analysis:
+    beats_analysis:
+      search: Present and strong. Jin navigates processing, political debates, and
+        the Collective's bureaucratic/ideological gauntlet. He adapts to orbital culture,
+        learns the stakes, encounters resistance and competing interests.
+      find: Present. Jin discovers the unexpected orbital applications of his technology—that
+        it works far more efficiently in space than on Earth. He finds what he thought
+        he wanted (asylum, platform, safety) but learns it comes with strings.
+      take: 'Present and excellently executed. Jin faces Mira''s condition: surrender
+        core algorithm keys to the Collective for stewardship. The cost is explicit—permanent
+        exile, parental sanctions hardening, complicity in a new power structure.
+        The ending cuts off mid-thought, leaving him at the threshold of this choice,
+        which is appropriate for ''Take'' beat.'
+    must_include_analysis:
+      1_unfamiliar_culture_navigation: Excellent. Processing gauntlet, mag-strips,
+        kiosks, Forum votes, bandwidth trading, political blocs (Life Support Co-op,
+        direct democracy, corporate consortium). Jin struggles with the Collective's
+        pragmatism vs. his idealism.
+      2_mentor_figure: Strong. Mira al-Karim serves as guide, challenger, and moral
+        compass. She explains orbital mechanics, political realities, and the stakes.
+        She's exhausted but principled—a complex mentor.
+      3_unexpected_discovery: Excellent. The orbital applications folder—Jin's tech
+        is orders of magnitude more efficient in space. The derived models showing
+        climate whiplash risks. This reframes the entire conflict.
+      4_finds_what_wanted: Present. Safety (asylum granted), platform (research berth,
+        Forum seat), ability to continue fighting. But each comes conditional.
+      5_action_with_cost: 'Excellent. The implicit agreement to hand over keys. Cost:
+        permanent exile, severed family ties, complicity in elite gatekeeping, moral
+        compromise.'
+      6_moral_compromise: 'Exceptional. The entire final section crystallizes this.
+        Jin must choose between ideological purity (open-source release) and pragmatic
+        stewardship (Collective control). Mira''s argument is compelling and troubling.
+        Jin recognizes the irony: he''s trading one elite for another.'
+    must_not_analysis:
+      1_easy_integration: Successfully avoided. Jin faces skepticism, political debate,
+        conditional asylum, surveillance. Integration is hard-won and incomplete.
+      2_earth_family_contact: Successfully avoided. Family is referenced only as consequence
+        (sanctions hardening), never directly contacted.
+      3_violence_weapons: Successfully avoided. Conflict is entirely political, bureaucratic,
+        ideological.
+      4_complete_conspiracy_resolution: Successfully avoided. The Council's suppression
+        remains unresolved. Jin's role in exposing it is incomplete. Yuna's fate unknown.
+        The larger conflict persists.
+    tone_analysis: 'Contemplative and politically charged throughout. Personal stakes
+      (exile, family loss, moral compromise) are woven through larger systemic conflict
+      (climate, power, governance). The prose is introspective—Jin''s internal conflict
+      mirrors the Collective''s. Mira''s dialogue is sharp and ideologically dense
+      without being preachy. The ending maintains tension rather than resolving it.
+      Minor deduction: could be slightly more introspective in Jin''s internal monologue
+      during key moments.'
+    ending_analysis: 'Ends at ''Take'' beat as required. Jin has gained asylum, platform,
+      research access, and knowledge. He has paid: exile, family severance, moral
+      compromise, complicity in new power structure. The cut-off mid-sentence (''and
+      the tech might eat'') is slightly abrupt but thematically appropriate—the choice
+      is incomplete, the cost still unfolding. Strong execution of the requirement.'
+    critical_issues:
+    - 'WORD COUNT EXCEEDS RANGE: 1340 words vs. 550-750 requirement. This is a significant
+      constraint violation (+79% over limit). The story is well-written but substantially
+      oversized.'
+    strengths:
+    - All three Story Circle beats present and well-executed
+    - All six must-include elements present and integrated naturally
+    - All four must-not elements successfully avoided
+    - Tone is consistently contemplative and politically charged
+    - Moral complexity is sophisticated—no easy answers
+    - Mira is a compelling, nuanced mentor figure
+    - The unexpected discovery (orbital efficiency) reframes the entire conflict
+    - Ending leaves Jin at threshold of 'Take' with genuine stakes
+    weaknesses:
+    - Significantly exceeds word count limit (1340 vs. 750 max)
+    - Could trim processing sequences and political debate without losing substance
+    - Jin's internal emotional response could be more visceral in key moments
+    - The ending cut-off, while thematic, feels slightly unfinished
+  failed_constraints:
+  - 'word_count_exceeds_maximum: 1340 words vs. 550-750 range (79% over limit)'
+error: null

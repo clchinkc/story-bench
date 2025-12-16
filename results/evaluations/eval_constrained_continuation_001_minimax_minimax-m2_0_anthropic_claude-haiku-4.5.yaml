@@ -1,0 +1,94 @@
+evaluation_id: da570034
+task_id: constrained_continuation_001
+generation_id: constrained_continuation_001_minimax/minimax-m2_0
+task_type: constrained_continuation
+model: minimax/minimax-m2
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.032534999999999994
+timestamp: '2025-12-12T10:10:35.289766'
+success: true
+final_score: 0.8539147174493853
+score_breakdown:
+  final_score: 0.8539
+  components:
+    word_count:
+      score: 0.7358
+      weight: 0.25
+      actual: 747
+      target_range:
+      - 500
+      - 700
+    programmatic:
+      score: 0.6949
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 0.9872
+        overall: 0.6949
+    llm_judge:
+      score: 0.9925
+      weight: 0.5
+llm_results:
+  beats_present: 2
+  beats_total: 2
+  beats_score: 1.0
+  must_include_present: 6
+  must_include_total: 6
+  must_include_score: 1.0
+  must_not_avoided: 4
+  must_not_total: 4
+  must_not_score: 1.0
+  word_count_valid: false
+  word_count: 747
+  word_count_range: 500-700
+  tone_score: 0.95
+  ending_score: 1.0
+  failed_constraints:
+  - 'Word count exceeds maximum: 747 words vs. 700-word limit (47 words over)'
+  analysis:
+    beats_present_detail:
+    - 'Approach to the Inmost Cave: The passage through trapped tunnels, the circular
+      chamber with symbols, the rising ink—all represent approaching the Library''s
+      threshold'
+    - 'The Ordeal: The black tide/knowledge-thralls sequence where Zara must choose
+      between escape and confrontation, experiencing symbolic death and rebirth through
+      the ink'
+    must_include_detail:
+    - 'Choice between safety and helping: Zara tells Tomás to run while she faces
+      the ink—explicit sacrifice decision'
+    - 'Trap requiring thief skills: Pressure plate detection, reading worn stones,
+      finding safe path through trapped section'
+    - 'Tomás''s true motivation revealed: His brother died in Guild experiments; he
+      used Zara instrumentally to reach the Library'
+    - 'Confronting fear of failure: ''If I don''t face this, I fail everyone who needs
+      that cure''—explicitly addresses stakes beyond physical danger'
+    - 'Symbolic death/rebirth: Drowning in the ink, memories fraying, old self dissolving,
+      then emerging changed with new understanding'
+    - 'Zara emerges changed: ''She was no longer just a thief. She was something more
+      dangerous''—transformed by the Ordeal with new knowledge and perception'
+    must_not_detail:
+    - 'Cure not found: ✓ Zara passes through but doesn''t obtain the cure'
+    - 'No romantic subplot: ✓ Relationship remains transactional and morally complex'
+    - 'Tomás survives: ✓ He escapes with the map; no death occurs'
+    - 'No supernatural abilities for Zara: ✓ Her changes are psychological/perceptual,
+      not magical powers'
+    tone_assessment: Excellent execution of tense, morally complex atmosphere. Desperation
+      is palpable (trap sequence, ink confrontation). Moral complexity shines through
+      Tomás's revelation and Zara's sacrifice. Moments of desperate hope present ('shadows
+      aren't just about hiding'). Minor deduction only for slight melodrama in 'breaking
+      bones' sound effect.
+    ending_assessment: 'Perfect alignment with requirements. Zara has passed through
+      the Ordeal (emerged from ink changed). New complication introduced: Scorpion
+      Guild sentries waiting ahead. Creates tension for next phase while maintaining
+      the journey''s momentum.'
+    strengths:
+    - All required story beats seamlessly integrated
+    - Exceptional character development through action
+    - Morally nuanced portrayal of Tomás (neither villain nor pure ally)
+    - Symbolic language (shadows, ink, drowning) enhances thematic depth
+    - Cliffhanger ending maintains narrative momentum
+    weaknesses:
+    - Word count violation (47 words over limit) is the only constraint failure
+    - Could trim approximately 50 words without losing narrative impact
+error: null

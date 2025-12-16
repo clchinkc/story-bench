@@ -1,0 +1,65 @@
+evaluation_id: d7ea86b9
+task_id: beat_interpolation_003
+generation_id: beat_interpolation_003_google/gemini-3-pro-preview_0
+task_type: beat_interpolation
+model: google/gemini-3-pro-preview
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.02174
+timestamp: '2025-12-12T09:36:17.392310'
+success: true
+final_score: 0.9739343838717074
+score_breakdown:
+  final_score: 0.9739
+  components:
+    word_count:
+      score: 0.9077
+      weight: 0.25
+      actual: 422
+      target_range:
+      - 250
+      - 400
+    programmatic:
+      score: 0.988
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.98
+        slop_score: 1.0
+        overall: 0.988
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: false
+  word_count: 422
+  word_count_range: 250-400
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: 'STRENGTHS: All 4 required elements present and well-executed: (1) Multiple
+    station areas explored (mess hall, medical bay, maintenance ladder, research level);
+    (2) Clues discovered progressively (overturned tray, smashed monitors, biometric
+    data showing simultaneous flatlines, absence of bodies); (3) Transformed crew
+    encountered as mysterious shimmer/distortion entities with vague humanoid shape—identity
+    unclear until final beat; (4) Multiple obstacles overcome (jammed medical bay
+    door, dead lift requiring ladder descent, hostile entity encounter, psychological
+    pressure of being watched). BEAT EXECUTION: Perfectly executes Search phase—active
+    navigation, trial-and-error problem solving, incremental discovery, mounting tension,
+    adaptation to unfamiliar threats. Yuki grounds herself in scientific method while
+    facing incomprehensible phenomena. MUST-NOT VIOLATIONS: Zero violations. Yuki
+    does NOT immediately understand the transformation, does NOT receive full explanations
+    from crew, does NOT abandon mission, does NOT arrive with prior knowledge. Commander
+    Reyes only speaks at the very end (AFTER section), not during Search. CONTINUITY:
+    Seamless connection between BEFORE (arrival, silence, mystery) and GENERATED (exploration,
+    discovery, escalation) and AFTER (revelation, choice). Setting details consistent
+    (red emergency lighting, station systems, spatial layout). CHARACTER: Yuki''s
+    voice remains consistent—scientific, methodical, brave but cautious, grounding
+    panic in data. WORD COUNT ISSUE: 422 words exceeds 400-word maximum by 22 words
+    (5.5% overage). This is a technical violation but minor given content quality.'
+error: null

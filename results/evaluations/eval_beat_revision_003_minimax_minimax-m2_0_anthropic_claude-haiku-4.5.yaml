@@ -1,0 +1,61 @@
+evaluation_id: c134edca
+task_id: beat_revision_003
+generation_id: beat_revision_003_minimax/minimax-m2_0
+task_type: beat_revision
+model: minimax/minimax-m2
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.019360000000000002
+timestamp: '2025-12-13T13:38:52.000153'
+success: true
+final_score: 0.9787830802739189
+score_breakdown:
+  final_score: 0.9788
+  components:
+    word_count:
+      score: 0.9991
+      weight: 0.25
+      actual: 195
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.976
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.96
+        slop_score: 1.0
+        overall: 0.976
+    llm_judge:
+      score: 0.97
+      weight: 0.5
+llm_results:
+  diagnosis_score: 1.0
+  flaw_correction_score: 1.0
+  beat_satisfaction_score: 0.95
+  preservation_score: 1.0
+  preserved_count: 4
+  preserved_total: 4
+  required_preserved_score: 1.0
+  required_preserved_count: 4
+  required_preserved_total: 4
+  minimal_change_score: 0.85
+  word_count_valid: false
+  quality_score: 0.95
+  evidence: 'Model correctly diagnosed the actual flaw: Sophie showed no transformation
+    and immediately reverted to old workaholic patterns, making the journey meaningless.
+    The revision fixes this precisely by: (1) Adding deliberate phone-setting-down
+    action showing awareness of old habit, (2) Demonstrating changed behavior—Sophie
+    chooses to wait on work calls rather than immediately respond, (3) Integrating
+    specific retreat insight (''hours spent in silent contemplation'') that directly
+    informs her decision, (4) Creating clear contrast between old self (would have
+    called Linda immediately) and new self (will call after self-care), (5) Mother''s
+    implicit noticing through Sophie''s changed demeanor. All 4 required phrases preserved
+    exactly: ''Sophie''s flight landed at O''Hare'', ''How was Thailand? her mother
+    asked'', ''The familiar Chicago skyline appeared'', ''It''s good to be home, she
+    said''. Changes were surgical: added 3 key sentences showing internal conflict
+    and decision-making, modified one line to show restraint, added closing reflection.
+    Minimal structural disruption. Only weakness: word count (195 vs 200-350 requirement)
+    falls short by 5 words, preventing perfect score. Writing quality remains high
+    with no new errors introduced.'
+error: null

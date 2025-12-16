@@ -1,0 +1,33 @@
+evaluation_id: 015d9de6
+task_id: agentic_constraint_discovery_002
+generation_id: 95dbe81b
+agentic_type: constraint_discovery
+model: qwen/qwen3-235b-a22b
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0009158
+timestamp: '2025-12-13T18:55:29.762027'
+success: true
+process_scores:
+  discovery_efficiency: 0.2
+  question_quality: 0.2
+  question_coverage: 0.2
+output_scores:
+  constraint_satisfaction: 0.2
+  beat_execution: 0.8
+  narrative_quality: 0.6
+final_score: 0.4
+llm_results:
+  discovery_efficiency: 0.2
+  constraints_discoverable: 1
+  constraints_total: 5
+  question_quality: 0.2
+  question_coverage: 0.2
+  constraint_satisfaction: 0.2
+  beat_execution: 0.8
+  narrative_quality: 0.6
+  evidence: The agent only discovered one constraint (resource shortage) out of five.
+    The questions asked were mostly 'NO' responses, indicating they were not effective
+    in probing for hidden constraints. The final output only incorporates the discovered
+    constraint effectively. Beat execution is generally good, but the narrative quality
+    suffers from the lack of deeper constraint integration.
+error: null

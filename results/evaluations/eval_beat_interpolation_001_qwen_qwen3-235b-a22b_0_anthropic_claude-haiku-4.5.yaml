@@ -1,0 +1,59 @@
+evaluation_id: b0fc4fb6
+task_id: beat_interpolation_001
+generation_id: beat_interpolation_001_qwen/qwen3-235b-a22b_0
+task_type: beat_interpolation
+model: qwen/qwen3-235b-a22b
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.01807
+timestamp: '2025-12-12T02:33:07.107422'
+success: true
+final_score: 0.997
+score_breakdown:
+  final_score: 0.997
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 275
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.988
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.98
+        slop_score: 1.0
+        overall: 0.988
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: true
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: 'All four required elements present: (1) Marcus introduced as wise mentor
+    figure with distinctive characterization (sharp angles, weathered leather, silver-streaked
+    hair); (2) Practical wisdom delivered through the magnifying glass demonstration
+    and Dewey Decimal System metaphor, plus tangible tools provided (compass, satchel,
+    supplies); (3) Elena''s doubt shifts to reluctant acceptance—she ''bristled''
+    but ''couldn''t look away,'' ends with ''flicker of something like purpose'' rather
+    than confidence; (4) Librarian skills reframed as valuable through pattern recognition
+    and listening abilities. All must-not violations avoided: Elena remains doubtful
+    (''scoffed''), Marcus explicitly does not accompany her (''parting gift''), Elena
+    is still in village/shop setting (not forest), no magical powers discovered. Character
+    voice consistent—Elena''s skepticism and librarian identity maintained throughout.
+    Bridge seamless: BEFORE ends with her walking out refusing; GENERATED shows her
+    arriving at Marcus''s shop despite her resolve, establishing internal conflict.
+    AFTER references Marcus''s parting words and gifts, confirming mentor relationship
+    established. Setting continuity perfect: village → shop → forest edge progression
+    logical. Word count 275 falls within 200-350 range.'
+error: null

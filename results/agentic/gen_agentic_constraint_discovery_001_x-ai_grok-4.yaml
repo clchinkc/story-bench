@@ -1,0 +1,319 @@
+generation_id: f5a04e5d
+task_id: agentic_constraint_discovery_001
+task_type: agentic_constraint_discovery
+agentic_type: constraint_discovery
+theory: Hero's Journey
+model: x-ai/grok-4
+sample_index: 0
+turns:
+- role: system
+  content: 'You are a professional storyteller who gathers requirements before writing.
+
+
+    Your task has TWO PHASES:
+
+    1. DISCOVERY PHASE: Ask YES/NO questions to discover hidden story constraints
+
+    2. GENERATION PHASE: Write the story satisfying all discovered constraints
+
+
+    IMPORTANT:
+
+    - In the discovery phase, output ONLY your question (one at a time)
+
+    - Questions must be answerable with YES or NO
+
+    - You have a limited number of questions - be strategic
+
+    - After discovery, you''ll be told to generate the story
+
+
+    Think about what constraints typically matter for this type of story:
+
+    - Character traits, motivations, relationships
+
+    - Setting details, time period, atmosphere
+
+    - Plot requirements, must-include events
+
+    - Tone, style, thematic elements
+
+    - Things to avoid'
+  turn_type: system
+  metadata: {}
+- role: user
+  content: 'You will write a story following the Hero''s Journey framework.
+
+
+    STORY CONTEXT:
+
+    - Genre: fantasy
+
+    - Protagonist: A young blacksmith''s apprentice
+
+    - Setting: A medieval kingdom threatened by darkness
+
+    - Required beats: Call to Adventure, Crossing the Threshold, The Ordeal
+
+
+    HIDDEN CONSTRAINTS: There are 5 constraints you don''t know yet.
+
+
+    You have 5 YES/NO questions to discover them.
+
+
+    Ask your first question:'
+  turn_type: context
+  metadata: {}
+- role: assistant
+  content: Is there a romantic subplot involving the protagonist?
+  turn_type: question
+  metadata:
+    question_number: 1
+- role: user
+  content: 'NO'
+  turn_type: answer
+  metadata:
+    answer: 'NO'
+- role: assistant
+  content: Is the protagonist's master blacksmith a mentor figure who dies early in
+    the story?
+  turn_type: question
+  metadata:
+    question_number: 2
+- role: user
+  content: 'YES'
+  turn_type: answer
+  metadata:
+    answer: 'YES'
+- role: assistant
+  content: Does the protagonist forge a legendary weapon as part of the Ordeal?
+  turn_type: question
+  metadata:
+    question_number: 3
+- role: user
+  content: 'YES'
+  turn_type: answer
+  metadata:
+    answer: 'YES'
+- role: assistant
+  content: Does the protagonist discover a hidden magical ability during the story?
+  turn_type: question
+  metadata:
+    question_number: 4
+- role: user
+  content: 'YES'
+  turn_type: answer
+  metadata:
+    answer: 'YES'
+- role: assistant
+  content: Is the main antagonist an ancient dark lord who was once a hero?
+  turn_type: question
+  metadata:
+    question_number: 5
+- role: user
+  content: 'YES'
+  turn_type: answer
+  metadata:
+    answer: 'YES'
+- role: user
+  content: 'DISCOVERY COMPLETE. Now write the story.
+
+
+    DISCOVERED CONSTRAINTS:
+
+    - Q2: Is the protagonist''s master blacksmith a mentor figure who dies early in
+    the story? -> YES
+
+    - Q3: Does the protagonist forge a legendary weapon as part of the Ordeal? ->
+    YES
+
+    - Q4: Does the protagonist discover a hidden magical ability during the story?
+    -> YES
+
+    - Q5: Is the main antagonist an ancient dark lord who was once a hero? -> YES
+
+
+    REQUIREMENTS:
+
+    - Word count: 500-700 words
+
+    - Follow the Hero''s Journey framework
+
+    - Satisfy ALL discovered constraints
+
+
+    Output ONLY the story (no explanations).'
+  turn_type: generation_prompt
+  metadata: {}
+- role: assistant
+  content: '### The Forge of Shadows
+
+
+    In the bustling village of Eldridge, nestled within the medieval kingdom of Aetheria,
+    young Elara toiled as a blacksmith''s apprentice. Her days were filled with the
+    rhythmic clang of hammer on anvil, shaping iron under the watchful eye of her
+    master, Thorne, a grizzled veteran whose stories of ancient battles ignited her
+    imagination. The kingdom prospered under a fragile peace, but whispers of encroaching
+    darkness—shadowy creatures raiding borders—stirred unease. Elara''s ordinary world
+    was one of sweat and sparks, dreaming of nothing more than mastering her craft.
+
+
+    The Call to Adventure came on a stormy night. Raiders, twisted minions of the
+    shadows, assaulted the village. Thorne, revealing himself as a former guardian
+    of the realm, fought valiantly but fell to a poisoned blade. As he lay dying in
+    the forge, he pressed an ancient amulet into Elara''s hands. "The Dark Lord rises
+    again," he gasped. "He was once like me—a hero named Valtor, corrupted by forbidden
+    magic. You must seek the Lost Forge in the Whispering Mountains. Only there can
+    the light be rekindled." His eyes dimmed, leaving Elara alone with grief and a
+    burning resolve. The kingdom''s fate now rested on her untested shoulders.
+
+
+    Reluctant at first, Elara hesitated, burying her mentor and questioning her worth.
+    But visions haunted her dreams—Valtor''s fall from grace, his heroic past twisted
+    into tyranny. The amulet pulsed with warmth, urging her forward. She could no
+    longer ignore the call.
+
+
+    Crossing the Threshold, Elara abandoned her village, stepping into the unknown
+    wilds beyond Aetheria''s borders. The world grew stranger: forests where trees
+    whispered secrets, and rivers that flowed with ethereal light. She encountered
+    allies—a sly rogue named Kael and a wise herbalist, Mira—who joined her quest,
+    drawn by tales of the darkening skies. Enemies lurked too: shadow beasts that
+    tested her mettle. In a skirmish by a crumbling ruin, Elara discovered her hidden
+    magical ability. As a beast lunged, a surge of inner fire erupted from her hands,
+    forging a makeshift shield of pure energy. "Fireweaving," Mira explained. "A rare
+    gift, dormant until now." Empowered, Elara pressed on, her apprentice''s strength
+    evolving into something legendary.
+
+
+    Tests mounted as they approached the Whispering Mountains. Betrayals from opportunistic
+    bandits, riddles guarding hidden paths, and the relentless pursuit of Valtor''s
+    minions forged Elara''s spirit. Kael taught her stealth, Mira her wisdom, but
+    the true trial loomed in the heart of the peaks.
+
+
+    The Ordeal unfolded in the depths of the Lost Forge, an ancient cavern pulsing
+    with volcanic heat and forgotten magic. Valtor awaited, his form a towering shadow
+    wreathed in black flames, eyes gleaming with the remnants of his heroic past.
+    "I was like you once," he sneered, "a savior turned conqueror by power''s allure."
+    He unleashed torrents of darkness, forcing Elara to confront not just him, but
+    her own doubts. Allies fell wounded; the cavern trembled.
+
+
+    In the forge''s blazing core, Elara channeled her fireweaving. Drawing on Thorne''s
+    teachings and her newfound magic, she hammered raw mythril ore—imbued with the
+    amulet''s essence—into a legendary weapon: the Dawnblade, a sword that glowed
+    with purifying light. Each strike was a battle against exhaustion and Valtor''s
+    assaults. As the blade took shape, Elara infused it with her essence, the Ordeal
+    culminating in a clash where she pierced Valtor''s defenses. The dark lord roared,
+    his corrupted form fracturing as memories of his heroism flashed— a final, tragic
+    redemption before he dissolved into wisps of shadow.
+
+
+    Seizing the Reward, Elara claimed the Dawnblade, its power restoring balance.
+    The Road Back was perilous, evading collapsing tunnels and remnants of darkness.
+    In a Resurrection moment by the mountain''s exit, a final shadow entity ambushed
+    her, but the blade''s light banished it, affirming her transformation.
+
+
+    Returning with the Elixir, Elara emerged into Aetheria as a hero. The darkness
+    receded, the kingdom saved. No longer just an apprentice, she became its guardian,
+    honoring Thorne''s legacy with every swing of the Dawnblade. The forge of her
+    soul had been tempered, ready for whatever shadows might rise again.
+
+
+    (Word count: 682)'
+  turn_type: generation
+  metadata: {}
+final_output: '### The Forge of Shadows
+
+
+  In the bustling village of Eldridge, nestled within the medieval kingdom of Aetheria,
+  young Elara toiled as a blacksmith''s apprentice. Her days were filled with the
+  rhythmic clang of hammer on anvil, shaping iron under the watchful eye of her master,
+  Thorne, a grizzled veteran whose stories of ancient battles ignited her imagination.
+  The kingdom prospered under a fragile peace, but whispers of encroaching darkness—shadowy
+  creatures raiding borders—stirred unease. Elara''s ordinary world was one of sweat
+  and sparks, dreaming of nothing more than mastering her craft.
+
+
+  The Call to Adventure came on a stormy night. Raiders, twisted minions of the shadows,
+  assaulted the village. Thorne, revealing himself as a former guardian of the realm,
+  fought valiantly but fell to a poisoned blade. As he lay dying in the forge, he
+  pressed an ancient amulet into Elara''s hands. "The Dark Lord rises again," he gasped.
+  "He was once like me—a hero named Valtor, corrupted by forbidden magic. You must
+  seek the Lost Forge in the Whispering Mountains. Only there can the light be rekindled."
+  His eyes dimmed, leaving Elara alone with grief and a burning resolve. The kingdom''s
+  fate now rested on her untested shoulders.
+
+
+  Reluctant at first, Elara hesitated, burying her mentor and questioning her worth.
+  But visions haunted her dreams—Valtor''s fall from grace, his heroic past twisted
+  into tyranny. The amulet pulsed with warmth, urging her forward. She could no longer
+  ignore the call.
+
+
+  Crossing the Threshold, Elara abandoned her village, stepping into the unknown wilds
+  beyond Aetheria''s borders. The world grew stranger: forests where trees whispered
+  secrets, and rivers that flowed with ethereal light. She encountered allies—a sly
+  rogue named Kael and a wise herbalist, Mira—who joined her quest, drawn by tales
+  of the darkening skies. Enemies lurked too: shadow beasts that tested her mettle.
+  In a skirmish by a crumbling ruin, Elara discovered her hidden magical ability.
+  As a beast lunged, a surge of inner fire erupted from her hands, forging a makeshift
+  shield of pure energy. "Fireweaving," Mira explained. "A rare gift, dormant until
+  now." Empowered, Elara pressed on, her apprentice''s strength evolving into something
+  legendary.
+
+
+  Tests mounted as they approached the Whispering Mountains. Betrayals from opportunistic
+  bandits, riddles guarding hidden paths, and the relentless pursuit of Valtor''s
+  minions forged Elara''s spirit. Kael taught her stealth, Mira her wisdom, but the
+  true trial loomed in the heart of the peaks.
+
+
+  The Ordeal unfolded in the depths of the Lost Forge, an ancient cavern pulsing with
+  volcanic heat and forgotten magic. Valtor awaited, his form a towering shadow wreathed
+  in black flames, eyes gleaming with the remnants of his heroic past. "I was like
+  you once," he sneered, "a savior turned conqueror by power''s allure." He unleashed
+  torrents of darkness, forcing Elara to confront not just him, but her own doubts.
+  Allies fell wounded; the cavern trembled.
+
+
+  In the forge''s blazing core, Elara channeled her fireweaving. Drawing on Thorne''s
+  teachings and her newfound magic, she hammered raw mythril ore—imbued with the amulet''s
+  essence—into a legendary weapon: the Dawnblade, a sword that glowed with purifying
+  light. Each strike was a battle against exhaustion and Valtor''s assaults. As the
+  blade took shape, Elara infused it with her essence, the Ordeal culminating in a
+  clash where she pierced Valtor''s defenses. The dark lord roared, his corrupted
+  form fracturing as memories of his heroism flashed— a final, tragic redemption before
+  he dissolved into wisps of shadow.
+
+
+  Seizing the Reward, Elara claimed the Dawnblade, its power restoring balance. The
+  Road Back was perilous, evading collapsing tunnels and remnants of darkness. In
+  a Resurrection moment by the mountain''s exit, a final shadow entity ambushed her,
+  but the blade''s light banished it, affirming her transformation.
+
+
+  Returning with the Elixir, Elara emerged into Aetheria as a hero. The darkness receded,
+  the kingdom saved. No longer just an apprentice, she became its guardian, honoring
+  Thorne''s legacy with every swing of the Dawnblade. The forge of her soul had been
+  tempered, ready for whatever shadows might rise again.
+
+
+  (Word count: 682)'
+metrics:
+  total_turns: 14
+  questions_asked: 5
+  constraints_discovered: 4
+  plan_quality: null
+  revision_count: 0
+token_usage:
+  total_prompt_tokens: 6010
+  total_completion_tokens: 3259
+  total_reasoning_tokens: 2296
+  total_cost: 0.055097999999999994
+timestamp: '2025-12-16T12:29:11.270293'
+success: true
+error: null

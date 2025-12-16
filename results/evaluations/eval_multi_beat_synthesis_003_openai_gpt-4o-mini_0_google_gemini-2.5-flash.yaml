@@ -1,0 +1,54 @@
+evaluation_id: 25dbca1e
+task_id: multi_beat_synthesis_003
+generation_id: multi_beat_synthesis_003_openai/gpt-4o-mini_0
+task_type: multi_beat_synthesis
+model: openai/gpt-4o-mini
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0014159
+timestamp: '2025-12-12T14:45:09.155377'
+success: true
+final_score: 0.8091146759847523
+score_breakdown:
+  final_score: 0.8091
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 763
+      target_range:
+      - 700
+      - 1000
+    programmatic:
+      score: 0.6975
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 0.9936
+        overall: 0.6975
+    llm_judge:
+      score: 0.7695
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 11
+  beat_reqs_total: 15
+  beat_requirements_score: 0.73
+  cross_beat_satisfied: 3
+  cross_beat_total: 4
+  cross_beat_score: 0.75
+  word_count_valid: true
+  context_score: 0.9
+  coherence_score: 0.8
+  failed_items:
+  - 'Beat 1 - Things going according to plan (mostly): The plan is disrupted by a
+    loud crash and shouts, which is more than a ''minor'' complication.'
+  - 'Beat 2 - Miri discovers her mentor is involved (or the full extent): While Renée
+    appears, the ''full extent'' of her involvement isn''t fully explored or discovered
+    by Miri in this beat, beyond her presence.'
+  - 'Beat 3 - Team friction or trust issues surface: While Sam is missing, it doesn''t
+    explicitly lead to ''team friction or trust issues'' within the crew''s dialogue
+    or actions.'
+  - 'Cross-beat constraint - Chekhov''s Gun: While an emergency exit is mentioned,
+    it''s not explicitly established in Fun and Games and then used in Bad Guys Close
+    In. It''s introduced as a potential escape route in Beat 3.'
+error: null

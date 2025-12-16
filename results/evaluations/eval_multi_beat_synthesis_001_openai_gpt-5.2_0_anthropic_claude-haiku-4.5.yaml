@@ -1,0 +1,146 @@
+evaluation_id: 16dcb852
+task_id: multi_beat_synthesis_001
+generation_id: multi_beat_synthesis_001_openai/gpt-5.2_0
+task_type: multi_beat_synthesis
+model: openai/gpt-5.2
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.06644
+timestamp: '2025-12-12T11:26:51.010422'
+success: true
+final_score: 0.6532499999999999
+score_breakdown:
+  final_score: 0.6532
+  components:
+    word_count:
+      score: 0.0
+      weight: 0.25
+      actual: 1952
+      target_range:
+      - 700
+      - 1000
+    programmatic:
+      score: 0.7
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 1.0
+        overall: 0.7
+    llm_judge:
+      score: 0.9565
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 14
+  beat_reqs_total: 15
+  beat_requirements_score: 0.93
+  cross_beat_satisfied: 4
+  cross_beat_total: 4
+  cross_beat_score: 1.0
+  word_count_valid: false
+  context_score: 0.95
+  coherence_score: 0.92
+  overall_score: 0.93
+  failed_items:
+  - Word count exceeds maximum (1952 vs 1000 limit) - significant overage of 95%
+  detailed_analysis:
+    beat_1_tests_allies_enemies:
+      score: 0.95
+      satisfied:
+      - Dante encounters Mina who initially distrusts him ('Addict, then') - establishes
+        skepticism
+      - 'Test of ability under pressure: Dante uses his gift to read residue while
+        managing sensory overload (the panic spike forcing him to anchor)'
+      - 'Enemy within revealed: Nico the caretaker exposed as traitor selling Resonant
+        locations'
+      - Dante proves himself through action (fire extinguisher response) and insight
+        (reading the gold thread)
+      - 'Addiction/recovery referenced multiple times: ''three years clean,'' the
+        urge rising with helplessness, shame tied to sister''s death'
+      notes: All five requirements clearly met. Mina transitions from distrust to
+        grudging respect by beat end.
+    beat_2_approach_to_inmost_cave:
+      score: 1.0
+      satisfied:
+      - 'Planning scene: Mina spreads map, marks attacks, identifies spiral pattern
+        toward hotel'
+      - 'Guilt recognition: Dante explicitly connects sister''s death to current danger
+        (''your guilt is going to be the door he walks through'')'
+      - 'Preparation: gathering map, flashlight, salt packets, confessions from other
+        Resonants'
+      - 'Moment of doubt: ''At the threshold...Dante''s confidence thinned'' and ''hated
+        how much his voice shook'''
+      - 'Symbolic threshold: sealed ballroom door with layered residue crust, described
+        as crossing into danger'
+      notes: Exceptionally executed. The threshold is both literal and psychological.
+    beat_3_the_ordeal:
+      score: 0.9
+      satisfied:
+      - 'Direct confrontation: killer present in ballroom center, tokens on floor,
+        immediate threat'
+      - 'Symbolic death: Dante overwhelmed by concentrated black shame, ''hollowing''
+        like victims, ''grayness crept along his arms'''
+      - 'All seems lost: killer draining Mina, Dante on knees, ''All seemed lost with
+        the simplicity of it'''
+      - 'Transformation through acceptance: Dante accepts guilt (''I will carry that'')
+        rather than fighting it, integrates it as stone not tide'
+      - 'Victory through understanding: Dante sees killer''s silver self-loathing
+        through prism, recognizes him as fellow sufferer, defeats him with recognition
+        not violence'
+      notes: 'Minor: the killer''s retreat feels slightly abrupt, though thematically
+        sound. The victory is intellectual/emotional rather than physical, which fits
+        the noir-fantasy tone.'
+    chekhov_gun:
+      score: 1.0
+      analysis: Rosa's prismatic shard introduced in Beat 1 (found in ashtray, 'like
+        a broken compact mirror') becomes essential in Beat 3. It refracts the killer's
+        residue, reveals his true nature, and enables Dante to see through the killer's
+        gray field. The shard is the literal tool that solves the ordeal.
+    character_arc_guilt:
+      score: 1.0
+      analysis: 'Beat 1: Guilt mentioned as urge trigger and shame response to ''junkie''
+        slur. Beat 2: Guilt explicitly identified as obstacle (''your guilt is going
+        to be the door he walks through''). Beat 3: Guilt transformed from drowning
+        force to carried weight (''stone in his pocket—real, carried, not worshiped'').
+        Clear progression from suppressed to acknowledged to integrated.'
+    rising_stakes:
+      score: 0.95
+      analysis: 'Beat 1: Dante discovers mentor dead, traitor identified, personal
+        threat emerges. Beat 2: Spiral pattern reveals killer is herding toward hotel,
+        Dante realizes killer ''knows me,'' stakes become personal. Beat 3: Direct
+        confrontation, Mina actively drained, Dante nearly hollowed, killer''s full
+        power unleashed. Stakes escalate logically and emotionally.'
+    ally_continuity:
+      score: 1.0
+      analysis: 'Mina present and essential in all three beats. Beat 1: antagonist-to-ally
+        transition. Beat 2: co-planner and strategist. Beat 3: active combatant, extends
+        salt line, provides grounding presence. Her arc parallels Dante''s trust-building.'
+    context_maintenance:
+      score: 0.95
+      analysis: 'Protagonist: Dante''s voice, perspective, and emotional journey central
+        throughout. Setting: Buckingham Hotel as nexus maintained; Chicago noir atmosphere
+        pervasive. Tone: melancholic, determined, redemptive arc clear. Minor: could
+        emphasize contemporary Chicago details more, but urban fantasy noir tone is
+        consistent.'
+    coherence:
+      score: 0.92
+      analysis: 'Narrative flows logically from discovery → planning → confrontation.
+        Emotional beats align with plot beats. Dialogue feels natural. Pacing accelerates
+        appropriately. Minor: killer''s characterization could be slightly more developed
+        before ordeal (though the reveal is intentional). Transitions between beats
+        are smooth.'
+    strengths:
+    - Exceptional use of synesthetic residue metaphor—colors as emotional language
+    - Guilt integrated as character engine, not melodrama
+    - Mina's character arc earned through action and vulnerability
+    - Chekhov's gun perfectly executed with prismatic shard
+    - Victory through understanding rather than violence—thematically sophisticated
+    - Noir tone maintained without cliché
+    - Sensory details vivid and purposeful
+    weaknesses:
+    - 'CRITICAL: Word count 1952 vs 1000 max (95% over limit) - this is a hard constraint
+      violation'
+    - Killer's motivation/backstory could be slightly clearer before ordeal
+    - Some exposition in Beat 2 planning scene could be tightened
+    - Mina's specific gift/ability not fully defined (she 'tastes mood' but limits
+      unclear)
+error: null

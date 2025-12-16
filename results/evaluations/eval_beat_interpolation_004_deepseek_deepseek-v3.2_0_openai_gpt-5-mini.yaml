@@ -1,0 +1,50 @@
+evaluation_id: 95fd83fe
+task_id: beat_interpolation_004
+generation_id: beat_interpolation_004_deepseek/deepseek-v3.2_0
+task_type: beat_interpolation
+model: deepseek/deepseek-v3.2
+sample_index: 0
+evaluator_model: openai/gpt-5-mini
+evaluator_cost: 0.00125575
+timestamp: '2025-12-12T12:59:59.549507'
+success: true
+final_score: 0.985
+score_breakdown:
+  final_score: 0.985
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 440
+      target_range:
+      - 300
+      - 450
+    programmatic:
+      score: 0.94
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.9
+        slop_score: 1.0
+        overall: 0.94
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: true
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: 'All four required elements are present: Thomas directly examines Dr.
+    Okonkwo; there is a clear moment where she appears likely to recant; Thomas takes
+    decisive, personal action (abandoning script and appealing to her as a mother)
+    that influences her; the turning point occurs when she admits the cover-up. No
+    prohibited elements appear (no passive Thomas, no simple untroubled confession,
+    no defense victory, no deus ex machina). Characters and setting remain consistent
+    with the provided before/after beats.'
+error: null

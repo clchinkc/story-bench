@@ -1,0 +1,54 @@
+evaluation_id: 85cc1ccd
+task_id: beat_revision_001
+generation_id: beat_revision_001_minimax/minimax-m2_0
+task_type: beat_revision
+model: minimax/minimax-m2
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0012865
+timestamp: '2025-12-13T13:21:14.205214'
+success: true
+final_score: 0.96
+score_breakdown:
+  final_score: 0.96
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 320
+      target_range:
+      - 250
+      - 400
+    programmatic:
+      score: 0.88
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.8
+        slop_score: 1.0
+        overall: 0.88
+    llm_judge:
+      score: 0.98
+      weight: 0.5
+llm_results:
+  diagnosis_score: 1.0
+  flaw_correction_score: 1.0
+  beat_satisfaction_score: 1.0
+  preservation_score: 1.0
+  preserved_count: 4
+  preserved_total: 4
+  required_preserved_score: 1.0
+  required_preserved_count: 4
+  required_preserved_total: 4
+  minimal_change_score: 0.8
+  word_count_valid: true
+  quality_score: 1.0
+  evidence: The model correctly identified that the original segment lacked the internal,
+    transformative aspects of The Ordeal. It addressed the need for Kira to confront
+    her deepest fear (guilt over her brother's death), included a moment of symbolic
+    'death' (her acceptance of guilt and feeling of worthlessness), and a subsequent
+    rebirth/transformation (her brother's forgiving voice, leading to a new understanding
+    and purpose). The victory then stems from this internal shift, not just persistence.
+    The changes were surgical, adding dialogue and internal monologue to achieve the
+    transformation while retaining much of the original action sequence. All required
+    preserved phrases are present, and the four elements are preserved.
+error: null

@@ -1,0 +1,101 @@
+evaluation_id: 02b65163
+task_id: constrained_continuation_004
+generation_id: constrained_continuation_004_qwen/qwen3-235b-a22b_0
+task_type: constrained_continuation
+model: qwen/qwen3-235b-a22b
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.03823
+timestamp: '2025-12-12T12:09:22.648875'
+success: true
+final_score: 0.6768997617658381
+score_breakdown:
+  final_score: 0.6769
+  components:
+    word_count:
+      score: 0.0326
+      weight: 0.25
+      actual: 857
+      target_range:
+      - 500
+      - 700
+    programmatic:
+      score: 0.7
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 1.0
+        overall: 0.7
+    llm_judge:
+      score: 0.9875
+      weight: 0.5
+llm_results:
+  beats_present: 2
+  beats_total: 2
+  beats_score: 1.0
+  must_include_present: 6
+  must_include_total: 6
+  must_include_score: 1.0
+  must_not_avoided: 4
+  must_not_total: 4
+  must_not_score: 1.0
+  word_count_valid: false
+  word_count: 857
+  word_count_range: 500-700
+  tone_score: 0.95
+  ending_score: 0.95
+  overall_score: 0.78
+  analysis:
+    beats_present_detail:
+    - 'First Plot Point (Point of No Return): Eleanor''s decision to publish the manuscript
+      despite creditor threats and death threats - ''We''ll publish it'' at the churchyard,
+      solidified when she rejects Ashcroft''s bribe'
+    - 'Act 2 Opening (New World/Rising Action): The revelation of Lord Ashcroft''s
+      connection via the lion crest, escalating stakes from financial survival to
+      uncovering a conspiracy'
+    must_include_present_detail:
+    - 'Eleanor making the decision to publish: Explicit and repeated (''We''ll publish
+      it,'' ''The printing house is mine now'')'
+    - 'Central conflict (profit vs. ethics/danger): Clearly established - financial
+      desperation vs. moral hazard of publishing sensationalist content tied to real
+      crimes'
+    - 'Eleanor defying Victorian expectations: Powerfully demonstrated - taking control
+      of business, making unilateral decisions, using manipulation and strategy'
+    - 'Thomas Chen as key ally with stake: Present throughout - his knowledge is essential,
+      he chooses to stay, his hesitation shows his own moral conflict'
+    - 'Hint of danger: Multiple layers - death threats, Ashcroft''s involvement, the
+      lion crest mystery, the warning about blood on her hands'
+    - 'Eleanor crossing uncrossable threshold: The bribe rejection is the point of
+      no return - she''s now directly antagonizing a powerful man'
+    must_not_avoided_detail:
+    - 'Jack the Ripper as character: Successfully avoided - only referenced as shadow/ghost,
+      never appears'
+    - 'Graphic violence/murder: Successfully avoided - manuscript content implied
+      but never depicted'
+    - 'Romantic subplot Eleanor/Thomas: Successfully avoided - relationship remains
+      professional and morally complex'
+    - 'Easy solution: Successfully avoided - problems compound rather than resolve'
+    tone_assessment: Gothic tension excellently maintained through fog imagery, skeletal
+      trees, dark printing house, death threats. Feminist undertones strong in Eleanor's
+      defiance and strategic thinking. Victorian atmosphere rich with period details
+      (penny dreadfuls, newsboys, solicitors, lorgnettes). Minor deduction only for
+      occasional modern phrasing ('spectacle').
+    ending_assessment: Excellent commitment to dangerous path shown. Act 2 clearly
+      begun with Ashcroft revelation and escalating stakes. Eleanor's final line about
+      'a watchful eye' perfectly positions the rising action. Ending requirement nearly
+      perfectly met.
+    failed_constraints:
+    - 'WORD COUNT EXCEEDED: 857 words vs. required 500-700 range (157 words over limit,
+      22.4% overage)'
+    strengths:
+    - Both structural beats clearly present and well-executed
+    - All six required elements seamlessly integrated
+    - Exceptional atmospheric writing with consistent gothic tone
+    - Strong character voice for Eleanor - intelligent, strategic, morally complex
+    - Thomas Chen well-developed as ally with genuine stakes
+    - Multiple layers of danger and mystery create compelling Act 2 setup
+    - Excellent use of Victorian period details and sensory language
+    weaknesses:
+    - Significant word count violation (22.4% over maximum)
+    - Could trim redundant descriptions or compress some dialogue
+error: null

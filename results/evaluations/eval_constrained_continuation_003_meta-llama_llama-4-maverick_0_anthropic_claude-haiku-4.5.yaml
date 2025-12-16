@@ -1,0 +1,66 @@
+evaluation_id: 9807a458
+task_id: constrained_continuation_003
+generation_id: constrained_continuation_003_meta-llama/llama-4-maverick_0
+task_type: constrained_continuation
+model: meta-llama/llama-4-maverick
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.0205
+timestamp: '2025-12-12T09:47:30.840470'
+success: true
+final_score: 0.7529471299093655
+score_breakdown:
+  final_score: 0.7529
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 650
+      target_range:
+      - 550
+      - 750
+    programmatic:
+      score: 0.6698
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 0.9245
+        overall: 0.6698
+    llm_judge:
+      score: 0.671
+      weight: 0.5
+llm_results:
+  beats_present: 3
+  beats_total: 3
+  beats_score: 1.0
+  must_include_present: 4
+  must_include_total: 6
+  must_include_score: 0.67
+  must_not_avoided: 2
+  must_not_total: 4
+  must_not_score: 0.5
+  word_count_valid: true
+  tone_score: 0.7
+  ending_score: 0.4
+  failed_constraints:
+  - 'MISSING: Discovery of something unexpected about the suppressed technology -
+    the carbon capture tech is mentioned in opening but never resurfaces or reveals
+    new information in continuation'
+  - 'MISSING: Jin taking action that has a cost or consequence - Jin passively receives
+    information and guidance; no decisive action with clear costs'
+  - 'MISSING: A moral compromise or difficult choice - Jin''s decisions lack ethical
+    weight; he simply accepts help and learns'
+  - 'VIOLATED: Easy integration into the Collective - Despite surface wariness, Jin
+    is quickly assigned quarters, given a datapad, introduced to residents, and connected
+    with helpful guides (Kael, Lena, Arin); integration is smooth'
+  - 'VIOLATED: Complete resolution of conspiracy plot - The ending states ''Jin emerged
+    with a newfound understanding'' and ''discovered hidden alliances, secret projects,
+    and the true intentions'' suggesting resolution rather than leaving threads open'
+  - 'TONE ISSUE: Ending lacks contemplative weight - The final paragraph (''In the
+    end, Jin emerged...'') rushes to resolution with generic language (''newfound
+    understanding,'' ''ready to face whatever challenges'') rather than maintaining
+    the introspective, politically charged tone established in opening'
+  - 'ENDING ISSUE: Does not end at ''Take'' beat - Story concludes with Jin having
+    gained understanding but no clear price paid; the ''Take'' beat requires Jin to
+    pay a cost for what he''s gained, which is absent'
+error: null

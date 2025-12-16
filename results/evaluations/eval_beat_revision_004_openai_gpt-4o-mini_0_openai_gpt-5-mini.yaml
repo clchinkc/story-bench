@@ -1,0 +1,59 @@
+evaluation_id: bd20f7e7
+task_id: beat_revision_004
+generation_id: beat_revision_004_openai/gpt-4o-mini_0
+task_type: beat_revision
+model: openai/gpt-4o-mini
+sample_index: 0
+evaluator_model: openai/gpt-5-mini
+evaluator_cost: 0.0022515
+timestamp: '2025-12-13T13:50:15.199644'
+success: true
+final_score: 0.9005000000000001
+score_breakdown:
+  final_score: 0.9005
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 286
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.982
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.97
+        slop_score: 1.0
+        overall: 0.982
+    llm_judge:
+      score: 0.81
+      weight: 0.5
+llm_results:
+  diagnosis_score: 1.0
+  flaw_correction_score: 0.8
+  beat_satisfaction_score: 0.8
+  preservation_score: 1.0
+  preserved_count: 5
+  preserved_total: 5
+  required_preserved_score: 0.5
+  required_preserved_count: 2
+  required_preserved_total: 4
+  minimal_change_score: 0.5
+  word_count_valid: true
+  quality_score: 0.9
+  evidence: 'The model identified the telling-vs-showing flaw and revised the passage
+    into a scene: Rachel makes coffee, interacts with her cat Sherlock, walks into
+    the busy precinct and exchanges dialogue with James, which demonstrates instincts,
+    devotion to cold cases, and their partnership through action and sensory detail.
+    This addresses the actual flaw correctly (diagnosis_score=1.0) and largely fixes
+    it (flaw_correction_score=0.8), though a few sentences still ''tell'' (e.g., ''She
+    felt the weight of the unsolved cases...'') rather than fully showing. All five
+    required story elements (Rachel, James, Sherlock, Queens apartment, Tuesday in
+    October) are preserved (preservation_score=1.0). Of the four exact required phrases,
+    only ''Detective Rachel Torres'' and ''Tuesday morning in October'' appear verbatim;
+    ''Detective James Oyelaran'' and ''cat named Sherlock'' are not exact matches
+    (required_preserved_score=0.5). The revision is a moderate rewrite rather than
+    a minimal surgical edit (minimal_change_score=0.5) and is of high writing quality
+    with no significant new errors (quality_score=0.9).'
+error: null

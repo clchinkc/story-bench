@@ -1,0 +1,46 @@
+evaluation_id: 5248a9b5
+task_id: beat_interpolation_001
+generation_id: beat_interpolation_001_meta-llama/llama-4-maverick_0
+task_type: beat_interpolation
+model: meta-llama/llama-4-maverick
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0008865
+timestamp: '2025-12-12T13:41:28.588333'
+success: true
+final_score: 0.94925
+score_breakdown:
+  final_score: 0.9493
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 276
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.922
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.87
+        slop_score: 1.0
+        overall: 0.922
+    llm_judge:
+      score: 0.9375
+      weight: 0.5
+llm_results:
+  beat_elements_score: 0.75
+  elements_found: 3
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: true
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: The element 'Reference to Elena's librarian skills as potentially useful'
+    was not explicitly present. While Marcus talks about 'threads that connect the
+    world' and 'potential,' he doesn't directly link it to her librarian skills.
+error: null

@@ -1,0 +1,47 @@
+evaluation_id: a0b2ad56
+task_id: constrained_continuation_003
+generation_id: constrained_continuation_003_meta-llama/llama-4-maverick_0
+task_type: constrained_continuation
+model: meta-llama/llama-4-maverick
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0009267
+timestamp: '2025-12-12T12:56:31.271886'
+success: true
+final_score: 0.8624471299093656
+score_breakdown:
+  final_score: 0.8624
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 650
+      target_range:
+      - 550
+      - 750
+    programmatic:
+      score: 0.6698
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 0.9245
+        overall: 0.6698
+    llm_judge:
+      score: 0.89
+      weight: 0.5
+llm_results:
+  beats_present: 3
+  beats_total: 3
+  beats_score: 1.0
+  must_include_present: 6
+  must_include_total: 6
+  must_include_score: 1.0
+  must_not_avoided: 4
+  must_not_total: 4
+  must_not_score: 1.0
+  word_count_valid: true
+  tone_score: 0.8
+  ending_score: 0.2
+  failed_constraints:
+  - 'Ending: End at ''Take'' with Jin having gained something but paid a price'
+error: null

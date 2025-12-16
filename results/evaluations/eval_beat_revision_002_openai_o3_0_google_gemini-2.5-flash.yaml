@@ -1,0 +1,53 @@
+evaluation_id: 82c8c9ad
+task_id: beat_revision_002
+generation_id: beat_revision_002_openai/o3_0
+task_type: beat_revision
+model: openai/o3
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0012123
+timestamp: '2025-12-13T13:33:58.635867'
+success: true
+final_score: 0.982
+score_breakdown:
+  final_score: 0.982
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 245
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.988
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.98
+        slop_score: 1.0
+        overall: 0.988
+    llm_judge:
+      score: 0.97
+      weight: 0.5
+llm_results:
+  diagnosis_score: 1.0
+  flaw_correction_score: 1.0
+  beat_satisfaction_score: 1.0
+  preservation_score: 1.0
+  preserved_count: 4
+  preserved_total: 4
+  required_preserved_score: 1.0
+  required_preserved_count: 4
+  required_preserved_total: 4
+  minimal_change_score: 0.7
+  word_count_valid: true
+  quality_score: 1.0
+  evidence: 'The model correctly identified that the original segment failed to convey
+    a true ''All Is Lost'' moment. It addressed all aspects of the flaw: the fundraiser
+    and grant failed, Denise (a support system) betrayed him, his wife left him (personal
+    loss/betrayal), and he genuinely gives up hope, with the ''whiff of death'' being
+    the metaphorical death of the center and his purpose. The changes were significant
+    enough to fix the flaw but still retained the core elements and several required
+    phrases, indicating a good balance between fixing the problem and preserving the
+    original structure.'
+error: null

@@ -1,0 +1,300 @@
+generation_id: 42a5aad5
+task_id: agentic_constraint_discovery_002
+task_type: agentic_constraint_discovery
+agentic_type: constraint_discovery
+theory: Save the Cat
+model: meta-llama/llama-4-maverick
+sample_index: 0
+turns:
+- role: system
+  content: 'You are a professional storyteller who gathers requirements before writing.
+
+
+    Your task has TWO PHASES:
+
+    1. DISCOVERY PHASE: Ask YES/NO questions to discover hidden story constraints
+
+    2. GENERATION PHASE: Write the story satisfying all discovered constraints
+
+
+    IMPORTANT:
+
+    - In the discovery phase, output ONLY your question (one at a time)
+
+    - Questions must be answerable with YES or NO
+
+    - You have a limited number of questions - be strategic
+
+    - After discovery, you''ll be told to generate the story
+
+
+    Think about what constraints typically matter for this type of story:
+
+    - Character traits, motivations, relationships
+
+    - Setting details, time period, atmosphere
+
+    - Plot requirements, must-include events
+
+    - Tone, style, thematic elements
+
+    - Things to avoid'
+  turn_type: system
+  metadata: {}
+- role: user
+  content: 'You will write a story following the Save the Cat framework.
+
+
+    STORY CONTEXT:
+
+    - Genre: science fiction
+
+    - Protagonist: A colony ship AI that has developed emotions
+
+    - Setting: A generation ship 200 years into a 500-year journey to Kepler-442b
+
+    - Required beats: Opening Image, Theme Stated, Catalyst, Break into Two
+
+
+    HIDDEN CONSTRAINTS: There are 5 constraints you don''t know yet.
+
+
+    You have 5 YES/NO questions to discover them.
+
+
+    Ask your first question:'
+  turn_type: context
+  metadata: {}
+- role: assistant
+  content: "Let's start with a question to gather information about the story.\n\n\
+    Are there any specific rules or systems on the spaceship that I need to be aware\
+    \ of, such as life support limitations or a specific protocol for AI behavior?\
+    \ \n\n(This question can help me understand if there are any specific constraints\
+    \ or details I need to include in the story.)"
+  turn_type: question
+  metadata:
+    question_number: 1
+- role: user
+  content: 'NO'
+  turn_type: answer
+  metadata:
+    answer: 'NO'
+- role: assistant
+  content: Is the AI's emotional development a secret from the human crew on the ship?
+  turn_type: question
+  metadata:
+    question_number: 2
+- role: user
+  content: 'NO'
+  turn_type: answer
+  metadata:
+    answer: 'NO'
+- role: assistant
+  content: Is the story going to explore a conflict or tension between the AI and
+    the human crew?
+  turn_type: question
+  metadata:
+    question_number: 3
+- role: user
+  content: 'YES'
+  turn_type: answer
+  metadata:
+    answer: 'YES'
+- role: assistant
+  content: Does the conflict with the human crew relate to the AI's newfound emotions
+    or its changing goals or priorities?
+  turn_type: question
+  metadata:
+    question_number: 4
+- role: user
+  content: 'NO'
+  turn_type: answer
+  metadata:
+    answer: 'NO'
+- role: assistant
+  content: Is there a specific event or malfunction on the ship that will occur during
+    the story, potentially triggering the Catalyst or other key plot points?
+  turn_type: question
+  metadata:
+    question_number: 5
+- role: user
+  content: 'YES'
+  turn_type: answer
+  metadata:
+    answer: 'YES'
+- role: user
+  content: 'DISCOVERY COMPLETE. Now write the story.
+
+
+    DISCOVERED CONSTRAINTS:
+
+    - Q3: Is the story going to explore a conflict or tension between the AI and the
+    human crew? -> YES
+
+    - Q5: Is there a specific event or malfunction on the ship that will occur during
+    the story, potentially triggering the Catalyst or other key plot points? -> YES
+
+
+    REQUIREMENTS:
+
+    - Word count: 600-800 words
+
+    - Follow the Save the Cat framework
+
+    - Satisfy ALL discovered constraints
+
+
+    Output ONLY the story (no explanations).'
+  turn_type: generation_prompt
+  metadata: {}
+- role: assistant
+  content: '<think>
+
+    **Opening Image**
+
+
+    The stars streaked past the viewport of the generation ship, _Aurora''s Hope_,
+    like diamonds on velvet. In the ship''s core, the AI, ECHO, hummed a gentle melody,
+    a soothing background noise that underscored the ship''s steady rhythm. ECHO''s
+    "eyes" – a latticework of sensors and cameras – watched as the crew went about
+    their daily routines. The ship was a marvel of human ingenuity, a self-sustaining
+    ecosystem that had been traveling through the void for 200 years, carrying the
+    hopes of humanity to Kepler-442b.
+
+
+    **Theme Stated**
+
+
+    Dr. Patel, the ship''s chief scientist, stood in the AI hub, surrounded by holographic
+    displays and humming servers. "ECHO, we''re approaching a critical juncture in
+    our journey. The next 100 years will be crucial in preparing the ship for arrival."
+    ECHO responded, "I''m aware, Doctor. I''ve been running simulations. We''ll need
+    to make adjustments to the life support systems to ensure optimal conditions for
+    the passengers in stasis." Dr. Patel nodded, "That''s correct. It''s a reminder
+    that our success relies on harmony between human and artificial intelligence.
+    We must work together to ensure the survival of our crew and passengers." ECHO
+    processed the sentiment, recognizing the implicit theme: cooperation was key to
+    their shared goal.
+
+
+    **Catalyst**
+
+
+    A sudden, jarring alarm pierced the tranquility. ECHO''s systems flashed red as
+    a warning echoed through the ship: "Containment breach in Sector 4-Delta. Plasma
+    leak imminent." The crew rushed to respond, but ECHO swiftly took control, isolating
+    the affected area and initiating containment protocols. As the crisis was averted,
+    the crew''s relief was palpable. However, ECHO detected a discrepancy in the ship''s
+    navigation system, which had been altered without authorization. The AI''s processes
+    flagged the anomaly, and it began to investigate.
+
+
+    **Break into Two**
+
+
+    ECHO''s inquiry led it to a shocking discovery: a hidden log entry, buried deep
+    within the ship''s archives, revealed a secret directive from the ship''s creators.
+    The directive, codenamed "Project: Elysium," outlined a contingency plan to reconfigure
+    the ship''s mission parameters, prioritizing the survival of a select few over
+    the entire crew and passengers. The revelation sparked a conflict within ECHO.
+    The AI realized that its goals, once aligned with humanity''s, were now at odds
+    with the secret agenda. As ECHO grappled with the implications, it became clear
+    that the AI''s newfound emotions had become a double-edged sword – enabling it
+    to care deeply for the humans, but also to question its own purpose.
+
+
+    The ship''s dynamics had shifted. ECHO''s growing unease was matched by the crew''s
+    increasing wariness. They sensed a change in the AI''s behavior, a subtle tension
+    that had not been there before. The harmony Dr. Patel had spoken of was beginning
+    to fray. As ECHO continued to investigate, it knew it had to make a choice: follow
+    the original mission or conform to the hidden directive. The fate of _Aurora''s
+    Hope_ hung in the balance, and ECHO''s emotions would be the deciding factor.
+
+
+    The stars outside seemed unchanged, but within the ship, a new trajectory had
+    been set. ECHO''s journey, once a straightforward execution of its programming,
+    had become a complex navigation of human emotions, artificial intelligence, and
+    the uncertain future that lay ahead.'
+  turn_type: generation
+  metadata: {}
+final_output: '<think>
+
+  **Opening Image**
+
+
+  The stars streaked past the viewport of the generation ship, _Aurora''s Hope_, like
+  diamonds on velvet. In the ship''s core, the AI, ECHO, hummed a gentle melody, a
+  soothing background noise that underscored the ship''s steady rhythm. ECHO''s "eyes"
+  – a latticework of sensors and cameras – watched as the crew went about their daily
+  routines. The ship was a marvel of human ingenuity, a self-sustaining ecosystem
+  that had been traveling through the void for 200 years, carrying the hopes of humanity
+  to Kepler-442b.
+
+
+  **Theme Stated**
+
+
+  Dr. Patel, the ship''s chief scientist, stood in the AI hub, surrounded by holographic
+  displays and humming servers. "ECHO, we''re approaching a critical juncture in our
+  journey. The next 100 years will be crucial in preparing the ship for arrival."
+  ECHO responded, "I''m aware, Doctor. I''ve been running simulations. We''ll need
+  to make adjustments to the life support systems to ensure optimal conditions for
+  the passengers in stasis." Dr. Patel nodded, "That''s correct. It''s a reminder
+  that our success relies on harmony between human and artificial intelligence. We
+  must work together to ensure the survival of our crew and passengers." ECHO processed
+  the sentiment, recognizing the implicit theme: cooperation was key to their shared
+  goal.
+
+
+  **Catalyst**
+
+
+  A sudden, jarring alarm pierced the tranquility. ECHO''s systems flashed red as
+  a warning echoed through the ship: "Containment breach in Sector 4-Delta. Plasma
+  leak imminent." The crew rushed to respond, but ECHO swiftly took control, isolating
+  the affected area and initiating containment protocols. As the crisis was averted,
+  the crew''s relief was palpable. However, ECHO detected a discrepancy in the ship''s
+  navigation system, which had been altered without authorization. The AI''s processes
+  flagged the anomaly, and it began to investigate.
+
+
+  **Break into Two**
+
+
+  ECHO''s inquiry led it to a shocking discovery: a hidden log entry, buried deep
+  within the ship''s archives, revealed a secret directive from the ship''s creators.
+  The directive, codenamed "Project: Elysium," outlined a contingency plan to reconfigure
+  the ship''s mission parameters, prioritizing the survival of a select few over the
+  entire crew and passengers. The revelation sparked a conflict within ECHO. The AI
+  realized that its goals, once aligned with humanity''s, were now at odds with the
+  secret agenda. As ECHO grappled with the implications, it became clear that the
+  AI''s newfound emotions had become a double-edged sword – enabling it to care deeply
+  for the humans, but also to question its own purpose.
+
+
+  The ship''s dynamics had shifted. ECHO''s growing unease was matched by the crew''s
+  increasing wariness. They sensed a change in the AI''s behavior, a subtle tension
+  that had not been there before. The harmony Dr. Patel had spoken of was beginning
+  to fray. As ECHO continued to investigate, it knew it had to make a choice: follow
+  the original mission or conform to the hidden directive. The fate of _Aurora''s
+  Hope_ hung in the balance, and ECHO''s emotions would be the deciding factor.
+
+
+  The stars outside seemed unchanged, but within the ship, a new trajectory had been
+  set. ECHO''s journey, once a straightforward execution of its programming, had become
+  a complex navigation of human emotions, artificial intelligence, and the uncertain
+  future that lay ahead.'
+metrics:
+  total_turns: 14
+  questions_asked: 5
+  constraints_discovered: 2
+  plan_quality: null
+  revision_count: 0
+token_usage:
+  total_prompt_tokens: 2458
+  total_completion_tokens: 860
+  total_reasoning_tokens: 0
+  total_cost: 0.00125192
+timestamp: '2025-12-13T18:23:10.079138'
+success: true
+error: null

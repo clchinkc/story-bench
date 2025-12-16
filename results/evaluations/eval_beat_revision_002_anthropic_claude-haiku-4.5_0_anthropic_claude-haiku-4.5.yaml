@@ -1,0 +1,65 @@
+evaluation_id: 5e6be670
+task_id: beat_revision_002
+generation_id: beat_revision_002_anthropic/claude-haiku-4.5_0
+task_type: beat_revision
+model: anthropic/claude-haiku-4.5
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.02205
+timestamp: '2025-12-13T13:25:42.490680'
+success: true
+final_score: 0.968
+score_breakdown:
+  final_score: 0.968
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 275
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.952
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.92
+        slop_score: 1.0
+        overall: 0.952
+    llm_judge:
+      score: 0.96
+      weight: 0.5
+llm_results:
+  diagnosis_score: 1.0
+  flaw_correction_score: 1.0
+  beat_satisfaction_score: 0.95
+  preservation_score: 1.0
+  preserved_count: 4
+  preserved_total: 4
+  required_preserved_score: 1.0
+  required_preserved_count: 4
+  required_preserved_total: 4
+  minimal_change_score: 0.75
+  word_count_valid: true
+  quality_score: 0.95
+  evidence: 'The model correctly diagnosed the actual flaw: the original segment lacked
+    true ''All Is Lost'' devastation because Marcus retained multiple viable options
+    (fundraiser, grant, new location) and intact support systems. The revision systematically
+    eliminates all five required elements: (1) Grant rejected, (2) Fundraiser cancelled
+    with sponsor abandonment, (3) Denise''s departure isolates Marcus professionally,
+    (4) Wife leaves, daughter unreachable—family disintegration, (5) The at-risk youth
+    arrested—metaphorical death of his life''s purpose. The final image of Marcus
+    alone at a bare desk with ''no options, no team, no family, no program'' achieves
+    the required emotional devastation and ''whiff of death.'' All four required phrases
+    preserved verbatim: ''Marcus stared at the eviction notice in his hands,'' ''Thirty
+    days to vacate the community center,'' ''"There has to be something we can do,"
+    said Denise,'' and ''He rubbed his temples.'' All four story elements preserved:
+    Marcus as protagonist, community center setting, eviction crisis, Denise''s presence.
+    Changes were surgical rather than wholesale—the model expanded the segment by
+    adding specific rejections and losses rather than restructuring. The writing quality
+    is strong with no new errors; the emotional arc is now properly calibrated to
+    the beat definition. Minor deduction from minimal_change_score (0.75 vs 1.0) because
+    the revision added substantial new content (family conflict, youth arrest, Denise''s
+    departure) rather than purely editing existing material, though this was necessary
+    to fix the flaw.'
+error: null

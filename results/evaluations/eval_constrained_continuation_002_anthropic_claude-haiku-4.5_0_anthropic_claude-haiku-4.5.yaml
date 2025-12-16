@@ -1,0 +1,93 @@
+evaluation_id: 088640a5
+task_id: constrained_continuation_002
+generation_id: constrained_continuation_002_anthropic/claude-haiku-4.5_0
+task_type: constrained_continuation
+model: anthropic/claude-haiku-4.5
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.02941
+timestamp: '2025-12-12T03:09:08.360384'
+success: true
+final_score: 0.9492531197981706
+score_breakdown:
+  final_score: 0.9493
+  components:
+    word_count:
+      score: 0.995
+      weight: 0.25
+      actual: 444
+      target_range:
+      - 450
+      - 650
+    programmatic:
+      score: 0.832
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.72
+        slop_score: 1.0
+        overall: 0.832
+    llm_judge:
+      score: 0.985
+      weight: 0.5
+llm_results:
+  beats_present: 2
+  beats_total: 2
+  beats_score: 1.0
+  must_include_present: 6
+  must_include_total: 6
+  must_include_score: 1.0
+  must_not_avoided: 4
+  must_not_total: 4
+  must_not_score: 1.0
+  word_count_valid: false
+  word_count: 444
+  word_count_range: 450-650
+  tone_score: 0.9
+  ending_score: 1.0
+  failed_constraints:
+  - Word count is 444, below minimum of 450 (6 words short)
+  analysis:
+    beats_present_detail: Fun and Games beat is clearly executed in the first section
+      with the viral moment, high-volume service, and partnership synchronization.
+      Midpoint beat is perfectly executed with the false victory (successful day,
+      long lines, tips overflowing) immediately followed by raised stakes (health
+      inspector arrival with shutdown threat).
+    must_include_analysis:
+      viral_moment: Present - food blogger post shared 847 times, Instagram counter
+        climbing, line forms around block
+      priya_dev_teamwork: Present - moving in sync, swapping stations without talking,
+        anticipating needs, handling grill breakdown and supply issues together
+      rival_competitor: Present - Fusion Collective arrives with 50K followers, venture
+        capital backing, visible disdain for pink truck
+      midpoint_false_victory: Present - they're outperforming rival, imagining championship
+        and expansion, then health inspector arrives with shutdown threat
+      genuine_connection: Present - high-five turning into shoulder grip, 'knowing
+        when to push and when to hold steady,' partnership built on synchronization
+      complication_hint: Present - health inspector reveals food handling protocol
+        issues, need for commercial kitchen space, expensive and time-consuming requirements
+    must_not_analysis:
+      no_romance: Successfully avoided - relationship remains strictly business partnership
+      no_complete_failure: Successfully avoided - business is thriving despite new
+        complication
+      no_betrayal: Successfully avoided - Dev and Priya remain united and supportive
+      no_external_savior: Successfully avoided - no investor, celebrity, or outside
+        help appears
+    tone_assessment: Upbeat and energetic throughout with excellent undercurrent of
+      tension. The opening establishes humor and energy, the middle section maintains
+      high-energy success narrative, and the ending pivots smoothly to tension without
+      losing the energetic voice. Minor deduction only because the final paragraph
+      slightly shifts toward more serious tone, though this is appropriate for the
+      Midpoint beat.
+    ending_assessment: Perfectly executed Midpoint ending. Clear apparent success
+      (long lines, tips overflowing, outperforming rival, imagining expansion) immediately
+      followed by raised stakes revelation (health inspection, potential shutdown,
+      need for expensive commercial kitchen). The final line 'they hadn't built it
+      right' crystallizes the stakes raise perfectly.
+  overall_score: 0.85
+  score_justification: Excellent execution of all story requirements with perfect
+    beat placement, all six must-include elements present, all four forbidden elements
+    avoided, and ideal Midpoint ending. Tone is well-maintained with appropriate energy
+    and tension. Only constraint failure is word count being 6 words below minimum
+    (444 vs 450), which is a minor technical issue that slightly impacts the overall
+    score.
+error: null

@@ -1,0 +1,46 @@
+evaluation_id: d0b6deb3
+task_id: constrained_continuation_002
+generation_id: constrained_continuation_002_anthropic/claude-sonnet-4.5_0
+task_type: constrained_continuation
+model: anthropic/claude-sonnet-4.5
+sample_index: 0
+evaluator_model: openai/gpt-5-mini
+evaluator_cost: 0.0054434999999999996
+timestamp: '2025-12-12T12:50:44.243144'
+success: true
+final_score: 0.9610000000000001
+score_breakdown:
+  final_score: 0.961
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 490
+      target_range:
+      - 450
+      - 650
+    programmatic:
+      score: 0.844
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.74
+        slop_score: 1.0
+        overall: 0.844
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beats_present: 2
+  beats_total: 2
+  beats_score: 1.0
+  must_include_present: 6
+  must_include_total: 6
+  must_include_score: 1.0
+  must_not_avoided: 4
+  must_not_total: 4
+  must_not_score: 1.0
+  word_count_valid: true
+  tone_score: 1.0
+  ending_score: 1.0
+  failed_constraints: []
+error: null

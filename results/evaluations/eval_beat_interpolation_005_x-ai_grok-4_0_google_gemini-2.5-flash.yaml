@@ -1,0 +1,46 @@
+evaluation_id: e7b7abc3
+task_id: beat_interpolation_005
+generation_id: beat_interpolation_005_x-ai/grok-4_0
+task_type: beat_interpolation
+model: x-ai/grok-4
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0010052
+timestamp: '2025-12-12T12:15:23.923925'
+success: true
+final_score: 0.8947369076214708
+score_breakdown:
+  final_score: 0.8947
+  components:
+    word_count:
+      score: 0.6549
+      weight: 0.25
+      actual: 496
+      target_range:
+      - 300
+      - 450
+    programmatic:
+      score: 0.964
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.94
+        slop_score: 1.0
+        overall: 0.964
+    llm_judge:
+      score: 0.98
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: false
+  character_score: 0.8
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: Word count is slightly over the limit (496 vs 450 max). Characterization
+    of Alejandro is good, but his sudden openness feels a *tiny* bit fast, though
+    it's well-justified by the paella and Maya's actions.
+error: null

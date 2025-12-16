@@ -1,0 +1,65 @@
+evaluation_id: 588f1dfa
+task_id: beat_revision_002
+generation_id: beat_revision_002_openai/gpt-4o-mini_0
+task_type: beat_revision
+model: openai/gpt-4o-mini
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.02248
+timestamp: '2025-12-13T13:31:57.939067'
+success: true
+final_score: 0.7585000000000001
+score_breakdown:
+  final_score: 0.7585
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 330
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.934
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.89
+        slop_score: 1.0
+        overall: 0.934
+    llm_judge:
+      score: 0.55
+      weight: 0.5
+llm_results:
+  diagnosis_score: 0.4
+  flaw_correction_score: 0.3
+  beat_satisfaction_score: 0.4
+  preservation_score: 1.0
+  preserved_count: 4
+  preserved_total: 4
+  required_preserved_score: 1.0
+  required_preserved_count: 4
+  required_preserved_total: 4
+  minimal_change_score: 0.7
+  word_count_valid: true
+  quality_score: 0.6
+  evidence: 'DIAGNOSIS: The model partially identified the flaw but addressed it incompletely.
+    It correctly recognized the need to add emotional devastation and isolation, adding
+    phrases like ''weight of defeat,'' ''walls closing in,'' and ''utterly alone.''
+    However, it FAILED to address the core structural requirements of the actual flaw:
+    (1) The fundraiser and grant remain unresolved/speculative (''what if'') rather
+    than definitively failed. (2) No concrete betrayal or personal loss occurs—Denise''s
+    doubt is implied but not explicit. (3) Marcus still has theoretical options; they''re
+    just emotionally overwhelming rather than genuinely exhausted. (4) No ''whiff
+    of death'' element is present—no literal loss of someone important or metaphorical
+    death of identity. The revision adds emotional tone but doesn''t execute the beat''s
+    structural requirements. PRESERVATION: All 4 required phrases present (exact or
+    near-exact): ''Marcus stared at the eviction notice,'' ''Thirty days to vacate
+    the community center,'' ''There has to be something we can do, said Denise,''
+    ''He rubbed his temples.'' All 4 story elements preserved: Marcus, community center,
+    eviction, Denise. MINIMAL CHANGES: The revision is approximately 70% original
+    text with surgical insertions of emotional language and internal monologue. Structure
+    and dialogue remain largely intact. QUALITY: Writing is competent with improved
+    emotional resonance, but the additions feel somewhat overwrought (''the air felt
+    thick with loss'') and the ending trails without true resolution of the beat''s
+    requirements. No grammatical errors introduced.'
+error: null

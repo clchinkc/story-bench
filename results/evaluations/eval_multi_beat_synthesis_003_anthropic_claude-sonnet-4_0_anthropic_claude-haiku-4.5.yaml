@@ -1,0 +1,104 @@
+evaluation_id: 6a99bbcd
+task_id: multi_beat_synthesis_003
+generation_id: multi_beat_synthesis_003_anthropic/claude-sonnet-4_0
+task_type: multi_beat_synthesis
+model: anthropic/claude-sonnet-4
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.03786
+timestamp: '2025-12-12T01:43:16.031342'
+success: true
+final_score: 0.6178053503743421
+score_breakdown:
+  final_score: 0.6178
+  components:
+    word_count:
+      score: 0.1209
+      weight: 0.25
+      actual: 515
+      target_range:
+      - 700
+      - 1000
+    programmatic:
+      score: 0.6893
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 0.9733
+        overall: 0.6893
+    llm_judge:
+      score: 0.8305
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 13
+  beat_reqs_total: 15
+  beat_requirements_score: 0.87
+  cross_beat_satisfied: 3
+  cross_beat_total: 4
+  cross_beat_score: 0.75
+  word_count_valid: false
+  context_score: 0.9
+  coherence_score: 0.85
+  failed_items:
+  - 'Beat 1 - Introduction of unexpected complication (minor): The Victoria Blackwood
+    reveal is MAJOR, not minor. This violates the beat structure by introducing the
+    primary antagonist too early and with too much force for ''Fun and Games'''
+  - 'Cross-beat constraint - Tonal Escalation: Tone shifts too abruptly from playful
+    (opening) to genuine danger (Victoria reveal) within Beat 1 itself, rather than
+    escalating across beats. Beat 2 and 3 don''t exist to show the progression'
+  - 'Word count: 515 words vs. required 700-1000 (73.6% of minimum)'
+  strengths:
+  - 'Beat 1 - Crew skills excellently showcased: Jules''s tech expertise, Chen''s
+    acrobatic access, Miri''s composure under pressure'
+  - 'Beat 1 - Clever problem-solving: Rerouting sensors through stabilization system
+    is elegant and specific'
+  - 'Beat 1 - Humor and style: Dry wit throughout (''Save the art history lecture''),
+    glamorous setting, banter'
+  - 'Beat 1 - Things going according to plan: First 80% of heist proceeds smoothly
+    before complication'
+  - 'Beat 2 - False victory: Painting located and accessed successfully before revelation'
+  - 'Beat 2 - Stakes raised dramatically: Victoria''s presence + security consultant
+    role + knowledge of crew'
+  - 'Beat 2 - Mentor involvement revealed: Victoria Blackwood''s presence and antagonistic
+    role clearly established'
+  - 'Beat 2 - Nature of heist changes: Shifts from technical theft to personal confrontation/trap'
+  - 'Beat 2 - Party setting intensifies pressure: Crowd, VIP suite, bridge location
+    all heighten tension'
+  - 'Beat 3 - Security closing in: Internal cameras switched to manual, security mobilizing
+    toward gallery'
+  - 'Beat 3 - Team friction surfaces: Jules''s panic (''that''s going to trap us''),
+    hesitation about protocol'
+  - 'Beat 3 - Crew member in danger: Chen trapped in gallery with security approaching'
+  - 'Beat 3 - Miri''s choice: Painting vs. crew safety (implicit in decision to trigger
+    blackout)'
+  - 'Context maintained: Protagonist voice, Monaco/yacht setting, Ocean''s Eleven
+    tone, art history detail'
+  - 'Chekhov''s Gun partially satisfied: Jules''s technical skills established in
+    Beat 1, deployed in Beat 3 (emergency protocol)'
+  - 'Mentor presence escalation: Background → revealed as consultant → active threat
+    (Victoria on bridge)'
+  weaknesses:
+  - 'Structural violation: Victoria''s reveal should be a Beat 2 moment, not a Beat
+    1 complication. This compresses narrative tension'
+  - 'Incomplete narrative: Only 3 beats provided; missing Opening Image, Theme Stated,
+    Set-Up, Catalyst, Debate, Break into Two, B Story, Midpoint proper setup, All
+    Is Lost, Dark Night of the Soul, Break into Three, Finale, Final Image'
+  - 'Tonal escalation broken: Playful confidence → shock/danger happens within Beat
+    1, leaving Beats 2-3 to sustain danger rather than escalate it'
+  - 'Team dynamics arc incomplete: Jules shows anxiety/panic but no character arc
+    across beats (only 3 beats shown)'
+  - 'Chekhov''s Gun only partially satisfied: Chen''s acrobatic skill established
+    but not deployed as payoff; only Jules''s tech skills used'
+  - 'Insufficient word count: 185 words short of minimum (26.4% deficit)'
+  - 'Beat 3 incomplete: No resolution shown; unclear if crew escapes, if painting
+    is secured, if Miri confronts Victoria'
+  calibration_notes: This is a strong fragment with excellent execution of heist mechanics
+    and character voice, but it violates Save the Cat structure by front-loading the
+    antagonist reveal. The 'Fun and Games' beat should feature a MINOR complication
+    (pressure-sensitive floor), not the revelation of the primary antagonist. This
+    is a structural error that cascades through the remaining beats. The tonal escalation
+    constraint is partially broken because the tone shifts within Beat 1 rather than
+    across beats. Word count deficit is significant but not catastrophic given the
+    quality of prose. Score reflects strong execution of available content (0.85)
+    tempered by structural violations and incompleteness.
+error: null

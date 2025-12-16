@@ -1,0 +1,60 @@
+evaluation_id: 22f3c8f7
+task_id: beat_interpolation_002
+generation_id: beat_interpolation_002_mistralai/ministral-14b-2512_0
+task_type: beat_interpolation
+model: mistralai/ministral-14b-2512
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.019409999999999997
+timestamp: '2025-12-12T11:50:59.516609'
+success: true
+final_score: 0.83775
+score_breakdown:
+  final_score: 0.8377
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 389
+      target_range:
+      - 250
+      - 400
+    programmatic:
+      score: 0.886
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.81
+        slop_score: 1.0
+        overall: 0.886
+    llm_judge:
+      score: 0.7325
+      weight: 0.5
+llm_results:
+  beat_elements_score: 0.75
+  elements_found: 3
+  elements_total: 4
+  beat_execution_score: 0.7
+  must_not_score: 0.5
+  violations_found: 2
+  word_count_valid: true
+  character_score: 0.85
+  bridge_score: 0.8
+  continuity_score: 0.9
+  evidence: 'ELEMENTS FOUND: (1) Recanting testimony considered as easy option (''she
+    could still call the number, agree to recant''), (2) Going to authorities explored
+    (''go to Internal Affairs, blow the whistle''), (3) Internal conflict present
+    throughout (''Easy. Coward''s way'' vs. duty to Amy). MISSING: (4) A clear moment/conversation
+    that tips her toward the third option (going rogue). Marcus suggests press/DA/leaks,
+    but Sarah dismisses these—the tipping point toward vigilantism is implied rather
+    than dramatized. VIOLATIONS: (1) Sarah explicitly decides to ''become...a ghost''
+    and go ''off-grid'' during the Debate beat itself, which skips the debate and
+    commits to action prematurely. (2) The AFTER section reveals she has already resigned
+    and is surveilling the Marchetti compound, meaning the decision to go rogue was
+    already made before this beat ends—this violates the narrative function of Debate
+    as the decision point. The beat should end with commitment, not with her already
+    acting on it. CHARACTER: Strong voice, consistent emotional stakes, believable
+    internal logic. BRIDGE: Good connection between BEFORE''s inciting incident and
+    GENERATED''s wrestling, though the AFTER section undermines the beat''s purpose.
+    CONTINUITY: Apartment setting maintained, timeline (72 hours) consistent, character
+    relationships intact.'
+error: null

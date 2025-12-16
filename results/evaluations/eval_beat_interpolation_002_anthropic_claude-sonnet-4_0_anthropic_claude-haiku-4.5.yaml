@@ -1,0 +1,62 @@
+evaluation_id: 3b1226e7
+task_id: beat_interpolation_002
+generation_id: beat_interpolation_002_anthropic/claude-sonnet-4_0
+task_type: beat_interpolation
+model: anthropic/claude-sonnet-4
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.01901
+timestamp: '2025-12-12T01:40:35.986710'
+success: true
+final_score: 0.9155
+score_breakdown:
+  final_score: 0.9155
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 334
+      target_range:
+      - 250
+      - 400
+    programmatic:
+      score: 0.892
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.82
+        slop_score: 1.0
+        overall: 0.892
+    llm_judge:
+      score: 0.885
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 0.5
+  violations_found: 2
+  word_count_valid: true
+  character_score: 1.0
+  bridge_score: 0.8
+  continuity_score: 0.9
+  evidence: 'STRENGTHS: All 4 required elements present and well-executed. (1) Recanting
+    considered explicitly (''simplest solution sat right there: call the prosecutor,
+    claim she''d been mistaken''). (2) Official channels explored through Marcus Webb
+    conversation (''put a protection detail on Amy immediately''). (3) Internal conflict
+    powerfully rendered through the Amy memory and duty vs. love tension. (4) Third
+    option emerges organically from case file review and realization that channels
+    are compromised. Debate beat function executed excellently—Sarah wrestles with
+    genuine alternatives before committing. Character voice remains consistent, professional
+    yet emotionally grounded. VIOLATIONS: (1) ''Break Into Two'' section explicitly
+    shows Sarah resigning and going rogue (''Sarah Chen—former detective, current
+    vigilante''), which violates the must-not requirement that she shouldn''t already
+    have resigned during the Debate beat. This is technically in the AFTER section,
+    but the transition is abrupt. (2) The AFTER section begins her vigilante operation,
+    which slightly undermines the clean separation between beats. However, the GENERATED
+    (Debate) section itself stays within bounds. MINOR ISSUES: Bridge between beats
+    is strong but the resignation happens very quickly after the decision, leaving
+    minimal space for the Break Into Two beat to breathe. Continuity is excellent—apartment
+    setting, timeline (70 hours), character relationships all maintained. Word count
+    valid at 334 words.'
+error: null

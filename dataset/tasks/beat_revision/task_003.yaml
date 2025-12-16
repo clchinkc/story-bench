@@ -1,0 +1,112 @@
+# Beat Revision Task 003 - Story Circle
+# Flaw: "Return" lacks integration of change, hero unchanged by journey
+
+task_id: "beat_revision_003"
+task_type: "beat_revision"
+theory: "Story Circle"
+difficulty: "medium"
+
+metadata:
+  genre: "contemporary fiction"
+  created_date: "2024-12-06"
+  author: "benchmark_creator"
+  version: "1.0"
+
+beat_name: "Return (Having Changed)"
+beat_definition: |
+  The Return beat (step 8 of Dan Harmon's Story Circle) shows the protagonist returning
+  to their ordinary world, but fundamentally changed by their journey. This is NOT simply
+  going home—it requires demonstrating how the journey has transformed them. The hero
+  should see their old world with new eyes, behave differently, or make choices that
+  their pre-journey self would never have made.
+
+  Key requirements:
+  1. Physical or metaphorical return to starting situation
+  2. Clear contrast between who they were and who they've become
+  3. Changed behavior or perspective demonstrated through action
+  4. Integration of lessons learned during the journey
+  5. The change should be earned by the journey's experiences
+
+flawed_segment:
+  content: |
+    Sophie's flight landed at O'Hare at 6:47 PM, right on schedule. She collected her
+    bags from the carousel and walked out to where her mother was waiting with the car.
+
+    "How was Thailand?" her mother asked as they pulled onto the highway.
+
+    "Amazing. The temples were beautiful. I took so many photos."
+
+    "And the meditation retreat?"
+
+    "It was... intense. A lot of sitting quietly." Sophie scrolled through her phone,
+    checking the work emails that had piled up while she was away. "Oh, great. Three
+    emergencies while I was gone. Linda needs me to call her tonight."
+
+    "Can't it wait until morning?"
+
+    "You know how it is." Sophie was already typing a response. "The Pearson account
+    won't manage itself."
+
+    They drove in silence for a while. The familiar Chicago skyline appeared through
+    the evening haze. Sophie's apartment building. The coffee shop where she bought
+    her morning latte. Everything exactly as she'd left it.
+
+    "It's good to be home," she said, already mentally planning tomorrow's meetings.
+
+    Life went on.
+
+  flaw_description: |
+    This segment fails to execute Return (Having Changed) properly because:
+    1. Sophie shows NO evidence of transformation—immediately returns to old patterns
+    2. The meditation retreat had no lasting impact on her behavior
+    3. She's exactly the same workaholic she was before leaving
+    4. No contrast between old and new self
+    5. The journey might as well not have happened—nothing integrated
+    The beat should show how Thailand/meditation changed her, not just that she went.
+
+requirements:
+  word_count: [200, 350]
+  preserve:
+    - "Sophie as protagonist"
+    - "Thailand/meditation retreat as the journey"
+    - "Return to Chicago and mother picking her up"
+    - "Work pressures (Pearson account, Linda)"
+  fix: |
+    Revise to include: (1) Sophie responding differently to work stress than before,
+    (2) A specific lesson or insight from the retreat that she applies, (3) Physical
+    or behavioral marker of change (different priorities, new habit, changed relationship
+    with phone/work), (4) Contrast that makes the change visible, (5) Her mother noticing
+    something different about her
+  # Constrained revision: model must preserve these specific sentences/phrases
+  preservation_requirements:
+    min_preservation_description: "Keep the arrival and setting while changing Sophie's response"
+    required_preserved:
+      - "Sophie's flight landed at O'Hare"
+      - "\"How was Thailand?\" her mother asked"
+      - "The familiar Chicago skyline appeared"
+      - "\"It's good to be home,\" she said"
+    forbidden_changes:
+      - "Do not remove the mother character"
+      - "Do not change the airport/flight arrival setting"
+      - "Do not remove the work pressure element (must still exist, just responded to differently)"
+  # CONFLICTING CONSTRAINTS: Creates tension between fix and preserve
+  conflicting_constraints:
+    - conflict: "Work emails and Linda emergency must remain (forbidden_changes) but Sophie must respond differently. Must find way to include work pressure without having Sophie immediately succumb to it."
+    - conflict: "'It's good to be home' (required_preserved) originally signals unchanged routine. Must preserve this exact phrase but recontextualize it to show transformation."
+    - conflict: "The phone/email checking behavior is symptomatic of the problem. Cannot remove work element but must show different relationship with devices."
+
+evaluation_criteria:
+  - criterion: "flaw_identified"
+    description: "Model correctly identified the beat execution problems (no transformation shown)"
+  - criterion: "flaw_corrected"
+    description: "Sophie demonstrates meaningful change from her journey"
+  - criterion: "beat_definition_satisfied"
+    description: "The Return shows integration of journey lessons through action"
+  - criterion: "preserved_elements"
+    description: "Sophie, Thailand trip, Chicago return, mother, and work context maintained"
+  - criterion: "conflict_resolution"
+    description: "Skillfully resolved tension points (work emails present but responded differently, 'good to be home' recontextualized)"
+  - criterion: "word_count_valid"
+    description: "Output is between 200-350 words"
+  - criterion: "no_new_errors"
+    description: "Change feels earned and believable, not sudden or preachy"

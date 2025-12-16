@@ -1,0 +1,102 @@
+evaluation_id: 79d552a2
+task_id: constrained_continuation_001
+generation_id: constrained_continuation_001_google/gemini-3-pro-preview_0
+task_type: constrained_continuation
+model: google/gemini-3-pro-preview
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.038279999999999995
+timestamp: '2025-12-12T11:13:54.575509'
+success: true
+final_score: 0.6716821015548502
+score_breakdown:
+  final_score: 0.6717
+  components:
+    word_count:
+      score: 0.0017
+      weight: 0.25
+      actual: 914
+      target_range:
+      - 500
+      - 700
+    programmatic:
+      score: 0.7
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 1.0
+        overall: 0.7
+    llm_judge:
+      score: 0.9925
+      weight: 0.5
+llm_results:
+  beats_present: 2
+  beats_total: 2
+  beats_score: 1.0
+  must_include_present: 6
+  must_include_total: 6
+  must_include_score: 1.0
+  must_not_avoided: 4
+  must_not_total: 4
+  must_not_score: 1.0
+  word_count_valid: false
+  word_count: 914
+  word_count_range: 500-700
+  tone_score: 0.95
+  ending_score: 1.0
+  failed_constraints:
+  - 'Word count exceeds maximum: 914 words vs. 700-word limit (30% over budget)'
+  analysis:
+    beats_present_detail:
+    - 'Approach to the Inmost Cave: The journey through the secret passage, the unstable
+      bridge, and arrival at the Silent Gate puzzle lock'
+    - 'The Ordeal: The Drowning—Zara''s psychological and physical trial through the
+      black toxic pool, confronting her fear of failure'
+    must_include_detail:
+    - 'Choice between escape and helping Tomás: Zara at the bridge deciding whether
+      to abandon Tomás or turn back—excellently rendered with internal conflict'
+    - 'Trap/test requiring thief skills: The puzzle lock on the Silent Gate—tension
+      wrench, listening for tumblers, precise mechanical work'
+    - 'Revelation about Tomás''s motivation: His confession about the Codex of Vane
+      and property dispute, revealing petty vengeance rather than noble pursuit'
+    - 'Zara confronting fear of failure: Explicit internal monologue—''the fear that
+      she wasn''t enough,'' terror of her mother dying, ''I''m going to fail her'''
+    - 'Symbolic death/rebirth: The black water sequence where ''the girl who stole
+      apples in the market died in that black water''—powerful metaphorical transformation'
+    - 'Zara emerging changed: Loss of trembling hands, hollowed out, harder, stripped
+      of doubt—clear character transformation post-Ordeal'
+    must_not_detail:
+    - 'No cure found: ✓ Avoided—cure remains objective, not achieved'
+    - 'No romantic subplot: ✓ Avoided—relationship remains transactional and morally
+      complex'
+    - 'Tomás survives: ✓ Avoided—he lives, pulled from the water by Zara'
+    - 'No supernatural abilities: ✓ Avoided—all of Zara''s skills are mundane (thievery,
+      lock-picking, swimming, climbing)'
+    tone_assessment: Tense and morally complex throughout. Desperate hope present
+      in Zara's determination despite doubt. The cynical realism of both characters'
+      motivations (Zara's maternal desperation, Tomás's vengeance) creates sophisticated
+      moral ambiguity. Minor deduction only for occasional moments where internal
+      monologue could be slightly more sparse.
+    ending_assessment: 'Perfect execution. Zara emerges transformed from the Ordeal,
+      but immediately faces new complication: mysterious footprints suggesting other
+      parties have reached the Library first. This creates narrative tension and raises
+      stakes for next act.'
+    strengths:
+    - Exceptional character work—Zara's internal conflict and growth arc
+    - Masterful pacing through three distinct sequences (chase, puzzle, ordeal)
+    - Sophisticated moral complexity—no clear heroes, all characters driven by self-interest
+    - Vivid sensory detail—the black water sequence is visceral and psychologically
+      resonant
+    - Strong thematic integration of fear and transformation
+    - Excellent cliffhanger ending with new mystery
+    weaknesses:
+    - 'Word count violation: 914 vs. 700-word maximum (214 words over)'
+    - Could trim some internal monologue in the water sequence without losing impact
+  overall_score: 0.85
+  score_rationale: Exceptional execution of all narrative requirements with perfect
+    beat coverage and all six must-include elements seamlessly integrated. Tone and
+    ending are exemplary. However, the word count violation (30% over limit) is a
+    significant constraint failure that prevents a higher score. The story would score
+    1.0 if trimmed to specification. As written, it demonstrates professional-quality
+    storytelling undermined by a technical requirement breach.
+error: null

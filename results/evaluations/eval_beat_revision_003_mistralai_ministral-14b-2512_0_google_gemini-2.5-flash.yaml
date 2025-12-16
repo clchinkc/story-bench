@@ -1,0 +1,53 @@
+evaluation_id: ac046d3d
+task_id: beat_revision_003
+generation_id: beat_revision_003_mistralai/ministral-14b-2512_0
+task_type: beat_revision
+model: mistralai/ministral-14b-2512
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0012528
+timestamp: '2025-12-13T13:39:40.841127'
+success: true
+final_score: 0.9508051118210863
+score_breakdown:
+  final_score: 0.9508
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 298
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.9332
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.91
+        slop_score: 0.9681
+        overall: 0.9332
+    llm_judge:
+      score: 0.935
+      weight: 0.5
+llm_results:
+  diagnosis_score: 1.0
+  flaw_correction_score: 1.0
+  beat_satisfaction_score: 1.0
+  preservation_score: 1.0
+  preserved_count: 4
+  preserved_total: 4
+  required_preserved_score: 0.75
+  required_preserved_count: 3
+  required_preserved_total: 4
+  minimal_change_score: 0.6
+  word_count_valid: true
+  quality_score: 1.0
+  evidence: The model correctly identified and addressed the flaw regarding Sophie's
+    lack of change upon returning. It introduced new behaviors (lingering, not checking
+    emails, re-evaluating 'emergencies'), a specific insight from the retreat ('learning
+    to sit with discomfort, with silence'), and her mother noticing a difference ('Her
+    mother glanced at her. 'No work?''). The changes were significant enough to fix
+    the flaw but still preserved the core elements and much of the original structure.
+    One required phrase, 'The familiar Chicago skyline appeared', was slightly altered
+    to 'looking out at the skyline as it emerged through the evening haze'.
+error: null

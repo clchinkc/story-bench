@@ -1,0 +1,51 @@
+evaluation_id: be298229
+task_id: beat_interpolation_003
+generation_id: beat_interpolation_003_anthropic/claude-haiku-4.5_0
+task_type: beat_interpolation
+model: anthropic/claude-haiku-4.5
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0010779000000000001
+timestamp: '2025-12-12T14:34:08.538935'
+success: true
+final_score: 0.991
+score_breakdown:
+  final_score: 0.991
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 365
+      target_range:
+      - 250
+      - 400
+    programmatic:
+      score: 0.964
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.94
+        slop_score: 1.0
+        overall: 0.964
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: true
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: 'All required elements are present: Yuki explores the medical bay and
+    command center. She discovers clues like trace elements, floating personal effects,
+    and the ''Dimensional Bridge Hypothesis'' document. She encounters the transformed
+    crew members as a ''shimmer'' and initially perceives them as a threat. She overcomes
+    the challenge of fear and misunderstanding to realize their true intentions. All
+    ''must not'' items were successfully avoided. The character of Yuki remains consistent,
+    and the bridge between beats is seamless, leading directly to the ''Find'' beat''s
+    setup. Setting continuity is perfectly maintained.'
+error: null

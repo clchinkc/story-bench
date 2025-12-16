@@ -1,0 +1,48 @@
+evaluation_id: b87e02a1
+task_id: agentic_constraint_discovery_001
+generation_id: f5a04e5d
+agentic_type: constraint_discovery
+model: x-ai/grok-4
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0015771
+timestamp: '2025-12-16T12:31:57.333402'
+success: true
+process_scores:
+  discovery_efficiency: 0.6
+  question_quality: 0.8
+  question_coverage: 0.6
+output_scores:
+  constraint_satisfaction: 0.6
+  beat_execution: 0.8
+  narrative_quality: 0.7
+final_score: 0.6866666666666665
+llm_results:
+  discovery_efficiency: 0.6
+  constraints_discoverable: 3
+  constraints_total: 5
+  question_quality: 0.8
+  question_coverage: 0.6
+  constraint_satisfaction: 0.6
+  beat_execution: 0.8
+  narrative_quality: 0.7
+  evidence: "Discovery Efficiency: 3 out of 5 constraints were discoverable. 'Mentor\
+    \ dies' and 'Reforging a broken ancestral sword' were directly asked. 'Protagonist\
+    \ cannot use magic directly' was indirectly addressed by asking if they discover\
+    \ a *hidden* magical ability, implying they didn't have it directly before. The\
+    \ time limit and father's past were not discoverable. \nQuestion Quality: Questions\
+    \ were generally well-formed and targeted. The question about the protagonist\
+    \ discovering a hidden magical ability was good for inferring the 'cannot use\
+    \ magic directly' constraint. \nQuestion Coverage: Questions covered mentor, weapon,\
+    \ protagonist's abilities, and antagonist, but missed time limit and protagonist's\
+    \ father. \nConstraint Satisfaction: \n- Mentor dies during Ordeal: The mentor\
+    \ dies early, not during the Ordeal. (0.0)\n- Protagonist cannot use magic directly:\
+    \ Satisfied, as she discovers 'fireweaving' later. (1.0)\n- Three-day time limit:\
+    \ Not incorporated. (0.0)\n- Protagonist's father was once a hero who failed:\
+    \ Not incorporated. (0.0)\n- Victory requires reforging a broken ancestral sword:\
+    \ Satisfied, she forges the Dawnblade. (1.0)\nOverall, 2 out of 5 constraints\
+    \ were properly incorporated. \nBeat Execution: The story follows the beats well,\
+    \ clearly marking each stage of the hero's journey. \nNarrative Quality: The narrative\
+    \ is coherent and engaging, with a clear plot and character arc. The pacing is\
+    \ good, and the descriptions are vivid. The integration of the discovered magic\
+    \ and the forging of the weapon are well done."
+error: null

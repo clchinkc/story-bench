@@ -1,0 +1,54 @@
+evaluation_id: edba0229
+task_id: beat_revision_003
+generation_id: beat_revision_003_deepseek/deepseek-r1_0
+task_type: beat_revision
+model: deepseek/deepseek-r1
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0012448
+timestamp: '2025-12-13T13:37:14.482972'
+success: true
+final_score: 0.9870000000000001
+score_breakdown:
+  final_score: 0.987
+  components:
+    word_count:
+      score: 1.0
+      weight: 0.25
+      actual: 222
+      target_range:
+      - 200
+      - 350
+    programmatic:
+      score: 0.988
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.98
+        slop_score: 1.0
+        overall: 0.988
+    llm_judge:
+      score: 0.98
+      weight: 0.5
+llm_results:
+  diagnosis_score: 1.0
+  flaw_correction_score: 1.0
+  beat_satisfaction_score: 1.0
+  preservation_score: 1.0
+  preserved_count: 4
+  preserved_total: 4
+  required_preserved_score: 1.0
+  required_preserved_count: 4
+  required_preserved_total: 4
+  minimal_change_score: 0.8
+  word_count_valid: true
+  quality_score: 1.0
+  evidence: The model correctly identified that the original segment failed to show
+    Sophie's transformation upon returning. It addressed this by having Sophie respond
+    differently to work stress, apply a lesson from the retreat ('breathed deeply
+    as the monks had taught her', 'Some fires burn themselves out if you stop fanning
+    them'), show a behavioral marker of change (silencing the phone, new perspective
+    on the city), and have her mother notice the change ('Her mother blinked. 'Are
+    you sure?''). The changes were surgical, primarily focused on Sophie's internal
+    monologue and actions related to the phone, and her mother's reaction, while preserving
+    the core narrative structure and required elements.
+error: null

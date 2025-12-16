@@ -1,0 +1,44 @@
+evaluation_id: 51f332e0
+task_id: multi_beat_synthesis_002
+generation_id: multi_beat_synthesis_002_openai/gpt-5.2_0
+task_type: multi_beat_synthesis
+model: openai/gpt-5.2
+sample_index: 0
+evaluator_model: openai/gpt-5-mini
+evaluator_cost: 0.0022585
+timestamp: '2025-12-12T14:13:41.588838'
+success: true
+final_score: 0.675
+score_breakdown:
+  final_score: 0.675
+  components:
+    word_count:
+      score: 0.0
+      weight: 0.25
+      actual: 2100
+      target_range:
+      - 700
+      - 1000
+    programmatic:
+      score: 0.7
+      weight: 0.25
+      breakdown:
+        repetition_score: 0.5
+        slop_score: 1.0
+        overall: 0.7
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 15
+  beat_reqs_total: 15
+  beat_requirements_score: 1.0
+  cross_beat_satisfied: 4
+  cross_beat_total: 4
+  cross_beat_score: 1.0
+  word_count_valid: false
+  context_score: 1.0
+  coherence_score: 1.0
+  failed_items:
+  - 'word_count out of range: 2100 words (required 700-1000)'
+error: null
