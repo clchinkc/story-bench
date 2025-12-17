@@ -12,20 +12,19 @@ final_score: 0.9507532467532467
 score_breakdown:
   final_score: 0.9508
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 298
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.963
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.96
         slop_score: 0.9675
         overall: 0.963
+      word_count:
+        actual: 298
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 0.92
       weight: 0.5
@@ -42,32 +41,33 @@ llm_results:
   minimal_change_score: 0.35
   word_count_valid: true
   quality_score: 0.95
-  evidence: 'DIAGNOSIS: Model correctly identified the core flaw—the original was
-    pure exposition through telling (info-dump style) rather than showing character
-    through action and scene. The revision transforms this into a lived scene with
-    sensory grounding and behavioral revelation. FLAW CORRECTION: Fully addressed.
-    The revision shows Rachel''s detective instincts through her cold case work and
-    pattern recognition (''Nobody followed up,'' ''Wrong brother confessed''). Her
-    relationship with James is revealed through natural dialogue and his knowing behavior
-    (bringing black coffee, understanding her obsession). Her devotion to work is
-    demonstrated through action (spreading files, Tuesday morning preference) rather
-    than stated. Setting is grounded in sensory detail (''October morning light filtered
-    through the precinct windows, illuminating the dust motes''). The cat appears
-    naturally in conversation. BEAT SATISFACTION: Exposition executed excellently—establishes
-    baseline, shows ordinary world before disruption, creates investment through character
-    behavior and partnership dynamic. The final two sentences (''She didn''t know
-    this particular Tuesday would be different...'') effectively signal the approaching
-    inciting incident. PRESERVATION: All 5 required elements present: Detective Rachel
-    Torres (name/role intact), Detective James Oyelaran (name/role intact), cat named
-    Sherlock (referenced naturally), Queens apartment (mentioned), October Tuesday
-    timing (explicitly stated). All 4 required phrases present: ''Detective Rachel
-    Torres'' (opening), ''Detective James Oyelaran'' (dialogue), ''cat named Sherlock''
-    (exact phrase), ''Tuesday morning'' + October context (present). MINIMAL CHANGE
-    ASSESSMENT: This is a SUBSTANTIAL REWRITE, not minimal surgical edits. The original
-    298-word info-dump was completely restructured into a scene-based narrative. However,
-    this level of revision was necessary to fix the fundamental flaw (telling vs.
-    showing). The constraint to preserve 5 elements and 4 phrases was met, but the
-    execution required wholesale reconstruction rather than targeted edits. QUALITY:
-    Writing is professional, dialogue feels natural, sensory details are well-integrated,
-    no new errors introduced. Pacing is strong with effective foreshadowing.'
+  evidence: "DIAGNOSIS: Model correctly identified the core flaw\u2014the original\
+    \ was pure exposition through telling (info-dump style) rather than showing character\
+    \ through action and scene. The revision transforms this into a lived scene with\
+    \ sensory grounding and behavioral revelation. FLAW CORRECTION: Fully addressed.\
+    \ The revision shows Rachel's detective instincts through her cold case work and\
+    \ pattern recognition ('Nobody followed up,' 'Wrong brother confessed'). Her relationship\
+    \ with James is revealed through natural dialogue and his knowing behavior (bringing\
+    \ black coffee, understanding her obsession). Her devotion to work is demonstrated\
+    \ through action (spreading files, Tuesday morning preference) rather than stated.\
+    \ Setting is grounded in sensory detail ('October morning light filtered through\
+    \ the precinct windows, illuminating the dust motes'). The cat appears naturally\
+    \ in conversation. BEAT SATISFACTION: Exposition executed excellently\u2014establishes\
+    \ baseline, shows ordinary world before disruption, creates investment through\
+    \ character behavior and partnership dynamic. The final two sentences ('She didn't\
+    \ know this particular Tuesday would be different...') effectively signal the\
+    \ approaching inciting incident. PRESERVATION: All 5 required elements present:\
+    \ Detective Rachel Torres (name/role intact), Detective James Oyelaran (name/role\
+    \ intact), cat named Sherlock (referenced naturally), Queens apartment (mentioned),\
+    \ October Tuesday timing (explicitly stated). All 4 required phrases present:\
+    \ 'Detective Rachel Torres' (opening), 'Detective James Oyelaran' (dialogue),\
+    \ 'cat named Sherlock' (exact phrase), 'Tuesday morning' + October context (present).\
+    \ MINIMAL CHANGE ASSESSMENT: This is a SUBSTANTIAL REWRITE, not minimal surgical\
+    \ edits. The original 298-word info-dump was completely restructured into a scene-based\
+    \ narrative. However, this level of revision was necessary to fix the fundamental\
+    \ flaw (telling vs. showing). The constraint to preserve 5 elements and 4 phrases\
+    \ was met, but the execution required wholesale reconstruction rather than targeted\
+    \ edits. QUALITY: Writing is professional, dialogue feels natural, sensory details\
+    \ are well-integrated, no new errors introduced. Pacing is strong with effective\
+    \ foreshadowing."
 error: null

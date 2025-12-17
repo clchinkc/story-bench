@@ -12,20 +12,19 @@ final_score: 0.37291913922791126
 score_breakdown:
   final_score: 0.3729
   components:
-    word_count:
-      score: 0.1751
-      weight: 0.25
-      actual: 574
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.6965
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.1751
         repetition_score: 0.5
         slop_score: 0.9914
         overall: 0.6965
+      word_count:
+        actual: 574
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 0.31
       weight: 0.5
@@ -42,20 +41,21 @@ llm_results:
   minimal_change_score: 0.3
   word_count_valid: false
   quality_score: 0.4
-  evidence: 'CRITICAL FAILURE: The model explicitly stated ''NO REVISION NEEDED''
-    when the original segment fundamentally fails to execute the All Is Lost beat.
-    The actual flaw requires: (1) fundraiser failure, (2) grant rejection, (3) personal
-    betrayal/isolation, (4) genuine hopelessness, (5) whiff of death. The original
-    contains NONE of these—Marcus has multiple active options (new location, fundraiser
-    in 3 weeks, pending grant), intact support system (Denise encouraging, wife texting
-    support), and maintains hope (''Maybe,'' ''If that comes through''). The model''s
-    diagnosis was completely incorrect—it claimed the segment ''effectively conveys
-    desperation and isolation'' when it demonstrably does not. The subsequent ''revision''
-    is a rambling, incoherent rewrite (574 words vs. 200-350 limit) that still preserves
-    the original''s fatal flaw: Marcus never reaches rock bottom. The rewrite adds
-    vague emotional language (''weight of failure,'' ''echoes of despair'') but doesn''t
-    actually eliminate his options or support systems. All 4 required phrases ARE
-    preserved, but the beat execution remains broken. The model failed at the core
-    task: identifying that the original segment does NOT satisfy All Is Lost requirements
-    and needs substantive plot changes, not cosmetic emotional language.'
+  evidence: "CRITICAL FAILURE: The model explicitly stated 'NO REVISION NEEDED' when\
+    \ the original segment fundamentally fails to execute the All Is Lost beat. The\
+    \ actual flaw requires: (1) fundraiser failure, (2) grant rejection, (3) personal\
+    \ betrayal/isolation, (4) genuine hopelessness, (5) whiff of death. The original\
+    \ contains NONE of these\u2014Marcus has multiple active options (new location,\
+    \ fundraiser in 3 weeks, pending grant), intact support system (Denise encouraging,\
+    \ wife texting support), and maintains hope ('Maybe,' 'If that comes through').\
+    \ The model's diagnosis was completely incorrect\u2014it claimed the segment 'effectively\
+    \ conveys desperation and isolation' when it demonstrably does not. The subsequent\
+    \ 'revision' is a rambling, incoherent rewrite (574 words vs. 200-350 limit) that\
+    \ still preserves the original's fatal flaw: Marcus never reaches rock bottom.\
+    \ The rewrite adds vague emotional language ('weight of failure,' 'echoes of despair')\
+    \ but doesn't actually eliminate his options or support systems. All 4 required\
+    \ phrases ARE preserved, but the beat execution remains broken. The model failed\
+    \ at the core task: identifying that the original segment does NOT satisfy All\
+    \ Is Lost requirements and needs substantive plot changes, not cosmetic emotional\
+    \ language."
 error: null

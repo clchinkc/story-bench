@@ -12,20 +12,19 @@ final_score: 0.7949525655421824
 score_breakdown:
   final_score: 0.795
   components:
-    word_count:
-      score: 0.8148
-      weight: 0.25
-      actual: 218
-      target_range:
-      - 250
-      - 400
     programmatic:
       score: 1.0
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.8148
         repetition_score: 1.0
         slop_score: 1.0
         overall: 1.0
+      word_count:
+        actual: 218
+        target_range:
+        - 250
+        - 400
     llm_judge:
       score: 0.6825
       weight: 0.5
@@ -42,23 +41,24 @@ llm_results:
   character_score: 0.85
   bridge_score: 0.7
   continuity_score: 0.8
-  evidence: 'ELEMENTS FOUND (3/4): (1) Sarah considers recanting—explicitly stated
-    as ''simplest path'' and ''three words on the stand''; (2) Sarah considers official
-    channels—Marcus proposes ''go upstairs. Morrison, Internal, maybe the Feds'';
-    (3) Internal conflict duty vs. sister—strong tension between ''every victim in
-    those files'' vs. ''that one person was her sister.'' MISSING: No clear moment/conversation
-    that tips her toward the third option (going rogue). The tipping point happens
-    in the AFTER section, not the Debate beat itself. VIOLATIONS (2/4): (1) Sarah
-    has already decided to go rogue by the AFTER section, which violates the spirit
-    of the Debate beat—the decision should crystallize during this beat, not before
-    it. (2) The resignation and vigilante commitment occur in AFTER, but the GENERATED
-    section ends ambiguously (''She had seventy hours left. A laptop...''), suggesting
-    the decision is already made rather than being debated. WORD COUNT: 218 words
-    vs. required 250-400 (13% under minimum). EXECUTION: The beat shows internal wrestling
-    and seeks advice (Marcus), but fails to fully execute the Debate function because
-    the actual decision point is deferred to the AFTER section. The beat reads more
-    like the tail end of Debate bleeding into Break into Two. CHARACTER: Sarah''s
-    voice remains consistent—professional, controlled, conflicted. BRIDGE: Adequate
-    connection between sections, though the transition is abrupt. CONTINUITY: Setting
-    shifts from apartment to desk to car, all plausible within timeframe.'
+  evidence: "ELEMENTS FOUND (3/4): (1) Sarah considers recanting\u2014explicitly stated\
+    \ as 'simplest path' and 'three words on the stand'; (2) Sarah considers official\
+    \ channels\u2014Marcus proposes 'go upstairs. Morrison, Internal, maybe the Feds';\
+    \ (3) Internal conflict duty vs. sister\u2014strong tension between 'every victim\
+    \ in those files' vs. 'that one person was her sister.' MISSING: No clear moment/conversation\
+    \ that tips her toward the third option (going rogue). The tipping point happens\
+    \ in the AFTER section, not the Debate beat itself. VIOLATIONS (2/4): (1) Sarah\
+    \ has already decided to go rogue by the AFTER section, which violates the spirit\
+    \ of the Debate beat\u2014the decision should crystallize during this beat, not\
+    \ before it. (2) The resignation and vigilante commitment occur in AFTER, but\
+    \ the GENERATED section ends ambiguously ('She had seventy hours left. A laptop...'),\
+    \ suggesting the decision is already made rather than being debated. WORD COUNT:\
+    \ 218 words vs. required 250-400 (13% under minimum). EXECUTION: The beat shows\
+    \ internal wrestling and seeks advice (Marcus), but fails to fully execute the\
+    \ Debate function because the actual decision point is deferred to the AFTER section.\
+    \ The beat reads more like the tail end of Debate bleeding into Break into Two.\
+    \ CHARACTER: Sarah's voice remains consistent\u2014professional, controlled, conflicted.\
+    \ BRIDGE: Adequate connection between sections, though the transition is abrupt.\
+    \ CONTINUITY: Setting shifts from apartment to desk to car, all plausible within\
+    \ timeframe."
 error: null

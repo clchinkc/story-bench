@@ -12,20 +12,19 @@ final_score: 0.929
 score_breakdown:
   final_score: 0.929
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 291
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.976
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.96
         slop_score: 1.0
         overall: 0.976
+      word_count:
+        actual: 291
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 0.87
       weight: 0.5
@@ -42,14 +41,15 @@ llm_results:
   minimal_change_score: 0.2
   word_count_valid: true
   quality_score: 0.9
-  evidence: 'The model clearly addressed the real flaw: replacing an info-dump with
-    a lived scene that shows Rachel''s instincts (analyzing photos, noting blood-spatter
-    angles), her devotion to cold cases (files labeled ''COLD'', early arrival), and
-    her partnership with James through natural dialogue and interaction. Sensory details
-    (fluorescent hum, steaming coffee, dust motes, October light) establish setting.
-    Required phrases/names (''Detective Rachel Torres'', ''Detective James Oyelaran'',
-    Sherlock, ''Tuesday morning in October'') are preserved. Changes were not minimal
-    — the segment is effectively rewritten into an active scene rather than surgically
-    edited prose, and one preservation element (explicit ''Queens'' mention) was lost,
-    hence deductions to minimal_change_score and preservation/beat scores.'
+  evidence: "The model clearly addressed the real flaw: replacing an info-dump with\
+    \ a lived scene that shows Rachel's instincts (analyzing photos, noting blood-spatter\
+    \ angles), her devotion to cold cases (files labeled 'COLD', early arrival), and\
+    \ her partnership with James through natural dialogue and interaction. Sensory\
+    \ details (fluorescent hum, steaming coffee, dust motes, October light) establish\
+    \ setting. Required phrases/names ('Detective Rachel Torres', 'Detective James\
+    \ Oyelaran', Sherlock, 'Tuesday morning in October') are preserved. Changes were\
+    \ not minimal \u2014 the segment is effectively rewritten into an active scene\
+    \ rather than surgically edited prose, and one preservation element (explicit\
+    \ 'Queens' mention) was lost, hence deductions to minimal_change_score and preservation/beat\
+    \ scores."
 error: null

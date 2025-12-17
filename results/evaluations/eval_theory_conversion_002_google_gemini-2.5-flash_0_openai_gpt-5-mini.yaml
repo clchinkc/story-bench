@@ -12,20 +12,19 @@ final_score: 0.8175777192611385
 score_breakdown:
   final_score: 0.8176
   components:
-    word_count:
-      score: 0.6368
-      weight: 0.25
-      actual: 857
-      target_range:
-      - 600
-      - 800
     programmatic:
       score: 0.6885
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.6368
         repetition_score: 0.5
         slop_score: 0.9712
         overall: 0.6885
+      word_count:
+        actual: 857
+        target_range:
+        - 600
+        - 800
     llm_judge:
       score: 0.9725
       weight: 0.5
@@ -39,18 +38,18 @@ llm_results:
   word_count_valid: false
   structural_accuracy_score: 0.9
   tone_score: 0.95
-  evidence: 'All 12 Campbell beats are represented: Ordinary World (village life),
-    Call to Adventure (dry spring, dreams), Refusal (hesitation, ''I am not my grandmother''),
-    Meeting the Mentor (spiritual memory from elders and later grandmother''s journal),
-    Crossing the Threshold (leaving village/climb), Tests/Allies/Enemies (ascent trials—no
-    explicit allies/enemies but tests are present), Approach to Inmost Cave (ruined
-    shrine), Ordeal (internal surrender during making), Reward (unique vessel), Road
-    Back (difficult descent, temptation to abandon), Resurrection (final ceremony
-    at spring), Return with Elixir (village restored, Maya transformed). All seven
-    required elements are preserved. Deductions: minor structural accuracy reduction
-    because the ''Meeting the Mentor'' is portrayed more as a memory/late journal
-    discovery rather than a clear pre-threshold mentor figure, and the Tests/Allies/Enemies
-    beat lacks explicit allies or antagonists (only personal trials). Tone is well
-    maintained (quiet, meditative, transformative). Word count is outside the required
-    600–800 range (converted text is 857 words), so word_count_valid is false.'
+  evidence: "All 12 Campbell beats are represented: Ordinary World (village life),\
+    \ Call to Adventure (dry spring, dreams), Refusal (hesitation, 'I am not my grandmother'),\
+    \ Meeting the Mentor (spiritual memory from elders and later grandmother's journal),\
+    \ Crossing the Threshold (leaving village/climb), Tests/Allies/Enemies (ascent\
+    \ trials\u2014no explicit allies/enemies but tests are present), Approach to Inmost\
+    \ Cave (ruined shrine), Ordeal (internal surrender during making), Reward (unique\
+    \ vessel), Road Back (difficult descent, temptation to abandon), Resurrection\
+    \ (final ceremony at spring), Return with Elixir (village restored, Maya transformed).\
+    \ All seven required elements are preserved. Deductions: minor structural accuracy\
+    \ reduction because the 'Meeting the Mentor' is portrayed more as a memory/late\
+    \ journal discovery rather than a clear pre-threshold mentor figure, and the Tests/Allies/Enemies\
+    \ beat lacks explicit allies or antagonists (only personal trials). Tone is well\
+    \ maintained (quiet, meditative, transformative). Word count is outside the required\
+    \ 600\u2013800 range (converted text is 857 words), so word_count_valid is false."
 error: null

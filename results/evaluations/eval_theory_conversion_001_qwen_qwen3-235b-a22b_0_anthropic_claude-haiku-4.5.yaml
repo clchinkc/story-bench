@@ -12,20 +12,19 @@ final_score: 0.97925
 score_breakdown:
   final_score: 0.9792
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 500
-      target_range:
-      - 500
-      - 700
     programmatic:
       score: 0.952
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.92
         slop_score: 1.0
         overall: 0.952
+      word_count:
+        actual: 500
+        target_range:
+        - 500
+        - 700
     llm_judge:
       score: 0.9825
       weight: 0.5
@@ -40,22 +39,23 @@ llm_results:
   word_count_valid: true
   structural_accuracy_score: 0.95
   tone_score: 0.95
-  evidence: 'STRENGTHS: All 5 Freytag beats are clearly present and well-delineated.
-    Exposition establishes Samira''s reputation crisis and the impossible virus discovery.
-    Rising Action spans the 72-hour investigation with escalating complications (adaptation,
-    strategic evolution, discovery of Nexus connection). Climax peaks at the conference
-    room confrontation where Samira leverages the cure formula as leverage. Falling
-    Action covers the press conference and immediate institutional consequences. Denouement
-    resolves with Samira''s quiet vindication and career pivot to service. All 6 core
-    elements preserved: protagonist (Samira), engineered virus, Raj (supporting),
-    Nexus (antagonist), public cure release, career sacrifice. Tone maintains medical
-    thriller tension throughout with ethical weight—phrases like ''fugue of caffeine
-    and dread,'' ''reptilian'' executives, and the moral stakes of public health vs.
-    corporate liability. MINOR DEDUCTIONS: Structural accuracy slightly reduced (0.95
-    vs 1.0) because the climax/falling action boundary is slightly compressed—the
-    press conference functions as both climactic revelation and falling action consequence,
-    which is narratively effective but technically blurs Freytag''s distinction. Tone
-    score 0.95 (not 1.0) because the denouement shifts toward quiet reflection, which
-    is thematically appropriate but slightly softens the thriller tension that dominated
-    earlier sections. Word count (598) is within valid range (500-700).'
+  evidence: "STRENGTHS: All 5 Freytag beats are clearly present and well-delineated.\
+    \ Exposition establishes Samira's reputation crisis and the impossible virus discovery.\
+    \ Rising Action spans the 72-hour investigation with escalating complications\
+    \ (adaptation, strategic evolution, discovery of Nexus connection). Climax peaks\
+    \ at the conference room confrontation where Samira leverages the cure formula\
+    \ as leverage. Falling Action covers the press conference and immediate institutional\
+    \ consequences. Denouement resolves with Samira's quiet vindication and career\
+    \ pivot to service. All 6 core elements preserved: protagonist (Samira), engineered\
+    \ virus, Raj (supporting), Nexus (antagonist), public cure release, career sacrifice.\
+    \ Tone maintains medical thriller tension throughout with ethical weight\u2014\
+    phrases like 'fugue of caffeine and dread,' 'reptilian' executives, and the moral\
+    \ stakes of public health vs. corporate liability. MINOR DEDUCTIONS: Structural\
+    \ accuracy slightly reduced (0.95 vs 1.0) because the climax/falling action boundary\
+    \ is slightly compressed\u2014the press conference functions as both climactic\
+    \ revelation and falling action consequence, which is narratively effective but\
+    \ technically blurs Freytag's distinction. Tone score 0.95 (not 1.0) because the\
+    \ denouement shifts toward quiet reflection, which is thematically appropriate\
+    \ but slightly softens the thriller tension that dominated earlier sections. Word\
+    \ count (598) is within valid range (500-700)."
 error: null

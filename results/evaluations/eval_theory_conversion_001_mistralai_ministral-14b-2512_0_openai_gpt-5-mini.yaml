@@ -12,20 +12,19 @@ final_score: 0.6648036978016842
 score_breakdown:
   final_score: 0.6648
   components:
-    word_count:
-      score: 0.0142
-      weight: 0.25
-      actual: 875
-      target_range:
-      - 500
-      - 700
     programmatic:
       score: 0.7
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.0142
         repetition_score: 0.5
         slop_score: 1.0
         overall: 0.7
+      word_count:
+        actual: 875
+        target_range:
+        - 500
+        - 700
     llm_judge:
       score: 0.9725
       weight: 0.5
@@ -39,12 +38,13 @@ llm_results:
   word_count_valid: false
   structural_accuracy_score: 0.9
   tone_score: 0.95
-  evidence: 'All five Freytag beats are clearly present (exposition, rising action,
-    climax, falling action, denouement). All six required elements are preserved.
-    Deductions: structural_accuracy not 1.0 because the narrative contains closely
-    spaced peaks (the revelation and the public confrontation) that slightly blur
-    a single, singular turning point expected at the apex of Freytag''s Pyramid, and
-    the falling action/containment sequences are somewhat compressed. Tone is excellent—sustained
-    medical-thriller tension with ethical weight—but trimmed slightly for a minor
-    amount of melodramatic exposition, so not a perfect 1.0.'
+  evidence: "All five Freytag beats are clearly present (exposition, rising action,\
+    \ climax, falling action, denouement). All six required elements are preserved.\
+    \ Deductions: structural_accuracy not 1.0 because the narrative contains closely\
+    \ spaced peaks (the revelation and the public confrontation) that slightly blur\
+    \ a single, singular turning point expected at the apex of Freytag's Pyramid,\
+    \ and the falling action/containment sequences are somewhat compressed. Tone is\
+    \ excellent\u2014sustained medical-thriller tension with ethical weight\u2014\
+    but trimmed slightly for a minor amount of melodramatic exposition, so not a perfect\
+    \ 1.0."
 error: null

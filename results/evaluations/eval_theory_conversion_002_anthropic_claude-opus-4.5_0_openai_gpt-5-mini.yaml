@@ -12,20 +12,19 @@ final_score: 0.9199999999999999
 score_breakdown:
   final_score: 0.92
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 707
-      target_range:
-      - 600
-      - 800
     programmatic:
       score: 0.7
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.5
         slop_score: 1.0
         overall: 0.7
+      word_count:
+        actual: 707
+        target_range:
+        - 600
+        - 800
     llm_judge:
       score: 0.99
       weight: 0.5
@@ -39,16 +38,16 @@ llm_results:
   word_count_valid: true
   structural_accuracy_score: 0.95
   tone_score: 1.0
-  evidence: 'All 12 Campbellian beats are present and follow a clear sequence: Ordinary
-    World (village potter), Call (dry spring), Refusal (three days of saying no),
-    Meeting the Mentor (grandmother''s shawl/memory), Crossing the Threshold (journey
-    to mountain), Tests/Allies/Enemies (rockslides, shepherd, hawk, doubt), Approach
-    to Inmost Cave (ruined shrine, despair), Ordeal (surrendering control and creating
-    the vessel), Reward (the completed vessel), The Road Back (difficult return with
-    doubts), Resurrection (letting old self go and performing ceremony), Return with
-    Elixir (water returns and she teaches). All seven required elements are preserved.
-    Deduction from a perfect structural score (0.05) is for minor compression/interpretive
-    choices: the mentor is a remembered presence rather than an external guide, and
-    the Approach/Ordeal are tightly compressed—effective but slightly condensed compared
-    with some classic monomyth elaborations.'
+  evidence: "All 12 Campbellian beats are present and follow a clear sequence: Ordinary\
+    \ World (village potter), Call (dry spring), Refusal (three days of saying no),\
+    \ Meeting the Mentor (grandmother's shawl/memory), Crossing the Threshold (journey\
+    \ to mountain), Tests/Allies/Enemies (rockslides, shepherd, hawk, doubt), Approach\
+    \ to Inmost Cave (ruined shrine, despair), Ordeal (surrendering control and creating\
+    \ the vessel), Reward (the completed vessel), The Road Back (difficult return\
+    \ with doubts), Resurrection (letting old self go and performing ceremony), Return\
+    \ with Elixir (water returns and she teaches). All seven required elements are\
+    \ preserved. Deduction from a perfect structural score (0.05) is for minor compression/interpretive\
+    \ choices: the mentor is a remembered presence rather than an external guide,\
+    \ and the Approach/Ordeal are tightly compressed\u2014effective but slightly condensed\
+    \ compared with some classic monomyth elaborations."
 error: null

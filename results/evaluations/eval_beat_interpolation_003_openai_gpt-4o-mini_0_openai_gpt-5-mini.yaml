@@ -12,20 +12,19 @@ final_score: 0.982
 score_breakdown:
   final_score: 0.982
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 377
-      target_range:
-      - 250
-      - 400
     programmatic:
       score: 0.928
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.88
         slop_score: 1.0
         overall: 0.928
+      word_count:
+        actual: 377
+        target_range:
+        - 250
+        - 400
     llm_judge:
       score: 1.0
       weight: 0.5
@@ -40,13 +39,14 @@ llm_results:
   character_score: 1.0
   bridge_score: 1.0
   continuity_score: 1.0
-  evidence: 'All four required elements are present: Yuki explores multiple areas
-    (crew quarters, medical bay), discovers clues (medical reports referencing intra-dimensional
-    resonance), encounters transformed crew (shimmering figures who do not fully explain
-    events), and faces obstacles (energy surge that knocks her back; she must recalibrate
-    and push on). None of the prohibited items occur—she does not immediately find
-    the data core or fully understand the transformation, the crew do not directly
-    explain everything, she does not abandon the mission, and she did not already
-    know about the dimensional change. Character behavior and setting remain consistent
-    and the passage cleanly bridges the arrival and the subsequent discovery.'
+  evidence: "All four required elements are present: Yuki explores multiple areas\
+    \ (crew quarters, medical bay), discovers clues (medical reports referencing intra-dimensional\
+    \ resonance), encounters transformed crew (shimmering figures who do not fully\
+    \ explain events), and faces obstacles (energy surge that knocks her back; she\
+    \ must recalibrate and push on). None of the prohibited items occur\u2014she does\
+    \ not immediately find the data core or fully understand the transformation, the\
+    \ crew do not directly explain everything, she does not abandon the mission, and\
+    \ she did not already know about the dimensional change. Character behavior and\
+    \ setting remain consistent and the passage cleanly bridges the arrival and the\
+    \ subsequent discovery."
 error: null

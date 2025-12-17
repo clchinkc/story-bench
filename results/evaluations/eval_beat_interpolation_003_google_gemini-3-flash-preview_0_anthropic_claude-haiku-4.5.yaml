@@ -1,0 +1,58 @@
+evaluation_id: c14c3416
+task_id: beat_interpolation_003
+generation_id: beat_interpolation_003_google/gemini-3-flash-preview_0
+task_type: beat_interpolation
+model: google/gemini-3-flash-preview
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.01864
+timestamp: '2025-12-18T23:29:12.851940'
+success: true
+final_score: 0.9895
+score_breakdown:
+  final_score: 0.9895
+  components:
+    programmatic:
+      score: 0.979
+      weight: 0.5
+      breakdown:
+        word_count_score: 1.0
+        repetition_score: 0.94
+        slop_score: 1.0
+        overall: 0.979
+      word_count:
+        actual: 347
+        target_range:
+        - 250
+        - 400
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: true
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: 'All 4 required elements present: (1) Multiple area exploration—Crew Quarters,
+    Medical Bay, high-security research wing with deliberate progression; (2) Clues
+    discovered—desiccated meal, exotic particles, Kronin''s serum vials, quantum leakage
+    readings; (3) Transformed crew encounters—shimmer entities, humanoid shadow, blurred
+    face figure, freezing wind collision; (4) Obstacles overcome—locked blast door
+    requiring gravity venting and rewiring, dimensional collision avoidance, navigation
+    through hazardous environment. Beat execution is exemplary: Yuki actively searches,
+    adapts to threats, makes incremental discoveries, and struggles against environmental/dimensional
+    obstacles. All must-not violations avoided: she doesn''t find the data core yet
+    (only locates Lab Seven), crew doesn''t explain everything (only Reyes''s cryptic
+    encouragement at end), she commits to mission completion, and she arrives without
+    prior dimensional knowledge. Character voice remains consistent—scientific, cautious,
+    determined. Bridge seamless: transitions naturally from ''Go'' (arrival) through
+    ''Search'' (exploration/trials) toward ''Find'' (data core discovery). Continuity
+    perfect: Jupiter viewport, life support status, tablet readings, suit details
+    all maintained from BEFORE section.'
+error: null

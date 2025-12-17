@@ -12,20 +12,19 @@ final_score: 0.8665
 score_breakdown:
   final_score: 0.8665
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 281
-      target_range:
-      - 250
-      - 400
     programmatic:
       score: 0.826
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.71
         slop_score: 1.0
         overall: 0.826
+      word_count:
+        actual: 281
+        target_range:
+        - 250
+        - 400
     llm_judge:
       score: 0.82
       weight: 0.5
@@ -42,15 +41,15 @@ llm_results:
   minimal_change_score: 0.8
   word_count_valid: true
   quality_score: 0.8
-  evidence: 'The model clearly targeted the actual flaw: it made the dragon exploit
-    Kira''s guilt over her brother, inserted a moment where she collapses and her
-    world goes dark (a symbolic ''death''), and showed a rebirth where she recalls
-    her brother''s final moments and fights with renewed ferocity—so victory stems
-    from regained resolve/insight rather than mere persistence. All four required
-    elements/phrases were preserved verbatim or nearly so. Changes were mostly surgical
-    (added internal reflection and the symbolic death/rebirth) rather than a full
-    rewrite. Weaknesses: the ''death'' and transformation are somewhat cursory and
-    rapid—more emotional depth or a clearer psychological shift would make the Ordeal
-    more fully realized. Minor grammatical awkwardness ("a earth-shaking roar") was
-    retained from the original.'
+  evidence: "The model clearly targeted the actual flaw: it made the dragon exploit\
+    \ Kira's guilt over her brother, inserted a moment where she collapses and her\
+    \ world goes dark (a symbolic 'death'), and showed a rebirth where she recalls\
+    \ her brother's final moments and fights with renewed ferocity\u2014so victory\
+    \ stems from regained resolve/insight rather than mere persistence. All four required\
+    \ elements/phrases were preserved verbatim or nearly so. Changes were mostly surgical\
+    \ (added internal reflection and the symbolic death/rebirth) rather than a full\
+    \ rewrite. Weaknesses: the 'death' and transformation are somewhat cursory and\
+    \ rapid\u2014more emotional depth or a clearer psychological shift would make\
+    \ the Ordeal more fully realized. Minor grammatical awkwardness (\"a earth-shaking\
+    \ roar\") was retained from the original."
 error: null

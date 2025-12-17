@@ -12,20 +12,19 @@ final_score: 0.9575
 score_breakdown:
   final_score: 0.9575
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 214
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.988
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.98
         slop_score: 1.0
         overall: 0.988
+      word_count:
+        actual: 214
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 0.921
       weight: 0.5
@@ -42,21 +41,21 @@ llm_results:
   minimal_change_score: 0.75
   word_count_valid: true
   quality_score: 0.92
-  evidence: 'The model correctly diagnosed the core flaw: Marcus still had multiple
-    viable options (fundraiser, grant, new location, support system intact) rather
-    than facing complete defeat. The revision systematically eliminates all escape
-    routes: fundraiser permit canceled, grant rejected, Denise resigning and leaving
-    tomorrow, board unable to meet quorum, family co-signed on loan at risk, no legal
-    appeals remaining. The ''whiff of death'' is present through both metaphorical
-    loss (his life''s work becoming ''a ghost,'' identity stripped away) and literal
-    financial threat (family homelessness). Marcus moves from ''maybe'' to genuine
-    hopelessness—''Only the void remained.'' All 4 required phrases preserved exactly:
-    opening line intact, ''Thirty days to vacate the community center'' present, Denise''s
-    dialogue preserved, ''He rubbed his temples'' included. Changes were surgical:
-    added permit cancellation, grant rejection email, Denise''s resignation, and expanded
-    emotional consequences rather than restructuring. The writing quality improved
-    with stronger emotional resonance and clearer stakes. Minor: the phrase ''Every
-    bridge burned'' is slightly clichéd but appropriate for the beat. The revision
-    fully satisfies Save the Cat''s All Is Lost requirements—complete plan failure,
-    meaningful loss, no forward path, protagonist at rock bottom.'
+  evidence: "The model correctly diagnosed the core flaw: Marcus still had multiple\
+    \ viable options (fundraiser, grant, new location, support system intact) rather\
+    \ than facing complete defeat. The revision systematically eliminates all escape\
+    \ routes: fundraiser permit canceled, grant rejected, Denise resigning and leaving\
+    \ tomorrow, board unable to meet quorum, family co-signed on loan at risk, no\
+    \ legal appeals remaining. The 'whiff of death' is present through both metaphorical\
+    \ loss (his life's work becoming 'a ghost,' identity stripped away) and literal\
+    \ financial threat (family homelessness). Marcus moves from 'maybe' to genuine\
+    \ hopelessness\u2014'Only the void remained.' All 4 required phrases preserved\
+    \ exactly: opening line intact, 'Thirty days to vacate the community center' present,\
+    \ Denise's dialogue preserved, 'He rubbed his temples' included. Changes were\
+    \ surgical: added permit cancellation, grant rejection email, Denise's resignation,\
+    \ and expanded emotional consequences rather than restructuring. The writing quality\
+    \ improved with stronger emotional resonance and clearer stakes. Minor: the phrase\
+    \ 'Every bridge burned' is slightly clich\xE9d but appropriate for the beat. The\
+    \ revision fully satisfies Save the Cat's All Is Lost requirements\u2014complete\
+    \ plan failure, meaningful loss, no forward path, protagonist at rock bottom."
 error: null

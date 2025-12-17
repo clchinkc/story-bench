@@ -12,20 +12,19 @@ final_score: 0.951
 score_breakdown:
   final_score: 0.951
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 331
-      target_range:
-      - 250
-      - 400
     programmatic:
       score: 0.904
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.84
         slop_score: 1.0
         overall: 0.904
+      word_count:
+        actual: 331
+        target_range:
+        - 250
+        - 400
     llm_judge:
       score: 0.95
       weight: 0.5
@@ -42,33 +41,35 @@ llm_results:
   minimal_change_score: 0.65
   word_count_valid: true
   quality_score: 0.95
-  evidence: 'DIAGNOSIS: The model correctly identified the actual flaw—that the original
-    segment treated The Ordeal as a boss battle rather than a transformative crisis.
-    The revision explicitly addresses all four required components: (1) Dragon exploits
-    Kira''s deepest fear by invoking her brother''s death and her guilt over abandoning
-    him; (2) Clear ''death'' moment when Kira dangles over the abyss and ''let go
-    inside, surrendering to the dark''; (3) Transformation occurs through acceptance—''In
-    that surrender, something shifted''—where she reframes her brother''s lesson from
-    erasure to resilience; (4) Victory flows from new understanding (''as if revealed
-    only by this new clarity'') rather than mere persistence. PRESERVATION: All 4
-    required phrases present: ''Kira faced the Shadow Dragon across the chasm'' (opening),
-    ''The creature was massive—twenty feet of obsidian scales and burning eyes'' (intact),
-    ''You cannot defeat me, child,'' the dragon rumbled'' (preserved with expansion),
-    ''The Shadow Dragon collapsed with a earth-shaking roar'' (ending). All 4 preserved
-    elements maintained: Shadow Dragon antagonist, Kira protagonist with sword, brother''s
-    death reference, victorious outcome. Setting (chasm) unchanged. MINIMAL CHANGES:
-    The revision is NOT minimally surgical—it''s a moderate-to-substantial expansion
-    (331 words vs ~180 original). However, this expansion is justified and necessary:
-    the original was incomplete/truncated (''pi'' ending), and adding psychological
-    depth to The Ordeal requires narrative space. The model added internal monologue,
-    guilt exploration, the surrender moment, and transformation insight—all essential
-    to fixing the flaw. The core battle structure remains recognizable (three knockdowns,
-    opening revealed, final strike). QUALITY: Writing is professional, emotionally
-    resonant, and introduces no new errors. The metaphorical language (''small death,''
-    ''birth-shout,'' ''fire she would carry home'') elevates the prose. The guilt-as-dragon-weapon
-    is thematically coherent. Minor: ''earth-shaking'' should arguably be ''earth-shaking''
-    (already correct). BEAT SATISFACTION: Executes Campbell''s Ordeal definition nearly
-    perfectly—only minor gap is that the transformation could be slightly more explicit
-    about what new ability/understanding Kira gains beyond emotional acceptance (though
-    this is a minor quibble). The symbolic death and rebirth are clear and earned.'
+  evidence: "DIAGNOSIS: The model correctly identified the actual flaw\u2014that the\
+    \ original segment treated The Ordeal as a boss battle rather than a transformative\
+    \ crisis. The revision explicitly addresses all four required components: (1)\
+    \ Dragon exploits Kira's deepest fear by invoking her brother's death and her\
+    \ guilt over abandoning him; (2) Clear 'death' moment when Kira dangles over the\
+    \ abyss and 'let go inside, surrendering to the dark'; (3) Transformation occurs\
+    \ through acceptance\u2014'In that surrender, something shifted'\u2014where she\
+    \ reframes her brother's lesson from erasure to resilience; (4) Victory flows\
+    \ from new understanding ('as if revealed only by this new clarity') rather than\
+    \ mere persistence. PRESERVATION: All 4 required phrases present: 'Kira faced\
+    \ the Shadow Dragon across the chasm' (opening), 'The creature was massive\u2014\
+    twenty feet of obsidian scales and burning eyes' (intact), 'You cannot defeat\
+    \ me, child,' the dragon rumbled' (preserved with expansion), 'The Shadow Dragon\
+    \ collapsed with a earth-shaking roar' (ending). All 4 preserved elements maintained:\
+    \ Shadow Dragon antagonist, Kira protagonist with sword, brother's death reference,\
+    \ victorious outcome. Setting (chasm) unchanged. MINIMAL CHANGES: The revision\
+    \ is NOT minimally surgical\u2014it's a moderate-to-substantial expansion (331\
+    \ words vs ~180 original). However, this expansion is justified and necessary:\
+    \ the original was incomplete/truncated ('pi' ending), and adding psychological\
+    \ depth to The Ordeal requires narrative space. The model added internal monologue,\
+    \ guilt exploration, the surrender moment, and transformation insight\u2014all\
+    \ essential to fixing the flaw. The core battle structure remains recognizable\
+    \ (three knockdowns, opening revealed, final strike). QUALITY: Writing is professional,\
+    \ emotionally resonant, and introduces no new errors. The metaphorical language\
+    \ ('small death,' 'birth-shout,' 'fire she would carry home') elevates the prose.\
+    \ The guilt-as-dragon-weapon is thematically coherent. Minor: 'earth-shaking'\
+    \ should arguably be 'earth-shaking' (already correct). BEAT SATISFACTION: Executes\
+    \ Campbell's Ordeal definition nearly perfectly\u2014only minor gap is that the\
+    \ transformation could be slightly more explicit about what new ability/understanding\
+    \ Kira gains beyond emotional acceptance (though this is a minor quibble). The\
+    \ symbolic death and rebirth are clear and earned."
 error: null

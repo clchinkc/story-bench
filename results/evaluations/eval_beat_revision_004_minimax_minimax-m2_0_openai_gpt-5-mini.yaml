@@ -12,20 +12,19 @@ final_score: 0.891
 score_breakdown:
   final_score: 0.891
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 280
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.964
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.94
         slop_score: 1.0
         overall: 0.964
+      word_count:
+        actual: 280
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 0.8
       weight: 0.5
@@ -42,13 +41,14 @@ llm_results:
   minimal_change_score: 0.5
   word_count_valid: true
   quality_score: 0.8
-  evidence: 'The model correctly identified the primary flaw (telling rather than
-    showing) and revised the segment into a scene: Rachel pushes through precinct
-    doors, reads the room, exchanges a line of dialogue and a knowing nod with her
-    partner, and shows cold-case folders on her desk—these actions reveal instincts,
-    work devotion, relationship with James, and the cat naturally. This addresses
-    the stated problem. Remaining telling elements (brief summary about her father
-    and the paragraph about Queens/crime rates) prevent a full fix. Changes are moderate—a
-    rewrite into scene rather than minimal surgical edits—so minimal_change_score
-    reflects a moderate revision rather than purely minimal edits.'
+  evidence: "The model correctly identified the primary flaw (telling rather than\
+    \ showing) and revised the segment into a scene: Rachel pushes through precinct\
+    \ doors, reads the room, exchanges a line of dialogue and a knowing nod with her\
+    \ partner, and shows cold-case folders on her desk\u2014these actions reveal instincts,\
+    \ work devotion, relationship with James, and the cat naturally. This addresses\
+    \ the stated problem. Remaining telling elements (brief summary about her father\
+    \ and the paragraph about Queens/crime rates) prevent a full fix. Changes are\
+    \ moderate\u2014a rewrite into scene rather than minimal surgical edits\u2014\
+    so minimal_change_score reflects a moderate revision rather than purely minimal\
+    \ edits."
 error: null

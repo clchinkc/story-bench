@@ -12,20 +12,19 @@ final_score: 0.7552143053714704
 score_breakdown:
   final_score: 0.7552
   components:
-    word_count:
-      score: 0.9912
-      weight: 0.25
-      actual: 492
-      target_range:
-      - 500
-      - 700
     programmatic:
       score: 0.7197
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.9912
         repetition_score: 0.56
         slop_score: 0.9593
         overall: 0.7197
+      word_count:
+        actual: 492
+        target_range:
+        - 500
+        - 700
     llm_judge:
       score: 0.655
       weight: 0.5
@@ -44,16 +43,16 @@ llm_results:
   ending_score: 0.5
   failed_constraints:
   - word_count outside required range (492 words; required 500-700)
-  - No explicit moment where Zara must choose between escaping safely and helping
-    Tomás
+  - "No explicit moment where Zara must choose between escaping safely and helping\
+    \ Tom\xE1s"
   - No trap/test that clearly requires Zara to use her thief skills (lockpicking,
     disabling traps, stealthful bypass, etc.)
-  - No clear revelation about Tomás's true motivation for helping (only hinted as
-    'vested interest')
+  - "No clear revelation about Tom\xE1s's true motivation for helping (only hinted\
+    \ as 'vested interest')"
   - Zara does not explicitly confront her fear of failure (the text shows determination
     but not confrontation of failure-related fear)
   - No symbolic death/rebirth moment during the Ordeal
-  - Ordeal is underdeveloped—while an emergency occurs (Tomás nearly falls) it is
-    not rendered as a full crucible, so the ending requirement is only partially satisfied
-    (Zara shows some change but the new complication is not clearly presented)
+  - "Ordeal is underdeveloped\u2014while an emergency occurs (Tom\xE1s nearly falls)\
+    \ it is not rendered as a full crucible, so the ending requirement is only partially\
+    \ satisfied (Zara shows some change but the new complication is not clearly presented)"
 error: null

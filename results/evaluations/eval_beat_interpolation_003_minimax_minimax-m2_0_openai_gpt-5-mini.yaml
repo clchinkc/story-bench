@@ -12,20 +12,19 @@ final_score: 0.6482936931812138
 score_breakdown:
   final_score: 0.6483
   components:
-    word_count:
-      score: 0.0222
-      weight: 0.25
-      actual: 538
-      target_range:
-      - 250
-      - 400
     programmatic:
       score: 0.856
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.0222
         repetition_score: 0.76
         slop_score: 1.0
         overall: 0.856
+      word_count:
+        actual: 538
+        target_range:
+        - 250
+        - 400
     llm_judge:
       score: 0.8575
       weight: 0.5
@@ -40,14 +39,14 @@ llm_results:
   character_score: 1.0
   bridge_score: 0.8
   continuity_score: 1.0
-  evidence: 'All four required elements are present: Yuki explores multiple areas
-    (quarters, mess, corridors, lab), discovers medical logs indicating dimensional
-    phase-locking, encounters translucent transformed crew, and overcomes obstacles
-    (locked bulkhead, rerouting power, finding Reyes'' shutdown code). Deduction:
-    one must-not was violated — the Search section ends with Yuki finding the data
-    core (prematurely moving into the ''Find'' beat), so must_not_score is reduced
-    to 0.75 (1 of 4 must-not items violated). Word count is invalid (538, outside
-    250–400). Character behavior and setting continuity are consistent. The passage
-    executes the Search beat well (trials, adaptation, progress) but bleeds into the
-    next beat, so execution and bridge scores are slightly reduced.'
+  evidence: "All four required elements are present: Yuki explores multiple areas\
+    \ (quarters, mess, corridors, lab), discovers medical logs indicating dimensional\
+    \ phase-locking, encounters translucent transformed crew, and overcomes obstacles\
+    \ (locked bulkhead, rerouting power, finding Reyes' shutdown code). Deduction:\
+    \ one must-not was violated \u2014 the Search section ends with Yuki finding the\
+    \ data core (prematurely moving into the 'Find' beat), so must_not_score is reduced\
+    \ to 0.75 (1 of 4 must-not items violated). Word count is invalid (538, outside\
+    \ 250\u2013400). Character behavior and setting continuity are consistent. The\
+    \ passage executes the Search beat well (trials, adaptation, progress) but bleeds\
+    \ into the next beat, so execution and bridge scores are slightly reduced."
 error: null

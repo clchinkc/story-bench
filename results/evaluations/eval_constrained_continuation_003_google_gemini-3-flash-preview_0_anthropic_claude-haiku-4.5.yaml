@@ -1,0 +1,95 @@
+evaluation_id: a4aff9a1
+task_id: constrained_continuation_003
+generation_id: constrained_continuation_003_google/gemini-3-flash-preview_0
+task_type: constrained_continuation
+model: google/gemini-3-flash-preview
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.03093
+timestamp: '2025-12-18T23:35:07.046249'
+success: true
+final_score: 0.90875
+score_breakdown:
+  final_score: 0.9087
+  components:
+    programmatic:
+      score: 0.825
+      weight: 0.5
+      breakdown:
+        word_count_score: 1.0
+        repetition_score: 0.5
+        slop_score: 1.0
+        overall: 0.825
+      word_count:
+        actual: 695
+        target_range:
+        - 550
+        - 750
+    llm_judge:
+      score: 0.9925
+      weight: 0.5
+llm_results:
+  beats_present: 3
+  beats_total: 3
+  beats_score: 1.0
+  must_include_present: 6
+  must_include_total: 6
+  must_include_score: 1.0
+  must_not_avoided: 4
+  must_not_total: 4
+  must_not_score: 1.0
+  word_count_valid: true
+  tone_score: 0.95
+  ending_score: 1.0
+  failed_constraints: []
+  detailed_analysis:
+    beats_analysis:
+      Search: Present - Jin integrates research into the Collective's network and
+        seeks a way to broadcast findings; he peels back layers of code to understand
+        the technology
+      Find: Present - Jin discovers the hidden subroutines and the true purpose of
+        the carbon capture technology (the ionization veil/planetary cage); he finds
+        the high-gain array platform
+      Take: Present - Jin makes the moral compromise, strips away purification protocols,
+        and begins the upload to activate the ionization veil, paying the price of
+        abandoning Earth's billions
+    must_include_analysis:
+      1_unfamiliar_culture: Excellent - The Spoke marketplace, recycled air, low-gravity
+        physiology, frontier town indifference, brutal survival mathematics all vividly
+        establish the alien culture
+      2_mentor_figure: Excellent - Elara serves as guide and mentor, teaching Jin
+        that heroism is irrelevant and technicians matter; she later tempts him with
+        the moral compromise
+      3_unexpected_discovery: Excellent - The revelation that carbon capture technology
+        is actually a tool for planetary isolation and atmospheric ionization is a
+        profound twist
+      4_finding_what_wanted: Excellent - Jin finds both safety (sanctuary in the Collective)
+        and the platform (high-gain array) to continue his fight
+      5_action_with_cost: 'Excellent - Jin''s decision to activate the ionization
+        veil has immediate and absolute cost: abandoning billions on Earth'
+      6_moral_compromise: 'Excellent - The central tension: save the few in orbit
+        by condemning the many on the surface; Jin chooses personal/collective safety
+        over planetary salvation'
+    must_not_analysis:
+      1_easy_integration: Successfully avoided - Jin faces cold indifference, is offered
+        only a terminal and system failures, must prove himself through work
+      2_earth_family_contact: Successfully avoided - No family members appear or are
+        contacted
+      3_violence_weapons: Successfully avoided - Conflict is entirely ideological
+        and technological, no physical violence
+      4_complete_resolution: Successfully avoided - The conspiracy remains active;
+        Jin's choice doesn't resolve it, only perpetuates it in a new form
+    tone_analysis: The contemplative, politically charged tone is masterfully maintained
+      throughout. The prose balances technical detail with philosophical introspection.
+      Phrases like 'buying his life with the light of a world' and 'architect of the
+      dark' demonstrate sophisticated political and personal stakes. Minor deduction
+      (0.05) only because the opening exposition could be slightly more subtle, though
+      it effectively establishes context.
+    ending_analysis: 'Perfect execution of the ''Take'' beat. Jin has gained sanctuary
+      and platform access but paid the ultimate price: complicity in planetary isolation.
+      The ending captures the hollow victory, the moral corruption, and leaves Jin
+      transformed from rebel to compromised architect. The final line ''He was no
+      longer a rebel; he was an architect of the dark'' crystallizes the character
+      change required by the Story Circle.'
+  overall_score: 0.99
+error: null

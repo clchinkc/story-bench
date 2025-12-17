@@ -12,20 +12,19 @@ final_score: 0.96
 score_breakdown:
   final_score: 0.96
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 289
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.94
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.9
         slop_score: 1.0
         overall: 0.94
+      word_count:
+        actual: 289
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 0.95
       weight: 0.5
@@ -42,12 +41,13 @@ llm_results:
   minimal_change_score: 0.6
   word_count_valid: true
   quality_score: 0.9
-  evidence: 'The model targeted the correct problem: the All Is Lost beat was too
-    soft. It removed remaining viable options (fundraiser cancelled, grant explicitly
-    rejected, legal appeal impossible, board has quit), added interpersonal betrayal/isolation
-    (Denise''s evasiveness about the grant, wife''s empty text), and Marcus visibly
-    gives up and isolates himself—creating the required ''whiff of death'' and loss
-    of support. Four required phrases and scene elements were preserved verbatim or
-    nearly so. Changes are moderate rather than surgical: core lines and structure
-    remain, but substantial new beats and dialogue were added to create the low point.'
+  evidence: "The model targeted the correct problem: the All Is Lost beat was too\
+    \ soft. It removed remaining viable options (fundraiser cancelled, grant explicitly\
+    \ rejected, legal appeal impossible, board has quit), added interpersonal betrayal/isolation\
+    \ (Denise's evasiveness about the grant, wife's empty text), and Marcus visibly\
+    \ gives up and isolates himself\u2014creating the required 'whiff of death' and\
+    \ loss of support. Four required phrases and scene elements were preserved verbatim\
+    \ or nearly so. Changes are moderate rather than surgical: core lines and structure\
+    \ remain, but substantial new beats and dialogue were added to create the low\
+    \ point."
 error: null

@@ -12,20 +12,19 @@ final_score: 0.967
 score_breakdown:
   final_score: 0.967
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 372
-      target_range:
-      - 300
-      - 450
     programmatic:
       score: 0.868
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.78
         slop_score: 1.0
         overall: 0.868
+      word_count:
+        actual: 372
+        target_range:
+        - 300
+        - 450
     llm_judge:
       score: 1.0
       weight: 0.5
@@ -40,10 +39,11 @@ llm_results:
   character_score: 1.0
   bridge_score: 1.0
   continuity_score: 1.0
-  evidence: 'All four required elements are present: Thomas conducts direct examination,
-    there is a clear moment where Dr. Okonkwo nearly recants (fear for her daughter),
-    Thomas takes decisive emotional/actionable steps to influence her decision, and
-    she ultimately chooses to testify—providing the turning point where truth prevails.
-    No must-not conditions are violated. Character behavior and courtroom continuity
-    remain consistent with the before and after beats, so no deductions were necessary.'
+  evidence: "All four required elements are present: Thomas conducts direct examination,\
+    \ there is a clear moment where Dr. Okonkwo nearly recants (fear for her daughter),\
+    \ Thomas takes decisive emotional/actionable steps to influence her decision,\
+    \ and she ultimately chooses to testify\u2014providing the turning point where\
+    \ truth prevails. No must-not conditions are violated. Character behavior and\
+    \ courtroom continuity remain consistent with the before and after beats, so no\
+    \ deductions were necessary."
 error: null

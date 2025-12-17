@@ -12,20 +12,19 @@ final_score: 0.7855000000000001
 score_breakdown:
   final_score: 0.7855
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 293
-      target_range:
-      - 250
-      - 400
     programmatic:
       score: 0.862
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.77
         slop_score: 1.0
         overall: 0.862
+      word_count:
+        actual: 293
+        target_range:
+        - 250
+        - 400
     llm_judge:
       score: 0.64
       weight: 0.5
@@ -42,15 +41,15 @@ llm_results:
   minimal_change_score: 0.6
   word_count_valid: true
   quality_score: 0.8
-  evidence: 'The model appears to have addressed the correct flaw: it focused on Kira''s
-    internal fear (guilt over her brother) and added internal stakes and a concluding
-    change in attitude. This is a correct diagnosis (confront internal fear rather
-    than treat it as a simple boss fight). However, the fix is partial: the revision
-    does not deliver a clear symbolic ''death'' or moment where Kira truly gives up/loses
-    herself and is then reborn—her transformation is present but muted (mostly a shift
-    in determination and a closing line about carrying memory as strength). Changes
-    were moderate rather than surgical: key setting lines, dragon dialogue, and the
-    victory outcome are preserved verbatim or nearly so, while several sentences were
-    expanded with introspection and added lines. Overall writing quality is good and
-    coherent, with no major new errors.'
+  evidence: "The model appears to have addressed the correct flaw: it focused on Kira's\
+    \ internal fear (guilt over her brother) and added internal stakes and a concluding\
+    \ change in attitude. This is a correct diagnosis (confront internal fear rather\
+    \ than treat it as a simple boss fight). However, the fix is partial: the revision\
+    \ does not deliver a clear symbolic 'death' or moment where Kira truly gives up/loses\
+    \ herself and is then reborn\u2014her transformation is present but muted (mostly\
+    \ a shift in determination and a closing line about carrying memory as strength).\
+    \ Changes were moderate rather than surgical: key setting lines, dragon dialogue,\
+    \ and the victory outcome are preserved verbatim or nearly so, while several sentences\
+    \ were expanded with introspection and added lines. Overall writing quality is\
+    \ good and coherent, with no major new errors."
 error: null

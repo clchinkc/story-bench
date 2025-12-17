@@ -12,20 +12,19 @@ final_score: 0.9655
 score_breakdown:
   final_score: 0.9655
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 380
-      target_range:
-      - 250
-      - 400
     programmatic:
       score: 0.862
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.77
         slop_score: 1.0
         overall: 0.862
+      word_count:
+        actual: 380
+        target_range:
+        - 250
+        - 400
     llm_judge:
       score: 1.0
       weight: 0.5
@@ -40,12 +39,12 @@ llm_results:
   character_score: 1.0
   bridge_score: 1.0
   continuity_score: 1.0
-  evidence: All four required elements are present (considering recanting, considering
-    authorities, internal duty-vs-sister conflict, and a tipping moment/conversation).
-    The piece functions clearly as the Debate beat—Sarah weighs options, seeks advice,
-    and ultimately commits to a course of action at the end. None of the forbidden
-    elements appear (no immediate rogue decision, no one else makes the decision,
-    she has not resigned yet, and there's no direct confrontation with Marchetti).
-    Character voice and setting remain consistent with the preceding scene, so no
-    deductions were necessary.
+  evidence: "All four required elements are present (considering recanting, considering\
+    \ authorities, internal duty-vs-sister conflict, and a tipping moment/conversation).\
+    \ The piece functions clearly as the Debate beat\u2014Sarah weighs options, seeks\
+    \ advice, and ultimately commits to a course of action at the end. None of the\
+    \ forbidden elements appear (no immediate rogue decision, no one else makes the\
+    \ decision, she has not resigned yet, and there's no direct confrontation with\
+    \ Marchetti). Character voice and setting remain consistent with the preceding\
+    \ scene, so no deductions were necessary."
 error: null

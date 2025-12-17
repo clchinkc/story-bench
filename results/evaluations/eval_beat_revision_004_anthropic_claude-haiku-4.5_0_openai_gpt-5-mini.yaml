@@ -12,20 +12,19 @@ final_score: 0.9015000000000001
 score_breakdown:
   final_score: 0.9015
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 243
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.976
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.96
         slop_score: 1.0
         overall: 0.976
+      word_count:
+        actual: 243
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 0.815
       weight: 0.5
@@ -42,15 +41,15 @@ llm_results:
   minimal_change_score: 0.5
   word_count_valid: true
   quality_score: 0.6
-  evidence: 'The model appears to have correctly diagnosed the problem as an info-dump
-    telling-style exposition and rewrote the segment to SHOW Rachel through behavior
-    (jazz, coffee, Sherlock at her ankles, cold-case file in her bag, phone call with
-    James), thus addressing the core flaw. It establishes setting, relationship, and
-    her devotion via actions and sensory detail. Changes were moderate rather than
-    surgical: all five story elements (protagonist detective, partner, cat, Queens
-    apartment, October Tuesday) remain, but the required exact phrases were mostly
-    not preserved—only ''Tuesday morning in October'' appears verbatim (1 of 4). The
-    model also dropped the formal titles (''Detective Rachel Torres'' and ''Detective
-    James Oyelaran''), violating the constraint to keep character names/roles, which
-    reduces the quality score despite generally effective exposition.'
+  evidence: "The model appears to have correctly diagnosed the problem as an info-dump\
+    \ telling-style exposition and rewrote the segment to SHOW Rachel through behavior\
+    \ (jazz, coffee, Sherlock at her ankles, cold-case file in her bag, phone call\
+    \ with James), thus addressing the core flaw. It establishes setting, relationship,\
+    \ and her devotion via actions and sensory detail. Changes were moderate rather\
+    \ than surgical: all five story elements (protagonist detective, partner, cat,\
+    \ Queens apartment, October Tuesday) remain, but the required exact phrases were\
+    \ mostly not preserved\u2014only 'Tuesday morning in October' appears verbatim\
+    \ (1 of 4). The model also dropped the formal titles ('Detective Rachel Torres'\
+    \ and 'Detective James Oyelaran'), violating the constraint to keep character\
+    \ names/roles, which reduces the quality score despite generally effective exposition."
 error: null

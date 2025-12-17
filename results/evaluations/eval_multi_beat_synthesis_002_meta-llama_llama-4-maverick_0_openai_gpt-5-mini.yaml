@@ -12,20 +12,19 @@ final_score: 0.8971532438412081
 score_breakdown:
   final_score: 0.8972
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 733
-      target_range:
-      - 700
-      - 1000
     programmatic:
       score: 0.6919
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.5
         slop_score: 0.9799
         overall: 0.6919
+      word_count:
+        actual: 733
+        target_range:
+        - 700
+        - 1000
     llm_judge:
       score: 0.9483
       weight: 0.5
@@ -40,11 +39,11 @@ llm_results:
   context_score: 0.9
   coherence_score: 0.9
   failed_items:
-  - Beat 1 — Internal shift from servant-scholar to active resistance is not clearly
-    shown in Beat 1 itself; the definitive claim of resistance identity happens later
-    (Beat 3) rather than being initiated in Beat 1.
-  - Context detail omission — The generated passage does not explicitly state that
-    Amara is posing as a household servant to the British administration, nor does
-    it state her age or that she is a scholar's daughter, even though her literacy
-    and secret study are implied.
+  - "Beat 1 \u2014 Internal shift from servant-scholar to active resistance is not\
+    \ clearly shown in Beat 1 itself; the definitive claim of resistance identity\
+    \ happens later (Beat 3) rather than being initiated in Beat 1."
+  - "Context detail omission \u2014 The generated passage does not explicitly state\
+    \ that Amara is posing as a household servant to the British administration, nor\
+    \ does it state her age or that she is a scholar's daughter, even though her literacy\
+    \ and secret study are implied."
 error: null

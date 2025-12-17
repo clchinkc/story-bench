@@ -12,20 +12,19 @@ final_score: 0.9077873961218836
 score_breakdown:
   final_score: 0.9078
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 707
-      target_range:
-      - 550
-      - 750
     programmatic:
       score: 0.6861
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.5
         slop_score: 0.9654
         overall: 0.6861
+      word_count:
+        actual: 707
+        target_range:
+        - 550
+        - 750
     llm_judge:
       score: 0.9725
       weight: 0.5
@@ -40,19 +39,19 @@ llm_results:
   word_count_valid: true
   structural_accuracy_score: 0.9
   tone_score: 0.95
-  evidence: 'STRENGTHS: All four target beats are clearly present and well-executed.
-    Act 1 establishes Kenji''s hollow corporate world and the inciting incident (Yuki''s
-    letter). Act 2A depicts obstacles in reconnecting with Yuki and introduces Haruki
-    as sanctuary/guide. Act 2B escalates with the business deal temptation and confrontation
-    with Yuki. Act 3 delivers climax (rejection of deal, apology) and denouement (bamboo
-    shop transformation). All 8 core elements preserved: protagonist Kenji, lost career,
-    estranged Yuki, Kyoto wedding, Haruki craftsman, business temptation, theme of
-    people over ambition, bamboo shop ending. Tone is consistently quiet, reflective,
-    with Japanese aesthetic (shinkansen, bamboo, seasons, traditions). MINOR DEDUCTIONS:
-    Structural accuracy slightly reduced (0.9 vs 1.0) because Act 2B''s second plot
-    point could be more sharply defined—the confrontation with Yuki is powerful but
-    the decision to reject the deal happens somewhat implicitly rather than as a crystalline
-    turning point. Tone score near-perfect (0.95) with only minor note that some passages
-    lean slightly philosophical rather than purely dramatic, though this fits the
-    material well.'
+  evidence: "STRENGTHS: All four target beats are clearly present and well-executed.\
+    \ Act 1 establishes Kenji's hollow corporate world and the inciting incident (Yuki's\
+    \ letter). Act 2A depicts obstacles in reconnecting with Yuki and introduces Haruki\
+    \ as sanctuary/guide. Act 2B escalates with the business deal temptation and confrontation\
+    \ with Yuki. Act 3 delivers climax (rejection of deal, apology) and denouement\
+    \ (bamboo shop transformation). All 8 core elements preserved: protagonist Kenji,\
+    \ lost career, estranged Yuki, Kyoto wedding, Haruki craftsman, business temptation,\
+    \ theme of people over ambition, bamboo shop ending. Tone is consistently quiet,\
+    \ reflective, with Japanese aesthetic (shinkansen, bamboo, seasons, traditions).\
+    \ MINOR DEDUCTIONS: Structural accuracy slightly reduced (0.9 vs 1.0) because\
+    \ Act 2B's second plot point could be more sharply defined\u2014the confrontation\
+    \ with Yuki is powerful but the decision to reject the deal happens somewhat implicitly\
+    \ rather than as a crystalline turning point. Tone score near-perfect (0.95) with\
+    \ only minor note that some passages lean slightly philosophical rather than purely\
+    \ dramatic, though this fits the material well."
 error: null

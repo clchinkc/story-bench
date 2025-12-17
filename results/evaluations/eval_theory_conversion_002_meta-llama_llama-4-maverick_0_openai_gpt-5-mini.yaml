@@ -12,20 +12,19 @@ final_score: 0.7127843251132986
 score_breakdown:
   final_score: 0.7128
   components:
-    word_count:
-      score: 0.278
-      weight: 0.25
-      actual: 504
-      target_range:
-      - 600
-      - 800
     programmatic:
       score: 0.808
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.278
         repetition_score: 0.68
         slop_score: 1.0
         overall: 0.808
+      word_count:
+        actual: 504
+        target_range:
+        - 600
+        - 800
     llm_judge:
       score: 0.8826
       weight: 0.5
@@ -39,15 +38,15 @@ llm_results:
   word_count_valid: false
   structural_accuracy_score: 0.78
   tone_score: 0.9
-  evidence: 'Present beats: Ordinary World, Call to Adventure, Refusal of the Call,
-    Meeting the Mentor (grandmother''s journal), Crossing the Threshold, Tests (arduous
-    journey/practice), Approach to the Inmost Cave (study in shrine), Reward (new
-    skill; water returns), The Road Back (she returns to village), Return with the
-    Elixir (vessels/water restored). Missing/weak beats: a clear central Ordeal is
-    not depicted (no climactic crisis or life‑and‑death trial), and Resurrection (a
-    final, explicit test proving rebirth) is not clearly dramatized. Tests/Allies/Enemies
-    is only partially realized—tests are present but allies/enemies are not. All seven
-    required elements (Maya, pottery, grandmother''s legacy, mountain shrine journey,
-    dried spring, theme of surrender, Maya''s transformation) are preserved. Word
-    count is 504 so it fails the 600–800 requirement.'
+  evidence: "Present beats: Ordinary World, Call to Adventure, Refusal of the Call,\
+    \ Meeting the Mentor (grandmother's journal), Crossing the Threshold, Tests (arduous\
+    \ journey/practice), Approach to the Inmost Cave (study in shrine), Reward (new\
+    \ skill; water returns), The Road Back (she returns to village), Return with the\
+    \ Elixir (vessels/water restored). Missing/weak beats: a clear central Ordeal\
+    \ is not depicted (no climactic crisis or life\u2011and\u2011death trial), and\
+    \ Resurrection (a final, explicit test proving rebirth) is not clearly dramatized.\
+    \ Tests/Allies/Enemies is only partially realized\u2014tests are present but allies/enemies\
+    \ are not. All seven required elements (Maya, pottery, grandmother's legacy, mountain\
+    \ shrine journey, dried spring, theme of surrender, Maya's transformation) are\
+    \ preserved. Word count is 504 so it fails the 600\u2013800 requirement."
 error: null

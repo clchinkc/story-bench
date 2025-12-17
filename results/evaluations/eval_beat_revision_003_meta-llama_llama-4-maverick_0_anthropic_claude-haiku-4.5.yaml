@@ -12,20 +12,19 @@ final_score: 0.979
 score_breakdown:
   final_score: 0.979
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 208
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.976
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.96
         slop_score: 1.0
         overall: 0.976
+      word_count:
+        actual: 208
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 0.97
       weight: 0.5
@@ -42,23 +41,23 @@ llm_results:
   minimal_change_score: 0.85
   word_count_valid: true
   quality_score: 0.95
-  evidence: 'The model correctly diagnosed the actual flaw: Sophie showed no transformation
-    and immediately reverted to old workaholic patterns, making the journey meaningless.
-    The revision fixes this precisely by: (1) Sophie putting phone away instead of
-    scrolling emails—behavioral marker of change; (2) Explicitly stating ''Linda needs
-    me to call her tonight, but it can wait''—direct contrast to original ''already
-    typing a response''; (3) Mother observing ''That''s a change''—external validation
-    of transformation; (4) Sophie articulating the insight: ''everything will be there
-    tomorrow...won''t collapse if I don''t respond right away''—specific lesson from
-    retreat applied; (5) Final paragraph showing new perception: ''noticing the way
-    the streetlights cast a warm glow...a detail she never used to see''—metaphorical
-    evidence of seeing world with new eyes. All 4 required phrases preserved exactly:
-    ''Sophie''s flight landed at O''Hare'', ''How was Thailand? her mother asked'',
-    ''The familiar Chicago skyline appeared'', ''It''s good to be home, she said''.
-    Changes were surgical: kept original structure, setting, characters, and work
-    pressure element intact while inserting transformation markers. Only additions
-    were: phone-putting-away action, mother''s observation, Sophie''s insight dialogue,
-    and final perception paragraph. No deletions of core content. The revision fully
-    executes the Return (Having Changed) beat by demonstrating integrated learning
-    and behavioral shift rather than mere physical return.'
+  evidence: "The model correctly diagnosed the actual flaw: Sophie showed no transformation\
+    \ and immediately reverted to old workaholic patterns, making the journey meaningless.\
+    \ The revision fixes this precisely by: (1) Sophie putting phone away instead\
+    \ of scrolling emails\u2014behavioral marker of change; (2) Explicitly stating\
+    \ 'Linda needs me to call her tonight, but it can wait'\u2014direct contrast to\
+    \ original 'already typing a response'; (3) Mother observing 'That's a change'\u2014\
+    external validation of transformation; (4) Sophie articulating the insight: 'everything\
+    \ will be there tomorrow...won't collapse if I don't respond right away'\u2014\
+    specific lesson from retreat applied; (5) Final paragraph showing new perception:\
+    \ 'noticing the way the streetlights cast a warm glow...a detail she never used\
+    \ to see'\u2014metaphorical evidence of seeing world with new eyes. All 4 required\
+    \ phrases preserved exactly: 'Sophie's flight landed at O'Hare', 'How was Thailand?\
+    \ her mother asked', 'The familiar Chicago skyline appeared', 'It's good to be\
+    \ home, she said'. Changes were surgical: kept original structure, setting, characters,\
+    \ and work pressure element intact while inserting transformation markers. Only\
+    \ additions were: phone-putting-away action, mother's observation, Sophie's insight\
+    \ dialogue, and final perception paragraph. No deletions of core content. The\
+    \ revision fully executes the Return (Having Changed) beat by demonstrating integrated\
+    \ learning and behavioral shift rather than mere physical return."
 error: null

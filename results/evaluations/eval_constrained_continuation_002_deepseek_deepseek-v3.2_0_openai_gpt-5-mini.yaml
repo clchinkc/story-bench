@@ -1,14 +1,33 @@
-evaluation_id: 0dbaec7d
+evaluation_id: cb16527e
 task_id: constrained_continuation_002
 generation_id: constrained_continuation_002_deepseek/deepseek-v3.2_0
 task_type: constrained_continuation
 model: deepseek/deepseek-v3.2
 sample_index: 0
 evaluator_model: openai/gpt-5-mini
-evaluator_cost: 0
-timestamp: '2025-12-17T00:47:01.313933'
+evaluator_cost: 0.00288775
+timestamp: '2025-12-17T23:26:47.662424'
 success: false
 final_score: 0.0
-score_breakdown: {}
-llm_results: {}
-error: calculate_final_score() got an unexpected keyword argument 'word_count_method'
+score_breakdown:
+  final_score: 0.0
+  components:
+    programmatic:
+      score: 0.0
+      weight: 0.5
+      breakdown:
+        word_count_score: 0.0
+        repetition_score: 0.0
+        slop_score: 1.0
+        overall: 0.0
+      word_count:
+        actual: 0
+        target_range:
+        - 0
+        - 0
+    llm_judge:
+      score: 0.0
+      weight: 0.5
+llm_results:
+  raw_response: ''
+error: Failed to parse JSON from evaluator response

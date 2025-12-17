@@ -12,20 +12,19 @@ final_score: 0.8919999999999999
 score_breakdown:
   final_score: 0.892
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 216
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.988
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.98
         slop_score: 1.0
         overall: 0.988
+      word_count:
+        actual: 216
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 0.79
       weight: 0.5
@@ -42,14 +41,14 @@ llm_results:
   minimal_change_score: 0.8
   word_count_valid: true
   quality_score: 0.9
-  evidence: 'The revision targets the actual flaw (Sophie shows no transformation)
-    by having her pause before answering work emails, breathe, and resolve to enjoy
-    being back—an attempt to show changed behavior. This is a correct diagnosis. However,
-    the correction is partial: the change is mild and mostly internal narration rather
-    than concrete, repeated behavior or a specific lesson from the retreat; the mother
-    does not explicitly notice the change and there''s no clear physical marker or
-    explicit application of a retreat insight. The edit preserved all required narrative
-    elements and phrases, and kept most of the original structure with small-to-moderate
-    additions (hence a high minimal-change score). Writing quality is strong with
-    no new errors.'
+  evidence: "The revision targets the actual flaw (Sophie shows no transformation)\
+    \ by having her pause before answering work emails, breathe, and resolve to enjoy\
+    \ being back\u2014an attempt to show changed behavior. This is a correct diagnosis.\
+    \ However, the correction is partial: the change is mild and mostly internal narration\
+    \ rather than concrete, repeated behavior or a specific lesson from the retreat;\
+    \ the mother does not explicitly notice the change and there's no clear physical\
+    \ marker or explicit application of a retreat insight. The edit preserved all\
+    \ required narrative elements and phrases, and kept most of the original structure\
+    \ with small-to-moderate additions (hence a high minimal-change score). Writing\
+    \ quality is strong with no new errors."
 error: null

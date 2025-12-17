@@ -12,20 +12,19 @@ final_score: 0.8556146759847523
 score_breakdown:
   final_score: 0.8556
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 763
-      target_range:
-      - 700
-      - 1000
     programmatic:
       score: 0.6975
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.5
         slop_score: 0.9936
         overall: 0.6975
+      word_count:
+        actual: 763
+        target_range:
+        - 700
+        - 1000
     llm_judge:
       score: 0.8625
       weight: 0.5
@@ -40,14 +39,14 @@ llm_results:
   context_score: 0.8
   coherence_score: 0.8
   failed_items:
-  - 'Chekhov''s Gun: The escape route (''the emergency exit Jake had pointed out earlier'')
-    is used critically during the ''Bad Guys Close In'' beat but was not established
-    during ''Fun and Games''—the setup-to-payoff trace is broken.'
+  - "Chekhov's Gun: The escape route ('the emergency exit Jake had pointed out earlier')\
+    \ is used critically during the 'Bad Guys Close In' beat but was not established\
+    \ during 'Fun and Games'\u2014the setup-to-payoff trace is broken."
   - 'Context omission: The scene does not explicitly state the painting''s provenance
     (Renaissance work stolen by the Nazis) nor strongly foreground Miri''s motive
     of returning stolen works to rightful owners, which were key contextual elements
     in the brief.'
-  - 'Tonal escalation mild shortfall: While tone does escalate overall, the requested
-    shift to ''gallows humor'' in the third beat is underdeveloped—Beat 3 mostly moves
-    to straight danger with limited darkly comic counterpoint.'
+  - "Tonal escalation mild shortfall: While tone does escalate overall, the requested\
+    \ shift to 'gallows humor' in the third beat is underdeveloped\u2014Beat 3 mostly\
+    \ moves to straight danger with limited darkly comic counterpoint."
 error: null

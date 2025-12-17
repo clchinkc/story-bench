@@ -1,0 +1,91 @@
+evaluation_id: f570fc13
+task_id: constrained_continuation_004
+generation_id: constrained_continuation_004_google/gemini-3-flash-preview_0
+task_type: constrained_continuation
+model: google/gemini-3-flash-preview
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.02996
+timestamp: '2025-12-18T23:35:34.130173'
+success: true
+final_score: 0.9332499999999999
+score_breakdown:
+  final_score: 0.9332
+  components:
+    programmatic:
+      score: 0.874
+      weight: 0.5
+      breakdown:
+        word_count_score: 1.0
+        repetition_score: 0.64
+        slop_score: 1.0
+        overall: 0.874
+      word_count:
+        actual: 652
+        target_range:
+        - 500
+        - 700
+    llm_judge:
+      score: 0.9925
+      weight: 0.5
+llm_results:
+  beats_present: 2
+  beats_total: 2
+  beats_score: 1.0
+  must_include_present: 6
+  must_include_total: 6
+  must_include_score: 1.0
+  must_not_avoided: 4
+  must_not_total: 4
+  must_not_score: 1.0
+  word_count_valid: true
+  tone_score: 0.95
+  ending_score: 1.0
+  failed_constraints: []
+  detailed_analysis:
+    beats:
+      first_plot_point: 'Clearly marked: ''The point of no return was crossed the
+        moment the first metal letter clinked into the composing stick.'' Eleanor
+        commits to publishing despite knowing the consequences.'
+      act_2_opening: 'Explicitly established: ''By the second week of production,
+        the atmosphere in the shop changed.'' Rising action begins with mounting tension,
+        surveillance, and Eleanor''s transformation into ''a merchant of the macabre.'''
+    must_include_elements:
+      1_decision_to_publish: 'Present: Eleanor explicitly commands ''Prepare the type,
+        Thomas. We begin with the first three chapters.'''
+      2_central_conflict: 'Present: Profit vs. ethics/danger clearly articulated through
+        Eleanor''s internal struggle and Thomas''s pragmatic counterargument.'
+      3_defying_victorian_expectations: 'Present: Eleanor rolls up sleeves, stains
+        hands with ink, uses pseudonym to hide her gender, casts off mourning veil—multiple
+        acts of defiance.'
+      4_thomas_chen_as_ally: 'Present: Thomas is essential stakeholder with personal
+        vulnerability (Chinese heritage, precarious position), provides moral support
+        and practical counsel.'
+      5_hint_of_danger: 'Present: ''Someone had been asking questions at the tavern
+        next door'' and Eleanor ''found herself looking over her shoulder during the
+        late-night walks home.'''
+      6_threshold_crossing: 'Present: Multiple markers—the veil cast aside, machinery
+        activated, first papers distributed, Eleanor acknowledging ''the ink on her
+        hands would never truly wash off.'''
+    must_not_elements:
+      1_jack_the_ripper_appearance: Successfully avoided—only referenced through manuscript
+        content and Eleanor's investigation.
+      2_graphic_violence: Successfully avoided—violence is implied and historical,
+        never depicted.
+      3_romantic_subplot: Successfully avoided—relationship remains professional and
+        mutually respectful.
+      4_easy_solution: Successfully avoided—publishing is presented as dangerous gamble,
+        not guaranteed salvation.
+    tone_assessment: 'Gothic tension masterfully maintained through fog imagery, shadow
+      metaphors, and the ''heartbeat or countdown'' of the press. Feminist undertones
+      are strong: Eleanor''s agency, rejection of patriarchal constraints, and reclamation
+      of her father''s legacy. Victorian atmosphere is richly rendered through period
+      details (tallow candles, steam-powered machinery, penny installments, Scotland
+      Yard). Minor deduction only for occasional modern phrasing (''New World'' in
+      quotes feels slightly anachronistic).'
+    ending_assessment: Perfect execution. Eleanor is fully committed to the dangerous
+      path, Act 2 is unmistakably begun with rising complications, and the final image
+      ('ink on her hands would never truly wash off') is both thematically resonant
+      and structurally sound as a transition point.
+  overall_score: 0.99
+error: null

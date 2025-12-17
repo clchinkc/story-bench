@@ -12,20 +12,19 @@ final_score: 0.9162499999999999
 score_breakdown:
   final_score: 0.9162
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 789
-      target_range:
-      - 600
-      - 800
     programmatic:
       score: 0.7
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.5
         slop_score: 1.0
         overall: 0.7
+      word_count:
+        actual: 789
+        target_range:
+        - 600
+        - 800
     llm_judge:
       score: 0.9825
       weight: 0.5
@@ -40,25 +39,26 @@ llm_results:
   word_count: 789
   structural_accuracy_score: 0.95
   tone_score: 0.95
-  evidence: 'All 12 Hero''s Journey beats are present and clearly articulated: (1)
-    Ordinary World—Maya''s coastal studio and simple pottery; (2) Call to Adventure—the
-    dried spring and elders'' request; (3) Refusal—''I make bowls,'' her fear and
-    doubt; (4) Meeting the Mentor—grandmother''s journal discovered in ruins; (5)
-    Crossing the Threshold—the three-day mountain journey; (6) Tests/Allies/Enemies—forest
-    obstacles, memories as allies, doubt as enemy; (7) Approach to Inmost Cave—reaching
-    the ruined shrine; (8) Ordeal—the night of surrender and clay-working; (9) Reward—the
-    completed vessel and understanding of mastery; (10) Road Back—return journey with
-    burden; (11) Resurrection—placing vessel at spring, transformation complete; (12)
-    Return with Elixir—water returns, Maya teaches listening. All 7 core elements
-    preserved: Maya (protagonist), pottery (central skill), grandmother''s legacy
-    (journal, techniques, tools), mountain shrine (journey destination), dried spring
-    (central problem), surrender theme (explicit throughout, climactic moment), transformation
-    (from functional potter to master/bridge). Tone is consistently quiet, meditative,
-    and transformative—lyrical language (''steady rhythm,'' ''damp clay,'' ''deep
-    green silence''), introspective moments, and spiritual undertones maintained throughout.
-    Minor deduction (0.05) for structural accuracy: the ''Tests, Allies, Enemies''
-    beat could be more distinctly separated as individual narrative moments rather
-    than compressed into the journey sequence, though the content is present. Minor
-    tone deduction (0.05): one moment (''Her heart sank'') edges slightly toward melodrama
-    rather than pure meditative restraint, though overall tone remains strong.'
+  evidence: "All 12 Hero's Journey beats are present and clearly articulated: (1)\
+    \ Ordinary World\u2014Maya's coastal studio and simple pottery; (2) Call to Adventure\u2014\
+    the dried spring and elders' request; (3) Refusal\u2014'I make bowls,' her fear\
+    \ and doubt; (4) Meeting the Mentor\u2014grandmother's journal discovered in ruins;\
+    \ (5) Crossing the Threshold\u2014the three-day mountain journey; (6) Tests/Allies/Enemies\u2014\
+    forest obstacles, memories as allies, doubt as enemy; (7) Approach to Inmost Cave\u2014\
+    reaching the ruined shrine; (8) Ordeal\u2014the night of surrender and clay-working;\
+    \ (9) Reward\u2014the completed vessel and understanding of mastery; (10) Road\
+    \ Back\u2014return journey with burden; (11) Resurrection\u2014placing vessel\
+    \ at spring, transformation complete; (12) Return with Elixir\u2014water returns,\
+    \ Maya teaches listening. All 7 core elements preserved: Maya (protagonist), pottery\
+    \ (central skill), grandmother's legacy (journal, techniques, tools), mountain\
+    \ shrine (journey destination), dried spring (central problem), surrender theme\
+    \ (explicit throughout, climactic moment), transformation (from functional potter\
+    \ to master/bridge). Tone is consistently quiet, meditative, and transformative\u2014\
+    lyrical language ('steady rhythm,' 'damp clay,' 'deep green silence'), introspective\
+    \ moments, and spiritual undertones maintained throughout. Minor deduction (0.05)\
+    \ for structural accuracy: the 'Tests, Allies, Enemies' beat could be more distinctly\
+    \ separated as individual narrative moments rather than compressed into the journey\
+    \ sequence, though the content is present. Minor tone deduction (0.05): one moment\
+    \ ('Her heart sank') edges slightly toward melodrama rather than pure meditative\
+    \ restraint, though overall tone remains strong."
 error: null

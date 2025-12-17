@@ -12,20 +12,19 @@ final_score: 0.675000000044689
 score_breakdown:
   final_score: 0.675
   components:
-    word_count:
-      score: 0.0
-      weight: 0.25
-      actual: 785
-      target_range:
-      - 300
-      - 450
     programmatic:
       score: 0.7
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.0
         repetition_score: 0.5
         slop_score: 1.0
         overall: 0.7
+      word_count:
+        actual: 785
+        target_range:
+        - 300
+        - 450
     llm_judge:
       score: 1.0
       weight: 0.5
@@ -42,23 +41,24 @@ llm_results:
   character_score: 1.0
   bridge_score: 1.0
   continuity_score: 1.0
-  evidence: 'STRENGTHS: All 4 required elements present and excellently executed:
-    (1) Maya discovers Alejandro''s vulnerability—his anosmia/ageusia from concussion,
-    his emotional isolation; (2) Relationship shifts from professional to personal—she
-    moves from ''not her business'' to intimate engagement; (3) Shared moment creates
-    genuine connection—the soup scene and balcony conversation establish mutual understanding
-    and trust; (4) Maya commits beyond contract—she explicitly chooses to stay ''because
-    you want to,'' reframing her presence from obligation to desire. The beat perfectly
-    executes Act 2 Midpoint function: raises emotional stakes, shifts Maya from reactive
-    (cooking per contract) to proactive (cooking to heal), creates point of no return
-    in their connection. All must-not items avoided: they''re not already in love
-    (connection is nascent), Maya doesn''t leave or breach contract, photograph isn''t
-    taken during this scene, Alejandro''s walls genuinely lower. Character voice is
-    consistent—Maya''s quiet competence, Alejandro''s guarded vulnerability. Bridge
-    is seamless: BEFORE establishes contract/stakes; GENERATED shows emotional breakthrough;
-    AFTER reveals the photograph consequence. Setting continuity perfect: balcony
-    established in BEFORE, used meaningfully here. ONLY ISSUE: Word count (785) significantly
-    exceeds 300-450 range by 74%, though this excess serves the narrative depth and
-    emotional resonance required for a midpoint beat. The prose quality and narrative
-    function justify the overage, but technical requirement is violated.'
+  evidence: "STRENGTHS: All 4 required elements present and excellently executed:\
+    \ (1) Maya discovers Alejandro's vulnerability\u2014his anosmia/ageusia from concussion,\
+    \ his emotional isolation; (2) Relationship shifts from professional to personal\u2014\
+    she moves from 'not her business' to intimate engagement; (3) Shared moment creates\
+    \ genuine connection\u2014the soup scene and balcony conversation establish mutual\
+    \ understanding and trust; (4) Maya commits beyond contract\u2014she explicitly\
+    \ chooses to stay 'because you want to,' reframing her presence from obligation\
+    \ to desire. The beat perfectly executes Act 2 Midpoint function: raises emotional\
+    \ stakes, shifts Maya from reactive (cooking per contract) to proactive (cooking\
+    \ to heal), creates point of no return in their connection. All must-not items\
+    \ avoided: they're not already in love (connection is nascent), Maya doesn't leave\
+    \ or breach contract, photograph isn't taken during this scene, Alejandro's walls\
+    \ genuinely lower. Character voice is consistent\u2014Maya's quiet competence,\
+    \ Alejandro's guarded vulnerability. Bridge is seamless: BEFORE establishes contract/stakes;\
+    \ GENERATED shows emotional breakthrough; AFTER reveals the photograph consequence.\
+    \ Setting continuity perfect: balcony established in BEFORE, used meaningfully\
+    \ here. ONLY ISSUE: Word count (785) significantly exceeds 300-450 range by 74%,\
+    \ though this excess serves the narrative depth and emotional resonance required\
+    \ for a midpoint beat. The prose quality and narrative function justify the overage,\
+    \ but technical requirement is violated."
 error: null

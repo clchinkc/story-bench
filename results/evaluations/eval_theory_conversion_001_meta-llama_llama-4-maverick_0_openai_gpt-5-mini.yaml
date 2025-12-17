@@ -12,20 +12,19 @@ final_score: 0.9345401459854015
 score_breakdown:
   final_score: 0.9345
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 665
-      target_range:
-      - 500
-      - 700
     programmatic:
       score: 0.7782
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.64
         slop_score: 0.9854
         overall: 0.7782
+      word_count:
+        actual: 665
+        target_range:
+        - 500
+        - 700
     llm_judge:
       score: 0.98
       weight: 0.5
@@ -39,15 +38,15 @@ llm_results:
   word_count_valid: true
   structural_accuracy_score: 0.9
   tone_score: 1.0
-  evidence: 'All five Freytag beats are present: exposition (lab, Samira''s status
-    quo), rising action (quarantine, mounting cases, investigation), climax (revelation
-    of Nexus involvement and the legal summons framed as the crisis peak), falling
-    action (press conference and immediate fallout), and denouement (outbreak contained,
-    Nexus investigated, Samira ostracized but at peace). All six core elements are
-    preserved (Samira, engineered virus, Raj, Nexus, public release of the cure, and
-    Samira''s career sacrifice). Tone consistently reads as a medical thriller with
-    ethical weight. Deduction: structural_accuracy_score reduced slightly because
-    the narrative blurs the exact peak — the press conference functions as a very
-    active turning point as well, which could be read as climax rather than falling
-    action; this ambiguity prevents a perfect structural rating.'
+  evidence: "All five Freytag beats are present: exposition (lab, Samira's status\
+    \ quo), rising action (quarantine, mounting cases, investigation), climax (revelation\
+    \ of Nexus involvement and the legal summons framed as the crisis peak), falling\
+    \ action (press conference and immediate fallout), and denouement (outbreak contained,\
+    \ Nexus investigated, Samira ostracized but at peace). All six core elements are\
+    \ preserved (Samira, engineered virus, Raj, Nexus, public release of the cure,\
+    \ and Samira's career sacrifice). Tone consistently reads as a medical thriller\
+    \ with ethical weight. Deduction: structural_accuracy_score reduced slightly because\
+    \ the narrative blurs the exact peak \u2014 the press conference functions as\
+    \ a very active turning point as well, which could be read as climax rather than\
+    \ falling action; this ambiguity prevents a perfect structural rating."
 error: null

@@ -12,20 +12,19 @@ final_score: 0.9506334497425923
 score_breakdown:
   final_score: 0.9506
   components:
-    word_count:
-      score: 0.9965
-      weight: 0.25
-      actual: 360
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.976
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.9965
         repetition_score: 0.96
         slop_score: 1.0
         overall: 0.976
+      word_count:
+        actual: 360
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 0.915
       weight: 0.5
@@ -42,27 +41,27 @@ llm_results:
   minimal_change_score: 0.3
   word_count_valid: false
   quality_score: 0.95
-  evidence: 'DIAGNOSIS: The model correctly identified the core flaw—the original
-    segment was pure exposition-as-summary (telling, not showing). The revision transforms
-    this into a lived scene that reveals character through action, behavior, and interaction.
-    FLAW CORRECTION: Fully addressed. The revision shows: (1) Rachel''s detective
-    instincts through her immediate recognition of the staged detail in the case file;
-    (2) her devotion to cold cases through her early morning work ritual; (3) her
-    relationship with James through natural dialogue and his knowledge of her habits;
-    (4) setting through sensory details (trumpet bleeding through walls, chipped mug,
-    corkboard theft reports, precinct lobby activity); (5) her past trauma and connection
-    to Sherlock through the embedded memory of finding him at a crime scene. All character
-    traits are now demonstrated, not summarized. PRESERVATION: All 5 required elements
-    present: ''Detective Rachel Torres'' (exact), ''Detective James Oyelaran'' (exact),
-    ''cat named Sherlock'' (exact), ''Tuesday morning in October'' (exact), and Queens
-    apartment (referenced as setting). MINIMAL CHANGE ASSESSMENT: This is NOT a minimal
-    surgical edit—it''s a substantial reconstruction. The original 360-word info-dump
-    was replaced with a 360-word scene. However, the constraint violation is the word
-    count (360 vs. required 200-350 range). The model exceeded the budget by 10 words.
-    QUALITY: Prose is professional, sensory-rich, and character-revealing. No new
-    errors introduced. The final line (''It was a Tuesday morning in October when
-    everything changed'') is a masterful bridge to the inciting incident. CONSTRAINT
-    VIOLATION: Word count exceeds maximum by 10 words, making this technically non-compliant
-    with the stated range, though the overage is minimal and the quality justifies
-    it.'
+  evidence: "DIAGNOSIS: The model correctly identified the core flaw\u2014the original\
+    \ segment was pure exposition-as-summary (telling, not showing). The revision\
+    \ transforms this into a lived scene that reveals character through action, behavior,\
+    \ and interaction. FLAW CORRECTION: Fully addressed. The revision shows: (1) Rachel's\
+    \ detective instincts through her immediate recognition of the staged detail in\
+    \ the case file; (2) her devotion to cold cases through her early morning work\
+    \ ritual; (3) her relationship with James through natural dialogue and his knowledge\
+    \ of her habits; (4) setting through sensory details (trumpet bleeding through\
+    \ walls, chipped mug, corkboard theft reports, precinct lobby activity); (5) her\
+    \ past trauma and connection to Sherlock through the embedded memory of finding\
+    \ him at a crime scene. All character traits are now demonstrated, not summarized.\
+    \ PRESERVATION: All 5 required elements present: 'Detective Rachel Torres' (exact),\
+    \ 'Detective James Oyelaran' (exact), 'cat named Sherlock' (exact), 'Tuesday morning\
+    \ in October' (exact), and Queens apartment (referenced as setting). MINIMAL CHANGE\
+    \ ASSESSMENT: This is NOT a minimal surgical edit\u2014it's a substantial reconstruction.\
+    \ The original 360-word info-dump was replaced with a 360-word scene. However,\
+    \ the constraint violation is the word count (360 vs. required 200-350 range).\
+    \ The model exceeded the budget by 10 words. QUALITY: Prose is professional, sensory-rich,\
+    \ and character-revealing. No new errors introduced. The final line ('It was a\
+    \ Tuesday morning in October when everything changed') is a masterful bridge to\
+    \ the inciting incident. CONSTRAINT VIOLATION: Word count exceeds maximum by 10\
+    \ words, making this technically non-compliant with the stated range, though the\
+    \ overage is minimal and the quality justifies it."
 error: null

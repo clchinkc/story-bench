@@ -12,20 +12,19 @@ final_score: 0.9095
 score_breakdown:
   final_score: 0.9095
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 349
-      target_range:
-      - 250
-      - 400
     programmatic:
       score: 0.778
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.63
         slop_score: 1.0
         overall: 0.778
+      word_count:
+        actual: 349
+        target_range:
+        - 250
+        - 400
     llm_judge:
       score: 0.93
       weight: 0.5
@@ -42,15 +41,15 @@ llm_results:
   minimal_change_score: 0.6
   word_count_valid: true
   quality_score: 0.9
-  evidence: 'The model addressed the correct flaw: it turned the Ordeal from a mere
-    tough fight into an internal crisis by having the dragon exploit Kira''s guilt
-    over her brother, producing a moment where she accepts possible death (symbolic
-    death), and then a rebirth/transformation leading to victory grounded in acceptance
-    and insight. All four required elements (Shadow Dragon, Kira with sword, reference
-    to brother''s death, Kira''s victory) and the four required phrases are preserved
-    verbatim or with minimal additions. Changes were moderate—more than surgical edits
-    because significant internal material was added to satisfy the beat, but the original
-    setting, outcome, and key lines were retained. Writing is strong overall; a minor
-    grammar nit ("a earth-shaking roar") remains from the preserved text but no new
-    substantive errors were introduced.'
+  evidence: "The model addressed the correct flaw: it turned the Ordeal from a mere\
+    \ tough fight into an internal crisis by having the dragon exploit Kira's guilt\
+    \ over her brother, producing a moment where she accepts possible death (symbolic\
+    \ death), and then a rebirth/transformation leading to victory grounded in acceptance\
+    \ and insight. All four required elements (Shadow Dragon, Kira with sword, reference\
+    \ to brother's death, Kira's victory) and the four required phrases are preserved\
+    \ verbatim or with minimal additions. Changes were moderate\u2014more than surgical\
+    \ edits because significant internal material was added to satisfy the beat, but\
+    \ the original setting, outcome, and key lines were retained. Writing is strong\
+    \ overall; a minor grammar nit (\"a earth-shaking roar\") remains from the preserved\
+    \ text but no new substantive errors were introduced."
 error: null

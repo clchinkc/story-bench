@@ -12,20 +12,19 @@ final_score: 0.6463053503743421
 score_breakdown:
   final_score: 0.6463
   components:
-    word_count:
-      score: 0.1209
-      weight: 0.25
-      actual: 515
-      target_range:
-      - 700
-      - 1000
     programmatic:
       score: 0.6893
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.1209
         repetition_score: 0.5
         slop_score: 0.9733
         overall: 0.6893
+      word_count:
+        actual: 515
+        target_range:
+        - 700
+        - 1000
     llm_judge:
       score: 0.8875
       weight: 0.5
@@ -41,10 +40,10 @@ llm_results:
   coherence_score: 0.9
   failed_items:
   - 'Word count outside required range: 515 words (required 700-1000).'
-  - 'Chekhov''s Gun payoff is weak: a setup detail from Fun and Games (pressure-sensitive
-    floor / camera loop) is not clearly used as the critical solution during Bad Guys
-    Close In — the tech skills are reused but the earlier specific detail isn''t paid
-    off as a traceable payoff.'
+  - "Chekhov's Gun payoff is weak: a setup detail from Fun and Games (pressure-sensitive\
+    \ floor / camera loop) is not clearly used as the critical solution during Bad\
+    \ Guys Close In \u2014 the tech skills are reused but the earlier specific detail\
+    \ isn't paid off as a traceable payoff."
   - 'Team friction is present but muted: conflict between crew members (beyond panic/hesitation)
     is not strongly developed, reducing emotional stakes in Beat 3.'
   - Tonal shift to explicit gallows humor in Beat 3 is subtle rather than pronounced.

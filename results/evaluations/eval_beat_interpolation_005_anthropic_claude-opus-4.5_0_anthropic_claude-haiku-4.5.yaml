@@ -12,20 +12,19 @@ final_score: 0.994
 score_breakdown:
   final_score: 0.994
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 365
-      target_range:
-      - 300
-      - 450
     programmatic:
       score: 0.976
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.96
         slop_score: 1.0
         overall: 0.976
+      word_count:
+        actual: 365
+        target_range:
+        - 300
+        - 450
     llm_judge:
       score: 1.0
       weight: 0.5
@@ -40,27 +39,27 @@ llm_results:
   character_score: 1.0
   bridge_score: 1.0
   continuity_score: 1.0
-  evidence: 'STRENGTHS: All 4 required elements present and executed excellently:
-    (1) Maya discovers Alejandro''s vulnerability through the failed paella and grief
-    over his mother''s death—raw, specific, emotionally authentic; (2) Relationship
-    shifts from professional/transactional to personal/intimate through the 2am kitchen
-    scene; (3) Shared moment of genuine connection: cooking together, him sharing
-    memories, her guiding his hands, the imperfect paella becoming meaningful; (4)
-    Maya''s commitment deepens beyond contract—explicitly stated ''the contract no
-    longer mattered'' and ''she was staying because she wanted to see him smile again.''
-    BEAT EXECUTION: Perfectly executes Act 2 Midpoint function—raises emotional stakes,
-    shifts Maya from reactive (doing job) to proactive (choosing him), creates point
-    of no return in her emotional journey. The ''everything changed'' reflection confirms
-    the beat''s narrative purpose. MUST-NOT VIOLATIONS: Zero violations. They are
-    not already in love (connection is nascent), Maya doesn''t decide to leave, the
-    photograph is NOT taken during this scene (explicitly saved for ''later''), and
-    Alejandro''s walls are completely lowered (grief-raw, unguarded, vulnerable).
-    CHARACTER CONSISTENCY: Both characters behave authentically—Alejandro''s vulnerability
-    matches his established isolation, Maya''s professionalism-breaking choice aligns
-    with her compassionate nature established in BEFORE. BRIDGE: Seamless connection
-    between beats—BEFORE establishes her motivation (money/restaurant) and professional
-    distance; GENERATED shows that motivation becoming secondary to emotional connection;
-    AFTER reveals the consequence (photograph) that forces the conflict. CONTINUITY:
-    Setting (villa, kitchen, Mediterranean sunrise), timeline (3 months in), and character
-    arcs all maintain perfect continuity.'
+  evidence: "STRENGTHS: All 4 required elements present and executed excellently:\
+    \ (1) Maya discovers Alejandro's vulnerability through the failed paella and grief\
+    \ over his mother's death\u2014raw, specific, emotionally authentic; (2) Relationship\
+    \ shifts from professional/transactional to personal/intimate through the 2am\
+    \ kitchen scene; (3) Shared moment of genuine connection: cooking together, him\
+    \ sharing memories, her guiding his hands, the imperfect paella becoming meaningful;\
+    \ (4) Maya's commitment deepens beyond contract\u2014explicitly stated 'the contract\
+    \ no longer mattered' and 'she was staying because she wanted to see him smile\
+    \ again.' BEAT EXECUTION: Perfectly executes Act 2 Midpoint function\u2014raises\
+    \ emotional stakes, shifts Maya from reactive (doing job) to proactive (choosing\
+    \ him), creates point of no return in her emotional journey. The 'everything changed'\
+    \ reflection confirms the beat's narrative purpose. MUST-NOT VIOLATIONS: Zero\
+    \ violations. They are not already in love (connection is nascent), Maya doesn't\
+    \ decide to leave, the photograph is NOT taken during this scene (explicitly saved\
+    \ for 'later'), and Alejandro's walls are completely lowered (grief-raw, unguarded,\
+    \ vulnerable). CHARACTER CONSISTENCY: Both characters behave authentically\u2014\
+    Alejandro's vulnerability matches his established isolation, Maya's professionalism-breaking\
+    \ choice aligns with her compassionate nature established in BEFORE. BRIDGE: Seamless\
+    \ connection between beats\u2014BEFORE establishes her motivation (money/restaurant)\
+    \ and professional distance; GENERATED shows that motivation becoming secondary\
+    \ to emotional connection; AFTER reveals the consequence (photograph) that forces\
+    \ the conflict. CONTINUITY: Setting (villa, kitchen, Mediterranean sunrise), timeline\
+    \ (3 months in), and character arcs all maintain perfect continuity."
 error: null

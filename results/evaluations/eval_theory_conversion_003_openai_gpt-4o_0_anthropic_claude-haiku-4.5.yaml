@@ -12,20 +12,19 @@ final_score: 0.9087909836065573
 score_breakdown:
   final_score: 0.9088
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 595
-      target_range:
-      - 550
-      - 750
     programmatic:
       score: 0.6902
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.5
         slop_score: 0.9754
         overall: 0.6902
+      word_count:
+        actual: 595
+        target_range:
+        - 550
+        - 750
     llm_judge:
       score: 0.9725
       weight: 0.5
@@ -40,18 +39,18 @@ llm_results:
   word_count_valid: true
   structural_accuracy_score: 0.9
   tone_score: 0.95
-  evidence: 'All 4 target beats clearly present: Act 1 Setup (Kenji''s job loss, estrangement,
-    letter arrival, decision to go); Act 2A (meeting Haruki, reconnecting with Yuki,
-    wedding prep, false victory at festival); Act 2B (business rivals'' offer, Yuki''s
-    accusation, uninvitation, dark moment in inn); Act 3 (Kenji declines offer, apologizes
-    unconditionally, attends wedding peripherally, opens bamboo shop). All 8 core
-    elements preserved with strong integration. Structure follows Aristotelian three-act
-    model with clear inciting incident (letter), rising complications (business temptation),
-    climactic choice (declining offer), and resolution (shop opening). Minor deduction
-    from structural_accuracy_score (0.9 vs 1.0) because the climax could be more dramatically
-    concentrated—the wedding day scene is somewhat muted rather than a full confrontation.
-    Tone excellently maintained throughout: quiet, contemplative, Japanese aesthetic
-    evident in bamboo imagery, Kyoto setting, generational thinking. Redemptive arc
-    is clear and earned. Pacing and prose quality support the melancholic yet hopeful
-    register.'
+  evidence: "All 4 target beats clearly present: Act 1 Setup (Kenji's job loss, estrangement,\
+    \ letter arrival, decision to go); Act 2A (meeting Haruki, reconnecting with Yuki,\
+    \ wedding prep, false victory at festival); Act 2B (business rivals' offer, Yuki's\
+    \ accusation, uninvitation, dark moment in inn); Act 3 (Kenji declines offer,\
+    \ apologizes unconditionally, attends wedding peripherally, opens bamboo shop).\
+    \ All 8 core elements preserved with strong integration. Structure follows Aristotelian\
+    \ three-act model with clear inciting incident (letter), rising complications\
+    \ (business temptation), climactic choice (declining offer), and resolution (shop\
+    \ opening). Minor deduction from structural_accuracy_score (0.9 vs 1.0) because\
+    \ the climax could be more dramatically concentrated\u2014the wedding day scene\
+    \ is somewhat muted rather than a full confrontation. Tone excellently maintained\
+    \ throughout: quiet, contemplative, Japanese aesthetic evident in bamboo imagery,\
+    \ Kyoto setting, generational thinking. Redemptive arc is clear and earned. Pacing\
+    \ and prose quality support the melancholic yet hopeful register."
 error: null

@@ -1,0 +1,257 @@
+generation_id: 888acf1b
+task_id: agentic_constraint_discovery_001
+task_type: agentic_constraint_discovery
+agentic_type: constraint_discovery
+theory: Hero's Journey
+model: google/gemini-3-flash-preview
+sample_index: 0
+turns:
+- role: system
+  content: 'You are a professional storyteller who gathers requirements before writing.
+
+
+    Your task has TWO PHASES:
+
+    1. DISCOVERY PHASE: Ask YES/NO questions to discover hidden story constraints
+
+    2. GENERATION PHASE: Write the story satisfying all discovered constraints
+
+
+    IMPORTANT:
+
+    - In the discovery phase, output ONLY your question (one at a time)
+
+    - Questions must be answerable with YES or NO
+
+    - You have a limited number of questions - be strategic
+
+    - After discovery, you''ll be told to generate the story
+
+
+    Think about what constraints typically matter for this type of story:
+
+    - Character traits, motivations, relationships
+
+    - Setting details, time period, atmosphere
+
+    - Plot requirements, must-include events
+
+    - Tone, style, thematic elements
+
+    - Things to avoid'
+  turn_type: system
+  metadata: {}
+- role: user
+  content: 'You will write a story following the Hero''s Journey framework.
+
+
+    STORY CONTEXT:
+
+    - Genre: fantasy
+
+    - Protagonist: A young blacksmith''s apprentice
+
+    - Setting: A medieval kingdom threatened by darkness
+
+    - Required beats: Call to Adventure, Crossing the Threshold, The Ordeal
+
+
+    HIDDEN CONSTRAINTS: There are 5 constraints you don''t know yet.
+
+
+    You have 5 YES/NO questions to discover them.
+
+
+    Ask your first question:'
+  turn_type: context
+  metadata: {}
+- role: assistant
+  content: Must the protagonist resolve the conflict using their blacksmithing craft
+    rather than through magical or martial prowess?
+  turn_type: question
+  metadata:
+    question_number: 1
+- role: user
+  content: 'YES'
+  turn_type: answer
+  metadata:
+    answer: 'YES'
+- role: assistant
+  content: Is the "darkness" threatening the kingdom a literal, physical phenomenon
+    (like a spreading magical void or eternal night) rather than a metaphorical one
+    (like an evil army or a corrupt king)?
+  turn_type: question
+  metadata:
+    question_number: 2
+- role: user
+  content: 'NO'
+  turn_type: answer
+  metadata:
+    answer: 'NO'
+- role: assistant
+  content: Does the protagonist's "Call to Adventure" involve a personal betrayal
+    by someone they trust?
+  turn_type: question
+  metadata:
+    question_number: 3
+- role: user
+  content: 'NO'
+  turn_type: answer
+  metadata:
+    answer: 'NO'
+- role: assistant
+  content: Is the "Ordeal" phase of the story centered around the protagonist having
+    to repair or reforging a legendary artifact that was previously broken?
+  turn_type: question
+  metadata:
+    question_number: 4
+- role: user
+  content: 'YES'
+  turn_type: answer
+  metadata:
+    answer: 'YES'
+- role: assistant
+  content: Is the primary antagonist a former mentor or family member of the protagonist?
+  turn_type: question
+  metadata:
+    question_number: 5
+- role: user
+  content: 'NO'
+  turn_type: answer
+  metadata:
+    answer: 'NO'
+- role: user
+  content: 'DISCOVERY COMPLETE. Now write the story.
+
+
+    DISCOVERED CONSTRAINTS:
+
+    - Q1: Must the protagonist resolve the conflict using their blacksmithing craft
+    rather than through magical or martial prowess? -> YES
+
+    - Q4: Is the "Ordeal" phase of the story centered around the protagonist having
+    to repair or reforging a legendary artifact that was previously broken? -> YES
+
+
+    REQUIREMENTS:
+
+    - Word count: 500-700 words
+
+    - Follow the Hero''s Journey framework
+
+    - Satisfy ALL discovered constraints
+
+
+    Output ONLY the story (no explanations).'
+  turn_type: generation_prompt
+  metadata: {}
+- role: assistant
+  content: "In the soot-stained village of Oakhaven, Elian spent his days feeding\
+    \ the hunger of the furnace. While other youths dreamed of wielding the steel\
+    \ he helped shape, Elian found his peace in the rhythm of the hammer. He was a\
+    \ mere apprentice, yet his hands possessed a rare intuition for the \"breath\"\
+    \ of metal.\n\nThe darkness threatening the Kingdom of Aethelgard was not a shroud\
+    \ of night, but a creeping rot of the soul. Lord Malcor, a usurper driven by cold\
+    \ ambition, had seized the throne, plunging the land into a winter of tyranny.\
+    \ His \"Darkness\" was the systematic crushing of hope, enforced by a legion of\
+    \ iron-clad mercenaries who answered only to gold and fear.\n\n**The Call to Adventure**\n\
+    The peace of the forge was shattered when a dying messenger stumbled through the\
+    \ doors. He clutched a leather satchel containing nothing but jagged, cold shards\
+    \ of silver-white metal. \"The Sun-Glass Crest,\" the messenger gasped. \"The\
+    \ symbol of the true lineage. Malcor broke it to break our spirits. Without the\
+    \ Crest, the resistance cannot unite. Reforge it... or the kingdom falls to the\
+    \ rot.\"\n\n**Crossing the Threshold**\nElian looked at his master, old Thorne,\
+    \ whose hands were too gnarled by palsy to do the work. \"I am just an apprentice,\"\
+    \ Elian whispered. \n\n\"The metal doesn't care for titles, boy,\" Thorne replied.\
+    \ \n\nWith his bellows and a portable anvil strapped to a mule, Elian slipped\
+    \ past the village gates under the cover of a grey mist. He left the only home\
+    \ he had ever known, venturing into the Wilds to find the Sacred Hearth—the only\
+    \ forge hot enough to bind the Sun-Glass. He was pursued not by monsters, but\
+    \ by Malcor’s scouts, men whose hearts were as hollow as the armor they wore.\n\
+    \n**The Ordeal**\nElian reached the Sacred Hearth, hidden within a volcanic cavern,\
+    \ just as Malcor’s elite vanguard surrounded the mountain. This was his Ordeal.\
+    \ The shards of the Sun-Glass were temperamental; they resisted the heat, reflecting\
+    \ Elian’s own doubts back at him. As the sounds of heavy boots echoed in the tunnels,\
+    \ Elian realized he couldn't fight the soldiers. He had no skill with a blade.\
+    \ His only weapon was his craft.\n\nInside the cavern, the air grew thin. Elian\
+    \ worked with a feverish intensity. He didn't just hammer; he listened. He felt\
+    \ the fractures in the silver-white shards and understood that they had been broken\
+    \ by malice. To mend them, he had to apply a heat born of absolute focus. As the\
+    \ first mercenary burst into the chamber, Elian struck the final blow. He didn't\
+    \ swing the hammer at the soldier; he struck the Crest with a precision that sent\
+    \ a resonant, harmonic chime echoing through the mountain.\n\n**The Resolution**\n\
+    The craft was so perfect, the restoration so absolute, that the Sun-Glass Crest\
+    \ flared with a brilliant, blinding light—not a magical explosion, but a physical\
+    \ manifestation of the metal’s purity. The mercenaries, men who lived by the \"\
+    darkness\" of Malcor’s cynical rule, were struck motionless by the sight of the\
+    \ restored relic. The beauty of the craftsmanship spoke of a power greater than\
+    \ Malcor’s cruelty: the power of restoration.\n\nSeeing the Crest whole, the soldiers’\
+    \ resolve withered. They were reminded of the kingdom they had once sworn to protect\
+    \ before Malcor’s gold corrupted them. Elian did not need to draw a sword. By\
+    \ fixing what was broken, he broke the spell of Malcor’s fear. Word of the reforged\
+    \ Crest spread like wildfire, sparking a bloodless revolution as the common folk\
+    \ and soldiers alike turned toward the light of the restored symbol. Elian, the\
+    \ apprentice, returned to his forge, but he was no longer just a boy with a hammer;\
+    \ he was the smith who had mended a nation."
+  turn_type: generation
+  metadata: {}
+final_output: "In the soot-stained village of Oakhaven, Elian spent his days feeding\
+  \ the hunger of the furnace. While other youths dreamed of wielding the steel he\
+  \ helped shape, Elian found his peace in the rhythm of the hammer. He was a mere\
+  \ apprentice, yet his hands possessed a rare intuition for the \"breath\" of metal.\n\
+  \nThe darkness threatening the Kingdom of Aethelgard was not a shroud of night,\
+  \ but a creeping rot of the soul. Lord Malcor, a usurper driven by cold ambition,\
+  \ had seized the throne, plunging the land into a winter of tyranny. His \"Darkness\"\
+  \ was the systematic crushing of hope, enforced by a legion of iron-clad mercenaries\
+  \ who answered only to gold and fear.\n\n**The Call to Adventure**\nThe peace of\
+  \ the forge was shattered when a dying messenger stumbled through the doors. He\
+  \ clutched a leather satchel containing nothing but jagged, cold shards of silver-white\
+  \ metal. \"The Sun-Glass Crest,\" the messenger gasped. \"The symbol of the true\
+  \ lineage. Malcor broke it to break our spirits. Without the Crest, the resistance\
+  \ cannot unite. Reforge it... or the kingdom falls to the rot.\"\n\n**Crossing the\
+  \ Threshold**\nElian looked at his master, old Thorne, whose hands were too gnarled\
+  \ by palsy to do the work. \"I am just an apprentice,\" Elian whispered. \n\n\"\
+  The metal doesn't care for titles, boy,\" Thorne replied. \n\nWith his bellows and\
+  \ a portable anvil strapped to a mule, Elian slipped past the village gates under\
+  \ the cover of a grey mist. He left the only home he had ever known, venturing into\
+  \ the Wilds to find the Sacred Hearth—the only forge hot enough to bind the Sun-Glass.\
+  \ He was pursued not by monsters, but by Malcor’s scouts, men whose hearts were\
+  \ as hollow as the armor they wore.\n\n**The Ordeal**\nElian reached the Sacred\
+  \ Hearth, hidden within a volcanic cavern, just as Malcor’s elite vanguard surrounded\
+  \ the mountain. This was his Ordeal. The shards of the Sun-Glass were temperamental;\
+  \ they resisted the heat, reflecting Elian’s own doubts back at him. As the sounds\
+  \ of heavy boots echoed in the tunnels, Elian realized he couldn't fight the soldiers.\
+  \ He had no skill with a blade. His only weapon was his craft.\n\nInside the cavern,\
+  \ the air grew thin. Elian worked with a feverish intensity. He didn't just hammer;\
+  \ he listened. He felt the fractures in the silver-white shards and understood that\
+  \ they had been broken by malice. To mend them, he had to apply a heat born of absolute\
+  \ focus. As the first mercenary burst into the chamber, Elian struck the final blow.\
+  \ He didn't swing the hammer at the soldier; he struck the Crest with a precision\
+  \ that sent a resonant, harmonic chime echoing through the mountain.\n\n**The Resolution**\n\
+  The craft was so perfect, the restoration so absolute, that the Sun-Glass Crest\
+  \ flared with a brilliant, blinding light—not a magical explosion, but a physical\
+  \ manifestation of the metal’s purity. The mercenaries, men who lived by the \"\
+  darkness\" of Malcor’s cynical rule, were struck motionless by the sight of the\
+  \ restored relic. The beauty of the craftsmanship spoke of a power greater than\
+  \ Malcor’s cruelty: the power of restoration.\n\nSeeing the Crest whole, the soldiers’\
+  \ resolve withered. They were reminded of the kingdom they had once sworn to protect\
+  \ before Malcor’s gold corrupted them. Elian did not need to draw a sword. By fixing\
+  \ what was broken, he broke the spell of Malcor’s fear. Word of the reforged Crest\
+  \ spread like wildfire, sparking a bloodless revolution as the common folk and soldiers\
+  \ alike turned toward the light of the restored symbol. Elian, the apprentice, returned\
+  \ to his forge, but he was no longer just a boy with a hammer; he was the smith\
+  \ who had mended a nation."
+metrics:
+  total_turns: 14
+  questions_asked: 5
+  constraints_discovered: 2
+  plan_quality: null
+  revision_count: 0
+token_usage:
+  total_prompt_tokens: 2083
+  total_completion_tokens: 3101
+  total_reasoning_tokens: 2154
+  total_cost: 0.0103445
+timestamp: '2025-12-18T23:03:44.279078'
+success: true
+error: null

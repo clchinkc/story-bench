@@ -12,20 +12,19 @@ final_score: 0.6650000023013577
 score_breakdown:
   final_score: 0.665
   components:
-    word_count:
-      score: 0.0
-      weight: 0.25
-      actual: 1065
-      target_range:
-      - 500
-      - 700
     programmatic:
       score: 0.7
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.0
         repetition_score: 0.5
         slop_score: 1.0
         overall: 0.7
+      word_count:
+        actual: 1065
+        target_range:
+        - 500
+        - 700
     llm_judge:
       score: 0.98
       weight: 0.5
@@ -39,13 +38,14 @@ llm_results:
   word_count_valid: false
   structural_accuracy_score: 0.9
   tone_score: 1.0
-  evidence: 'All five Freytag beats appear: Exposition (Samira, her world, expertise),
-    Rising Action (quarantine, mounting cases, evolving pathogen), Climax (Nexus confrontation
-    and Samira’s decision to release data), Falling Action (immediate aftermath—cure
-    distribution, epidemic curve bending), Denouement (career fallout and new equilibrium).
-    All six core elements are present (Samira, engineered virus, Raj, Nexus, public
-    release of cure, Samira’s sacrifice). Structural accuracy docked slightly (0.9)
-    because the narrative compresses the Nexus meeting and the public release so the
-    line between climax and falling action is a bit blurred. Word count is invalid:
-    the converted piece is ~1065 words, outside the required 500–700 range.'
+  evidence: "All five Freytag beats appear: Exposition (Samira, her world, expertise),\
+    \ Rising Action (quarantine, mounting cases, evolving pathogen), Climax (Nexus\
+    \ confrontation and Samira\u2019s decision to release data), Falling Action (immediate\
+    \ aftermath\u2014cure distribution, epidemic curve bending), Denouement (career\
+    \ fallout and new equilibrium). All six core elements are present (Samira, engineered\
+    \ virus, Raj, Nexus, public release of cure, Samira\u2019s sacrifice). Structural\
+    \ accuracy docked slightly (0.9) because the narrative compresses the Nexus meeting\
+    \ and the public release so the line between climax and falling action is a bit\
+    \ blurred. Word count is invalid: the converted piece is ~1065 words, outside\
+    \ the required 500\u2013700 range."
 error: null

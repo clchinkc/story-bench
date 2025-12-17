@@ -12,20 +12,19 @@ final_score: 0.66625
 score_breakdown:
   final_score: 0.6663
   components:
-    word_count:
-      score: 0.0
-      weight: 0.25
-      actual: 1340
-      target_range:
-      - 550
-      - 750
     programmatic:
       score: 0.7
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.0
         repetition_score: 0.5
         slop_score: 1.0
         overall: 0.7
+      word_count:
+        actual: 1340
+        target_range:
+        - 550
+        - 750
     llm_judge:
       score: 0.9825
       weight: 0.5
@@ -50,25 +49,25 @@ llm_results:
       search: Present and strong. Jin navigates processing, political debates, and
         the Collective's bureaucratic/ideological gauntlet. He adapts to orbital culture,
         learns the stakes, encounters resistance and competing interests.
-      find: Present. Jin discovers the unexpected orbital applications of his technology—that
-        it works far more efficiently in space than on Earth. He finds what he thought
-        he wanted (asylum, platform, safety) but learns it comes with strings.
-      take: 'Present and excellently executed. Jin faces Mira''s condition: surrender
-        core algorithm keys to the Collective for stewardship. The cost is explicit—permanent
-        exile, parental sanctions hardening, complicity in a new power structure.
-        The ending cuts off mid-thought, leaving him at the threshold of this choice,
-        which is appropriate for ''Take'' beat.'
+      find: "Present. Jin discovers the unexpected orbital applications of his technology\u2014\
+        that it works far more efficiently in space than on Earth. He finds what he\
+        \ thought he wanted (asylum, platform, safety) but learns it comes with strings."
+      take: "Present and excellently executed. Jin faces Mira's condition: surrender\
+        \ core algorithm keys to the Collective for stewardship. The cost is explicit\u2014\
+        permanent exile, parental sanctions hardening, complicity in a new power structure.\
+        \ The ending cuts off mid-thought, leaving him at the threshold of this choice,\
+        \ which is appropriate for 'Take' beat."
     must_include_analysis:
       1_unfamiliar_culture_navigation: Excellent. Processing gauntlet, mag-strips,
         kiosks, Forum votes, bandwidth trading, political blocs (Life Support Co-op,
         direct democracy, corporate consortium). Jin struggles with the Collective's
         pragmatism vs. his idealism.
-      2_mentor_figure: Strong. Mira al-Karim serves as guide, challenger, and moral
-        compass. She explains orbital mechanics, political realities, and the stakes.
-        She's exhausted but principled—a complex mentor.
-      3_unexpected_discovery: Excellent. The orbital applications folder—Jin's tech
-        is orders of magnitude more efficient in space. The derived models showing
-        climate whiplash risks. This reframes the entire conflict.
+      2_mentor_figure: "Strong. Mira al-Karim serves as guide, challenger, and moral\
+        \ compass. She explains orbital mechanics, political realities, and the stakes.\
+        \ She's exhausted but principled\u2014a complex mentor."
+      3_unexpected_discovery: "Excellent. The orbital applications folder\u2014Jin's\
+        \ tech is orders of magnitude more efficient in space. The derived models\
+        \ showing climate whiplash risks. This reframes the entire conflict."
       4_finds_what_wanted: Present. Safety (asylum granted), platform (research berth,
         Forum seat), ability to continue fighting. But each comes conditional.
       5_action_with_cost: 'Excellent. The implicit agreement to hand over keys. Cost:
@@ -88,18 +87,19 @@ llm_results:
       4_complete_conspiracy_resolution: Successfully avoided. The Council's suppression
         remains unresolved. Jin's role in exposing it is incomplete. Yuna's fate unknown.
         The larger conflict persists.
-    tone_analysis: 'Contemplative and politically charged throughout. Personal stakes
-      (exile, family loss, moral compromise) are woven through larger systemic conflict
-      (climate, power, governance). The prose is introspective—Jin''s internal conflict
-      mirrors the Collective''s. Mira''s dialogue is sharp and ideologically dense
-      without being preachy. The ending maintains tension rather than resolving it.
-      Minor deduction: could be slightly more introspective in Jin''s internal monologue
-      during key moments.'
-    ending_analysis: 'Ends at ''Take'' beat as required. Jin has gained asylum, platform,
-      research access, and knowledge. He has paid: exile, family severance, moral
-      compromise, complicity in new power structure. The cut-off mid-sentence (''and
-      the tech might eat'') is slightly abrupt but thematically appropriate—the choice
-      is incomplete, the cost still unfolding. Strong execution of the requirement.'
+    tone_analysis: "Contemplative and politically charged throughout. Personal stakes\
+      \ (exile, family loss, moral compromise) are woven through larger systemic conflict\
+      \ (climate, power, governance). The prose is introspective\u2014Jin's internal\
+      \ conflict mirrors the Collective's. Mira's dialogue is sharp and ideologically\
+      \ dense without being preachy. The ending maintains tension rather than resolving\
+      \ it. Minor deduction: could be slightly more introspective in Jin's internal\
+      \ monologue during key moments."
+    ending_analysis: "Ends at 'Take' beat as required. Jin has gained asylum, platform,\
+      \ research access, and knowledge. He has paid: exile, family severance, moral\
+      \ compromise, complicity in new power structure. The cut-off mid-sentence ('and\
+      \ the tech might eat') is slightly abrupt but thematically appropriate\u2014\
+      the choice is incomplete, the cost still unfolding. Strong execution of the\
+      \ requirement."
     critical_issues:
     - 'WORD COUNT EXCEEDS RANGE: 1340 words vs. 550-750 requirement. This is a significant
       constraint violation (+79% over limit). The story is well-written but substantially
@@ -109,7 +109,7 @@ llm_results:
     - All six must-include elements present and integrated naturally
     - All four must-not elements successfully avoided
     - Tone is consistently contemplative and politically charged
-    - Moral complexity is sophisticated—no easy answers
+    - "Moral complexity is sophisticated\u2014no easy answers"
     - Mira is a compelling, nuanced mentor figure
     - The unexpected discovery (orbital efficiency) reframes the entire conflict
     - Ending leaves Jin at threshold of 'Take' with genuine stakes

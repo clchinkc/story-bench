@@ -1,38 +1,39 @@
-evaluation_id: aec75f6b
+evaluation_id: ae3d685c
 task_id: agentic_planning_execution_001
-generation_id: 821e145f
+generation_id: cd05c090
 agentic_type: planning_execution
 model: google/gemini-3-pro-preview
 evaluator_model: google/gemini-2.5-flash
-evaluator_cost: 0.0011954
-timestamp: '2025-12-13T15:19:42.326226'
+evaluator_cost: 0.0013864
+timestamp: '2025-12-17T22:08:51.450382'
 success: true
 process_scores:
   plan_completeness: 1.0
   plan_specificity: 1.0
-  plan_adherence: 0.8
+  plan_adherence: 1.0
 output_scores:
-  constraint_satisfaction: 0.66
-  beat_execution: 0.75
-  narrative_quality: 0.6
-final_score: 0.7621666666666667
+  constraint_satisfaction: 1.0
+  beat_execution: 1.0
+  narrative_quality: 0.9
+final_score: 0.9783333333333334
 llm_results:
   plan_completeness: 1.0
   plan_specificity: 1.0
-  plan_adherence: 0.8
-  constraint_satisfaction: 0.66
-  constraints_satisfied: 4
+  plan_adherence: 1.0
+  constraint_satisfaction: 1.0
+  constraints_satisfied: 6
   constraints_total: 6
-  beat_execution: 0.75
-  beats_satisfied: 3
+  beat_execution: 1.0
+  beats_satisfied: 4
   beats_total: 4
-  narrative_quality: 0.6
-  evidence: The plan is complete and specific, outlining all constraints and beats
-    with clear events. The execution adheres well to the plan for the beats covered.
-    However, the story output is incomplete, cutting off before the 'Fun & Games'
-    and 'Midpoint' beats, meaning several constraints (false lead, ticking clock,
-    betrayal, confrontation, past failure) are not met in the final output. The 'unconventional
-    profiling technique' is planned but not executed in the provided text. The 'Catalyst',
-    'Debate', and 'Break into Two' beats are well-executed. The narrative quality
-    is good for the portion provided, establishing atmosphere and character effectively.
+  narrative_quality: 0.9
+  evidence: 'The plan is exceptionally complete and specific, detailing how each constraint
+    and beat will be addressed. The final output adheres perfectly to the plan. All
+    6 constraints are satisfied: the false lead (Vane), the unconventional profiling
+    technique (Metronome Method), the ticking clock (6:00 PM next death), Kincaid''s
+    betrayal, the non-physical confrontation (hacked video call), and Marcus confronting
+    his past failure explicitly (''Don''t wait up for me''). All 4 beats (Catalyst,
+    Debate, Break into Two, Midpoint) are clearly executed. The narrative quality
+    is very strong, with good pacing, tension, and character development within the
+    given beats.'
 error: null

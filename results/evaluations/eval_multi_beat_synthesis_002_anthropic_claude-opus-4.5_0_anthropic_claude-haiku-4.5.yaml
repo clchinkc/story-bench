@@ -12,20 +12,19 @@ final_score: 0.9050325624276996
 score_breakdown:
   final_score: 0.905
   components:
-    word_count:
-      score: 0.9591
-      weight: 0.25
-      actual: 674
-      target_range:
-      - 700
-      - 1000
     programmatic:
       score: 0.796
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.9591
         repetition_score: 0.66
         slop_score: 1.0
         overall: 0.796
+      word_count:
+        actual: 674
+        target_range:
+        - 700
+        - 1000
     llm_judge:
       score: 0.9325
       weight: 0.5
@@ -42,16 +41,17 @@ llm_results:
   failed_items:
   - 'Beat 1: Internal shift is present but somewhat implicit rather than explicitly
     demonstrated through contrasting thoughts/actions'
-  - 'Beat 2: The test of commitment could be more concrete—the German text reading
-    is strong, but a more direct choice/sacrifice moment would strengthen this'
+  - "Beat 2: The test of commitment could be more concrete\u2014the German text reading\
+    \ is strong, but a more direct choice/sacrifice moment would strengthen this"
   strengths:
   - 'Exceptional execution of Chekhov''s Gun: Amara''s language skills (German, Fante,
     Twi) introduced in Beat 1 become the crucial test in Beat 2 and the survival mechanism
     in Beat 3'
-  - 'Identity transformation is masterfully tracked: servant-scholar (Beat 1) → capable
-    operative (Beat 2) → resistance fighter claiming her role (Beat 3)'
-  - 'Escalating danger is perfectly calibrated: discovery risk → direct confrontation
-    with missionaries → active pursuit with dogs'
+  - "Identity transformation is masterfully tracked: servant-scholar (Beat 1) \u2192\
+    \ capable operative (Beat 2) \u2192 resistance fighter claiming her role (Beat\
+    \ 3)"
+  - "Escalating danger is perfectly calibrated: discovery risk \u2192 direct confrontation\
+    \ with missionaries \u2192 active pursuit with dogs"
   - 'Knowledge-as-resistance theme woven throughout: candlelight vocabulary, intercepted
     letter, German text decryption, final declaration'
   - Exceptional prose quality and historical authenticity; tone perfectly balances
@@ -63,8 +63,8 @@ llm_results:
   - 'Thematic resonance: ''Resistance was not survival'' encapsulates the philosophical
     core'
   weaknesses:
-  - Word count (674) falls short of 700-1000 range by 26 words—minor but fails technical
-    requirement
+  - "Word count (674) falls short of 700-1000 range by 26 words\u2014minor but fails\
+    \ technical requirement"
   - Beat 1's internal shift from 'servant-scholar to active resistance' is shown through
     action and reflection but could benefit from one more explicit moment of psychological
     rupture

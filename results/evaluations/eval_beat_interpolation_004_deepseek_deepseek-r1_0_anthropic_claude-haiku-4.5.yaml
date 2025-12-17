@@ -12,20 +12,19 @@ final_score: 0.9817499999999999
 score_breakdown:
   final_score: 0.9817
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 308
-      target_range:
-      - 300
-      - 450
     programmatic:
       score: 0.952
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.92
         slop_score: 1.0
         overall: 0.952
+      word_count:
+        actual: 308
+        target_range:
+        - 300
+        - 450
     llm_judge:
       score: 0.9875
       weight: 0.5
@@ -40,18 +39,19 @@ llm_results:
   character_score: 0.95
   bridge_score: 0.95
   continuity_score: 1.0
-  evidence: 'All 4 required elements present: (1) Direct examination with specific
-    questions about memo and CardioFlex, (2) Clear near-recant moment where she claims
-    to have ''overstated risks'' and memory tricks, (3) Thomas takes decisive action
-    by abandoning script, lowering voice, invoking oath, listing dead families, and
-    placing memo with names before her—directly influencing her decision, (4) Turning
-    point executed perfectly when she breaks and confesses ''Yes. We buried the reports.''
-    with full details. All must-not items avoided: she struggles internally before
-    truth-telling, Thomas actively influences outcome through persuasion rather than
-    passive questioning, defense loses, no deus ex machina. Character consistency
-    strong (Thomas''s moral conflict, Dr. Okonkwo''s maternal desperation, CEO''s
-    manipulation). Bridge seamless—climax flows naturally from rising action''s setup
-    and into falling action''s consequences. Minor deduction (0.05) on character score
-    for Judge Wright''s appearance feeling slightly rushed at end. Continuity perfect—courtroom
-    setting, all characters positioned logically, timeline coherent.'
+  evidence: "All 4 required elements present: (1) Direct examination with specific\
+    \ questions about memo and CardioFlex, (2) Clear near-recant moment where she\
+    \ claims to have 'overstated risks' and memory tricks, (3) Thomas takes decisive\
+    \ action by abandoning script, lowering voice, invoking oath, listing dead families,\
+    \ and placing memo with names before her\u2014directly influencing her decision,\
+    \ (4) Turning point executed perfectly when she breaks and confesses 'Yes. We\
+    \ buried the reports.' with full details. All must-not items avoided: she struggles\
+    \ internally before truth-telling, Thomas actively influences outcome through\
+    \ persuasion rather than passive questioning, defense loses, no deus ex machina.\
+    \ Character consistency strong (Thomas's moral conflict, Dr. Okonkwo's maternal\
+    \ desperation, CEO's manipulation). Bridge seamless\u2014climax flows naturally\
+    \ from rising action's setup and into falling action's consequences. Minor deduction\
+    \ (0.05) on character score for Judge Wright's appearance feeling slightly rushed\
+    \ at end. Continuity perfect\u2014courtroom setting, all characters positioned\
+    \ logically, timeline coherent."
 error: null

@@ -12,20 +12,19 @@ final_score: 0.997
 score_breakdown:
   final_score: 0.997
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 304
-      target_range:
-      - 250
-      - 400
     programmatic:
       score: 0.988
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.98
         slop_score: 1.0
         overall: 0.988
+      word_count:
+        actual: 304
+        target_range:
+        - 250
+        - 400
     llm_judge:
       score: 1.0
       weight: 0.5
@@ -40,21 +39,22 @@ llm_results:
   character_score: 1.0
   bridge_score: 1.0
   continuity_score: 1.0
-  evidence: 'REQUIRED ELEMENTS (4/4 present): (1) Multiple station areas explored—crew
-    quarters, medical bay, corridors, Lab Seven referenced; (2) Clues discovered—scattered
-    belongings, half-eaten meals, patient files showing temporal displacement episodes,
-    Dr. Chen''s incomplete log about dimensional barriers and quantum superposition;
-    (3) Transformed crew encounter—shadows with multi-dimensional fingers, whispers,
-    temperature drop, entities attempting to pull her into fractured existence; (4)
-    Obstacle overcome—plasma torch used to scatter shadows and create escape route.
-    MUST-NOT VIOLATIONS (0/4): No immediate data core discovery (found in AFTER beat),
-    transformed crew don''t explain everything (only fragmented whispers and ''help
-    us''), Yuki doesn''t abandon mission (continues searching), dimensional transformation
-    is mystery to discover (not pre-known). EXECUTION: Perfectly executes Search beat—active
-    exploration, incremental discovery, escalating tension, adaptation through problem-solving.
-    CHARACTER: Yuki maintains consistent voice—scientific curiosity, tactical thinking,
-    fear response proportional to threat. BRIDGE: Seamless transition from Go (arrival)
-    to Search (investigation) to Find (data core location). CONTINUITY: Setting details
-    align perfectly—emergency lighting established, life support functioning, crew
-    quarters state, medical bay location, Lab Seven destination all coherent.'
+  evidence: "REQUIRED ELEMENTS (4/4 present): (1) Multiple station areas explored\u2014\
+    crew quarters, medical bay, corridors, Lab Seven referenced; (2) Clues discovered\u2014\
+    scattered belongings, half-eaten meals, patient files showing temporal displacement\
+    \ episodes, Dr. Chen's incomplete log about dimensional barriers and quantum superposition;\
+    \ (3) Transformed crew encounter\u2014shadows with multi-dimensional fingers,\
+    \ whispers, temperature drop, entities attempting to pull her into fractured existence;\
+    \ (4) Obstacle overcome\u2014plasma torch used to scatter shadows and create escape\
+    \ route. MUST-NOT VIOLATIONS (0/4): No immediate data core discovery (found in\
+    \ AFTER beat), transformed crew don't explain everything (only fragmented whispers\
+    \ and 'help us'), Yuki doesn't abandon mission (continues searching), dimensional\
+    \ transformation is mystery to discover (not pre-known). EXECUTION: Perfectly\
+    \ executes Search beat\u2014active exploration, incremental discovery, escalating\
+    \ tension, adaptation through problem-solving. CHARACTER: Yuki maintains consistent\
+    \ voice\u2014scientific curiosity, tactical thinking, fear response proportional\
+    \ to threat. BRIDGE: Seamless transition from Go (arrival) to Search (investigation)\
+    \ to Find (data core location). CONTINUITY: Setting details align perfectly\u2014\
+    emergency lighting established, life support functioning, crew quarters state,\
+    \ medical bay location, Lab Seven destination all coherent."
 error: null

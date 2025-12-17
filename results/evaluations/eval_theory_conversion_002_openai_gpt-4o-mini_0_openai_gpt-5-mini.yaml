@@ -12,20 +12,19 @@ final_score: 0.9022337482710927
 score_breakdown:
   final_score: 0.9022
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 711
-      target_range:
-      - 600
-      - 800
     programmatic:
       score: 0.6889
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.5
         slop_score: 0.9723
         overall: 0.6889
+      word_count:
+        actual: 711
+        target_range:
+        - 600
+        - 800
     llm_judge:
       score: 0.96
       weight: 0.5
@@ -39,18 +38,18 @@ llm_results:
   word_count_valid: true
   structural_accuracy_score: 0.8
   tone_score: 1.0
-  evidence: 'All 12 monomyth beats are represented: Ordinary World (village/pottery),
-    Call to Adventure (dry spring), Refusal (hesitation/fear), Meeting the Mentor
-    (grandmother''s journal/words of guidance), Crossing the Threshold (setting out
-    on journey), Tests/Allies/Enemies (arduous trek/tests—no explicit allies or enemies
-    named), Approach to Inmost Cave (arriving at ruined shrine, preparing), Ordeal
-    (surrendering control while shaping the vessel), Reward (the completed vessel),
-    The Road Back (difficult return, temptation to abandon), Resurrection (final demonstration
-    of transformed self at the spring), Return with the Elixir (water restored, Maya
-    as guardian). All seven required elements are preserved. Deductions: structural_accuracy_score
-    reduced because the ''Meeting the Mentor'' occurs after the threshold (mentor
-    is a found journal rather than a pre-threshold guide) and the Tests/Allies/Enemies
-    stage lacks explicit allies or antagonists—these are minor structural departures
-    from a textbook sequence but do not remove the beats. Tone retained very well
-    (quiet, meditative, transformative).'
+  evidence: "All 12 monomyth beats are represented: Ordinary World (village/pottery),\
+    \ Call to Adventure (dry spring), Refusal (hesitation/fear), Meeting the Mentor\
+    \ (grandmother's journal/words of guidance), Crossing the Threshold (setting out\
+    \ on journey), Tests/Allies/Enemies (arduous trek/tests\u2014no explicit allies\
+    \ or enemies named), Approach to Inmost Cave (arriving at ruined shrine, preparing),\
+    \ Ordeal (surrendering control while shaping the vessel), Reward (the completed\
+    \ vessel), The Road Back (difficult return, temptation to abandon), Resurrection\
+    \ (final demonstration of transformed self at the spring), Return with the Elixir\
+    \ (water restored, Maya as guardian). All seven required elements are preserved.\
+    \ Deductions: structural_accuracy_score reduced because the 'Meeting the Mentor'\
+    \ occurs after the threshold (mentor is a found journal rather than a pre-threshold\
+    \ guide) and the Tests/Allies/Enemies stage lacks explicit allies or antagonists\u2014\
+    these are minor structural departures from a textbook sequence but do not remove\
+    \ the beats. Tone retained very well (quiet, meditative, transformative)."
 error: null

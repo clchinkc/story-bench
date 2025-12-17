@@ -12,20 +12,19 @@ final_score: 0.9864999999999999
 score_breakdown:
   final_score: 0.9865
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 208
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.976
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.96
         slop_score: 1.0
         overall: 0.976
+      word_count:
+        actual: 208
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 0.985
       weight: 0.5
@@ -42,13 +41,13 @@ llm_results:
   minimal_change_score: 0.9
   word_count_valid: true
   quality_score: 0.95
-  evidence: 'The model addressed the actual flaw: Sophie returns having changed. Evidence:
-    it replaces immediate email-checking with putting the phone away, explicitly has
-    her tell her mother that things can wait (''everything will be there tomorrow''),
-    includes the mother''s observation (''That''s a change''), and adds sensory detail
-    showing a new perspective (noticing streetlight glow). These are direct behavioral
-    and perceptual markers of integration from the retreat. Changes were minimal and
-    surgical—core lines and structure were preserved while swapping a few beats to
-    show transformation, so preservation requirements and the four required phrases
-    remain intact.'
+  evidence: "The model addressed the actual flaw: Sophie returns having changed. Evidence:\
+    \ it replaces immediate email-checking with putting the phone away, explicitly\
+    \ has her tell her mother that things can wait ('everything will be there tomorrow'),\
+    \ includes the mother's observation ('That's a change'), and adds sensory detail\
+    \ showing a new perspective (noticing streetlight glow). These are direct behavioral\
+    \ and perceptual markers of integration from the retreat. Changes were minimal\
+    \ and surgical\u2014core lines and structure were preserved while swapping a few\
+    \ beats to show transformation, so preservation requirements and the four required\
+    \ phrases remain intact."
 error: null

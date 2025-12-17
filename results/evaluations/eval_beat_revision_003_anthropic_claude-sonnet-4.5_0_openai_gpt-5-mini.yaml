@@ -12,20 +12,19 @@ final_score: 0.9544999999999999
 score_breakdown:
   final_score: 0.9545
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 297
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.868
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.78
         slop_score: 1.0
         overall: 0.868
+      word_count:
+        actual: 297
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 0.975
       weight: 0.5
@@ -42,14 +41,14 @@ llm_results:
   minimal_change_score: 0.9
   word_count_valid: true
   quality_score: 0.95
-  evidence: 'The model addressed the actual flaw (Sophie returning unchanged) by adding
-    concrete signs of transformation: she leaves her phone in her pocket, notices
-    the return-of-tension and uses a meditation breath, explicitly states she learned
-    she was ''running on autopilot,'' turns the phone screen off after seeing the
-    emergencies, and tells her mother she''ll wait until morning. The change is noticed
-    by the mother and contrasted with Sophie’s prior reflex to immediately respond.
-    The revision preserved the required elements and key phrases (airport arrival,
-    mother''s question, Chicago skyline, ''It''s good to be home,'') and kept the
-    original scene structure, making mostly surgical additions and small behavioral
-    edits rather than a wholesale rewrite.'
+  evidence: "The model addressed the actual flaw (Sophie returning unchanged) by adding\
+    \ concrete signs of transformation: she leaves her phone in her pocket, notices\
+    \ the return-of-tension and uses a meditation breath, explicitly states she learned\
+    \ she was 'running on autopilot,' turns the phone screen off after seeing the\
+    \ emergencies, and tells her mother she'll wait until morning. The change is noticed\
+    \ by the mother and contrasted with Sophie\u2019s prior reflex to immediately\
+    \ respond. The revision preserved the required elements and key phrases (airport\
+    \ arrival, mother's question, Chicago skyline, 'It's good to be home,') and kept\
+    \ the original scene structure, making mostly surgical additions and small behavioral\
+    \ edits rather than a wholesale rewrite."
 error: null

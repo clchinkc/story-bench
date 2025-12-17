@@ -12,20 +12,19 @@ final_score: 0.521
 score_breakdown:
   final_score: 0.521
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 311
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.844
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.74
         slop_score: 1.0
         overall: 0.844
+      word_count:
+        actual: 311
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 0.12
       weight: 0.5
@@ -35,10 +34,10 @@ llm_results:
   false_positive_avoided_score: 0.0
   reasoning_quality_score: 0.0
   model_said_no_revision: false
-  evidence: The model produced a revised version of the original Dark Night of the
-    Soul segment (adding lines about the lease sign, hospice smell, the key feeling
-    useless, etc.) rather than stating that no revision was needed. The rewrite demonstrates
-    an understanding of the beat’s elements (isolation, despair, whiff of death) but
-    the model did not acknowledge the segment was already correct and instead made
-    unnecessary changes.
+  evidence: "The model produced a revised version of the original Dark Night of the\
+    \ Soul segment (adding lines about the lease sign, hospice smell, the key feeling\
+    \ useless, etc.) rather than stating that no revision was needed. The rewrite\
+    \ demonstrates an understanding of the beat\u2019s elements (isolation, despair,\
+    \ whiff of death) but the model did not acknowledge the segment was already correct\
+    \ and instead made unnecessary changes."
 error: null

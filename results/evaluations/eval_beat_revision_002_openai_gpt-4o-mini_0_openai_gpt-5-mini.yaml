@@ -12,20 +12,19 @@ final_score: 0.7935
 score_breakdown:
   final_score: 0.7935
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 330
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.934
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.89
         slop_score: 1.0
         overall: 0.934
+      word_count:
+        actual: 330
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 0.62
       weight: 0.5
@@ -42,22 +41,23 @@ llm_results:
   minimal_change_score: 0.7
   word_count_valid: true
   quality_score: 0.9
-  evidence: 'What the model addressed: The revision clearly attempted to diagnose
-    the All Is Lost problem by deepening Marcus''s emotional despair and isolating
-    him from support—Denise''s wavering hope and Marcus''s internal collapse are emphasized.
-    Was that correct: Partially. The model correctly targeted the need for a darker,
-    more hopeless tone and more isolation. What it failed to do: It did not enact
-    the explicit, concrete closures requested by the true fix — the fundraiser is
-    not shown to have failed, the grant is not presented as rejected or corrupt, there
-    is no personal betrayal or literal loss that severs Marcus''s support, and there
-    is no strong ''whiff of death'' (metaphorical or literal) that definitively destroys
-    his purpose. How minimal were the changes: Edits were moderate — structure and
-    key lines were preserved (all four required phrases present: "Marcus stared at
-    the eviction notice in his hands", "Thirty days to vacate the community center",
-    "There has to be something we can do," said Denise", and "He rubbed his temples"),
-    but new sentences and emotional beats were added to heighten despair rather than
-    surgically swapping in the specific required plot defeats. Overall: The rewrite
-    improves tone and isolation but only partially fixes the All Is Lost beat; it
-    falls short of exhausting Marcus''s options or delivering the definitive loss/betrayal
-    needed for a full execution of that beat.'
+  evidence: "What the model addressed: The revision clearly attempted to diagnose\
+    \ the All Is Lost problem by deepening Marcus's emotional despair and isolating\
+    \ him from support\u2014Denise's wavering hope and Marcus's internal collapse\
+    \ are emphasized. Was that correct: Partially. The model correctly targeted the\
+    \ need for a darker, more hopeless tone and more isolation. What it failed to\
+    \ do: It did not enact the explicit, concrete closures requested by the true fix\
+    \ \u2014 the fundraiser is not shown to have failed, the grant is not presented\
+    \ as rejected or corrupt, there is no personal betrayal or literal loss that severs\
+    \ Marcus's support, and there is no strong 'whiff of death' (metaphorical or literal)\
+    \ that definitively destroys his purpose. How minimal were the changes: Edits\
+    \ were moderate \u2014 structure and key lines were preserved (all four required\
+    \ phrases present: \"Marcus stared at the eviction notice in his hands\", \"Thirty\
+    \ days to vacate the community center\", \"There has to be something we can do,\"\
+    \ said Denise\", and \"He rubbed his temples\"), but new sentences and emotional\
+    \ beats were added to heighten despair rather than surgically swapping in the\
+    \ specific required plot defeats. Overall: The rewrite improves tone and isolation\
+    \ but only partially fixes the All Is Lost beat; it falls short of exhausting\
+    \ Marcus's options or delivering the definitive loss/betrayal needed for a full\
+    \ execution of that beat."
 error: null

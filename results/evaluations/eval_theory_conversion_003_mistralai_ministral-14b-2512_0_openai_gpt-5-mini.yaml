@@ -12,20 +12,19 @@ final_score: 0.6370607686007396
 score_breakdown:
   final_score: 0.6371
   components:
-    word_count:
-      score: 0.0002
-      weight: 0.25
-      actual: 1000
-      target_range:
-      - 550
-      - 750
     programmatic:
       score: 0.6981
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.0002
         repetition_score: 0.5
         slop_score: 0.9952
         overall: 0.6981
+      word_count:
+        actual: 1000
+        target_range:
+        - 550
+        - 750
     llm_judge:
       score: 0.925
       weight: 0.5
@@ -39,15 +38,16 @@ llm_results:
   word_count_valid: false
   structural_accuracy_score: 0.85
   tone_score: 0.95
-  evidence: 'All four three-act beats are present: Act 1 (office life, inciting letter,
-    decision to go), Act 2A (arrival, initial obstacles, midpoint revelation at the
-    festival/Haruki''s bowl), Act 2B (complication of letters/investor temptation
-    and the moral choice), Act 3 (resolution—apology, decision to stay, new life practicing
-    bamboo). Seven of eight required elements are preserved; the one missing is an
-    explicit ending with a bamboo craft shop — the piece ends with Kenji practicing
-    and hoping to start again but never clearly opens/establishes a shop. Structural
-    deductions: the midpoint and second plot point work but are somewhat understated
-    (hence <1.0 structural score). Tone is very strong—quiet drama, Japanese aesthetic,
-    and redemptive arc are well maintained. Word count requirement is not met (user-specified
-    range 550–750 vs. provided ~1000), so word_count_valid is false.'
+  evidence: "All four three-act beats are present: Act 1 (office life, inciting letter,\
+    \ decision to go), Act 2A (arrival, initial obstacles, midpoint revelation at\
+    \ the festival/Haruki's bowl), Act 2B (complication of letters/investor temptation\
+    \ and the moral choice), Act 3 (resolution\u2014apology, decision to stay, new\
+    \ life practicing bamboo). Seven of eight required elements are preserved; the\
+    \ one missing is an explicit ending with a bamboo craft shop \u2014 the piece\
+    \ ends with Kenji practicing and hoping to start again but never clearly opens/establishes\
+    \ a shop. Structural deductions: the midpoint and second plot point work but are\
+    \ somewhat understated (hence <1.0 structural score). Tone is very strong\u2014\
+    quiet drama, Japanese aesthetic, and redemptive arc are well maintained. Word\
+    \ count requirement is not met (user-specified range 550\u2013750 vs. provided\
+    \ ~1000), so word_count_valid is false."
 error: null

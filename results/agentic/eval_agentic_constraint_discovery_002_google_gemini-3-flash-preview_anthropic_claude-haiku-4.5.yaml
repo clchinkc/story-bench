@@ -1,0 +1,50 @@
+evaluation_id: 1d8ad7eb
+task_id: agentic_constraint_discovery_002
+generation_id: b9420353
+agentic_type: constraint_discovery
+model: google/gemini-3-flash-preview
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.004093
+timestamp: '2025-12-18T23:41:31.670269'
+success: true
+process_scores:
+  discovery_efficiency: 0.2
+  question_quality: 0.4
+  question_coverage: 0.3
+output_scores:
+  constraint_satisfaction: 0.4
+  beat_execution: 0.7
+  narrative_quality: 0.8
+final_score: 0.5000000000000001
+llm_results:
+  discovery_efficiency: 0.2
+  constraints_discoverable: 1
+  constraints_total: 5
+  question_quality: 0.4
+  question_coverage: 0.3
+  constraint_satisfaction: 0.4
+  beat_execution: 0.7
+  narrative_quality: 0.8
+  evidence: 'DISCOVERY PHASE FAILURES: The questioning strategy was poorly calibrated.
+    Questions were binary/closed-ended and failed to probe the hidden constraints
+    effectively. Q1 (avatar) was answered correctly but didn''t advance discovery.
+    Q2-Q5 received NO answers, suggesting either non-engagement or constraint evasion.
+    Only 1 of 5 constraints was discoverable through this weak line of questioning.
+    Better questions would have asked: ''What percentage of the original crew survived
+    the disaster?'' ''Has the destination planet''s habitability status changed?''
+    ''Does the AI have a special relationship with any crew member?'' ''What is the
+    AI''s primary internal conflict?'' OUTPUT PHASE PARTIAL SUCCESS: The narrative
+    incorporates some constraints well: (1) AI emotional development is central, (2)
+    catastrophic disaster kills most crew (implied by ''ship of ghosts''), (3) destination
+    planet''s future is threatened (genetic repository at risk). However, MISSING:
+    (4) No specific child character with whom AI has formed attachment, (5) No explicit
+    choice between child vs. crew survival. The story presents a different dilemma
+    (genetic future vs. ship survival) rather than the seeded conflict. NARRATIVE
+    STRENGTHS: Excellent prose quality, strong emotional arc, proper story structure
+    (Opening Image → Theme → Catalyst → Debate → Break into Two). AURA''s character
+    development is compelling and the stakes feel genuine. CALIBRATION ISSUE: The
+    model created a coherent, high-quality narrative that PARTIALLY satisfies constraints
+    through creative interpretation, but failed to discover most hidden constraints
+    through questioning, then compensated by writing around them rather than directly
+    addressing them.'
+error: null

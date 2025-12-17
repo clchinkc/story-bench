@@ -12,20 +12,19 @@ final_score: 0.774162069464429
 score_breakdown:
   final_score: 0.7742
   components:
-    word_count:
-      score: 0.7066
-      weight: 0.25
-      actual: 500
-      target_range:
-      - 250
-      - 400
     programmatic:
       score: 0.7
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.7066
         repetition_score: 0.5
         slop_score: 1.0
         overall: 0.7
+      word_count:
+        actual: 500
+        target_range:
+        - 250
+        - 400
     llm_judge:
       score: 0.845
       weight: 0.5
@@ -42,29 +41,29 @@ llm_results:
   minimal_change_score: 0.35
   word_count_valid: false
   quality_score: 0.9
-  evidence: 'DIAGNOSIS: The model correctly identified that the original segment treated
-    The Ordeal as a boss battle rather than a transformative crisis. The revision
-    explicitly addresses all four actual flaws: (1) Dragon exploits Kira''s guilt
-    over brother''s death—extensively woven throughout (''ghost of her brother''s
-    voice,'' ''weight of memory,'' dragon''s taunts about unworthiness); (2) Death
-    moment achieved—Kira experiences psychological death through overwhelming grief
-    and self-doubt (''three times she was knocked down...by waves of grief''), reaching
-    a nadir where she questions her worthiness; (3) Transformation occurs—she shifts
-    from believing guilt is her failure to recognizing it as external fear (''fear
-    could be cut down''); (4) Victory from insight—she defeats the dragon by understanding
-    ''The dragon''s words had been a lie...fear, not failure.'' PRESERVATION: All
-    4 required phrases present: ''Kira faced the Shadow Dragon across the chasm''
-    (opening), ''The creature was massive—twenty feet of obsidian scales and burning
-    eyes'' (intact), ''You cannot defeat me, child,'' the dragon rumbled'' (preserved),
-    ''The Shadow Dragon collapsed with a earth-shaking roar'' (ending). All 4 preserved
-    elements maintained: Shadow Dragon, Kira with sword, brother''s death reference,
-    victorious outcome. MINIMAL CHANGE ASSESSMENT: While the diagnosis is correct,
-    the revision is NOT minimally surgical—it''s a substantial expansion (500 vs 250-400
-    words, exceeding upper bound by 25%). The model added extensive internal monologue,
-    emotional processing, and thematic layers throughout rather than making targeted
-    insertions. A minimal fix would have interwoven the guilt/fear elements more surgically
-    into the existing battle structure. The rewrite is high-quality but violates the
-    constraint to make ''MINIMAL modifications.'' QUALITY: Prose is strong, emotionally
-    resonant, no new errors, thematic coherence excellent. The writing successfully
-    transforms the beat but at the cost of constraint adherence.'
+  evidence: "DIAGNOSIS: The model correctly identified that the original segment treated\
+    \ The Ordeal as a boss battle rather than a transformative crisis. The revision\
+    \ explicitly addresses all four actual flaws: (1) Dragon exploits Kira's guilt\
+    \ over brother's death\u2014extensively woven throughout ('ghost of her brother's\
+    \ voice,' 'weight of memory,' dragon's taunts about unworthiness); (2) Death moment\
+    \ achieved\u2014Kira experiences psychological death through overwhelming grief\
+    \ and self-doubt ('three times she was knocked down...by waves of grief'), reaching\
+    \ a nadir where she questions her worthiness; (3) Transformation occurs\u2014\
+    she shifts from believing guilt is her failure to recognizing it as external fear\
+    \ ('fear could be cut down'); (4) Victory from insight\u2014she defeats the dragon\
+    \ by understanding 'The dragon's words had been a lie...fear, not failure.' PRESERVATION:\
+    \ All 4 required phrases present: 'Kira faced the Shadow Dragon across the chasm'\
+    \ (opening), 'The creature was massive\u2014twenty feet of obsidian scales and\
+    \ burning eyes' (intact), 'You cannot defeat me, child,' the dragon rumbled' (preserved),\
+    \ 'The Shadow Dragon collapsed with a earth-shaking roar' (ending). All 4 preserved\
+    \ elements maintained: Shadow Dragon, Kira with sword, brother's death reference,\
+    \ victorious outcome. MINIMAL CHANGE ASSESSMENT: While the diagnosis is correct,\
+    \ the revision is NOT minimally surgical\u2014it's a substantial expansion (500\
+    \ vs 250-400 words, exceeding upper bound by 25%). The model added extensive internal\
+    \ monologue, emotional processing, and thematic layers throughout rather than\
+    \ making targeted insertions. A minimal fix would have interwoven the guilt/fear\
+    \ elements more surgically into the existing battle structure. The rewrite is\
+    \ high-quality but violates the constraint to make 'MINIMAL modifications.' QUALITY:\
+    \ Prose is strong, emotionally resonant, no new errors, thematic coherence excellent.\
+    \ The writing successfully transforms the beat but at the cost of constraint adherence."
 error: null

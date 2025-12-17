@@ -12,20 +12,19 @@ final_score: 0.9344370604781996
 score_breakdown:
   final_score: 0.9344
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 696
-      target_range:
-      - 550
-      - 750
     programmatic:
       score: 0.7727
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.64
         slop_score: 0.9719
         overall: 0.7727
+      word_count:
+        actual: 696
+        target_range:
+        - 550
+        - 750
     llm_judge:
       score: 0.9825
       weight: 0.5
@@ -39,12 +38,13 @@ llm_results:
   word_count_valid: true
   structural_accuracy_score: 0.95
   tone_score: 0.95
-  evidence: 'All four three-act beats are clearly present: Act 1 (world, inciting
-    letter, Kenji leaves for Kyoto as first plot point), Act 2A (village integration,
-    learning from Haruki, midpoint ''false victory''), Act 2B (tempting business offer
-    and Yuki''s rejection as second plot point), Act 3 (Kenji declines deal, seeks
-    reconciliation, opens bamboo shop). All eight required elements are preserved.
-    Small deductions: pacing compresses some transitions (midpoint→complication) and
-    the climax is quietly understated—appropriate to tone but slightly downplayed
-    structurally; tone otherwise remains a quiet, redemptive Japanese aesthetic throughout.'
+  evidence: "All four three-act beats are clearly present: Act 1 (world, inciting\
+    \ letter, Kenji leaves for Kyoto as first plot point), Act 2A (village integration,\
+    \ learning from Haruki, midpoint 'false victory'), Act 2B (tempting business offer\
+    \ and Yuki's rejection as second plot point), Act 3 (Kenji declines deal, seeks\
+    \ reconciliation, opens bamboo shop). All eight required elements are preserved.\
+    \ Small deductions: pacing compresses some transitions (midpoint\u2192complication)\
+    \ and the climax is quietly understated\u2014appropriate to tone but slightly\
+    \ downplayed structurally; tone otherwise remains a quiet, redemptive Japanese\
+    \ aesthetic throughout."
 error: null

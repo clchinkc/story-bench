@@ -12,20 +12,19 @@ final_score: 0.917
 score_breakdown:
   final_score: 0.917
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 640
-      target_range:
-      - 600
-      - 800
     programmatic:
       score: 0.7
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.5
         slop_score: 1.0
         overall: 0.7
+      word_count:
+        actual: 640
+        target_range:
+        - 600
+        - 800
     llm_judge:
       score: 0.984
       weight: 0.5
@@ -39,18 +38,18 @@ llm_results:
   word_count_valid: true
   structural_accuracy_score: 0.92
   tone_score: 1.0
-  evidence: 'All 12 Campbell beats are present and clearly mapped: Ordinary World
-    (pottery teaching), Call (dried spring), Refusal (Maya''s hesitation), Meeting
-    the Mentor (grandmother via dreams/letter/journal), Crossing the Threshold (setting
-    out for the shrine), Tests (climb, storm, blisters), Approach (ruined shrine,
-    searching), Ordeal (night of surrender), Reward (the vessel and insight), Road
-    Back (difficult return, doubt), Resurrection (final acceptance and/or spring revival),
-    Return with Elixir (water and Maya''s transformed self). All 7 required elements
-    are preserved (Maya, pottery, grandmother''s legacy, mountain shrine journey,
-    dried spring problem, theme of surrender, Maya''s transformation). Word count
-    is exactly 640 (within 600–800). Minor deduction in structural_accuracy_score
-    for two small structural weaknesses: the ''Meeting the Mentor'' is indirect (journal/dreams
-    rather than a living mentor figure) and the Tests/Allies/Enemies beat lacks explicit
-    allies or antagonists (tests are present but no named allies/enemies). Tone is
-    a quiet, meditative transformation throughout.'
+  evidence: "All 12 Campbell beats are present and clearly mapped: Ordinary World\
+    \ (pottery teaching), Call (dried spring), Refusal (Maya's hesitation), Meeting\
+    \ the Mentor (grandmother via dreams/letter/journal), Crossing the Threshold (setting\
+    \ out for the shrine), Tests (climb, storm, blisters), Approach (ruined shrine,\
+    \ searching), Ordeal (night of surrender), Reward (the vessel and insight), Road\
+    \ Back (difficult return, doubt), Resurrection (final acceptance and/or spring\
+    \ revival), Return with Elixir (water and Maya's transformed self). All 7 required\
+    \ elements are preserved (Maya, pottery, grandmother's legacy, mountain shrine\
+    \ journey, dried spring problem, theme of surrender, Maya's transformation). Word\
+    \ count is exactly 640 (within 600\u2013800). Minor deduction in structural_accuracy_score\
+    \ for two small structural weaknesses: the 'Meeting the Mentor' is indirect (journal/dreams\
+    \ rather than a living mentor figure) and the Tests/Allies/Enemies beat lacks\
+    \ explicit allies or antagonists (tests are present but no named allies/enemies).\
+    \ Tone is a quiet, meditative transformation throughout."
 error: null

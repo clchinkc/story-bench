@@ -12,20 +12,19 @@ final_score: 0.6928324251633071
 score_breakdown:
   final_score: 0.6928
   components:
-    word_count:
-      score: 0.0001
-      weight: 0.25
-      actual: 572
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.7713
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.0001
         repetition_score: 0.63
         slop_score: 0.9832
         overall: 0.7713
+      word_count:
+        actual: 572
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 1.0
       weight: 0.5
@@ -43,20 +42,20 @@ llm_results:
   bridge_score: 1.0
   continuity_score: 1.0
   overall_score: 0.8
-  evidence: 'STRENGTHS: All four required elements present and well-executed: (1)
-    Marcus introduced as established mentor figure with credibility (''grey at the
-    temples'', owns curiosity shop, knows about Thornwood); (2) Practical wisdom provided
-    (''forest tests intentions, not abilities'', ''Trust what you know'') plus tangible
-    tools (satchel, compass); (3) Elena''s doubt shifts convincingly from ''I can''t
-    do this'' to reluctant acceptance (''Fear hadn''t lessened, but it had shifted'');
-    (4) Librarian skills reframed as asset (''navigate labyrinths of information'',
-    ''see patterns'', ''ask better questions''). All must-not items avoided: Elena
-    remains doubtful/reluctant, Marcus explicitly refuses to accompany her, setting
-    is kitchen/shop (not forest), no magical powers discovered. Character voice consistent—Elena''s
-    internal conflict and practical nature maintained throughout. Bridge between beats
-    seamless: BEFORE shows refusal, GENERATED shows mentor encounter shifting perspective,
-    AFTER shows threshold crossing. Continuity perfect: same map, same satchel, same
-    compass, same emotional arc. DEDUCTION: Word count (572) significantly exceeds
-    350-word maximum by 63%, violating explicit constraint. This is a material structural
-    violation despite excellent narrative quality.'
+  evidence: "STRENGTHS: All four required elements present and well-executed: (1)\
+    \ Marcus introduced as established mentor figure with credibility ('grey at the\
+    \ temples', owns curiosity shop, knows about Thornwood); (2) Practical wisdom\
+    \ provided ('forest tests intentions, not abilities', 'Trust what you know') plus\
+    \ tangible tools (satchel, compass); (3) Elena's doubt shifts convincingly from\
+    \ 'I can't do this' to reluctant acceptance ('Fear hadn't lessened, but it had\
+    \ shifted'); (4) Librarian skills reframed as asset ('navigate labyrinths of information',\
+    \ 'see patterns', 'ask better questions'). All must-not items avoided: Elena remains\
+    \ doubtful/reluctant, Marcus explicitly refuses to accompany her, setting is kitchen/shop\
+    \ (not forest), no magical powers discovered. Character voice consistent\u2014\
+    Elena's internal conflict and practical nature maintained throughout. Bridge between\
+    \ beats seamless: BEFORE shows refusal, GENERATED shows mentor encounter shifting\
+    \ perspective, AFTER shows threshold crossing. Continuity perfect: same map, same\
+    \ satchel, same compass, same emotional arc. DEDUCTION: Word count (572) significantly\
+    \ exceeds 350-word maximum by 63%, violating explicit constraint. This is a material\
+    \ structural violation despite excellent narrative quality."
 error: null

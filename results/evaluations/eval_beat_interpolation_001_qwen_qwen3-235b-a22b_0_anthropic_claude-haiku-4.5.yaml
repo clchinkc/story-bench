@@ -12,20 +12,19 @@ final_score: 0.997
 score_breakdown:
   final_score: 0.997
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 275
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.988
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.98
         slop_score: 1.0
         overall: 0.988
+      word_count:
+        actual: 275
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 1.0
       weight: 0.5
@@ -40,20 +39,20 @@ llm_results:
   character_score: 1.0
   bridge_score: 1.0
   continuity_score: 1.0
-  evidence: 'All four required elements present: (1) Marcus introduced as wise mentor
-    figure with distinctive characterization (sharp angles, weathered leather, silver-streaked
-    hair); (2) Practical wisdom delivered through the magnifying glass demonstration
-    and Dewey Decimal System metaphor, plus tangible tools provided (compass, satchel,
-    supplies); (3) Elena''s doubt shifts to reluctant acceptance—she ''bristled''
-    but ''couldn''t look away,'' ends with ''flicker of something like purpose'' rather
-    than confidence; (4) Librarian skills reframed as valuable through pattern recognition
-    and listening abilities. All must-not violations avoided: Elena remains doubtful
-    (''scoffed''), Marcus explicitly does not accompany her (''parting gift''), Elena
-    is still in village/shop setting (not forest), no magical powers discovered. Character
-    voice consistent—Elena''s skepticism and librarian identity maintained throughout.
-    Bridge seamless: BEFORE ends with her walking out refusing; GENERATED shows her
-    arriving at Marcus''s shop despite her resolve, establishing internal conflict.
-    AFTER references Marcus''s parting words and gifts, confirming mentor relationship
-    established. Setting continuity perfect: village → shop → forest edge progression
-    logical. Word count 275 falls within 200-350 range.'
+  evidence: "All four required elements present: (1) Marcus introduced as wise mentor\
+    \ figure with distinctive characterization (sharp angles, weathered leather, silver-streaked\
+    \ hair); (2) Practical wisdom delivered through the magnifying glass demonstration\
+    \ and Dewey Decimal System metaphor, plus tangible tools provided (compass, satchel,\
+    \ supplies); (3) Elena's doubt shifts to reluctant acceptance\u2014she 'bristled'\
+    \ but 'couldn't look away,' ends with 'flicker of something like purpose' rather\
+    \ than confidence; (4) Librarian skills reframed as valuable through pattern recognition\
+    \ and listening abilities. All must-not violations avoided: Elena remains doubtful\
+    \ ('scoffed'), Marcus explicitly does not accompany her ('parting gift'), Elena\
+    \ is still in village/shop setting (not forest), no magical powers discovered.\
+    \ Character voice consistent\u2014Elena's skepticism and librarian identity maintained\
+    \ throughout. Bridge seamless: BEFORE ends with her walking out refusing; GENERATED\
+    \ shows her arriving at Marcus's shop despite her resolve, establishing internal\
+    \ conflict. AFTER references Marcus's parting words and gifts, confirming mentor\
+    \ relationship established. Setting continuity perfect: village \u2192 shop \u2192\
+    \ forest edge progression logical. Word count 275 falls within 200-350 range."
 error: null

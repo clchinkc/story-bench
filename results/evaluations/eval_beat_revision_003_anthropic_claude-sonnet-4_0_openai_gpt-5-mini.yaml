@@ -12,20 +12,19 @@ final_score: 0.9495
 score_breakdown:
   final_score: 0.9495
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 281
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.898
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.83
         slop_score: 1.0
         overall: 0.898
+      word_count:
+        actual: 281
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 0.95
       weight: 0.5
@@ -42,12 +41,12 @@ llm_results:
   minimal_change_score: 0.6
   word_count_valid: true
   quality_score: 0.9
-  evidence: The model addressed the actual flaw (lack of visible change on Return)
-    by having Sophie articulate a retreat lesson ('learned to sit with discomfort'),
-    demonstrating changed behavior (leaves phone in bag, deep breath, puts phone in
-    airplane mode, declines to handle work until tomorrow), and giving a visible contrast
-    with her old self (mother's surprise, explicit 'old Sophie' comparison, noticing
-    city differently). All four required elements and required phrases are preserved;
-    changes are moderate—not a complete rewrite but more than purely surgical edits—to
-    add the transformation beats and emotional detail.
+  evidence: "The model addressed the actual flaw (lack of visible change on Return)\
+    \ by having Sophie articulate a retreat lesson ('learned to sit with discomfort'),\
+    \ demonstrating changed behavior (leaves phone in bag, deep breath, puts phone\
+    \ in airplane mode, declines to handle work until tomorrow), and giving a visible\
+    \ contrast with her old self (mother's surprise, explicit 'old Sophie' comparison,\
+    \ noticing city differently). All four required elements and required phrases\
+    \ are preserved; changes are moderate\u2014not a complete rewrite but more than\
+    \ purely surgical edits\u2014to add the transformation beats and emotional detail."
 error: null

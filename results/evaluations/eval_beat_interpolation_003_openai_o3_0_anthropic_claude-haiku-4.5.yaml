@@ -12,20 +12,19 @@ final_score: 1.0
 score_breakdown:
   final_score: 1.0
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 351
-      target_range:
-      - 250
-      - 400
     programmatic:
       score: 1.0
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 1.0
         slop_score: 1.0
         overall: 1.0
+      word_count:
+        actual: 351
+        target_range:
+        - 250
+        - 400
     llm_judge:
       score: 1.0
       weight: 0.5
@@ -40,24 +39,24 @@ llm_results:
   character_score: 1.0
   bridge_score: 1.0
   continuity_score: 1.0
-  evidence: 'REQUIRED ELEMENTS (4/4 present): (1) Multiple station areas explored—crew
-    quarters, medical bay, research wing with deliberate progression; (2) Clues discovered
-    systematically—unmade bunks, half-finished chess game, singed lab coat, scrawled
-    warning ''THEY''RE STILL HERE'', patient files showing impossible vitals; (3)
-    Transformed crew encountered mysteriously—shimmer-forms, distortion anomalies,
-    sparking silhouettes, temperature drops, no immediate explanation; (4) Obstacles
-    overcome—sealed quarantine bulkhead requiring biometric spoofing, scanner interference,
-    navigation challenges. BEAT EXECUTION: Perfectly executes Search phase—active
-    exploration, incremental discovery, adaptation (hot-wiring panel), struggle against
-    unknowns, mounting tension without resolution. MUST-NOT VIOLATIONS (0/4): Avoids
-    all prohibited elements—data core not found yet (only referenced as destination),
-    crew doesn''t explain transformation (only cryptic presence), mission continues
-    (not abandoning), Yuki arrives ignorant of dimensional shift (discovers it through
-    evidence). CHARACTER CONSISTENCY: Yuki maintains scientist''s methodical approach
-    (recording data, scanning, filing unknowns), balances fear with mission focus,
-    problem-solves under pressure. BRIDGE QUALITY: Seamless transition from ''Go''
-    (arrival) to ''Search'' (exploration) to ''Find'' (data core located but not yet
-    obtained). CONTINUITY: Setting details preserved (red emergency lighting, zero-g
-    chess, Jupiter viewport context), timeline coherent, physics consistent with established
-    world.'
+  evidence: "REQUIRED ELEMENTS (4/4 present): (1) Multiple station areas explored\u2014\
+    crew quarters, medical bay, research wing with deliberate progression; (2) Clues\
+    \ discovered systematically\u2014unmade bunks, half-finished chess game, singed\
+    \ lab coat, scrawled warning 'THEY'RE STILL HERE', patient files showing impossible\
+    \ vitals; (3) Transformed crew encountered mysteriously\u2014shimmer-forms, distortion\
+    \ anomalies, sparking silhouettes, temperature drops, no immediate explanation;\
+    \ (4) Obstacles overcome\u2014sealed quarantine bulkhead requiring biometric spoofing,\
+    \ scanner interference, navigation challenges. BEAT EXECUTION: Perfectly executes\
+    \ Search phase\u2014active exploration, incremental discovery, adaptation (hot-wiring\
+    \ panel), struggle against unknowns, mounting tension without resolution. MUST-NOT\
+    \ VIOLATIONS (0/4): Avoids all prohibited elements\u2014data core not found yet\
+    \ (only referenced as destination), crew doesn't explain transformation (only\
+    \ cryptic presence), mission continues (not abandoning), Yuki arrives ignorant\
+    \ of dimensional shift (discovers it through evidence). CHARACTER CONSISTENCY:\
+    \ Yuki maintains scientist's methodical approach (recording data, scanning, filing\
+    \ unknowns), balances fear with mission focus, problem-solves under pressure.\
+    \ BRIDGE QUALITY: Seamless transition from 'Go' (arrival) to 'Search' (exploration)\
+    \ to 'Find' (data core located but not yet obtained). CONTINUITY: Setting details\
+    \ preserved (red emergency lighting, zero-g chess, Jupiter viewport context),\
+    \ timeline coherent, physics consistent with established world."
 error: null

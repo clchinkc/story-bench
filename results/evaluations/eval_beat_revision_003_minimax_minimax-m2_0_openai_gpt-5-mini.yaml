@@ -12,20 +12,19 @@ final_score: 0.9437830802739189
 score_breakdown:
   final_score: 0.9438
   components:
-    word_count:
-      score: 0.9991
-      weight: 0.25
-      actual: 195
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.976
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.9991
         repetition_score: 0.96
         slop_score: 1.0
         overall: 0.976
+      word_count:
+        actual: 195
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 0.9
       weight: 0.5
@@ -42,11 +41,11 @@ llm_results:
   minimal_change_score: 0.9
   word_count_valid: false
   quality_score: 0.9
-  evidence: 'The model targeted the correct flaw (lack of demonstrated change on Return)
-    and shows Sophie altering her behavior: she sets the phone face-down, powers it
-    off, and decides to delay work—explicitly invoking her meditation insight (''it
-    can wait''). These are minimal, surgical edits that preserve the original structure,
-    characters, and work-pressure element. Missing: an explicit moment where the mother
-    notices Sophie''s change and the integration is concise rather than deeply developed,
-    so the fix is strong but not fully exhaustive.'
+  evidence: "The model targeted the correct flaw (lack of demonstrated change on Return)\
+    \ and shows Sophie altering her behavior: she sets the phone face-down, powers\
+    \ it off, and decides to delay work\u2014explicitly invoking her meditation insight\
+    \ ('it can wait'). These are minimal, surgical edits that preserve the original\
+    \ structure, characters, and work-pressure element. Missing: an explicit moment\
+    \ where the mother notices Sophie's change and the integration is concise rather\
+    \ than deeply developed, so the fix is strong but not fully exhaustive."
 error: null

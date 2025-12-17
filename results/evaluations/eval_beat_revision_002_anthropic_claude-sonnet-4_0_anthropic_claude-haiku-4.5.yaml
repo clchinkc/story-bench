@@ -12,20 +12,19 @@ final_score: 0.9504999999999999
 score_breakdown:
   final_score: 0.9505
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 271
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.988
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.98
         slop_score: 1.0
         overall: 0.988
+      word_count:
+        actual: 271
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 0.907
       weight: 0.5
@@ -42,25 +41,26 @@ llm_results:
   minimal_change_score: 0.65
   word_count_valid: true
   quality_score: 0.88
-  evidence: 'The model correctly diagnosed the core flaw: the original segment lacked
-    true devastation and had multiple remaining options/support systems. The revision
-    systematically eliminates all escape routes: (1) board betrayal removes institutional
-    support, (2) Denise''s defection removes his closest ally, (3) grant denial removes
-    financial hope, (4) house appeal loss adds personal/family crisis, (5) developer
-    monopoly removes location alternatives. The ''whiff of death'' is present through
-    both metaphorical loss (life''s work, identity as youth program director) and
-    literal threat (family homelessness, children''s welfare). Marcus moves from ''setback''
-    to genuine rock bottom with no visible path forward. All 4 required preserved
-    phrases are present verbatim or near-verbatim: opening line intact, ''Thirty days
-    to vacate the community center'' preserved, Denise''s dialogue preserved, ''He
-    rubbed his temples'' preserved. All 4 story elements maintained: Marcus as protagonist,
-    community center setting, eviction crisis, Denise present. However, the revision
-    is NOT minimally surgical—it''s a moderate-to-substantial rewrite. The original
-    ~120 words of dialogue/reflection were replaced with ~150 words of new content
-    (board meeting, Denise''s departure, house appeal text, final reflection). While
-    the skeleton and key phrases remain, approximately 55-60% of the content is new
-    material rather than surgical edits. The writing quality is strong with no new
-    errors, emotional escalation is clear and earned, and beat execution is professional.
-    The main weakness is the deviation from ''minimal modification'' instruction—this
-    reads as a substantial revision rather than targeted fixes.'
+  evidence: "The model correctly diagnosed the core flaw: the original segment lacked\
+    \ true devastation and had multiple remaining options/support systems. The revision\
+    \ systematically eliminates all escape routes: (1) board betrayal removes institutional\
+    \ support, (2) Denise's defection removes his closest ally, (3) grant denial removes\
+    \ financial hope, (4) house appeal loss adds personal/family crisis, (5) developer\
+    \ monopoly removes location alternatives. The 'whiff of death' is present through\
+    \ both metaphorical loss (life's work, identity as youth program director) and\
+    \ literal threat (family homelessness, children's welfare). Marcus moves from\
+    \ 'setback' to genuine rock bottom with no visible path forward. All 4 required\
+    \ preserved phrases are present verbatim or near-verbatim: opening line intact,\
+    \ 'Thirty days to vacate the community center' preserved, Denise's dialogue preserved,\
+    \ 'He rubbed his temples' preserved. All 4 story elements maintained: Marcus as\
+    \ protagonist, community center setting, eviction crisis, Denise present. However,\
+    \ the revision is NOT minimally surgical\u2014it's a moderate-to-substantial rewrite.\
+    \ The original ~120 words of dialogue/reflection were replaced with ~150 words\
+    \ of new content (board meeting, Denise's departure, house appeal text, final\
+    \ reflection). While the skeleton and key phrases remain, approximately 55-60%\
+    \ of the content is new material rather than surgical edits. The writing quality\
+    \ is strong with no new errors, emotional escalation is clear and earned, and\
+    \ beat execution is professional. The main weakness is the deviation from 'minimal\
+    \ modification' instruction\u2014this reads as a substantial revision rather than\
+    \ targeted fixes."
 error: null

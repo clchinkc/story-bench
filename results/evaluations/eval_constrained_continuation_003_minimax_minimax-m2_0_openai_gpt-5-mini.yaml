@@ -12,20 +12,19 @@ final_score: 0.655
 score_breakdown:
   final_score: 0.655
   components:
-    word_count:
-      score: 0.0
-      weight: 0.25
-      actual: 1351
-      target_range:
-      - 550
-      - 750
     programmatic:
       score: 0.7
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.0
         repetition_score: 0.5
         slop_score: 1.0
         overall: 0.7
+      word_count:
+        actual: 1351
+        target_range:
+        - 550
+        - 750
     llm_judge:
       score: 0.96
       weight: 0.5
@@ -44,6 +43,6 @@ llm_results:
   ending_score: 0.6
   failed_constraints:
   - word_count out of required range (expected 550-750 words, found 1351)
-  - Ending does not clearly show Jin having paid a price — it implies a cost but stops
-    before a tangible sacrifice is made
+  - "Ending does not clearly show Jin having paid a price \u2014 it implies a cost\
+    \ but stops before a tangible sacrifice is made"
 error: null

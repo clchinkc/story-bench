@@ -12,20 +12,19 @@ final_score: 0.9162499999999999
 score_breakdown:
   final_score: 0.9162
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 671
-      target_range:
-      - 550
-      - 750
     programmatic:
       score: 0.7
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.5
         slop_score: 1.0
         overall: 0.7
+      word_count:
+        actual: 671
+        target_range:
+        - 550
+        - 750
     llm_judge:
       score: 0.9825
       weight: 0.5
@@ -40,20 +39,20 @@ llm_results:
   word_count_valid: true
   structural_accuracy_score: 0.95
   tone_score: 0.95
-  evidence: 'All four three-act beats are clearly present: Act 1 Setup establishes
-    Kenji''s corporate loss and Yuki''s wedding invitation (paragraphs 1-2); Act 2A
-    Rising Action shows his arrival in Kyoto, meeting Haruki, and bonding through
-    bamboo craft (paragraphs 3-5); Act 2B Rising Action introduces the business deal
-    temptation and the crisis when Yuki discovers it (paragraphs 6-7); Act 3 Resolution
-    shows his rejection of ambition, apology, the wedding scene, and his new life
-    with the bamboo shop (paragraphs 8-9). All 8 core elements preserved: protagonist
-    Kenji, lost corporate career, estranged daughter Yuki, Kyoto village wedding,
-    Haruki the craftsman, business deal temptation, theme of people over ambition,
-    bamboo craft shop ending. Minor deduction from structural_accuracy (0.05) because
-    the three-act structure could be slightly more explicitly demarcated between Act
-    2A and 2B—the midpoint transition is subtle rather than sharp. Tone is consistently
-    maintained throughout with quiet, contemplative prose, Japanese aesthetic details
-    (lanterns, bamboo, tea ceremony, silk), and redemptive arc. The conversion successfully
-    transforms 15 Save the Cat beats into the cleaner three-act framework while preserving
-    narrative integrity and thematic resonance.'
+  evidence: "All four three-act beats are clearly present: Act 1 Setup establishes\
+    \ Kenji's corporate loss and Yuki's wedding invitation (paragraphs 1-2); Act 2A\
+    \ Rising Action shows his arrival in Kyoto, meeting Haruki, and bonding through\
+    \ bamboo craft (paragraphs 3-5); Act 2B Rising Action introduces the business\
+    \ deal temptation and the crisis when Yuki discovers it (paragraphs 6-7); Act\
+    \ 3 Resolution shows his rejection of ambition, apology, the wedding scene, and\
+    \ his new life with the bamboo shop (paragraphs 8-9). All 8 core elements preserved:\
+    \ protagonist Kenji, lost corporate career, estranged daughter Yuki, Kyoto village\
+    \ wedding, Haruki the craftsman, business deal temptation, theme of people over\
+    \ ambition, bamboo craft shop ending. Minor deduction from structural_accuracy\
+    \ (0.05) because the three-act structure could be slightly more explicitly demarcated\
+    \ between Act 2A and 2B\u2014the midpoint transition is subtle rather than sharp.\
+    \ Tone is consistently maintained throughout with quiet, contemplative prose,\
+    \ Japanese aesthetic details (lanterns, bamboo, tea ceremony, silk), and redemptive\
+    \ arc. The conversion successfully transforms 15 Save the Cat beats into the cleaner\
+    \ three-act framework while preserving narrative integrity and thematic resonance."
 error: null

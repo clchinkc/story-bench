@@ -12,20 +12,19 @@ final_score: 0.662709129577959
 score_breakdown:
   final_score: 0.6627
   components:
-    word_count:
-      score: 0.1825
-      weight: 0.25
-      actual: 534
-      target_range:
-      - 700
-      - 1000
     programmatic:
       score: 0.79
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.1825
         repetition_score: 0.65
         slop_score: 1.0
         overall: 0.79
+      word_count:
+        actual: 534
+        target_range:
+        - 700
+        - 1000
     llm_judge:
       score: 0.8392
       weight: 0.5
@@ -40,13 +39,13 @@ llm_results:
   context_score: 1.0
   coherence_score: 0.8
   failed_items:
-  - 'Beat 3: Team friction or trust issues do not clearly surface as a conflict between
-    crew members—there is tension but no explicit friction or trust breakdown.'
+  - "Beat 3: Team friction or trust issues do not clearly surface as a conflict between\
+    \ crew members\u2014there is tension but no explicit friction or trust breakdown."
   - 'Beat 3: No crew member is shown compromised or clearly in immediate danger; the
     requirement that a crew member be compromised/dangered is unmet.'
-  - 'Cross-beat (Chekhov''s Gun): A specific detail established in Fun and Games (e.g.,
-    a security measure, exit route, or crew skill) is not paid off as a critical element
-    during Bad Guys Close In—the setup-to-payoff linkage is weak.'
-  - 'Word count: Generated piece is 534 words, which is outside the required 700–1000
-    word range.'
+  - "Cross-beat (Chekhov's Gun): A specific detail established in Fun and Games (e.g.,\
+    \ a security measure, exit route, or crew skill) is not paid off as a critical\
+    \ element during Bad Guys Close In\u2014the setup-to-payoff linkage is weak."
+  - "Word count: Generated piece is 534 words, which is outside the required 700\u2013\
+    1000 word range."
 error: null

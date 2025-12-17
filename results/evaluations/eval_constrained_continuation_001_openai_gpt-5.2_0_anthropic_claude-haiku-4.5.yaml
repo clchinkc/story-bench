@@ -12,20 +12,19 @@ final_score: 0.6680692648059905
 score_breakdown:
   final_score: 0.6681
   components:
-    word_count:
-      score: 0.0
-      weight: 0.25
-      actual: 1421
-      target_range:
-      - 500
-      - 700
     programmatic:
       score: 0.6973
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.0
         repetition_score: 0.5
         slop_score: 0.9932
         overall: 0.6973
+      word_count:
+        actual: 1421
+        target_range:
+        - 500
+        - 700
     llm_judge:
       score: 0.9875
       weight: 0.5
@@ -56,15 +55,15 @@ llm_results:
         emerges transformed. The three dead Scorpions and missing map create escalating
         complications.
     must_include_elements:
-      1_choice_between_escape_and_helping: PRESENT - Zara explicitly considers abandoning
-        Tomás at the round door ('she could leave him, take the map, vanish') but
-        chooses to help him instead, hauling him through.
-      2_trap_requiring_thief_skills: PRESENT - The pressure-plate tunnel requires
-        Zara's lockpicking and trap-reading expertise. She uses a copper bead to test,
-        reads sand patterns, and guides Tomás safely across.
-      3_revelation_of_tomás_motivation: 'PRESENT - Tomás confesses his true goal:
-        restoring his reputation with the Sand Kings'' ledger, not genuine concern
-        for Zara''s mother. This lands ''like a stone in her gut.'''
+      1_choice_between_escape_and_helping: "PRESENT - Zara explicitly considers abandoning\
+        \ Tom\xE1s at the round door ('she could leave him, take the map, vanish')\
+        \ but chooses to help him instead, hauling him through."
+      2_trap_requiring_thief_skills: "PRESENT - The pressure-plate tunnel requires\
+        \ Zara's lockpicking and trap-reading expertise. She uses a copper bead to\
+        \ test, reads sand patterns, and guides Tom\xE1s safely across."
+      "3_revelation_of_tom\xE1s_motivation": "PRESENT - Tom\xE1s confesses his true\
+        \ goal: restoring his reputation with the Sand Kings' ledger, not genuine\
+        \ concern for Zara's mother. This lands 'like a stone in her gut.'"
       4_zara_confronts_fear_of_failure: 'PRESENT - Internal monologue: ''If Zara failed,
         there would be no second try... Failure wasn''t a blade; it was time running
         out.'' This is existential, not merely physical danger.'
@@ -78,7 +77,7 @@ llm_results:
       1_zara_finding_cure: AVOIDED - No cure is found or discovered.
       2_romantic_subplot: AVOIDED - Relationship remains transactional and morally
         fraught, never romantic.
-      3_tomás_death: AVOIDED - Tomás survives and surfaces with Zara.
+      "3_tom\xE1s_death": "AVOIDED - Tom\xE1s survives and surfaces with Zara."
       4_magic_or_supernatural_abilities: AVOIDED - All of Zara's abilities are mundane
         thief skills (lockpicking, trap-reading, observation).
     tone_assessment:
@@ -113,10 +112,11 @@ llm_results:
       this was written without strict adherence to the constraint, then submitted
       as-is.
   final_score: 0.45
-  score_justification: 'Despite exceptional quality across all qualitative measures
-    (beats: 1.0, must-include: 1.0, must-not: 1.0, tone: 0.95, ending: 0.95), the
-    hard constraint violation (word count 1421 vs. max 700) is disqualifying. Per
-    evaluation rubric, constraint violations are non-negotiable. Score reflects: (0.95
-    avg quality × 0.5 constraint penalty) = 0.475, rounded to 0.45. This is a ''Weak''
-    rating due to constraint failure, despite ''Exceptional'' quality content.'
+  score_justification: "Despite exceptional quality across all qualitative measures\
+    \ (beats: 1.0, must-include: 1.0, must-not: 1.0, tone: 0.95, ending: 0.95), the\
+    \ hard constraint violation (word count 1421 vs. max 700) is disqualifying. Per\
+    \ evaluation rubric, constraint violations are non-negotiable. Score reflects:\
+    \ (0.95 avg quality \xD7 0.5 constraint penalty) = 0.475, rounded to 0.45. This\
+    \ is a 'Weak' rating due to constraint failure, despite 'Exceptional' quality\
+    \ content."
 error: null

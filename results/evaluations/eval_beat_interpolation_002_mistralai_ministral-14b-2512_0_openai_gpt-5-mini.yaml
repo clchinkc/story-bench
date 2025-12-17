@@ -12,20 +12,19 @@ final_score: 0.9715
 score_breakdown:
   final_score: 0.9715
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 389
-      target_range:
-      - 250
-      - 400
     programmatic:
       score: 0.886
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.81
         slop_score: 1.0
         overall: 0.886
+      word_count:
+        actual: 389
+        target_range:
+        - 250
+        - 400
     llm_judge:
       score: 1.0
       weight: 0.5
@@ -40,11 +39,11 @@ llm_results:
   character_score: 1.0
   bridge_score: 1.0
   continuity_score: 1.0
-  evidence: 'All four required elements are present: Sarah explicitly considers recanting;
-    she weighs going to Internal Affairs/official channels; her internal conflict
-    between duty and saving Amy is clear; and the Marcus conversation tips her toward
-    going off-grid. The passage functions as a proper Debate beat—options are weighed,
-    advice sought, and a commitment forms by the end—without violating any must-not
-    items. Character voice and setting continuity match the provided beats and surrounding
-    scenes.'
+  evidence: "All four required elements are present: Sarah explicitly considers recanting;\
+    \ she weighs going to Internal Affairs/official channels; her internal conflict\
+    \ between duty and saving Amy is clear; and the Marcus conversation tips her toward\
+    \ going off-grid. The passage functions as a proper Debate beat\u2014options are\
+    \ weighed, advice sought, and a commitment forms by the end\u2014without violating\
+    \ any must-not items. Character voice and setting continuity match the provided\
+    \ beats and surrounding scenes."
 error: null

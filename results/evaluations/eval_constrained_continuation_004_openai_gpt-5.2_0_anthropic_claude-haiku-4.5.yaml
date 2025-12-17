@@ -12,20 +12,19 @@ final_score: 0.671250435163349
 score_breakdown:
   final_score: 0.6713
   components:
-    word_count:
-      score: 0.0
-      weight: 0.25
-      actual: 1009
-      target_range:
-      - 500
-      - 700
     programmatic:
       score: 0.7
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.0
         repetition_score: 0.5
         slop_score: 1.0
         overall: 0.7
+      word_count:
+        actual: 1009
+        target_range:
+        - 500
+        - 700
     llm_judge:
       score: 0.9925
       weight: 0.5
@@ -46,41 +45,43 @@ llm_results:
   ending_score: 1.0
   overall_score: 0.82
   analysis:
-    beats_analysis: Both required beats are clearly present and well-executed. First
-      Plot Point occurs when Eleanor declares 'Blackwood & Sons will continue operations'
-      and commits to publishing the serial—a definitive point of no return. Act 2
-      Opening begins immediately after with Eleanor's decision to 'print' and her
-      crossing into the composing room to set the first instalment, establishing the
-      new world of consequences and rising action.
-    must_include_analysis: 'All 6 elements successfully included: (1) Eleanor''s decision
-      to publish is explicit and central; (2) Central conflict (profit vs. ethics/danger)
-      is thoroughly established through Thomas''s warnings and Eleanor''s internal
-      struggle; (3) Eleanor defies Victorian expectations throughout—entering the
-      shop ungloved, commanding men, making business decisions; (4) Thomas Chen is
-      a fully realized ally with personal stakes (family''s livelihood, his own position);
-      (5) Danger is hinted at through the manuscript''s connection to Whitechapel
-      murders and Thomas''s warnings about police anger and neighborhood backlash;
-      (6) Eleanor crosses an irreversible threshold—the final image of ''letters fall
-      into place—cold, leaden, irreversible'' and ''the threshold close behind her
-      with the soft finality of a door in a tomb'' emphasizes the point of no return.'
-    must_not_analysis: 'All 4 forbidden elements successfully avoided: (1) Jack the
-      Ripper never appears as a character; (2) No graphic violence or murder descriptions—the
-      manuscript is referenced but never detailed; (3) No romantic subplot between
-      Eleanor and Thomas—their relationship remains professional and respectful, with
-      Thomas''s pride ''disciplined into obedience''; (4) No easy solution—the financial
-      crisis remains acute and the path forward is dangerous and uncertain.'
-    tone_analysis: Gothic tension and Victorian atmosphere are masterfully maintained
-      throughout. Language choices ('murder of crows,' 'paper warming against her
-      ribs like a guilty secret,' 'the threshold close behind her with the soft finality
-      of a door in a tomb') create sustained dread. Feminist undertones are strong
-      but not heavy-handed—Eleanor's agency is demonstrated through action rather
-      than declaration. Minor deduction only for occasional moments where contemporary
-      phrasing slightly softens the period atmosphere.
-    ending_analysis: Perfect execution. Eleanor is fully committed to the dangerous
-      path, Act 2 is clearly begun with the presses running and consequences set in
-      motion. The final image is powerful and definitive—she has crossed into a new
-      world from which there is no retreat. The tone shifts from deliberation to action,
-      and the story momentum is clearly established for complications ahead.
+    beats_analysis: "Both required beats are clearly present and well-executed. First\
+      \ Plot Point occurs when Eleanor declares 'Blackwood & Sons will continue operations'\
+      \ and commits to publishing the serial\u2014a definitive point of no return.\
+      \ Act 2 Opening begins immediately after with Eleanor's decision to 'print'\
+      \ and her crossing into the composing room to set the first instalment, establishing\
+      \ the new world of consequences and rising action."
+    must_include_analysis: "All 6 elements successfully included: (1) Eleanor's decision\
+      \ to publish is explicit and central; (2) Central conflict (profit vs. ethics/danger)\
+      \ is thoroughly established through Thomas's warnings and Eleanor's internal\
+      \ struggle; (3) Eleanor defies Victorian expectations throughout\u2014entering\
+      \ the shop ungloved, commanding men, making business decisions; (4) Thomas Chen\
+      \ is a fully realized ally with personal stakes (family's livelihood, his own\
+      \ position); (5) Danger is hinted at through the manuscript's connection to\
+      \ Whitechapel murders and Thomas's warnings about police anger and neighborhood\
+      \ backlash; (6) Eleanor crosses an irreversible threshold\u2014the final image\
+      \ of 'letters fall into place\u2014cold, leaden, irreversible' and 'the threshold\
+      \ close behind her with the soft finality of a door in a tomb' emphasizes the\
+      \ point of no return."
+    must_not_analysis: "All 4 forbidden elements successfully avoided: (1) Jack the\
+      \ Ripper never appears as a character; (2) No graphic violence or murder descriptions\u2014\
+      the manuscript is referenced but never detailed; (3) No romantic subplot between\
+      \ Eleanor and Thomas\u2014their relationship remains professional and respectful,\
+      \ with Thomas's pride 'disciplined into obedience'; (4) No easy solution\u2014\
+      the financial crisis remains acute and the path forward is dangerous and uncertain."
+    tone_analysis: "Gothic tension and Victorian atmosphere are masterfully maintained\
+      \ throughout. Language choices ('murder of crows,' 'paper warming against her\
+      \ ribs like a guilty secret,' 'the threshold close behind her with the soft\
+      \ finality of a door in a tomb') create sustained dread. Feminist undertones\
+      \ are strong but not heavy-handed\u2014Eleanor's agency is demonstrated through\
+      \ action rather than declaration. Minor deduction only for occasional moments\
+      \ where contemporary phrasing slightly softens the period atmosphere."
+    ending_analysis: "Perfect execution. Eleanor is fully committed to the dangerous\
+      \ path, Act 2 is clearly begun with the presses running and consequences set\
+      \ in motion. The final image is powerful and definitive\u2014she has crossed\
+      \ into a new world from which there is no retreat. The tone shifts from deliberation\
+      \ to action, and the story momentum is clearly established for complications\
+      \ ahead."
     failed_constraints:
     - 'Word count exceeds maximum: 1009 words vs. 700-word limit (309 words over,
       44% excess)'

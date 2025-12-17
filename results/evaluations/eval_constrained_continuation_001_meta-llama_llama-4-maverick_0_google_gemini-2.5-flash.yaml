@@ -12,20 +12,19 @@ final_score: 0.8022143053664704
 score_breakdown:
   final_score: 0.8022
   components:
-    word_count:
-      score: 0.9912
-      weight: 0.25
-      actual: 492
-      target_range:
-      - 500
-      - 700
     programmatic:
       score: 0.7197
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.9912
         repetition_score: 0.56
         slop_score: 0.9593
         overall: 0.7197
+      word_count:
+        actual: 492
+        target_range:
+        - 500
+        - 700
     llm_judge:
       score: 0.749
       weight: 0.5
@@ -44,7 +43,7 @@ llm_results:
   ending_score: 0.8
   failed_constraints:
   - word_count
-  - A moment where Zara must choose between escaping safely and helping Tomás
+  - "A moment where Zara must choose between escaping safely and helping Tom\xE1s"
   - A trap or test that requires Zara to use her thief skills
   - Zara confronting her fear of failure (not just physical danger)
   - A symbolic death/rebirth moment in the Ordeal

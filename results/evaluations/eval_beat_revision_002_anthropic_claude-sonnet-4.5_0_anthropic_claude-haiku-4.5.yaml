@@ -12,20 +12,19 @@ final_score: 0.963
 score_breakdown:
   final_score: 0.963
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 331
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.952
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.92
         slop_score: 1.0
         overall: 0.952
+      word_count:
+        actual: 331
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 0.95
       weight: 0.5
@@ -42,23 +41,24 @@ llm_results:
   minimal_change_score: 0.65
   word_count_valid: true
   quality_score: 0.95
-  evidence: 'The model correctly diagnosed the actual flaw: Marcus had too many options
-    and support systems intact, preventing a true ''All Is Lost'' beat. The revision
-    systematically eliminates all escape routes: fundraiser failed (half the goal),
-    grant denied, board dissolved, Denise leaves for another job, and wife files for
-    divorce. The ''whiff of death'' is multi-layered—loss of identity (15 years of
-    work), loss of support system (Denise, wife), and metaphorical death of his life''s
-    purpose. DeShawn''s arrival crystallizes the hopelessness: Marcus has no answers
-    for the kids he''s failed. All four required phrases preserved: ''Marcus stared
-    at the eviction notice in his hands'' (exact), ''Thirty days to vacate the community
-    center'' (exact), ''"There has to be something we can do," said Denise'' (exact),
-    ''He rubbed his temples'' (exact). Denise remains in scene (preserved). Eviction
-    notice and community center setting unchanged (preserved). Changes were not minimal—approximately
-    50% of original text was replaced with new material (Denise''s job offer, divorce
-    papers, DeShawn scene, internal monologue). However, the structural skeleton and
-    key dialogue anchors remained, making this a moderate surgical revision rather
-    than a complete rewrite. Writing quality is professional with strong emotional
-    resonance, no grammatical errors, and effective use of sensory details (''hands
-    went numb,'' ''voices echo,'' ''nothing came out''). The beat now fully satisfies
-    Save the Cat requirements for All Is Lost.'
+  evidence: "The model correctly diagnosed the actual flaw: Marcus had too many options\
+    \ and support systems intact, preventing a true 'All Is Lost' beat. The revision\
+    \ systematically eliminates all escape routes: fundraiser failed (half the goal),\
+    \ grant denied, board dissolved, Denise leaves for another job, and wife files\
+    \ for divorce. The 'whiff of death' is multi-layered\u2014loss of identity (15\
+    \ years of work), loss of support system (Denise, wife), and metaphorical death\
+    \ of his life's purpose. DeShawn's arrival crystallizes the hopelessness: Marcus\
+    \ has no answers for the kids he's failed. All four required phrases preserved:\
+    \ 'Marcus stared at the eviction notice in his hands' (exact), 'Thirty days to\
+    \ vacate the community center' (exact), '\"There has to be something we can do,\"\
+    \ said Denise' (exact), 'He rubbed his temples' (exact). Denise remains in scene\
+    \ (preserved). Eviction notice and community center setting unchanged (preserved).\
+    \ Changes were not minimal\u2014approximately 50% of original text was replaced\
+    \ with new material (Denise's job offer, divorce papers, DeShawn scene, internal\
+    \ monologue). However, the structural skeleton and key dialogue anchors remained,\
+    \ making this a moderate surgical revision rather than a complete rewrite. Writing\
+    \ quality is professional with strong emotional resonance, no grammatical errors,\
+    \ and effective use of sensory details ('hands went numb,' 'voices echo,' 'nothing\
+    \ came out'). The beat now fully satisfies Save the Cat requirements for All Is\
+    \ Lost."
 error: null

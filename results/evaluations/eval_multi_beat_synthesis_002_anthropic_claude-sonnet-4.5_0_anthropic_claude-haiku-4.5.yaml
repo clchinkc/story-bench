@@ -12,20 +12,19 @@ final_score: 0.9032499999999999
 score_breakdown:
   final_score: 0.9032
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 882
-      target_range:
-      - 700
-      - 1000
     programmatic:
       score: 0.7
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.5
         slop_score: 1.0
         overall: 0.7
+      word_count:
+        actual: 882
+        target_range:
+        - 700
+        - 1000
     llm_judge:
       score: 0.9565
       weight: 0.5
@@ -118,8 +117,8 @@ llm_results:
     narrative_coherence:
       beat_flow: Smooth progression with clear cause-and-effect
       pacing: Well-balanced between action, dialogue, and internal reflection
-      foreshadowing: Military maps → patrol schedule detail; German language → final
-        distraction
+      foreshadowing: "Military maps \u2192 patrol schedule detail; German language\
+        \ \u2192 final distraction"
       character_consistency: Amara's choices align with her established skills and
         values
       minor_issue: The transition from Beat 2 to Beat 3 could include more explicit

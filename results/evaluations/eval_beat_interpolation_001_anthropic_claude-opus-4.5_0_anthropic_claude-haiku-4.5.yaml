@@ -12,20 +12,19 @@ final_score: 0.9895
 score_breakdown:
   final_score: 0.9895
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 299
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.958
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.93
         slop_score: 1.0
         overall: 0.958
+      word_count:
+        actual: 299
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 1.0
       weight: 0.5
@@ -40,19 +39,19 @@ llm_results:
   character_score: 1.0
   bridge_score: 1.0
   continuity_score: 1.0
-  evidence: 'All four required elements present and well-executed: (1) Marcus introduced
-    as mentor character with clear backstory and wisdom; (2) Practical wisdom delivered
-    (''pattern recognition,'' ''finding connections'') and tangible tools provided
-    (satchel, compass); (3) Elena''s doubt shifts from absolute refusal (''I can''t
-    do this'') to reluctant acceptance (''doubt lighter than it had been''); (4) Librarian
-    skills explicitly reframed as valuable (''It''s pattern recognition. It''s finding
-    connections others miss''). All must-not violations avoided: Elena remains doubtful
-    and hesitant, Marcus explicitly does not accompany her, setting remains in village/shop
-    (not forest), no magical powers discovered. Character voice consistent throughout—Elena''s
-    skepticism and Marcus''s weathered pragmatism ring true. Bridge between beats
-    seamless: BEFORE ends with Elena''s refusal, GENERATED shows her seeking Marcus
-    and beginning to accept the call, AFTER shows her at forest threshold ready to
-    cross. Continuity perfect: satchel and compass from Marcus appear in AFTER beat,
-    mentor''s advice echoes in Elena''s mind, location progression logical (village
-    → shop → forest edge).'
+  evidence: "All four required elements present and well-executed: (1) Marcus introduced\
+    \ as mentor character with clear backstory and wisdom; (2) Practical wisdom delivered\
+    \ ('pattern recognition,' 'finding connections') and tangible tools provided (satchel,\
+    \ compass); (3) Elena's doubt shifts from absolute refusal ('I can't do this')\
+    \ to reluctant acceptance ('doubt lighter than it had been'); (4) Librarian skills\
+    \ explicitly reframed as valuable ('It's pattern recognition. It's finding connections\
+    \ others miss'). All must-not violations avoided: Elena remains doubtful and hesitant,\
+    \ Marcus explicitly does not accompany her, setting remains in village/shop (not\
+    \ forest), no magical powers discovered. Character voice consistent throughout\u2014\
+    Elena's skepticism and Marcus's weathered pragmatism ring true. Bridge between\
+    \ beats seamless: BEFORE ends with Elena's refusal, GENERATED shows her seeking\
+    \ Marcus and beginning to accept the call, AFTER shows her at forest threshold\
+    \ ready to cross. Continuity perfect: satchel and compass from Marcus appear in\
+    \ AFTER beat, mentor's advice echoes in Elena's mind, location progression logical\
+    \ (village \u2192 shop \u2192 forest edge)."
 error: null

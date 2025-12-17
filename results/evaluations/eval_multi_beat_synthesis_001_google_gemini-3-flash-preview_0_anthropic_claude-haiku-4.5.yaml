@@ -1,0 +1,154 @@
+evaluation_id: 0eeba244
+task_id: multi_beat_synthesis_001
+generation_id: multi_beat_synthesis_001_google/gemini-3-flash-preview_0
+task_type: multi_beat_synthesis
+model: google/gemini-3-flash-preview
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.05665
+timestamp: '2025-12-18T23:38:31.833110'
+success: true
+final_score: 0.8836678132894027
+score_breakdown:
+  final_score: 0.8837
+  components:
+    programmatic:
+      score: 0.8108
+      weight: 0.5
+      breakdown:
+        word_count_score: 0.9702
+        repetition_score: 0.5
+        slop_score: 0.991
+        overall: 0.8108
+      word_count:
+        actual: 1059
+        target_range:
+        - 700
+        - 1000
+    llm_judge:
+      score: 0.9565
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 14
+  beat_reqs_total: 15
+  beat_requirements_score: 0.93
+  cross_beat_satisfied: 4
+  cross_beat_total: 4
+  cross_beat_score: 1.0
+  word_count_valid: false
+  context_score: 0.95
+  coherence_score: 0.92
+  overall_score: 0.93
+  failed_items:
+  - Word count exceeds maximum (1059 vs 1000 limit) - minor technical violation
+  detailed_breakdown:
+    beat_1_tests_allies_enemies:
+      score: 0.95
+      satisfied:
+      - Kael introduced as distrustful Resonant ally - 'You look like a ghost, Reyes'
+      - Test of ability under pressure - Dante uses white charcoal to reveal Silas's
+        betrayal
+      - Enemy revelation - Silas revealed as traitor handing key to shadow figure
+      - Dante proves himself - Kael's static dies, replaced by 'grim, respectful silence'
+      - Addiction/recovery referenced - track marks visible, 'three years ago' established,
+        Dante's clean status questioned
+      notes: All five requirements fully satisfied with strong character work and
+        world-building
+    beat_2_approach_inmost_cave:
+      score: 0.95
+      satisfied:
+      - Planning scene - Dante and Kael map descent in sub-basement, strategic preparation
+      - Guilt recognition as obstacle - Kael warns about Siphon exploiting 'what-ifs'
+        and emotional anchors
+      - Preparation scene - tools laid out (charcoal, silver paint, Elena's photo),
+        ritualistic hand-coating
+      - Moment of doubt/fear - 'paralyzing fear gripped him,' vacuum of emotion triggers
+        relapse fear
+      - Symbolic threshold - rusted iron door, crossing into 'the center of his own
+        wreckage'
+      notes: Excellent escalation and psychological depth. Threshold is both physical
+        and emotional.
+    beat_3_the_ordeal:
+      score: 0.9
+      satisfied:
+      - Direct confrontation - Siphon appears as 'towering, shifting mass of stolen
+        hues'
+      - Symbolic death - Dante transported to Elena's death scene, black sludge rising,
+        vision going gray
+      - All seems lost - Kael screaming, Dante's spirit dissolving, 'irresistible
+        siren song' of surrender
+      - Transformation through acceptance - Dante declares 'I am a thief, a liar,
+        and a failure' and accepts it
+      - Victory through understanding - white charcoal grounds Siphon to 'reality
+        of Dante's absolute truth,' monster cannot digest accepted brokenness
+      notes: 'Slight deduction: victory mechanism is somewhat abstract (how does acceptance
+        physically defeat the Siphon?), but thematically powerful and consistent with
+        noir-fantasy tone'
+    chekhov_gun:
+      score: 1.0
+      satisfied: true
+      details: White charcoal introduced in Beat 1 as tool to reveal truth, becomes
+        essential in Beat 3 as the weapon that defeats Siphon by grounding it to reality.
+        Perfect payoff.
+    character_arc_progression:
+      score: 1.0
+      satisfied: true
+      beat_1: Guilt mentioned - track marks, sister's death referenced implicitly
+      beat_2: Guilt recognized as tactical weakness - Kael warns it will be weaponized
+        against him
+      beat_3: Guilt transformed - Dante accepts it as foundation rather than cage,
+        defeats monster through acceptance
+    rising_stakes:
+      score: 1.0
+      satisfied: true
+      progression: 'Beat 1: Distrust, revelation of traitor (community level) → Beat
+        2: Personal fear of relapse, approaching killer''s lair (psychological + physical)
+        → Beat 3: Symbolic death, all seems lost, existential threat (life/death +
+        spiritual)'
+    ally_continuity:
+      score: 1.0
+      satisfied: true
+      beat_1: Kael introduced, gains respect for Dante
+      beat_2: Kael present, planning together, warns about Siphon's tactics
+      beat_3: Kael present in confrontation, her kinetic energy being drained, stakes
+        tied to her survival
+    context_maintenance:
+      protagonist: Dante Reyes fully realized - recovering addict, guilt about Elena,
+        emotional residue vision ability
+      setting: Buckingham Hotel as nexus maintained throughout, sub-basement descent,
+        boiler room climax
+      tone: Noir-tinged urban fantasy perfectly sustained - melancholic language,
+        gritty details, determined redemption arc
+      hidden_world: Resonants and their abilities well-integrated (Vibrationist Kael,
+        Clarification infusion, Hollow pocket dimension)
+    narrative_coherence:
+      flow: Excellent progression from introduction to ally to planning to confrontation
+      pacing: Well-balanced across three beats despite word count constraint
+      thematic_unity: Guilt as both obstacle and solution creates elegant narrative
+        symmetry
+      minor_issue: Transition from Beat 2 to Beat 3 is abrupt (no explicit 'crossing'
+        moment shown), though thematically justified
+  strengths:
+  - Masterful integration of Campbell's monomyth stages with noir-fantasy tone
+  - Dante's character arc is psychologically complex and earned
+  - White charcoal serves as perfect Chekhov's Gun - introduced casually, becomes
+    thematic resolution
+  - Guilt transformation is the true victory, not physical defeat - sophisticated
+    thematic work
+  - Kael is a compelling ally with agency and skepticism
+  - Sensory language is vivid and emotionally resonant throughout
+  - All cross-beat constraints perfectly satisfied
+  weaknesses:
+  - Word count exceeds limit by 59 words (minor technical issue)
+  - Siphon's defeat mechanism could be more explicitly shown (how does acceptance
+    physically ground the monster?)
+  - Transition between Beat 2 and Beat 3 lacks explicit threshold-crossing action
+  - Elena's presence is strong but could have one more direct moment in Beat 2 to
+    deepen the obstacle
+  calibration_notes: This is exceptional work that fully satisfies the theoretical
+    framework while maintaining strong narrative quality. The only technical failure
+    is word count overage. The story demonstrates sophisticated understanding of Campbell's
+    monomyth and executes a redemption arc with genuine emotional weight. The thematic
+    victory (acceptance over strength) is particularly well-executed for the noir-fantasy
+    genre.
+error: null

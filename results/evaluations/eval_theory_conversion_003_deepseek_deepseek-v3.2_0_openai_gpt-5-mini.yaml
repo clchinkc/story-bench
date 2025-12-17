@@ -12,20 +12,19 @@ final_score: 0.9580517791859791
 score_breakdown:
   final_score: 0.9581
   components:
-    word_count:
-      score: 0.9862
-      weight: 0.25
-      actual: 540
-      target_range:
-      - 550
-      - 750
     programmatic:
       score: 0.916
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.9862
         repetition_score: 0.86
         slop_score: 1.0
         overall: 0.916
+      word_count:
+        actual: 540
+        target_range:
+        - 550
+        - 750
     llm_judge:
       score: 0.965
       weight: 0.5
@@ -39,16 +38,17 @@ llm_results:
   word_count_valid: false
   structural_accuracy_score: 0.9
   tone_score: 0.9
-  evidence: 'All four target acts/beats are present: Act 1 (setup, inciting letter,
-    first plot point = Kenji boards the train), Act 2A (rising action: village life,
-    meeting Haruki, hope blooming), Act 2B (complications: rival offer, Yuki''s rejection,
-    Kenji''s decision), Act 3 (emotional climax at/after the wedding, denouement with
-    bamboo shop). All 8 required elements are preserved exactly. Deductions: structural_accuracy
-    reduced slightly because the midpoint reversal could be framed more sharply (the
-    timing of the rival offer vs. the emotional midpoint is a touch ambiguous), and
-    there is no explicit, strong single turning-point label that clearly divides 2A/2B
-    for a reader attuned to plot mechanics. Tone score reduced slightly for a minor
-    lapse ("kimino" typo for "kimono") and because a couple of lines lean toward exposition
-    rather than the strictly restrained, imagistic Japanese aesthetic requested. Word
-    count is invalid (540 words vs. required 550–750).'
+  evidence: "All four target acts/beats are present: Act 1 (setup, inciting letter,\
+    \ first plot point = Kenji boards the train), Act 2A (rising action: village life,\
+    \ meeting Haruki, hope blooming), Act 2B (complications: rival offer, Yuki's rejection,\
+    \ Kenji's decision), Act 3 (emotional climax at/after the wedding, denouement\
+    \ with bamboo shop). All 8 required elements are preserved exactly. Deductions:\
+    \ structural_accuracy reduced slightly because the midpoint reversal could be\
+    \ framed more sharply (the timing of the rival offer vs. the emotional midpoint\
+    \ is a touch ambiguous), and there is no explicit, strong single turning-point\
+    \ label that clearly divides 2A/2B for a reader attuned to plot mechanics. Tone\
+    \ score reduced slightly for a minor lapse (\"kimino\" typo for \"kimono\") and\
+    \ because a couple of lines lean toward exposition rather than the strictly restrained,\
+    \ imagistic Japanese aesthetic requested. Word count is invalid (540 words vs.\
+    \ required 550\u2013750)."
 error: null

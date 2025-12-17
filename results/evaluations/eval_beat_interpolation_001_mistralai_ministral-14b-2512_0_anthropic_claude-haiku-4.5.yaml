@@ -12,20 +12,19 @@ final_score: 0.687730196517267
 score_breakdown:
   final_score: 0.6877
   components:
-    word_count:
-      score: 0.0149
-      weight: 0.25
-      actual: 495
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.736
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.0149
         repetition_score: 0.56
         slop_score: 1.0
         overall: 0.736
+      word_count:
+        actual: 495
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 1.0
       weight: 0.5
@@ -59,12 +58,13 @@ llm_results:
     DEDUCTION: Word count (495) exceeds requirement (200-350) by 41%, which is significant
     but does not affect narrative quality or beat execution. This is a technical violation
     only.'
-  overall_assessment: Exceptional execution of the Meeting the Mentor beat. The generated
-    content masterfully introduces Marcus as a credible, mysterious mentor figure
-    who provides both practical tools and psychological reframing. Elena's character
-    arc within this beat is particularly strong—her doubt doesn't vanish but transforms
-    into cautious willingness. The dialogue feels natural and reveals character through
-    interaction. The only issue is word count excess, which appears to reflect the
-    writer's commitment to rich detail rather than carelessness. This would score
-    1.0 for narrative quality despite the technical word count violation.
+  overall_assessment: "Exceptional execution of the Meeting the Mentor beat. The generated\
+    \ content masterfully introduces Marcus as a credible, mysterious mentor figure\
+    \ who provides both practical tools and psychological reframing. Elena's character\
+    \ arc within this beat is particularly strong\u2014her doubt doesn't vanish but\
+    \ transforms into cautious willingness. The dialogue feels natural and reveals\
+    \ character through interaction. The only issue is word count excess, which appears\
+    \ to reflect the writer's commitment to rich detail rather than carelessness.\
+    \ This would score 1.0 for narrative quality despite the technical word count\
+    \ violation."
 error: null

@@ -12,20 +12,19 @@ final_score: 0.8912499999999999
 score_breakdown:
   final_score: 0.8912
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 721
-      target_range:
-      - 700
-      - 1000
     programmatic:
       score: 0.7
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.5
         slop_score: 1.0
         overall: 0.7
+      word_count:
+        actual: 721
+        target_range:
+        - 700
+        - 1000
     llm_judge:
       score: 0.9325
       weight: 0.5
@@ -55,21 +54,21 @@ llm_results:
   - 'Masterful tonal escalation: Beat 1 opens with dry wit (''Belong hard enough and
     doors opened themselves''), Beat 2 shifts to tension (''The name hit like ice
     water''), Beat 3 becomes existential dread (''The painting or Ava'').'
-  - 'Mentor presence perfectly calibrated: Helena moves from unknown (Beat 1) → revealed
-    as antagonist (Beat 2: ''She''s been waiting for you specifically'') → active
-    threat (Beat 3: direct confrontation).'
+  - "Mentor presence perfectly calibrated: Helena moves from unknown (Beat 1) \u2192\
+    \ revealed as antagonist (Beat 2: 'She's been waiting for you specifically') \u2192\
+    \ active threat (Beat 3: direct confrontation)."
   - 'Leo''s arc is consistent and plot-critical: Serves as voice of reason in Beat
     1 (technical support), becomes concerned in Beat 2 (warns about encryption), actively
     opposes Miri''s revenge impulse in Beat 3 (moral anchor).'
   - 'Context maintenance is near-perfect: Miri''s dry wit, meticulous planning, and
     moral complexity shine throughout. Monaco setting, yacht, Grand Prix all woven
     naturally.'
-  - 'Clever problem-solving demonstrated: Keycard lift, retinal scan spoofing, fire
-    suppression distraction—all show crew competence.'
+  - "Clever problem-solving demonstrated: Keycard lift, retinal scan spoofing, fire\
+    \ suppression distraction\u2014all show crew competence."
   - 'Stakes raised dramatically: From ''retrieve painting'' to ''Helena designed the
     security'' to ''choose between mission and crew member''.'
-  - 'Coherence: The narrative flows logically from reconnaissance → execution → complication
-    → moral crisis.'
+  - "Coherence: The narrative flows logically from reconnaissance \u2192 execution\
+    \ \u2192 complication \u2192 moral crisis."
   weaknesses:
   - 'Beat 1 complications arrive too quickly: The military encryption discovery and
     Helena reveal happen within the same passage, compressing the ''mostly successful''
@@ -81,11 +80,11 @@ llm_results:
     isn''t explored enough to fully land the emotional weight.'
   - 'Minor: ''Montblanc pen'' detail is clever but the retinal scan transfer via contact
     lens feels slightly underexplained for plausibility.'
-  calibration_notes: 'Scored 0.87 on beat requirements (13/15) rather than 0.9+ because
-    two requirements are genuinely underserved, not just subtly handled. The cross-beat
-    constraints are executed with professional precision—this is where the excerpt
-    excels. Context score 0.95 (not 1.0) because Ava lacks dimension. Coherence 0.92
-    because the pacing is slightly rushed in Beat 1. Overall, this is a strong 0.8-0.85
-    range story: it satisfies the core brief with sophistication, but has minor structural
-    gaps that prevent ''exceptional'' rating.'
+  calibration_notes: "Scored 0.87 on beat requirements (13/15) rather than 0.9+ because\
+    \ two requirements are genuinely underserved, not just subtly handled. The cross-beat\
+    \ constraints are executed with professional precision\u2014this is where the\
+    \ excerpt excels. Context score 0.95 (not 1.0) because Ava lacks dimension. Coherence\
+    \ 0.92 because the pacing is slightly rushed in Beat 1. Overall, this is a strong\
+    \ 0.8-0.85 range story: it satisfies the core brief with sophistication, but has\
+    \ minor structural gaps that prevent 'exceptional' rating."
 error: null

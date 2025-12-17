@@ -12,20 +12,19 @@ final_score: 0.97425
 score_breakdown:
   final_score: 0.9742
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 500
-      target_range:
-      - 500
-      - 700
     programmatic:
       score: 0.952
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.92
         slop_score: 1.0
         overall: 0.952
+      word_count:
+        actual: 500
+        target_range:
+        - 500
+        - 700
     llm_judge:
       score: 0.9725
       weight: 0.5
@@ -39,15 +38,15 @@ llm_results:
   word_count_valid: true
   structural_accuracy_score: 0.9
   tone_score: 0.95
-  evidence: 'All five Freytag beats are present (Exposition: Samira, world, impossible
-    virus; Rising Action: quarantine, investigation, adaptation; Climax: Nexus confrontation/revelation;
-    Falling Action: press conference and immediate fallout; Denouement: six-weeks-later
-    resolution). All six core elements are preserved (Samira protagonist; engineered
-    virus; Raj supporting; Nexus antagonist; cure released publicly; Samira sacrifices
-    career). Word count is exactly 500 words. Minor deductions: the climax is split
-    across the Nexus boardroom and the press conference, which slightly diffuses the
-    single highest turning point expected in Freytag’s model; wording like “Twelve
-    hours before the quarantine collapsed” is a bit ambiguous and creates a small
-    structural timing hiccup. Tone remains strongly in the medical-thriller / ethical
-    register with only minimal flourish, hence near-perfect tone score.'
+  evidence: "All five Freytag beats are present (Exposition: Samira, world, impossible\
+    \ virus; Rising Action: quarantine, investigation, adaptation; Climax: Nexus confrontation/revelation;\
+    \ Falling Action: press conference and immediate fallout; Denouement: six-weeks-later\
+    \ resolution). All six core elements are preserved (Samira protagonist; engineered\
+    \ virus; Raj supporting; Nexus antagonist; cure released publicly; Samira sacrifices\
+    \ career). Word count is exactly 500 words. Minor deductions: the climax is split\
+    \ across the Nexus boardroom and the press conference, which slightly diffuses\
+    \ the single highest turning point expected in Freytag\u2019s model; wording like\
+    \ \u201CTwelve hours before the quarantine collapsed\u201D is a bit ambiguous\
+    \ and creates a small structural timing hiccup. Tone remains strongly in the medical-thriller\
+    \ / ethical register with only minimal flourish, hence near-perfect tone score."
 error: null

@@ -12,20 +12,19 @@ final_score: 0.979
 score_breakdown:
   final_score: 0.979
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 390
-      target_range:
-      - 250
-      - 400
     programmatic:
       score: 0.916
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.86
         slop_score: 1.0
         overall: 0.916
+      word_count:
+        actual: 390
+        target_range:
+        - 250
+        - 400
     llm_judge:
       score: 1.0
       weight: 0.5
@@ -40,11 +39,11 @@ llm_results:
   character_score: 1.0
   bridge_score: 1.0
   continuity_score: 1.0
-  evidence: 'All four required elements are present: she explicitly considers recanting,
-    pursuing official channels, shows internal duty-vs-family conflict, and reaches
-    a tipping moment toward a third, extralegal option. The scene fulfills the Debate
-    beat''s function—weighing options and committing to action—without violating any
-    must-not constraints. Note: the tipping moment is primarily an internal crystallization
-    rather than a single external interlocutor prompting the choice, but it effectively
-    serves the beat.'
+  evidence: "All four required elements are present: she explicitly considers recanting,\
+    \ pursuing official channels, shows internal duty-vs-family conflict, and reaches\
+    \ a tipping moment toward a third, extralegal option. The scene fulfills the Debate\
+    \ beat's function\u2014weighing options and committing to action\u2014without\
+    \ violating any must-not constraints. Note: the tipping moment is primarily an\
+    \ internal crystallization rather than a single external interlocutor prompting\
+    \ the choice, but it effectively serves the beat."
 error: null

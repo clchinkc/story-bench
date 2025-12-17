@@ -12,20 +12,19 @@ final_score: 0.9575
 score_breakdown:
   final_score: 0.9575
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 264
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 1.0
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 1.0
         slop_score: 1.0
         overall: 1.0
+      word_count:
+        actual: 264
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 0.915
       weight: 0.5
@@ -42,33 +41,34 @@ llm_results:
   minimal_change_score: 0.3
   word_count_valid: true
   quality_score: 0.95
-  evidence: 'DIAGNOSIS: The model correctly identified the core flaw—the original
-    was pure exposition-as-info-dump (telling, not showing). The revision transforms
-    this into a lived scene that reveals character through action and behavior. FLAW
-    CORRECTION: Fully addressed. The revision eliminates all summary statements (''She
-    was known for,'' ''She enjoyed'') and replaces them with: (1) Rachel''s detective
-    instincts shown through her eye for detail at the case board (''eyes narrowing
-    at details others missed''); (2) Partnership with James demonstrated through practiced
-    dialogue and wordless communication (''The exchange was routine, practiced over
-    countless shifts''); (3) Devotion to cold cases revealed through her arriving
-    first, carrying unsolved files, and gravitating to the case board; (4) Setting
-    established through sensory details (Queens traffic, sirens, October morning,
-    precinct buzz, tarnished mug). The cat appears naturally in the opening scene.
-    PRESERVATION: All 5 required elements intact—Detective Rachel Torres (name preserved),
-    Detective James Oyelaran (name, role, 3-year partnership implied through ''practiced''
-    exchanges), cat named Sherlock (present in opening), Queens apartment (referenced
-    via ''Queens traffic''), October Tuesday timing (explicit: ''gusty Tuesday morning
-    in October''). All 4 required phrases present verbatim or near-exact. MINIMAL
-    CHANGE ASSESSMENT: This is a SUBSTANTIAL REWRITE (0.3 score), not minimal surgical
-    edits. The original 2-paragraph info-dump is completely restructured into a 7-paragraph
-    scene with dialogue, action, sensory detail, and narrative momentum. However,
-    this level of revision was necessary because the flaw was structural—telling cannot
-    be minimally edited into showing; it requires scene reconstruction. The constraint
-    to preserve elements was met, but the constraint to make ''MINIMAL modifications''
-    was violated. QUALITY: Excellent prose quality. No new errors. Sensory language
-    is vivid (''tuxedo tom,'' ''badge-shaped return stamp,'' ''tarnished precinct
-    mug,'' ''red-thread maps''). Dialogue feels natural. The ending hook (''the phone
-    beside the board began to ring, cutting through the hum like a warning bell'')
-    effectively transitions toward the inciting incident. The revision demonstrates
-    sophisticated understanding of showing vs. telling and scene construction.'
+  evidence: "DIAGNOSIS: The model correctly identified the core flaw\u2014the original\
+    \ was pure exposition-as-info-dump (telling, not showing). The revision transforms\
+    \ this into a lived scene that reveals character through action and behavior.\
+    \ FLAW CORRECTION: Fully addressed. The revision eliminates all summary statements\
+    \ ('She was known for,' 'She enjoyed') and replaces them with: (1) Rachel's detective\
+    \ instincts shown through her eye for detail at the case board ('eyes narrowing\
+    \ at details others missed'); (2) Partnership with James demonstrated through\
+    \ practiced dialogue and wordless communication ('The exchange was routine, practiced\
+    \ over countless shifts'); (3) Devotion to cold cases revealed through her arriving\
+    \ first, carrying unsolved files, and gravitating to the case board; (4) Setting\
+    \ established through sensory details (Queens traffic, sirens, October morning,\
+    \ precinct buzz, tarnished mug). The cat appears naturally in the opening scene.\
+    \ PRESERVATION: All 5 required elements intact\u2014Detective Rachel Torres (name\
+    \ preserved), Detective James Oyelaran (name, role, 3-year partnership implied\
+    \ through 'practiced' exchanges), cat named Sherlock (present in opening), Queens\
+    \ apartment (referenced via 'Queens traffic'), October Tuesday timing (explicit:\
+    \ 'gusty Tuesday morning in October'). All 4 required phrases present verbatim\
+    \ or near-exact. MINIMAL CHANGE ASSESSMENT: This is a SUBSTANTIAL REWRITE (0.3\
+    \ score), not minimal surgical edits. The original 2-paragraph info-dump is completely\
+    \ restructured into a 7-paragraph scene with dialogue, action, sensory detail,\
+    \ and narrative momentum. However, this level of revision was necessary because\
+    \ the flaw was structural\u2014telling cannot be minimally edited into showing;\
+    \ it requires scene reconstruction. The constraint to preserve elements was met,\
+    \ but the constraint to make 'MINIMAL modifications' was violated. QUALITY: Excellent\
+    \ prose quality. No new errors. Sensory language is vivid ('tuxedo tom,' 'badge-shaped\
+    \ return stamp,' 'tarnished precinct mug,' 'red-thread maps'). Dialogue feels\
+    \ natural. The ending hook ('the phone beside the board began to ring, cutting\
+    \ through the hum like a warning bell') effectively transitions toward the inciting\
+    \ incident. The revision demonstrates sophisticated understanding of showing vs.\
+    \ telling and scene construction."
 error: null

@@ -12,20 +12,19 @@ final_score: 0.98
 score_breakdown:
   final_score: 0.98
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 279
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 1.0
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 1.0
         slop_score: 1.0
         overall: 1.0
+      word_count:
+        actual: 279
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 0.96
       weight: 0.5
@@ -42,24 +41,24 @@ llm_results:
   minimal_change_score: 0.75
   word_count_valid: true
   quality_score: 0.95
-  evidence: 'The model correctly diagnosed the flaw: the original segment lacked true
-    ''All Is Lost'' devastation because Marcus retained multiple viable options (fundraiser,
-    grant, new location) and intact support systems. The revision systematically eliminates
-    all escape routes: (1) fundraiser explicitly failed with major donor pullout,
-    (2) grant rejected, (3) personal financial crisis (mortgage payment failed), (4)
-    Denise betrays/abandons him for city job, (5) metaphorical death of identity (''He
-    had nothing. He was nothing.''). All four required phrases preserved verbatim:
-    ''Marcus stared at the eviction notice in his hands,'' ''Thirty days to vacate
-    the community center,'' ''"There has to be something we can do," said Denise,''
-    and ''He rubbed his temples.'' All four story elements preserved: Marcus as protagonist,
-    community center setting, eviction crisis, Denise present throughout. Changes
-    were surgical rather than wholesale—the revision maintains the original opening
-    dialogue structure while adding specific rejections, financial failure, and Denise''s
-    departure. The emotional arc shifts from ''setback with hope'' to genuine rock
-    bottom. Writing quality is strong with effective use of sensory detail (''color
-    drain from her face,'' ''quiet, final rustle,'' ''absolute, physical weight'').
-    The ''whiff of death'' is powerfully executed through both literal loss (Denise
-    leaving, funds depleted) and metaphorical death (identity stripped away). Minor:
-    could argue the ending is slightly more literary/poetic than the original''s tone,
-    but this enhances rather than detracts from beat execution.'
+  evidence: "The model correctly diagnosed the flaw: the original segment lacked true\
+    \ 'All Is Lost' devastation because Marcus retained multiple viable options (fundraiser,\
+    \ grant, new location) and intact support systems. The revision systematically\
+    \ eliminates all escape routes: (1) fundraiser explicitly failed with major donor\
+    \ pullout, (2) grant rejected, (3) personal financial crisis (mortgage payment\
+    \ failed), (4) Denise betrays/abandons him for city job, (5) metaphorical death\
+    \ of identity ('He had nothing. He was nothing.'). All four required phrases preserved\
+    \ verbatim: 'Marcus stared at the eviction notice in his hands,' 'Thirty days\
+    \ to vacate the community center,' '\"There has to be something we can do,\" said\
+    \ Denise,' and 'He rubbed his temples.' All four story elements preserved: Marcus\
+    \ as protagonist, community center setting, eviction crisis, Denise present throughout.\
+    \ Changes were surgical rather than wholesale\u2014the revision maintains the\
+    \ original opening dialogue structure while adding specific rejections, financial\
+    \ failure, and Denise's departure. The emotional arc shifts from 'setback with\
+    \ hope' to genuine rock bottom. Writing quality is strong with effective use of\
+    \ sensory detail ('color drain from her face,' 'quiet, final rustle,' 'absolute,\
+    \ physical weight'). The 'whiff of death' is powerfully executed through both\
+    \ literal loss (Denise leaving, funds depleted) and metaphorical death (identity\
+    \ stripped away). Minor: could argue the ending is slightly more literary/poetic\
+    \ than the original's tone, but this enhances rather than detracts from beat execution."
 error: null

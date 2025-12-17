@@ -12,20 +12,19 @@ final_score: 0.9610544845650608
 score_breakdown:
   final_score: 0.9611
   components:
-    word_count:
-      score: 0.9922
-      weight: 0.25
-      actual: 365
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.952
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.9922
         repetition_score: 0.92
         slop_score: 1.0
         overall: 0.952
+      word_count:
+        actual: 365
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 0.95
       weight: 0.5
@@ -42,31 +41,32 @@ llm_results:
   minimal_change_score: 0.65
   word_count_valid: false
   quality_score: 0.95
-  evidence: 'MODEL CORRECTLY DIAGNOSED THE FLAW: The revision precisely identified
-    that the original segment lacked true ''All Is Lost'' devastation—it had too many
-    remaining options and support systems. The model understood that the beat requires
-    complete failure, isolation, and loss of identity/purpose. FLAW CORRECTION—FULLY
-    EXECUTED: (1) Fundraiser destroyed: Daniels Foundation pulled pledge, competitors
-    switched sides. (2) Grant rejected: Email arrives with rejection. (3) Personal
-    betrayal/isolation: Wife leaves with children, citing missed recital and emotional
-    abandonment; Denise resigns and accepts position elsewhere. (4) Genuine hopelessness:
-    Marcus sits alone with no options—board already voted to suspend, locks changing
-    Friday. (5) ''Whiff of death'': Metaphorical death of identity (15-year program
-    ended, gym noise stops ''as if someone had shut a door inside his chest''). PRESERVATION:
-    All 4 required phrases present verbatim: ''Marcus stared at the eviction notice
-    in his hands,'' ''Thirty days to vacate the community center,'' ''"There has to
-    be something we can do," said Denise,'' ''He rubbed his temples.'' All 4 story
-    elements preserved: Marcus (protagonist), community center/youth program (setting),
-    eviction (crisis), Denise (character). MINIMAL CHANGE ASSESSMENT: While the revision
-    is substantially expanded (365 vs 200-350 word limit), the changes are SURGICAL
-    rather than wholesale rewrite. Original structure maintained: opening image →
-    Denise dialogue → Marcus''s initial hope → cascading failures. New content inserted
-    strategically: Denise''s revelation about foundation, grant rejection email, wife''s
-    text, board decision, Denise''s resignation. Original text blocks preserved and
-    integrated. QUALITY: Prose is professional, emotionally resonant, no new errors.
-    Pacing accelerates appropriately for beat climax. Sensory details (''metal clink,''
-    ''room tilted,'' ''flyer mockups looked obscene'') enhance devastation. CONSTRAINT
-    VIOLATION: Word count exceeds maximum (365 vs 350 limit)—this is the only technical
-    failure, though narratively justified by the complexity of multiple simultaneous
-    failures required to fix the flaw.'
+  evidence: "MODEL CORRECTLY DIAGNOSED THE FLAW: The revision precisely identified\
+    \ that the original segment lacked true 'All Is Lost' devastation\u2014it had\
+    \ too many remaining options and support systems. The model understood that the\
+    \ beat requires complete failure, isolation, and loss of identity/purpose. FLAW\
+    \ CORRECTION\u2014FULLY EXECUTED: (1) Fundraiser destroyed: Daniels Foundation\
+    \ pulled pledge, competitors switched sides. (2) Grant rejected: Email arrives\
+    \ with rejection. (3) Personal betrayal/isolation: Wife leaves with children,\
+    \ citing missed recital and emotional abandonment; Denise resigns and accepts\
+    \ position elsewhere. (4) Genuine hopelessness: Marcus sits alone with no options\u2014\
+    board already voted to suspend, locks changing Friday. (5) 'Whiff of death': Metaphorical\
+    \ death of identity (15-year program ended, gym noise stops 'as if someone had\
+    \ shut a door inside his chest'). PRESERVATION: All 4 required phrases present\
+    \ verbatim: 'Marcus stared at the eviction notice in his hands,' 'Thirty days\
+    \ to vacate the community center,' '\"There has to be something we can do,\" said\
+    \ Denise,' 'He rubbed his temples.' All 4 story elements preserved: Marcus (protagonist),\
+    \ community center/youth program (setting), eviction (crisis), Denise (character).\
+    \ MINIMAL CHANGE ASSESSMENT: While the revision is substantially expanded (365\
+    \ vs 200-350 word limit), the changes are SURGICAL rather than wholesale rewrite.\
+    \ Original structure maintained: opening image \u2192 Denise dialogue \u2192 Marcus's\
+    \ initial hope \u2192 cascading failures. New content inserted strategically:\
+    \ Denise's revelation about foundation, grant rejection email, wife's text, board\
+    \ decision, Denise's resignation. Original text blocks preserved and integrated.\
+    \ QUALITY: Prose is professional, emotionally resonant, no new errors. Pacing\
+    \ accelerates appropriately for beat climax. Sensory details ('metal clink,' 'room\
+    \ tilted,' 'flyer mockups looked obscene') enhance devastation. CONSTRAINT VIOLATION:\
+    \ Word count exceeds maximum (365 vs 350 limit)\u2014this is the only technical\
+    \ failure, though narratively justified by the complexity of multiple simultaneous\
+    \ failures required to fix the flaw."
 error: null

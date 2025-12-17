@@ -12,20 +12,19 @@ final_score: 0.95
 score_breakdown:
   final_score: 0.95
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 644
-      target_range:
-      - 500
-      - 700
     programmatic:
       score: 0.826
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.71
         slop_score: 1.0
         overall: 0.826
+      word_count:
+        actual: 644
+        target_range:
+        - 500
+        - 700
     llm_judge:
       score: 0.987
       weight: 0.5
@@ -40,20 +39,22 @@ llm_results:
   word_count: 644
   structural_accuracy_score: 0.95
   tone_score: 0.98
-  evidence: 'All 8 Story Circle beats are present and clearly articulated: (1) You—opening
-    library sanctuary; (2) Need—unnamed desire to speak, fear of voice; (3) Go—bicycle
-    ride to Bernard''s porch; (4) Search—five visits of awkward interviews, learning
-    to listen; (5) Find—breakthrough moment of silence and story-pouring; (6) Take—town
-    hall presentation, speaking publicly; (7) Return—autumn, senior year, ordinary
-    life resumed; (8) Change—demonstrated through college essays, campus tours, reframed
-    relationship with silence. All 8 core elements preserved: Zoe (protagonist), library
-    setting, oral history program, Ms. Okafor (initiator), Bernard Park (key relationship),
-    social anxiety (woven throughout), town hall presentation (climactic Take beat),
-    Bernard''s death and funeral (Return phase). Structural accuracy is exceptional—the
-    conversion elegantly reframes Hero''s Journey''s external adventure as internal
-    emotional arc. Minor deduction (0.05) for ''journalism school ending'' being implied
-    rather than explicit (college applications mentioned but not specifically journalism
-    focus). Tone is consistently gentle, intimate, and emotionally true throughout—lyrical
-    language (''slipped between shelves,'' ''stories die in silence,'' ''warm rain'')
-    maintains vulnerability while avoiding sentimentality. Prose quality exceeds requirements.'
+  evidence: "All 8 Story Circle beats are present and clearly articulated: (1) You\u2014\
+    opening library sanctuary; (2) Need\u2014unnamed desire to speak, fear of voice;\
+    \ (3) Go\u2014bicycle ride to Bernard's porch; (4) Search\u2014five visits of\
+    \ awkward interviews, learning to listen; (5) Find\u2014breakthrough moment of\
+    \ silence and story-pouring; (6) Take\u2014town hall presentation, speaking publicly;\
+    \ (7) Return\u2014autumn, senior year, ordinary life resumed; (8) Change\u2014\
+    demonstrated through college essays, campus tours, reframed relationship with\
+    \ silence. All 8 core elements preserved: Zoe (protagonist), library setting,\
+    \ oral history program, Ms. Okafor (initiator), Bernard Park (key relationship),\
+    \ social anxiety (woven throughout), town hall presentation (climactic Take beat),\
+    \ Bernard's death and funeral (Return phase). Structural accuracy is exceptional\u2014\
+    the conversion elegantly reframes Hero's Journey's external adventure as internal\
+    \ emotional arc. Minor deduction (0.05) for 'journalism school ending' being implied\
+    \ rather than explicit (college applications mentioned but not specifically journalism\
+    \ focus). Tone is consistently gentle, intimate, and emotionally true throughout\u2014\
+    lyrical language ('slipped between shelves,' 'stories die in silence,' 'warm rain')\
+    \ maintains vulnerability while avoiding sentimentality. Prose quality exceeds\
+    \ requirements."
 error: null

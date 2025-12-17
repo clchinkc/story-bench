@@ -12,20 +12,19 @@ final_score: 0.9726958525345623
 score_breakdown:
   final_score: 0.9727
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 212
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.9908
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 1.0
         slop_score: 0.977
         overall: 0.9908
+      word_count:
+        actual: 212
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 0.95
       weight: 0.5

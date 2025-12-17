@@ -12,20 +12,19 @@ final_score: 0.94275
 score_breakdown:
   final_score: 0.9427
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 418
-      target_range:
-      - 300
-      - 450
     programmatic:
       score: 0.796
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.66
         slop_score: 1.0
         overall: 0.796
+      word_count:
+        actual: 418
+        target_range:
+        - 300
+        - 450
     llm_judge:
       score: 0.9875
       weight: 0.5
@@ -40,21 +39,21 @@ llm_results:
   character_score: 0.95
   bridge_score: 0.95
   continuity_score: 1.0
-  evidence: 'All four required elements present and well-executed: (1) Direct examination
-    of Dr. Okonkwo with specific questions about her role, trials, and adverse reactions;
-    (2) Clear near-recant moment—''dangerously close to recanting,'' hesitation, faltering
-    voice, eyes ''betrayed a storm of conflict''; (3) Thomas takes decisive action
-    by appealing to her values (''for your daughter,'' ''the truth can set you free'')
-    and leaning in with steady eye contact, directly influencing her decision; (4)
-    Turning point clearly marked—she commits to truth, confesses to falsification,
-    courtroom erupts, ''damage was done,'' ''path to justice was clear.'' All must-not
-    items avoided: Dr. Okonkwo shows genuine internal struggle before confession;
-    Thomas actively influences outcome through persuasion; defense loses; no external
-    deus ex machina. Character voice consistent with prior beats—Thomas strategic
-    yet emotionally invested, Dr. Okonkwo conflicted and vulnerable. Bridge seamless:
-    BEFORE establishes her fear and hesitation, GENERATED shows Thomas navigating
-    that fear to extract truth, AFTER shows consequences. Minor deduction (0.05) on
-    character score for Thomas''s dialogue being slightly more formal than his internal
-    voice in BEFORE section. Continuity perfect: same courtroom, same judge (Mendez
-    introduced naturally), same stakes, same characters.'
+  evidence: "All four required elements present and well-executed: (1) Direct examination\
+    \ of Dr. Okonkwo with specific questions about her role, trials, and adverse reactions;\
+    \ (2) Clear near-recant moment\u2014'dangerously close to recanting,' hesitation,\
+    \ faltering voice, eyes 'betrayed a storm of conflict'; (3) Thomas takes decisive\
+    \ action by appealing to her values ('for your daughter,' 'the truth can set you\
+    \ free') and leaning in with steady eye contact, directly influencing her decision;\
+    \ (4) Turning point clearly marked\u2014she commits to truth, confesses to falsification,\
+    \ courtroom erupts, 'damage was done,' 'path to justice was clear.' All must-not\
+    \ items avoided: Dr. Okonkwo shows genuine internal struggle before confession;\
+    \ Thomas actively influences outcome through persuasion; defense loses; no external\
+    \ deus ex machina. Character voice consistent with prior beats\u2014Thomas strategic\
+    \ yet emotionally invested, Dr. Okonkwo conflicted and vulnerable. Bridge seamless:\
+    \ BEFORE establishes her fear and hesitation, GENERATED shows Thomas navigating\
+    \ that fear to extract truth, AFTER shows consequences. Minor deduction (0.05)\
+    \ on character score for Thomas's dialogue being slightly more formal than his\
+    \ internal voice in BEFORE section. Continuity perfect: same courtroom, same judge\
+    \ (Mendez introduced naturally), same stakes, same characters."
 error: null

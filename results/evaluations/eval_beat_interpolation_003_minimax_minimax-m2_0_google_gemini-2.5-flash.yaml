@@ -12,20 +12,19 @@ final_score: 0.6607936931812137
 score_breakdown:
   final_score: 0.6608
   components:
-    word_count:
-      score: 0.0222
-      weight: 0.25
-      actual: 538
-      target_range:
-      - 250
-      - 400
     programmatic:
       score: 0.856
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.0222
         repetition_score: 0.76
         slop_score: 1.0
         overall: 0.856
+      word_count:
+        actual: 538
+        target_range:
+        - 250
+        - 400
     llm_judge:
       score: 0.8825
       weight: 0.5
@@ -40,11 +39,11 @@ llm_results:
   character_score: 1.0
   bridge_score: 0.8
   continuity_score: 1.0
-  evidence: The output includes 'Yuki immediately finding the data core or understanding
-    what happened (skips the search)' as a violation. While she finds the core, the
-    narrative emphasizes the struggle to get to it and the partial understanding of
-    what happened, rather than an immediate, effortless discovery. However, the final
-    sentence 'She had found exactly what she had come for. She just didn’t yet understand
-    the cost.' leans a bit too close to 'finding' for this beat. The word count is
-    significantly over the limit.
+  evidence: "The output includes 'Yuki immediately finding the data core or understanding\
+    \ what happened (skips the search)' as a violation. While she finds the core,\
+    \ the narrative emphasizes the struggle to get to it and the partial understanding\
+    \ of what happened, rather than an immediate, effortless discovery. However, the\
+    \ final sentence 'She had found exactly what she had come for. She just didn\u2019\
+    t yet understand the cost.' leans a bit too close to 'finding' for this beat.\
+    \ The word count is significantly over the limit."
 error: null

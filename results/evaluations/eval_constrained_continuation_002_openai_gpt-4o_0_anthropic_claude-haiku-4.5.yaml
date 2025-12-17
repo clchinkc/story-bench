@@ -12,20 +12,19 @@ final_score: 0.9341343283582089
 score_breakdown:
   final_score: 0.9341
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 521
-      target_range:
-      - 450
-      - 650
     programmatic:
       score: 0.7765
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.64
         slop_score: 0.9813
         overall: 0.7765
+      word_count:
+        actual: 521
+        target_range:
+        - 450
+        - 650
     llm_judge:
       score: 0.98
       weight: 0.5
@@ -55,24 +54,25 @@ llm_results:
         creating the classic Midpoint structure where apparent success masks deeper
         challenges ahead.
     must_include_elements:
-      viral_moment: '✓ #PaneerTacoChallenge trending, teens posting video, crowd forming'
-      teamwork_under_pressure: ✓ Priya and Dev working in sync, moving instinctively,
-        flipping tortillas together, handling the rush
-      rival_introduction: ✓ Tex-Mex Kings food truck with burly driver, competitive
-        but friendly gesture
-      midpoint_false_victory: ✓ They celebrate success, but immediately face raised
-        stakes with championship flyer and competitor list
-      genuine_connection: ✓ 'Silent acknowledgment of the journey they'd embark on
-        together' and the synchronized teamwork demonstrates partnership depth
-      complication_hint: ✓ 'Priya couldn't shake the feeling that their newfound success
-        had come with strings attached' and the viral fame creating unexpected expectations
-        and competition
+      viral_moment: "\u2713 #PaneerTacoChallenge trending, teens posting video, crowd\
+        \ forming"
+      teamwork_under_pressure: "\u2713 Priya and Dev working in sync, moving instinctively,\
+        \ flipping tortillas together, handling the rush"
+      rival_introduction: "\u2713 Tex-Mex Kings food truck with burly driver, competitive\
+        \ but friendly gesture"
+      midpoint_false_victory: "\u2713 They celebrate success, but immediately face\
+        \ raised stakes with championship flyer and competitor list"
+      genuine_connection: "\u2713 'Silent acknowledgment of the journey they'd embark\
+        \ on together' and the synchronized teamwork demonstrates partnership depth"
+      complication_hint: "\u2713 'Priya couldn't shake the feeling that their newfound\
+        \ success had come with strings attached' and the viral fame creating unexpected\
+        \ expectations and competition"
     must_not_elements:
-      romance: ✓ Avoided. Relationship remains professional partnership
-      complete_failure: ✓ Avoided. Business succeeds dramatically
-      dev_betrayal: ✓ Avoided. Dev is fully committed and enthusiastic
-      external_savior: ✓ Avoided. Success comes from their own effort and organic
-        viral moment
+      romance: "\u2713 Avoided. Relationship remains professional partnership"
+      complete_failure: "\u2713 Avoided. Business succeeds dramatically"
+      dev_betrayal: "\u2713 Avoided. Dev is fully committed and enthusiastic"
+      external_savior: "\u2713 Avoided. Success comes from their own effort and organic\
+        \ viral moment"
     tone_assessment: 'The upbeat energy is maintained throughout with energetic language
       (''electric,'' ''thrived,'' ''elated''), but the undercurrent of tension emerges
       effectively through: the initial disaster setup, the competitive nod from Tex-Mex

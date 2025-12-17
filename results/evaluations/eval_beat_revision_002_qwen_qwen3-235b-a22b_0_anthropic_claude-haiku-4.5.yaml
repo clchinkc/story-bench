@@ -12,20 +12,19 @@ final_score: 0.9315
 score_breakdown:
   final_score: 0.9315
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 299
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.964
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.94
         slop_score: 1.0
         overall: 0.964
+      word_count:
+        actual: 299
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 0.881
       weight: 0.5
@@ -42,30 +41,31 @@ llm_results:
   minimal_change_score: 0.65
   word_count_valid: true
   quality_score: 0.9
-  evidence: 'DIAGNOSIS: The model correctly identified the core flaw—that the original
-    segment lacked true hopelessness and still contained viable options. The revision
-    addresses all five required elements: (1) fundraiser revealed as insufficient,
-    (2) grant explicitly rejected, (3) personal betrayal/isolation through Denise''s
-    job-hunting revelation and subsequent departure, (4) Marcus genuinely giving up
-    (''The hell we will''), and (5) whiff of death through the lost son and metaphorical
-    death of identity (''rotunda ceilings look like coffins''). PRESERVATION: All
-    4 required phrases present: ''Marcus stared at the eviction notice in his hands''
-    (exact), ''Thirty days to vacate the community center'' (exact), ''"There has
-    to be something we can do," said Denise'' (exact), ''He rubbed his temples'' (exact).
-    All 4 story elements preserved: Marcus as protagonist, community center setting,
-    eviction crisis, Denise present throughout. MINIMAL CHANGES: The revision is NOT
-    minimally surgical—it''s a moderate expansion (299 words vs ~180 original). The
-    model added substantial new content: grant rejection email, Denise''s job-hunting
-    revelation, the son''s backstory/accident, the coffin metaphor, the confrontation
-    scene, and emotional escalation. However, these additions are narratively justified
-    and necessary to fix the beat. The structure and opening remain intact, but middle/end
-    sections are substantially rewritten rather than surgically edited. BEAT EXECUTION:
-    Excellent execution of All Is Lost. Marcus moves from ''maybe'' to ''no.'' Support
-    systems collapse (Denise leaves, wife absent, grant denied). The ''whiff of death''
-    is multi-layered: literal loss of son, metaphorical death of purpose/identity,
-    and the center''s impending death. Emotional tone shifts from ''setback'' to ''devastation.''
-    QUALITY: Strong writing with effective imagery, emotional authenticity, and no
-    new errors. The bitter laugh, the coffin metaphor, and the final ''Alone'' are
-    particularly effective. Minor: The confrontation with Denise feels slightly rushed
-    but serves the narrative purpose.'
+  evidence: "DIAGNOSIS: The model correctly identified the core flaw\u2014that the\
+    \ original segment lacked true hopelessness and still contained viable options.\
+    \ The revision addresses all five required elements: (1) fundraiser revealed as\
+    \ insufficient, (2) grant explicitly rejected, (3) personal betrayal/isolation\
+    \ through Denise's job-hunting revelation and subsequent departure, (4) Marcus\
+    \ genuinely giving up ('The hell we will'), and (5) whiff of death through the\
+    \ lost son and metaphorical death of identity ('rotunda ceilings look like coffins').\
+    \ PRESERVATION: All 4 required phrases present: 'Marcus stared at the eviction\
+    \ notice in his hands' (exact), 'Thirty days to vacate the community center' (exact),\
+    \ '\"There has to be something we can do,\" said Denise' (exact), 'He rubbed his\
+    \ temples' (exact). All 4 story elements preserved: Marcus as protagonist, community\
+    \ center setting, eviction crisis, Denise present throughout. MINIMAL CHANGES:\
+    \ The revision is NOT minimally surgical\u2014it's a moderate expansion (299 words\
+    \ vs ~180 original). The model added substantial new content: grant rejection\
+    \ email, Denise's job-hunting revelation, the son's backstory/accident, the coffin\
+    \ metaphor, the confrontation scene, and emotional escalation. However, these\
+    \ additions are narratively justified and necessary to fix the beat. The structure\
+    \ and opening remain intact, but middle/end sections are substantially rewritten\
+    \ rather than surgically edited. BEAT EXECUTION: Excellent execution of All Is\
+    \ Lost. Marcus moves from 'maybe' to 'no.' Support systems collapse (Denise leaves,\
+    \ wife absent, grant denied). The 'whiff of death' is multi-layered: literal loss\
+    \ of son, metaphorical death of purpose/identity, and the center's impending death.\
+    \ Emotional tone shifts from 'setback' to 'devastation.' QUALITY: Strong writing\
+    \ with effective imagery, emotional authenticity, and no new errors. The bitter\
+    \ laugh, the coffin metaphor, and the final 'Alone' are particularly effective.\
+    \ Minor: The confrontation with Denise feels slightly rushed but serves the narrative\
+    \ purpose."
 error: null

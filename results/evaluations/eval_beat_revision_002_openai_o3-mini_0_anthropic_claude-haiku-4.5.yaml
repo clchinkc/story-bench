@@ -12,20 +12,19 @@ final_score: 0.7701412639405205
 score_breakdown:
   final_score: 0.7701
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 264
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.9806
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.98
         slop_score: 0.9814
         overall: 0.9806
+      word_count:
+        actual: 264
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 0.55
       weight: 0.5
@@ -42,27 +41,28 @@ llm_results:
   minimal_change_score: 0.6
   word_count_valid: true
   quality_score: 0.7
-  evidence: 'DIAGNOSIS: The model partially identified the flaw but incompletely.
-    It recognized the need for emotional devastation and removed hope, but FAILED
-    to address the core structural requirements: (1) No concrete failure of specific
-    plans—fundraiser and grant are still vague/mentioned but never explicitly rejected;
-    (2) No clear ''whiff of death''—the loss is metaphorical (purpose/identity) but
-    lacks the visceral impact of actual rejection or betrayal; (3) Denise''s abandonment
-    is implied but underdeveloped—she ''turns away'' but no explicit betrayal or isolation
-    moment; (4) The revision adds despair tone but doesn''t show the MECHANISM of
-    defeat (grant rejection letter, fundraiser cancellation, etc.). FLAW CORRECTION:
-    Partial. The revision successfully strips away Marcus''s fighting spirit and hope,
-    achieving emotional devastation. However, it fails to show WHAT specifically failed—the
-    grant application is called ''a cruel fantasy'' but never explicitly rejected.
-    The fundraiser is mentioned but never fails. This is atmospheric despair rather
-    than structural All Is Lost. PRESERVATION: All 4 required phrases present (eviction
-    notice, thirty days, Denise dialogue, rubbed temples). All 4 story elements preserved
-    (Marcus, community center, eviction, Denise). MINIMAL CHANGE: Moderate rewrite
-    (0.6). The model expanded the segment significantly with new introspective passages
-    (''despair coiling tightly,'' ''wreckage of his efforts,'' ''barren halls'') rather
-    than surgically editing the original. Structure was reorganized; new emotional
-    beats added. QUALITY: Good prose quality (0.7)—vivid imagery and emotional resonance—but
-    introduces some purple prose (''smoke,'' ''echoes of shattered dreams'') that
-    borders on overwrought. No grammatical errors. The revision reads well but represents
-    a 40% expansion rather than minimal surgical edits.'
+  evidence: "DIAGNOSIS: The model partially identified the flaw but incompletely.\
+    \ It recognized the need for emotional devastation and removed hope, but FAILED\
+    \ to address the core structural requirements: (1) No concrete failure of specific\
+    \ plans\u2014fundraiser and grant are still vague/mentioned but never explicitly\
+    \ rejected; (2) No clear 'whiff of death'\u2014the loss is metaphorical (purpose/identity)\
+    \ but lacks the visceral impact of actual rejection or betrayal; (3) Denise's\
+    \ abandonment is implied but underdeveloped\u2014she 'turns away' but no explicit\
+    \ betrayal or isolation moment; (4) The revision adds despair tone but doesn't\
+    \ show the MECHANISM of defeat (grant rejection letter, fundraiser cancellation,\
+    \ etc.). FLAW CORRECTION: Partial. The revision successfully strips away Marcus's\
+    \ fighting spirit and hope, achieving emotional devastation. However, it fails\
+    \ to show WHAT specifically failed\u2014the grant application is called 'a cruel\
+    \ fantasy' but never explicitly rejected. The fundraiser is mentioned but never\
+    \ fails. This is atmospheric despair rather than structural All Is Lost. PRESERVATION:\
+    \ All 4 required phrases present (eviction notice, thirty days, Denise dialogue,\
+    \ rubbed temples). All 4 story elements preserved (Marcus, community center, eviction,\
+    \ Denise). MINIMAL CHANGE: Moderate rewrite (0.6). The model expanded the segment\
+    \ significantly with new introspective passages ('despair coiling tightly,' 'wreckage\
+    \ of his efforts,' 'barren halls') rather than surgically editing the original.\
+    \ Structure was reorganized; new emotional beats added. QUALITY: Good prose quality\
+    \ (0.7)\u2014vivid imagery and emotional resonance\u2014but introduces some purple\
+    \ prose ('smoke,' 'echoes of shattered dreams') that borders on overwrought. No\
+    \ grammatical errors. The revision reads well but represents a 40% expansion rather\
+    \ than minimal surgical edits."
 error: null

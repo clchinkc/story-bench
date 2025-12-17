@@ -12,20 +12,19 @@ final_score: 0.7198381801787095
 score_breakdown:
   final_score: 0.7198
   components:
-    word_count:
-      score: 0.3193
-      weight: 0.25
-      actual: 1136
-      target_range:
-      - 700
-      - 1000
     programmatic:
       score: 0.6951
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.3193
         repetition_score: 0.5
         slop_score: 0.9877
         overall: 0.6951
+      word_count:
+        actual: 1136
+        target_range:
+        - 700
+        - 1000
     llm_judge:
       score: 0.9325
       weight: 0.5
@@ -55,20 +54,20 @@ llm_results:
     confidence; Beat 2 shifts to ''Victory tasted false now, laced with betrayal'';
     Beat 3 delivers gallows humor (''I always thought my comeback tour would end with
     champagne, not handcuffs''). Tone tracks perfectly.'
-  - 'Mentor presence arc is masterfully calibrated: Beat 1 (Elena is a shadow, unnoticed);
-    Beat 2 (Elena recognized, locks eyes, reveals herself as security consultant—the
-    full betrayal); Beat 3 (Elena is the active hunter, broadcasting commands, closing
-    in). Escalation is organic.'
-  - 'Team dynamics with Alex are compelling: Beat 1 (cocky, boastful, overconfident);
-    Beat 2 (his hubris exposed, panic sets in, he''s pinned); Beat 3 (Miri must choose
-    between revenge and saving him—his arc drives her moral choice). Consistent and
-    consequential.'
+  - "Mentor presence arc is masterfully calibrated: Beat 1 (Elena is a shadow, unnoticed);\
+    \ Beat 2 (Elena recognized, locks eyes, reveals herself as security consultant\u2014\
+    the full betrayal); Beat 3 (Elena is the active hunter, broadcasting commands,\
+    \ closing in). Escalation is organic."
+  - "Team dynamics with Alex are compelling: Beat 1 (cocky, boastful, overconfident);\
+    \ Beat 2 (his hubris exposed, panic sets in, he's pinned); Beat 3 (Miri must choose\
+    \ between revenge and saving him\u2014his arc drives her moral choice). Consistent\
+    \ and consequential."
   - 'Context maintained excellently: Monaco setting, Grand Prix backdrop, yacht party
     glamour, Ocean''s Eleven tone with art history stakes all present. Miri''s characterization
     (dry wit, meticulous, wrongfully accused) is consistent.'
-  - 'Coherence is strong: Each beat flows logically into the next. The heist setup
-    → Elena''s reveal → crew in danger creates a unified narrative arc with clear
-    escalation.'
+  - "Coherence is strong: Each beat flows logically into the next. The heist setup\
+    \ \u2192 Elena's reveal \u2192 crew in danger creates a unified narrative arc\
+    \ with clear escalation."
   weaknesses:
   - Word count exceeds range (1136 vs. 700-1000 max). This is a technical failure,
     though the content quality doesn't suffer.

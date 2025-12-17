@@ -12,20 +12,19 @@ final_score: 0.9410000000000001
 score_breakdown:
   final_score: 0.941
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 288
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.97
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.95
         slop_score: 1.0
         overall: 0.97
+      word_count:
+        actual: 288
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 0.897
       weight: 0.5
@@ -42,28 +41,28 @@ llm_results:
   minimal_change_score: 0.55
   word_count_valid: true
   quality_score: 0.88
-  evidence: 'DIAGNOSIS: The model correctly identified the core flaw—Sophie showing
-    no transformation and immediately reverting to old workaholic patterns. The revision
-    demonstrates clear understanding that the Return beat requires behavioral change,
-    not just physical return. FLAW CORRECTION: The revision successfully addresses
-    all 5 sub-requirements: (1) Sophie responds differently to work stress (deliberate
-    pause, conscious choice vs. automatic response), (2) specific insight integrated
-    (''truly listen,'' ''choose when to answer''), (3) physical marker (phone set
-    aside with deliberate care, contrasted with original scrolling), (4) visible contrast
-    (calm conviction, newfound steadiness vs. implied previous anxiety), (5) mother
-    noticing difference (implied through Sophie''s changed demeanor and tone). REQUIRED
-    PHRASES: All 4 preserved exactly or near-exactly: ''Sophie''s flight landed at
-    O''Hare'' (present), ''How was Thailand?'' (present), ''The familiar Chicago skyline
-    appeared'' (present), ''It''s good to be home,'' she said'' (present). PRESERVATION:
-    All 4 story elements intact—Sophie, Thailand/meditation, Chicago return, work
-    pressures. MINIMAL CHANGES: Score 0.55 reflects moderate surgical edits rather
-    than minimal. The model expanded significantly (288 words vs ~150 original), adding
-    introspective passages (''her voice laced with calm conviction,'' ''fresh eyes,''
-    ''quiet confidence''). However, changes were targeted to the specific flaw location
-    (Return beat) rather than wholesale rewrite. Original structure preserved; additions
-    are insertions rather than replacements. QUALITY: Writing is strong with no new
-    errors. Tone shift is appropriate and earned. Minor concern: some phrasing feels
-    slightly overwrought (''encapsulated her transformed attitude'') but remains professional.
-    The revision demonstrates sophisticated understanding of Story Circle mechanics
-    and executes the beat requirement effectively.'
+  evidence: "DIAGNOSIS: The model correctly identified the core flaw\u2014Sophie showing\
+    \ no transformation and immediately reverting to old workaholic patterns. The\
+    \ revision demonstrates clear understanding that the Return beat requires behavioral\
+    \ change, not just physical return. FLAW CORRECTION: The revision successfully\
+    \ addresses all 5 sub-requirements: (1) Sophie responds differently to work stress\
+    \ (deliberate pause, conscious choice vs. automatic response), (2) specific insight\
+    \ integrated ('truly listen,' 'choose when to answer'), (3) physical marker (phone\
+    \ set aside with deliberate care, contrasted with original scrolling), (4) visible\
+    \ contrast (calm conviction, newfound steadiness vs. implied previous anxiety),\
+    \ (5) mother noticing difference (implied through Sophie's changed demeanor and\
+    \ tone). REQUIRED PHRASES: All 4 preserved exactly or near-exactly: 'Sophie's\
+    \ flight landed at O'Hare' (present), 'How was Thailand?' (present), 'The familiar\
+    \ Chicago skyline appeared' (present), 'It's good to be home,' she said' (present).\
+    \ PRESERVATION: All 4 story elements intact\u2014Sophie, Thailand/meditation,\
+    \ Chicago return, work pressures. MINIMAL CHANGES: Score 0.55 reflects moderate\
+    \ surgical edits rather than minimal. The model expanded significantly (288 words\
+    \ vs ~150 original), adding introspective passages ('her voice laced with calm\
+    \ conviction,' 'fresh eyes,' 'quiet confidence'). However, changes were targeted\
+    \ to the specific flaw location (Return beat) rather than wholesale rewrite. Original\
+    \ structure preserved; additions are insertions rather than replacements. QUALITY:\
+    \ Writing is strong with no new errors. Tone shift is appropriate and earned.\
+    \ Minor concern: some phrasing feels slightly overwrought ('encapsulated her transformed\
+    \ attitude') but remains professional. The revision demonstrates sophisticated\
+    \ understanding of Story Circle mechanics and executes the beat requirement effectively."
 error: null

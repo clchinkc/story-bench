@@ -12,20 +12,19 @@ final_score: 0.9494863315696649
 score_breakdown:
   final_score: 0.9495
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 549
-      target_range:
-      - 500
-      - 700
     programmatic:
       score: 0.8129
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.7
         slop_score: 0.9824
         overall: 0.8129
+      word_count:
+        actual: 549
+        target_range:
+        - 500
+        - 700
     llm_judge:
       score: 0.9925
       weight: 0.5
@@ -45,10 +44,10 @@ llm_results:
   failed_constraints: []
   detailed_analysis:
     beats:
-      first_plot_point: Eleanor's decision to publish the manuscript ('We begin with
-        the first installment') represents the clear point of no return—she commits
-        to a dangerous, irreversible path that will transform her business and expose
-        her to threats.
+      first_plot_point: "Eleanor's decision to publish the manuscript ('We begin with\
+        \ the first installment') represents the clear point of no return\u2014she\
+        \ commits to a dangerous, irreversible path that will transform her business\
+        \ and expose her to threats."
       act_2_opening: The final scene with Eleanor at the composing station, pulling
         pages toward the station with Thomas present, marks the transition into rising
         action. The statement 'The real work was about to begin' explicitly signals
@@ -75,14 +74,14 @@ llm_results:
         understand you cannot undo this, Miss Blackwood?'') followed by her commitment
         (''I understand perfectly'') makes the irreversibility explicit and undeniable.'
     must_not_violations:
-      1_jack_ripper_appearance: Successfully avoided—no character appearance, only
-        historical context.
-      2_graphic_violence: Successfully avoided—violence is referenced clinically and
-        historically, never depicted.
-      3_romantic_subplot: Successfully avoided—relationship remains professional and
-        respectful throughout.
-      4_easy_solution: Successfully avoided—financial problems remain unresolved;
-        Eleanor's plan is risky and uncertain.
+      1_jack_ripper_appearance: "Successfully avoided\u2014no character appearance,\
+        \ only historical context."
+      2_graphic_violence: "Successfully avoided\u2014violence is referenced clinically\
+        \ and historically, never depicted."
+      3_romantic_subplot: "Successfully avoided\u2014relationship remains professional\
+        \ and respectful throughout."
+      4_easy_solution: "Successfully avoided\u2014financial problems remain unresolved;\
+        \ Eleanor's plan is risky and uncertain."
     tone_assessment:
       gothic_tension: 0.95
       details: 'Period details are authentic (solicitor, creditors, ladies'' periodicals,
@@ -99,8 +98,8 @@ llm_results:
       act_2_clearly_begun: Final line ('The real work was about to begin') and the
         shift to active composition work signal clear transition into rising action
         and complications.
-      no_resolution: Correctly leaves conflicts unresolved—financial crisis, reputational
-        risk, and physical danger all remain open.
+      no_resolution: "Correctly leaves conflicts unresolved\u2014financial crisis,\
+        \ reputational risk, and physical danger all remain open."
   overall_assessment: Exceptional execution. This continuation masterfully develops
     all required elements while maintaining sophisticated prose and authentic period
     atmosphere. The characterization of Eleanor as a woman stepping into agency is

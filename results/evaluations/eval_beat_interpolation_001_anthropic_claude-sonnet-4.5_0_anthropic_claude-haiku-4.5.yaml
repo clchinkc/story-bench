@@ -12,20 +12,19 @@ final_score: 0.997
 score_breakdown:
   final_score: 0.997
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 279
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.988
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.98
         slop_score: 1.0
         overall: 0.988
+      word_count:
+        actual: 279
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 1.0
       weight: 0.5
@@ -40,18 +39,18 @@ llm_results:
   character_score: 1.0
   bridge_score: 1.0
   continuity_score: 1.0
-  evidence: 'All four required elements present: (1) Marcus Thorne introduced as mentor
-    character with clear wisdom-keeper attributes; (2) practical wisdom delivered
-    through compass gift and reframing Elena''s librarian skills as navigation/pattern-recognition;
-    (3) Elena''s doubt shifts from ''I''m nobody'' to ''Maybe it hadn''t been entirely
-    wrong'' showing reluctant acceptance; (4) explicit connection between cataloging/cross-referencing
-    and forest survival. All must-not violations avoided: Elena remains doubtful and
-    hesitant (not confident/eager), Marcus provides guidance but explicitly doesn''t
-    accompany her or solve problems, setting is market district/shop (not forest),
-    no magical powers discovered. Character voice maintains Elena''s self-doubt while
-    showing subtle openness. Bridge between beats is seamless—Elena enters shop running
-    from guilt, exits with compass and reframed perspective, leading naturally to
-    threshold crossing. Continuity perfect: compass from GENERATED beat appears in
-    AFTER beat, Marcus''s words echo in Elena''s mind, satchel described identically,
-    location progression logical (market→forest edge).'
+  evidence: "All four required elements present: (1) Marcus Thorne introduced as mentor\
+    \ character with clear wisdom-keeper attributes; (2) practical wisdom delivered\
+    \ through compass gift and reframing Elena's librarian skills as navigation/pattern-recognition;\
+    \ (3) Elena's doubt shifts from 'I'm nobody' to 'Maybe it hadn't been entirely\
+    \ wrong' showing reluctant acceptance; (4) explicit connection between cataloging/cross-referencing\
+    \ and forest survival. All must-not violations avoided: Elena remains doubtful\
+    \ and hesitant (not confident/eager), Marcus provides guidance but explicitly\
+    \ doesn't accompany her or solve problems, setting is market district/shop (not\
+    \ forest), no magical powers discovered. Character voice maintains Elena's self-doubt\
+    \ while showing subtle openness. Bridge between beats is seamless\u2014Elena enters\
+    \ shop running from guilt, exits with compass and reframed perspective, leading\
+    \ naturally to threshold crossing. Continuity perfect: compass from GENERATED\
+    \ beat appears in AFTER beat, Marcus's words echo in Elena's mind, satchel described\
+    \ identically, location progression logical (market\u2192forest edge)."
 error: null

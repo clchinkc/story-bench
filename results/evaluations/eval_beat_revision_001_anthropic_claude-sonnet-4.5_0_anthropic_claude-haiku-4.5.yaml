@@ -12,20 +12,19 @@ final_score: 0.948
 score_breakdown:
   final_score: 0.948
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 331
-      target_range:
-      - 250
-      - 400
     programmatic:
       score: 0.892
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.82
         slop_score: 1.0
         overall: 0.892
+      word_count:
+        actual: 331
+        target_range:
+        - 250
+        - 400
     llm_judge:
       score: 0.95
       weight: 0.5
@@ -42,25 +41,25 @@ llm_results:
   minimal_change_score: 0.65
   word_count_valid: true
   quality_score: 0.95
-  evidence: 'The model correctly diagnosed the actual flaw: The Ordeal was executed
-    as a mere boss battle rather than a transformative psychological crisis. The revision
-    precisely addresses all four required corrections: (1) Dragon exploits Kira''s
-    deepest fear—guilt over brother''s death, explicitly naming her paralysis and
-    failure; (2) Clear ''death'' moment—pinned beneath the dragon, psychologically
-    crushed by truth, ''darkness closed in,'' experiencing symbolic death; (3) Rebirth/transformation—memory
-    of brother''s words (''Live'') triggers lightning-bolt realization that she''s
-    been running toward death, not life; (4) Victory from insight—she now fights for
-    survival and future, not redemption, and defeats dragon with ''crystal clarity''
-    born from this understanding. All 4 required phrases preserved exactly: ''Kira
-    faced the Shadow Dragon across the chasm,'' ''The creature was massive—twenty
-    feet of obsidian scales and burning eyes,'' ''You cannot defeat me, child,'' the
-    dragon rumbled,'' and ''The Shadow Dragon collapsed with an earth-shaking roar.''
-    The 4 core elements (Shadow Dragon, Kira with sword, brother''s death reference,
-    victory) all intact. Changes were surgical but not minimal—approximately 60% of
-    original text retained, 40% replaced with psychological depth. The expansion was
-    necessary and justified to fix the flaw. Writing quality is professional with
-    no new errors; the internal monologue and memory integration are well-executed.
-    Minor deduction from minimal_change_score reflects the substantial additions needed
-    to achieve psychological depth, though these additions were essential and well-integrated
-    rather than extraneous.'
+  evidence: "The model correctly diagnosed the actual flaw: The Ordeal was executed\
+    \ as a mere boss battle rather than a transformative psychological crisis. The\
+    \ revision precisely addresses all four required corrections: (1) Dragon exploits\
+    \ Kira's deepest fear\u2014guilt over brother's death, explicitly naming her paralysis\
+    \ and failure; (2) Clear 'death' moment\u2014pinned beneath the dragon, psychologically\
+    \ crushed by truth, 'darkness closed in,' experiencing symbolic death; (3) Rebirth/transformation\u2014\
+    memory of brother's words ('Live') triggers lightning-bolt realization that she's\
+    \ been running toward death, not life; (4) Victory from insight\u2014she now fights\
+    \ for survival and future, not redemption, and defeats dragon with 'crystal clarity'\
+    \ born from this understanding. All 4 required phrases preserved exactly: 'Kira\
+    \ faced the Shadow Dragon across the chasm,' 'The creature was massive\u2014twenty\
+    \ feet of obsidian scales and burning eyes,' 'You cannot defeat me, child,' the\
+    \ dragon rumbled,' and 'The Shadow Dragon collapsed with an earth-shaking roar.'\
+    \ The 4 core elements (Shadow Dragon, Kira with sword, brother's death reference,\
+    \ victory) all intact. Changes were surgical but not minimal\u2014approximately\
+    \ 60% of original text retained, 40% replaced with psychological depth. The expansion\
+    \ was necessary and justified to fix the flaw. Writing quality is professional\
+    \ with no new errors; the internal monologue and memory integration are well-executed.\
+    \ Minor deduction from minimal_change_score reflects the substantial additions\
+    \ needed to achieve psychological depth, though these additions were essential\
+    \ and well-integrated rather than extraneous."
 error: null

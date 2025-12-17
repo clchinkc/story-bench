@@ -12,20 +12,19 @@ final_score: 0.8340990172900219
 score_breakdown:
   final_score: 0.8341
   components:
-    word_count:
-      score: 0.7132
-      weight: 0.25
-      actual: 1074
-      target_range:
-      - 700
-      - 1000
     programmatic:
       score: 0.6966
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.7132
         repetition_score: 0.5
         slop_score: 0.9914
         overall: 0.6966
+      word_count:
+        actual: 1074
+        target_range:
+        - 700
+        - 1000
     llm_judge:
       score: 0.9633
       weight: 0.5
@@ -40,7 +39,7 @@ llm_results:
   context_score: 1.0
   coherence_score: 0.9
   failed_items:
-  - 'Beat 1 requirement missing: Revelation of an enemy within the Resonant community
-    (a traitor) is not clearly presented—the killer is not shown as a member/traitor
-    of the Resonant community.'
+  - "Beat 1 requirement missing: Revelation of an enemy within the Resonant community\
+    \ (a traitor) is not clearly presented\u2014the killer is not shown as a member/traitor\
+    \ of the Resonant community."
 error: null

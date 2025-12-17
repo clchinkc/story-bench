@@ -12,20 +12,19 @@ final_score: 0.9032499999999999
 score_breakdown:
   final_score: 0.9032
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 933
-      target_range:
-      - 700
-      - 1000
     programmatic:
       score: 0.7
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.5
         slop_score: 1.0
         overall: 0.7
+      word_count:
+        actual: 933
+        target_range:
+        - 700
+        - 1000
     llm_judge:
       score: 0.9565
       weight: 0.5
@@ -76,21 +75,21 @@ llm_results:
   - 'Context Maintenance: Protagonist voice authentic (dry wit, meticulous planning
     evident in execution). Setting vivid (Monte Carlo harbor, ballroom, servant corridors).
     Tone perfectly balanced (Ocean''s Eleven sophistication with art history stakes).'
-  - 'Narrative Coherence: Beats flow naturally. Each escalates logically from the
-    previous. Miri''s character arc (confident planner → personal vendetta → moral
-    choice) drives the progression.'
+  - "Narrative Coherence: Beats flow naturally. Each escalates logically from the\
+    \ previous. Miri's character arc (confident planner \u2192 personal vendetta \u2192\
+    \ moral choice) drives the progression."
   weaknesses:
   - 'Minor beat requirement gap: Beat 1 should introduce a small, manageable complication
     (not the mentor reveal) to establish that ''things going according to plan (mostly)''
     includes a minor hiccup. Current version has zero complications in Beat 1, making
     the Midpoint reveal feel slightly disconnected rather than an escalation of existing
     tension.'
-  overall_assessment: This is a strong, professional-quality execution of the Save
-    the Cat framework across three critical beats. The story demonstrates sophisticated
-    understanding of heist narrative structure, character motivation, and tonal control.
-    The Chekhov's Gun integration is particularly elegant. The single gap—absence
-    of a minor Beat 1 complication—is a minor structural refinement rather than a
-    fundamental flaw. The writing is sharp, the pacing is controlled, and the emotional
-    stakes escalate convincingly.
+  overall_assessment: "This is a strong, professional-quality execution of the Save\
+    \ the Cat framework across three critical beats. The story demonstrates sophisticated\
+    \ understanding of heist narrative structure, character motivation, and tonal\
+    \ control. The Chekhov's Gun integration is particularly elegant. The single gap\u2014\
+    absence of a minor Beat 1 complication\u2014is a minor structural refinement rather\
+    \ than a fundamental flaw. The writing is sharp, the pacing is controlled, and\
+    \ the emotional stakes escalate convincingly."
   final_score: 0.92
 error: null

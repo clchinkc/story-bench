@@ -1,0 +1,40 @@
+evaluation_id: b78b9a50
+task_id: beat_revision_005
+generation_id: beat_revision_005_google/gemini-3-flash-preview_0
+task_type: beat_revision
+model: google/gemini-3-flash-preview
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0007427
+timestamp: '2025-12-18T23:33:15.192508'
+success: true
+final_score: 0.518
+score_breakdown:
+  final_score: 0.518
+  components:
+    programmatic:
+      score: 0.916
+      weight: 0.5
+      breakdown:
+        word_count_score: 1.0
+        repetition_score: 0.76
+        slop_score: 1.0
+        overall: 0.916
+      word_count:
+        actual: 311
+        target_range:
+        - 200
+        - 350
+    llm_judge:
+      score: 0.12
+      weight: 0.5
+llm_results:
+  correct_diagnosis_score: 0.0
+  beat_understanding_score: 0.8
+  false_positive_avoided_score: 0.0
+  reasoning_quality_score: 0.0
+  model_said_no_revision: false
+  evidence: The model did not recognize the segment was fine and instead provided
+    a revised version of the text. While the revised text is good, it was an unnecessary
+    revision of an already correctly executed segment.
+error: null

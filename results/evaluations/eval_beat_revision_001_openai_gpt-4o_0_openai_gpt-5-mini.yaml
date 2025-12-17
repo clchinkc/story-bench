@@ -12,20 +12,19 @@ final_score: 0.9055
 score_breakdown:
   final_score: 0.9055
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 332
-      target_range:
-      - 250
-      - 400
     programmatic:
       score: 0.862
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.77
         slop_score: 1.0
         overall: 0.862
+      word_count:
+        actual: 332
+        target_range:
+        - 250
+        - 400
     llm_judge:
       score: 0.88
       weight: 0.5
@@ -42,15 +41,15 @@ llm_results:
   minimal_change_score: 0.7
   word_count_valid: true
   quality_score: 0.9
-  evidence: 'The revision explicitly addresses the actual flaw: the dragon exploits
-    Kira''s guilt about her brother, producing an internal confrontation with her
-    deepest fear. The text creates a symbolic ''death'' moment (an abyss of despair
-    that threatens to swallow her spirit) and then a rebirth (a flicker of resolve,
-    reframing her fight as honoring her brother), tying her victory to new understanding
-    rather than mere persistence. Changes are moderate — several new introspective
-    beats and lines were added, but core phrases, setting, and outcome were preserved
-    (the four required elements/phrases appear, with only minor grammatical adjustment
-    to ''an earth-shaking roar''). The execution is improved and mostly satisfies
-    the Ordeal beat, though the symbolic ''death'' could be more fully dramatized;
-    overall prose quality is good with no major new errors.'
+  evidence: "The revision explicitly addresses the actual flaw: the dragon exploits\
+    \ Kira's guilt about her brother, producing an internal confrontation with her\
+    \ deepest fear. The text creates a symbolic 'death' moment (an abyss of despair\
+    \ that threatens to swallow her spirit) and then a rebirth (a flicker of resolve,\
+    \ reframing her fight as honoring her brother), tying her victory to new understanding\
+    \ rather than mere persistence. Changes are moderate \u2014 several new introspective\
+    \ beats and lines were added, but core phrases, setting, and outcome were preserved\
+    \ (the four required elements/phrases appear, with only minor grammatical adjustment\
+    \ to 'an earth-shaking roar'). The execution is improved and mostly satisfies\
+    \ the Ordeal beat, though the symbolic 'death' could be more fully dramatized;\
+    \ overall prose quality is good with no major new errors."
 error: null

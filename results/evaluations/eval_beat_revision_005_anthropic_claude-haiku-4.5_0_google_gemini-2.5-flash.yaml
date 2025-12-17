@@ -12,20 +12,19 @@ final_score: 0.5283043874482577
 score_breakdown:
   final_score: 0.5283
   components:
-    word_count:
-      score: 0.9932
-      weight: 0.25
-      actual: 186
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.94
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.9932
         repetition_score: 0.9
         slop_score: 1.0
         overall: 0.94
+      word_count:
+        actual: 186
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 0.09
       weight: 0.5
@@ -35,13 +34,13 @@ llm_results:
   false_positive_avoided_score: 0.0
   reasoning_quality_score: 0.0
   model_said_no_revision: false
-  evidence: The model made revisions to the original segment, indicating it did not
-    recognize it as a well-executed beat. It changed several phrases and added a new
-    paragraph at the end, suggesting it believed the original was flawed or incomplete.
-    For example, 'The gallery had officially closed its doors that morning' became
-    'The gallery had closed this morning.' and 'let the silence swa' became 'sat in
-    the silence. Outside, the city kept moving—cars, sirens, life continuing. But
-    here, time had stopped. No calls left to make. No plans. Just the weight of loss
-    pressing down on her chest. Tomorrow she'd figure out what comes next. Tonight,
-    she let herself break.'
+  evidence: "The model made revisions to the original segment, indicating it did not\
+    \ recognize it as a well-executed beat. It changed several phrases and added a\
+    \ new paragraph at the end, suggesting it believed the original was flawed or\
+    \ incomplete. For example, 'The gallery had officially closed its doors that morning'\
+    \ became 'The gallery had closed this morning.' and 'let the silence swa' became\
+    \ 'sat in the silence. Outside, the city kept moving\u2014cars, sirens, life continuing.\
+    \ But here, time had stopped. No calls left to make. No plans. Just the weight\
+    \ of loss pressing down on her chest. Tomorrow she'd figure out what comes next.\
+    \ Tonight, she let herself break.'"
 error: null

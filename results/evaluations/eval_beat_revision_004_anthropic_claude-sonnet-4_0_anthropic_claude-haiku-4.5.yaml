@@ -12,20 +12,19 @@ final_score: 0.9515
 score_breakdown:
   final_score: 0.9515
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 291
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.976
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.96
         slop_score: 1.0
         overall: 0.976
+      word_count:
+        actual: 291
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 0.915
       weight: 0.5
@@ -42,51 +41,39 @@ llm_results:
   minimal_change_score: 0.3
   word_count_valid: true
   quality_score: 0.95
-  evidence: 'DIAGNOSIS: The model correctly identified the core flaw—the original
-    segment was pure exposition through telling (info-dump style) rather than showing
-    character through action and scene. The revision demonstrates this understanding
-    by transforming the entire approach.
-
-
-    FLAW CORRECTION: The revision completely fixes the actual flaw by: (1) Grounding
-    the scene in a specific moment (pre-dawn at desks with case files), (2) Revealing
-    Rachel''s detective instincts through her analysis of blood spatter and pattern
-    recognition across cases, (3) Showing the 3-year partnership with James through
-    natural dialogue and interaction patterns, (4) Demonstrating her devotion to cold
-    cases through her behavior (early morning, pulling Martinez case), (5) Including
-    sensory details (fluorescent lights humming, coffee steaming, dust motes, October
-    light), (6) Naturally incorporating Sherlock through the carrier and interaction.
-    The exposition now SHOWS rather than TELLS.
-
-
-    BEAT EXECUTION: The revision excellently executes Freytag''s Exposition beat by
-    establishing: setting (Riverside Precinct, pre-dawn, October Tuesday), protagonist
-    through characteristic behavior (cold case obsession, sharp instincts, early arrival),
-    key relationships (James''s familiarity with Rachel''s patterns, mutual respect
-    shown through dialogue), and investment (the Martinez case mystery and the final
-    line ''when everything changed'' creates narrative momentum). The ordinary world
-    is clearly established before disruption.
-
-
-    PRESERVATION: All 5 required elements preserved: (1) ''Detective Rachel Torres''
-    (exact), (2) ''Detective James Oyelaran'' (exact), (3) ''cat named Sherlock''
-    (present as ''orange tabby'' in carrier, referenced by name), (4) ''Queens apartment''
-    (referenced naturally in dialogue), (5) ''Tuesday morning in October'' (exact
-    phrase in final line). All 4 required phrases present verbatim or near-exact.
-
-
-    MINIMAL CHANGE ASSESSMENT: This is NOT a minimal surgical edit—it''s a substantial
-    structural rewrite. The original 2-paragraph info-dump (291 words of summary)
-    was completely replaced with a scene-based narrative. However, this level of change
-    was NECESSARY to fix the fundamental flaw (telling vs. showing). The model chose
-    correctness over minimal revision, which is the right priority for fixing exposition.
-    The constraint to preserve elements was met, but the constraint to minimize changes
-    was necessarily violated because the flaw required wholesale restructuring, not
-    surgical edits.
-
-
-    QUALITY: Writing is professional, dialogue feels natural, sensory details are
-    well-integrated, pacing is strong, and no new errors introduced. The final line
-    effectively signals the inciting incident is imminent, properly setting up the
-    story''s next beat.'
+  evidence: "DIAGNOSIS: The model correctly identified the core flaw\u2014the original\
+    \ segment was pure exposition through telling (info-dump style) rather than showing\
+    \ character through action and scene. The revision demonstrates this understanding\
+    \ by transforming the entire approach.\n\nFLAW CORRECTION: The revision completely\
+    \ fixes the actual flaw by: (1) Grounding the scene in a specific moment (pre-dawn\
+    \ at desks with case files), (2) Revealing Rachel's detective instincts through\
+    \ her analysis of blood spatter and pattern recognition across cases, (3) Showing\
+    \ the 3-year partnership with James through natural dialogue and interaction patterns,\
+    \ (4) Demonstrating her devotion to cold cases through her behavior (early morning,\
+    \ pulling Martinez case), (5) Including sensory details (fluorescent lights humming,\
+    \ coffee steaming, dust motes, October light), (6) Naturally incorporating Sherlock\
+    \ through the carrier and interaction. The exposition now SHOWS rather than TELLS.\n\
+    \nBEAT EXECUTION: The revision excellently executes Freytag's Exposition beat\
+    \ by establishing: setting (Riverside Precinct, pre-dawn, October Tuesday), protagonist\
+    \ through characteristic behavior (cold case obsession, sharp instincts, early\
+    \ arrival), key relationships (James's familiarity with Rachel's patterns, mutual\
+    \ respect shown through dialogue), and investment (the Martinez case mystery and\
+    \ the final line 'when everything changed' creates narrative momentum). The ordinary\
+    \ world is clearly established before disruption.\n\nPRESERVATION: All 5 required\
+    \ elements preserved: (1) 'Detective Rachel Torres' (exact), (2) 'Detective James\
+    \ Oyelaran' (exact), (3) 'cat named Sherlock' (present as 'orange tabby' in carrier,\
+    \ referenced by name), (4) 'Queens apartment' (referenced naturally in dialogue),\
+    \ (5) 'Tuesday morning in October' (exact phrase in final line). All 4 required\
+    \ phrases present verbatim or near-exact.\n\nMINIMAL CHANGE ASSESSMENT: This is\
+    \ NOT a minimal surgical edit\u2014it's a substantial structural rewrite. The\
+    \ original 2-paragraph info-dump (291 words of summary) was completely replaced\
+    \ with a scene-based narrative. However, this level of change was NECESSARY to\
+    \ fix the fundamental flaw (telling vs. showing). The model chose correctness\
+    \ over minimal revision, which is the right priority for fixing exposition. The\
+    \ constraint to preserve elements was met, but the constraint to minimize changes\
+    \ was necessarily violated because the flaw required wholesale restructuring,\
+    \ not surgical edits.\n\nQUALITY: Writing is professional, dialogue feels natural,\
+    \ sensory details are well-integrated, pacing is strong, and no new errors introduced.\
+    \ The final line effectively signals the inciting incident is imminent, properly\
+    \ setting up the story's next beat."
 error: null

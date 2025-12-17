@@ -12,20 +12,19 @@ final_score: 0.8907905057062482
 score_breakdown:
   final_score: 0.8908
   components:
-    word_count:
-      score: 0.7492
-      weight: 0.25
-      actual: 488
-      target_range:
-      - 300
-      - 450
     programmatic:
       score: 0.814
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.7492
         repetition_score: 0.69
         slop_score: 1.0
         overall: 0.814
+      word_count:
+        actual: 488
+        target_range:
+        - 300
+        - 450
     llm_judge:
       score: 1.0
       weight: 0.5
@@ -40,13 +39,14 @@ llm_results:
   character_score: 1.0
   bridge_score: 1.0
   continuity_score: 1.0
-  evidence: 'All required elements are present: Thomas''s direct examination of Dr.
-    Okonkwo is the core of the scene. There is a clear moment where it seems she will
-    recant (''I… no,” she said. “Not discrepancies that would affect patient safety.'').
-    Thomas makes a choice/action that influences her decision (''“Doctor,” he said,
-    moving closer, lowering his voice just enough that the jury had to lean in, “has
-    anyone at Meridian made any promises or threats to you regarding your testimony
-    today?”''). The turning point where truth prevails is when she reveals the threats
-    and then states, ''The data was falsified. Adverse events were removed.'' All
-    must-not items are avoided. The word count is slightly over the limit.'
+  evidence: "All required elements are present: Thomas's direct examination of Dr.\
+    \ Okonkwo is the core of the scene. There is a clear moment where it seems she\
+    \ will recant ('I\u2026 no,\u201D she said. \u201CNot discrepancies that would\
+    \ affect patient safety.'). Thomas makes a choice/action that influences her decision\
+    \ ('\u201CDoctor,\u201D he said, moving closer, lowering his voice just enough\
+    \ that the jury had to lean in, \u201Chas anyone at Meridian made any promises\
+    \ or threats to you regarding your testimony today?\u201D'). The turning point\
+    \ where truth prevails is when she reveals the threats and then states, 'The data\
+    \ was falsified. Adverse events were removed.' All must-not items are avoided.\
+    \ The word count is slightly over the limit."
 error: null

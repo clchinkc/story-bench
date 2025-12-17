@@ -12,20 +12,19 @@ final_score: 0.946
 score_breakdown:
   final_score: 0.946
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 380
-      target_range:
-      - 250
-      - 400
     programmatic:
       score: 0.904
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.84
         slop_score: 1.0
         overall: 0.904
+      word_count:
+        actual: 380
+        target_range:
+        - 250
+        - 400
     llm_judge:
       score: 0.94
       weight: 0.5
@@ -42,13 +41,14 @@ llm_results:
   minimal_change_score: 0.6
   word_count_valid: true
   quality_score: 0.9
-  evidence: 'The revision directly addresses the real flaw: the dragon exploits Kira''s
-    guilt over her brother (confrontation with deepest fear), she experiences a symbolic
-    ''death'' (lies defeated, overwhelmed by guilt), then a rebirth/transformation
-    (brother''s forgiving image gives her new purpose), and victory follows from that
-    new understanding rather than mere persistence. The four preservation requirements
-    (setting line, creature description, dragon line, and dragon''s collapse) are
-    present. Changes were more than purely surgical—new internal scenes and emotional
-    beats were added to create the ordeal—so the edit is moderate rather than minimal,
-    but it preserves core text and outcome and improves the Ordeal execution.'
+  evidence: "The revision directly addresses the real flaw: the dragon exploits Kira's\
+    \ guilt over her brother (confrontation with deepest fear), she experiences a\
+    \ symbolic 'death' (lies defeated, overwhelmed by guilt), then a rebirth/transformation\
+    \ (brother's forgiving image gives her new purpose), and victory follows from\
+    \ that new understanding rather than mere persistence. The four preservation requirements\
+    \ (setting line, creature description, dragon line, and dragon's collapse) are\
+    \ present. Changes were more than purely surgical\u2014new internal scenes and\
+    \ emotional beats were added to create the ordeal\u2014so the edit is moderate\
+    \ rather than minimal, but it preserves core text and outcome and improves the\
+    \ Ordeal execution."
 error: null

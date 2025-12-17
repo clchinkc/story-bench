@@ -12,20 +12,19 @@ final_score: 0.888219549559618
 score_breakdown:
   final_score: 0.8882
   components:
-    word_count:
-      score: 0.6429
-      weight: 0.25
-      actual: 397
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.91
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.6429
         repetition_score: 0.85
         slop_score: 1.0
         overall: 0.91
+      word_count:
+        actual: 397
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 1.0
       weight: 0.5
@@ -42,21 +41,22 @@ llm_results:
   character_score: 1.0
   bridge_score: 1.0
   continuity_score: 1.0
-  evidence: 'STRENGTHS: All 4 required elements present and well-executed: (1) Marcus
-    introduced with vivid characterization (gray hair, precise movements, measured
-    demeanor); (2) Practical wisdom delivered through compass, notebook, charcoal—tools
-    that leverage Elena''s librarian strengths rather than compensating for them;
-    (3) Elena''s doubt shifts convincingly from ''I''m not—'' to accepting responsibility
-    (''reluctantly, so did she''); (4) Librarian skills explicitly reframed as assets
-    (''You notice patterns. You read what others skim''). All must-not violations
-    avoided: Elena remains doubtful and hesitant, Marcus explicitly does not accompany
-    her, setting remains in the shop/village (not forest), no magical powers discovered.
-    Character voice is consistent—Elena''s self-deprecation, Marcus''s measured wisdom,
-    the library metaphors throughout. Bridge between beats is seamless: BEFORE ends
-    with Elena refusing and walking out; GENERATED shows her returning with guilt,
-    meeting Marcus, receiving tools; AFTER shows her at forest edge with those tools,
-    ready to cross threshold. Continuity perfect: same map, same grandmother''s house
-    reference, same compass and satchel. DEDUCTION: Word count (397) exceeds maximum
-    (350) by 47 words, violating the technical requirement. However, this is a minor
-    technical violation that does not compromise narrative quality or beat execution.'
+  evidence: "STRENGTHS: All 4 required elements present and well-executed: (1) Marcus\
+    \ introduced with vivid characterization (gray hair, precise movements, measured\
+    \ demeanor); (2) Practical wisdom delivered through compass, notebook, charcoal\u2014\
+    tools that leverage Elena's librarian strengths rather than compensating for them;\
+    \ (3) Elena's doubt shifts convincingly from 'I'm not\u2014' to accepting responsibility\
+    \ ('reluctantly, so did she'); (4) Librarian skills explicitly reframed as assets\
+    \ ('You notice patterns. You read what others skim'). All must-not violations\
+    \ avoided: Elena remains doubtful and hesitant, Marcus explicitly does not accompany\
+    \ her, setting remains in the shop/village (not forest), no magical powers discovered.\
+    \ Character voice is consistent\u2014Elena's self-deprecation, Marcus's measured\
+    \ wisdom, the library metaphors throughout. Bridge between beats is seamless:\
+    \ BEFORE ends with Elena refusing and walking out; GENERATED shows her returning\
+    \ with guilt, meeting Marcus, receiving tools; AFTER shows her at forest edge\
+    \ with those tools, ready to cross threshold. Continuity perfect: same map, same\
+    \ grandmother's house reference, same compass and satchel. DEDUCTION: Word count\
+    \ (397) exceeds maximum (350) by 47 words, violating the technical requirement.\
+    \ However, this is a minor technical violation that does not compromise narrative\
+    \ quality or beat execution."
 error: null

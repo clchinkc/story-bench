@@ -1,0 +1,53 @@
+evaluation_id: 675be2da
+task_id: beat_revision_003
+generation_id: beat_revision_003_google/gemini-3-flash-preview_0
+task_type: beat_revision
+model: google/gemini-3-flash-preview
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0012182
+timestamp: '2025-12-18T23:32:11.272977'
+success: true
+final_score: 0.976
+score_breakdown:
+  final_score: 0.976
+  components:
+    programmatic:
+      score: 0.972
+      weight: 0.5
+      breakdown:
+        word_count_score: 1.0
+        repetition_score: 0.92
+        slop_score: 1.0
+        overall: 0.972
+      word_count:
+        actual: 294
+        target_range:
+        - 200
+        - 350
+    llm_judge:
+      score: 0.98
+      weight: 0.5
+llm_results:
+  diagnosis_score: 1.0
+  flaw_correction_score: 1.0
+  beat_satisfaction_score: 1.0
+  preservation_score: 1.0
+  preserved_count: 4
+  preserved_total: 4
+  required_preserved_score: 1.0
+  required_preserved_count: 4
+  required_preserved_total: 4
+  minimal_change_score: 0.8
+  word_count_valid: true
+  quality_score: 1.0
+  evidence: 'The model correctly identified and addressed the flaw of Sophie not showing
+    evidence of change upon her return. It implemented all the required fixes: Sophie
+    responds differently to work stress (puts phone on silent), applies an insight
+    from the retreat (''stillness was what I really needed'', ''peaceful detachment''),
+    shows behavioral markers of change (not frantic, reclaiming life, seeing city
+    differently), and her mother notices something different (''braced for Sophie’s
+    usual frantic response''). The changes were surgical and minimal, preserving the
+    original structure while effectively demonstrating the ''Return (Having Changed)''
+    beat.'
+error: null

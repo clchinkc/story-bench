@@ -12,20 +12,19 @@ final_score: 0.9750862020603552
 score_breakdown:
   final_score: 0.9751
   components:
-    word_count:
-      score: 0.9303
-      weight: 0.25
-      actual: 419
-      target_range:
-      - 250
-      - 400
     programmatic:
       score: 0.97
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.9303
         repetition_score: 0.95
         slop_score: 1.0
         overall: 0.97
+      word_count:
+        actual: 419
+        target_range:
+        - 250
+        - 400
     llm_judge:
       score: 1.0
       weight: 0.5
@@ -40,13 +39,13 @@ llm_results:
   character_score: 1.0
   bridge_score: 1.0
   continuity_score: 1.0
-  evidence: 'All four required elements are present: multiple explored areas (corridor,
-    Section C, medical bay, junction, Lab Seven), discovery of clues (logs, scorched
-    strap, trace organics, garbled REYES line), encounters with transformed crew as
-    shimmers/distortions and a flickering Reyes, and a concrete obstacle overcome
-    (magnetic lock bypass). The Search beat is clearly executed—Yuki adapts, faces
-    trials, and progresses incrementally toward Lab Seven. No prohibited items appear
-    in the Search segment (the data core is only found in the subsequent After section).
-    The only deduction is that the provided word_count (419) falls outside the requested
-    250–400 range.'
+  evidence: "All four required elements are present: multiple explored areas (corridor,\
+    \ Section C, medical bay, junction, Lab Seven), discovery of clues (logs, scorched\
+    \ strap, trace organics, garbled REYES line), encounters with transformed crew\
+    \ as shimmers/distortions and a flickering Reyes, and a concrete obstacle overcome\
+    \ (magnetic lock bypass). The Search beat is clearly executed\u2014Yuki adapts,\
+    \ faces trials, and progresses incrementally toward Lab Seven. No prohibited items\
+    \ appear in the Search segment (the data core is only found in the subsequent\
+    \ After section). The only deduction is that the provided word_count (419) falls\
+    \ outside the requested 250\u2013400 range."
 error: null

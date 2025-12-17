@@ -12,20 +12,19 @@ final_score: 0.9790000000000001
 score_breakdown:
   final_score: 0.979
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 303
-      target_range:
-      - 250
-      - 400
     programmatic:
       score: 0.946
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.91
         slop_score: 1.0
         overall: 0.946
+      word_count:
+        actual: 303
+        target_range:
+        - 250
+        - 400
     llm_judge:
       score: 0.985
       weight: 0.5
@@ -40,14 +39,14 @@ llm_results:
   character_score: 1.0
   bridge_score: 0.9
   continuity_score: 1.0
-  evidence: 'All four required elements are present: she considers recanting, explores
-    official channels (tactical team/FBI/Internal Affairs), struggles between duty
-    and saving Amy, and a tipping moment occurs when she sees Marcus''s flagged email
-    and decides not to trust the system. The beat clearly fulfills the Debate narrative
-    function. No prohibited items are present (she debates rather than immediately
-    going rogue; others don''t make the decision for her; she has not already submitted
-    her resignation). Minor deduction in bridge_score (0.9) because the scene ends
-    with a resignation letter in hand and active file-copying—this slightly encroaches
-    on the Break Into Two action, though it still functions as the commitment point
-    rather than an outright chapter of the next beat.'
+  evidence: "All four required elements are present: she considers recanting, explores\
+    \ official channels (tactical team/FBI/Internal Affairs), struggles between duty\
+    \ and saving Amy, and a tipping moment occurs when she sees Marcus's flagged email\
+    \ and decides not to trust the system. The beat clearly fulfills the Debate narrative\
+    \ function. No prohibited items are present (she debates rather than immediately\
+    \ going rogue; others don't make the decision for her; she has not already submitted\
+    \ her resignation). Minor deduction in bridge_score (0.9) because the scene ends\
+    \ with a resignation letter in hand and active file-copying\u2014this slightly\
+    \ encroaches on the Break Into Two action, though it still functions as the commitment\
+    \ point rather than an outright chapter of the next beat."
 error: null

@@ -469,7 +469,9 @@ class ResultsDatabase:
         """
         Get aggregated score breakdown for a task/model combo.
         Returns median of each score component.
-        Order: word_count → programmatic → llm_judge
+
+        For standard tasks: word_count, programmatic, llm_judge
+        For agentic tasks: process, output (averaged sub-scores)
         """
         import statistics
         evals = [
@@ -480,8 +482,42 @@ class ResultsDatabase:
         if not evals:
             return None
 
-        # Filter to only evaluations with standard component structure
-        # Agentic task evaluations have a different structure
+        # Check if these are agentic evaluations
+        agentic_evals = [
+            e for e in evals
+            if e.get("score_breakdown", {}).get("agentic", False)
+        ]
+
+        if agentic_evals:
+            # Agentic evaluations: aggregate process_scores and output_scores
+            process_scores = []
+            output_scores = []
+
+            for e in agentic_evals:
+                breakdown = e.get("score_breakdown", {})
+                proc = breakdown.get("process_scores", {})
+                out = breakdown.get("output_scores", {})
+
+                # Average all process scores
+                if proc:
+                    proc_vals = [v for v in proc.values() if isinstance(v, (int, float))]
+                    if proc_vals:
+                        process_scores.append(statistics.mean(proc_vals))
+
+                # Average all output scores
+                if out:
+                    out_vals = [v for v in out.values() if isinstance(v, (int, float))]
+                    if out_vals:
+                        output_scores.append(statistics.mean(out_vals))
+
+            return {
+                "process": statistics.median(process_scores) if process_scores else None,
+                "output": statistics.median(output_scores) if output_scores else None,
+                # For compatibility with leaderboard display
+                "llm_judge": statistics.median(output_scores) if output_scores else None,
+            }
+
+        # Standard evaluations: word_count, programmatic, llm_judge
         standard_evals = [
             e for e in evals
             if e.get("score_breakdown", {}).get("components") is not None
@@ -489,15 +525,29 @@ class ResultsDatabase:
         if not standard_evals:
             return None
 
-        # Aggregate each component (order: word_count, programmatic, llm_judge)
-        wc_scores = [e["score_breakdown"]["components"]["word_count"]["score"] for e in standard_evals]
-        prog_scores = [e["score_breakdown"]["components"]["programmatic"]["score"] for e in standard_evals]
-        llm_scores = [e["score_breakdown"]["components"]["llm_judge"]["score"] for e in standard_evals]
+        # Aggregate each component from unified format
+        # Format: components.programmatic.breakdown.{word_count_score, repetition_score, slop_score}
+        wc_scores = []
+        prog_scores = []
+        llm_scores = []
+
+        for e in standard_evals:
+            components = e["score_breakdown"]["components"]
+
+            # Extract word count score from programmatic breakdown
+            wc_score = components["programmatic"]["breakdown"].get("word_count_score", 0.0)
+            wc_scores.append(wc_score)
+
+            # Extract programmatic score
+            prog_scores.append(components["programmatic"].get("score", 0.0))
+
+            # Extract LLM judge score
+            llm_scores.append(components["llm_judge"].get("score", 0.0))
 
         return {
-            "word_count": statistics.median(wc_scores),
-            "programmatic": statistics.median(prog_scores),
-            "llm_judge": statistics.median(llm_scores),
+            "word_count": statistics.median(wc_scores) if wc_scores else 0.0,
+            "programmatic": statistics.median(prog_scores) if prog_scores else 0.0,
+            "llm_judge": statistics.median(llm_scores) if llm_scores else 0.0,
         }
 
     def get_results_summary(self) -> dict[str, Any]:
@@ -575,15 +625,20 @@ class ResultsDatabase:
             task_scores = [t["score"] for t in tasks.values() if t["score"] is not None]
             avg_score = statistics.mean(task_scores) if task_scores else None
 
-            # Calculate component averages
+            # Calculate component averages (handle both standard and agentic breakdowns)
             wc_scores = []
             prog_scores = []
             llm_scores = []
             for t in tasks.values():
                 if t["breakdown"]:
-                    wc_scores.append(t["breakdown"]["word_count"])
-                    prog_scores.append(t["breakdown"]["programmatic"])
-                    llm_scores.append(t["breakdown"]["llm_judge"])
+                    # Standard tasks have word_count, programmatic, llm_judge
+                    # Agentic tasks have process, output, llm_judge
+                    if "word_count" in t["breakdown"]:
+                        wc_scores.append(t["breakdown"]["word_count"])
+                    if "programmatic" in t["breakdown"]:
+                        prog_scores.append(t["breakdown"]["programmatic"])
+                    if "llm_judge" in t["breakdown"] and t["breakdown"]["llm_judge"] is not None:
+                        llm_scores.append(t["breakdown"]["llm_judge"])
 
             avg_components = {
                 "word_count": statistics.mean(wc_scores) if wc_scores else None,
@@ -614,6 +669,24 @@ class ResultsDatabase:
                 "output_tokens": 0,
             })
 
+            # Build by_task_type with safe component extraction
+            by_task_type_stats = {}
+            for tt, d in by_type.items():
+                # Safely extract component scores (handle missing keys)
+                wc_vals = [b["word_count"] for b in d["breakdowns"] if "word_count" in b and b["word_count"] is not None]
+                prog_vals = [b["programmatic"] for b in d["breakdowns"] if "programmatic" in b and b["programmatic"] is not None]
+                llm_vals = [b["llm_judge"] for b in d["breakdowns"] if "llm_judge" in b and b["llm_judge"] is not None]
+
+                by_task_type_stats[tt] = {
+                    "total": d["total"],
+                    "avg_score": statistics.mean(d["scores"]) if d["scores"] else None,
+                    "avg_components": {
+                        "word_count": statistics.mean(wc_vals) if wc_vals else None,
+                        "programmatic": statistics.mean(prog_vals) if prog_vals else None,
+                        "llm_judge": statistics.mean(llm_vals) if llm_vals else None,
+                    } if d["breakdowns"] else None,
+                }
+
             model_stats[model] = {
                 "total": total,
                 "avg_score": avg_score,
@@ -621,18 +694,7 @@ class ResultsDatabase:
                 "generation_cost": gen_cost,
                 "avg_cost_per_task": avg_cost,
                 "token_stats": token_stats,
-                "by_task_type": {
-                    tt: {
-                        "total": d["total"],
-                        "avg_score": statistics.mean(d["scores"]) if d["scores"] else None,
-                        "avg_components": {
-                            "word_count": statistics.mean([b["word_count"] for b in d["breakdowns"]]) if d["breakdowns"] else None,
-                            "programmatic": statistics.mean([b["programmatic"] for b in d["breakdowns"]]) if d["breakdowns"] else None,
-                            "llm_judge": statistics.mean([b["llm_judge"] for b in d["breakdowns"]]) if d["breakdowns"] else None,
-                        } if d["breakdowns"] else None,
-                    }
-                    for tt, d in by_type.items()
-                }
+                "by_task_type": by_task_type_stats,
             }
 
         # Get all task types
@@ -1089,7 +1151,8 @@ class ResultsDatabase:
 
     def rebuild_from_yaml(self) -> tuple[int, int]:
         """
-        Rebuild database from YAML files in results/generations and results/evaluations.
+        Rebuild database from YAML files in results/generations, results/evaluations,
+        and results/agentic (for agentic task results).
 
         Returns: (generations_loaded, evaluations_loaded)
         """
@@ -1099,6 +1162,7 @@ class ResultsDatabase:
         project_root = get_project_root()
         gen_dir = project_root / "results" / "generations"
         eval_dir = project_root / "results" / "evaluations"
+        agentic_dir = project_root / "results" / "agentic"
 
         # Reset data
         self._data = self._empty_db()
@@ -1106,7 +1170,7 @@ class ResultsDatabase:
         gen_count = 0
         eval_count = 0
 
-        # Load generations
+        # Load standard generations
         if gen_dir.exists():
             for yaml_file in gen_dir.glob("*.yaml"):
                 try:
@@ -1134,7 +1198,38 @@ class ResultsDatabase:
                 except Exception as e:
                     print(f"Warning: Failed to load {yaml_file}: {e}")
 
-        # Load evaluations
+        # Load agentic generations (from results/agentic/gen_*.yaml)
+        if agentic_dir.exists():
+            for yaml_file in agentic_dir.glob("gen_*.yaml"):
+                try:
+                    with open(yaml_file, "r") as f:
+                        data = yaml.safe_load(f)
+                    if data and data.get("task_id"):
+                        # Agentic generations have different structure
+                        token_usage = data.get("token_usage", {})
+                        gen_record = {
+                            "task_id": data["task_id"],
+                            "task_type": data.get("task_type", "unknown"),
+                            "theory": data.get("theory", "Unknown"),
+                            "model": data["model"],
+                            "sample": data.get("sample_index", 0),
+                            "output": data.get("final_output", ""),
+                            "prompt_tokens": token_usage.get("total_prompt_tokens", 0),
+                            "completion_tokens": token_usage.get("total_completion_tokens", 0),
+                            "reasoning_tokens": token_usage.get("total_reasoning_tokens", 0),
+                            "generation_cost": token_usage.get("total_cost", 0),
+                            "timestamp": data.get("timestamp", ""),
+                            "success": data.get("success", True),
+                            "error": data.get("error"),
+                            "agentic_type": data.get("agentic_type"),
+                            "metrics": data.get("metrics", {}),
+                        }
+                        self._data["generations"].append(gen_record)
+                        gen_count += 1
+                except Exception as e:
+                    print(f"Warning: Failed to load {yaml_file}: {e}")
+
+        # Load standard evaluations
         if eval_dir.exists():
             for yaml_file in eval_dir.glob("*.yaml"):
                 try:
@@ -1154,6 +1249,54 @@ class ResultsDatabase:
                             "score_breakdown": data.get("score_breakdown", {}),
                             "llm_results": data.get("llm_results", {}),
                             "error": data.get("error"),
+                        }
+                        self._data["evaluations"].append(eval_record)
+                        eval_count += 1
+                except Exception as e:
+                    print(f"Warning: Failed to load {yaml_file}: {e}")
+
+        # Load agentic evaluations (from results/agentic/eval_*.yaml)
+        if agentic_dir.exists():
+            for yaml_file in agentic_dir.glob("eval_*.yaml"):
+                try:
+                    with open(yaml_file, "r") as f:
+                        data = yaml.safe_load(f)
+                    if data and data.get("task_id"):
+                        # Agentic evaluations have different structure (process_scores, output_scores)
+                        # We normalize to score_breakdown for consistency
+                        process_scores = data.get("process_scores", {})
+                        output_scores = data.get("output_scores", {})
+
+                        # Build normalized score_breakdown
+                        score_breakdown = {
+                            "final_score": data.get("final_score"),
+                            "agentic": True,
+                            "process_scores": process_scores,
+                            "output_scores": output_scores,
+                        }
+
+                        # Infer task_type from task_id if not present
+                        task_id = data["task_id"]
+                        task_type = data.get("task_type")
+                        if not task_type:
+                            # Parse from task_id like "agentic_constraint_discovery_001"
+                            parts = task_id.rsplit("_", 1)
+                            task_type = parts[0] if len(parts) > 1 else task_id
+
+                        eval_record = {
+                            "task_id": task_id,
+                            "task_type": task_type,
+                            "model": data["model"],
+                            "sample": data.get("sample", 0),
+                            "evaluator_model": data.get("evaluator_model", "unknown"),
+                            "evaluation_cost": data.get("evaluator_cost", 0),
+                            "timestamp": data.get("timestamp", ""),
+                            "success": data.get("success", True),
+                            "final_score": data.get("final_score"),
+                            "score_breakdown": score_breakdown,
+                            "llm_results": data.get("llm_results", {}),
+                            "error": data.get("error"),
+                            "agentic_type": data.get("agentic_type"),
                         }
                         self._data["evaluations"].append(eval_record)
                         eval_count += 1

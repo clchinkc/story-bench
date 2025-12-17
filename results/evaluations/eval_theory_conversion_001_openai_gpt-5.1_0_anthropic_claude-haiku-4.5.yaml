@@ -12,20 +12,19 @@ final_score: 0.66625
 score_breakdown:
   final_score: 0.6663
   components:
-    word_count:
-      score: 0.0
-      weight: 0.25
-      actual: 1211
-      target_range:
-      - 500
-      - 700
     programmatic:
       score: 0.7
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.0
         repetition_score: 0.5
         slop_score: 1.0
         overall: 0.7
+      word_count:
+        actual: 1211
+        target_range:
+        - 500
+        - 700
     llm_judge:
       score: 0.9825
       weight: 0.5
@@ -42,22 +41,23 @@ llm_results:
   structural_accuracy_score: 0.95
   tone_score: 0.95
   overall_score: 0.95
-  evidence: 'STRENGTHS: All 5 Freytag beats are clearly present and well-executed.
-    Exposition establishes Samira''s 15-year career, lab setting, and the impossible
-    virus discovery with atmospheric detail. Rising Action spans the 72-hour containment
-    crisis with escalating complications (new patients, viral adaptation, failed models).
-    Climax peaks at the Nexus confrontation where Samira accuses executives and faces
-    legal threats—the highest tension point. Falling Action covers the press conference,
-    data release, and immediate consequences. Denouement provides new equilibrium:
-    Samira isolated professionally but morally resolved, the outbreak contained, the
-    cure public. All 6 core elements preserved: Samira as protagonist making ethical
-    sacrifice, engineered virus discovery, Raj supporting throughout, Nexus as clear
-    antagonist, public cure release, career destruction. Tone is consistently maintained—medical
-    thriller tension with ethical weight, balancing technical detail with moral stakes.
-    DEDUCTIONS: Word count (1211) significantly exceeds target range (500-700), representing
-    73% overage. This violates the structural constraint, though the content quality
-    is high. Structural accuracy slightly reduced (0.95 vs 1.0) because the expanded
-    length, while narratively effective, deviates from the conversion brief''s implicit
-    compression requirement. Minor: The denouement extends slightly beyond typical
-    Freytag resolution into reflection, though this strengthens thematic resonance.'
+  evidence: "STRENGTHS: All 5 Freytag beats are clearly present and well-executed.\
+    \ Exposition establishes Samira's 15-year career, lab setting, and the impossible\
+    \ virus discovery with atmospheric detail. Rising Action spans the 72-hour containment\
+    \ crisis with escalating complications (new patients, viral adaptation, failed\
+    \ models). Climax peaks at the Nexus confrontation where Samira accuses executives\
+    \ and faces legal threats\u2014the highest tension point. Falling Action covers\
+    \ the press conference, data release, and immediate consequences. Denouement provides\
+    \ new equilibrium: Samira isolated professionally but morally resolved, the outbreak\
+    \ contained, the cure public. All 6 core elements preserved: Samira as protagonist\
+    \ making ethical sacrifice, engineered virus discovery, Raj supporting throughout,\
+    \ Nexus as clear antagonist, public cure release, career destruction. Tone is\
+    \ consistently maintained\u2014medical thriller tension with ethical weight, balancing\
+    \ technical detail with moral stakes. DEDUCTIONS: Word count (1211) significantly\
+    \ exceeds target range (500-700), representing 73% overage. This violates the\
+    \ structural constraint, though the content quality is high. Structural accuracy\
+    \ slightly reduced (0.95 vs 1.0) because the expanded length, while narratively\
+    \ effective, deviates from the conversion brief's implicit compression requirement.\
+    \ Minor: The denouement extends slightly beyond typical Freytag resolution into\
+    \ reflection, though this strengthens thematic resonance."
 error: null

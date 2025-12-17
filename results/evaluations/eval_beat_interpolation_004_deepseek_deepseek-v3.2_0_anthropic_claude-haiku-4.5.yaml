@@ -12,20 +12,19 @@ final_score: 0.985
 score_breakdown:
   final_score: 0.985
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 440
-      target_range:
-      - 300
-      - 450
     programmatic:
       score: 0.94
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.9
         slop_score: 1.0
         overall: 0.94
+      word_count:
+        actual: 440
+        target_range:
+        - 300
+        - 450
     llm_judge:
       score: 1.0
       weight: 0.5
@@ -40,27 +39,28 @@ llm_results:
   character_score: 1.0
   bridge_score: 1.0
   continuity_score: 1.0
-  evidence: 'REQUIRED ELEMENTS (4/4 present): (1) Direct examination of Dr. Okonkwo—Thomas
-    methodically questions her about the Astra-12 trial, protocol, and the specific
-    July 12th safety report. (2) Near-recant moment—She begins evasively answering
-    (''interpretations could vary''), shows fear of the CEO, and appears ready to
-    deny the alterations. The narrative explicitly states ''She was going to deny
-    it. She was going to save her daughter and bury the truth.'' (3) Thomas''s decisive
-    action—He abandons protocol, uses her first name, and delivers a brutal emotional
-    appeal about her daughter and legacy (''what will you tell her you did?''). This
-    is active influence, not passive questioning. (4) Turning point where truth prevails—Her
-    composure shatters, she resolves, and delivers clear testimony: ''I did not authorize
-    the change...He knew.'' The gallery erupts; the case direction is irrevocably
-    set. MUST-NOT ITEMS (0/4 violations): Avoided passive recitation of truth (she
-    struggles internally and nearly recants). Avoided passive protagonist (Thomas
-    makes a calculated, rule-breaking choice). Avoided defense winning (guilty verdict
-    follows). Avoided deus ex machina (no new evidence; Thomas''s emotional appeal
-    is character-driven action). CHARACTER CONSISTENCY: Thomas''s voice remains consistent—strategic
-    prosecutor who becomes desperate, then personal. Dr. Okonkwo''s arc from fear
-    to resolution is psychologically coherent. BRIDGE QUALITY: Seamless transition
-    from BEFORE (her fear, his stomach dropping) through CLIMAX (the emotional confrontation)
-    to AFTER (her tears, the verdict). The hallway scene in AFTER directly references
-    her internal conflict from CLIMAX. CONTINUITY: Setting remains the courtroom throughout.
-    Judge, gallery, CEO, defense attorney all consistently positioned. No contradictions
-    between segments.'
+  evidence: "REQUIRED ELEMENTS (4/4 present): (1) Direct examination of Dr. Okonkwo\u2014\
+    Thomas methodically questions her about the Astra-12 trial, protocol, and the\
+    \ specific July 12th safety report. (2) Near-recant moment\u2014She begins evasively\
+    \ answering ('interpretations could vary'), shows fear of the CEO, and appears\
+    \ ready to deny the alterations. The narrative explicitly states 'She was going\
+    \ to deny it. She was going to save her daughter and bury the truth.' (3) Thomas's\
+    \ decisive action\u2014He abandons protocol, uses her first name, and delivers\
+    \ a brutal emotional appeal about her daughter and legacy ('what will you tell\
+    \ her you did?'). This is active influence, not passive questioning. (4) Turning\
+    \ point where truth prevails\u2014Her composure shatters, she resolves, and delivers\
+    \ clear testimony: 'I did not authorize the change...He knew.' The gallery erupts;\
+    \ the case direction is irrevocably set. MUST-NOT ITEMS (0/4 violations): Avoided\
+    \ passive recitation of truth (she struggles internally and nearly recants). Avoided\
+    \ passive protagonist (Thomas makes a calculated, rule-breaking choice). Avoided\
+    \ defense winning (guilty verdict follows). Avoided deus ex machina (no new evidence;\
+    \ Thomas's emotional appeal is character-driven action). CHARACTER CONSISTENCY:\
+    \ Thomas's voice remains consistent\u2014strategic prosecutor who becomes desperate,\
+    \ then personal. Dr. Okonkwo's arc from fear to resolution is psychologically\
+    \ coherent. BRIDGE QUALITY: Seamless transition from BEFORE (her fear, his stomach\
+    \ dropping) through CLIMAX (the emotional confrontation) to AFTER (her tears,\
+    \ the verdict). The hallway scene in AFTER directly references her internal conflict\
+    \ from CLIMAX. CONTINUITY: Setting remains the courtroom throughout. Judge, gallery,\
+    \ CEO, defense attorney all consistently positioned. No contradictions between\
+    \ segments."
 error: null

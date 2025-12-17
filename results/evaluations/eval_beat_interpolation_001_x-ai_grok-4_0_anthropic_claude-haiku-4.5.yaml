@@ -12,20 +12,19 @@ final_score: 0.7183840000641857
 score_breakdown:
   final_score: 0.7184
   components:
-    word_count:
-      score: 0.0
-      weight: 0.25
-      actual: 575
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.8735
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.0
         repetition_score: 0.8
         slop_score: 0.9837
         overall: 0.8735
+      word_count:
+        actual: 575
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 1.0
       weight: 0.5
@@ -42,20 +41,21 @@ llm_results:
   character_score: 1.0
   bridge_score: 1.0
   continuity_score: 1.0
-  evidence: 'STRENGTHS: All 4 required elements present and well-executed: (1) Marcus
-    introduced as wise mentor figure with clear backstory (''former adventurer''),
-    (2) Practical wisdom delivered (''Adventuring isn''t just swinging swords...your
-    librarian''s eye for patterns'') plus tangible tools (satchel with luminous ink,
-    notebook, compass), (3) Elena''s doubt shifts convincingly from ''I can''t do
-    this'' to ''Maybe ordinary was enough'' with authentic reluctance (''her voice
-    lacked its earlier bite''), (4) Librarian skills reframed as valuable (''deciphering
-    clues, piecing together forgotten lore''). All must-not violations avoided: Elena
-    remains doubtful/reluctant (not confident), Marcus explicitly doesn''t accompany
-    her, setting is village/shop (not forest), no magical powers discovered. Character
-    voice consistent throughout—Elena''s self-deprecation and analytical nature maintained.
-    Bridge between beats seamless: BEFORE ends with refusal, GENERATED shows internal
-    conflict leading to mentor encounter, AFTER shows threshold crossing with Marcus''s
-    wisdom echoing. Continuity perfect: map, grandmother''s ghost, village setting
-    all preserved. WEAKNESS: Word count (575) significantly exceeds requirement (200-350),
-    representing 64% overage. This is the only deficiency—narrative execution is exceptional.'
+  evidence: "STRENGTHS: All 4 required elements present and well-executed: (1) Marcus\
+    \ introduced as wise mentor figure with clear backstory ('former adventurer'),\
+    \ (2) Practical wisdom delivered ('Adventuring isn't just swinging swords...your\
+    \ librarian's eye for patterns') plus tangible tools (satchel with luminous ink,\
+    \ notebook, compass), (3) Elena's doubt shifts convincingly from 'I can't do this'\
+    \ to 'Maybe ordinary was enough' with authentic reluctance ('her voice lacked\
+    \ its earlier bite'), (4) Librarian skills reframed as valuable ('deciphering\
+    \ clues, piecing together forgotten lore'). All must-not violations avoided: Elena\
+    \ remains doubtful/reluctant (not confident), Marcus explicitly doesn't accompany\
+    \ her, setting is village/shop (not forest), no magical powers discovered. Character\
+    \ voice consistent throughout\u2014Elena's self-deprecation and analytical nature\
+    \ maintained. Bridge between beats seamless: BEFORE ends with refusal, GENERATED\
+    \ shows internal conflict leading to mentor encounter, AFTER shows threshold crossing\
+    \ with Marcus's wisdom echoing. Continuity perfect: map, grandmother's ghost,\
+    \ village setting all preserved. WEAKNESS: Word count (575) significantly exceeds\
+    \ requirement (200-350), representing 64% overage. This is the only deficiency\u2014\
+    narrative execution is exceptional."
 error: null

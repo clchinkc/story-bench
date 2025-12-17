@@ -12,20 +12,19 @@ final_score: 0.9011660079051382
 score_breakdown:
   final_score: 0.9012
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 245
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.9447
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 1.0
         slop_score: 0.8617
         overall: 0.9447
+      word_count:
+        actual: 245
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 0.83
       weight: 0.5
@@ -42,26 +41,26 @@ llm_results:
   minimal_change_score: 0.35
   word_count_valid: true
   quality_score: 0.85
-  evidence: 'DIAGNOSIS: The model correctly identified the core flaw—excessive telling/info-dumping
-    rather than showing through scene and action. The revision demonstrates strong
-    understanding by converting static descriptions into sensory-grounded moments
-    (bitter coffee taste, worn leather badge, jazz melody, precinct buzz). CHARACTER
-    BEHAVIOR: Rachel is now shown through action (sipping coffee, brushing the badge,
-    surveying the scene) rather than described. RELATIONSHIP: James appears through
-    wordless interaction and ''seamless teamwork'' rather than summary statement.
-    SETTING: Sensory details (October morning, precinct chaos, bulletin board) ground
-    the scene. COLD CASES: Shown through visual focus on bulletin board rather than
-    told. PRESERVATION: All 5 elements intact; all 4 required phrases present verbatim.
-    MINIMAL CHANGE ASSESSMENT: This is a MODERATE-TO-SUBSTANTIAL rewrite, not minimal
-    surgical edits. The original 2-paragraph info-dump structure was completely dismantled
-    and rebuilt into a 4-paragraph scene-based narrative. Approximately 60-70% of
-    original sentences were replaced or heavily restructured. While the flaw correction
-    is excellent, the constraint to make ''MINIMAL modifications'' was not honored—this
-    is a full reconstruction rather than targeted fixes. QUALITY: Writing is professional
-    and engaging; no new errors introduced. The final sentence (''unaware that this
-    ordinary Tuesday held the spark...'') effectively signals the inciting incident
-    approaching, which is appropriate for exposition''s function. MINOR WEAKNESS:
-    The phrase ''unaware that this ordinary Tuesday held the spark'' slightly breaks
-    show-don''t-tell by explicitly telegraphing coming disruption, though this is
-    a minor issue in context.'
+  evidence: "DIAGNOSIS: The model correctly identified the core flaw\u2014excessive\
+    \ telling/info-dumping rather than showing through scene and action. The revision\
+    \ demonstrates strong understanding by converting static descriptions into sensory-grounded\
+    \ moments (bitter coffee taste, worn leather badge, jazz melody, precinct buzz).\
+    \ CHARACTER BEHAVIOR: Rachel is now shown through action (sipping coffee, brushing\
+    \ the badge, surveying the scene) rather than described. RELATIONSHIP: James appears\
+    \ through wordless interaction and 'seamless teamwork' rather than summary statement.\
+    \ SETTING: Sensory details (October morning, precinct chaos, bulletin board) ground\
+    \ the scene. COLD CASES: Shown through visual focus on bulletin board rather than\
+    \ told. PRESERVATION: All 5 elements intact; all 4 required phrases present verbatim.\
+    \ MINIMAL CHANGE ASSESSMENT: This is a MODERATE-TO-SUBSTANTIAL rewrite, not minimal\
+    \ surgical edits. The original 2-paragraph info-dump structure was completely\
+    \ dismantled and rebuilt into a 4-paragraph scene-based narrative. Approximately\
+    \ 60-70% of original sentences were replaced or heavily restructured. While the\
+    \ flaw correction is excellent, the constraint to make 'MINIMAL modifications'\
+    \ was not honored\u2014this is a full reconstruction rather than targeted fixes.\
+    \ QUALITY: Writing is professional and engaging; no new errors introduced. The\
+    \ final sentence ('unaware that this ordinary Tuesday held the spark...') effectively\
+    \ signals the inciting incident approaching, which is appropriate for exposition's\
+    \ function. MINOR WEAKNESS: The phrase 'unaware that this ordinary Tuesday held\
+    \ the spark' slightly breaks show-don't-tell by explicitly telegraphing coming\
+    \ disruption, though this is a minor issue in context."
 error: null

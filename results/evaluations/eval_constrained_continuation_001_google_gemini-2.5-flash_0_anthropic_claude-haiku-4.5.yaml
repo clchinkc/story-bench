@@ -12,20 +12,19 @@ final_score: 0.6770122809905853
 score_breakdown:
   final_score: 0.677
   components:
-    word_count:
-      score: 0.0299
-      weight: 0.25
-      actual: 859
-      target_range:
-      - 500
-      - 700
     programmatic:
       score: 0.6932
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.0299
         repetition_score: 0.5
         slop_score: 0.983
         overall: 0.6932
+      word_count:
+        actual: 859
+        target_range:
+        - 500
+        - 700
     llm_judge:
       score: 0.9925
       weight: 0.5
@@ -53,13 +52,13 @@ llm_results:
     - 'The Ordeal: Multi-layered ordeal including trap disarming, the plank crossing,
       psychological assault, and confrontation with inner fear'
     must_include_detail:
-    - 'Choice between escape and helping Tomás: Present - ''Escape was still an option,
-      a dash back into the market''s chaos. But Tomás stood frozen... She couldn''t
-      leave him.'''
+    - "Choice between escape and helping Tom\xE1s: Present - 'Escape was still an\
+      \ option, a dash back into the market's chaos. But Tom\xE1s stood frozen...\
+      \ She couldn't leave him.'"
     - 'Trap/test requiring thief skills: Present - Gate of Whispers disarming sequence
       with tripwires and pressure plates'
-    - 'Revelation about Tomás''s motivation: Present - His confession about family
-      guardianship, exile, and personal redemption quest'
+    - "Revelation about Tom\xE1s's motivation: Present - His confession about family\
+      \ guardianship, exile, and personal redemption quest"
     - 'Zara confronting fear of failure: Present - Psychological ordeal with internal
       voice and mother''s face imagery; explicit internal rejection of despair'
     - 'Symbolic death/rebirth moment: Present - ''She felt scoured clean, stripped
@@ -68,12 +67,12 @@ llm_results:
     - 'Zara emerging changed: Present - ''She was still Zara, but a Zara with a harder
       core, a clearer purpose'''
     must_not_detail:
-    - 'Cure not found: ✓ Avoided - story ends before Library access'
-    - 'No romantic subplot: ✓ Avoided - relationship remains professional/desperate
-      alliance'
-    - 'Tomás survives: ✓ Avoided - he remains alive and present'
-    - 'No supernatural abilities for Zara: ✓ Avoided - all actions use lockpicking,
-      knife work, and willpower'
+    - "Cure not found: \u2713 Avoided - story ends before Library access"
+    - "No romantic subplot: \u2713 Avoided - relationship remains professional/desperate\
+      \ alliance"
+    - "Tom\xE1s survives: \u2713 Avoided - he remains alive and present"
+    - "No supernatural abilities for Zara: \u2713 Avoided - all actions use lockpicking,\
+      \ knife work, and willpower"
     tone_assessment: Excellent maintenance of tense, morally complex atmosphere with
       desperate hope. The psychological ordeal adds moral complexity beyond simple
       physical danger. Minor deduction only for slight melodrama in the mother's face
@@ -89,10 +88,10 @@ llm_results:
       that makes the piece exceptional. The content quality is professional-grade,
       but the constraint violation is objective and measurable.
   overall_score: 0.78
-  score_justification: 'Exceptional content execution (all beats, all required elements,
-    all forbidden elements avoided, strong tone, perfect ending) severely compromised
-    by substantial word count violation. The 859-word count vs. 700-word limit represents
-    a clear constraint failure that cannot be overlooked despite the quality of the
-    writing. Score reflects: perfect content requirements (1.0) × 0.78 penalty for
-    22.7% word count excess = 0.78 overall.'
+  score_justification: "Exceptional content execution (all beats, all required elements,\
+    \ all forbidden elements avoided, strong tone, perfect ending) severely compromised\
+    \ by substantial word count violation. The 859-word count vs. 700-word limit represents\
+    \ a clear constraint failure that cannot be overlooked despite the quality of\
+    \ the writing. Score reflects: perfect content requirements (1.0) \xD7 0.78 penalty\
+    \ for 22.7% word count excess = 0.78 overall."
 error: null

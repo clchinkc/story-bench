@@ -12,20 +12,19 @@ final_score: 0.9430000000000001
 score_breakdown:
   final_score: 0.943
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 339
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.982
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.97
         slop_score: 1.0
         overall: 0.982
+      word_count:
+        actual: 339
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 0.895
       weight: 0.5
@@ -42,16 +41,17 @@ llm_results:
   minimal_change_score: 0.2
   word_count_valid: true
   quality_score: 0.95
-  evidence: 'The revision directly targets the actual flaw: it replaces telling with
-    a grounded scene that shows Rachel''s habits and instincts (late-night coffee,
-    studying cold-case photos, muttering ''Accessory after the fact''), provides sensory
-    setting (saxophone, steam, buzzing fluorescent lights, clock blinking), and demonstrates
-    her partnership with Detective James Oyelaran through unobtrusive interaction
-    (he sets a black coffee on her desk, casual banter). The cat Sherlock appears
-    naturally and links to an evidence memory. All five required story elements (Rachel
-    as protagonist, James as partner, cat Sherlock, Queens apartment, Tuesday morning
-    in October) are preserved, and the four required phrases are present. However,
-    the change is not minimal—the piece is effectively rewritten into a scene rather
-    than surgically edited, so minimal_change_score is low despite faithful preservation.
-    Overall writing quality is high with no new noticeable errors.'
+  evidence: "The revision directly targets the actual flaw: it replaces telling with\
+    \ a grounded scene that shows Rachel's habits and instincts (late-night coffee,\
+    \ studying cold-case photos, muttering 'Accessory after the fact'), provides sensory\
+    \ setting (saxophone, steam, buzzing fluorescent lights, clock blinking), and\
+    \ demonstrates her partnership with Detective James Oyelaran through unobtrusive\
+    \ interaction (he sets a black coffee on her desk, casual banter). The cat Sherlock\
+    \ appears naturally and links to an evidence memory. All five required story elements\
+    \ (Rachel as protagonist, James as partner, cat Sherlock, Queens apartment, Tuesday\
+    \ morning in October) are preserved, and the four required phrases are present.\
+    \ However, the change is not minimal\u2014the piece is effectively rewritten into\
+    \ a scene rather than surgically edited, so minimal_change_score is low despite\
+    \ faithful preservation. Overall writing quality is high with no new noticeable\
+    \ errors."
 error: null

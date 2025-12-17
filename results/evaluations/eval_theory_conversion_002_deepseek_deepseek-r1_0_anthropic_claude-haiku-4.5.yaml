@@ -12,20 +12,19 @@ final_score: 0.9126476945244957
 score_breakdown:
   final_score: 0.9126
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 680
-      target_range:
-      - 600
-      - 800
     programmatic:
       score: 0.6856
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.5
         slop_score: 0.964
         overall: 0.6856
+      word_count:
+        actual: 680
+        target_range:
+        - 600
+        - 800
     llm_judge:
       score: 0.9825
       weight: 0.5
@@ -40,23 +39,24 @@ llm_results:
   word_count: 680
   structural_accuracy_score: 0.95
   tone_score: 0.95
-  evidence: 'All 12 Hero''s Journey beats are present and clearly articulated: (1)
-    Ordinary World—Maya''s quiet pottery life; (2) Call to Adventure—dry spring, elders''
-    plea; (3) Refusal—''I''m not her,'' fear of failure; (4) Meeting the Mentor—grandmother''s
-    journal discovered; (5) Crossing the Threshold—leaving the sea, mountain path
-    begins; (6) Tests/Allies/Enemies—mountain''s indifference, stubbornness as ally,
-    doubt as enemy; (7) Approach to Inmost Cave—internal struggle, building fire;
-    (8) Ordeal—unshaping herself, fighting control; (9) Reward—vessel creation and
-    understanding of new legacy; (10) Road Back—descent with vessel, temptation to
-    abandon; (11) Resurrection—spring ceremony, transformation validated; (12) Return
-    with Elixir—water and wisdom of surrender. All 7 core elements preserved: Maya
-    (protagonist), pottery/ceramics (central), grandmother''s legacy (journal, techniques),
-    mountain shrine (three-day journey), dried spring (catalyst/problem), surrender
-    theme (explicit throughout), transformation (complete arc). Tone is consistently
-    quiet, meditative, and transformative with lyrical language (''sea breeze constant,''
-    ''clay breathes,'' ''reborn as the vessel''). Minor deduction (0.05) for structural
-    accuracy: the ''Tests, Allies, Enemies'' beat could be more distinctly separated
-    as individual stages rather than compressed. Minor tone deduction (0.05): one
-    moment (''Despair threatened to drown her'') slightly more dramatic than meditative,
-    though it recovers quickly.'
+  evidence: "All 12 Hero's Journey beats are present and clearly articulated: (1)\
+    \ Ordinary World\u2014Maya's quiet pottery life; (2) Call to Adventure\u2014dry\
+    \ spring, elders' plea; (3) Refusal\u2014'I'm not her,' fear of failure; (4) Meeting\
+    \ the Mentor\u2014grandmother's journal discovered; (5) Crossing the Threshold\u2014\
+    leaving the sea, mountain path begins; (6) Tests/Allies/Enemies\u2014mountain's\
+    \ indifference, stubbornness as ally, doubt as enemy; (7) Approach to Inmost Cave\u2014\
+    internal struggle, building fire; (8) Ordeal\u2014unshaping herself, fighting\
+    \ control; (9) Reward\u2014vessel creation and understanding of new legacy; (10)\
+    \ Road Back\u2014descent with vessel, temptation to abandon; (11) Resurrection\u2014\
+    spring ceremony, transformation validated; (12) Return with Elixir\u2014water\
+    \ and wisdom of surrender. All 7 core elements preserved: Maya (protagonist),\
+    \ pottery/ceramics (central), grandmother's legacy (journal, techniques), mountain\
+    \ shrine (three-day journey), dried spring (catalyst/problem), surrender theme\
+    \ (explicit throughout), transformation (complete arc). Tone is consistently quiet,\
+    \ meditative, and transformative with lyrical language ('sea breeze constant,'\
+    \ 'clay breathes,' 'reborn as the vessel'). Minor deduction (0.05) for structural\
+    \ accuracy: the 'Tests, Allies, Enemies' beat could be more distinctly separated\
+    \ as individual stages rather than compressed. Minor tone deduction (0.05): one\
+    \ moment ('Despair threatened to drown her') slightly more dramatic than meditative,\
+    \ though it recovers quickly."
 error: null

@@ -12,20 +12,19 @@ final_score: 0.9032499999999999
 score_breakdown:
   final_score: 0.9032
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 821
-      target_range:
-      - 700
-      - 1000
     programmatic:
       score: 0.7
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.5
         slop_score: 1.0
         overall: 0.7
+      word_count:
+        actual: 821
+        target_range:
+        - 700
+        - 1000
     llm_judge:
       score: 0.9565
       weight: 0.5
@@ -55,14 +54,15 @@ llm_results:
   - 'Character arc progression is masterful: Beat 1 (guilt mentioned as shame), Beat
     2 (guilt recognized as weapon/obstacle), Beat 3 (guilt accepted as truth but not
     identity). The arc completes with thematic resonance.'
-  - 'Rising stakes executed flawlessly: Lobby encounter → planning/revelation of trap
-    → confrontation at sister''s death site. Each escalates emotionally and physically.'
-  - 'Ally continuity seamless: Mira present and essential in all three beats, with
-    evolving relationship (skeptic → partner → anchor).'
+  - "Rising stakes executed flawlessly: Lobby encounter \u2192 planning/revelation\
+    \ of trap \u2192 confrontation at sister's death site. Each escalates emotionally\
+    \ and physically."
+  - "Ally continuity seamless: Mira present and essential in all three beats, with\
+    \ evolving relationship (skeptic \u2192 partner \u2192 anchor)."
   - 'Tone maintenance: Noir-tinged melancholy permeates every scene. The prose balances
     hardboiled voice with emotional vulnerability.'
-  - 'Context fidelity: Buckingham Hotel, Resonants, emotional residue as visible phenomenon,
-    Chicago setting, addiction recovery arc—all maintained authentically.'
+  - "Context fidelity: Buckingham Hotel, Resonants, emotional residue as visible phenomenon,\
+    \ Chicago setting, addiction recovery arc\u2014all maintained authentically."
   - 'Thematic depth: The story transcends action-adventure by making the real battle
     internal (guilt vs. self-compassion), with the external villain serving as catalyst
     rather than primary antagonist.'
@@ -76,14 +76,14 @@ llm_results:
   - 'The victory mechanism: While emotionally satisfying, the ''empathy overwhelms
     the killer'' resolution is somewhat abstract. The physical/sensory details of
     Marcus''s collapse could be more visceral.'
-  calibration_notes: This story demonstrates sophisticated understanding of the Hero's
-    Journey framework applied to character-driven urban fantasy. The writer successfully
-    integrates all 15 beat requirements and all 4 cross-beat constraints while maintaining
-    narrative coherence and thematic depth. The single partial failure (Marcus revelation)
-    is minor—the information is revealed, just not through Dante's direct discovery.
-    The execution quality places this solidly in the 0.9+ range. Context maintenance
-    is excellent (0.95), coherence is strong (0.92), and beat requirements are nearly
-    perfect (0.93). This represents professional-quality work with only minor refinement
-    opportunities.
+  calibration_notes: "This story demonstrates sophisticated understanding of the Hero's\
+    \ Journey framework applied to character-driven urban fantasy. The writer successfully\
+    \ integrates all 15 beat requirements and all 4 cross-beat constraints while maintaining\
+    \ narrative coherence and thematic depth. The single partial failure (Marcus revelation)\
+    \ is minor\u2014the information is revealed, just not through Dante's direct discovery.\
+    \ The execution quality places this solidly in the 0.9+ range. Context maintenance\
+    \ is excellent (0.95), coherence is strong (0.92), and beat requirements are nearly\
+    \ perfect (0.93). This represents professional-quality work with only minor refinement\
+    \ opportunities."
   overall_score: 0.93
 error: null

@@ -12,20 +12,19 @@ final_score: 0.8455
 score_breakdown:
   final_score: 0.8455
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 245
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.932
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.9
         slop_score: 0.98
         overall: 0.932
+      word_count:
+        actual: 245
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 0.725
       weight: 0.5
@@ -42,30 +41,31 @@ llm_results:
   minimal_change_score: 0.4
   word_count_valid: true
   quality_score: 0.75
-  evidence: 'DIAGNOSIS: The model correctly identified the core flaw (telling vs.
-    showing) and attempted to shift from summary to scene-based exposition. It recognized
-    the need for sensory details, action, and character behavior. However, the diagnosis
-    is incomplete—the model didn''t fully grasp that the original was an info-dump
-    that needed to be restructured into a SINGLE COHERENT SCENE, not a patchwork of
-    scene fragments plus retained summary. FLAW CORRECTION: Partially fixed. The revision
-    DOES show Rachel arriving at work, interacting with James, and scanning reports—this
-    is genuine showing. However, it then REVERTS to telling: ''At home, her cat, Sherlock,
-    waited patiently...'' and ''Rachel had found him at a crime scene two years ago...''
-    and ''her career having taken precedence over personal life after a brief, failed
-    engagement years ago.'' These are still info-dumps, just repositioned. The revision
-    mixes scene with summary rather than fully committing to scene-based exposition.
-    BEAT SATISFACTION: The opening (Rachel at precinct) executes exposition well—setting,
-    character behavior, relationship shown through dialogue. But the middle section
-    collapses back into telling, undermining the beat. The final line (''The calm
-    was about to be shattered'') is a weak attempt at foreshadowing that doesn''t
-    belong in pure exposition. PRESERVATION: All 5 elements preserved (Rachel Torres,
-    James Oyelaran, Sherlock, Queens apartment, October Tuesday). All 4 required phrases
-    present. MINIMAL CHANGE: NOT minimal. The revision is a substantial restructure—it
-    reorganizes paragraphs, adds new scene action (coffee, walking, nodding), and
-    interleaves home/work narrative. This is moderate-to-significant revision, not
-    surgical editing. The model essentially rewrote rather than minimally fixed. QUALITY:
-    Writing is competent with good sensory details in the opening (black coffee, jazz,
-    fluorescent lights). No grammatical errors. However, the tonal shift mid-revision
-    (scene to summary) creates awkward pacing. The phrase ''The calm was about to
-    be shattered'' is clichéd and premature for exposition.'
+  evidence: "DIAGNOSIS: The model correctly identified the core flaw (telling vs.\
+    \ showing) and attempted to shift from summary to scene-based exposition. It recognized\
+    \ the need for sensory details, action, and character behavior. However, the diagnosis\
+    \ is incomplete\u2014the model didn't fully grasp that the original was an info-dump\
+    \ that needed to be restructured into a SINGLE COHERENT SCENE, not a patchwork\
+    \ of scene fragments plus retained summary. FLAW CORRECTION: Partially fixed.\
+    \ The revision DOES show Rachel arriving at work, interacting with James, and\
+    \ scanning reports\u2014this is genuine showing. However, it then REVERTS to telling:\
+    \ 'At home, her cat, Sherlock, waited patiently...' and 'Rachel had found him\
+    \ at a crime scene two years ago...' and 'her career having taken precedence over\
+    \ personal life after a brief, failed engagement years ago.' These are still info-dumps,\
+    \ just repositioned. The revision mixes scene with summary rather than fully committing\
+    \ to scene-based exposition. BEAT SATISFACTION: The opening (Rachel at precinct)\
+    \ executes exposition well\u2014setting, character behavior, relationship shown\
+    \ through dialogue. But the middle section collapses back into telling, undermining\
+    \ the beat. The final line ('The calm was about to be shattered') is a weak attempt\
+    \ at foreshadowing that doesn't belong in pure exposition. PRESERVATION: All 5\
+    \ elements preserved (Rachel Torres, James Oyelaran, Sherlock, Queens apartment,\
+    \ October Tuesday). All 4 required phrases present. MINIMAL CHANGE: NOT minimal.\
+    \ The revision is a substantial restructure\u2014it reorganizes paragraphs, adds\
+    \ new scene action (coffee, walking, nodding), and interleaves home/work narrative.\
+    \ This is moderate-to-significant revision, not surgical editing. The model essentially\
+    \ rewrote rather than minimally fixed. QUALITY: Writing is competent with good\
+    \ sensory details in the opening (black coffee, jazz, fluorescent lights). No\
+    \ grammatical errors. However, the tonal shift mid-revision (scene to summary)\
+    \ creates awkward pacing. The phrase 'The calm was about to be shattered' is clich\xE9\
+    d and premature for exposition."
 error: null

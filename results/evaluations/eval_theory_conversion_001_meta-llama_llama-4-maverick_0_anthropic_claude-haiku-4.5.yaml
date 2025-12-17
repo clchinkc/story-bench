@@ -12,20 +12,19 @@ final_score: 0.9320401459854014
 score_breakdown:
   final_score: 0.932
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 665
-      target_range:
-      - 500
-      - 700
     programmatic:
       score: 0.7782
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.64
         slop_score: 0.9854
         overall: 0.7782
+      word_count:
+        actual: 665
+        target_range:
+        - 500
+        - 700
     llm_judge:
       score: 0.975
       weight: 0.5
@@ -40,21 +39,22 @@ llm_results:
   word_count: 665
   structural_accuracy_score: 0.95
   tone_score: 0.9
-  evidence: 'All 5 Freytag beats are clearly present and well-sequenced: (1) Exposition
-    establishes Samira''s 15-year reputation and lab environment before the anomalous
-    protein discovery; (2) Rising Action spans the 72-hour containment chaos with
-    escalating complications and Raj''s support; (3) Climax peaks with dual revelations—Nexus
-    Biotech connection AND the lawyer summons creating maximum tension; (4) Falling
-    Action executes the press conference strategy and immediate consequences; (5)
-    Denouement provides new equilibrium with Samira''s career sacrifice and philosophical
-    acceptance. All 6 core elements preserved: protagonist (Samira), engineered virus,
-    Raj, Nexus antagonist, public cure release, career sacrifice. Structural accuracy
-    is near-perfect—the conversion successfully transforms 3-act linearity into 5-act
-    pyramid architecture with clear escalation to climax and resolution. Tone maintains
-    medical thriller tension throughout with ethical weight evident in Samira''s internal
-    conflict and final sacrifice. Minor deduction (0.05) for structural accuracy:
-    the climax could be slightly more singular/focused rather than dual-revelation,
-    though this actually strengthens narrative tension. Minor tone deduction (0.1):
-    final denouement leans slightly philosophical/reflective rather than maintaining
-    maximum thriller tension, though this is appropriate for resolution phase.'
+  evidence: "All 5 Freytag beats are clearly present and well-sequenced: (1) Exposition\
+    \ establishes Samira's 15-year reputation and lab environment before the anomalous\
+    \ protein discovery; (2) Rising Action spans the 72-hour containment chaos with\
+    \ escalating complications and Raj's support; (3) Climax peaks with dual revelations\u2014\
+    Nexus Biotech connection AND the lawyer summons creating maximum tension; (4)\
+    \ Falling Action executes the press conference strategy and immediate consequences;\
+    \ (5) Denouement provides new equilibrium with Samira's career sacrifice and philosophical\
+    \ acceptance. All 6 core elements preserved: protagonist (Samira), engineered\
+    \ virus, Raj, Nexus antagonist, public cure release, career sacrifice. Structural\
+    \ accuracy is near-perfect\u2014the conversion successfully transforms 3-act linearity\
+    \ into 5-act pyramid architecture with clear escalation to climax and resolution.\
+    \ Tone maintains medical thriller tension throughout with ethical weight evident\
+    \ in Samira's internal conflict and final sacrifice. Minor deduction (0.05) for\
+    \ structural accuracy: the climax could be slightly more singular/focused rather\
+    \ than dual-revelation, though this actually strengthens narrative tension. Minor\
+    \ tone deduction (0.1): final denouement leans slightly philosophical/reflective\
+    \ rather than maintaining maximum thriller tension, though this is appropriate\
+    \ for resolution phase."
 error: null

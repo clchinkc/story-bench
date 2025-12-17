@@ -12,20 +12,19 @@ final_score: 0.997
 score_breakdown:
   final_score: 0.997
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 287
-      target_range:
-      - 250
-      - 400
     programmatic:
       score: 0.988
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.98
         slop_score: 1.0
         overall: 0.988
+      word_count:
+        actual: 287
+        target_range:
+        - 250
+        - 400
     llm_judge:
       score: 1.0
       weight: 0.5
@@ -40,19 +39,20 @@ llm_results:
   character_score: 1.0
   bridge_score: 1.0
   continuity_score: 1.0
-  evidence: 'All 4 required elements present: (1) Multiple area exploration (crew
-    quarters, medical bay, Lab Seven pathway), (2) Clue discovery (half-warm coffee,
-    frantic notes about dimensional permeability, research data), (3) Mysterious encounter
-    with transformed crew (shimmer entities, quantum fluctuations, indirect communication),
-    (4) Obstacle overcome (scanner warnings, blocked path, need to decipher intent).
-    All must-not violations avoided: data core not immediately found (only located
-    at end), crew doesn''t explain everything (only coordinates/codes transmitted),
-    Yuki commits to mission (steps forward), no prior knowledge of transformation.
-    Character voice remains consistent—scientific, methodical, fear-managed through
-    observation. Bridge seamless: BEFORE ends with arrival, GENERATED shows active
-    search/discovery, AFTER reveals findings. Setting continuity perfect: same station,
-    logical progression through spaces, environmental details consistent (red lighting,
-    thermal stress, quantum anomalies). Narrative executes classic Search beat: protagonist
-    navigates unfamiliar space, faces escalating mysteries, adapts approach, makes
-    incremental progress toward understanding without reaching resolution.'
+  evidence: "All 4 required elements present: (1) Multiple area exploration (crew\
+    \ quarters, medical bay, Lab Seven pathway), (2) Clue discovery (half-warm coffee,\
+    \ frantic notes about dimensional permeability, research data), (3) Mysterious\
+    \ encounter with transformed crew (shimmer entities, quantum fluctuations, indirect\
+    \ communication), (4) Obstacle overcome (scanner warnings, blocked path, need\
+    \ to decipher intent). All must-not violations avoided: data core not immediately\
+    \ found (only located at end), crew doesn't explain everything (only coordinates/codes\
+    \ transmitted), Yuki commits to mission (steps forward), no prior knowledge of\
+    \ transformation. Character voice remains consistent\u2014scientific, methodical,\
+    \ fear-managed through observation. Bridge seamless: BEFORE ends with arrival,\
+    \ GENERATED shows active search/discovery, AFTER reveals findings. Setting continuity\
+    \ perfect: same station, logical progression through spaces, environmental details\
+    \ consistent (red lighting, thermal stress, quantum anomalies). Narrative executes\
+    \ classic Search beat: protagonist navigates unfamiliar space, faces escalating\
+    \ mysteries, adapts approach, makes incremental progress toward understanding\
+    \ without reaching resolution."
 error: null

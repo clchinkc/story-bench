@@ -417,19 +417,20 @@ def calculate_programmatic_scores(
     word_count: int,
     target_min: int,
     target_max: int,
+    word_count_method: str = "gaussian",
 ) -> ProgrammaticScores:
     """
     Calculate all programmatic metrics for a text.
 
     Three components:
-    - Word count score (40%): Gaussian penalty for deviation from target
+    - Word count score (40%): Penalty for deviation from target (method configurable)
     - Repetition score (35%): Penalizes excessive word/phrase repetition
     - Slop score (25%): Penalizes overused "GPT-isms"
 
     Returns:
         ProgrammaticScores with individual and overall scores
     """
-    wc_score = word_count_score(word_count, target_min, target_max)
+    wc_score = word_count_score(word_count, target_min, target_max, method=word_count_method)
     rep_score = repetition_score(text)
     slop = slop_score(text)
 
@@ -551,6 +552,7 @@ def calculate_final_score(
     llm_results: dict[str, Any],
     task_type: str,
     weights: ScoringWeights | None = None,
+    word_count_method: str = "gaussian",
 ) -> ScoreBreakdown:
     """
     Calculate the final composite score for a generation.
@@ -566,6 +568,7 @@ def calculate_final_score(
         llm_results: Results dict from LLM evaluation
         task_type: Type of task
         weights: Scoring weights (default 50/50)
+        word_count_method: Method for word count scoring ("gaussian", "tanh", or "sigmoid")
 
     Returns:
         ScoreBreakdown with all component scores and final score
@@ -579,6 +582,7 @@ def calculate_final_score(
         word_count,
         target_word_range[0],
         target_word_range[1],
+        word_count_method=word_count_method,
     )
 
     # 2. LLM judge score

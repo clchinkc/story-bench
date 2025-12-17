@@ -12,20 +12,19 @@ final_score: 0.986
 score_breakdown:
   final_score: 0.986
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 244
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.964
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.94
         slop_score: 1.0
         overall: 0.964
+      word_count:
+        actual: 244
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 0.99
       weight: 0.5
@@ -42,12 +41,12 @@ llm_results:
   minimal_change_score: 0.9
   word_count_valid: true
   quality_score: 1.0
-  evidence: 'The model addressed the actual flaw (lack of Return/Change) by showing
-    Sophie behaving differently: leaving her phone in her purse, articulating an insight
-    from the retreat (''urgency was often a choice'' / ''learned to sit with the quiet''),
-    and explicitly choosing to delay work (contrasted with ''the old Sophie would
-    already be typing''). Her mother notices (''No work emails? That''s a first.'').
-    All four required elements and four required phrases are preserved with mostly
-    surgical edits—the structure and key beats remain while adding just enough behavior
-    and internalization to demonstrate change.'
+  evidence: "The model addressed the actual flaw (lack of Return/Change) by showing\
+    \ Sophie behaving differently: leaving her phone in her purse, articulating an\
+    \ insight from the retreat ('urgency was often a choice' / 'learned to sit with\
+    \ the quiet'), and explicitly choosing to delay work (contrasted with 'the old\
+    \ Sophie would already be typing'). Her mother notices ('No work emails? That's\
+    \ a first.'). All four required elements and four required phrases are preserved\
+    \ with mostly surgical edits\u2014the structure and key beats remain while adding\
+    \ just enough behavior and internalization to demonstrate change."
 error: null

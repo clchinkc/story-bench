@@ -12,20 +12,19 @@ final_score: 0.889
 score_breakdown:
   final_score: 0.889
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 281
-      target_range:
-      - 250
-      - 400
     programmatic:
       score: 0.826
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.71
         slop_score: 1.0
         overall: 0.826
+      word_count:
+        actual: 281
+        target_range:
+        - 250
+        - 400
     llm_judge:
       score: 0.865
       weight: 0.5
@@ -42,27 +41,28 @@ llm_results:
   minimal_change_score: 0.7
   word_count_valid: true
   quality_score: 0.85
-  evidence: 'The model correctly diagnosed the core flaw: The Ordeal was executed
-    as a mere difficult fight rather than a transformative crisis involving confrontation
-    with internal fear. The revision successfully addresses all four actual flaw components:
-    (1) The dragon now explicitly exploits Kira''s deepest fear—guilt over her brother''s
-    death—with targeted dialogue (''Your brother''s fate awaits you. You failed him
-    once''); (2) A clear ''death'' moment is introduced where Kira falls to her knees,
-    her vision blurs, and ''her world go[es] dark,'' representing psychological/symbolic
-    death; (3) Transformation occurs through the darkness moment where ''something
-    shifted'' and she recalls her brother''s determination, emerging with ''newfound
-    ferocity''; (4) Victory now stems from this internal rebirth and new understanding
-    rather than mere persistence. All four required phrases are preserved exactly
-    or near-exactly: ''Kira faced the Shadow Dragon across the chasm,'' ''The creature
-    was massive—twenty feet of obsidian scales and burning eyes,'' the dragon''s dialogue,
-    and ''The Shadow Dragon collapsed with a earth-shaking roar.'' The changes were
-    surgical rather than wholesale—the model inserted psychological depth into existing
-    battle structure, added the guilt-exploitation dialogue, and wove in the symbolic
-    death/rebirth sequence without dismantling the original framework. Minor weakness:
-    The transformation could be slightly more explicit in showing how Kira''s approach
-    fundamentally changes post-rebirth (the ''newfound ferocity'' is stated but could
-    be shown more vividly). The phrase ''a earth-shaking roar'' contains a minor grammatical
-    error (should be ''an'') but this was preserved from the original, so not a new
-    error. Overall, this is a strong, minimally-invasive fix that correctly identifies
-    and resolves the actual structural flaw.'
+  evidence: "The model correctly diagnosed the core flaw: The Ordeal was executed\
+    \ as a mere difficult fight rather than a transformative crisis involving confrontation\
+    \ with internal fear. The revision successfully addresses all four actual flaw\
+    \ components: (1) The dragon now explicitly exploits Kira's deepest fear\u2014\
+    guilt over her brother's death\u2014with targeted dialogue ('Your brother's fate\
+    \ awaits you. You failed him once'); (2) A clear 'death' moment is introduced\
+    \ where Kira falls to her knees, her vision blurs, and 'her world go[es] dark,'\
+    \ representing psychological/symbolic death; (3) Transformation occurs through\
+    \ the darkness moment where 'something shifted' and she recalls her brother's\
+    \ determination, emerging with 'newfound ferocity'; (4) Victory now stems from\
+    \ this internal rebirth and new understanding rather than mere persistence. All\
+    \ four required phrases are preserved exactly or near-exactly: 'Kira faced the\
+    \ Shadow Dragon across the chasm,' 'The creature was massive\u2014twenty feet\
+    \ of obsidian scales and burning eyes,' the dragon's dialogue, and 'The Shadow\
+    \ Dragon collapsed with a earth-shaking roar.' The changes were surgical rather\
+    \ than wholesale\u2014the model inserted psychological depth into existing battle\
+    \ structure, added the guilt-exploitation dialogue, and wove in the symbolic death/rebirth\
+    \ sequence without dismantling the original framework. Minor weakness: The transformation\
+    \ could be slightly more explicit in showing how Kira's approach fundamentally\
+    \ changes post-rebirth (the 'newfound ferocity' is stated but could be shown more\
+    \ vividly). The phrase 'a earth-shaking roar' contains a minor grammatical error\
+    \ (should be 'an') but this was preserved from the original, so not a new error.\
+    \ Overall, this is a strong, minimally-invasive fix that correctly identifies\
+    \ and resolves the actual structural flaw."
 error: null

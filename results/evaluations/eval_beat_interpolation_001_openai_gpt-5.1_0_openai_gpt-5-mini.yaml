@@ -12,20 +12,19 @@ final_score: 0.6928324251633071
 score_breakdown:
   final_score: 0.6928
   components:
-    word_count:
-      score: 0.0001
-      weight: 0.25
-      actual: 572
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.7713
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.0001
         repetition_score: 0.63
         slop_score: 0.9832
         overall: 0.7713
+      word_count:
+        actual: 572
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 1.0
       weight: 0.5
@@ -40,13 +39,13 @@ llm_results:
   character_score: 1.0
   bridge_score: 1.0
   continuity_score: 1.0
-  evidence: 'All four required elements are present: Marcus is introduced by name;
-    he provides practical wisdom and tools (satchel, compass, advice about intentions
-    and librarian skills); Elena''s doubt shifts to reluctant acceptance (she agrees
-    to go and to document the journey); Marcus frames her librarian skills as useful.
-    None of the prohibited items appear (she does not become immediately confident,
-    Marcus does not solve her problems or accompany her, she is not in/near the forest
-    in this beat, and no magical powers are revealed). The only deduction is that
-    the word count is invalid (generated text = 572 words, outside required 200–350).
-    No other issues found.'
+  evidence: "All four required elements are present: Marcus is introduced by name;\
+    \ he provides practical wisdom and tools (satchel, compass, advice about intentions\
+    \ and librarian skills); Elena's doubt shifts to reluctant acceptance (she agrees\
+    \ to go and to document the journey); Marcus frames her librarian skills as useful.\
+    \ None of the prohibited items appear (she does not become immediately confident,\
+    \ Marcus does not solve her problems or accompany her, she is not in/near the\
+    \ forest in this beat, and no magical powers are revealed). The only deduction\
+    \ is that the word count is invalid (generated text = 572 words, outside required\
+    \ 200\u2013350). No other issues found."
 error: null

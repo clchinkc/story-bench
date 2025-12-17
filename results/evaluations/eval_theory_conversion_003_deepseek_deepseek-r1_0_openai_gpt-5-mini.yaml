@@ -12,20 +12,19 @@ final_score: 0.968
 score_breakdown:
   final_score: 0.968
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 562
-      target_range:
-      - 550
-      - 750
     programmatic:
       score: 0.892
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.82
         slop_score: 1.0
         overall: 0.892
+      word_count:
+        actual: 562
+        target_range:
+        - 550
+        - 750
     llm_judge:
       score: 0.99
       weight: 0.5
@@ -39,11 +38,12 @@ llm_results:
   word_count_valid: true
   structural_accuracy_score: 0.95
   tone_score: 1.0
-  evidence: All four three-act beats are clearly present (Setup with inciting letter
-    and decision to go; Act 2A reconnection/midpoint of hope; Act 2B complication
-    with business offer and Yuki's rejection leading to the decisive 'No'; Act 3 apology,
-    fragile reconciliation, and denouement in the bamboo shop). All eight required
-    elements are preserved. Slight deduction on structural_accuracy (0.95) because
-    the midpoint/turns are handled subtly and compactly rather than with an explicit,
-    extended reversal—still effective for the quiet, redemptive tone.
+  evidence: "All four three-act beats are clearly present (Setup with inciting letter\
+    \ and decision to go; Act 2A reconnection/midpoint of hope; Act 2B complication\
+    \ with business offer and Yuki's rejection leading to the decisive 'No'; Act 3\
+    \ apology, fragile reconciliation, and denouement in the bamboo shop). All eight\
+    \ required elements are preserved. Slight deduction on structural_accuracy (0.95)\
+    \ because the midpoint/turns are handled subtly and compactly rather than with\
+    \ an explicit, extended reversal\u2014still effective for the quiet, redemptive\
+    \ tone."
 error: null

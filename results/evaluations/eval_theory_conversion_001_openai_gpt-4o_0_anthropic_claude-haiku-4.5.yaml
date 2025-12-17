@@ -12,20 +12,19 @@ final_score: 0.9477976190476189
 score_breakdown:
   final_score: 0.9478
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 577
-      target_range:
-      - 500
-      - 700
     programmatic:
       score: 0.8262
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.75
         slop_score: 0.9405
         overall: 0.8262
+      word_count:
+        actual: 577
+        target_range:
+        - 500
+        - 700
     llm_judge:
       score: 0.9825
       weight: 0.5
@@ -40,20 +39,21 @@ llm_results:
   word_count: 577
   structural_accuracy_score: 0.95
   tone_score: 0.95
-  evidence: 'All 5 Freytag beats are clearly present and well-delineated: (1) Exposition
-    establishes Samira''s 15-year reputation and the anomalous protein discovery;
-    (2) Rising Action depicts the 72-hour escalation with containment, quarantine,
-    and evolving symptoms; (3) Climax peaks at the Nexus Biotech revelation and press
-    conference confrontation; (4) Falling Action shows immediate aftermath with Nexus
-    damage control and federal investigation; (5) Denouement resolves with Samira''s
-    new equilibrium—blacklisted but ethically intact. All 6 core elements preserved:
-    protagonist (Samira), engineered virus, Raj (assistant), Nexus (antagonist), public
-    cure release, career sacrifice. Structure transitions smoothly from 3-act to 5-stage
-    pyramid with clear escalation and consequence flow. Tone maintains medical thriller
-    tension throughout with consistent ethical weight—the dilemma between career security
-    and truth-telling permeates the narrative. Minor deduction (0.05 each) for: structural_accuracy—the
-    transition between Rising Action and Climax could be slightly sharper; tone—one
-    brief moment of philosophical reflection in denouement slightly softens thriller
-    intensity but appropriately so for resolution. Word count valid at 577 (within
-    500-700 range).'
+  evidence: "All 5 Freytag beats are clearly present and well-delineated: (1) Exposition\
+    \ establishes Samira's 15-year reputation and the anomalous protein discovery;\
+    \ (2) Rising Action depicts the 72-hour escalation with containment, quarantine,\
+    \ and evolving symptoms; (3) Climax peaks at the Nexus Biotech revelation and\
+    \ press conference confrontation; (4) Falling Action shows immediate aftermath\
+    \ with Nexus damage control and federal investigation; (5) Denouement resolves\
+    \ with Samira's new equilibrium\u2014blacklisted but ethically intact. All 6 core\
+    \ elements preserved: protagonist (Samira), engineered virus, Raj (assistant),\
+    \ Nexus (antagonist), public cure release, career sacrifice. Structure transitions\
+    \ smoothly from 3-act to 5-stage pyramid with clear escalation and consequence\
+    \ flow. Tone maintains medical thriller tension throughout with consistent ethical\
+    \ weight\u2014the dilemma between career security and truth-telling permeates\
+    \ the narrative. Minor deduction (0.05 each) for: structural_accuracy\u2014the\
+    \ transition between Rising Action and Climax could be slightly sharper; tone\u2014\
+    one brief moment of philosophical reflection in denouement slightly softens thriller\
+    \ intensity but appropriately so for resolution. Word count valid at 577 (within\
+    \ 500-700 range)."
 error: null

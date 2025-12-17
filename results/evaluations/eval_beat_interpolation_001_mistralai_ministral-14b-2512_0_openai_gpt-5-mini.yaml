@@ -12,20 +12,19 @@ final_score: 0.6839801965172669
 score_breakdown:
   final_score: 0.684
   components:
-    word_count:
-      score: 0.0149
-      weight: 0.25
-      actual: 495
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.736
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.0149
         repetition_score: 0.56
         slop_score: 1.0
         overall: 0.736
+      word_count:
+        actual: 495
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 0.9925
       weight: 0.5
@@ -40,13 +39,13 @@ llm_results:
   character_score: 1.0
   bridge_score: 0.95
   continuity_score: 1.0
-  evidence: 'All four required elements are present: Marcus is introduced by name;
-    he provides practical tools (compass, satchel, sketch) and wisdom; Elena''s doubt
-    softens toward reluctant acceptance; her librarian skills are explicitly framed
-    as useful. None of the forbidden items occur (no instant hero turn, no mentor
-    accompaniment/solutions, not in the forest, no sudden magical powers). Minor deduction
-    to bridge_score (0.05) for a small abruptness in transitioning from the refusal
-    scene to Elena ''waking'' and immediately going to the shop—effective but slightly
-    brisk. Word count is invalid (495 words; required 200–350). No content continuity
-    or character-consistency issues.'
+  evidence: "All four required elements are present: Marcus is introduced by name;\
+    \ he provides practical tools (compass, satchel, sketch) and wisdom; Elena's doubt\
+    \ softens toward reluctant acceptance; her librarian skills are explicitly framed\
+    \ as useful. None of the forbidden items occur (no instant hero turn, no mentor\
+    \ accompaniment/solutions, not in the forest, no sudden magical powers). Minor\
+    \ deduction to bridge_score (0.05) for a small abruptness in transitioning from\
+    \ the refusal scene to Elena 'waking' and immediately going to the shop\u2014\
+    effective but slightly brisk. Word count is invalid (495 words; required 200\u2013\
+    350). No content continuity or character-consistency issues."
 error: null

@@ -12,20 +12,19 @@ final_score: 0.9685
 score_breakdown:
   final_score: 0.9685
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 371
-      target_range:
-      - 300
-      - 450
     programmatic:
       score: 0.874
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.79
         slop_score: 1.0
         overall: 0.874
+      word_count:
+        actual: 371
+        target_range:
+        - 300
+        - 450
     llm_judge:
       score: 1.0
       weight: 0.5
@@ -40,20 +39,21 @@ llm_results:
   character_score: 1.0
   bridge_score: 1.0
   continuity_score: 1.0
-  evidence: 'All four required elements present and executed excellently: (1) Direct
-    examination occurs with specific question about documents; (2) Clear near-recant
-    moment where Dr. Okonkwo begins to backtrack (''may have misinterpreted,'' ''could
-    be misleading''); (3) Thomas takes decisive action by revealing knowledge of her
-    daughter''s situation and making a binding promise (''I will find another way''),
-    directly influencing her decision; (4) Turning point clearly marked when she commits
-    to truth (''They told me to bury it'') and produces the flash drive. All must-not
-    items avoided: she struggles internally before testifying, Thomas actively influences
-    outcome through empathetic pressure rather than passive questioning, defense doesn''t
-    win, no external deus ex machina (the flash drive was already in her possession,
-    not newly discovered). Character voice remains consistent—Thomas shows both prosecutorial
-    skill and moral complexity. Bridge between beats seamless: climax ends with verdict
-    setup, falling action begins with verdict delivery. Setting continuity perfect:
-    courtroom → hallway progression is natural and expected. The narrative executes
-    the climax beat''s core function flawlessly: highest tension, protagonist''s decisive
-    action, irrevocable turning point.'
+  evidence: "All four required elements present and executed excellently: (1) Direct\
+    \ examination occurs with specific question about documents; (2) Clear near-recant\
+    \ moment where Dr. Okonkwo begins to backtrack ('may have misinterpreted,' 'could\
+    \ be misleading'); (3) Thomas takes decisive action by revealing knowledge of\
+    \ her daughter's situation and making a binding promise ('I will find another\
+    \ way'), directly influencing her decision; (4) Turning point clearly marked when\
+    \ she commits to truth ('They told me to bury it') and produces the flash drive.\
+    \ All must-not items avoided: she struggles internally before testifying, Thomas\
+    \ actively influences outcome through empathetic pressure rather than passive\
+    \ questioning, defense doesn't win, no external deus ex machina (the flash drive\
+    \ was already in her possession, not newly discovered). Character voice remains\
+    \ consistent\u2014Thomas shows both prosecutorial skill and moral complexity.\
+    \ Bridge between beats seamless: climax ends with verdict setup, falling action\
+    \ begins with verdict delivery. Setting continuity perfect: courtroom \u2192 hallway\
+    \ progression is natural and expected. The narrative executes the climax beat's\
+    \ core function flawlessly: highest tension, protagonist's decisive action, irrevocable\
+    \ turning point."
 error: null

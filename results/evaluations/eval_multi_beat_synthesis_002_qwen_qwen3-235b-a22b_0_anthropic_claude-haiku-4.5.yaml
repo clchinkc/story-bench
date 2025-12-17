@@ -12,20 +12,19 @@ final_score: 0.93625
 score_breakdown:
   final_score: 0.9363
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 733
-      target_range:
-      - 700
-      - 1000
     programmatic:
       score: 0.832
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.72
         slop_score: 1.0
         overall: 0.832
+      word_count:
+        actual: 733
+        target_range:
+        - 700
+        - 1000
     llm_judge:
       score: 0.9565
       weight: 0.5
@@ -131,14 +130,14 @@ llm_results:
       minor_weaknesses:
       - Beat 2 insight about resistance could be more specific/strategic
       - One or two sentences in Beat 2 feel slightly repetitive about Kwame's ambiguity
-  overall_assessment: This is a strong, well-crafted narrative that satisfies nearly
-    all requirements with professional execution. The three beats flow coherently,
-    each building on the last. All four cross-beat constraints are elegantly satisfied—particularly
-    the Chekhov's Gun element (German language) and the identity transformation arc.
-    The protagonist is compelling, the setting immersive, and the anti-colonial themes
-    resonate throughout. The single minor gap is Beat 2's revelation about the resistance,
-    which could have been more substantive. The prose demonstrates sophistication
-    in both action and introspection. This story would function effectively as a chapter
-    in a larger historical fiction work.
+  overall_assessment: "This is a strong, well-crafted narrative that satisfies nearly\
+    \ all requirements with professional execution. The three beats flow coherently,\
+    \ each building on the last. All four cross-beat constraints are elegantly satisfied\u2014\
+    particularly the Chekhov's Gun element (German language) and the identity transformation\
+    \ arc. The protagonist is compelling, the setting immersive, and the anti-colonial\
+    \ themes resonate throughout. The single minor gap is Beat 2's revelation about\
+    \ the resistance, which could have been more substantive. The prose demonstrates\
+    \ sophistication in both action and introspection. This story would function effectively\
+    \ as a chapter in a larger historical fiction work."
   final_score: 0.92
 error: null

@@ -12,20 +12,19 @@ final_score: 0.9530000000000001
 score_breakdown:
   final_score: 0.953
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 339
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.982
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.97
         slop_score: 1.0
         overall: 0.982
+      word_count:
+        actual: 339
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 0.915
       weight: 0.5
@@ -42,34 +41,35 @@ llm_results:
   minimal_change_score: 0.3
   word_count_valid: true
   quality_score: 0.95
-  evidence: 'DIAGNOSIS: The model correctly identified the core flaw—the original
-    was pure exposition-as-info-dump with telling rather than showing. The revision
-    transforms this into a lived scene with sensory grounding, action, and character
-    revelation through behavior. FLAW CORRECTION: Fully addressed. The revision shows
-    Rachel''s detective instincts (memorized cold case files, immediate engagement
-    with work), her devotion to cases (2:17 a.m. work session, cold case obsession),
-    her relationship with James (wordless coffee ritual, mutual understanding), and
-    setting through sensory detail (steam, saxophone, train rattle, fluorescent hum,
-    faded photo). The cat appears naturally in action (batting at badge, sprawled
-    on files) rather than as biographical summary. BEAT SATISFACTION: Excellent execution
-    of Exposition. The ordinary world is established through grounded scene—Rachel''s
-    solitary late-night work, her father''s pull on her life, the precinct''s rhythm,
-    James''s quiet partnership. The final line (''It was a Tuesday morning in October
-    when everything changed'') signals the inciting incident is imminent, properly
-    framing this as exposition before disruption. PRESERVATION: All 5 required elements
-    present: (1) Detective Rachel Torres—protagonist throughout, (2) Detective James
-    Oyelaran—appears with coffee ritual, (3) cat named Sherlock—featured in opening
-    action, (4) Queens apartment—explicitly set, (5) October Tuesday timing—final
-    line. All 4 required phrases present verbatim or near-exact. MINIMAL CHANGE ASSESSMENT:
-    This is NOT a minimal surgical edit—it''s a substantial structural rewrite. The
-    original 2-paragraph info-dump (339 words of summary) is replaced with a 9-paragraph
-    scene-based narrative. However, the constraint specified ''MINIMAL modifications
-    while fixing the flaw,'' and this violates that principle. The model essentially
-    rebuilt the exposition rather than surgically converting telling to showing. A
-    truly minimal fix would have kept more of the original phrasing while adding scene
-    elements. QUALITY: Writing is professional, vivid, and error-free. Sensory details
-    are precise (''chipped mug,'' ''sun-faded photo,'' ''crooked tie''). Dialogue
-    feels natural. Pacing builds effectively. No new errors introduced. The revision
-    is genuinely excellent writing—it simply exceeds the ''minimal change'' constraint
-    by a significant margin.'
+  evidence: "DIAGNOSIS: The model correctly identified the core flaw\u2014the original\
+    \ was pure exposition-as-info-dump with telling rather than showing. The revision\
+    \ transforms this into a lived scene with sensory grounding, action, and character\
+    \ revelation through behavior. FLAW CORRECTION: Fully addressed. The revision\
+    \ shows Rachel's detective instincts (memorized cold case files, immediate engagement\
+    \ with work), her devotion to cases (2:17 a.m. work session, cold case obsession),\
+    \ her relationship with James (wordless coffee ritual, mutual understanding),\
+    \ and setting through sensory detail (steam, saxophone, train rattle, fluorescent\
+    \ hum, faded photo). The cat appears naturally in action (batting at badge, sprawled\
+    \ on files) rather than as biographical summary. BEAT SATISFACTION: Excellent\
+    \ execution of Exposition. The ordinary world is established through grounded\
+    \ scene\u2014Rachel's solitary late-night work, her father's pull on her life,\
+    \ the precinct's rhythm, James's quiet partnership. The final line ('It was a\
+    \ Tuesday morning in October when everything changed') signals the inciting incident\
+    \ is imminent, properly framing this as exposition before disruption. PRESERVATION:\
+    \ All 5 required elements present: (1) Detective Rachel Torres\u2014protagonist\
+    \ throughout, (2) Detective James Oyelaran\u2014appears with coffee ritual, (3)\
+    \ cat named Sherlock\u2014featured in opening action, (4) Queens apartment\u2014\
+    explicitly set, (5) October Tuesday timing\u2014final line. All 4 required phrases\
+    \ present verbatim or near-exact. MINIMAL CHANGE ASSESSMENT: This is NOT a minimal\
+    \ surgical edit\u2014it's a substantial structural rewrite. The original 2-paragraph\
+    \ info-dump (339 words of summary) is replaced with a 9-paragraph scene-based\
+    \ narrative. However, the constraint specified 'MINIMAL modifications while fixing\
+    \ the flaw,' and this violates that principle. The model essentially rebuilt the\
+    \ exposition rather than surgically converting telling to showing. A truly minimal\
+    \ fix would have kept more of the original phrasing while adding scene elements.\
+    \ QUALITY: Writing is professional, vivid, and error-free. Sensory details are\
+    \ precise ('chipped mug,' 'sun-faded photo,' 'crooked tie'). Dialogue feels natural.\
+    \ Pacing builds effectively. No new errors introduced. The revision is genuinely\
+    \ excellent writing\u2014it simply exceeds the 'minimal change' constraint by\
+    \ a significant margin."
 error: null

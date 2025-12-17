@@ -12,20 +12,19 @@ final_score: 0.9199999999999999
 score_breakdown:
   final_score: 0.92
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 661
-      target_range:
-      - 500
-      - 700
     programmatic:
       score: 0.7
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.5
         slop_score: 1.0
         overall: 0.7
+      word_count:
+        actual: 661
+        target_range:
+        - 500
+        - 700
     llm_judge:
       score: 0.99
       weight: 0.5
@@ -39,17 +38,17 @@ llm_results:
   word_count_valid: true
   structural_accuracy_score: 0.95
   tone_score: 1.0
-  evidence: 'All eight Dan Harmon beats are present and clearly signposted: comfort
-    zone (library), need (craving connection), go (joining the oral-history program
-    and first interview), search (practicing interviews, learning to listen), find
-    (breakthrough with Bernard''s confession), take (town-hall presentation where
-    she owns the story), return (resuming life, speaking at funeral), change (applying
-    to journalism, public-speaking growth). All eight required elements are preserved
-    (Zoe, library/program, Ms. Okafor, Bernard, social anxiety, town hall, Bernard''s
-    death, journalism ending). Slight deduction on structural_accuracy_score (0.95)
-    because the ''Take/pay price'' beat is present but the cost felt minimal—mostly
-    internal fear and responsibility rather than a clearly consequential sacrifice—so
-    the dramatic pay-off could be a bit stronger to match Harmon''s typical emphasis
-    on a tangible price paid. Tone is gently intimate and emotionally true throughout,
-    so full score there.'
+  evidence: "All eight Dan Harmon beats are present and clearly signposted: comfort\
+    \ zone (library), need (craving connection), go (joining the oral-history program\
+    \ and first interview), search (practicing interviews, learning to listen), find\
+    \ (breakthrough with Bernard's confession), take (town-hall presentation where\
+    \ she owns the story), return (resuming life, speaking at funeral), change (applying\
+    \ to journalism, public-speaking growth). All eight required elements are preserved\
+    \ (Zoe, library/program, Ms. Okafor, Bernard, social anxiety, town hall, Bernard's\
+    \ death, journalism ending). Slight deduction on structural_accuracy_score (0.95)\
+    \ because the 'Take/pay price' beat is present but the cost felt minimal\u2014\
+    mostly internal fear and responsibility rather than a clearly consequential sacrifice\u2014\
+    so the dramatic pay-off could be a bit stronger to match Harmon's typical emphasis\
+    \ on a tangible price paid. Tone is gently intimate and emotionally true throughout,\
+    \ so full score there."
 error: null

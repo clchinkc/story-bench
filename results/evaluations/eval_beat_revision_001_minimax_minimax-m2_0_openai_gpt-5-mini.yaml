@@ -12,20 +12,19 @@ final_score: 0.895
 score_breakdown:
   final_score: 0.895
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 320
-      target_range:
-      - 250
-      - 400
     programmatic:
       score: 0.88
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.8
         slop_score: 1.0
         overall: 0.88
+      word_count:
+        actual: 320
+        target_range:
+        - 250
+        - 400
     llm_judge:
       score: 0.85
       weight: 0.5
@@ -42,15 +41,16 @@ llm_results:
   minimal_change_score: 0.6
   word_count_valid: true
   quality_score: 0.7
-  evidence: 'The model appears to have addressed the actual flaw by making the fight
-    an internal Ordeal: the dragon explicitly exploits Kira''s guilt over her brother,
-    forcing a confrontation with her deepest fear; a symbolic ''death'' occurs when
-    she pierces the dragon and ''the guilt that had chained her''; a rebirth/transformation
-    is stated (weight shifting from guilt to understanding); and victory stems from
-    this new understanding rather than mere persistence. Shortcomings: the ''death''
-    moment is more implied than sharply dramatized (no clear instant where Kira believes
-    she will surely die), and a few phrasing errors remain (''a earth-shaking roar'',
-    ''flight or flight'') so the execution isn''t fully airtight. Changes were moderate
-    — the original lines and outcome were preserved verbatim in key places, with added
-    interiority and a few new lines to create the psychological arc.'
+  evidence: "The model appears to have addressed the actual flaw by making the fight\
+    \ an internal Ordeal: the dragon explicitly exploits Kira's guilt over her brother,\
+    \ forcing a confrontation with her deepest fear; a symbolic 'death' occurs when\
+    \ she pierces the dragon and 'the guilt that had chained her'; a rebirth/transformation\
+    \ is stated (weight shifting from guilt to understanding); and victory stems from\
+    \ this new understanding rather than mere persistence. Shortcomings: the 'death'\
+    \ moment is more implied than sharply dramatized (no clear instant where Kira\
+    \ believes she will surely die), and a few phrasing errors remain ('a earth-shaking\
+    \ roar', 'flight or flight') so the execution isn't fully airtight. Changes were\
+    \ moderate \u2014 the original lines and outcome were preserved verbatim in key\
+    \ places, with added interiority and a few new lines to create the psychological\
+    \ arc."
 error: null

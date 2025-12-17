@@ -12,20 +12,19 @@ final_score: 0.7955186066599274
 score_breakdown:
   final_score: 0.7955
   components:
-    word_count:
-      score: 0.5461
-      weight: 0.25
-      actual: 455
-      target_range:
-      - 250
-      - 400
     programmatic:
       score: 0.856
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.5461
         repetition_score: 0.76
         slop_score: 1.0
         overall: 0.856
+      word_count:
+        actual: 455
+        target_range:
+        - 250
+        - 400
     llm_judge:
       score: 0.89
       weight: 0.5
@@ -42,23 +41,23 @@ llm_results:
   character_score: 1.0
   bridge_score: 0.9
   continuity_score: 0.8
-  evidence: 'STRENGTHS: All 4 required elements present and well-executed. (1) Recanting
-    considered explicitly (''simplest lever to pull''). (2) Official channels thoroughly
-    explored through Morrison/task force option. (3) Internal conflict powerfully
-    rendered (''either way, staying inside the lines makes me predictable''). (4)
-    Marcus conversation serves as tipping point toward third option. Beat authentically
-    executes the Debate function—Sarah wrestles with genuine dilemmas, weighs consequences,
-    seeks counsel, and reaches a decision through internal struggle rather than external
-    force. Character voice is consistent, sharp, and introspective. VIOLATIONS: (1)
-    Word count 455 exceeds 400-word maximum by 55 words (deduction -0.25). (2) CRITICAL:
-    The ''AFTER'' section violates ''must_not'' requirement #1—Sarah has already decided
-    to go rogue and resigned before the Debate beat concludes. The resignation letter
-    and ''former detective, current vigilante'' language indicate the decision is
-    already made, which skips the debate''s narrative function in the final section
-    (deduction -0.5). The GENERATED section itself executes Debate perfectly, but
-    the AFTER section contamination suggests the beat boundary is unclear. BRIDGE:
-    Strong connection between Debate and Break Into Two, though the resignation should
-    occur at the threshold, not before. CONTINUITY: Minor issue—the laptop files mentioned
-    in AFTER weren''t explicitly copied during GENERATED section, though this is a
-    minor gap.'
+  evidence: "STRENGTHS: All 4 required elements present and well-executed. (1) Recanting\
+    \ considered explicitly ('simplest lever to pull'). (2) Official channels thoroughly\
+    \ explored through Morrison/task force option. (3) Internal conflict powerfully\
+    \ rendered ('either way, staying inside the lines makes me predictable'). (4)\
+    \ Marcus conversation serves as tipping point toward third option. Beat authentically\
+    \ executes the Debate function\u2014Sarah wrestles with genuine dilemmas, weighs\
+    \ consequences, seeks counsel, and reaches a decision through internal struggle\
+    \ rather than external force. Character voice is consistent, sharp, and introspective.\
+    \ VIOLATIONS: (1) Word count 455 exceeds 400-word maximum by 55 words (deduction\
+    \ -0.25). (2) CRITICAL: The 'AFTER' section violates 'must_not' requirement #1\u2014\
+    Sarah has already decided to go rogue and resigned before the Debate beat concludes.\
+    \ The resignation letter and 'former detective, current vigilante' language indicate\
+    \ the decision is already made, which skips the debate's narrative function in\
+    \ the final section (deduction -0.5). The GENERATED section itself executes Debate\
+    \ perfectly, but the AFTER section contamination suggests the beat boundary is\
+    \ unclear. BRIDGE: Strong connection between Debate and Break Into Two, though\
+    \ the resignation should occur at the threshold, not before. CONTINUITY: Minor\
+    \ issue\u2014the laptop files mentioned in AFTER weren't explicitly copied during\
+    \ GENERATED section, though this is a minor gap."
 error: null

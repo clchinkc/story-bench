@@ -12,20 +12,19 @@ final_score: 0.982
 score_breakdown:
   final_score: 0.982
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 210
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.988
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.98
         slop_score: 1.0
         overall: 0.988
+      word_count:
+        actual: 210
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 0.97
       weight: 0.5
@@ -42,19 +41,19 @@ llm_results:
   minimal_change_score: 0.85
   word_count_valid: true
   quality_score: 0.95
-  evidence: 'The model correctly diagnosed the actual flaw: Sophie showed no transformation
-    and immediately reverted to old workaholic patterns, making the journey meaningless.
-    The revision fixes this precisely by: (1) Adding the phone hesitation moment—Sophie
-    catches herself in the old reflex but chooses differently, (2) Explicitly stating
-    the insight (''they no longer felt like an inescapable current. She could choose''),
-    (3) Showing behavioral change through action (putting phone away, declining to
-    call Linda tonight), (4) Creating contrast via internal monologue about seeing
-    her world ''differently now'', (5) Having the mother notice the change (''noticing
-    the phone''s brief appearance''). All 4 required phrases preserved exactly: ''Sophie''s
-    flight landed at O''Hare'', ''How was Thailand? her mother asked'', ''The familiar
-    Chicago skyline appeared'', ''It''s good to be home, she said''. Changes were
-    surgical: inserted phone hesitation paragraph, added mother''s observation, expanded
-    final reflection on changed perspective. No elements removed, no new errors introduced.
-    The revision transforms a flat return into a genuine beat that demonstrates integration
-    of the journey''s lessons into behavior.'
+  evidence: "The model correctly diagnosed the actual flaw: Sophie showed no transformation\
+    \ and immediately reverted to old workaholic patterns, making the journey meaningless.\
+    \ The revision fixes this precisely by: (1) Adding the phone hesitation moment\u2014\
+    Sophie catches herself in the old reflex but chooses differently, (2) Explicitly\
+    \ stating the insight ('they no longer felt like an inescapable current. She could\
+    \ choose'), (3) Showing behavioral change through action (putting phone away,\
+    \ declining to call Linda tonight), (4) Creating contrast via internal monologue\
+    \ about seeing her world 'differently now', (5) Having the mother notice the change\
+    \ ('noticing the phone's brief appearance'). All 4 required phrases preserved\
+    \ exactly: 'Sophie's flight landed at O'Hare', 'How was Thailand? her mother asked',\
+    \ 'The familiar Chicago skyline appeared', 'It's good to be home, she said'. Changes\
+    \ were surgical: inserted phone hesitation paragraph, added mother's observation,\
+    \ expanded final reflection on changed perspective. No elements removed, no new\
+    \ errors introduced. The revision transforms a flat return into a genuine beat\
+    \ that demonstrates integration of the journey's lessons into behavior."
 error: null

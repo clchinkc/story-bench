@@ -12,20 +12,19 @@ final_score: 0.956
 score_breakdown:
   final_score: 0.956
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 331
-      target_range:
-      - 250
-      - 400
     programmatic:
       score: 0.904
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.84
         slop_score: 1.0
         overall: 0.904
+      word_count:
+        actual: 331
+        target_range:
+        - 250
+        - 400
     llm_judge:
       score: 0.96
       weight: 0.5
@@ -42,14 +41,14 @@ llm_results:
   minimal_change_score: 0.7
   word_count_valid: true
   quality_score: 0.9
-  evidence: The revision explicitly addresses the actual flaw by having the dragon
-    exploit Kira's guilt over her brother (confrontation with deepest fear), giving
-    her a symbolic 'death' moment (she surrenders/dangles and accepts she cannot rewrite
-    the past), and depicting a rebirth/transformation (the insight about her brother's
-    lesson leads to a new clarity). Victory arises from that new understanding (she
-    notices the seam and exploits it), not mere persistence. The required phrases
-    and core elements were preserved verbatim or nearly so. Changes were substantive
-    but targeted—added interiority and a brief symbolic death/rebirth while keeping
-    setting, major lines, and outcome—hence a moderately high minimal-change score
-    rather than a perfect 1.0.
+  evidence: "The revision explicitly addresses the actual flaw by having the dragon\
+    \ exploit Kira's guilt over her brother (confrontation with deepest fear), giving\
+    \ her a symbolic 'death' moment (she surrenders/dangles and accepts she cannot\
+    \ rewrite the past), and depicting a rebirth/transformation (the insight about\
+    \ her brother's lesson leads to a new clarity). Victory arises from that new understanding\
+    \ (she notices the seam and exploits it), not mere persistence. The required phrases\
+    \ and core elements were preserved verbatim or nearly so. Changes were substantive\
+    \ but targeted\u2014added interiority and a brief symbolic death/rebirth while\
+    \ keeping setting, major lines, and outcome\u2014hence a moderately high minimal-change\
+    \ score rather than a perfect 1.0."
 error: null

@@ -12,20 +12,19 @@ final_score: 0.944575221238938
 score_breakdown:
   final_score: 0.9446
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 662
-      target_range:
-      - 500
-      - 700
     programmatic:
       score: 0.7783
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.66
         slop_score: 0.9558
         overall: 0.7783
+      word_count:
+        actual: 662
+        target_range:
+        - 500
+        - 700
     llm_judge:
       score: 1.0
       weight: 0.5
@@ -39,10 +38,10 @@ llm_results:
   word_count_valid: true
   structural_accuracy_score: 1.0
   tone_score: 1.0
-  evidence: All eight Dan Harmon beats are clearly present and in appropriate sequence.
-    All eight required elements (Zoe protagonist, library/oral-history program, Ms.
-    Okafor, Bernard Park, Zoe's social anxiety, town-hall presentation, Bernard's
-    death, journalism application) appear and are integrated. No significant deductions
-    — the piece faithfully and cleanly maps the original monomyth to the Story Circle
-    with the requested gentle, intimate tone.
+  evidence: "All eight Dan Harmon beats are clearly present and in appropriate sequence.\
+    \ All eight required elements (Zoe protagonist, library/oral-history program,\
+    \ Ms. Okafor, Bernard Park, Zoe's social anxiety, town-hall presentation, Bernard's\
+    \ death, journalism application) appear and are integrated. No significant deductions\
+    \ \u2014 the piece faithfully and cleanly maps the original monomyth to the Story\
+    \ Circle with the requested gentle, intimate tone."
 error: null

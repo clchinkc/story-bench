@@ -12,20 +12,19 @@ final_score: 0.91441792782305
 score_breakdown:
   final_score: 0.9144
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 812
-      target_range:
-      - 700
-      - 1000
     programmatic:
       score: 0.6977
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.5
         slop_score: 0.9942
         overall: 0.6977
+      word_count:
+        actual: 812
+        target_range:
+        - 700
+        - 1000
     llm_judge:
       score: 0.98
       weight: 0.5
@@ -40,9 +39,9 @@ llm_results:
   context_score: 0.9
   coherence_score: 0.95
   failed_items:
-  - Miri's backstory and moral rationale for stealing (former conservator, returns
-    stolen art) is not explicitly stated in the excerpt—context is implied by tone
-    but not directly shown.
+  - "Miri's backstory and moral rationale for stealing (former conservator, returns\
+    \ stolen art) is not explicitly stated in the excerpt\u2014context is implied\
+    \ by tone but not directly shown."
   - A couple of technical beats (the thermal gel, rolling the painting into a tube
     and rapid vent exfiltration) are somewhat compressed, leaving small logical leaps
     that could use a touch more setup for full plausibility.

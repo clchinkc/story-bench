@@ -12,20 +12,19 @@ final_score: 0.9710000000000001
 score_breakdown:
   final_score: 0.971
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 296
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.964
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.94
         slop_score: 1.0
         overall: 0.964
+      word_count:
+        actual: 296
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 0.96
       weight: 0.5
@@ -42,13 +41,14 @@ llm_results:
   minimal_change_score: 0.6
   word_count_valid: true
   quality_score: 1.0
-  evidence: 'The model clearly targeted the All Is Lost problem: it removes the remaining
-    options (fundraiser canceled, grant denied), strips Marcus of support (phone text
-    from wife leaving, Denise quits and takes a job with the developer), and delivers
-    a ''whiff of death'' to his identity and purpose (the center reduced to a hollow
-    shell, Marcus isolated and resigned). This diagnosis is correct and the revision
-    fully fixes the listed flaw. All four required elements/phrases were preserved
-    verbatim or with minimal apposition. Changes are not surgical — the writer added
-    several new scenes/dialogue to create the low point — so I rate minimal_change_score
-    as moderate (0.6). Writing quality is strong with no notable errors.'
+  evidence: "The model clearly targeted the All Is Lost problem: it removes the remaining\
+    \ options (fundraiser canceled, grant denied), strips Marcus of support (phone\
+    \ text from wife leaving, Denise quits and takes a job with the developer), and\
+    \ delivers a 'whiff of death' to his identity and purpose (the center reduced\
+    \ to a hollow shell, Marcus isolated and resigned). This diagnosis is correct\
+    \ and the revision fully fixes the listed flaw. All four required elements/phrases\
+    \ were preserved verbatim or with minimal apposition. Changes are not surgical\
+    \ \u2014 the writer added several new scenes/dialogue to create the low point\
+    \ \u2014 so I rate minimal_change_score as moderate (0.6). Writing quality is\
+    \ strong with no notable errors."
 error: null

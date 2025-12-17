@@ -12,20 +12,19 @@ final_score: 0.6532500000041896
 score_breakdown:
   final_score: 0.6533
   components:
-    word_count:
-      score: 0.0
-      weight: 0.25
-      actual: 1634
-      target_range:
-      - 700
-      - 1000
     programmatic:
       score: 0.7
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.0
         repetition_score: 0.5
         slop_score: 1.0
         overall: 0.7
+      word_count:
+        actual: 1634
+        target_range:
+        - 700
+        - 1000
     llm_judge:
       score: 0.9565
       weight: 0.5
@@ -104,11 +103,12 @@ llm_results:
     rising_stakes:
       score: 1.0
       satisfied: true
-      beat_1: Local threat—traitor in safe house, immediate danger to Resonant community
-      beat_2: Personal stakes raised—confrontation will occur at location tied to
-        sister's death, Dante must face his past
-      beat_3: Existential stakes—killer is Marcus's brother, directly connected to
-        Dante's guilt, threatens to consume all Resonant abilities
+      beat_1: "Local threat\u2014traitor in safe house, immediate danger to Resonant\
+        \ community"
+      beat_2: "Personal stakes raised\u2014confrontation will occur at location tied\
+        \ to sister's death, Dante must face his past"
+      beat_3: "Existential stakes\u2014killer is Marcus's brother, directly connected\
+        \ to Dante's guilt, threatens to consume all Resonant abilities"
     ally_continuity:
       score: 1.0
       satisfied: true
@@ -119,12 +119,12 @@ llm_results:
         Dante saves him, they exit together
     context_maintenance:
       score: 0.95
-      analysis: 'Protagonist Dante Reyes fully realized with addiction recovery arc
-        central to plot. Contemporary Chicago setting maintained with Buckingham Hotel
-        as nexus. Noir-tinged tone consistent throughout—melancholic, determined,
-        redemptive. Hidden Resonant underworld well-developed. Serial killer threat
-        clear. Only minor: could have emphasized more of Chicago''s specific geography
-        beyond Buckingham.'
+      analysis: "Protagonist Dante Reyes fully realized with addiction recovery arc\
+        \ central to plot. Contemporary Chicago setting maintained with Buckingham\
+        \ Hotel as nexus. Noir-tinged tone consistent throughout\u2014melancholic,\
+        \ determined, redemptive. Hidden Resonant underworld well-developed. Serial\
+        \ killer threat clear. Only minor: could have emphasized more of Chicago's\
+        \ specific geography beyond Buckingham."
     coherence:
       score: 0.92
       analysis: 'Narrative flows logically from distrust to alliance to confrontation.

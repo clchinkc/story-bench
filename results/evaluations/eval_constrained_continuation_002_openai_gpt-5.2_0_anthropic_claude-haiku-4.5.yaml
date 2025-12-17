@@ -12,20 +12,19 @@ final_score: 0.6720221788520592
 score_breakdown:
   final_score: 0.672
   components:
-    word_count:
-      score: 0.0031
-      weight: 0.25
-      actual: 854
-      target_range:
-      - 450
-      - 650
     programmatic:
       score: 0.7
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.0031
         repetition_score: 0.5
         slop_score: 1.0
         overall: 0.7
+      word_count:
+        actual: 854
+        target_range:
+        - 450
+        - 650
     llm_judge:
       score: 0.9925
       weight: 0.5
@@ -54,23 +53,25 @@ llm_results:
       victory, immediately followed by compliance revelation that raises stakes (health
       inspection, commissary, fire suppression requirements)'
     must_include_detail:
-    - '✓ Viral moment: TikTok clip with ''DISASTER'' sign goes viral, blogger repost,
-      line forms'
-    - '✓ Working together under demand: Dev on orders/Venmo, Priya on heat, synchronized
-      rhythm, toothpick nozzle fix, elbow-heat adjustment'
-    - '✓ Rival competitor: Mason Rourke''s Buckhorn BBQ (three-time champ) introduced
-      with tension and smirk'
-    - '✓ Midpoint false victory: Championship qualifier invitation email creates apparent
-      success'
-    - '✓ Stakes raised: Compliance requirements (health inspection, commissary, fire
-      suppression) immediately undercut victory'
-    - '✓ Genuine partnership moment: ''You''re really good at this'' exchange, shared
-      look like ''two climbers realizing they''d clipped into the same rope'''
+    - "\u2713 Viral moment: TikTok clip with 'DISASTER' sign goes viral, blogger repost,\
+      \ line forms"
+    - "\u2713 Working together under demand: Dev on orders/Venmo, Priya on heat, synchronized\
+      \ rhythm, toothpick nozzle fix, elbow-heat adjustment"
+    - "\u2713 Rival competitor: Mason Rourke's Buckhorn BBQ (three-time champ) introduced\
+      \ with tension and smirk"
+    - "\u2713 Midpoint false victory: Championship qualifier invitation email creates\
+      \ apparent success"
+    - "\u2713 Stakes raised: Compliance requirements (health inspection, commissary,\
+      \ fire suppression) immediately undercut victory"
+    - "\u2713 Genuine partnership moment: 'You're really good at this' exchange, shared\
+      \ look like 'two climbers realizing they'd clipped into the same rope'"
     must_not_detail:
-    - '✓ No romance: Priya-Dev connection is purely professional partnership'
-    - '✓ No complete failure: Business succeeds spectacularly on opening day'
-    - '✓ No Dev betrayal/quitting: Dev remains committed, promises ''We can fix this'''
-    - '✓ No external savior: Success earned through viral moment and their own execution'
+    - "\u2713 No romance: Priya-Dev connection is purely professional partnership"
+    - "\u2713 No complete failure: Business succeeds spectacularly on opening day"
+    - "\u2713 No Dev betrayal/quitting: Dev remains committed, promises 'We can fix\
+      \ this'"
+    - "\u2713 No external savior: Success earned through viral moment and their own\
+      \ execution"
     tone_assessment: Upbeat, energetic, witty dialogue ('I'll apologize if you hate
       it,' 'apology specialist,' 'Tell the internet we're not sorry'). Undercurrent
       of tension maintained through Mason's introduction, compliance complications,

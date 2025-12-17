@@ -12,20 +12,19 @@ final_score: 0.98
 score_breakdown:
   final_score: 0.98
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 238
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 1.0
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 1.0
         slop_score: 1.0
         overall: 1.0
+      word_count:
+        actual: 238
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 0.96
       weight: 0.5
@@ -42,22 +41,22 @@ llm_results:
   minimal_change_score: 0.75
   word_count_valid: true
   quality_score: 0.95
-  evidence: 'Model correctly diagnosed the actual flaw: Sophie showed zero transformation
-    and immediately reverted to workaholic patterns, negating the entire journey.
-    The revision fixes this precisely by: (1) Sophie consciously choosing NOT to respond
-    to work emergencies immediately—applying the monks'' breathing technique, (2)
-    Explicitly demonstrating changed behavior (phone face-down, airplane mode), (3)
-    Mother noticing the change (''That''s new''), (4) Sophie articulating her transformation
-    (''so am I''), (5) Metaphorical contrast showing she sees her world differently
-    (''surprising space between moments''), (6) Changed relationship with work/phone
-    as the marker. All 4 required phrases preserved exactly: ''Sophie''s flight landed
-    at O''Hare'', ''How was Thailand? her mother asked'', ''The familiar Chicago skyline
-    appeared'', ''It''s good to be home, she said''. Changes were surgical—the original
-    structure remains intact, with insertions of: breathing technique application,
-    phone-down action, mother''s observation, and reflective internal monologue. No
-    elements removed. The revision fully executes the Return (Having Changed) beat
-    by showing integration of the journey''s lessons into immediate real-world choices.
-    Minor deduction (0.05) only because the phrase ''Pearson account won''t manage
-    itself'' was removed rather than recontextualized, though this was a necessary
-    sacrifice for the fix. Writing quality is professional with no new errors.'
+  evidence: "Model correctly diagnosed the actual flaw: Sophie showed zero transformation\
+    \ and immediately reverted to workaholic patterns, negating the entire journey.\
+    \ The revision fixes this precisely by: (1) Sophie consciously choosing NOT to\
+    \ respond to work emergencies immediately\u2014applying the monks' breathing technique,\
+    \ (2) Explicitly demonstrating changed behavior (phone face-down, airplane mode),\
+    \ (3) Mother noticing the change ('That's new'), (4) Sophie articulating her transformation\
+    \ ('so am I'), (5) Metaphorical contrast showing she sees her world differently\
+    \ ('surprising space between moments'), (6) Changed relationship with work/phone\
+    \ as the marker. All 4 required phrases preserved exactly: 'Sophie's flight landed\
+    \ at O'Hare', 'How was Thailand? her mother asked', 'The familiar Chicago skyline\
+    \ appeared', 'It's good to be home, she said'. Changes were surgical\u2014the\
+    \ original structure remains intact, with insertions of: breathing technique application,\
+    \ phone-down action, mother's observation, and reflective internal monologue.\
+    \ No elements removed. The revision fully executes the Return (Having Changed)\
+    \ beat by showing integration of the journey's lessons into immediate real-world\
+    \ choices. Minor deduction (0.05) only because the phrase 'Pearson account won't\
+    \ manage itself' was removed rather than recontextualized, though this was a necessary\
+    \ sacrifice for the fix. Writing quality is professional with no new errors."
 error: null

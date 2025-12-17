@@ -1,0 +1,65 @@
+evaluation_id: e61b5f42
+task_id: beat_revision_002
+generation_id: beat_revision_002_google/gemini-3-flash-preview_0
+task_type: beat_revision
+model: google/gemini-3-flash-preview
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.02247
+timestamp: '2025-12-18T23:31:18.865143'
+success: true
+final_score: 0.9715
+score_breakdown:
+  final_score: 0.9715
+  components:
+    programmatic:
+      score: 0.993
+      weight: 0.5
+      breakdown:
+        word_count_score: 1.0
+        repetition_score: 0.98
+        slop_score: 1.0
+        overall: 0.993
+      word_count:
+        actual: 319
+        target_range:
+        - 200
+        - 350
+    llm_judge:
+      score: 0.95
+      weight: 0.5
+llm_results:
+  diagnosis_score: 1.0
+  flaw_correction_score: 1.0
+  beat_satisfaction_score: 0.95
+  preservation_score: 1.0
+  preserved_count: 4
+  preserved_total: 4
+  required_preserved_score: 1.0
+  required_preserved_count: 4
+  required_preserved_total: 4
+  minimal_change_score: 0.65
+  word_count_valid: true
+  quality_score: 0.95
+  evidence: 'The model correctly diagnosed the actual flaw: Marcus still had multiple
+    viable options (fundraiser, grant, new location) and intact support systems, creating
+    a ''setback'' rather than ''rock bottom.'' The revision systematically eliminates
+    all escape routes: fundraiser failed (50k short), grant denied, board resigned
+    and froze accounts, Denise abandons him, wife withdraws savings and leaves. The
+    ''whiff of death'' is executed through multiple losses—professional failure, marital
+    dissolution, financial ruin, and loss of identity/purpose. Marcus is genuinely
+    hopeless with no cards left to play. All 4 required phrases preserved exactly:
+    ''Marcus stared at the eviction notice in his hands,'' ''Thirty days to vacate
+    the community center,'' ''"There has to be something we can do," said Denise,''
+    and ''He rubbed his temples.'' All 4 story elements preserved: Marcus as protagonist,
+    community center setting, eviction crisis, Denise present throughout. Changes
+    were surgical but substantial—the original''s hopeful tone (multiple plans, wife''s
+    supportive text, ''maybe'' attitude) was completely inverted to despair. The expansion
+    from ~180 words to 319 words was necessary to properly execute the beat; this
+    represents justified expansion rather than bloat. Writing quality is professional
+    with strong emotional resonance, no grammatical errors, and effective use of metaphor
+    (''tomb,'' ''funeral march,'' ''corpse''). The minimal_change_score reflects that
+    while core phrases were preserved, the emotional architecture and narrative content
+    were substantially rewritten—this was unavoidable given the severity of the original
+    flaw.'
+error: null

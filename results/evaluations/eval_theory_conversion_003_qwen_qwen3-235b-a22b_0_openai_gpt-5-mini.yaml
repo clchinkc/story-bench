@@ -12,20 +12,19 @@ final_score: 0.9287002769140242
 score_breakdown:
   final_score: 0.9287
   components:
-    word_count:
-      score: 0.9768
-      weight: 0.25
-      actual: 537
-      target_range:
-      - 550
-      - 750
     programmatic:
       score: 0.808
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.9768
         repetition_score: 0.68
         slop_score: 1.0
         overall: 0.808
+      word_count:
+        actual: 537
+        target_range:
+        - 550
+        - 750
     llm_judge:
       score: 0.965
       weight: 0.5
@@ -39,16 +38,16 @@ llm_results:
   word_count_valid: false
   structural_accuracy_score: 0.9
   tone_score: 0.9
-  evidence: 'All four target beats are present (Act I setup with inciting incident,
-    Act II first-half growth/midpoint, Act II second-half complication/second plot
-    point, Act III resolution). All eight required elements are preserved (Kenji,
-    lost career, Yuki, Kyoto wedding, Haruki, business temptation, people-over-ambition
-    theme, bamboo shop ending). Deductions: structural score slightly below perfect
-    because the midpoint functions more as emotional softening than a sharp reversal
-    and the first plot point is somewhat implicit rather than sharply demarcated;
-    transitions between II-A and II-B are compacted. Tone is very well maintained
-    (quiet drama, Japanese aesthetic, redemptive) but drops slightly for a few overtly
-    modern/corporate lines that feel on-the-nose. Word-count flagged invalid per the
-    provided criteria: the metadata indicates 537 words, which is below the required
-    550–750 range.'
+  evidence: "All four target beats are present (Act I setup with inciting incident,\
+    \ Act II first-half growth/midpoint, Act II second-half complication/second plot\
+    \ point, Act III resolution). All eight required elements are preserved (Kenji,\
+    \ lost career, Yuki, Kyoto wedding, Haruki, business temptation, people-over-ambition\
+    \ theme, bamboo shop ending). Deductions: structural score slightly below perfect\
+    \ because the midpoint functions more as emotional softening than a sharp reversal\
+    \ and the first plot point is somewhat implicit rather than sharply demarcated;\
+    \ transitions between II-A and II-B are compacted. Tone is very well maintained\
+    \ (quiet drama, Japanese aesthetic, redemptive) but drops slightly for a few overtly\
+    \ modern/corporate lines that feel on-the-nose. Word-count flagged invalid per\
+    \ the provided criteria: the metadata indicates 537 words, which is below the\
+    \ required 550\u2013750 range."
 error: null

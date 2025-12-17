@@ -12,20 +12,19 @@ final_score: 0.9012365771812081
 score_breakdown:
   final_score: 0.9012
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 733
-      target_range:
-      - 700
-      - 1000
     programmatic:
       score: 0.6919
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.5
         slop_score: 0.9799
         overall: 0.6919
+      word_count:
+        actual: 733
+        target_range:
+        - 700
+        - 1000
     llm_judge:
       score: 0.9565
       weight: 0.5
@@ -40,74 +39,75 @@ llm_results:
   context_score: 0.95
   coherence_score: 0.92
   failed_items:
-  - 'Beat 2, Req 5 (learns something about resistance): The story shows Kwame testing
-    her commitment and revealing himself as a sympathizer, but doesn''t clearly establish
-    what NEW knowledge about the resistance structure, strategy, or stakes Amara gains—this
-    is implied rather than explicit'
+  - "Beat 2, Req 5 (learns something about resistance): The story shows Kwame testing\
+    \ her commitment and revealing himself as a sympathizer, but doesn't clearly establish\
+    \ what NEW knowledge about the resistance structure, strategy, or stakes Amara\
+    \ gains\u2014this is implied rather than explicit"
   detailed_analysis:
     beat_1_crossing_threshold:
-      leaves_cape_coast: '✓ Excellent: ''stepped off the Cape Coast market path...entered
-        the dense Ashanti forest'''
-      point_of_no_return: '✓ Strong: ''there was no turning back now'' explicitly
-        stated; carrying intercepted letter creates irreversible commitment'
-      immediate_danger: '✓ Clear: British patrols mentioned, hunter encounter, physical
-        vulnerability in unfamiliar territory'
-      uses_wits_not_force: '✓ Exemplary: Greets hunter in Fante, deflects suspicion
-        through cultural knowledge, uses charm and language skills'
-      internal_shift: '✓ Present: Transitions from ''never ventured this far'' (servant
-        mindset) to ''fully claimed her role as a resistance fighter'' (final line
-        shows evolution beginning)'
+      leaves_cape_coast: "\u2713 Excellent: 'stepped off the Cape Coast market path...entered\
+        \ the dense Ashanti forest'"
+      point_of_no_return: "\u2713 Strong: 'there was no turning back now' explicitly\
+        \ stated; carrying intercepted letter creates irreversible commitment"
+      immediate_danger: "\u2713 Clear: British patrols mentioned, hunter encounter,\
+        \ physical vulnerability in unfamiliar territory"
+      uses_wits_not_force: "\u2713 Exemplary: Greets hunter in Fante, deflects suspicion\
+        \ through cultural knowledge, uses charm and language skills"
+      internal_shift: "\u2713 Present: Transitions from 'never ventured this far'\
+        \ (servant mindset) to 'fully claimed her role as a resistance fighter' (final\
+        \ line shows evolution beginning)"
     beat_2_tests_allies_enemies:
-      uncertain_ally: '✓ Strong: Kwame introduced with wariness, ''eyed her warily,''
-        tests her with pointed questions before revealing sympathies'
-      commitment_test: '✓ Excellent: Coded message in German—Kwame deliberately tests
-        her knowledge; she decodes it, earning ''tentative acceptance'''
-      enemy_obstacle: '✓ Clear: British-trained soldier at camp edge with ''curiosity
-        and hostility''; represents active threat'
-      language_skills_crucial: '✓ Perfect: German decoding of coded message is the
-        pivotal moment; Hausa recognition earlier; languages are survival mechanism'
-      learns_about_resistance: '⚠ Partial (0.7): Kwame reveals sympathies and asks
-        ''Are you prepared to pay the price?'' but the story doesn''t explicitly convey
-        what Amara learns about resistance structure, tactics, or specific stakes
-        beyond her father''s danger'
+      uncertain_ally: "\u2713 Strong: Kwame introduced with wariness, 'eyed her warily,'\
+        \ tests her with pointed questions before revealing sympathies"
+      commitment_test: "\u2713 Excellent: Coded message in German\u2014Kwame deliberately\
+        \ tests her knowledge; she decodes it, earning 'tentative acceptance'"
+      enemy_obstacle: "\u2713 Clear: British-trained soldier at camp edge with 'curiosity\
+        \ and hostility'; represents active threat"
+      language_skills_crucial: "\u2713 Perfect: German decoding of coded message is\
+        \ the pivotal moment; Hausa recognition earlier; languages are survival mechanism"
+      learns_about_resistance: "\u26A0 Partial (0.7): Kwame reveals sympathies and\
+        \ asks 'Are you prepared to pay the price?' but the story doesn't explicitly\
+        \ convey what Amara learns about resistance structure, tactics, or specific\
+        \ stakes beyond her father's danger"
     beat_3_approach_inmost_cave:
-      nearing_stronghold: '✓ Excellent: ''outline of a hidden stronghold emerged from
-        the mist''; clear geographic arrival'
-      moment_of_preparation: '✓ Strong: ''Amara steeled herself, the weight of her
-        decision settling upon her''; internal fortification before final test'
-      recognition_of_cost: '✓ Powerful: ''never felt so alive, or so scared''; Kwame''s
-        question about paying the price; implicit understanding of irreversible commitment'
-      final_obstacle: '✓ Excellent: British patrol emerges with guns drawn at the
-        threshold—maximum tension at approach'
-      thematic_resistance_vs_survival: '✓ Strong: Amara''s choice to step forward
-        ''fierce determination'' suggests choosing resistance over mere survival;
-        she could have fled but instead ''walked forward, into the heart of the struggle'''
+      nearing_stronghold: "\u2713 Excellent: 'outline of a hidden stronghold emerged\
+        \ from the mist'; clear geographic arrival"
+      moment_of_preparation: "\u2713 Strong: 'Amara steeled herself, the weight of\
+        \ her decision settling upon her'; internal fortification before final test"
+      recognition_of_cost: "\u2713 Powerful: 'never felt so alive, or so scared';\
+        \ Kwame's question about paying the price; implicit understanding of irreversible\
+        \ commitment"
+      final_obstacle: "\u2713 Excellent: British patrol emerges with guns drawn at\
+        \ the threshold\u2014maximum tension at approach"
+      thematic_resistance_vs_survival: "\u2713 Strong: Amara's choice to step forward\
+        \ 'fierce determination' suggests choosing resistance over mere survival;\
+        \ she could have fled but instead 'walked forward, into the heart of the struggle'"
     cross_beat_chekhov_gun:
-      status: ✓ Satisfied
+      status: "\u2713 Satisfied"
       analysis: Language skills introduced in Beat 1 (Fante with hunter, cultural
         deflection) become ESSENTIAL in Beat 2 (German decoding) and CRITICAL in Beat
         3 (translating soldiers' commands allows Kwame to escape). The skill progression
         is organic and escalating.
     cross_beat_identity_transformation:
-      status: ✓ Satisfied
+      status: "\u2713 Satisfied"
       beat_1: 'Servant-scholar mindset: ''never ventured this far,'' cautious approach,
         ''forced a smile,'' deflecting rather than engaging'
       beat_2: 'Realization of capability: Decodes complex message, earns respect from
         resistance members, ''drawn into conversation,'' recognized as more than she
         presented'
-      beat_3: 'Full claim of role: ''fully claimed her role as a resistance fighter,''
-        stands tall before soldiers, ''fierce determination,'' walks forward into
-        struggle—identity fully transformed'
+      beat_3: "Full claim of role: 'fully claimed her role as a resistance fighter,'\
+        \ stands tall before soldiers, 'fierce determination,' walks forward into\
+        \ struggle\u2014identity fully transformed"
     cross_beat_escalating_danger:
-      status: ✓ Satisfied
-      beat_1: 'Threat of discovery: Hunter encounter, British patrols mentioned, letter
-        as liability—passive danger'
-      beat_2: 'Direct confrontation possible: Kwame''s pointed interrogation, British-trained
-        soldier watching with hostility—active surveillance'
-      beat_3: 'Active pursuit/imminent capture: British patrol emerges with guns drawn,
-        Amara faces soldiers directly—maximum physical danger realized'
+      status: "\u2713 Satisfied"
+      beat_1: "Threat of discovery: Hunter encounter, British patrols mentioned, letter\
+        \ as liability\u2014passive danger"
+      beat_2: "Direct confrontation possible: Kwame's pointed interrogation, British-trained\
+        \ soldier watching with hostility\u2014active surveillance"
+      beat_3: "Active pursuit/imminent capture: British patrol emerges with guns drawn,\
+        \ Amara faces soldiers directly\u2014maximum physical danger realized"
     cross_beat_knowledge_as_resistance:
-      status: ✓ Satisfied
+      status: "\u2713 Satisfied"
       beat_1: 'Literacy/languages enable survival: Fante greeting deflects suspicion;
         knowledge of forest paths (learned through reading/study) guides her'
       beat_2: 'Multilingual competence proves commitment: German decoding is the test;
@@ -129,8 +129,8 @@ llm_results:
   - 'Beat 2, Req 5: What Amara learns about the resistance is somewhat implicit; could
     be more explicit (e.g., learning about network structure, specific targets, or
     resistance philosophy)'
-  - 'Minor: The British-trained soldier at camp edge is introduced but not fully resolved—his
-    role remains ambiguous'
+  - "Minor: The British-trained soldier at camp edge is introduced but not fully resolved\u2014\
+    his role remains ambiguous"
   overall_assessment: This is a strong, well-crafted narrative that satisfies 14 of
     15 beat requirements and all 4 cross-beat constraints. The story demonstrates
     sophisticated understanding of the Hero's Journey framework while maintaining

@@ -1,0 +1,45 @@
+evaluation_id: 376fd1a4
+task_id: constrained_continuation_002
+generation_id: constrained_continuation_002_google/gemini-3-flash-preview_0
+task_type: constrained_continuation
+model: google/gemini-3-flash-preview
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.030285
+timestamp: '2025-12-18T23:34:42.932675'
+success: true
+final_score: 0.9252779937791602
+score_breakdown:
+  final_score: 0.9253
+  components:
+    programmatic:
+      score: 0.8581
+      weight: 0.5
+      breakdown:
+        word_count_score: 1.0
+        repetition_score: 0.6
+        slop_score: 0.9922
+        overall: 0.8581
+      word_count:
+        actual: 608
+        target_range:
+        - 450
+        - 650
+    llm_judge:
+      score: 0.9925
+      weight: 0.5
+llm_results:
+  beats_present: 2
+  beats_total: 2
+  beats_score: 1.0
+  must_include_present: 6
+  must_include_total: 6
+  must_include_score: 1.0
+  must_not_avoided: 4
+  must_not_total: 4
+  must_not_score: 1.0
+  word_count_valid: true
+  tone_score: 0.95
+  ending_score: 1.0
+  failed_constraints: []
+error: null

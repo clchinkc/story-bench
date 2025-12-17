@@ -12,20 +12,19 @@ final_score: 0.8756242256461488
 score_breakdown:
   final_score: 0.8756
   components:
-    word_count:
-      score: 0.8825
-      weight: 0.25
-      actual: 410
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.886
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.8825
         repetition_score: 0.81
         slop_score: 1.0
         overall: 0.886
+      word_count:
+        actual: 410
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 0.867
       weight: 0.5
@@ -42,31 +41,32 @@ llm_results:
   minimal_change_score: 0.25
   word_count_valid: false
   quality_score: 0.88
-  evidence: 'DIAGNOSIS: The model correctly identified the core flaw—that the original
-    was pure exposition-as-summary (telling) rather than exposition-as-scene (showing).
-    The revision transforms the segment into a lived moment with sensory grounding,
-    action, and dialogue that naturally reveals character traits. FLAW CORRECTION:
-    Excellent execution. The revision shows: (1) Rachel''s detective instincts through
-    her fixation on the Martinez cold case and her reading of environmental details;
-    (2) Her relationship with James through natural dialogue (''You''re gonna wear
-    a hole in that pen''), physical proximity, and mutual understanding; (3) Her devotion
-    to work through her inability to stop thinking about unsolved cases; (4) Setting
-    through rich sensory detail (fluorescent hum, bergamot aftershave, damp October
-    air, grimy windows). The cat appears organically in the scene. All 5 preserved
-    elements present: Rachel Torres (protagonist), James Oyelaran (partner), Sherlock
-    (cat), Queens setting (implied via James''s Harlem apartment reference and precinct
-    location), October timing (explicit). All 4 required phrases present or near-exact:
-    ''Detective Rachel Torres,'' ''Detective James Oyelaran,'' ''cat named Sherlock,''
-    ''October'' (though ''Tuesday morning'' is not explicitly stated—minor gap). MINIMAL
-    CHANGE ISSUE: This is a COMPLETE REWRITE, not minimal surgical edits. The original
-    410-word segment was entirely replaced with a new 410-word scene. While the rewrite
-    is superior in quality and correctly addresses the flaw, it violates the ''minimal
-    modification'' constraint. The model was instructed to make MINIMAL changes while
-    fixing the flaw, but instead produced a wholesale reconstruction. QUALITY: Writing
-    is professional, vivid, and error-free. Sensory details are precise (''copper
-    tang,'' ''bergamot,'' ''linoleum''). Dialogue feels natural. Pacing is strong.
-    The only weakness is the constraint violation and the missing ''Tuesday morning''
-    phrase (minor). BEAT SATISFACTION: Exposition beat is well-executed—establishes
-    baseline, shows ordinary world before inciting incident, creates investment through
-    character behavior and relationship dynamics.'
+  evidence: "DIAGNOSIS: The model correctly identified the core flaw\u2014that the\
+    \ original was pure exposition-as-summary (telling) rather than exposition-as-scene\
+    \ (showing). The revision transforms the segment into a lived moment with sensory\
+    \ grounding, action, and dialogue that naturally reveals character traits. FLAW\
+    \ CORRECTION: Excellent execution. The revision shows: (1) Rachel's detective\
+    \ instincts through her fixation on the Martinez cold case and her reading of\
+    \ environmental details; (2) Her relationship with James through natural dialogue\
+    \ ('You're gonna wear a hole in that pen'), physical proximity, and mutual understanding;\
+    \ (3) Her devotion to work through her inability to stop thinking about unsolved\
+    \ cases; (4) Setting through rich sensory detail (fluorescent hum, bergamot aftershave,\
+    \ damp October air, grimy windows). The cat appears organically in the scene.\
+    \ All 5 preserved elements present: Rachel Torres (protagonist), James Oyelaran\
+    \ (partner), Sherlock (cat), Queens setting (implied via James's Harlem apartment\
+    \ reference and precinct location), October timing (explicit). All 4 required\
+    \ phrases present or near-exact: 'Detective Rachel Torres,' 'Detective James Oyelaran,'\
+    \ 'cat named Sherlock,' 'October' (though 'Tuesday morning' is not explicitly\
+    \ stated\u2014minor gap). MINIMAL CHANGE ISSUE: This is a COMPLETE REWRITE, not\
+    \ minimal surgical edits. The original 410-word segment was entirely replaced\
+    \ with a new 410-word scene. While the rewrite is superior in quality and correctly\
+    \ addresses the flaw, it violates the 'minimal modification' constraint. The model\
+    \ was instructed to make MINIMAL changes while fixing the flaw, but instead produced\
+    \ a wholesale reconstruction. QUALITY: Writing is professional, vivid, and error-free.\
+    \ Sensory details are precise ('copper tang,' 'bergamot,' 'linoleum'). Dialogue\
+    \ feels natural. Pacing is strong. The only weakness is the constraint violation\
+    \ and the missing 'Tuesday morning' phrase (minor). BEAT SATISFACTION: Exposition\
+    \ beat is well-executed\u2014establishes baseline, shows ordinary world before\
+    \ inciting incident, creates investment through character behavior and relationship\
+    \ dynamics."
 error: null

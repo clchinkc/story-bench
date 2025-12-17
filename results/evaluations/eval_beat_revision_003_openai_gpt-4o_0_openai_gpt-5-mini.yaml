@@ -12,20 +12,19 @@ final_score: 0.9069652801889316
 score_breakdown:
   final_score: 0.907
   components:
-    word_count:
-      score: 0.9999
-      weight: 0.25
-      actual: 198
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.988
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.9999
         repetition_score: 0.98
         slop_score: 1.0
         overall: 0.988
+      word_count:
+        actual: 198
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 0.82
       weight: 0.5
@@ -42,14 +41,14 @@ llm_results:
   minimal_change_score: 0.9
   word_count_valid: false
   quality_score: 0.9
-  evidence: 'The model recognized the actual flaw (no visible change on Return) and
-    attempted to fix it: Sophie turns her phone face down, declines to handle the
-    emergency until morning, and explicitly calls the retreat ''transformative'' and
-    says she ''learned to let go.'' These actions address changed behavior, an applied
-    insight, and a physical marker. However, the revision omits one required element:
-    the mother does not notice anything different about Sophie, so the update is only
-    a partial correction. The edit was minimal and surgical—key phrases and structure
-    were preserved—so preservation and minimal-change scores are high. Word count
-    is under the required 200–350 range (invalid). Overall prose is clear with no
-    major errors.'
+  evidence: "The model recognized the actual flaw (no visible change on Return) and\
+    \ attempted to fix it: Sophie turns her phone face down, declines to handle the\
+    \ emergency until morning, and explicitly calls the retreat 'transformative' and\
+    \ says she 'learned to let go.' These actions address changed behavior, an applied\
+    \ insight, and a physical marker. However, the revision omits one required element:\
+    \ the mother does not notice anything different about Sophie, so the update is\
+    \ only a partial correction. The edit was minimal and surgical\u2014key phrases\
+    \ and structure were preserved\u2014so preservation and minimal-change scores\
+    \ are high. Word count is under the required 200\u2013350 range (invalid). Overall\
+    \ prose is clear with no major errors."
 error: null

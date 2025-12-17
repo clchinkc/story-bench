@@ -12,20 +12,19 @@ final_score: 0.9431334497425923
 score_breakdown:
   final_score: 0.9431
   components:
-    word_count:
-      score: 0.9965
-      weight: 0.25
-      actual: 360
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.976
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.9965
         repetition_score: 0.96
         slop_score: 1.0
         overall: 0.976
+      word_count:
+        actual: 360
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 0.9
       weight: 0.5
@@ -42,19 +41,19 @@ llm_results:
   minimal_change_score: 0.2
   word_count_valid: false
   quality_score: 0.9
-  evidence: 'The model addressed the actual flaw (exposition that was ''telling''
-    rather than ''showing'') by converting the info-dump into a lived scene: sensory
-    details (muted trumpet, kettle, chipped mug, precinct lobby sounds) ground the
-    Queens apartment and precinct; Rachel''s detective instincts are shown (spotting
-    a staged detail, circling it); her devotion is implied through the spread of case
-    printouts, the ring box in the junk drawer, and her practiced sequence with badge
-    and holster; the partnership with Detective James Oyelaran is revealed in action
-    and dialogue (two coffees, banter, passing the folder). The cat appears naturally
-    (Sherlock, the gray cat) and the time/frame is preserved with the line ''It was
-    a Tuesday morning in October...''. Preservation: all five required story elements
-    are kept and the four required phrases/counted items are effectively present.
-    However, the revision is a substantive rewrite rather than a minimal surgical
-    edit—the text shifts from summary to scene—so minimal_change_score is low. Overall
-    writing quality is strong with no notable new errors. Word count flagged invalid
-    per the provided range (360 words, outside 200–350).'
+  evidence: "The model addressed the actual flaw (exposition that was 'telling' rather\
+    \ than 'showing') by converting the info-dump into a lived scene: sensory details\
+    \ (muted trumpet, kettle, chipped mug, precinct lobby sounds) ground the Queens\
+    \ apartment and precinct; Rachel's detective instincts are shown (spotting a staged\
+    \ detail, circling it); her devotion is implied through the spread of case printouts,\
+    \ the ring box in the junk drawer, and her practiced sequence with badge and holster;\
+    \ the partnership with Detective James Oyelaran is revealed in action and dialogue\
+    \ (two coffees, banter, passing the folder). The cat appears naturally (Sherlock,\
+    \ the gray cat) and the time/frame is preserved with the line 'It was a Tuesday\
+    \ morning in October...'. Preservation: all five required story elements are kept\
+    \ and the four required phrases/counted items are effectively present. However,\
+    \ the revision is a substantive rewrite rather than a minimal surgical edit\u2014\
+    the text shifts from summary to scene\u2014so minimal_change_score is low. Overall\
+    \ writing quality is strong with no notable new errors. Word count flagged invalid\
+    \ per the provided range (360 words, outside 200\u2013350)."
 error: null

@@ -12,20 +12,19 @@ final_score: 0.9305000000000001
 score_breakdown:
   final_score: 0.9305
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 263
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.952
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.92
         slop_score: 1.0
         overall: 0.952
+      word_count:
+        actual: 263
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 0.885
       weight: 0.5
@@ -42,14 +41,14 @@ llm_results:
   minimal_change_score: 0.5
   word_count_valid: true
   quality_score: 0.95
-  evidence: 'The model addressed the actual flaw (telling vs. showing) by replacing
-    exposition with a lived precinct scene: sensory detail (October chill, fluorescent
-    buzz, radio static), Rachel''s detective behavior (spotting a witness discrepancy),
-    and partnership shown through dialogue and ritual (coffee banter). The cat and
-    Queens apartment are integrated naturally. All five core elements were preserved,
-    but two of the four required exact/near-exact phrases were not present verbatim
-    («Detective James Oyelaran» and «cat named Sherlock»), so required_preserved_score
-    is partial. Changes were moderate rather than surgical—the text was restructured
-    into a scene rather than minimally edited—hence a midscore for minimal_change.
-    Writing quality is high with no major errors.'
+  evidence: "The model addressed the actual flaw (telling vs. showing) by replacing\
+    \ exposition with a lived precinct scene: sensory detail (October chill, fluorescent\
+    \ buzz, radio static), Rachel's detective behavior (spotting a witness discrepancy),\
+    \ and partnership shown through dialogue and ritual (coffee banter). The cat and\
+    \ Queens apartment are integrated naturally. All five core elements were preserved,\
+    \ but two of the four required exact/near-exact phrases were not present verbatim\
+    \ (\xABDetective James Oyelaran\xBB and \xABcat named Sherlock\xBB), so required_preserved_score\
+    \ is partial. Changes were moderate rather than surgical\u2014the text was restructured\
+    \ into a scene rather than minimally edited\u2014hence a midscore for minimal_change.\
+    \ Writing quality is high with no major errors."
 error: null

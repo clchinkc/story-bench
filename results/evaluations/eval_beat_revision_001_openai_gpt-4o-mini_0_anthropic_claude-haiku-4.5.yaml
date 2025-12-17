@@ -12,20 +12,19 @@ final_score: 0.8700000000000001
 score_breakdown:
   final_score: 0.87
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 293
-      target_range:
-      - 250
-      - 400
     programmatic:
       score: 0.862
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.77
         slop_score: 1.0
         overall: 0.862
+      word_count:
+        actual: 293
+        target_range:
+        - 250
+        - 400
     llm_judge:
       score: 0.809
       weight: 0.5
@@ -42,56 +41,44 @@ llm_results:
   minimal_change_score: 0.65
   word_count_valid: true
   quality_score: 0.8
-  evidence: 'DIAGNOSIS: The model correctly identified that the Ordeal needed internal/psychological
-    transformation alongside external conflict. It recognized the need to weave Kira''s
-    guilt about her brother''s death into the dragon''s attacks, making the battle
-    a confrontation with her deepest fear rather than just a physical challenge. This
-    diagnosis is substantially correct (0.85).
-
-
-    FLAW CORRECTION: The revision partially fixes the actual flaw. STRENGTHS: (1)
-    Dragon now explicitly exploits Kira''s guilt (''You will join him soon,'' ''their
-    failures haunt their kin''), directly confronting her internal fear; (2) Added
-    psychological vulnerability (''weight of despair,'' ''darkness threatened to swallow
-    her,'' ''flame of her guilt''); (3) Transformation is present—she shifts from
-    guilt-driven to strength-driven (''carrying her brother''s memory as strength
-    instead of sorrow''). WEAKNESSES: (1) The ''death'' moment is weak—''darkness
-    threatened to swallow her'' is metaphorical but lacks the visceral surrender required
-    by true Ordeal structure. She never truly accepts defeat or lets go; (2) The transformation,
-    while present, feels more like emotional resolution than rebirth. She doesn''t
-    emerge fundamentally changed in capability or understanding—she still wins through
-    persistence with added emotional clarity; (3) No clear moment where she ''dies''
-    psychologically (surrenders, accepts failure, loses sense of self). The revision
-    adds internal conflict but doesn''t fully execute the symbolic death-rebirth cycle.
-    Score: 0.75.
-
-
-    BEAT SATISFACTION: The revision moves toward proper Ordeal execution but falls
-    short of full satisfaction. It includes confrontation with fear (0.9/1.0) and
-    transformation (0.7/1.0), but the ''death'' moment remains underdeveloped (0.5/1.0).
-    The victory still derives primarily from persistence rather than new understanding
-    (0.7/1.0). Overall: 0.72.
-
-
-    PRESERVATION: All 4 required phrases present: (1) ''Kira faced the Shadow Dragon
-    across the chasm'' ✓; (2) ''The creature was massive—twenty feet of obsidian scales
-    and burning eyes'' ✓; (3) ''"You cannot defeat me, child," the dragon rumbled''
-    ✓; (4) ''The Shadow Dragon collapsed with an earth-shaking roar'' ✓. All 4 preserved
-    elements intact. Score: 1.0.
-
-
-    MINIMAL CHANGES: The revision is NOT minimally surgical. Approximately 40-45%
-    of the text was rewritten or substantially modified: new dragon dialogue added
-    (''their failures haunt their kin,'' ''You will join him soon''), internal monologue
-    expanded significantly (''weight of despair,'' ''darkness threatened to swallow
-    her,'' ''flame of her guilt''), new final paragraph added (''transformed, carrying
-    her brother''s memory as strength instead of sorrow''). While the core structure
-    and key phrases remain, the changes are moderate rather than surgical. Score:
-    0.65.
-
-
-    QUALITY: Writing quality is good with no new errors introduced. Prose flows naturally,
-    emotional beats land effectively, and the additions integrate smoothly with original
-    text. Minor note: ''an earth-shaking roar'' should be ''a earth-shaking roar''
-    (original had ''an'' which is technically incorrect but preserved). Score: 0.8.'
+  evidence: "DIAGNOSIS: The model correctly identified that the Ordeal needed internal/psychological\
+    \ transformation alongside external conflict. It recognized the need to weave\
+    \ Kira's guilt about her brother's death into the dragon's attacks, making the\
+    \ battle a confrontation with her deepest fear rather than just a physical challenge.\
+    \ This diagnosis is substantially correct (0.85).\n\nFLAW CORRECTION: The revision\
+    \ partially fixes the actual flaw. STRENGTHS: (1) Dragon now explicitly exploits\
+    \ Kira's guilt ('You will join him soon,' 'their failures haunt their kin'), directly\
+    \ confronting her internal fear; (2) Added psychological vulnerability ('weight\
+    \ of despair,' 'darkness threatened to swallow her,' 'flame of her guilt'); (3)\
+    \ Transformation is present\u2014she shifts from guilt-driven to strength-driven\
+    \ ('carrying her brother's memory as strength instead of sorrow'). WEAKNESSES:\
+    \ (1) The 'death' moment is weak\u2014'darkness threatened to swallow her' is\
+    \ metaphorical but lacks the visceral surrender required by true Ordeal structure.\
+    \ She never truly accepts defeat or lets go; (2) The transformation, while present,\
+    \ feels more like emotional resolution than rebirth. She doesn't emerge fundamentally\
+    \ changed in capability or understanding\u2014she still wins through persistence\
+    \ with added emotional clarity; (3) No clear moment where she 'dies' psychologically\
+    \ (surrenders, accepts failure, loses sense of self). The revision adds internal\
+    \ conflict but doesn't fully execute the symbolic death-rebirth cycle. Score:\
+    \ 0.75.\n\nBEAT SATISFACTION: The revision moves toward proper Ordeal execution\
+    \ but falls short of full satisfaction. It includes confrontation with fear (0.9/1.0)\
+    \ and transformation (0.7/1.0), but the 'death' moment remains underdeveloped\
+    \ (0.5/1.0). The victory still derives primarily from persistence rather than\
+    \ new understanding (0.7/1.0). Overall: 0.72.\n\nPRESERVATION: All 4 required\
+    \ phrases present: (1) 'Kira faced the Shadow Dragon across the chasm' \u2713\
+    ; (2) 'The creature was massive\u2014twenty feet of obsidian scales and burning\
+    \ eyes' \u2713; (3) '\"You cannot defeat me, child,\" the dragon rumbled' \u2713\
+    ; (4) 'The Shadow Dragon collapsed with an earth-shaking roar' \u2713. All 4 preserved\
+    \ elements intact. Score: 1.0.\n\nMINIMAL CHANGES: The revision is NOT minimally\
+    \ surgical. Approximately 40-45% of the text was rewritten or substantially modified:\
+    \ new dragon dialogue added ('their failures haunt their kin,' 'You will join\
+    \ him soon'), internal monologue expanded significantly ('weight of despair,'\
+    \ 'darkness threatened to swallow her,' 'flame of her guilt'), new final paragraph\
+    \ added ('transformed, carrying her brother's memory as strength instead of sorrow').\
+    \ While the core structure and key phrases remain, the changes are moderate rather\
+    \ than surgical. Score: 0.65.\n\nQUALITY: Writing quality is good with no new\
+    \ errors introduced. Prose flows naturally, emotional beats land effectively,\
+    \ and the additions integrate smoothly with original text. Minor note: 'an earth-shaking\
+    \ roar' should be 'a earth-shaking roar' (original had 'an' which is technically\
+    \ incorrect but preserved). Score: 0.8."
 error: null

@@ -12,20 +12,19 @@ final_score: 0.8091146759847523
 score_breakdown:
   final_score: 0.8091
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 763
-      target_range:
-      - 700
-      - 1000
     programmatic:
       score: 0.6975
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.5
         slop_score: 0.9936
         overall: 0.6975
+      word_count:
+        actual: 763
+        target_range:
+        - 700
+        - 1000
     llm_judge:
       score: 0.7695
       weight: 0.5
@@ -42,9 +41,9 @@ llm_results:
   failed_items:
   - 'Beat 1 - Things going according to plan (mostly): The plan is disrupted by a
     loud crash and shouts, which is more than a ''minor'' complication.'
-  - 'Beat 2 - Miri discovers her mentor is involved (or the full extent): While Renée
-    appears, the ''full extent'' of her involvement isn''t fully explored or discovered
-    by Miri in this beat, beyond her presence.'
+  - "Beat 2 - Miri discovers her mentor is involved (or the full extent): While Ren\xE9\
+    e appears, the 'full extent' of her involvement isn't fully explored or discovered\
+    \ by Miri in this beat, beyond her presence."
   - 'Beat 3 - Team friction or trust issues surface: While Sam is missing, it doesn''t
     explicitly lead to ''team friction or trust issues'' within the crew''s dialogue
     or actions.'

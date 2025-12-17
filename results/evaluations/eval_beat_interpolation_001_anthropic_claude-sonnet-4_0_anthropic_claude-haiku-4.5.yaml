@@ -12,20 +12,19 @@ final_score: 0.997
 score_breakdown:
   final_score: 0.997
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 284
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.988
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.98
         slop_score: 1.0
         overall: 0.988
+      word_count:
+        actual: 284
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 1.0
       weight: 0.5
@@ -40,19 +39,19 @@ llm_results:
   character_score: 1.0
   bridge_score: 1.0
   continuity_score: 1.0
-  evidence: 'All four required elements present: (1) Marcus Thorne introduced as mentor
-    character with clear wisdom and experience; (2) Practical wisdom delivered (''Heroes
-    die young...researchers survive'') and tangible tools provided (compass, satchel,
-    vial); (3) Elena''s doubt shifts to reluctant acceptance (''Maybe—just maybe—she
-    wasn''t as unprepared as she thought''); (4) Librarian skills explicitly reframed
-    as valuable (''You organize information, find patterns, solve puzzles''). No violations
-    of must-not criteria: Elena remains doubtful and hesitant, Marcus provides guidance
-    without solving problems or accompanying her, setting remains at the curiosity
-    shop (not forest), no magical powers discovered. Character voice perfectly consistent—Elena''s
-    skepticism and Marcus''s knowing wisdom maintain established personalities. Bridge
-    seamless: Elena enters refusing the call, exits with tools and reframed perspective.
-    Continuity perfect: ''AFTER'' section shows Elena at forest edge with Marcus''s
-    gifts, directly following this beat. Execution clearly fulfills the mentor beat''s
-    narrative function of providing wisdom, tools, and preparation while maintaining
-    the hero''s agency and doubt.'
+  evidence: "All four required elements present: (1) Marcus Thorne introduced as mentor\
+    \ character with clear wisdom and experience; (2) Practical wisdom delivered ('Heroes\
+    \ die young...researchers survive') and tangible tools provided (compass, satchel,\
+    \ vial); (3) Elena's doubt shifts to reluctant acceptance ('Maybe\u2014just maybe\u2014\
+    she wasn't as unprepared as she thought'); (4) Librarian skills explicitly reframed\
+    \ as valuable ('You organize information, find patterns, solve puzzles'). No violations\
+    \ of must-not criteria: Elena remains doubtful and hesitant, Marcus provides guidance\
+    \ without solving problems or accompanying her, setting remains at the curiosity\
+    \ shop (not forest), no magical powers discovered. Character voice perfectly consistent\u2014\
+    Elena's skepticism and Marcus's knowing wisdom maintain established personalities.\
+    \ Bridge seamless: Elena enters refusing the call, exits with tools and reframed\
+    \ perspective. Continuity perfect: 'AFTER' section shows Elena at forest edge\
+    \ with Marcus's gifts, directly following this beat. Execution clearly fulfills\
+    \ the mentor beat's narrative function of providing wisdom, tools, and preparation\
+    \ while maintaining the hero's agency and doubt."
 error: null

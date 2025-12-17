@@ -1,15 +1,36 @@
-evaluation_id: 631da52a
+evaluation_id: b27f62fd
 task_id: agentic_constraint_discovery_001
 generation_id: 87fbb29f
 agentic_type: constraint_discovery
 model: deepseek/deepseek-r1
 evaluator_model: openai/gpt-5-mini
-evaluator_cost: 0.0052945
-timestamp: '2025-12-16T11:53:14.762325'
-success: false
-process_scores: {}
-output_scores: {}
-final_score: 0.0
+evaluator_cost: 0.0041405
+timestamp: '2025-12-17T23:40:28.321848'
+success: true
+process_scores:
+  discovery_efficiency: 0.2
+  question_quality: 0.4
+  question_coverage: 0.6
+output_scores:
+  constraint_satisfaction: 0.0
+  beat_execution: 0.2
+  narrative_quality: 0.8
+final_score: 0.36
 llm_results:
-  raw_response: ''
-error: Failed to parse JSON from evaluator response
+  discovery_efficiency: 0.2
+  constraints_discoverable: 1
+  constraints_total: 5
+  question_quality: 0.4
+  question_coverage: 0.6
+  constraint_satisfaction: 0.0
+  beat_execution: 0.2
+  narrative_quality: 0.8
+  evidence: 'Only 1/5 hidden constraints was directly discoverable from the questions
+    (that a specific magical item must be forged). Questions were reasonable but missed
+    key constraint areas (mentor death, magic-use prohibition, time limit, ancestral
+    reforging). The story does use the forging as the Ordeal (executed well) but fails
+    every other hidden constraint: the mentor survives, the protagonist directly channels
+    magical flame, there is no three-day time limit, the father-as-failed-hero is
+    absent, and no broken ancestral sword is reforged. Prose and pacing are strong,
+    but constraint adherence is poor.'
+error: null

@@ -1,0 +1,56 @@
+evaluation_id: 9c616739
+task_id: beat_interpolation_001
+generation_id: beat_interpolation_001_google/gemini-3-flash-preview_0
+task_type: beat_interpolation
+model: google/gemini-3-flash-preview
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.017355000000000002
+timestamp: '2025-12-18T23:28:29.734446'
+success: true
+final_score: 0.9682953890489914
+score_breakdown:
+  final_score: 0.9683
+  components:
+    programmatic:
+      score: 0.9366
+      weight: 0.5
+      breakdown:
+        word_count_score: 1.0
+        repetition_score: 0.86
+        slop_score: 0.9424
+        overall: 0.9366
+      word_count:
+        actual: 326
+        target_range:
+        - 200
+        - 350
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: true
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: 'All four required elements present: (1) Marcus introduced as former adventurer
+    mentor with clear characterization; (2) practical wisdom provided through reframing
+    librarian skills as applicable to forest navigation, plus tangible tools (satchel,
+    compass); (3) Elena''s doubt shifts from ''I can''t do this'' to reluctant acceptance
+    (''settling into something manageable''); (4) librarian skills explicitly validated
+    as ''the only things that will keep you from losing your way.'' All must-not violations
+    avoided: Elena remains doubtful and unconfident (''still felt spectacularly unqualified''),
+    Marcus provides guidance but no accompaniment, setting is curiosity shop (not
+    forest), no magical powers discovered. Character voice maintains Elena''s self-deprecating
+    librarian perspective while showing subtle shift. Bridge seamlessly connects refusal
+    beat to threshold beat through mentor''s reframing. Continuity perfect: map, grandmother''s
+    ghost, Elena''s profession all consistent with prior beat. Execution exemplary—Marcus
+    embodies the mentor archetype without solving problems, instead equipping Elena
+    with perspective and tools she must use herself.'
+error: null

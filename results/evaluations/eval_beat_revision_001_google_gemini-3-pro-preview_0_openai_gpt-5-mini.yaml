@@ -12,20 +12,19 @@ final_score: 0.9292113402061857
 score_breakdown:
   final_score: 0.9292
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 377
-      target_range:
-      - 250
-      - 400
     programmatic:
       score: 0.8268
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.72
         slop_score: 0.9871
         overall: 0.8268
+      word_count:
+        actual: 377
+        target_range:
+        - 250
+        - 400
     llm_judge:
       score: 0.945
       weight: 0.5
@@ -42,12 +41,13 @@ llm_results:
   minimal_change_score: 0.5
   word_count_valid: true
   quality_score: 0.95
-  evidence: 'The revision directly addresses the identified flaw: the dragon exploits
-    Kira''s guilt over her brother (internal confrontation), there is a clear symbolic
-    ''death'' when she surrenders to the darkness and experiences the void, followed
-    by a rebirth (eyes snapping open, warrior reborn) and a new understanding (his
-    death was not her sin). Victory follows from this insight rather than mere persistence.
-    All four required elements/phrases were preserved verbatim or nearly so. Changes
-    are moderate — significant internal material and emotional beats were added —
-    but structural anchors and outcome were kept, so edits were not a complete rewrite.'
+  evidence: "The revision directly addresses the identified flaw: the dragon exploits\
+    \ Kira's guilt over her brother (internal confrontation), there is a clear symbolic\
+    \ 'death' when she surrenders to the darkness and experiences the void, followed\
+    \ by a rebirth (eyes snapping open, warrior reborn) and a new understanding (his\
+    \ death was not her sin). Victory follows from this insight rather than mere persistence.\
+    \ All four required elements/phrases were preserved verbatim or nearly so. Changes\
+    \ are moderate \u2014 significant internal material and emotional beats were added\
+    \ \u2014 but structural anchors and outcome were kept, so edits were not a complete\
+    \ rewrite."
 error: null

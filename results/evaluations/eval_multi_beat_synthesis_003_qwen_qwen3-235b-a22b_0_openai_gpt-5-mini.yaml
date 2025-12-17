@@ -12,20 +12,19 @@ final_score: 0.7511631168395874
 score_breakdown:
   final_score: 0.7512
   components:
-    word_count:
-      score: 0.3247
-      weight: 0.25
-      actual: 565
-      target_range:
-      - 700
-      - 1000
     programmatic:
       score: 0.7
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.3247
         repetition_score: 0.5
         slop_score: 1.0
         overall: 0.7
+      word_count:
+        actual: 565
+        target_range:
+        - 700
+        - 1000
     llm_judge:
       score: 0.99
       weight: 0.5
@@ -41,11 +40,11 @@ llm_results:
   coherence_score: 0.9
   failed_items:
   - Word count outside required range (actual 565; required 700-1000).
-  - 'Meta-narration line (''Beat 1''s distraction: he’d noted the ventilation layout...'')
-    breaks show-don''t-tell and reduces clarity about where the Chekhov detail was
-    established.'
-  - Stray/corrupted character present in text ('撬' within 'Nikolai’s撬 lock'), a proofreading/proof-of-formatting
-    error.
-  - Finale feels slightly abrupt—the emotional fallout of Miri sacrificing revenge
-    for her crew could use more development for stronger payoff.
+  - "Meta-narration line ('Beat 1's distraction: he\u2019d noted the ventilation layout...')\
+    \ breaks show-don't-tell and reduces clarity about where the Chekhov detail was\
+    \ established."
+  - "Stray/corrupted character present in text ('\u64AC' within 'Nikolai\u2019s\u64AC\
+    \ lock'), a proofreading/proof-of-formatting error."
+  - "Finale feels slightly abrupt\u2014the emotional fallout of Miri sacrificing revenge\
+    \ for her crew could use more development for stronger payoff."
 error: null

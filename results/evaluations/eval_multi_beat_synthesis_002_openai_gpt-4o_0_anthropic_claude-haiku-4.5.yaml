@@ -12,20 +12,19 @@ final_score: 0.9001405472636815
 score_breakdown:
   final_score: 0.9001
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 792
-      target_range:
-      - 700
-      - 1000
     programmatic:
       score: 0.6876
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.5
         slop_score: 0.9689
         overall: 0.6876
+      word_count:
+        actual: 792
+        target_range:
+        - 700
+        - 1000
     llm_judge:
       score: 0.9565
       weight: 0.5
@@ -49,10 +48,10 @@ llm_results:
   - 'Exceptional execution of Chekhov''s Gun constraint: Amara''s multilingual skills
     (German, Twi, Fante) demonstrated in Beat 1 become the literal salvation in Beat
     2 (German whisper to Kwame) and Beat 3 (terrain knowledge from secret study)'
-  - 'Powerful identity transformation arc: Clear progression from ''servant'' (Beat
-    1: ''timid voice,'' ''harmless girl'') → ''capable ally'' (Beat 2: ''unwavering''
-    gaze, recounting father''s teachings) → ''resistance fighter'' (Beat 3: ''not
-    just Amara the servant'')'
+  - "Powerful identity transformation arc: Clear progression from 'servant' (Beat\
+    \ 1: 'timid voice,' 'harmless girl') \u2192 'capable ally' (Beat 2: 'unwavering'\
+    \ gaze, recounting father's teachings) \u2192 'resistance fighter' (Beat 3: 'not\
+    \ just Amara the servant')"
   - 'Escalating danger perfectly calibrated: Beat 1 (soldiers pass by, avoidable),
     Beat 2 (direct confrontation with scouts, requires active evasion), Beat 3 (ravine
     obstacle + implied pursuit, highest stakes)'
@@ -66,10 +65,10 @@ llm_results:
   - 'Narrative coherence: Smooth progression from Cape Coast through forest to stronghold
     approach; each beat builds logically on previous'
   minor_weaknesses:
-  - Beat 2, Req 5 is the only clear gap—while Amara proves her commitment through
-    recounting her father's teachings and demonstrating language skills, the text
-    doesn't explicitly show her learning new information about the resistance network,
-    leadership structure, or strategic plans
+  - "Beat 2, Req 5 is the only clear gap\u2014while Amara proves her commitment through\
+    \ recounting her father's teachings and demonstrating language skills, the text\
+    \ doesn't explicitly show her learning new information about the resistance network,\
+    \ leadership structure, or strategic plans"
   - Beat 3 could slightly strengthen the 'moment of preparation' (Req 2) with more
     internal reflection on what claiming her role means psychologically, though the
     ravine crossing serves this function adequately

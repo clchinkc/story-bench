@@ -12,20 +12,19 @@ final_score: 0.966
 score_breakdown:
   final_score: 0.966
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 299
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.964
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.94
         slop_score: 1.0
         overall: 0.964
+      word_count:
+        actual: 299
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 0.95
       weight: 0.5
@@ -42,12 +41,12 @@ llm_results:
   minimal_change_score: 0.7
   word_count_valid: true
   quality_score: 0.9
-  evidence: 'The model addressed the All Is Lost problem: it made the fundraiser impossible
-    (still two months short), the grant explicitly rejected (final denial), stripped
-    Marcus of support (Denise is revealed to have been job-hunting and then leaves
-    after a confrontation), and added a ''whiff of death'' (the loss of his son and
-    the empty center). These changes correctly target the original flaw and create
-    a genuine rock-bottom moment. The revision preserves all four required elements/phrases
-    exactly, but is more than a surgical edit—expanding scenes and adding emotional/betrayal
-    detail—hence a moderate minimal_change score.'
+  evidence: "The model addressed the All Is Lost problem: it made the fundraiser impossible\
+    \ (still two months short), the grant explicitly rejected (final denial), stripped\
+    \ Marcus of support (Denise is revealed to have been job-hunting and then leaves\
+    \ after a confrontation), and added a 'whiff of death' (the loss of his son and\
+    \ the empty center). These changes correctly target the original flaw and create\
+    \ a genuine rock-bottom moment. The revision preserves all four required elements/phrases\
+    \ exactly, but is more than a surgical edit\u2014expanding scenes and adding emotional/betrayal\
+    \ detail\u2014hence a moderate minimal_change score."
 error: null

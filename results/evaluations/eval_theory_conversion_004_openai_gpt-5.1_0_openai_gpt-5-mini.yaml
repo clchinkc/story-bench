@@ -12,20 +12,19 @@ final_score: 0.6655
 score_breakdown:
   final_score: 0.6655
   components:
-    word_count:
-      score: 0.0
-      weight: 0.25
-      actual: 1353
-      target_range:
-      - 500
-      - 700
     programmatic:
       score: 0.7
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.0
         repetition_score: 0.5
         slop_score: 1.0
         overall: 0.7
+      word_count:
+        actual: 1353
+        target_range:
+        - 500
+        - 700
     llm_judge:
       score: 0.981
       weight: 0.5
@@ -39,19 +38,19 @@ llm_results:
   word_count_valid: false
   structural_accuracy_score: 0.92
   tone_score: 0.98
-  evidence: 'All eight Harmonian beats are present and sequenced correctly: Zoe’s
-    comfort in the library (You), her longing/need to stop hiding (Need), joining
-    the oral-history project (Go), learning interviewing craft (Search), the breakthrough
-    with Bernard (Find), assuming responsibility at the town-hall reading (Take),
-    returning to the library and daily life (Return), and clear behavioral change
-    (Change). All eight required elements (Zoe, library/program, Ms. Okafor, Bernard,
-    Zoe’s anxiety, town-hall presentation, Bernard’s death, journalism/college arc)
-    are retained. Deductions: structural_accuracy_score slightly below perfect because
-    a couple of beats are lightly blended (the ''Take'' beat is framed as ethical
-    responsibility rather than a heavier price/sacrifice, and the final ''journalism''
-    resolution implies application and public speaking but stops short of an explicit
-    acceptance into a program), and the tone_score is marginally reduced to reflect
-    very minor moments where exposition slightly outweighs interior intimacy. Word
-    count is invalid per the requested 500–700 range (the provided text is ~1,350
-    words).'
+  evidence: "All eight Harmonian beats are present and sequenced correctly: Zoe\u2019\
+    s comfort in the library (You), her longing/need to stop hiding (Need), joining\
+    \ the oral-history project (Go), learning interviewing craft (Search), the breakthrough\
+    \ with Bernard (Find), assuming responsibility at the town-hall reading (Take),\
+    \ returning to the library and daily life (Return), and clear behavioral change\
+    \ (Change). All eight required elements (Zoe, library/program, Ms. Okafor, Bernard,\
+    \ Zoe\u2019s anxiety, town-hall presentation, Bernard\u2019s death, journalism/college\
+    \ arc) are retained. Deductions: structural_accuracy_score slightly below perfect\
+    \ because a couple of beats are lightly blended (the 'Take' beat is framed as\
+    \ ethical responsibility rather than a heavier price/sacrifice, and the final\
+    \ 'journalism' resolution implies application and public speaking but stops short\
+    \ of an explicit acceptance into a program), and the tone_score is marginally\
+    \ reduced to reflect very minor moments where exposition slightly outweighs interior\
+    \ intimacy. Word count is invalid per the requested 500\u2013700 range (the provided\
+    \ text is ~1,350 words)."
 error: null

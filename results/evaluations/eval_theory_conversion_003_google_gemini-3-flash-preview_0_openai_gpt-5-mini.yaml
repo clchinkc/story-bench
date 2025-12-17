@@ -1,0 +1,53 @@
+evaluation_id: cc7defbe
+task_id: theory_conversion_003
+generation_id: theory_conversion_003_google/gemini-3-flash-preview_0
+task_type: theory_conversion
+model: google/gemini-3-flash-preview
+sample_index: 0
+evaluator_model: openai/gpt-5-mini
+evaluator_cost: 0.0015345
+timestamp: '2025-12-18T23:37:41.151979'
+success: true
+final_score: 0.8889792526587189
+score_breakdown:
+  final_score: 0.889
+  components:
+    programmatic:
+      score: 0.7955
+      weight: 0.5
+      breakdown:
+        word_count_score: 0.9299
+        repetition_score: 0.5
+        slop_score: 0.994
+        overall: 0.7955
+      word_count:
+        actual: 811
+        target_range:
+        - 550
+        - 750
+    llm_judge:
+      score: 0.9825
+      weight: 0.5
+llm_results:
+  beats_present: 4
+  beats_total: 4
+  beats_score: 1.0
+  preserved_count: 8
+  preserved_total: 8
+  preservation_score: 1.0
+  word_count_valid: false
+  structural_accuracy_score: 0.95
+  tone_score: 0.95
+  evidence: 'All 4 target acts are present: Act 1 (office, inciting letter, Kenji
+    boards Shinkansen as first plot point), Act 2A (village life, Haruki, festival
+    midpoint/false victory), Act 2B (rivals'' deal, misunderstanding, dark night decision),
+    Act 3 (wedding climax, reconciliation, denouement with bamboo shop). All 8 required
+    elements are preserved (Kenji, lost career, Yuki, Kyoto wedding, Haruki, business
+    temptation, theme of people over ambition, bamboo shop ending). Minor deductions:
+    structural_accuracy_score reduced slightly because the second plot point / Break
+    into Three is handled well but a touch compressed (the decline of the deal and
+    the dark night are close together, blurring the transition that could be more
+    distinct). Tone_score reduced slightly because a few modern/boardroom phrasings
+    interrupt the otherwise quiet, Japanese-aesthetic redemptive tone. Word count
+    is invalid per criteria: the conversion is 811 words, exceeding the 550–750 range.'
+error: null

@@ -12,20 +12,19 @@ final_score: 0.9074528301886793
 score_breakdown:
   final_score: 0.9075
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 504
-      target_range:
-      - 500
-      - 700
     programmatic:
       score: 0.6698
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.5
         slop_score: 0.9245
         overall: 0.6698
+      word_count:
+        actual: 504
+        target_range:
+        - 500
+        - 700
     llm_judge:
       score: 0.98
       weight: 0.5
@@ -39,12 +38,12 @@ llm_results:
   word_count_valid: true
   structural_accuracy_score: 0.9
   tone_score: 1.0
-  evidence: All eight Dan Harmon beats are present and correctly ordered (You, Need,
-    Go, Search, Find, Take, Return, Change). All eight required elements (Zoe, library/oral-history
-    program, Ms. Okafor, Bernard Park, Zoe's social anxiety, town-hall presentation,
-    Bernard's death, journalism application) appear. Small deduction on structural_accuracy
-    (0.90 rather than 1.0) because the 'Take' beat—typically involving a meaningful
-    cost or sacrifice—reads primarily as taking responsibility and public success
-    rather than a clearly delineated price paid; otherwise the sequence and transitions
-    are tightly aligned. Tone remains gentle, intimate, and emotionally true.
+  evidence: "All eight Dan Harmon beats are present and correctly ordered (You, Need,\
+    \ Go, Search, Find, Take, Return, Change). All eight required elements (Zoe, library/oral-history\
+    \ program, Ms. Okafor, Bernard Park, Zoe's social anxiety, town-hall presentation,\
+    \ Bernard's death, journalism application) appear. Small deduction on structural_accuracy\
+    \ (0.90 rather than 1.0) because the 'Take' beat\u2014typically involving a meaningful\
+    \ cost or sacrifice\u2014reads primarily as taking responsibility and public success\
+    \ rather than a clearly delineated price paid; otherwise the sequence and transitions\
+    \ are tightly aligned. Tone remains gentle, intimate, and emotionally true."
 error: null

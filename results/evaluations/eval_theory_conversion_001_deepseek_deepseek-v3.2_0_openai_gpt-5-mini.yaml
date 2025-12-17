@@ -12,20 +12,19 @@ final_score: 0.9747748091603052
 score_breakdown:
   final_score: 0.9748
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 509
-      target_range:
-      - 500
-      - 700
     programmatic:
       score: 0.8991
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.87
         slop_score: 0.9427
         overall: 0.8991
+      word_count:
+        actual: 509
+        target_range:
+        - 500
+        - 700
     llm_judge:
       score: 1.0
       weight: 0.5
@@ -39,12 +38,12 @@ llm_results:
   word_count_valid: true
   structural_accuracy_score: 1.0
   tone_score: 1.0
-  evidence: 'All five Freytag beats are present and clearly mapped: Exposition (Samira''s
-    ordered world/status quo), Rising Action (containment, investigation, Nexus revealed),
-    Climax (proof and confrontation with Nexus), Falling Action (press conference,
-    cure release), Denouement (six-week aftermath/new equilibrium). All six required
-    elements are preserved: Samira as protagonist, engineered virus discovery, Raj,
-    Nexus Biotech antagonist, public release of the cure, and Samira’s career sacrifice.
-    No notable deductions — structure, stakes, and medical-thriller/ethical tone are
-    consistently maintained.'
+  evidence: "All five Freytag beats are present and clearly mapped: Exposition (Samira's\
+    \ ordered world/status quo), Rising Action (containment, investigation, Nexus\
+    \ revealed), Climax (proof and confrontation with Nexus), Falling Action (press\
+    \ conference, cure release), Denouement (six-week aftermath/new equilibrium).\
+    \ All six required elements are preserved: Samira as protagonist, engineered virus\
+    \ discovery, Raj, Nexus Biotech antagonist, public release of the cure, and Samira\u2019\
+    s career sacrifice. No notable deductions \u2014 structure, stakes, and medical-thriller/ethical\
+    \ tone are consistently maintained."
 error: null

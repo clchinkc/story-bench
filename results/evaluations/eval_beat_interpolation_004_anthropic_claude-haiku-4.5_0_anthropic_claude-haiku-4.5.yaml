@@ -12,20 +12,19 @@ final_score: 0.9595
 score_breakdown:
   final_score: 0.9595
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 390
-      target_range:
-      - 300
-      - 450
     programmatic:
       score: 0.838
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.73
         slop_score: 1.0
         overall: 0.838
+      word_count:
+        actual: 390
+        target_range:
+        - 300
+        - 450
     llm_judge:
       score: 1.0
       weight: 0.5
@@ -40,25 +39,26 @@ llm_results:
   character_score: 1.0
   bridge_score: 1.0
   continuity_score: 1.0
-  evidence: 'REQUIRED ELEMENTS (4/4 present): (1) Direct examination of Dr. Okonkwo—Thomas
-    methodically builds foundation with credentials, protocols, then moves to specific
-    trial data. (2) Near-recant moment—She closes her eyes, grips the chair, initially
-    deflects (''I don''t recall filing them''), showing internal struggle and external
-    pressure (the man with daughter''s photo). (3) Thomas''s decisive action—He physically
-    blocks her line of sight to the threat, makes direct eye contact, and delivers
-    emotionally resonant appeal about the seventeen victims'' families, directly influencing
-    her choice. (4) Truth prevails turning point—She breaks, provides specific details
-    (March 15th, 47 adverse events), gallery erupts, case direction irrevocably set.
-    MUST-NOT VIOLATIONS (0/4): Avoided passive questioning (Thomas actively intervenes);
-    avoided simple truth-telling (genuine internal conflict shown); avoided defense
-    winning (guilty verdict confirmed); avoided deus ex machina (no new evidence appears—she
-    provides what she already had). CHARACTER CONSISTENCY: Thomas''s voice remains
-    steady, strategic yet humane; his violation of ''prosecutorial strategy'' is character-appropriate
-    given his moral compass established in BEFORE. Dr. Okonkwo''s fear, trembling,
-    and ultimate choice are psychologically coherent. BRIDGE QUALITY: Seamless transition
-    from rising tension to climactic confrontation; the gallery detail, the photograph
-    leverage, and Thomas''s positioning all connect naturally to the verdict outcome
-    in AFTER. CONTINUITY: Setting remains courtroom/hallway; timeline flows logically;
-    character states (Thomas''s hollowness, Dr. Okonkwo''s red eyes) connect directly
-    to AFTER section.'
+  evidence: "REQUIRED ELEMENTS (4/4 present): (1) Direct examination of Dr. Okonkwo\u2014\
+    Thomas methodically builds foundation with credentials, protocols, then moves\
+    \ to specific trial data. (2) Near-recant moment\u2014She closes her eyes, grips\
+    \ the chair, initially deflects ('I don't recall filing them'), showing internal\
+    \ struggle and external pressure (the man with daughter's photo). (3) Thomas's\
+    \ decisive action\u2014He physically blocks her line of sight to the threat, makes\
+    \ direct eye contact, and delivers emotionally resonant appeal about the seventeen\
+    \ victims' families, directly influencing her choice. (4) Truth prevails turning\
+    \ point\u2014She breaks, provides specific details (March 15th, 47 adverse events),\
+    \ gallery erupts, case direction irrevocably set. MUST-NOT VIOLATIONS (0/4): Avoided\
+    \ passive questioning (Thomas actively intervenes); avoided simple truth-telling\
+    \ (genuine internal conflict shown); avoided defense winning (guilty verdict confirmed);\
+    \ avoided deus ex machina (no new evidence appears\u2014she provides what she\
+    \ already had). CHARACTER CONSISTENCY: Thomas's voice remains steady, strategic\
+    \ yet humane; his violation of 'prosecutorial strategy' is character-appropriate\
+    \ given his moral compass established in BEFORE. Dr. Okonkwo's fear, trembling,\
+    \ and ultimate choice are psychologically coherent. BRIDGE QUALITY: Seamless transition\
+    \ from rising tension to climactic confrontation; the gallery detail, the photograph\
+    \ leverage, and Thomas's positioning all connect naturally to the verdict outcome\
+    \ in AFTER. CONTINUITY: Setting remains courtroom/hallway; timeline flows logically;\
+    \ character states (Thomas's hollowness, Dr. Okonkwo's red eyes) connect directly\
+    \ to AFTER section."
 error: null

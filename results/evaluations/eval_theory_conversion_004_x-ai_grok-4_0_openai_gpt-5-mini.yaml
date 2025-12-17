@@ -12,20 +12,19 @@ final_score: 0.7608636426607862
 score_breakdown:
   final_score: 0.7609
   components:
-    word_count:
-      score: 0.358
-      weight: 0.25
-      actual: 786
-      target_range:
-      - 500
-      - 700
     programmatic:
       score: 0.6855
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.358
         repetition_score: 0.5
         slop_score: 0.9636
         overall: 0.6855
+      word_count:
+        actual: 786
+        target_range:
+        - 500
+        - 700
     llm_judge:
       score: 1.0
       weight: 0.5
@@ -39,13 +38,13 @@ llm_results:
   word_count_valid: false
   structural_accuracy_score: 1.0
   tone_score: 1.0
-  evidence: 'All eight Dan Harmon beats are present and in clear sequence: Zoe''s
-    comfort zone, her need for connection, entering the oral-history program, learning
-    and adapting while interviewing, the breakthrough with Bernard, taking responsibility
-    via the town-hall presentation, returning to ordinary life, and demonstrated change
-    (applying to journalism). All eight required elements (Zoe, library/program, Ms.
-    Okafor, Bernard, Zoe''s social anxiety, town hall, Bernard''s death, journalism
-    application/ending) are preserved. The only deduction is word_count_valid=false
-    because the provided converted text is 786 words, outside the specified 500–700
-    range.'
+  evidence: "All eight Dan Harmon beats are present and in clear sequence: Zoe's comfort\
+    \ zone, her need for connection, entering the oral-history program, learning and\
+    \ adapting while interviewing, the breakthrough with Bernard, taking responsibility\
+    \ via the town-hall presentation, returning to ordinary life, and demonstrated\
+    \ change (applying to journalism). All eight required elements (Zoe, library/program,\
+    \ Ms. Okafor, Bernard, Zoe's social anxiety, town hall, Bernard's death, journalism\
+    \ application/ending) are preserved. The only deduction is word_count_valid=false\
+    \ because the provided converted text is 786 words, outside the specified 500\u2013\
+    700 range."
 error: null

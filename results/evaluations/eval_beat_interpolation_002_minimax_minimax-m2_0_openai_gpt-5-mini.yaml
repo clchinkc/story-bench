@@ -12,20 +12,19 @@ final_score: 0.675
 score_breakdown:
   final_score: 0.675
   components:
-    word_count:
-      score: 0.0
-      weight: 0.25
-      actual: 857
-      target_range:
-      - 250
-      - 400
     programmatic:
       score: 0.7
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.0
         repetition_score: 0.5
         slop_score: 1.0
         overall: 0.7
+      word_count:
+        actual: 857
+        target_range:
+        - 250
+        - 400
     llm_judge:
       score: 1.0
       weight: 0.5
@@ -40,12 +39,12 @@ llm_results:
   character_score: 1.0
   bridge_score: 1.0
   continuity_score: 1.0
-  evidence: 'All four required elements are present: recanting is considered, official
-    channels are weighed, the duty-vs-sister internal conflict is explicit, and a
-    pivotal conversation with Marcus tips her toward the third option. The scene effectively
-    performs the Debate beat (weighing alternatives, seeking counsel, committing).
-    No ''must not'' items appear: she doesn''t immediately go rogue, no one else makes
-    the decision, she hasn''t resigned yet, and there is no direct confrontation with
-    Marchetti or his people. The only deduction is word_count_valid=false per the
-    given word_count (outside the 250–400 range).'
+  evidence: "All four required elements are present: recanting is considered, official\
+    \ channels are weighed, the duty-vs-sister internal conflict is explicit, and\
+    \ a pivotal conversation with Marcus tips her toward the third option. The scene\
+    \ effectively performs the Debate beat (weighing alternatives, seeking counsel,\
+    \ committing). No 'must not' items appear: she doesn't immediately go rogue, no\
+    \ one else makes the decision, she hasn't resigned yet, and there is no direct\
+    \ confrontation with Marchetti or his people. The only deduction is word_count_valid=false\
+    \ per the given word_count (outside the 250\u2013400 range)."
 error: null

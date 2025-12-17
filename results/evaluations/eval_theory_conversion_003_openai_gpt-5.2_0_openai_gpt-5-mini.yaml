@@ -12,20 +12,19 @@ final_score: 0.66325
 score_breakdown:
   final_score: 0.6633
   components:
-    word_count:
-      score: 0.0
-      weight: 0.25
-      actual: 1268
-      target_range:
-      - 550
-      - 750
     programmatic:
       score: 0.7
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.0
         repetition_score: 0.5
         slop_score: 1.0
         overall: 0.7
+      word_count:
+        actual: 1268
+        target_range:
+        - 550
+        - 750
     llm_judge:
       score: 0.9765
       weight: 0.5
@@ -39,16 +38,17 @@ llm_results:
   word_count_valid: false
   structural_accuracy_score: 0.92
   tone_score: 0.95
-  evidence: 'All four target act-beats are present and identifiable: Act 1 (ordinary
-    world, inciting letter, first plot point = Kenji boards the train), Act 2A (obstacles,
-    midpoint = bonding with Haruki and the festival/false hope), Act 2B (complications,
-    second plot point = the Tokyo deal temptation and Yuki''s rejection), Act 3 (resolution/climax
-    = Kenji''s refusal of the deal, apology, and partial reconciliation; denouement
-    = opening the bamboo shop). All eight required elements are preserved verbatim.
-    Word count is invalid (converted piece is ~1268 words, outside the required 550–750
-    range). Minor deductions to structural_accuracy reflect slight compression/overlap
-    of the second plot point and the break-into-three transition (the decision to
-    decline the deal and the emotional turning point occur in close sequence rather
-    than a more distinct separation). Tone is very well maintained (quiet drama, Japanese
-    aesthetic, redemptive), so only a very small deduction applied.'
+  evidence: "All four target act-beats are present and identifiable: Act 1 (ordinary\
+    \ world, inciting letter, first plot point = Kenji boards the train), Act 2A (obstacles,\
+    \ midpoint = bonding with Haruki and the festival/false hope), Act 2B (complications,\
+    \ second plot point = the Tokyo deal temptation and Yuki's rejection), Act 3 (resolution/climax\
+    \ = Kenji's refusal of the deal, apology, and partial reconciliation; denouement\
+    \ = opening the bamboo shop). All eight required elements are preserved verbatim.\
+    \ Word count is invalid (converted piece is ~1268 words, outside the required\
+    \ 550\u2013750 range). Minor deductions to structural_accuracy reflect slight\
+    \ compression/overlap of the second plot point and the break-into-three transition\
+    \ (the decision to decline the deal and the emotional turning point occur in close\
+    \ sequence rather than a more distinct separation). Tone is very well maintained\
+    \ (quiet drama, Japanese aesthetic, redemptive), so only a very small deduction\
+    \ applied."
 error: null

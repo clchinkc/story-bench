@@ -12,20 +12,19 @@ final_score: 0.9502664670658683
 score_breakdown:
   final_score: 0.9503
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 650
-      target_range:
-      - 500
-      - 700
     programmatic:
       score: 0.8711
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.84
         slop_score: 0.9177
         overall: 0.8711
+      word_count:
+        actual: 650
+        target_range:
+        - 500
+        - 700
     llm_judge:
       score: 0.965
       weight: 0.5
@@ -39,15 +38,15 @@ llm_results:
   word_count_valid: true
   structural_accuracy_score: 0.9
   tone_score: 0.9
-  evidence: All five Freytag beats are present (exposition, rising action, climax,
-    falling action, denouement). All six core elements are preserved (Samira, engineered
-    virus, Raj, Nexus, public cure release, Samira's career sacrifice). Minor deduction
-    from perfect structural score because the revelation and the public confrontation
-    blur the boundary between climax and falling action—the text places the internal
-    turning-point (the decision/revelation) just before the public showdown, so the
-    peak tension is split across two paragraphs rather than concentrated in a single,
-    discrete moment. Slight tone deduction because while the medical-thriller tension
-    and ethical weight are strongly maintained, a small portion leans toward heroic-cinematic
-    resolution (rapid public broadcast and neat legal aftermath) rather than sustaining
-    murkier ethical ambiguity typical of darker medical thrillers.
+  evidence: "All five Freytag beats are present (exposition, rising action, climax,\
+    \ falling action, denouement). All six core elements are preserved (Samira, engineered\
+    \ virus, Raj, Nexus, public cure release, Samira's career sacrifice). Minor deduction\
+    \ from perfect structural score because the revelation and the public confrontation\
+    \ blur the boundary between climax and falling action\u2014the text places the\
+    \ internal turning-point (the decision/revelation) just before the public showdown,\
+    \ so the peak tension is split across two paragraphs rather than concentrated\
+    \ in a single, discrete moment. Slight tone deduction because while the medical-thriller\
+    \ tension and ethical weight are strongly maintained, a small portion leans toward\
+    \ heroic-cinematic resolution (rapid public broadcast and neat legal aftermath)\
+    \ rather than sustaining murkier ethical ambiguity typical of darker medical thrillers."
 error: null

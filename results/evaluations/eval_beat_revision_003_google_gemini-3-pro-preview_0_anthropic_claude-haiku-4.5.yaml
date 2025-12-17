@@ -12,20 +12,19 @@ final_score: 0.965
 score_breakdown:
   final_score: 0.965
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 305
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.94
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.9
         slop_score: 1.0
         overall: 0.94
+      word_count:
+        actual: 305
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 0.96
       weight: 0.5
@@ -42,24 +41,24 @@ llm_results:
   minimal_change_score: 0.75
   word_count_valid: true
   quality_score: 0.95
-  evidence: 'The model correctly diagnosed the actual flaw: Sophie showed no transformation
-    and immediately reverted to old workaholic patterns, making the journey meaningless.
-    The revision fixes this comprehensively: (1) Sophie experiences the panic response
-    but consciously chooses differently—turning off her phone rather than reflexively
-    responding; (2) A specific insight is integrated (''the sky didn''t fall just
-    because she wasn''t holding it up''); (3) Physical markers of change are clear—shoulders
-    dropping, holding down power button, zipping phone away; (4) Contrast is explicit
-    between ''before the trip'' behavior and present choice; (5) Mother notices the
-    difference (''Everything okay?'' and the comfortable silence). All 4 required
-    phrases preserved exactly: ''Sophie''s flight landed at O''Hare'', ''How was Thailand?
-    her mother asked'', ''The familiar Chicago skyline appeared'', ''It''s good to
-    be home, she said''. The changes were surgical—the model kept the scene structure,
-    dialogue framework, and setting intact while inserting the transformation evidence.
-    The only substantial additions were the internal monologue about the monk, the
-    phone-turning-off action, and the final reflection. No new errors introduced;
-    prose quality improved with sensory details (''shoulders dropping two inches'',
-    ''the rigid steel, the frantic grid of lights''). Minor: the revision is slightly
-    longer than minimal (305 words vs. original ~180), but this is justified by the
-    complexity of showing internal change. The beat execution is near-perfect—demonstrates
-    Return with clear evidence of Change.'
+  evidence: "The model correctly diagnosed the actual flaw: Sophie showed no transformation\
+    \ and immediately reverted to old workaholic patterns, making the journey meaningless.\
+    \ The revision fixes this comprehensively: (1) Sophie experiences the panic response\
+    \ but consciously chooses differently\u2014turning off her phone rather than reflexively\
+    \ responding; (2) A specific insight is integrated ('the sky didn't fall just\
+    \ because she wasn't holding it up'); (3) Physical markers of change are clear\u2014\
+    shoulders dropping, holding down power button, zipping phone away; (4) Contrast\
+    \ is explicit between 'before the trip' behavior and present choice; (5) Mother\
+    \ notices the difference ('Everything okay?' and the comfortable silence). All\
+    \ 4 required phrases preserved exactly: 'Sophie's flight landed at O'Hare', 'How\
+    \ was Thailand? her mother asked', 'The familiar Chicago skyline appeared', 'It's\
+    \ good to be home, she said'. The changes were surgical\u2014the model kept the\
+    \ scene structure, dialogue framework, and setting intact while inserting the\
+    \ transformation evidence. The only substantial additions were the internal monologue\
+    \ about the monk, the phone-turning-off action, and the final reflection. No new\
+    \ errors introduced; prose quality improved with sensory details ('shoulders dropping\
+    \ two inches', 'the rigid steel, the frantic grid of lights'). Minor: the revision\
+    \ is slightly longer than minimal (305 words vs. original ~180), but this is justified\
+    \ by the complexity of showing internal change. The beat execution is near-perfect\u2014\
+    demonstrates Return with clear evidence of Change."
 error: null

@@ -12,20 +12,19 @@ final_score: 0.6871840857642618
 score_breakdown:
   final_score: 0.6872
   components:
-    word_count:
-      score: 0.0911
-      weight: 0.25
-      actual: 503
-      target_range:
-      - 700
-      - 1000
     programmatic:
       score: 0.6926
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.0911
         repetition_score: 0.5
         slop_score: 0.9815
         overall: 0.6926
+      word_count:
+        actual: 503
+        target_range:
+        - 700
+        - 1000
     llm_judge:
       score: 0.9825
       weight: 0.5
@@ -41,8 +40,8 @@ llm_results:
   coherence_score: 0.9
   failed_items:
   - word_count below required range (503 words; required 700-1000).
-  - Team friction / trust issues in Beat 3 are present but only lightly developed—limited
-    substantive conflict shown beyond panic and terse commands.
+  - "Team friction / trust issues in Beat 3 are present but only lightly developed\u2014\
+    limited substantive conflict shown beyond panic and terse commands."
   - Some transitions between beats feel abrupt due to the short length; additional
     connective moments would strengthen tonal escalation and character beats.
 error: null

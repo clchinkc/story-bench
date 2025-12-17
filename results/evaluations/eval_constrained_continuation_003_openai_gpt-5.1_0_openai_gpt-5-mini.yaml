@@ -12,20 +12,19 @@ final_score: 0.5591649999999999
 score_breakdown:
   final_score: 0.5592
   components:
-    word_count:
-      score: 0.0
-      weight: 0.25
-      actual: 1340
-      target_range:
-      - 550
-      - 750
     programmatic:
       score: 0.7
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.0
         repetition_score: 0.5
         slop_score: 1.0
         overall: 0.7
+      word_count:
+        actual: 1340
+        target_range:
+        - 550
+        - 750
     llm_judge:
       score: 0.7683
       weight: 0.5
@@ -45,8 +44,9 @@ llm_results:
   failed_constraints:
   - 'Missing ''Take'' beat/action: Jin does not take a decisive action that has an
     explicit cost; the narrative stops at the decision point.'
-  - 'Did not include required element #5 (''Jin taking action that has a cost or consequence'')
-    — he is offered terms but does not accept or pay a price in the provided text.'
+  - "Did not include required element #5 ('Jin taking action that has a cost or consequence')\
+    \ \u2014 he is offered terms but does not accept or pay a price in the provided\
+    \ text."
   - 'Word count invalid: provided word_count = 1340, outside required range 550-750.'
   - 'Ending requirement unmet: story does not end at ''Take'' with Jin having gained
     something and paid a price; instead it ends mid-decision / appears truncated.'

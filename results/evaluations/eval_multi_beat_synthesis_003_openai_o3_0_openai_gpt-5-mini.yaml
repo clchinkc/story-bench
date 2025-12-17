@@ -12,20 +12,19 @@ final_score: 0.9225
 score_breakdown:
   final_score: 0.9225
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 832
-      target_range:
-      - 700
-      - 1000
     programmatic:
       score: 0.7
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.5
         slop_score: 1.0
         overall: 0.7
+      word_count:
+        actual: 832
+        target_range:
+        - 700
+        - 1000
     llm_judge:
       score: 0.995
       weight: 0.5
@@ -40,8 +39,8 @@ llm_results:
   context_score: 1.0
   coherence_score: 0.95
   failed_items:
-  - Team friction exists (Jules' plea to ditch the painting) but is relatively underdeveloped—conflict
-    surfaces briefly rather than being explored in depth.
+  - "Team friction exists (Jules' plea to ditch the painting) but is relatively underdeveloped\u2014\
+    conflict surfaces briefly rather than being explored in depth."
   - Mentor Eleonora's connection to Miri is revealed at the midpoint with strong impact,
     but there is minimal foreshadowing of her presence in Beat 1 (she is effectively
     absent until the reveal).

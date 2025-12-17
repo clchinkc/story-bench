@@ -12,20 +12,19 @@ final_score: 0.7242513384349093
 score_breakdown:
   final_score: 0.7243
   components:
-    word_count:
-      score: 0.071
-      weight: 0.25
-      actual: 515
-      target_range:
-      - 250
-      - 400
     programmatic:
       score: 0.826
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.071
         repetition_score: 0.71
         slop_score: 1.0
         overall: 0.826
+      word_count:
+        actual: 515
+        target_range:
+        - 250
+        - 400
     llm_judge:
       score: 1.0
       weight: 0.5
@@ -40,14 +39,14 @@ llm_results:
   character_score: 1.0
   bridge_score: 1.0
   continuity_score: 1.0
-  evidence: 'All four required elements are present: (1) Sarah considers recanting,
-    (2) she considers official channels, (3) internal conflict between duty and sister
-    is explicit, (4) a conversation with Marcus propels her toward the third option.
-    The scene performs the Debate beat well—options weighed, outside counsel sought,
-    and a commitment forms at the end. No prohibited items appear: she does not immediately
-    decide to go rogue without debate, no one else makes the decision for her, she
-    has not already resigned (only drafts a resignation, which is an acceptable tipping
-    action), and there is no direct confrontation with Marchetti. The only formal
-    issue is length: the provided text exceeds the 250–400 word range, so word_count_valid
-    is false.'
+  evidence: "All four required elements are present: (1) Sarah considers recanting,\
+    \ (2) she considers official channels, (3) internal conflict between duty and\
+    \ sister is explicit, (4) a conversation with Marcus propels her toward the third\
+    \ option. The scene performs the Debate beat well\u2014options weighed, outside\
+    \ counsel sought, and a commitment forms at the end. No prohibited items appear:\
+    \ she does not immediately decide to go rogue without debate, no one else makes\
+    \ the decision for her, she has not already resigned (only drafts a resignation,\
+    \ which is an acceptable tipping action), and there is no direct confrontation\
+    \ with Marchetti. The only formal issue is length: the provided text exceeds the\
+    \ 250\u2013400 word range, so word_count_valid is false."
 error: null

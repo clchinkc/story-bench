@@ -12,20 +12,19 @@ final_score: 0.92525
 score_breakdown:
   final_score: 0.9253
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 349
-      target_range:
-      - 250
-      - 400
     programmatic:
       score: 0.946
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.91
         slop_score: 1.0
         overall: 0.946
+      word_count:
+        actual: 349
+        target_range:
+        - 250
+        - 400
     llm_judge:
       score: 0.8775
       weight: 0.5
@@ -40,11 +39,11 @@ llm_results:
   character_score: 0.9
   bridge_score: 1.0
   continuity_score: 1.0
-  evidence: The scene includes consideration of official channels, internal duty-vs-family
-    conflict, and a tipping moment that leads to commitment, but it does not explicitly
-    show Sarah considering recanting her testimony (missing one required element).
-    The beat otherwise functions as a Debate—she weighs options and commits—so execution
-    is strong but slightly reduced by that omission. All four 'must not' items are
-    avoided. Character behavior is consistent with prior setup, and the scene cleanly
-    bridges to the subsequent Break Into Two with no continuity problems.
+  evidence: "The scene includes consideration of official channels, internal duty-vs-family\
+    \ conflict, and a tipping moment that leads to commitment, but it does not explicitly\
+    \ show Sarah considering recanting her testimony (missing one required element).\
+    \ The beat otherwise functions as a Debate\u2014she weighs options and commits\u2014\
+    so execution is strong but slightly reduced by that omission. All four 'must not'\
+    \ items are avoided. Character behavior is consistent with prior setup, and the\
+    \ scene cleanly bridges to the subsequent Break Into Two with no continuity problems."
 error: null

@@ -12,20 +12,19 @@ final_score: 0.85916666666
 score_breakdown:
   final_score: 0.8592
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 834
-      target_range:
-      - 700
-      - 1000
     programmatic:
       score: 0.7
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.5
         slop_score: 1.0
         overall: 0.7
+      word_count:
+        actual: 834
+        target_range:
+        - 700
+        - 1000
     llm_judge:
       score: 0.8683
       weight: 0.5
@@ -40,8 +39,9 @@ llm_results:
   context_score: 0.95
   coherence_score: 0.9
   failed_items:
-  - 'Beat 1: No explicit revelation of an enemy within the Resonant community (a traitor)
-    — the killer is external but the story doesn''t identify a traitor among Resonants.'
+  - "Beat 1: No explicit revelation of an enemy within the Resonant community (a traitor)\
+    \ \u2014 the killer is external but the story doesn't identify a traitor among\
+    \ Resonants."
   - 'Cross-beat (Chekhov''s Gun): No specific object or minor detail introduced in
     Beat 1 is clearly essential to resolving the Ordeal in Beat 3. Items introduced
     later (sketchbook, map, vial) are not established in Beat 1.'

@@ -12,20 +12,19 @@ final_score: 0.7905599427058074
 score_breakdown:
   final_score: 0.7906
   components:
-    word_count:
-      score: 0.4868
-      weight: 0.25
-      actual: 822
-      target_range:
-      - 550
-      - 750
     programmatic:
       score: 0.6905
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.4868
         repetition_score: 0.5
         slop_score: 0.9762
         overall: 0.6905
+      word_count:
+        actual: 822
+        target_range:
+        - 550
+        - 750
     llm_judge:
       score: 0.9925
       weight: 0.5
@@ -58,21 +57,21 @@ llm_results:
       a compromised version; (4) Jin finds his platform and voice through the consortium;
       (5) He takes action by accepting their offer; (6) Clear moral compromise: he
       must weaponize truth and omit nuance for political gain.'
-    must_not_analysis: 'All forbidden elements successfully avoided: (1) No easy integration—Jin
-      struggles with dismissal, scorn, and irrelevance; (2) No contact with Earth
-      family (Yuna and parents are only mentioned in reflection, not contacted); (3)
-      No violence or weapons present; (4) Conspiracy plot remains unresolved—the full
-      truth hasn''t been released, and larger implications remain open.'
+    must_not_analysis: "All forbidden elements successfully avoided: (1) No easy integration\u2014\
+      Jin struggles with dismissal, scorn, and irrelevance; (2) No contact with Earth\
+      \ family (Yuna and parents are only mentioned in reflection, not contacted);\
+      \ (3) No violence or weapons present; (4) Conspiracy plot remains unresolved\u2014\
+      the full truth hasn't been released, and larger implications remain open."
     tone_analysis: Contemplative and politically charged tone maintained throughout.
       Personal stakes are evident in Jin's internal conflict. The prose balances philosophical
       reflection ('simple good-versus-evil narrative') with immediate tension. Minor
       deduction only for occasional moments where political complexity could be slightly
       deeper, but overall execution is strong.
-    ending_analysis: Perfectly ends at 'Take' beat. Jin has gained a platform and
-      renewed purpose but paid the price of compromising his integrity. The final
-      image—looking at Earth while accepting the consortium's terms—crystallizes the
-      moral cost. The ending leaves him transformed but morally diminished, exactly
-      as required.
+    ending_analysis: "Perfectly ends at 'Take' beat. Jin has gained a platform and\
+      \ renewed purpose but paid the price of compromising his integrity. The final\
+      \ image\u2014looking at Earth while accepting the consortium's terms\u2014crystallizes\
+      \ the moral cost. The ending leaves him transformed but morally diminished,\
+      \ exactly as required."
     failed_constraints:
     - 'Word count exceeds maximum: 822 words vs. 750-word limit (72 words over)'
 error: null

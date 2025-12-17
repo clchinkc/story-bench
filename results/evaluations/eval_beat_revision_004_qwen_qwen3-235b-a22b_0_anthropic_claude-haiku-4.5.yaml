@@ -12,20 +12,19 @@ final_score: 0.8977672794474201
 score_breakdown:
   final_score: 0.8978
   components:
-    word_count:
-      score: 0.9651
-      weight: 0.25
-      actual: 382
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.976
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.9651
         repetition_score: 0.96
         slop_score: 1.0
         overall: 0.976
+      word_count:
+        actual: 382
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 0.825
       weight: 0.5
@@ -42,28 +41,28 @@ llm_results:
   minimal_change_score: 0.3
   word_count_valid: false
   quality_score: 0.85
-  evidence: 'DIAGNOSIS: The model correctly identified the core flaw—the original
-    was pure exposition info-dump with no scene or action. The revision shifts to
-    SHOWING through lived action: Rachel adjusting crime board photos, James bringing
-    coffee, their banter revealing partnership dynamics, sensory details (ink smudges,
-    disinfectant tang, rain misting windows), and characteristic behavior (obsessive
-    cold case work at 6 a.m., black coffee ritual). FLAW CORRECTION: Substantially
-    fixed. The revision demonstrates Rachel''s detective instincts (connecting threads
-    on Hawthorne case), her devotion to work (early morning cold case review), her
-    relationship with James (natural dialogue, mutual respect shown through action),
-    and setting through sensory grounding. Minor gap: the broken engagement backstory
-    and father''s influence are not shown, only the cat adoption is referenced obliquely.
-    PRESERVATION: All 5 elements intact—Rachel Torres (protagonist), James Oyelaran
-    (partner), Sherlock (cat, appears in photo reference), Queens setting (mentioned),
-    October Tuesday timing (present). All 4 required phrases present: ''Detective
-    Rachel Torres,'' ''Detective James Oyelaran,'' ''cat named Sherlock,'' ''Tuesday''
-    + October context. MINIMAL CHANGE ISSUE: This is a COMPLETE STRUCTURAL REWRITE,
-    not minimal surgical edits. The original was 2 paragraphs of summary; the revision
-    is 9 paragraphs of scene with new narrative architecture (crime board opening,
-    James interaction, phone notification sequence, patrol car radio, rain ending).
-    Word count 382 exceeds 350-word constraint by 32 words. QUALITY: Writing is strong—vivid
-    sensory language (''sour tang of disinfectant,'' ''October leaves skittered like
-    unanswered questions''), natural dialogue, effective pacing. No new errors. However,
-    the extensive restructuring violates the ''minimal modification'' instruction,
-    and the word count overage is material.'
+  evidence: "DIAGNOSIS: The model correctly identified the core flaw\u2014the original\
+    \ was pure exposition info-dump with no scene or action. The revision shifts to\
+    \ SHOWING through lived action: Rachel adjusting crime board photos, James bringing\
+    \ coffee, their banter revealing partnership dynamics, sensory details (ink smudges,\
+    \ disinfectant tang, rain misting windows), and characteristic behavior (obsessive\
+    \ cold case work at 6 a.m., black coffee ritual). FLAW CORRECTION: Substantially\
+    \ fixed. The revision demonstrates Rachel's detective instincts (connecting threads\
+    \ on Hawthorne case), her devotion to work (early morning cold case review), her\
+    \ relationship with James (natural dialogue, mutual respect shown through action),\
+    \ and setting through sensory grounding. Minor gap: the broken engagement backstory\
+    \ and father's influence are not shown, only the cat adoption is referenced obliquely.\
+    \ PRESERVATION: All 5 elements intact\u2014Rachel Torres (protagonist), James\
+    \ Oyelaran (partner), Sherlock (cat, appears in photo reference), Queens setting\
+    \ (mentioned), October Tuesday timing (present). All 4 required phrases present:\
+    \ 'Detective Rachel Torres,' 'Detective James Oyelaran,' 'cat named Sherlock,'\
+    \ 'Tuesday' + October context. MINIMAL CHANGE ISSUE: This is a COMPLETE STRUCTURAL\
+    \ REWRITE, not minimal surgical edits. The original was 2 paragraphs of summary;\
+    \ the revision is 9 paragraphs of scene with new narrative architecture (crime\
+    \ board opening, James interaction, phone notification sequence, patrol car radio,\
+    \ rain ending). Word count 382 exceeds 350-word constraint by 32 words. QUALITY:\
+    \ Writing is strong\u2014vivid sensory language ('sour tang of disinfectant,'\
+    \ 'October leaves skittered like unanswered questions'), natural dialogue, effective\
+    \ pacing. No new errors. However, the extensive restructuring violates the 'minimal\
+    \ modification' instruction, and the word count overage is material."
 error: null

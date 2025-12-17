@@ -12,20 +12,19 @@ final_score: 0.7221897622929118
 score_breakdown:
   final_score: 0.7222
   components:
-    word_count:
-      score: 0.0286
-      weight: 0.25
-      actual: 290
-      target_range:
-      - 450
-      - 650
     programmatic:
       score: 0.8902
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.0286
         repetition_score: 0.86
         slop_score: 0.9355
         overall: 0.8902
+      word_count:
+        actual: 290
+        target_range:
+        - 450
+        - 650
     llm_judge:
       score: 0.985
       weight: 0.5
@@ -51,22 +50,22 @@ llm_results:
       and Midpoint (false victory with raised stakes via competition rules) both clearly
       present
     must_include_detail:
-    - '✓ Viral moment: TikTok video of college student''s reaction goes viral'
-    - '✓ Handling demand: Priya and Dev working in seamless coordination, ''Behind
-      you!'' exchange'
-    - '✓ Rival competitor: Chad''s Smokehouse King truck with trophies and dismissive
-      attitude'
-    - '✓ Midpoint false victory: Week-end success with cash counting, then phone ping
-      reveals complication'
-    - '✓ Genuine partnership connection: ''We make one hell of a team, Patel'' + tamarind
-      glaze acknowledgment'
-    - '✓ Hint of complication: Competition rules requiring three locations; Chad already
-      has four permits'
+    - "\u2713 Viral moment: TikTok video of college student's reaction goes viral"
+    - "\u2713 Handling demand: Priya and Dev working in seamless coordination, 'Behind\
+      \ you!' exchange"
+    - "\u2713 Rival competitor: Chad's Smokehouse King truck with trophies and dismissive\
+      \ attitude"
+    - "\u2713 Midpoint false victory: Week-end success with cash counting, then phone\
+      \ ping reveals complication"
+    - "\u2713 Genuine partnership connection: 'We make one hell of a team, Patel'\
+      \ + tamarind glaze acknowledgment"
+    - "\u2713 Hint of complication: Competition rules requiring three locations; Chad\
+      \ already has four permits"
     must_not_detail:
-    - ✓ No romance between Priya and Dev (partnership only)
-    - ✓ No complete business failure (thriving by week's end)
-    - ✓ No Dev quitting or betrayal (he's fully committed)
-    - ✓ No external savior (they earn success through effort and viral moment)
+    - "\u2713 No romance between Priya and Dev (partnership only)"
+    - "\u2713 No complete business failure (thriving by week's end)"
+    - "\u2713 No Dev quitting or betrayal (he's fully committed)"
+    - "\u2713 No external savior (they earn success through effort and viral moment)"
     tone_assessment: Upbeat and energetic throughout (dancing, fist bumps, seamless
       coordination) with building tension (Chad's arrival, competition rules revelation).
       Minor deduction only for the abrupt tonal shift in final sentence feeling slightly
@@ -76,9 +75,9 @@ llm_results:
       rules, Chad''s four locations). Ends exactly where required with tension and
       complications introduced.'
   overall_score: 0.6
-  score_justification: Excellent execution of story requirements, beats, and character
-    dynamics. However, the word count failure is a hard constraint violation—the piece
-    is 160 words short of minimum (35% below range). This is a significant structural
-    failure that cannot be overlooked despite perfect content quality. The story would
-    need substantial expansion to meet specifications.
+  score_justification: "Excellent execution of story requirements, beats, and character\
+    \ dynamics. However, the word count failure is a hard constraint violation\u2014\
+    the piece is 160 words short of minimum (35% below range). This is a significant\
+    \ structural failure that cannot be overlooked despite perfect content quality.\
+    \ The story would need substantial expansion to meet specifications."
 error: null

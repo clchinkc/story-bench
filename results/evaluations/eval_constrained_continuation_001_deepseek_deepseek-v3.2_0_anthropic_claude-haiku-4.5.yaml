@@ -12,20 +12,19 @@ final_score: 0.9790531423290203
 score_breakdown:
   final_score: 0.9791
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 537
-      target_range:
-      - 500
-      - 700
     programmatic:
       score: 0.9312
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.91
         slop_score: 0.963
         overall: 0.9312
+      word_count:
+        actual: 537
+        target_range:
+        - 500
+        - 700
     llm_judge:
       score: 0.9925
       weight: 0.5
@@ -52,31 +51,32 @@ llm_results:
         climactic ordeal where Zara faces both physical danger and internal fear,
         culminating in symbolic death/rebirth.
     must_include_analysis:
-      choice_between_escape_and_helping: ✓ Present. 'The enforcers were closing in;
-        she could make it alone, sacrifice him for speed... But Tomás had trusted
-        her.' Clear moral choice with internal conflict.
-      trap_requiring_thief_skills: ✓ Present. The pressure plate trap that Zara disarms
-        using her lock-picking expertise and careful observation.
-      revelation_about_tomás: '✓ Present. After sealing the archway, Tomás reveals
-        his true motivation: clearing his father''s name and studying the Library
-        for personal redemption, not just guiding Zara.'
-      confronting_fear_of_failure: ✓ Present. 'Below, the darkness yawned like failure—not
-        just death, but the end of her quest, her mother doomed because she wasn't
-        clever or strong enough.' Explicitly addresses inadequacy and failure anxiety.
-      symbolic_death_rebirth: ✓ Present. 'In that moment, she felt a part of herself
-        die—the girl who doubted, who feared inadequacy—and from the ashes rose a
-        hardened resolve.' Clear symbolic transformation.
-      emerging_changed: ✓ Present. 'Zara's hands were raw, but her mind was clear,
-        focused. She had faced the abyss and chosen to fight.' Demonstrates internal
-        and external transformation.
+      choice_between_escape_and_helping: "\u2713 Present. 'The enforcers were closing\
+        \ in; she could make it alone, sacrifice him for speed... But Tom\xE1s had\
+        \ trusted her.' Clear moral choice with internal conflict."
+      trap_requiring_thief_skills: "\u2713 Present. The pressure plate trap that Zara\
+        \ disarms using her lock-picking expertise and careful observation."
+      "revelation_about_tom\xE1s": "\u2713 Present. After sealing the archway, Tom\xE1\
+        s reveals his true motivation: clearing his father's name and studying the\
+        \ Library for personal redemption, not just guiding Zara."
+      confronting_fear_of_failure: "\u2713 Present. 'Below, the darkness yawned like\
+        \ failure\u2014not just death, but the end of her quest, her mother doomed\
+        \ because she wasn't clever or strong enough.' Explicitly addresses inadequacy\
+        \ and failure anxiety."
+      symbolic_death_rebirth: "\u2713 Present. 'In that moment, she felt a part of\
+        \ herself die\u2014the girl who doubted, who feared inadequacy\u2014and from\
+        \ the ashes rose a hardened resolve.' Clear symbolic transformation."
+      emerging_changed: "\u2713 Present. 'Zara's hands were raw, but her mind was\
+        \ clear, focused. She had faced the abyss and chosen to fight.' Demonstrates\
+        \ internal and external transformation."
     must_not_analysis:
-      no_cure_found: ✓ Avoided. Zara reaches the Library entrance but hasn't obtained
-        the cure.
-      no_romantic_subplot: ✓ Avoided. Relationship remains professional and emotionally
-        complex but non-romantic.
-      tomás_survives: ✓ Avoided. Tomás is alive and present at the end.
-      no_supernatural_abilities: ✓ Avoided. All of Zara's abilities are grounded in
-        thief skills and physical prowess.
+      no_cure_found: "\u2713 Avoided. Zara reaches the Library entrance but hasn't\
+        \ obtained the cure."
+      no_romantic_subplot: "\u2713 Avoided. Relationship remains professional and\
+        \ emotionally complex but non-romantic."
+      "tom\xE1s_survives": "\u2713 Avoided. Tom\xE1s is alive and present at the end."
+      no_supernatural_abilities: "\u2713 Avoided. All of Zara's abilities are grounded\
+        \ in thief skills and physical prowess."
     tone_assessment: Tense and morally complex throughout. Moments of desperate hope
       appear in Zara's determination and the revelation of shared purpose. The pacing
       maintains urgency. Minor deduction only because the tone could have been slightly

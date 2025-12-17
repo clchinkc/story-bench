@@ -12,20 +12,19 @@ final_score: 0.6532499999999999
 score_breakdown:
   final_score: 0.6532
   components:
-    word_count:
-      score: 0.0
-      weight: 0.25
-      actual: 1837
-      target_range:
-      - 700
-      - 1000
     programmatic:
       score: 0.7
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.0
         repetition_score: 0.5
         slop_score: 1.0
         overall: 0.7
+      word_count:
+        actual: 1837
+        target_range:
+        - 700
+        - 1000
     llm_judge:
       score: 0.9565
       weight: 0.5
@@ -96,11 +95,11 @@ llm_results:
         by his own emptiness being exposed.'
     cross_beat_constraint_1_chekhovs_gun:
       status: SATISFIED (0.98)
-      analysis: The copper tuning fork introduced in Beat 2 ('Rosa gave me this')
-        becomes essential to Beat 3 resolution. Dante strikes it to create a note
-        that holds Eamon and reveals his name in chalk. The fork is not just a tool
-        but a key to understanding—it represents Rosa's teaching about anchoring feelings.
-        Perfect Chekhov's Gun execution.
+      analysis: "The copper tuning fork introduced in Beat 2 ('Rosa gave me this')\
+        \ becomes essential to Beat 3 resolution. Dante strikes it to create a note\
+        \ that holds Eamon and reveals his name in chalk. The fork is not just a tool\
+        \ but a key to understanding\u2014it represents Rosa's teaching about anchoring\
+        \ feelings. Perfect Chekhov's Gun execution."
     cross_beat_constraint_2_character_arc_guilt:
       status: SATISFIED (0.98)
       analysis: 'Guilt progression is masterfully executed: Beat 1 - guilt mentioned

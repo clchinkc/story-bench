@@ -12,20 +12,19 @@ final_score: 0.9524999999999999
 score_breakdown:
   final_score: 0.9525
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 288
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.97
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.95
         slop_score: 1.0
         overall: 0.97
+      word_count:
+        actual: 288
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 0.92
       weight: 0.5
@@ -42,15 +41,15 @@ llm_results:
   minimal_change_score: 0.9
   word_count_valid: true
   quality_score: 0.9
-  evidence: 'The revision correctly diagnosed the missing ''Return (Having Changed)''
-    beat and shows Sophie behaving differently: she cites a lesson from the retreat
-    (''truly listen''), deliberately sets the phone aside instead of replying immediately,
-    delays responding to Linda/the Pearson account, and views familiar landmarks with
-    new eyes. Those actions demonstrate changed perspective and behavior. All four
-    required elements and the four required phrases are preserved verbatim or nearly
-    so. Changes are relatively surgical—new lines and subtle rewrites that integrate
-    the lesson without discarding original structure. Minor shortcomings: the mother''s
-    noticing of the change is implied rather than explicit, and one line about the
-    Pearson account reads a bit awkwardly, so the fix is strong but not perfectly
-    complete.'
+  evidence: "The revision correctly diagnosed the missing 'Return (Having Changed)'\
+    \ beat and shows Sophie behaving differently: she cites a lesson from the retreat\
+    \ ('truly listen'), deliberately sets the phone aside instead of replying immediately,\
+    \ delays responding to Linda/the Pearson account, and views familiar landmarks\
+    \ with new eyes. Those actions demonstrate changed perspective and behavior. All\
+    \ four required elements and the four required phrases are preserved verbatim\
+    \ or nearly so. Changes are relatively surgical\u2014new lines and subtle rewrites\
+    \ that integrate the lesson without discarding original structure. Minor shortcomings:\
+    \ the mother's noticing of the change is implied rather than explicit, and one\
+    \ line about the Pearson account reads a bit awkwardly, so the fix is strong but\
+    \ not perfectly complete."
 error: null

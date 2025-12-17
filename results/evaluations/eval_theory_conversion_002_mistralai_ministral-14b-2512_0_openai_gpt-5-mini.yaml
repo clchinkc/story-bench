@@ -12,20 +12,19 @@ final_score: 0.915
 score_breakdown:
   final_score: 0.915
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 800
-      target_range:
-      - 600
-      - 800
     programmatic:
       score: 0.7
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.5
         slop_score: 1.0
         overall: 0.7
+      word_count:
+        actual: 800
+        target_range:
+        - 600
+        - 800
     llm_judge:
       score: 0.98
       weight: 0.5
@@ -39,13 +38,14 @@ llm_results:
   word_count_valid: true
   structural_accuracy_score: 0.9
   tone_score: 1.0
-  evidence: 'All 12 Campbell beats are present and appear in reasonably appropriate
-    sequence (Ordinary World → Call → Refusal → Mentor (grandmother''s journal) →
-    Crossing → Tests → Approach → Ordeal → Reward → Road Back → Resurrection → Return
-    with Elixir). All 7 required elements are preserved (Maya protagonist, pottery
-    skill, grandmother''s legacy, mountain shrine journey, dried spring problem, surrender
-    theme, Maya''s transformation). Word count ≈788 (within 600–800). Deductions:
-    mentor is indirect (a journal rather than a living guide) and Allies/Enemies are
-    not developed beyond oblique social pressure from elders, so a small deduction
-    from perfect structural accuracy for compression and lack of explicit allies/enemies.'
+  evidence: "All 12 Campbell beats are present and appear in reasonably appropriate\
+    \ sequence (Ordinary World \u2192 Call \u2192 Refusal \u2192 Mentor (grandmother's\
+    \ journal) \u2192 Crossing \u2192 Tests \u2192 Approach \u2192 Ordeal \u2192 Reward\
+    \ \u2192 Road Back \u2192 Resurrection \u2192 Return with Elixir). All 7 required\
+    \ elements are preserved (Maya protagonist, pottery skill, grandmother's legacy,\
+    \ mountain shrine journey, dried spring problem, surrender theme, Maya's transformation).\
+    \ Word count \u2248788 (within 600\u2013800). Deductions: mentor is indirect (a\
+    \ journal rather than a living guide) and Allies/Enemies are not developed beyond\
+    \ oblique social pressure from elders, so a small deduction from perfect structural\
+    \ accuracy for compression and lack of explicit allies/enemies."
 error: null

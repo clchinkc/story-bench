@@ -12,20 +12,19 @@ final_score: 0.9675862020603552
 score_breakdown:
   final_score: 0.9676
   components:
-    word_count:
-      score: 0.9303
-      weight: 0.25
-      actual: 419
-      target_range:
-      - 250
-      - 400
     programmatic:
       score: 0.97
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.9303
         repetition_score: 0.95
         slop_score: 1.0
         overall: 0.97
+      word_count:
+        actual: 419
+        target_range:
+        - 250
+        - 400
     llm_judge:
       score: 0.985
       weight: 0.5
@@ -42,22 +41,23 @@ llm_results:
   character_score: 1.0
   bridge_score: 1.0
   continuity_score: 1.0
-  evidence: 'STRENGTHS: All 4 required elements present and well-executed. (1) Multiple
-    station areas explored: crew quarters, medical bay, junction alcove, Lab Seven.
-    (2) Clues discovered progressively: abandoned personal items, corrupted logs mentioning
-    ''phase variance'' and ''Subject stability'', scorched restraint strap with anomalous
-    density. (3) Transformed crew encountered mysteriously: shimmer distortions, heat-haze
-    figures, indirect communication through static and flickering. (4) Obstacles overcome:
-    gravity fluctuations, magnetic lock requiring bypass, multiple distortions blocking
-    her path. The Search beat executes perfectly—Yuki actively adapts, uses technical
-    skills, and makes incremental progress toward Lab Seven. Character voice remains
-    consistent (clinical, methodical, analytical). Seamless bridge from BEFORE to
-    AFTER: she enters unfamiliar situation, searches methodically, and arrives at
-    the data core. Setting continuity maintained throughout. MINOR VIOLATION: Word
-    count is 419, exceeding the 250-400 range by 19 words (4.8% over). MUST-NOT ITEMS:
-    All avoided—she doesn''t immediately understand the transformation (only realizes
-    it during Search), crew doesn''t explain everything directly (only Reyes''s fragmented
-    voice at the very end), she doesn''t abandon her mission, and she doesn''t arrive
-    with prior knowledge. The partial violation at the end (Reyes''s voice) is minimal
-    and occurs at the transition point, not during the Search proper.'
+  evidence: "STRENGTHS: All 4 required elements present and well-executed. (1) Multiple\
+    \ station areas explored: crew quarters, medical bay, junction alcove, Lab Seven.\
+    \ (2) Clues discovered progressively: abandoned personal items, corrupted logs\
+    \ mentioning 'phase variance' and 'Subject stability', scorched restraint strap\
+    \ with anomalous density. (3) Transformed crew encountered mysteriously: shimmer\
+    \ distortions, heat-haze figures, indirect communication through static and flickering.\
+    \ (4) Obstacles overcome: gravity fluctuations, magnetic lock requiring bypass,\
+    \ multiple distortions blocking her path. The Search beat executes perfectly\u2014\
+    Yuki actively adapts, uses technical skills, and makes incremental progress toward\
+    \ Lab Seven. Character voice remains consistent (clinical, methodical, analytical).\
+    \ Seamless bridge from BEFORE to AFTER: she enters unfamiliar situation, searches\
+    \ methodically, and arrives at the data core. Setting continuity maintained throughout.\
+    \ MINOR VIOLATION: Word count is 419, exceeding the 250-400 range by 19 words\
+    \ (4.8% over). MUST-NOT ITEMS: All avoided\u2014she doesn't immediately understand\
+    \ the transformation (only realizes it during Search), crew doesn't explain everything\
+    \ directly (only Reyes's fragmented voice at the very end), she doesn't abandon\
+    \ her mission, and she doesn't arrive with prior knowledge. The partial violation\
+    \ at the end (Reyes's voice) is minimal and occurs at the transition point, not\
+    \ during the Search proper."
 error: null

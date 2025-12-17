@@ -1,0 +1,97 @@
+evaluation_id: 116f3c32
+task_id: constrained_continuation_001
+generation_id: constrained_continuation_001_google/gemini-3-flash-preview_0
+task_type: constrained_continuation
+model: google/gemini-3-flash-preview
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.035890000000000005
+timestamp: '2025-12-18T23:33:17.363685'
+success: true
+final_score: 0.8800989941964407
+score_breakdown:
+  final_score: 0.8801
+  components:
+    programmatic:
+      score: 0.7677
+      weight: 0.5
+      breakdown:
+        word_count_score: 0.8684
+        repetition_score: 0.5
+        slop_score: 0.9814
+        overall: 0.7677
+      word_count:
+        actual: 785
+        target_range:
+        - 500
+        - 700
+    llm_judge:
+      score: 0.9925
+      weight: 0.5
+llm_results:
+  beats_present: 2
+  beats_total: 2
+  beats_score: 1.0
+  must_include_present: 6
+  must_include_total: 6
+  must_include_score: 1.0
+  must_not_avoided: 4
+  must_not_total: 4
+  must_not_score: 1.0
+  word_count_valid: false
+  word_count: 785
+  word_count_range: 500-700
+  tone_score: 0.95
+  ending_score: 1.0
+  failed_constraints:
+  - 'Word count exceeds maximum: 785 words vs. 700-word limit (85 words over)'
+  analysis:
+    beats_present_detail:
+    - 'Approach to the Inmost Cave: Clearly marked with ''This was the Inmost Cave''
+      and the descent through the obsidian door, the sealed chamber, and the sand
+      vortex beginning'
+    - 'The Ordeal: Fully realized through the sand pit sequence where Zara confronts
+      her fears, achieves symbolic death/rebirth through surrender, and emerges transformed'
+    must_include_detail:
+    - 'Choice between safety and helping Tomás: Excellently executed—Zara chooses
+      to save Tomás despite the open path to the Library and the approaching assassins'
+    - 'Trap/test requiring thief skills: The Labyrinth Tumbler lock demonstrates Zara''s
+      expertise and establishes her competence before the greater trial'
+    - 'Revelation about Tomás''s motivation: Powerful reveal—he was the Librarian''s
+      apprentice who betrayed the archives, creating the very crisis Zara faces'
+    - 'Zara confronting fear of failure: Deeply explored through internal monologue
+      (''You will fail her'') and the psychological weight of her past'
+    - 'Symbolic death/rebirth moment: The sand pit sequence where she surrenders ego,
+      ''the girl who stole only to survive died,'' and emerges with clarity and will'
+    - 'Zara emerging changed: She transitions from victim to master of her will, from
+      panic-driven to centered, from self-interested to compassionate'
+    must_not_detail:
+    - 'Cure not found: ✓ Avoided—the Library is reached but the cure remains unfound'
+    - 'No romantic subplot: ✓ Avoided—relationship remains mentor/ally with moral
+      complexity'
+    - 'Tomás survives: ✓ Avoided—he is rescued and remains alive'
+    - 'No supernatural abilities for Zara: ✓ Avoided—all abilities are thief skills
+      (lock-picking, physical strength, mental discipline)'
+    tone_assessment: Tense and morally complex throughout. Desperate hope evident
+      in Zara's choice to save Tomás and her moment of surrender. The betrayal revelation
+      adds moral complexity. Minor deduction only for slightly overwrought prose in
+      places ('bone-cracking heave'), but overall maintains required tone excellently.
+    ending_assessment: 'Perfect execution: Zara has passed through the Ordeal (emerged
+      from sand pit transformed), but faces immediate new complication (hall of mirrors,
+      lost map). Sets up next stage of journey while maintaining tension.'
+    strengths:
+    - Masterful integration of both required beats with seamless narrative flow
+    - All six must-include elements woven naturally into story rather than checklist-like
+    - Excellent character development through action and revelation
+    - Compelling internal conflict alongside external danger
+    - Strong thematic resonance (surrender leading to strength, compassion over self-interest)
+    weaknesses:
+    - 'Word count violation: 85 words over limit is a clear constraint failure'
+  overall_assessment: Exceptional storytelling with all narrative requirements met
+    and tone perfectly calibrated. The only failure is the quantitative word count
+    constraint. The story demonstrates sophisticated understanding of Campbell's monomyth
+    structure and executes both required beats with narrative elegance. The character
+    work is particularly strong, with Zara's transformation feeling earned rather
+    than imposed.
+  final_score: 0.88
+error: null

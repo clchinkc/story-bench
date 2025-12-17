@@ -12,20 +12,19 @@ final_score: 0.9588213507625272
 score_breakdown:
   final_score: 0.9588
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 443
-      target_range:
-      - 300
-      - 450
     programmatic:
       score: 0.8653
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.79
         slop_score: 0.9782
         overall: 0.8653
+      word_count:
+        actual: 443
+        target_range:
+        - 300
+        - 450
     llm_judge:
       score: 0.985
       weight: 0.5
@@ -40,12 +39,12 @@ llm_results:
   character_score: 1.0
   bridge_score: 0.9
   continuity_score: 1.0
-  evidence: 'All four required elements are present: Maya uncovers Alejandro''s vulnerability,
-    their relationship shifts from professional to personal, a shared paella moment
-    creates genuine connection, and Maya explicitly commits beyond the contract. The
-    scene cleanly performs the Midpoint function by making Maya proactively choose
-    emotional commitment. No forbidden items appear. A minor deduction (bridge_score
-    0.9) reflects that the scene is somewhat idealized and doesn’t immediately introduce
-    a new external complication to escalate stakes, though it still effectively connects
-    Act 1 motivations to the forthcoming crisis.'
+  evidence: "All four required elements are present: Maya uncovers Alejandro's vulnerability,\
+    \ their relationship shifts from professional to personal, a shared paella moment\
+    \ creates genuine connection, and Maya explicitly commits beyond the contract.\
+    \ The scene cleanly performs the Midpoint function by making Maya proactively\
+    \ choose emotional commitment. No forbidden items appear. A minor deduction (bridge_score\
+    \ 0.9) reflects that the scene is somewhat idealized and doesn\u2019t immediately\
+    \ introduce a new external complication to escalate stakes, though it still effectively\
+    \ connects Act 1 motivations to the forthcoming crisis."
 error: null

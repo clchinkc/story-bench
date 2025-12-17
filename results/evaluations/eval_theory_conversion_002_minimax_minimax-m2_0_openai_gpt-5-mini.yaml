@@ -12,20 +12,19 @@ final_score: 0.7066341962610678
 score_breakdown:
   final_score: 0.7066
   components:
-    word_count:
-      score: 0.1265
-      weight: 0.25
-      actual: 922
-      target_range:
-      - 600
-      - 800
     programmatic:
       score: 0.7
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.1265
         repetition_score: 0.5
         slop_score: 1.0
         overall: 0.7
+      word_count:
+        actual: 922
+        target_range:
+        - 600
+        - 800
     llm_judge:
       score: 1.0
       weight: 0.5
@@ -39,11 +38,11 @@ llm_results:
   word_count_valid: false
   structural_accuracy_score: 1.0
   tone_score: 1.0
-  evidence: 'All 12 Campbell beats appear and occur in proper sequence (Ordinary World
-    through Return with Elixir). All 7 required elements are preserved: Maya protagonist,
-    pottery as central skill, grandmother''s legacy (journal), mountain shrine journey,
-    dried spring problem, theme of surrendering control, and Maya''s transformation.
-    The only notable issue is word count: the converted text is 922 words, outside
-    the requested 600–800 range. Minor stylistic note: the ''mentor'' is a journal
-    rather than a living mentor, but it effectively fulfills the role.'
+  evidence: "All 12 Campbell beats appear and occur in proper sequence (Ordinary World\
+    \ through Return with Elixir). All 7 required elements are preserved: Maya protagonist,\
+    \ pottery as central skill, grandmother's legacy (journal), mountain shrine journey,\
+    \ dried spring problem, theme of surrendering control, and Maya's transformation.\
+    \ The only notable issue is word count: the converted text is 922 words, outside\
+    \ the requested 600\u2013800 range. Minor stylistic note: the 'mentor' is a journal\
+    \ rather than a living mentor, but it effectively fulfills the role."
 error: null

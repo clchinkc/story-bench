@@ -12,20 +12,19 @@ final_score: 0.6662500023013576
 score_breakdown:
   final_score: 0.6663
   components:
-    word_count:
-      score: 0.0
-      weight: 0.25
-      actual: 1065
-      target_range:
-      - 500
-      - 700
     programmatic:
       score: 0.7
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.0
         repetition_score: 0.5
         slop_score: 1.0
         overall: 0.7
+      word_count:
+        actual: 1065
+        target_range:
+        - 500
+        - 700
     llm_judge:
       score: 0.9825
       weight: 0.5
@@ -42,21 +41,22 @@ llm_results:
   structural_accuracy_score: 0.95
   tone_score: 0.95
   overall_score: 0.96
-  evidence: 'STRENGTHS: All 5 Freytag beats are clearly present and well-executed.
-    Exposition establishes Samira''s expertise and the anomalous discovery with atmospheric
-    detail (''protein structure refused to resolve''). Rising Action escalates through
-    failed antivirals, adaptive pathogen behavior, and the Nexus revelation. Climax
-    peaks at the confrontation with Nexus lawyers and the decision to go public. Falling
-    Action covers the press conference detonation and information release. Denouement
-    provides genuine resolution with Samira''s new equilibrium—ruined but alive, ethically
-    intact. All 6 core elements preserved: protagonist, engineered virus, Raj, Nexus
-    antagonist, public cure release, career sacrifice. Tone is consistently tense,
-    medically credible, and ethically weighted throughout. DEDUCTIONS: Word count
-    (1065) exceeds target range (500-700) by 365 words (+52%), which violates the
-    constraint. This is a significant structural requirement failure despite excellent
-    narrative execution. Structural accuracy docked slightly (0.95 vs 1.0) because
-    the conversion adds substantial new material (Nexus meeting, press conference
-    details) beyond the source material—while this enriches the story, it technically
-    expands rather than converts the original beats. Tone remains excellent but could
-    be marginally sharper in the denouement (0.95 vs 1.0).'
+  evidence: "STRENGTHS: All 5 Freytag beats are clearly present and well-executed.\
+    \ Exposition establishes Samira's expertise and the anomalous discovery with atmospheric\
+    \ detail ('protein structure refused to resolve'). Rising Action escalates through\
+    \ failed antivirals, adaptive pathogen behavior, and the Nexus revelation. Climax\
+    \ peaks at the confrontation with Nexus lawyers and the decision to go public.\
+    \ Falling Action covers the press conference detonation and information release.\
+    \ Denouement provides genuine resolution with Samira's new equilibrium\u2014ruined\
+    \ but alive, ethically intact. All 6 core elements preserved: protagonist, engineered\
+    \ virus, Raj, Nexus antagonist, public cure release, career sacrifice. Tone is\
+    \ consistently tense, medically credible, and ethically weighted throughout. DEDUCTIONS:\
+    \ Word count (1065) exceeds target range (500-700) by 365 words (+52%), which\
+    \ violates the constraint. This is a significant structural requirement failure\
+    \ despite excellent narrative execution. Structural accuracy docked slightly (0.95\
+    \ vs 1.0) because the conversion adds substantial new material (Nexus meeting,\
+    \ press conference details) beyond the source material\u2014while this enriches\
+    \ the story, it technically expands rather than converts the original beats. Tone\
+    \ remains excellent but could be marginally sharper in the denouement (0.95 vs\
+    \ 1.0)."
 error: null

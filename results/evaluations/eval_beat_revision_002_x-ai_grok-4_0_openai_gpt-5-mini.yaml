@@ -12,20 +12,19 @@ final_score: 0.962
 score_breakdown:
   final_score: 0.962
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 347
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.988
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.98
         slop_score: 1.0
         overall: 0.988
+      word_count:
+        actual: 347
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 0.93
       weight: 0.5
@@ -42,15 +41,15 @@ llm_results:
   minimal_change_score: 0.6
   word_count_valid: true
   quality_score: 0.9
-  evidence: 'The model targeted the All Is Lost problem: it made Marcus''s options
-    and support collapse by showing the fundraiser failed, the grant was denied, board
-    members resigned, Denise''s betrayal, and Marcus''s wife withdrawing support.
-    It also introduced a ''whiff of death'' (the kids, e.g., Jamal, losing the safe
-    haven) and Marcus''s emotional surrender, which aligns with the required fixes.
-    The revision preserved all four required phrases and the four required elements
-    (Marcus protagonist, community center/youth program setting, eviction premise,
-    Denise present). Changes were moderate — original lines and structure are largely
-    retained but significant new content (failures, betrayal, personal loss) was added
-    to achieve the beat, so edits were not purely surgical but still faithful to the
-    source. Overall writing quality is strong with no major errors.'
+  evidence: "The model targeted the All Is Lost problem: it made Marcus's options\
+    \ and support collapse by showing the fundraiser failed, the grant was denied,\
+    \ board members resigned, Denise's betrayal, and Marcus's wife withdrawing support.\
+    \ It also introduced a 'whiff of death' (the kids, e.g., Jamal, losing the safe\
+    \ haven) and Marcus's emotional surrender, which aligns with the required fixes.\
+    \ The revision preserved all four required phrases and the four required elements\
+    \ (Marcus protagonist, community center/youth program setting, eviction premise,\
+    \ Denise present). Changes were moderate \u2014 original lines and structure are\
+    \ largely retained but significant new content (failures, betrayal, personal loss)\
+    \ was added to achieve the beat, so edits were not purely surgical but still faithful\
+    \ to the source. Overall writing quality is strong with no major errors."
 error: null

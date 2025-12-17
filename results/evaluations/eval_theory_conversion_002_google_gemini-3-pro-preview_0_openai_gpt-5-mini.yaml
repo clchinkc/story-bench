@@ -12,20 +12,19 @@ final_score: 0.7965252209433021
 score_breakdown:
   final_score: 0.7965
   components:
-    word_count:
-      score: 0.5561
-      weight: 0.25
-      actual: 865
-      target_range:
-      - 600
-      - 800
     programmatic:
       score: 0.7
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.5561
         repetition_score: 0.5
         slop_score: 1.0
         overall: 0.7
+      word_count:
+        actual: 865
+        target_range:
+        - 600
+        - 800
     llm_judge:
       score: 0.965
       weight: 0.5
@@ -39,17 +38,17 @@ llm_results:
   word_count_valid: false
   structural_accuracy_score: 0.9
   tone_score: 0.9
-  evidence: 'All 12 Campbell beats are represented: Ordinary World (studio life),
-    Call to Adventure (elder''s request), Refusal (Maya''s denial), Meeting the Mentor
-    (grandmother''s memory/journal), Crossing the Threshold (leaving village/ascending
-    mountain), Tests/Allies/Enemies (journey, wind, failed attempts—though no explicit
-    allies), Approach to the Inmost Cave (ruined shrine), Ordeal (initial failure
-    and emotional collapse), Reward (creating the true vessel), The Road Back (treacherous
-    descent/storm), Resurrection (ritual release and water''s return), Return with
-    the Elixir (spring restored, Maya transformed). All 7 required elements are preserved.
-    Minor deductions: ''Meeting the Mentor'' functions via memory/journal rather than
-    a distinct living mentor, and the Tests/Allies/Enemies beat lacks explicit allies;
-    tone is very close to the requested quiet, meditative, transformative style but
-    occasionally leans slightly more dramatic. Also the provided word_count (865)
-    is outside the target 600–800 range.'
+  evidence: "All 12 Campbell beats are represented: Ordinary World (studio life),\
+    \ Call to Adventure (elder's request), Refusal (Maya's denial), Meeting the Mentor\
+    \ (grandmother's memory/journal), Crossing the Threshold (leaving village/ascending\
+    \ mountain), Tests/Allies/Enemies (journey, wind, failed attempts\u2014though\
+    \ no explicit allies), Approach to the Inmost Cave (ruined shrine), Ordeal (initial\
+    \ failure and emotional collapse), Reward (creating the true vessel), The Road\
+    \ Back (treacherous descent/storm), Resurrection (ritual release and water's return),\
+    \ Return with the Elixir (spring restored, Maya transformed). All 7 required elements\
+    \ are preserved. Minor deductions: 'Meeting the Mentor' functions via memory/journal\
+    \ rather than a distinct living mentor, and the Tests/Allies/Enemies beat lacks\
+    \ explicit allies; tone is very close to the requested quiet, meditative, transformative\
+    \ style but occasionally leans slightly more dramatic. Also the provided word_count\
+    \ (865) is outside the target 600\u2013800 range."
 error: null

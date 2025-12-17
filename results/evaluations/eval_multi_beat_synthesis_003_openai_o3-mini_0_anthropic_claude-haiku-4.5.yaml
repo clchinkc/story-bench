@@ -12,20 +12,19 @@ final_score: 0.8707914742273049
 score_breakdown:
   final_score: 0.8708
   components:
-    word_count:
-      score: 0.9494
-      weight: 0.25
-      actual: 671
-      target_range:
-      - 700
-      - 1000
     programmatic:
       score: 0.6978
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.9494
         repetition_score: 0.52
         slop_score: 0.9644
         overall: 0.6978
+      word_count:
+        actual: 671
+        target_range:
+        - 700
+        - 1000
     llm_judge:
       score: 0.918
       weight: 0.5
@@ -58,12 +57,12 @@ llm_results:
         later'
       - 'Introduction of complication: Comms glitch foreshadows trouble'
       gaps:
-      - Things going according to plan lacks clarity—the glitch arrives before a clear
-        moment of triumph, muddying whether the plan is actually working
+      - "Things going according to plan lacks clarity\u2014the glitch arrives before\
+        \ a clear moment of triumph, muddying whether the plan is actually working"
     beat_2_midpoint:
       score: 0.9
       satisfied:
-      - 'False victory: Painting secured in custom case—objective achieved'
+      - "False victory: Painting secured in custom case\u2014objective achieved"
       - 'Stakes raised: Elena''s appearance transforms job into moral/personal minefield'
       - 'Mentor revealed: Elena Laurent emerges from shadows, her betrayal explicitly
         connected'
@@ -80,8 +79,8 @@ llm_results:
       - 'Team friction: Jasper pinned, crew hesitates, anxious glances exchanged,
         undercurrent of distrust'
       - 'Crew member compromised: Jasper trapped behind doors, in imminent danger'
-      - 'Miri''s choice: Explicitly stated—''crushing demand of choosing between priceless
-        painting...and saving Jasper'''
+      - "Miri's choice: Explicitly stated\u2014'crushing demand of choosing between\
+        \ priceless painting...and saving Jasper'"
       - 'Walls closing in: Literal (narrow corridors, converging security) and figurative
         (Elena''s pursuit, moral pressure)'
       gaps: []
@@ -107,10 +106,10 @@ llm_results:
           voice as ''measured barb.'' Escalation is precise.'
       team_dynamics:
         score: 1.0
-        analysis: 'Jasper''s arc: Beat 1—calm, competent scout (''insisted would be
-          their secret exit''). Beat 2—hesitates, exchanges anxious glances. Beat
-          3—pinned, trapped, becomes the moral pivot point forcing Miri''s choice.
-          His progression directly affects plot stakes and Miri''s decision-making.'
+        analysis: "Jasper's arc: Beat 1\u2014calm, competent scout ('insisted would\
+          \ be their secret exit'). Beat 2\u2014hesitates, exchanges anxious glances.\
+          \ Beat 3\u2014pinned, trapped, becomes the moral pivot point forcing Miri's\
+          \ choice. His progression directly affects plot stakes and Miri's decision-making."
     context_adherence:
       protagonist: 0.95
       analysis_protagonist: 'Miri''s character is well-maintained: dry wit evident
@@ -129,13 +128,14 @@ llm_results:
     narrative_coherence:
       score: 0.85
       strengths:
-      - Clear progression from heist execution → revelation → escape
-      - Emotional stakes escalate logically (job → personal vendetta → survival)
+      - "Clear progression from heist execution \u2192 revelation \u2192 escape"
+      - "Emotional stakes escalate logically (job \u2192 personal vendetta \u2192\
+        \ survival)"
       - Crew dynamics ground the action in character relationships
       - Elena's presence ties past trauma to present danger
       weaknesses:
-      - The comms glitch in Beat 1 creates slight narrative ambiguity—it's unclear
-        if this is a minor hiccup or foreshadowing of larger sabotage
+      - "The comms glitch in Beat 1 creates slight narrative ambiguity\u2014it's unclear\
+        \ if this is a minor hiccup or foreshadowing of larger sabotage"
       - Transition between Beat 2 and Beat 3 could be smoother; the shift from 'Elena
         appears' to 'alarms echo' happens quickly without intermediate escalation
         steps

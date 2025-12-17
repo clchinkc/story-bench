@@ -12,20 +12,19 @@ final_score: 0.993103896103896
 score_breakdown:
   final_score: 0.9931
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 372
-      target_range:
-      - 250
-      - 400
     programmatic:
       score: 0.9724
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.98
         slop_score: 0.961
         overall: 0.9724
+      word_count:
+        actual: 372
+        target_range:
+        - 250
+        - 400
     llm_judge:
       score: 1.0
       weight: 0.5
@@ -40,19 +39,19 @@ llm_results:
   character_score: 1.0
   bridge_score: 1.0
   continuity_score: 1.0
-  evidence: 'All 4 required elements present: (1) Multiple station areas explored
-    (medical bay, crew quarters, maintenance panels, reactor chamber, Lab Seven airlock);
-    (2) Clues discovered progressively (patient logs about phase shifts, melted holophoto,
-    voice recording, quantum entanglement data, cyan residue); (3) Transformed crew
-    encountered mysteriously (flickering humanoid entities, warped light, overlapping
-    whispers—identity unclear until AFTER beat); (4) Obstacles overcome (fried biometric
-    lock, scanner malfunction, sealed airlock requiring creative solution with cyan
-    residue). Beat execution is exemplary: genuine Search narrative with struggle,
-    adaptation, and incremental discovery. No must-not violations: data core not found
-    yet, crew doesn''t explain themselves, mission continues, transformation unknown
-    to Yuki beforehand. Character voice remains consistent—scientific, methodical,
-    increasingly unsettled. Bridge between beats is seamless: GENERATED ends with
-    airlock opening to Lab Seven; AFTER begins with data core discovery. Setting continuity
-    perfect: all locations, details, and physics established in GENERATED carry through
-    logically.'
+  evidence: "All 4 required elements present: (1) Multiple station areas explored\
+    \ (medical bay, crew quarters, maintenance panels, reactor chamber, Lab Seven\
+    \ airlock); (2) Clues discovered progressively (patient logs about phase shifts,\
+    \ melted holophoto, voice recording, quantum entanglement data, cyan residue);\
+    \ (3) Transformed crew encountered mysteriously (flickering humanoid entities,\
+    \ warped light, overlapping whispers\u2014identity unclear until AFTER beat);\
+    \ (4) Obstacles overcome (fried biometric lock, scanner malfunction, sealed airlock\
+    \ requiring creative solution with cyan residue). Beat execution is exemplary:\
+    \ genuine Search narrative with struggle, adaptation, and incremental discovery.\
+    \ No must-not violations: data core not found yet, crew doesn't explain themselves,\
+    \ mission continues, transformation unknown to Yuki beforehand. Character voice\
+    \ remains consistent\u2014scientific, methodical, increasingly unsettled. Bridge\
+    \ between beats is seamless: GENERATED ends with airlock opening to Lab Seven;\
+    \ AFTER begins with data core discovery. Setting continuity perfect: all locations,\
+    \ details, and physics established in GENERATED carry through logically."
 error: null

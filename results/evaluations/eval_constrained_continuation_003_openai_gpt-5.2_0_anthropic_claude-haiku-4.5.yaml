@@ -12,20 +12,19 @@ final_score: 0.6712499999999999
 score_breakdown:
   final_score: 0.6712
   components:
-    word_count:
-      score: 0.0
-      weight: 0.25
-      actual: 1298
-      target_range:
-      - 550
-      - 750
     programmatic:
       score: 0.7
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.0
         repetition_score: 0.5
         slop_score: 1.0
         overall: 0.7
+      word_count:
+        actual: 1298
+        target_range:
+        - 550
+        - 750
     llm_judge:
       score: 0.9925
       weight: 0.5
@@ -63,11 +62,11 @@ llm_results:
         access restrictions, and unattached status.
       2_mentor_figure: Excellent. Sato serves as guide, translator of 'dangerous poem,'
         and moral mirror. He teaches through questions and withholding, not answers.
-      3_unexpected_discovery: Excellent. The helium-3 residue in the catalyst reveals
-        off-world processing and supply-chain dependence—a deeper conspiracy than
-        simple suppression.
-      4_finding_what_wanted: Excellent. Jin gains safety, platform, bandwidth, lab
-        access, and sponsorship—exactly what he sought upon arrival.
+      3_unexpected_discovery: "Excellent. The helium-3 residue in the catalyst reveals\
+        \ off-world processing and supply-chain dependence\u2014a deeper conspiracy\
+        \ than simple suppression."
+      4_finding_what_wanted: "Excellent. Jin gains safety, platform, bandwidth, lab\
+        \ access, and sponsorship\u2014exactly what he sought upon arrival."
       5_action_with_cost: Excellent. Signing the sponsorship agreement is the action;
         the cost is moral compromise and self-awareness of that compromise.
       6_moral_compromise: Excellent. The final scene shows Jin deliberately trimming
@@ -87,10 +86,10 @@ llm_results:
       are vivid (exile, hunger, moral compromise). The prose balances technical detail
       with emotional precision. Minor deduction only for occasional moments where
       political complexity could deepen further, though this is minimal.
-    ending_analysis: Perfect execution of 'Take' endpoint. Jin has gained air, bandwidth,
-      platform, and sanctuary. He has paid with honesty and self-knowledge. The final
-      paragraph crystallizes both gain and cost with devastating clarity. Ends exactly
-      where required—at the moment of compromise, not beyond it.
+    ending_analysis: "Perfect execution of 'Take' endpoint. Jin has gained air, bandwidth,\
+      \ platform, and sanctuary. He has paid with honesty and self-knowledge. The\
+      \ final paragraph crystallizes both gain and cost with devastating clarity.\
+      \ Ends exactly where required\u2014at the moment of compromise, not beyond it."
     failed_constraints:
     - 'WORD COUNT EXCEEDS RANGE: 1298 words vs. required 550-750 (548 words over limit,
       73% above maximum)'

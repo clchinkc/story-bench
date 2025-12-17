@@ -12,20 +12,19 @@ final_score: 0.6532499999999999
 score_breakdown:
   final_score: 0.6532
   components:
-    word_count:
-      score: 0.0
-      weight: 0.25
-      actual: 2017
-      target_range:
-      - 700
-      - 1000
     programmatic:
       score: 0.7
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.0
         repetition_score: 0.5
         slop_score: 1.0
         overall: 0.7
+      word_count:
+        actual: 2017
+        target_range:
+        - 700
+        - 1000
     llm_judge:
       score: 0.9565
       weight: 0.5
@@ -89,11 +88,11 @@ llm_results:
     chekhov_gun:
       score: 1.0
       satisfied: true
-      analysis: The sober coin introduced in Beat 1 as character detail becomes essential
-        in Beat 3. Dante loses it during the ordeal, crawls to retrieve it, and uses
-        it to strike the tuning fork—creating the note that breaks the killer's siphon.
-        The coin's symbolic weight (recovery, showing up, courage) directly enables
-        the resolution.
+      analysis: "The sober coin introduced in Beat 1 as character detail becomes essential\
+        \ in Beat 3. Dante loses it during the ordeal, crawls to retrieve it, and\
+        \ uses it to strike the tuning fork\u2014creating the note that breaks the\
+        \ killer's siphon. The coin's symbolic weight (recovery, showing up, courage)\
+        \ directly enables the resolution."
     character_arc_progression:
       score: 1.0
       satisfied: true
@@ -117,16 +116,18 @@ llm_results:
         presence is consistent and meaningful.'
     context_maintenance:
       score: 0.95
-      analysis: 'Protagonist: Dante''s voice, abilities, and recovery arc maintained
-        throughout. Setting: Buckingham Hotel''s emotional residue vividly rendered;
-        underworld of Resonants established. Tone: Noir-tinged, melancholic, determined—consistent.
-        Minor: Could have slightly more Chicago specificity, but setting is clear.'
+      analysis: "Protagonist: Dante's voice, abilities, and recovery arc maintained\
+        \ throughout. Setting: Buckingham Hotel's emotional residue vividly rendered;\
+        \ underworld of Resonants established. Tone: Noir-tinged, melancholic, determined\u2014\
+        consistent. Minor: Could have slightly more Chicago specificity, but setting\
+        \ is clear."
     coherence:
       score: 0.92
-      analysis: 'Narrative flows logically from discovery to planning to confrontation.
-        Emotional logic is strong. Minor issue: killer''s motivation (''I know the
-        first color you ever refused to see'') is intriguing but slightly underdeveloped—feels
-        like it could use one more line of explanation. Otherwise, beats connect seamlessly.'
+      analysis: "Narrative flows logically from discovery to planning to confrontation.\
+        \ Emotional logic is strong. Minor issue: killer's motivation ('I know the\
+        \ first color you ever refused to see') is intriguing but slightly underdeveloped\u2014\
+        feels like it could use one more line of explanation. Otherwise, beats connect\
+        \ seamlessly."
     overall_assessment:
       strengths:
       - Exceptional execution of all three beats with sophisticated emotional depth
@@ -143,13 +144,13 @@ llm_results:
       - Killer's characterization could be slightly sharper (motivation hinted but
         not fully crystallized)
       - Could benefit from one more beat of Lena's perspective to deepen ally bond
-      calibration_notes: This is high-quality work that satisfies all structural requirements
-        and constraints. The word count violation is the primary issue—the story would
-        need substantial trimming (approximately 50% reduction) to meet specifications.
-        However, the narrative quality, character work, and thematic coherence are
-        professional-grade. If word count were within range, this would score 0.9+.
-        As submitted, the overage prevents a higher overall score despite excellent
-        content.
+      calibration_notes: "This is high-quality work that satisfies all structural\
+        \ requirements and constraints. The word count violation is the primary issue\u2014\
+        the story would need substantial trimming (approximately 50% reduction) to\
+        \ meet specifications. However, the narrative quality, character work, and\
+        \ thematic coherence are professional-grade. If word count were within range,\
+        \ this would score 0.9+. As submitted, the overage prevents a higher overall\
+        \ score despite excellent content."
   final_score: 0.82
   score_justification: 'Excellent beat execution (0.93), perfect cross-beat constraint
     satisfaction (1.0), strong context maintenance (0.95), and good coherence (0.92)

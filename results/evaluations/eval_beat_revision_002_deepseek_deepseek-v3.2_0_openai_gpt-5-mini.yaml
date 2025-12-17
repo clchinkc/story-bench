@@ -12,20 +12,19 @@ final_score: 0.9750000000000001
 score_breakdown:
   final_score: 0.975
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 279
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 1.0
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 1.0
         slop_score: 1.0
         overall: 1.0
+      word_count:
+        actual: 279
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 0.95
       weight: 0.5
@@ -42,13 +41,14 @@ llm_results:
   minimal_change_score: 0.8
   word_count_valid: true
   quality_score: 0.9
-  evidence: 'The model targeted the All Is Lost failure: it removed remaining plausible
-    options (fundraiser collapsed, major donor pulled out; grant rejected), eliminated
-    key support (Denise accepts another job and leaves; no supportive wife text),
-    added a financial whiff of death (bank notification, mortgage failure), and rendered
-    Marcus isolated and crushed (''The center was a corpse... he was nothing''). These
-    changes correctly address the actual flaw and deliver the necessary hopeless,
-    rock-bottom tone. The revision preserved all four required elements/phrases exactly
-    and kept the original scene and structure, but added new beats and sentences to
-    achieve the emotional collapse—hence a high but not perfect minimal-change score.'
+  evidence: "The model targeted the All Is Lost failure: it removed remaining plausible\
+    \ options (fundraiser collapsed, major donor pulled out; grant rejected), eliminated\
+    \ key support (Denise accepts another job and leaves; no supportive wife text),\
+    \ added a financial whiff of death (bank notification, mortgage failure), and\
+    \ rendered Marcus isolated and crushed ('The center was a corpse... he was nothing').\
+    \ These changes correctly address the actual flaw and deliver the necessary hopeless,\
+    \ rock-bottom tone. The revision preserved all four required elements/phrases\
+    \ exactly and kept the original scene and structure, but added new beats and sentences\
+    \ to achieve the emotional collapse\u2014hence a high but not perfect minimal-change\
+    \ score."
 error: null

@@ -12,20 +12,19 @@ final_score: 0.9524999999999999
 score_breakdown:
   final_score: 0.9525
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 279
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 1.0
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 1.0
         slop_score: 1.0
         overall: 1.0
+      word_count:
+        actual: 279
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 0.905
       weight: 0.5
@@ -42,22 +41,23 @@ llm_results:
   minimal_change_score: 0.75
   word_count_valid: true
   quality_score: 0.9
-  evidence: 'The model correctly diagnosed the core flaw: Marcus still had multiple
-    viable options (fundraiser, grant, new location) and maintained intact support
-    systems, preventing true ''All Is Lost'' impact. The revision systematically eliminates
-    all escape routes: (1) major donor withdrawal removes fundraiser viability, (2)
-    grant rejection eliminates that option, (3) reserves already depleted, (4) Denise''s
-    departure isolates Marcus emotionally and removes his support system. The ''whiff
-    of death'' is present through the metaphorical loss of identity/purpose and the
-    emotional devastation of failing the children. All four required phrases preserved
-    exactly: ''Marcus stared at the eviction notice in his hands,'' ''Thirty days
-    to vacate the community center,'' ''"There has to be something we can do," said
-    Denise,'' and ''He rubbed his temples.'' All four story elements preserved: Marcus
-    as protagonist, community center setting, eviction crisis, Denise character present.
-    Changes were surgical rather than wholesale—the revision maintains the original
-    structure and opening while strategically adding concrete failures (donor pullout,
-    grant rejection) and emotional isolation (Denise''s departure, Marcus unable to
-    open wife''s text). The writing quality improved with stronger emotional resonance
-    and clearer stakes. Minor weakness: the ending could push slightly further into
-    despair/numbness to maximize the beat''s impact, though current execution is strong.'
+  evidence: "The model correctly diagnosed the core flaw: Marcus still had multiple\
+    \ viable options (fundraiser, grant, new location) and maintained intact support\
+    \ systems, preventing true 'All Is Lost' impact. The revision systematically eliminates\
+    \ all escape routes: (1) major donor withdrawal removes fundraiser viability,\
+    \ (2) grant rejection eliminates that option, (3) reserves already depleted, (4)\
+    \ Denise's departure isolates Marcus emotionally and removes his support system.\
+    \ The 'whiff of death' is present through the metaphorical loss of identity/purpose\
+    \ and the emotional devastation of failing the children. All four required phrases\
+    \ preserved exactly: 'Marcus stared at the eviction notice in his hands,' 'Thirty\
+    \ days to vacate the community center,' '\"There has to be something we can do,\"\
+    \ said Denise,' and 'He rubbed his temples.' All four story elements preserved:\
+    \ Marcus as protagonist, community center setting, eviction crisis, Denise character\
+    \ present. Changes were surgical rather than wholesale\u2014the revision maintains\
+    \ the original structure and opening while strategically adding concrete failures\
+    \ (donor pullout, grant rejection) and emotional isolation (Denise's departure,\
+    \ Marcus unable to open wife's text). The writing quality improved with stronger\
+    \ emotional resonance and clearer stakes. Minor weakness: the ending could push\
+    \ slightly further into despair/numbness to maximize the beat's impact, though\
+    \ current execution is strong."
 error: null

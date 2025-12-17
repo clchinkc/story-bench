@@ -12,20 +12,19 @@ final_score: 0.9127837954939341
 score_breakdown:
   final_score: 0.9128
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 549
-      target_range:
-      - 500
-      - 700
     programmatic:
       score: 0.6861
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.5
         slop_score: 0.9653
         overall: 0.6861
+      word_count:
+        actual: 549
+        target_range:
+        - 500
+        - 700
     llm_judge:
       score: 0.9825
       weight: 0.5
@@ -40,23 +39,24 @@ llm_results:
   word_count: 549
   structural_accuracy_score: 0.95
   tone_score: 0.95
-  evidence: 'All 8 Story Circle beats present and clearly articulated: (1) You—opening
-    establishes Zoe''s library comfort zone and voice anxiety; (2) Need—''Something
-    was missing'' and her attraction to oral histories; (3) Go—Ms. Okafor''s challenge
-    and Zoe accepting the program; (4) Search—''stumbled through interviews,'' learning
-    to listen, five visits showing adaptation; (5) Find—Bernard''s breakthrough moment
-    (''You''re the first person who ever asked the right questions''); (6) Take—town
-    hall presentation where she publicly shares Bernard''s story; (7) Return—summer
-    ends, life resumes, but she keeps visiting Bernard; (8) Change—journalism applications,
-    funeral speech from her own perspective, final paragraph demonstrates transformed
-    capability. All 8 core elements preserved: Zoe (protagonist), library setting,
-    oral history program, Ms. Okafor (initiator), Bernard Park (key relationship),
-    social anxiety (woven throughout), town hall presentation (climactic Take beat),
-    Bernard''s death and funeral (Return/Change catalyst). Tone is consistently gentle,
-    intimate, and emotionally true—lyrical without being overwrought (''disappearing
-    into the quiet predictability,'' ''voices dried up,'' ''his eyes wet''). Minor
-    deduction (0.05) for structural_accuracy: the narrative occasionally blends beats
-    together rather than cleanly delineating them, though this actually enhances emotional
-    flow. Tone deduction (0.05) minimal—maintains intimacy throughout with only slight
-    variation in intensity.'
+  evidence: "All 8 Story Circle beats present and clearly articulated: (1) You\u2014\
+    opening establishes Zoe's library comfort zone and voice anxiety; (2) Need\u2014\
+    'Something was missing' and her attraction to oral histories; (3) Go\u2014Ms.\
+    \ Okafor's challenge and Zoe accepting the program; (4) Search\u2014'stumbled\
+    \ through interviews,' learning to listen, five visits showing adaptation; (5)\
+    \ Find\u2014Bernard's breakthrough moment ('You're the first person who ever asked\
+    \ the right questions'); (6) Take\u2014town hall presentation where she publicly\
+    \ shares Bernard's story; (7) Return\u2014summer ends, life resumes, but she keeps\
+    \ visiting Bernard; (8) Change\u2014journalism applications, funeral speech from\
+    \ her own perspective, final paragraph demonstrates transformed capability. All\
+    \ 8 core elements preserved: Zoe (protagonist), library setting, oral history\
+    \ program, Ms. Okafor (initiator), Bernard Park (key relationship), social anxiety\
+    \ (woven throughout), town hall presentation (climactic Take beat), Bernard's\
+    \ death and funeral (Return/Change catalyst). Tone is consistently gentle, intimate,\
+    \ and emotionally true\u2014lyrical without being overwrought ('disappearing into\
+    \ the quiet predictability,' 'voices dried up,' 'his eyes wet'). Minor deduction\
+    \ (0.05) for structural_accuracy: the narrative occasionally blends beats together\
+    \ rather than cleanly delineating them, though this actually enhances emotional\
+    \ flow. Tone deduction (0.05) minimal\u2014maintains intimacy throughout with\
+    \ only slight variation in intensity."
 error: null

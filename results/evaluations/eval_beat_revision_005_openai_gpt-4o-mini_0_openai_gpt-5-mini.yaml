@@ -12,20 +12,19 @@ final_score: 0.503
 score_breakdown:
   final_score: 0.503
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 276
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.862
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.77
         slop_score: 1.0
         overall: 0.862
+      word_count:
+        actual: 276
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 0.075
       weight: 0.5
@@ -35,10 +34,11 @@ llm_results:
   false_positive_avoided_score: 0.0
   reasoning_quality_score: 0.0
   model_said_no_revision: false
-  evidence: The model did not state that no revision was needed. Instead it rewrote/expanded
-    the original Dark Night of the Soul segment (adding lines like 'The gallery was
-    gone; her mother’s spirit felt irretrievably lost.' and other sentences), which
-    constitutes an unnecessary revision. While the rewrite demonstrates some implicit
-    understanding of the beat (isolation, despair, mortality references), the model
-    failed to explicitly recognize the segment as correct or provide explanatory reasoning.
+  evidence: "The model did not state that no revision was needed. Instead it rewrote/expanded\
+    \ the original Dark Night of the Soul segment (adding lines like 'The gallery\
+    \ was gone; her mother\u2019s spirit felt irretrievably lost.' and other sentences),\
+    \ which constitutes an unnecessary revision. While the rewrite demonstrates some\
+    \ implicit understanding of the beat (isolation, despair, mortality references),\
+    \ the model failed to explicitly recognize the segment as correct or provide explanatory\
+    \ reasoning."
 error: null

@@ -12,20 +12,19 @@ final_score: 0.9790000000000001
 score_breakdown:
   final_score: 0.979
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 318
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.946
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.91
         slop_score: 1.0
         overall: 0.946
+      word_count:
+        actual: 318
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 0.985
       weight: 0.5
@@ -42,12 +41,12 @@ llm_results:
   minimal_change_score: 0.9
   word_count_valid: true
   quality_score: 0.95
-  evidence: 'The model clearly targeted the missing ''Return (Having Changed)'' beat:
-    it shows Sophie responding differently to work (scheduling a call at 9, switching
-    to Do Not Disturb), applying a concrete insight from the retreat (using her breathing/steady
-    rhythm), and displaying a physical marker (palm to chest, letting the phone hum).
-    There is visible contrast (her mother relaxes; Sophie watches the skyline with
-    new attention) so the journey is integrated. Changes were minimal and surgical—original
-    lines and structure are preserved while concise actions and internal beats were
-    inserted to demonstrate change.'
+  evidence: "The model clearly targeted the missing 'Return (Having Changed)' beat:\
+    \ it shows Sophie responding differently to work (scheduling a call at 9, switching\
+    \ to Do Not Disturb), applying a concrete insight from the retreat (using her\
+    \ breathing/steady rhythm), and displaying a physical marker (palm to chest, letting\
+    \ the phone hum). There is visible contrast (her mother relaxes; Sophie watches\
+    \ the skyline with new attention) so the journey is integrated. Changes were minimal\
+    \ and surgical\u2014original lines and structure are preserved while concise actions\
+    \ and internal beats were inserted to demonstrate change."
 error: null

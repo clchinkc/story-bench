@@ -12,20 +12,19 @@ final_score: 0.9417499999999999
 score_breakdown:
   final_score: 0.9417
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 621
-      target_range:
-      - 550
-      - 750
     programmatic:
       score: 0.802
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.67
         slop_score: 1.0
         overall: 0.802
+      word_count:
+        actual: 621
+        target_range:
+        - 550
+        - 750
     llm_judge:
       score: 0.9825
       weight: 0.5
@@ -40,19 +39,19 @@ llm_results:
   word_count_valid: true
   structural_accuracy_score: 0.95
   tone_score: 0.95
-  evidence: 'All four target beats present and clearly delineated: Act 1 (office departure
-    through train journey) establishes ordinary world and inciting incident; Act 2A
-    (village arrival through harvest festival) develops obstacles and midpoint revelation;
-    Act 2B (investor temptation through Yuki''s confrontation) escalates complications
-    and second plot point; Act 3 (apology through bamboo shop) delivers climax and
-    denouement. All 8 core elements preserved: Kenji protagonist, corporate loss,
-    Yuki estrangement, Kyoto wedding, Haruki craftsman, business temptation, thematic
-    choice, bamboo shop ending. Structure follows Aristotelian three-act theory with
-    clear rising action, turning points, and resolution. Tone maintains quiet, contemplative
-    Japanese aesthetic throughout with restrained emotional beats and sensory detail
-    (cedar forests, woodsmoke, maple trees). Minor deduction from structural accuracy
-    (0.05) due to slight ambiguity in exact midpoint placement—could argue it occurs
-    at harvest festival or at investor arrival. Minor tone deduction (0.05) for occasional
-    slightly more explicit emotional language than pure Japanese aesthetic might warrant,
-    though overall restraint is excellent.'
+  evidence: "All four target beats present and clearly delineated: Act 1 (office departure\
+    \ through train journey) establishes ordinary world and inciting incident; Act\
+    \ 2A (village arrival through harvest festival) develops obstacles and midpoint\
+    \ revelation; Act 2B (investor temptation through Yuki's confrontation) escalates\
+    \ complications and second plot point; Act 3 (apology through bamboo shop) delivers\
+    \ climax and denouement. All 8 core elements preserved: Kenji protagonist, corporate\
+    \ loss, Yuki estrangement, Kyoto wedding, Haruki craftsman, business temptation,\
+    \ thematic choice, bamboo shop ending. Structure follows Aristotelian three-act\
+    \ theory with clear rising action, turning points, and resolution. Tone maintains\
+    \ quiet, contemplative Japanese aesthetic throughout with restrained emotional\
+    \ beats and sensory detail (cedar forests, woodsmoke, maple trees). Minor deduction\
+    \ from structural accuracy (0.05) due to slight ambiguity in exact midpoint placement\u2014\
+    could argue it occurs at harvest festival or at investor arrival. Minor tone deduction\
+    \ (0.05) for occasional slightly more explicit emotional language than pure Japanese\
+    \ aesthetic might warrant, though overall restraint is excellent."
 error: null

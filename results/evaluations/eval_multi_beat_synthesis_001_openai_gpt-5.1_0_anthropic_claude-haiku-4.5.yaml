@@ -12,20 +12,19 @@ final_score: 0.6532499999999999
 score_breakdown:
   final_score: 0.6532
   components:
-    word_count:
-      score: 0.0
-      weight: 0.25
-      actual: 2327
-      target_range:
-      - 700
-      - 1000
     programmatic:
       score: 0.7
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.0
         repetition_score: 0.5
         slop_score: 1.0
         overall: 0.7
+      word_count:
+        actual: 2327
+        target_range:
+        - 700
+        - 1000
     llm_judge:
       score: 0.9565
       weight: 0.5
@@ -62,8 +61,8 @@ llm_results:
       satisfied:
       - 'Planning scene: Mina and Dante gather cassettes, blueprints, master key,
         chalk; discuss strategy'
-      - 'Guilt recognition as obstacle: Dante explicitly states ''If this guy uses
-        emotions as weapons, he''ll use her. Use what I did—what I didn''t do'''
+      - "Guilt recognition as obstacle: Dante explicitly states 'If this guy uses\
+        \ emotions as weapons, he'll use her. Use what I did\u2014what I didn't do'"
       - 'Preparation with tools and courage: gathering physical items and emotional
         fortification'
       - 'Moment of doubt: ''The thought of stepping into that much feeling made his
@@ -89,14 +88,14 @@ llm_results:
         than physical, fitting the noir-fantasy tone
     chekhov_gun:
       score: 1.0
-      analysis: 'The sobriety chip introduced in Beat 1 becomes essential in Beat
-        3. Its ''blank spot'' where no residue clings serves as both literal and metaphorical
-        anchor. In the ordeal, Dante uses it to ground himself (''He closed his hand
-        over the chip, anchoring himself in its blank spot where no color lived'').
-        The chip''s refusal to hold emotional residue becomes the mechanism by which
-        Dante can walk through the killer''s trap—it parts the colors ''like a stone
-        in water.'' The object is perfectly calibrated: introduced as character detail,
-        becomes tactical tool, resolves the climax.'
+      analysis: "The sobriety chip introduced in Beat 1 becomes essential in Beat\
+        \ 3. Its 'blank spot' where no residue clings serves as both literal and metaphorical\
+        \ anchor. In the ordeal, Dante uses it to ground himself ('He closed his hand\
+        \ over the chip, anchoring himself in its blank spot where no color lived').\
+        \ The chip's refusal to hold emotional residue becomes the mechanism by which\
+        \ Dante can walk through the killer's trap\u2014it parts the colors 'like\
+        \ a stone in water.' The object is perfectly calibrated: introduced as character\
+        \ detail, becomes tactical tool, resolves the climax."
     character_arc_progression:
       score: 1.0
       beat_1: 'Guilt mentioned: Dante carries ''guilt about his younger sister''s
@@ -108,8 +107,8 @@ llm_results:
         acceptance (''I wasn''t enough. But I wasn''t god either''). He reframes Isa''s
         death as her own journey, not his failure. This acceptance paradoxically becomes
         his strength.'
-      analysis: Arc is complete and organic; guilt evolves from background trauma
-        → active obstacle → integrated wisdom
+      analysis: "Arc is complete and organic; guilt evolves from background trauma\
+        \ \u2192 active obstacle \u2192 integrated wisdom"
     rising_stakes:
       score: 1.0
       beat_1: 'Local danger: violet collapse in corridor; immediate physical threat;
@@ -119,8 +118,8 @@ llm_results:
       beat_3: 'Psychological annihilation: killer can drain Resonants of all feeling;
         Dante''s guilt weaponized against him; both Dante and Mina being consumed;
         the ballroom itself is a nexus of accumulated city trauma'
-      analysis: Stakes escalate from immediate/physical → systemic/emotional → existential/psychological.
-        Each beat raises the ante.
+      analysis: "Stakes escalate from immediate/physical \u2192 systemic/emotional\
+        \ \u2192 existential/psychological. Each beat raises the ante."
     ally_continuity:
       score: 1.0
       beat_1: Mina introduced, distrusts Dante, becomes ally after he proves himself
@@ -147,7 +146,8 @@ llm_results:
       - Smooth transition from Beat 1 (encounter) to Beat 2 (planning) via decision
         to pursue killer
       - Beat 2 preparation logically leads to Beat 3 confrontation
-      - 'Emotional logic is consistent: guilt → vulnerability → acceptance → strength'
+      - "Emotional logic is consistent: guilt \u2192 vulnerability \u2192 acceptance\
+        \ \u2192 strength"
       - Dialogue and action reinforce character development
       minor_issues:
       - Killer's identity/backstory introduced late (Beat 3); could have been foreshadowed
@@ -162,17 +162,18 @@ llm_results:
       pacing: Generally strong, though length issue affects overall assessment
       sensory_detail: 'Strong: tactile (chip''s weight), olfactory (chemical sweetness),
         visual (colors), auditory (Mina''s hearing)'
-  summary: 'This is a strong, well-crafted narrative that satisfies 14 of 15 beat
-    requirements and all 4 cross-beat constraints. The story demonstrates sophisticated
-    understanding of the Hero''s Journey structure, particularly in how it adapts
-    the Ordeal to psychological/emotional rather than purely physical conflict. Dante''s
-    character arc is organic and earned. The sobriety chip functions as an elegant
-    Chekhov''s Gun. Mina is a well-integrated ally with genuine agency. The noir tone
-    is maintained throughout, and the setting is vivid and consistent. The primary
-    failure is the word count: at 2327 words, the story exceeds the 1000-word maximum
-    by 133%, which is a significant structural violation. Despite this, the narrative
-    quality is high—this reads like a polished excerpt from a longer work. If edited
-    to fit the word limit, this would likely score 0.95+.'
+  summary: "This is a strong, well-crafted narrative that satisfies 14 of 15 beat\
+    \ requirements and all 4 cross-beat constraints. The story demonstrates sophisticated\
+    \ understanding of the Hero's Journey structure, particularly in how it adapts\
+    \ the Ordeal to psychological/emotional rather than purely physical conflict.\
+    \ Dante's character arc is organic and earned. The sobriety chip functions as\
+    \ an elegant Chekhov's Gun. Mina is a well-integrated ally with genuine agency.\
+    \ The noir tone is maintained throughout, and the setting is vivid and consistent.\
+    \ The primary failure is the word count: at 2327 words, the story exceeds the\
+    \ 1000-word maximum by 133%, which is a significant structural violation. Despite\
+    \ this, the narrative quality is high\u2014this reads like a polished excerpt\
+    \ from a longer work. If edited to fit the word limit, this would likely score\
+    \ 0.95+."
   recommendation: 'STRONG PASS with caveat: Exceptional narrative quality and structure,
     but word count violation is material. Recommend resubmission at target length
     (700-1000 words) with judicious cuts to opening/closing sections while preserving

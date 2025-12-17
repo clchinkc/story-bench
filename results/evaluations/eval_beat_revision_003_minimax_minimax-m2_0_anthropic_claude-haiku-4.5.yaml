@@ -12,20 +12,19 @@ final_score: 0.9787830802739189
 score_breakdown:
   final_score: 0.9788
   components:
-    word_count:
-      score: 0.9991
-      weight: 0.25
-      actual: 195
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.976
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.9991
         repetition_score: 0.96
         slop_score: 1.0
         overall: 0.976
+      word_count:
+        actual: 195
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 0.97
       weight: 0.5
@@ -42,20 +41,20 @@ llm_results:
   minimal_change_score: 0.85
   word_count_valid: false
   quality_score: 0.95
-  evidence: 'Model correctly diagnosed the actual flaw: Sophie showed no transformation
-    and immediately reverted to old workaholic patterns, making the journey meaningless.
-    The revision fixes this precisely by: (1) Adding deliberate phone-setting-down
-    action showing awareness of old habit, (2) Demonstrating changed behavior—Sophie
-    chooses to wait on work calls rather than immediately respond, (3) Integrating
-    specific retreat insight (''hours spent in silent contemplation'') that directly
-    informs her decision, (4) Creating clear contrast between old self (would have
-    called Linda immediately) and new self (will call after self-care), (5) Mother''s
-    implicit noticing through Sophie''s changed demeanor. All 4 required phrases preserved
-    exactly: ''Sophie''s flight landed at O''Hare'', ''How was Thailand? her mother
-    asked'', ''The familiar Chicago skyline appeared'', ''It''s good to be home, she
-    said''. Changes were surgical: added 3 key sentences showing internal conflict
-    and decision-making, modified one line to show restraint, added closing reflection.
-    Minimal structural disruption. Only weakness: word count (195 vs 200-350 requirement)
-    falls short by 5 words, preventing perfect score. Writing quality remains high
-    with no new errors introduced.'
+  evidence: "Model correctly diagnosed the actual flaw: Sophie showed no transformation\
+    \ and immediately reverted to old workaholic patterns, making the journey meaningless.\
+    \ The revision fixes this precisely by: (1) Adding deliberate phone-setting-down\
+    \ action showing awareness of old habit, (2) Demonstrating changed behavior\u2014\
+    Sophie chooses to wait on work calls rather than immediately respond, (3) Integrating\
+    \ specific retreat insight ('hours spent in silent contemplation') that directly\
+    \ informs her decision, (4) Creating clear contrast between old self (would have\
+    \ called Linda immediately) and new self (will call after self-care), (5) Mother's\
+    \ implicit noticing through Sophie's changed demeanor. All 4 required phrases\
+    \ preserved exactly: 'Sophie's flight landed at O'Hare', 'How was Thailand? her\
+    \ mother asked', 'The familiar Chicago skyline appeared', 'It's good to be home,\
+    \ she said'. Changes were surgical: added 3 key sentences showing internal conflict\
+    \ and decision-making, modified one line to show restraint, added closing reflection.\
+    \ Minimal structural disruption. Only weakness: word count (195 vs 200-350 requirement)\
+    \ falls short by 5 words, preventing perfect score. Writing quality remains high\
+    \ with no new errors introduced."
 error: null

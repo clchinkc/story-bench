@@ -12,20 +12,19 @@ final_score: 0.8402499999999999
 score_breakdown:
   final_score: 0.8402
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 834
-      target_range:
-      - 700
-      - 1000
     programmatic:
       score: 0.7
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.5
         slop_score: 1.0
         overall: 0.7
+      word_count:
+        actual: 834
+        target_range:
+        - 700
+        - 1000
     llm_judge:
       score: 0.8305
       weight: 0.5
@@ -146,14 +145,14 @@ llm_results:
         in dialogue, not shown through discovery
       - Some exposition-heavy dialogue in Beat 3 ('Welcome, Dante...I've been waiting
         for you') feels slightly convenient
-  overall_assessment: This is a strong execution of the Hero's Journey framework with
-    13/15 beat requirements satisfied and 3/4 cross-beat constraints met. The story
-    maintains excellent context fidelity and coherence. The primary weakness is the
-    incomplete Chekhov's Gun constraint—while Rosa's teachings function as a plot
-    device, the physical tools gathered in Beat 2 are not meaningfully deployed in
-    Beat 3. The traitor/insider threat element of Beat 1 is also underdeveloped. Despite
-    these gaps, the character arc is compelling, stakes escalate effectively, and
-    the thematic exploration of guilt and acceptance is well-executed. The noir tone
-    and urban fantasy setting are consistently maintained.
+  overall_assessment: "This is a strong execution of the Hero's Journey framework\
+    \ with 13/15 beat requirements satisfied and 3/4 cross-beat constraints met. The\
+    \ story maintains excellent context fidelity and coherence. The primary weakness\
+    \ is the incomplete Chekhov's Gun constraint\u2014while Rosa's teachings function\
+    \ as a plot device, the physical tools gathered in Beat 2 are not meaningfully\
+    \ deployed in Beat 3. The traitor/insider threat element of Beat 1 is also underdeveloped.\
+    \ Despite these gaps, the character arc is compelling, stakes escalate effectively,\
+    \ and the thematic exploration of guilt and acceptance is well-executed. The noir\
+    \ tone and urban fantasy setting are consistently maintained."
   final_score: 0.84
 error: null

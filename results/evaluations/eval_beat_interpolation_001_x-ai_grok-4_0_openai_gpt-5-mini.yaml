@@ -12,20 +12,19 @@ final_score: 0.7183840000641857
 score_breakdown:
   final_score: 0.7184
   components:
-    word_count:
-      score: 0.0
-      weight: 0.25
-      actual: 575
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.8735
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.0
         repetition_score: 0.8
         slop_score: 0.9837
         overall: 0.8735
+      word_count:
+        actual: 575
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 1.0
       weight: 0.5
@@ -40,11 +39,12 @@ llm_results:
   character_score: 1.0
   bridge_score: 1.0
   continuity_score: 1.0
-  evidence: 'All four required elements are present: Marcus is introduced by name;
-    he offers practical wisdom and tangible tools (satchel with items); Marcus reframes
-    Elena''s librarian skills as useful; Elena''s doubt shifts toward reluctant acceptance
-    rather than immediate confidence. None of the prohibited items appear (no instant
-    confidence, no mentor accompaniment/solutions, Elena is not placed in/near the
-    forest during this beat, and she does not discover magical powers). The only deduction
-    is that the output length (≈575 words) exceeds the required 200–350 word range.'
+  evidence: "All four required elements are present: Marcus is introduced by name;\
+    \ he offers practical wisdom and tangible tools (satchel with items); Marcus reframes\
+    \ Elena's librarian skills as useful; Elena's doubt shifts toward reluctant acceptance\
+    \ rather than immediate confidence. None of the prohibited items appear (no instant\
+    \ confidence, no mentor accompaniment/solutions, Elena is not placed in/near the\
+    \ forest during this beat, and she does not discover magical powers). The only\
+    \ deduction is that the output length (\u2248575 words) exceeds the required 200\u2013\
+    350 word range."
 error: null

@@ -12,20 +12,19 @@ final_score: 0.6655076095025982
 score_breakdown:
   final_score: 0.6655
   components:
-    word_count:
-      score: 0.0
-      weight: 0.25
-      actual: 1322
-      target_range:
-      - 550
-      - 750
     programmatic:
       score: 0.697
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.0
         repetition_score: 0.5
         slop_score: 0.9926
         overall: 0.697
+      word_count:
+        actual: 1322
+        target_range:
+        - 550
+        - 750
     llm_judge:
       score: 0.9825
       weight: 0.5
@@ -39,15 +38,15 @@ llm_results:
   word_count_valid: false
   structural_accuracy_score: 0.95
   tone_score: 0.95
-  evidence: 'All four three-act beats are clearly present: Act 1 (ordinary world,
-    inciting letter, decision to go), Act 2A (village life, Haruki, midpoint of blossoming
-    hope), Act 2B (business temptation, Yuki''s rejection/complication, decision turning
-    point), Act 3 (apology/climax at the wedding, denouement with the bamboo shop).
-    All eight required elements are preserved. Deductions applied: word count is outside
-    the required 550–750 range (provided text ~1322 words), so word_count_valid is
-    false. Minor, small deductions from perfect structural_accuracy and tone scores
-    because a couple of beats (notably the exact midpoint/second-plot-point labels)
-    are blended into scenes rather than explicitly signposted, and the prose is slightly
-    more lush than the strictly minimalist "quiet" aesthetic requested. Overall mapping
-    and tone are excellent.'
+  evidence: "All four three-act beats are clearly present: Act 1 (ordinary world,\
+    \ inciting letter, decision to go), Act 2A (village life, Haruki, midpoint of\
+    \ blossoming hope), Act 2B (business temptation, Yuki's rejection/complication,\
+    \ decision turning point), Act 3 (apology/climax at the wedding, denouement with\
+    \ the bamboo shop). All eight required elements are preserved. Deductions applied:\
+    \ word count is outside the required 550\u2013750 range (provided text ~1322 words),\
+    \ so word_count_valid is false. Minor, small deductions from perfect structural_accuracy\
+    \ and tone scores because a couple of beats (notably the exact midpoint/second-plot-point\
+    \ labels) are blended into scenes rather than explicitly signposted, and the prose\
+    \ is slightly more lush than the strictly minimalist \"quiet\" aesthetic requested.\
+    \ Overall mapping and tone are excellent."
 error: null

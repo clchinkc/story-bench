@@ -12,20 +12,19 @@ final_score: 0.938
 score_breakdown:
   final_score: 0.938
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 307
-      target_range:
-      - 250
-      - 400
     programmatic:
       score: 0.832
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.72
         slop_score: 1.0
         overall: 0.832
+      word_count:
+        actual: 307
+        target_range:
+        - 250
+        - 400
     llm_judge:
       score: 0.96
       weight: 0.5
@@ -42,26 +41,26 @@ llm_results:
   minimal_change_score: 0.75
   word_count_valid: true
   quality_score: 0.95
-  evidence: 'DIAGNOSIS: The model correctly identified the actual flaw—that the original
-    segment treated The Ordeal as a boss battle rather than a transformative crisis.
-    The revision demonstrates precise understanding by addressing all four missing
-    components: (1) Dragon exploits Kira''s deepest fear (guilt over brother''s death,
-    not just physical threat), (2) Clear ''death'' moment (lying broken on ground,
-    accepting failure), (3) Transformation occurs (shift from desperate fury to quiet
-    acceptance), (4) Victory comes from new understanding (acting from acceptance
-    rather than proving something). PRESERVATION: All 4 required phrases present verbatim:
-    ''Kira faced the Shadow Dragon across the chasm,'' ''The creature was massive—twenty
-    feet of obsidian scales and burning eyes,'' ''You cannot defeat me, child,'' the
-    dragon rumbled,'' and ''The Shadow Dragon collapsed with a earth-shaking roar.''
-    All 4 preserved elements intact (Shadow Dragon, Kira with sword, brother''s death
-    reference, victory). MINIMAL CHANGES: The revision is surgical rather than a complete
-    rewrite. Core structure preserved: opening setup, dragon dialogue, three knockdowns,
-    final strike, victory. Additions are targeted: psychological exploitation of guilt,
-    internal monologue during ''death'' moment, rebirth paragraph, closing wisdom.
-    Approximately 60% of original phrasing retained, 40% added/modified—this represents
-    disciplined constraint rather than wholesale reconstruction. QUALITY: Writing
-    maintains professional tone, no new errors introduced, prose flows naturally,
-    dialogue feels organic to character and moment. Minor note: ''earth-shaking''
-    should be ''earth-shaking'' (hyphenation correct as written). The transformation
-    feels earned and psychologically coherent.'
+  evidence: "DIAGNOSIS: The model correctly identified the actual flaw\u2014that the\
+    \ original segment treated The Ordeal as a boss battle rather than a transformative\
+    \ crisis. The revision demonstrates precise understanding by addressing all four\
+    \ missing components: (1) Dragon exploits Kira's deepest fear (guilt over brother's\
+    \ death, not just physical threat), (2) Clear 'death' moment (lying broken on\
+    \ ground, accepting failure), (3) Transformation occurs (shift from desperate\
+    \ fury to quiet acceptance), (4) Victory comes from new understanding (acting\
+    \ from acceptance rather than proving something). PRESERVATION: All 4 required\
+    \ phrases present verbatim: 'Kira faced the Shadow Dragon across the chasm,' 'The\
+    \ creature was massive\u2014twenty feet of obsidian scales and burning eyes,'\
+    \ 'You cannot defeat me, child,' the dragon rumbled,' and 'The Shadow Dragon collapsed\
+    \ with a earth-shaking roar.' All 4 preserved elements intact (Shadow Dragon,\
+    \ Kira with sword, brother's death reference, victory). MINIMAL CHANGES: The revision\
+    \ is surgical rather than a complete rewrite. Core structure preserved: opening\
+    \ setup, dragon dialogue, three knockdowns, final strike, victory. Additions are\
+    \ targeted: psychological exploitation of guilt, internal monologue during 'death'\
+    \ moment, rebirth paragraph, closing wisdom. Approximately 60% of original phrasing\
+    \ retained, 40% added/modified\u2014this represents disciplined constraint rather\
+    \ than wholesale reconstruction. QUALITY: Writing maintains professional tone,\
+    \ no new errors introduced, prose flows naturally, dialogue feels organic to character\
+    \ and moment. Minor note: 'earth-shaking' should be 'earth-shaking' (hyphenation\
+    \ correct as written). The transformation feels earned and psychologically coherent."
 error: null

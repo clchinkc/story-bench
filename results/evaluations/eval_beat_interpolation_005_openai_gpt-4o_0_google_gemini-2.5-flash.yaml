@@ -12,20 +12,19 @@ final_score: 0.9663213507625272
 score_breakdown:
   final_score: 0.9663
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 443
-      target_range:
-      - 300
-      - 450
     programmatic:
       score: 0.8653
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.79
         slop_score: 0.9782
         overall: 0.8653
+      word_count:
+        actual: 443
+        target_range:
+        - 300
+        - 450
     llm_judge:
       score: 1.0
       weight: 0.5
@@ -40,11 +39,12 @@ llm_results:
   character_score: 1.0
   bridge_score: 1.0
   continuity_score: 1.0
-  evidence: All required elements are present and well-executed. Maya discovers Alejandro's
-    vulnerability through his story about his mother and paella. Their relationship
-    clearly shifts from professional to personal, marked by shared vulnerability and
-    connection. The shared meal creates a genuine connection. Maya makes a clear choice
-    to deepen her commitment beyond the contract, stating 'I’m staying. For as long
-    as you’ll have me.' All 'must not' items were successfully avoided. Character
-    consistency, bridging between beats, and continuity are all excellent.
+  evidence: "All required elements are present and well-executed. Maya discovers Alejandro's\
+    \ vulnerability through his story about his mother and paella. Their relationship\
+    \ clearly shifts from professional to personal, marked by shared vulnerability\
+    \ and connection. The shared meal creates a genuine connection. Maya makes a clear\
+    \ choice to deepen her commitment beyond the contract, stating 'I\u2019m staying.\
+    \ For as long as you\u2019ll have me.' All 'must not' items were successfully\
+    \ avoided. Character consistency, bridging between beats, and continuity are all\
+    \ excellent."
 error: null

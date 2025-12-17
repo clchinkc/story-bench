@@ -12,20 +12,19 @@ final_score: 0.9744999999999999
 score_breakdown:
   final_score: 0.9745
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 322
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.958
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.93
         slop_score: 1.0
         overall: 0.958
+      word_count:
+        actual: 322
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 0.97
       weight: 0.5
@@ -42,21 +41,20 @@ llm_results:
   minimal_change_score: 0.85
   word_count_valid: true
   quality_score: 0.95
-  evidence: 'The model correctly diagnosed the actual flaw: Sophie showed no transformation
-    and immediately reverted to old workaholic patterns, making the journey meaningless.
-    The revision fixes this by: (1) Adding the breathing technique from meditation
-    as a concrete tool she applies (''counting, feeling the air move''), (2) Showing
-    internal conflict—she reaches for the phone habitually but pauses, demonstrating
-    changed behavior, (3) Making a different choice than her ''pre-Trip self'' would
-    have (''It can wait an hour'' vs. automatic ''no''), (4) Providing explicit contrast
-    (''Her mother glanced over, surprised''), (5) Showing changed perspective on her
-    environment (''less like a checklist and more like a place''), (6) Demonstrating
-    new priorities (''good to be home'' before work). All 4 required phrases preserved
-    exactly: ''Sophie''s flight landed at O''Hare'', ''How was Thailand? her mother
-    asked'', ''The familiar Chicago skyline appeared'', ''It''s good to be home, she
-    said''. Changes were surgical: inserted meditation-specific details, modified
-    her phone interaction sequence, added mother''s reaction, expanded final reflection.
-    No new errors introduced. The revision maintains original structure while embedding
-    transformation evidence throughout, fully satisfying the Return (Having Changed)
-    beat requirement.'
+  evidence: "The model correctly diagnosed the actual flaw: Sophie showed no transformation\
+    \ and immediately reverted to old workaholic patterns, making the journey meaningless.\
+    \ The revision fixes this by: (1) Adding the breathing technique from meditation\
+    \ as a concrete tool she applies ('counting, feeling the air move'), (2) Showing\
+    \ internal conflict\u2014she reaches for the phone habitually but pauses, demonstrating\
+    \ changed behavior, (3) Making a different choice than her 'pre-Trip self' would\
+    \ have ('It can wait an hour' vs. automatic 'no'), (4) Providing explicit contrast\
+    \ ('Her mother glanced over, surprised'), (5) Showing changed perspective on her\
+    \ environment ('less like a checklist and more like a place'), (6) Demonstrating\
+    \ new priorities ('good to be home' before work). All 4 required phrases preserved\
+    \ exactly: 'Sophie's flight landed at O'Hare', 'How was Thailand? her mother asked',\
+    \ 'The familiar Chicago skyline appeared', 'It's good to be home, she said'. Changes\
+    \ were surgical: inserted meditation-specific details, modified her phone interaction\
+    \ sequence, added mother's reaction, expanded final reflection. No new errors\
+    \ introduced. The revision maintains original structure while embedding transformation\
+    \ evidence throughout, fully satisfying the Return (Having Changed) beat requirement."
 error: null

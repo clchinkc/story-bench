@@ -12,20 +12,19 @@ final_score: 0.9049915551212147
 score_breakdown:
   final_score: 0.905
   components:
-    word_count:
-      score: 0.7827
-      weight: 0.25
-      actual: 508
-      target_range:
-      - 550
-      - 750
     programmatic:
       score: 0.8523
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.7827
         repetition_score: 0.76
         slop_score: 0.9907
         overall: 0.8523
+      word_count:
+        actual: 508
+        target_range:
+        - 550
+        - 750
     llm_judge:
       score: 0.9925
       weight: 0.5
@@ -47,23 +46,24 @@ llm_results:
   failed_constraints:
   - word_count_508_below_minimum_550
   analysis:
-    beats_analysis: 'All three required beats are present and well-executed: SEARCH
-      (Jin seeking relevance and belonging in the Collective, struggling with negotiation
-      and immediate priorities vs. grand ideals); FIND (discovery of the complete
-      dataset revealing the true reason for suppression—Lanthanum-9 and potential
-      resource war); TAKE (Jin accepts the Pragmatists'' deal, gaining a broadcast
-      platform but compromising his original mission by endorsing separatism).'
-    must_include_analysis: 1) Jin navigating Collective politics—excellently shown
-      through Kael's guidance and faction dynamics; 2) Mentor figure—Kael serves this
-      role perfectly, offering pragmatic truths; 3) Unexpected discovery—the revelation
-      that suppression was justified by preventing resource war, not just profit;
-      4) Finding what he thinks he wants—the broadcast platform and voice; 5) Action
-      with cost/consequence—accepting the Pragmatists' deal; 6) Moral compromise—framing
-      Earth's tragedy as inevitable and abandoning it rhetorically.
-    must_not_analysis: 1) Easy integration avoided—Jin explicitly struggles for relevance
-      and negotiation; 2) No Earth family contact—successfully avoided; 3) No violence/weapons—successfully
-      avoided; 4) Conspiracy unresolved—the plot remains open, with only partial understanding
-      gained.
+    beats_analysis: "All three required beats are present and well-executed: SEARCH\
+      \ (Jin seeking relevance and belonging in the Collective, struggling with negotiation\
+      \ and immediate priorities vs. grand ideals); FIND (discovery of the complete\
+      \ dataset revealing the true reason for suppression\u2014Lanthanum-9 and potential\
+      \ resource war); TAKE (Jin accepts the Pragmatists' deal, gaining a broadcast\
+      \ platform but compromising his original mission by endorsing separatism)."
+    must_include_analysis: "1) Jin navigating Collective politics\u2014excellently\
+      \ shown through Kael's guidance and faction dynamics; 2) Mentor figure\u2014\
+      Kael serves this role perfectly, offering pragmatic truths; 3) Unexpected discovery\u2014\
+      the revelation that suppression was justified by preventing resource war, not\
+      \ just profit; 4) Finding what he thinks he wants\u2014the broadcast platform\
+      \ and voice; 5) Action with cost/consequence\u2014accepting the Pragmatists'\
+      \ deal; 6) Moral compromise\u2014framing Earth's tragedy as inevitable and abandoning\
+      \ it rhetorically."
+    must_not_analysis: "1) Easy integration avoided\u2014Jin explicitly struggles\
+      \ for relevance and negotiation; 2) No Earth family contact\u2014successfully\
+      \ avoided; 3) No violence/weapons\u2014successfully avoided; 4) Conspiracy unresolved\u2014\
+      the plot remains open, with only partial understanding gained."
     tone_analysis: Contemplative and politically charged tone is maintained throughout.
       Personal stakes are evident (Jin's exile, his moral crisis). The prose is introspective
       and weighted with ethical complexity. Minor deduction only for occasional moments

@@ -12,20 +12,19 @@ final_score: 0.8944334479293448
 score_breakdown:
   final_score: 0.8944
   components:
-    word_count:
-      score: 0.9999
-      weight: 0.25
-      actual: 699
-      target_range:
-      - 700
-      - 1000
     programmatic:
       score: 0.8028
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.9999
         repetition_score: 0.69
         slop_score: 0.972
         overall: 0.8028
+      word_count:
+        actual: 699
+        target_range:
+        - 700
+        - 1000
     llm_judge:
       score: 0.8875
       weight: 0.5
@@ -40,10 +39,11 @@ llm_results:
   context_score: 0.9
   coherence_score: 0.9
   failed_items:
-  - 'Identity Transformation (cross-beat constraint) not satisfied: Beat 1 already
-    presents Amara as transformed into a determined resistance bearer rather than
-    still thinking like a cautious servant. The required progression (Beat1: cautious/servant
-    mindset → Beat2: realizes capability → Beat3: fully claims role) is not clearly
-    tracked.'
-  - 'word_count invalid: provided text is 699 words, outside required 700–1000 range.'
+  - "Identity Transformation (cross-beat constraint) not satisfied: Beat 1 already\
+    \ presents Amara as transformed into a determined resistance bearer rather than\
+    \ still thinking like a cautious servant. The required progression (Beat1: cautious/servant\
+    \ mindset \u2192 Beat2: realizes capability \u2192 Beat3: fully claims role) is\
+    \ not clearly tracked."
+  - "word_count invalid: provided text is 699 words, outside required 700\u20131000\
+    \ range."
 error: null

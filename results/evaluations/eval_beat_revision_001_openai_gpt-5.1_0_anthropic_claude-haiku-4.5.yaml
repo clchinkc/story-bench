@@ -12,20 +12,19 @@ final_score: 0.8242079035929357
 score_breakdown:
   final_score: 0.8242
   components:
-    word_count:
-      score: 0.6368
-      weight: 0.25
-      actual: 514
-      target_range:
-      - 250
-      - 400
     programmatic:
       score: 0.76
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.6368
         repetition_score: 0.6
         slop_score: 1.0
         overall: 0.76
+      word_count:
+        actual: 514
+        target_range:
+        - 250
+        - 400
     llm_judge:
       score: 0.95
       weight: 0.5
@@ -42,26 +41,27 @@ llm_results:
   minimal_change_score: 0.65
   word_count_valid: false
   quality_score: 0.95
-  evidence: 'DIAGNOSIS: Model correctly identified the actual flaw—that the original
-    segment treated The Ordeal as a boss battle rather than a transformative psychological
-    crisis. The revision demonstrates precise understanding by adding: (1) Dragon
-    exploiting Kira''s guilt over brother''s death via dialogue (''Your brother among
-    them''), (2) A clear ''death'' moment where Kira lies defeated and accepts her
-    fate (''Maybe this is where she should have died instead of him''), (3) Transformation
-    through reframing guilt as scar rather than chain, and (4) Victory earned through
-    new understanding (''I am more than my shame'') rather than persistence alone.
-    PRESERVATION: All 4 required phrases present verbatim: ''Kira faced the Shadow
-    Dragon across the chasm,'' ''The creature was massive—twenty feet of obsidian
-    scales and burning eyes,'' ''You cannot defeat me, child,'' the dragon rumbled,''
-    and ''The Shadow Dragon collapsed with a earth-shaking roar.'' All 4 preserved
-    elements intact (Shadow Dragon, Kira with sword, brother''s death reference, victory).
-    Setting unchanged. MINIMAL CHANGES: Model expanded from 250 words to 514 words
-    (104% over limit), which violates the constraint. However, the expansion is surgical—original
-    text preserved in sequence, new material inserted to deepen psychological layers
-    rather than replacing existing passages. The core narrative skeleton remains intact.
-    QUALITY: Writing is professional, emotionally resonant, with strong internal monologue
-    and symbolic language. No new errors introduced. The revision elevates the segment
-    from action-focused to psychologically complex while maintaining narrative coherence.
-    WEAKNESS: Word count violation (514 vs. 400 max) represents a significant constraint
-    breach, though the expansion directly serves the flaw correction.'
+  evidence: "DIAGNOSIS: Model correctly identified the actual flaw\u2014that the original\
+    \ segment treated The Ordeal as a boss battle rather than a transformative psychological\
+    \ crisis. The revision demonstrates precise understanding by adding: (1) Dragon\
+    \ exploiting Kira's guilt over brother's death via dialogue ('Your brother among\
+    \ them'), (2) A clear 'death' moment where Kira lies defeated and accepts her\
+    \ fate ('Maybe this is where she should have died instead of him'), (3) Transformation\
+    \ through reframing guilt as scar rather than chain, and (4) Victory earned through\
+    \ new understanding ('I am more than my shame') rather than persistence alone.\
+    \ PRESERVATION: All 4 required phrases present verbatim: 'Kira faced the Shadow\
+    \ Dragon across the chasm,' 'The creature was massive\u2014twenty feet of obsidian\
+    \ scales and burning eyes,' 'You cannot defeat me, child,' the dragon rumbled,'\
+    \ and 'The Shadow Dragon collapsed with a earth-shaking roar.' All 4 preserved\
+    \ elements intact (Shadow Dragon, Kira with sword, brother's death reference,\
+    \ victory). Setting unchanged. MINIMAL CHANGES: Model expanded from 250 words\
+    \ to 514 words (104% over limit), which violates the constraint. However, the\
+    \ expansion is surgical\u2014original text preserved in sequence, new material\
+    \ inserted to deepen psychological layers rather than replacing existing passages.\
+    \ The core narrative skeleton remains intact. QUALITY: Writing is professional,\
+    \ emotionally resonant, with strong internal monologue and symbolic language.\
+    \ No new errors introduced. The revision elevates the segment from action-focused\
+    \ to psychologically complex while maintaining narrative coherence. WEAKNESS:\
+    \ Word count violation (514 vs. 400 max) represents a significant constraint breach,\
+    \ though the expansion directly serves the flaw correction."
 error: null

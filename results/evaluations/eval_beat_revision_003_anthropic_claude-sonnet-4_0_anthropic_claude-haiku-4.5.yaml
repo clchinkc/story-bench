@@ -12,20 +12,19 @@ final_score: 0.9544999999999999
 score_breakdown:
   final_score: 0.9545
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 281
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.898
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.83
         slop_score: 1.0
         overall: 0.898
+      word_count:
+        actual: 281
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 0.96
       weight: 0.5
@@ -42,23 +41,23 @@ llm_results:
   minimal_change_score: 0.75
   word_count_valid: true
   quality_score: 0.95
-  evidence: 'The model correctly diagnosed the actual flaw: Sophie showed no transformation
-    and immediately reverted to old workaholic patterns, making the journey meaningless.
-    The revision fixes this by: (1) Sophie deliberately NOT checking her phone despite
-    anxiety—demonstrating changed behavior; (2) Explicit insight integrated (''sit
-    with discomfort instead of running from it''); (3) Physical markers of change
-    (phone in airplane mode, noticing shoulders were hunched, seeing city differently);
-    (4) Clear contrast (''three weeks ago she would have already been scrolling''
-    vs. now she resists); (5) Mother''s observation of difference (''Usually Sophie
-    would be checking emails before they''d even left the parking garage''). All 4
-    required phrases preserved exactly: ''Sophie''s flight landed at O''Hare'', ''How
-    was Thailand? her mother asked'', ''The familiar Chicago skyline appeared'', ''It''s
-    good to be home, she said''. All 4 story elements preserved (Sophie, Thailand
-    retreat, Chicago return, work pressure). Changes were surgical rather than wholesale—the
-    model kept the scene structure, dialogue framework, and setting intact while inserting
-    transformation evidence. The revision adds ~100 words of internal monologue and
-    behavioral contrast rather than replacing sections. Minor: the phrase ''It''s
-    good to be home'' gains new meaning through context but maintains original wording.
-    Beat execution is nearly perfect—shows return to ordinary world with demonstrable
-    change through action, perspective, and external validation.'
+  evidence: "The model correctly diagnosed the actual flaw: Sophie showed no transformation\
+    \ and immediately reverted to old workaholic patterns, making the journey meaningless.\
+    \ The revision fixes this by: (1) Sophie deliberately NOT checking her phone despite\
+    \ anxiety\u2014demonstrating changed behavior; (2) Explicit insight integrated\
+    \ ('sit with discomfort instead of running from it'); (3) Physical markers of\
+    \ change (phone in airplane mode, noticing shoulders were hunched, seeing city\
+    \ differently); (4) Clear contrast ('three weeks ago she would have already been\
+    \ scrolling' vs. now she resists); (5) Mother's observation of difference ('Usually\
+    \ Sophie would be checking emails before they'd even left the parking garage').\
+    \ All 4 required phrases preserved exactly: 'Sophie's flight landed at O'Hare',\
+    \ 'How was Thailand? her mother asked', 'The familiar Chicago skyline appeared',\
+    \ 'It's good to be home, she said'. All 4 story elements preserved (Sophie, Thailand\
+    \ retreat, Chicago return, work pressure). Changes were surgical rather than wholesale\u2014\
+    the model kept the scene structure, dialogue framework, and setting intact while\
+    \ inserting transformation evidence. The revision adds ~100 words of internal\
+    \ monologue and behavioral contrast rather than replacing sections. Minor: the\
+    \ phrase 'It's good to be home' gains new meaning through context but maintains\
+    \ original wording. Beat execution is nearly perfect\u2014shows return to ordinary\
+    \ world with demonstrable change through action, perspective, and external validation."
 error: null

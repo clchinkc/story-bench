@@ -12,20 +12,19 @@ final_score: 0.9100031197981705
 score_breakdown:
   final_score: 0.91
   components:
-    word_count:
-      score: 0.995
-      weight: 0.25
-      actual: 756
-      target_range:
-      - 550
-      - 750
     programmatic:
       score: 0.7
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.995
         repetition_score: 0.5
         slop_score: 1.0
         overall: 0.7
+      word_count:
+        actual: 756
+        target_range:
+        - 550
+        - 750
     llm_judge:
       score: 0.9725
       weight: 0.5
@@ -41,19 +40,20 @@ llm_results:
   word_count_range: 550-750
   structural_accuracy_score: 0.9
   tone_score: 0.95
-  evidence: 'STRENGTHS: All 4 three-act beats clearly present—Act 1 establishes Kenji''s
-    corporate loss and Yuki''s letter (Setup + Inciting Incident + First Plot Point);
-    Act 2A shows village arrival, Haruki mentorship, tentative bonding (Rising Action/Obstacles
-    + Midpoint); Act 2B introduces investor temptation, Yuki''s betrayal, isolation
-    (Complications + Second Plot Point); Act 3 delivers climax (declining offer, apology,
-    wedding witness) and denouement (bamboo shop, transformed life). All 8 core elements
-    preserved: Kenji protagonist, lost career, estranged Yuki, Kyoto wedding, Haruki
-    craftsman, business temptation, theme of people over ambition, bamboo shop ending.
-    Tone masterfully maintained—quiet, contemplative, Japanese aesthetic (cherry blossoms,
-    incense, bamboo, tea ceremonies, shrine). Redemptive arc clear and earned. DEDUCTIONS:
-    Word count exceeds target by 6 words (756 vs. 750 max)—minor violation but flagged
-    per criteria. Structural accuracy near-perfect; only minor observation is Act
-    2B could slightly emphasize the ''second plot point'' stakes more explicitly,
-    though the confrontation scene effectively serves this function. Tone execution
-    is exceptional throughout.'
+  evidence: "STRENGTHS: All 4 three-act beats clearly present\u2014Act 1 establishes\
+    \ Kenji's corporate loss and Yuki's letter (Setup + Inciting Incident + First\
+    \ Plot Point); Act 2A shows village arrival, Haruki mentorship, tentative bonding\
+    \ (Rising Action/Obstacles + Midpoint); Act 2B introduces investor temptation,\
+    \ Yuki's betrayal, isolation (Complications + Second Plot Point); Act 3 delivers\
+    \ climax (declining offer, apology, wedding witness) and denouement (bamboo shop,\
+    \ transformed life). All 8 core elements preserved: Kenji protagonist, lost career,\
+    \ estranged Yuki, Kyoto wedding, Haruki craftsman, business temptation, theme\
+    \ of people over ambition, bamboo shop ending. Tone masterfully maintained\u2014\
+    quiet, contemplative, Japanese aesthetic (cherry blossoms, incense, bamboo, tea\
+    \ ceremonies, shrine). Redemptive arc clear and earned. DEDUCTIONS: Word count\
+    \ exceeds target by 6 words (756 vs. 750 max)\u2014minor violation but flagged\
+    \ per criteria. Structural accuracy near-perfect; only minor observation is Act\
+    \ 2B could slightly emphasize the 'second plot point' stakes more explicitly,\
+    \ though the confrontation scene effectively serves this function. Tone execution\
+    \ is exceptional throughout."
 error: null

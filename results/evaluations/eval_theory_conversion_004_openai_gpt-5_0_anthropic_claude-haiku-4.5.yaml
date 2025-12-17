@@ -12,20 +12,19 @@ final_score: 0.6701610949551421
 score_breakdown:
   final_score: 0.6702
   components:
-    word_count:
-      score: 0.0006
-      weight: 0.25
-      actual: 930
-      target_range:
-      - 500
-      - 700
     programmatic:
       score: 0.7
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.0006
         repetition_score: 0.5
         slop_score: 1.0
         overall: 0.7
+      word_count:
+        actual: 930
+        target_range:
+        - 500
+        - 700
     llm_judge:
       score: 0.99
       weight: 0.5
@@ -41,20 +40,21 @@ llm_results:
   word_count_range: 500-700
   structural_accuracy_score: 0.95
   tone_score: 1.0
-  evidence: 'All 8 Story Circle beats present and clearly mapped: (1) You—library
-    comfort zone established with sensory detail; (2) Need—absence articulated (''outline
-    around her days where something should be''); (3) Go—accepts recorder, travels
-    to Bernard''s house; (4) Search—five interviews showing adaptation and learning
-    silence; (5) Find—breakthrough moment (''listening stopped being a hiding place'');
-    (6) Take—town hall presentation, accepts responsibility; (7) Return—post-program
-    life, continued visits, Bernard''s death, funeral speech; (8) Change—senior year
-    applications, confident barista interaction, mentoring new volunteers. All 8 core
-    elements preserved: Zoe (protagonist), library setting, oral history program,
-    Ms. Okafor (mentor), Bernard Park (key relationship), social anxiety (woven throughout),
-    town hall presentation (twice, escalated), journalism school ending. Tone is consistently
-    gentle, intimate, and emotionally true with lyrical prose (''stories that held
-    their breath,'' ''like a bell,'' ''cone of light''). Structure maps cleanly to
-    Harmon''s framework. Primary deduction: word count exceeds target range by 230
-    words (33% over), which violates the specified constraint. This is a structural
-    requirement issue, not a quality issue. The conversion itself is exceptional.'
+  evidence: "All 8 Story Circle beats present and clearly mapped: (1) You\u2014library\
+    \ comfort zone established with sensory detail; (2) Need\u2014absence articulated\
+    \ ('outline around her days where something should be'); (3) Go\u2014accepts recorder,\
+    \ travels to Bernard's house; (4) Search\u2014five interviews showing adaptation\
+    \ and learning silence; (5) Find\u2014breakthrough moment ('listening stopped\
+    \ being a hiding place'); (6) Take\u2014town hall presentation, accepts responsibility;\
+    \ (7) Return\u2014post-program life, continued visits, Bernard's death, funeral\
+    \ speech; (8) Change\u2014senior year applications, confident barista interaction,\
+    \ mentoring new volunteers. All 8 core elements preserved: Zoe (protagonist),\
+    \ library setting, oral history program, Ms. Okafor (mentor), Bernard Park (key\
+    \ relationship), social anxiety (woven throughout), town hall presentation (twice,\
+    \ escalated), journalism school ending. Tone is consistently gentle, intimate,\
+    \ and emotionally true with lyrical prose ('stories that held their breath,' 'like\
+    \ a bell,' 'cone of light'). Structure maps cleanly to Harmon's framework. Primary\
+    \ deduction: word count exceeds target range by 230 words (33% over), which violates\
+    \ the specified constraint. This is a structural requirement issue, not a quality\
+    \ issue. The conversion itself is exceptional."
 error: null

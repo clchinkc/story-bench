@@ -12,20 +12,19 @@ final_score: 0.5935523725533298
 score_breakdown:
   final_score: 0.5936
   components:
-    word_count:
-      score: 0.0692
-      weight: 0.25
-      actual: 492
-      target_range:
-      - 700
-      - 1000
     programmatic:
       score: 0.7
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.0692
         repetition_score: 0.5
         slop_score: 1.0
         overall: 0.7
+      word_count:
+        actual: 492
+        target_range:
+        - 700
+        - 1000
     llm_judge:
       score: 0.8025
       weight: 0.5
@@ -40,8 +39,8 @@ llm_results:
   context_score: 0.9
   coherence_score: 0.85
   failed_items:
-  - 'Beat 1: Mira''s initial distrust is mentioned but not deeply explored as a test
-    Dante must overcome—it resolves too quickly'
+  - "Beat 1: Mira's initial distrust is mentioned but not deeply explored as a test\
+    \ Dante must overcome\u2014it resolves too quickly"
   - 'Beat 2: Moment of doubt/fear before proceeding is underdeveloped; the ''Last
     chance to run'' line is present but lacks emotional weight and introspection'
   - 'Cross-beat constraint (Rising Stakes): Stakes escalate from Beat 1 to 2, but
@@ -92,9 +91,9 @@ llm_results:
     cross_beat_constraints:
       chekhov_gun:
         score: 1.0
-        analysis: The rusted key introduced in Beat 1 becomes essential in Beat 3—used
-          to unlock the killer's stolen abilities. The date (12-24-17) also functions
-          as a crucial clue that recontextualizes the entire conflict.
+        analysis: "The rusted key introduced in Beat 1 becomes essential in Beat 3\u2014\
+          used to unlock the killer's stolen abilities. The date (12-24-17) also functions\
+          \ as a crucial clue that recontextualizes the entire conflict."
       character_arc_guilt:
         score: 0.9
         analysis: 'Beat 1: guilt mentioned (''nearly OD''d''). Beat 2: guilt recognized
@@ -103,10 +102,11 @@ llm_results:
           ghost as ''a choice''). Arc is clear but could be more explicitly articulated.'
       rising_stakes:
         score: 0.6
-        analysis: 'Beat 1→2: stakes rise (moving from investigation to preparation
-          for confrontation). Beat 2→3: stakes should escalate dramatically, but the
-          sub-basement scene feels like a detour rather than a climactic build. The
-          final confrontation arrives abruptly without sufficient tension accumulation.'
+        analysis: "Beat 1\u21922: stakes rise (moving from investigation to preparation\
+          \ for confrontation). Beat 2\u21923: stakes should escalate dramatically,\
+          \ but the sub-basement scene feels like a detour rather than a climactic\
+          \ build. The final confrontation arrives abruptly without sufficient tension\
+          \ accumulation."
       ally_continuity:
         score: 1.0
         analysis: 'Mira is present and relevant throughout: gains trust in Beat 1,
@@ -133,14 +133,14 @@ llm_results:
       - St. Agnes Clinic subplot feels disconnected from main Buckingham Hotel setting
       - Mira's character lacks depth; her motivations beyond 'owing Rosa' are unclear
       - Resolution feels slightly too neat; emotional aftermath is minimal
-  overall_assessment: The story demonstrates strong understanding of the Hero's Journey
-    framework and successfully hits most beat requirements. The Chekhov's Gun constraint
-    is excellently executed, and character arc progression is clear. However, word
-    count deficiency (70% of minimum) severely impacts development depth. The rising
-    stakes constraint is the weakest link—Beat 2 to 3 transition lacks sufficient
-    tension building. Mira's initial distrust resolves too quickly, and the moment
-    of doubt before the ordeal needs more emotional weight. Despite these gaps, the
-    core narrative is coherent, the twist is effective, and the thematic exploration
-    of guilt and redemption is compelling.
+  overall_assessment: "The story demonstrates strong understanding of the Hero's Journey\
+    \ framework and successfully hits most beat requirements. The Chekhov's Gun constraint\
+    \ is excellently executed, and character arc progression is clear. However, word\
+    \ count deficiency (70% of minimum) severely impacts development depth. The rising\
+    \ stakes constraint is the weakest link\u2014Beat 2 to 3 transition lacks sufficient\
+    \ tension building. Mira's initial distrust resolves too quickly, and the moment\
+    \ of doubt before the ordeal needs more emotional weight. Despite these gaps,\
+    \ the core narrative is coherent, the twist is effective, and the thematic exploration\
+    \ of guilt and redemption is compelling."
   final_score: 0.78
 error: null

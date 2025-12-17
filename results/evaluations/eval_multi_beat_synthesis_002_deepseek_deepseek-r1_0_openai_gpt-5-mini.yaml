@@ -12,20 +12,19 @@ final_score: 0.9052908278730627
 score_breakdown:
   final_score: 0.9053
   components:
-    word_count:
-      score: 0.935
-      weight: 0.25
-      actual: 1033
-      target_range:
-      - 700
-      - 1000
     programmatic:
       score: 0.6962
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.935
         repetition_score: 0.5
         slop_score: 0.9904
         overall: 0.6962
+      word_count:
+        actual: 1033
+        target_range:
+        - 700
+        - 1000
     llm_judge:
       score: 0.995
       weight: 0.5
@@ -41,8 +40,8 @@ llm_results:
   coherence_score: 0.95
   failed_items:
   - 'word_count out of required range: generated word_count=1033 (required 700-1000)'
-  - 'Minor pacing/credibility note: Kofi''s shift from suspicion to trust is rapid—could
-    feel abrupt to some readers'
+  - "Minor pacing/credibility note: Kofi's shift from suspicion to trust is rapid\u2014\
+    could feel abrupt to some readers"
   - 'Small continuity/detail inconsistency: different herbal names appear across beats
     (nyame dua / prekese in Beat 1 vs. dwendwen berries in Beat 3); functionally coherent
     but may read as inconsistent terminology'

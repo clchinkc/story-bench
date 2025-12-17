@@ -12,20 +12,19 @@ final_score: 0.9234152139461171
 score_breakdown:
   final_score: 0.9234
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 610
-      target_range:
-      - 500
-      - 700
     programmatic:
       score: 0.6937
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.5
         slop_score: 0.9842
         overall: 0.6937
+      word_count:
+        actual: 610
+        target_range:
+        - 500
+        - 700
     llm_judge:
       score: 1.0
       weight: 0.5
@@ -39,9 +38,9 @@ llm_results:
   word_count_valid: true
   structural_accuracy_score: 1.0
   tone_score: 1.0
-  evidence: All eight Dan Harmon beats are clearly present and mapped (You/Need/Go/Search/Find/Take/Return/Change).
-    All eight required elements are preserved (Zoe, library/oral-history program,
-    Ms. Okafor, Bernard Park, Zoe’s social anxiety, town-hall presentation, Bernard’s
-    death, and Zoe choosing journalism). No substantive deductions — structure and
-    gentle, intimate tone are faithfully maintained.
+  evidence: "All eight Dan Harmon beats are clearly present and mapped (You/Need/Go/Search/Find/Take/Return/Change).\
+    \ All eight required elements are preserved (Zoe, library/oral-history program,\
+    \ Ms. Okafor, Bernard Park, Zoe\u2019s social anxiety, town-hall presentation,\
+    \ Bernard\u2019s death, and Zoe choosing journalism). No substantive deductions\
+    \ \u2014 structure and gentle, intimate tone are faithfully maintained."
 error: null

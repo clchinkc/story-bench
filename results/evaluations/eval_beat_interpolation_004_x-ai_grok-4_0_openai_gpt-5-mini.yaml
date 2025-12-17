@@ -12,20 +12,19 @@ final_score: 0.9638944357154944
 score_breakdown:
   final_score: 0.9639
   components:
-    word_count:
-      score: 0.9156
-      weight: 0.25
-      actual: 471
-      target_range:
-      - 300
-      - 450
     programmatic:
       score: 0.94
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.9156
         repetition_score: 0.9
         slop_score: 1.0
         overall: 0.94
+      word_count:
+        actual: 471
+        target_range:
+        - 300
+        - 450
     llm_judge:
       score: 1.0
       weight: 0.5
@@ -40,10 +39,10 @@ llm_results:
   character_score: 1.0
   bridge_score: 1.0
   continuity_score: 1.0
-  evidence: 'All four required elements are present: Thomas''s direct examination,
-    an apparent recantation, Thomas taking decisive action that influences Dr. Okonkwo,
-    and the turning point where truth prevails. The scene functions clearly as the
-    Climax. None of the forbidden items (simple unconflicted truth-telling, Thomas
-    passivity, defense victory, or deus ex machina) occur. The only issue is technical:
-    the excerpt is 471 words, outside the required 300–450 range.'
+  evidence: "All four required elements are present: Thomas's direct examination,\
+    \ an apparent recantation, Thomas taking decisive action that influences Dr. Okonkwo,\
+    \ and the turning point where truth prevails. The scene functions clearly as the\
+    \ Climax. None of the forbidden items (simple unconflicted truth-telling, Thomas\
+    \ passivity, defense victory, or deus ex machina) occur. The only issue is technical:\
+    \ the excerpt is 471 words, outside the required 300\u2013450 range."
 error: null

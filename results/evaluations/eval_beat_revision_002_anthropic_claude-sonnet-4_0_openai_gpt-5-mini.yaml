@@ -12,20 +12,19 @@ final_score: 0.9570000000000001
 score_breakdown:
   final_score: 0.957
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 271
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.988
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.98
         slop_score: 1.0
         overall: 0.988
+      word_count:
+        actual: 271
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 0.92
       weight: 0.5
@@ -42,16 +41,16 @@ llm_results:
   minimal_change_score: 0.5
   word_count_valid: true
   quality_score: 0.9
-  evidence: 'The revision correctly targeted the All Is Lost flaw by removing remaining
-    obvious options and support: the board cuts off fundraising and offers Denise
-    the director job (betrayal/isolation), the grant is explicitly denied, the city
-    rezoned the property and other buildings were bought by the developer (no path
-    forward), and a separate legal loss threatens his home and family (personal loss/whiff
-    of death). Marcus is depicted as defeated and utterly alone. All four required
-    elements (Marcus protagonist, community center/youth program setting, eviction
-    crisis, Denise present) remain intact and all four required phrases appear verbatim
-    or nearly so. Changes were more than surgical — new plot details and emotional
-    beats were added across several sentences — so I rated minimal_change as moderate
-    (0.5). Writing quality is strong with coherent, bleak tone appropriate to the
-    beat.'
+  evidence: "The revision correctly targeted the All Is Lost flaw by removing remaining\
+    \ obvious options and support: the board cuts off fundraising and offers Denise\
+    \ the director job (betrayal/isolation), the grant is explicitly denied, the city\
+    \ rezoned the property and other buildings were bought by the developer (no path\
+    \ forward), and a separate legal loss threatens his home and family (personal\
+    \ loss/whiff of death). Marcus is depicted as defeated and utterly alone. All\
+    \ four required elements (Marcus protagonist, community center/youth program setting,\
+    \ eviction crisis, Denise present) remain intact and all four required phrases\
+    \ appear verbatim or nearly so. Changes were more than surgical \u2014 new plot\
+    \ details and emotional beats were added across several sentences \u2014 so I\
+    \ rated minimal_change as moderate (0.5). Writing quality is strong with coherent,\
+    \ bleak tone appropriate to the beat."
 error: null

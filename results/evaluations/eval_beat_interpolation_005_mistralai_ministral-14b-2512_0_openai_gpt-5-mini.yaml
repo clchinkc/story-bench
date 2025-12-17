@@ -12,20 +12,19 @@ final_score: 0.666250004836404
 score_breakdown:
   final_score: 0.6663
   components:
-    word_count:
-      score: 0.0
-      weight: 0.25
-      actual: 748
-      target_range:
-      - 300
-      - 450
     programmatic:
       score: 0.7
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.0
         repetition_score: 0.5
         slop_score: 1.0
         overall: 0.7
+      word_count:
+        actual: 748
+        target_range:
+        - 300
+        - 450
     llm_judge:
       score: 0.9825
       weight: 0.5
@@ -40,15 +39,15 @@ llm_results:
   character_score: 0.9
   bridge_score: 0.95
   continuity_score: 1.0
-  evidence: 'All four required elements are present: Maya discovers Alejandro''s vulnerability
-    (scars, ritual with wine and blood), their relationship shifts from professional
-    to personal, there is a clear shared connective moment (wine/blood ritual and
-    conversation), and Maya chooses to stay emotionally beyond the contract. The scene
-    clearly functions as a midpoint commitment, raising stakes and shifting Maya to
-    proactive emotional investment. No prohibited items appear (no pre-existing love
-    declaration, no contract breach, no photograph, and Alejandro softens rather than
-    remaining closed). Word count is outside the requested 300–450 range, so word_count_valid
-    is false. Minor deduction in character_score for slightly melodramatic/overly
-    sensual detail that risks feeling excessive (hence 0.9 rather than 1.0); bridge
-    and continuity are strong and well-handled.'
+  evidence: "All four required elements are present: Maya discovers Alejandro's vulnerability\
+    \ (scars, ritual with wine and blood), their relationship shifts from professional\
+    \ to personal, there is a clear shared connective moment (wine/blood ritual and\
+    \ conversation), and Maya chooses to stay emotionally beyond the contract. The\
+    \ scene clearly functions as a midpoint commitment, raising stakes and shifting\
+    \ Maya to proactive emotional investment. No prohibited items appear (no pre-existing\
+    \ love declaration, no contract breach, no photograph, and Alejandro softens rather\
+    \ than remaining closed). Word count is outside the requested 300\u2013450 range,\
+    \ so word_count_valid is false. Minor deduction in character_score for slightly\
+    \ melodramatic/overly sensual detail that risks feeling excessive (hence 0.9 rather\
+    \ than 1.0); bridge and continuity are strong and well-handled."
 error: null

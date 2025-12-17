@@ -481,6 +481,37 @@ class AgenticGenerator:
         self.config = config or AgenticConfig()
         self.llm_client = llm_client or LLMClient()
 
+    def _validate_final_output(self, turns: list[AgenticTurn], agentic_type: str) -> str:
+        """
+        Validate final output is non-empty.
+
+        Args:
+            turns: Conversation turns
+            agentic_type: Type of agentic task
+
+        Returns:
+            Final output content
+
+        Raises:
+            RuntimeError: If final output is empty
+        """
+        import logging
+        logger = logging.getLogger(__name__)
+
+        # Find last assistant generation
+        final_output = ""
+        for turn in reversed(turns):
+            if turn.role == "assistant" and turn.turn_type == "generation":
+                final_output = turn.content
+                break
+
+        # FAIL if empty
+        if not final_output.strip():
+            logger.error(f"[{agentic_type}] Generation failed: final output is empty")
+            raise RuntimeError("Empty generation - no valid output produced")
+
+        return final_output.strip()
+
     def _call_model(
         self,
         model: str,
@@ -627,6 +658,9 @@ class AgenticGenerator:
                 turn_type="generation",
             ))
 
+            # Validate final output is non-empty
+            final_output = self._validate_final_output(turns, "constraint_discovery")
+
             return AgenticResult(
                 generation_id=generation_id,
                 task_id=task_id,
@@ -745,6 +779,9 @@ class AgenticGenerator:
                 content=final_output,
                 turn_type="generation",
             ))
+
+            # Validate final output is non-empty
+            final_output = self._validate_final_output(turns, "planning_execution")
 
             return AgenticResult(
                 generation_id=generation_id,
@@ -891,6 +928,9 @@ class AgenticGenerator:
                     metadata={"revision": rev_num + 1},
                 ))
                 messages.append({"role": "assistant", "content": current_output})
+
+            # Validate final output is non-empty
+            final_output = self._validate_final_output(turns, "iterative_revision")
 
             return AgenticResult(
                 generation_id=generation_id,
@@ -1055,6 +1095,9 @@ class AgenticGenerator:
                     metadata={"revision": round_num + 1, "version": f"revision_{round_num + 1}"},
                 ))
                 messages.append({"role": "assistant", "content": current_output})
+
+            # Validate final output is non-empty
+            final_output = self._validate_final_output(turns, "critique_improvement")
 
             return AgenticResult(
                 generation_id=generation_id,

@@ -12,20 +12,19 @@ final_score: 0.9430000000000001
 score_breakdown:
   final_score: 0.943
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 331
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.952
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.92
         slop_score: 1.0
         overall: 0.952
+      word_count:
+        actual: 331
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 0.91
       weight: 0.5
@@ -42,15 +41,16 @@ llm_results:
   minimal_change_score: 0.6
   word_count_valid: true
   quality_score: 0.9
-  evidence: 'The revision targeted the correct flaw: it turns the segment into a proper
-    All Is Lost beat by removing the protagonist''s remaining options and support.
-    Specific changes: fundraiser is reported as coming up short, the grant is denied,
-    the board dissolves, Denise accepts a job and leaves, and Marcus receives divorce
-    papers—creating isolation and a ''whiff of death'' (the collapse of his life''s
-    work and identity). These address points 1–5 from the required fix. Minor weakness:
-    the fundraiser is described as bringing in "half" the needed amount rather than
-    being utterly impossible, which leaves a faint logical remnant of hope; nonetheless,
-    the combined losses effectively eliminate viable options. The edit preserved all
-    required phrases and core elements, and while it expands the original text substantially
-    to deliver the beat, it remains a targeted revision rather than a complete rewrite.'
+  evidence: "The revision targeted the correct flaw: it turns the segment into a proper\
+    \ All Is Lost beat by removing the protagonist's remaining options and support.\
+    \ Specific changes: fundraiser is reported as coming up short, the grant is denied,\
+    \ the board dissolves, Denise accepts a job and leaves, and Marcus receives divorce\
+    \ papers\u2014creating isolation and a 'whiff of death' (the collapse of his life's\
+    \ work and identity). These address points 1\u20135 from the required fix. Minor\
+    \ weakness: the fundraiser is described as bringing in \"half\" the needed amount\
+    \ rather than being utterly impossible, which leaves a faint logical remnant of\
+    \ hope; nonetheless, the combined losses effectively eliminate viable options.\
+    \ The edit preserved all required phrases and core elements, and while it expands\
+    \ the original text substantially to deliver the beat, it remains a targeted revision\
+    \ rather than a complete rewrite."
 error: null

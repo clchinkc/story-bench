@@ -12,20 +12,19 @@ final_score: 0.9118704379562044
 score_breakdown:
   final_score: 0.9119
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 656
-      target_range:
-      - 500
-      - 700
     programmatic:
       score: 0.6825
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.5
         slop_score: 0.9562
         overall: 0.6825
+      word_count:
+        actual: 656
+        target_range:
+        - 500
+        - 700
     llm_judge:
       score: 0.9825
       weight: 0.5
@@ -40,18 +39,18 @@ llm_results:
   word_count: 656
   structural_accuracy_score: 0.95
   tone_score: 0.95
-  evidence: 'All 8 Story Circle beats are present and clearly mapped: (1) You—opening
-    library comfort zone; (2) Need—''quiet desperation gnawed at her''; (3) Go—accepts
-    recorder, enters oral history program; (4) Search—multiple interview attempts,
-    learning to listen; (5) Find—Bernard''s breakthrough moment (''You''re the first
-    person''); (6) Take—town hall presentation requiring vulnerability; (7) Return—life
-    continues, visits Bernard, funeral speech; (8) Change—journalism applications,
-    transformed identity. All 8 core elements preserved: Zoe, library, Ms. Okafor,
-    Bernard Park, social anxiety, town hall, Bernard''s death, journalism ending.
-    Structure elegantly weaves Campbell''s monomyth into Harmon''s circular framework.
-    Minor deduction (0.05) for structural_accuracy: the ''Take'' beat could be slightly
-    more explicit about the ''price paid'' beyond emotional vulnerability. Tone is
-    consistently gentle and intimate throughout, with emotionally resonant moments
-    (Bernard''s gratitude, funeral speech, transformation reflection). Word count
-    at 656 is valid within 500-700 range.'
+  evidence: "All 8 Story Circle beats are present and clearly mapped: (1) You\u2014\
+    opening library comfort zone; (2) Need\u2014'quiet desperation gnawed at her';\
+    \ (3) Go\u2014accepts recorder, enters oral history program; (4) Search\u2014\
+    multiple interview attempts, learning to listen; (5) Find\u2014Bernard's breakthrough\
+    \ moment ('You're the first person'); (6) Take\u2014town hall presentation requiring\
+    \ vulnerability; (7) Return\u2014life continues, visits Bernard, funeral speech;\
+    \ (8) Change\u2014journalism applications, transformed identity. All 8 core elements\
+    \ preserved: Zoe, library, Ms. Okafor, Bernard Park, social anxiety, town hall,\
+    \ Bernard's death, journalism ending. Structure elegantly weaves Campbell's monomyth\
+    \ into Harmon's circular framework. Minor deduction (0.05) for structural_accuracy:\
+    \ the 'Take' beat could be slightly more explicit about the 'price paid' beyond\
+    \ emotional vulnerability. Tone is consistently gentle and intimate throughout,\
+    \ with emotionally resonant moments (Bernard's gratitude, funeral speech, transformation\
+    \ reflection). Word count at 656 is valid within 500-700 range."
 error: null

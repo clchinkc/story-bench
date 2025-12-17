@@ -12,20 +12,19 @@ final_score: 0.9076476945244957
 score_breakdown:
   final_score: 0.9076
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 680
-      target_range:
-      - 600
-      - 800
     programmatic:
       score: 0.6856
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.5
         slop_score: 0.964
         overall: 0.6856
+      word_count:
+        actual: 680
+        target_range:
+        - 600
+        - 800
     llm_judge:
       score: 0.9725
       weight: 0.5
@@ -39,14 +38,14 @@ llm_results:
   word_count_valid: true
   structural_accuracy_score: 0.9
   tone_score: 0.95
-  evidence: 'All 12 Campbell beats are present and in recognisable form. All 7 required
-    elements (Maya, pottery, grandmother''s legacy, mountain shrine journey, dried
-    spring problem, surrender theme, Maya''s transformation) are preserved. Deductions:
-    small structural deviation — the ''Meeting the Mentor'' (grandmother''s journal)
-    appears after Crossing the Threshold and initial tests rather than before the
-    crossing as is the archetypal placement; this is a minor ordering deviation so
-    structural score reduced slightly. Tone is very well maintained (quiet, meditative,
-    transformative); a single mildly vivid phrase (''sword of understanding'') is
-    slightly more metaphorical than the requested restrained tone, so tone score reduced
-    marginally.'
+  evidence: "All 12 Campbell beats are present and in recognisable form. All 7 required\
+    \ elements (Maya, pottery, grandmother's legacy, mountain shrine journey, dried\
+    \ spring problem, surrender theme, Maya's transformation) are preserved. Deductions:\
+    \ small structural deviation \u2014 the 'Meeting the Mentor' (grandmother's journal)\
+    \ appears after Crossing the Threshold and initial tests rather than before the\
+    \ crossing as is the archetypal placement; this is a minor ordering deviation\
+    \ so structural score reduced slightly. Tone is very well maintained (quiet, meditative,\
+    \ transformative); a single mildly vivid phrase ('sword of understanding') is\
+    \ slightly more metaphorical than the requested restrained tone, so tone score\
+    \ reduced marginally."
 error: null

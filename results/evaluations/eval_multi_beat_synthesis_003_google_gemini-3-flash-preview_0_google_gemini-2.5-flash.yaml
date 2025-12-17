@@ -1,0 +1,49 @@
+evaluation_id: 752d2afc
+task_id: multi_beat_synthesis_003
+generation_id: multi_beat_synthesis_003_google/gemini-3-flash-preview_0
+task_type: multi_beat_synthesis
+model: google/gemini-3-flash-preview
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.001318
+timestamp: '2025-12-18T23:40:47.464246'
+success: true
+final_score: 0.8709730266290616
+score_breakdown:
+  final_score: 0.871
+  components:
+    programmatic:
+      score: 0.8229
+      weight: 0.5
+      breakdown:
+        word_count_score: 0.9978
+        repetition_score: 0.5
+        slop_score: 0.9953
+        overall: 0.8229
+      word_count:
+        actual: 1016
+        target_range:
+        - 700
+        - 1000
+    llm_judge:
+      score: 0.919
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 13
+  beat_reqs_total: 15
+  beat_requirements_score: 0.86
+  cross_beat_satisfied: 4
+  cross_beat_total: 4
+  cross_beat_score: 1.0
+  word_count_valid: false
+  context_score: 0.9
+  coherence_score: 0.9
+  failed_items:
+  - 'Beat 1: Introduction of an unexpected complication (minor) - The complication
+    (dual-pulse biometric) is more of a standard heist challenge than an ''unexpected
+    complication'' that changes the immediate dynamic.'
+  - 'Beat 2: Public/party setting intensifies pressure - While the party is happening,
+    the Midpoint itself (Miri in the vault) doesn''t directly use the party setting
+    to intensify pressure. The pressure comes from the mentor''s reveal, not the public
+    nature of the event.'
+error: null

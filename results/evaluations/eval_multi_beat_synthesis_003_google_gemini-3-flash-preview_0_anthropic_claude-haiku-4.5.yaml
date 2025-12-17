@@ -1,0 +1,93 @@
+evaluation_id: 580ead28
+task_id: multi_beat_synthesis_003
+generation_id: multi_beat_synthesis_003_google/gemini-3-flash-preview_0
+task_type: multi_beat_synthesis
+model: google/gemini-3-flash-preview
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.03793
+timestamp: '2025-12-18T23:40:05.491814'
+success: true
+final_score: 0.8777230266290615
+score_breakdown:
+  final_score: 0.8777
+  components:
+    programmatic:
+      score: 0.8229
+      weight: 0.5
+      breakdown:
+        word_count_score: 0.9978
+        repetition_score: 0.5
+        slop_score: 0.9953
+        overall: 0.8229
+      word_count:
+        actual: 1016
+        target_range:
+        - 700
+        - 1000
+    llm_judge:
+      score: 0.9325
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 13
+  beat_reqs_total: 15
+  beat_requirements_score: 0.87
+  cross_beat_satisfied: 4
+  cross_beat_total: 4
+  cross_beat_score: 1.0
+  word_count_valid: false
+  context_score: 0.95
+  coherence_score: 0.92
+  failed_items:
+  - 'Beat 1 - ''Things going according to plan (mostly)'': The plan begins smoothly
+    but Elena''s intervention happens too quickly; there''s insufficient runway showing
+    the crew executing successfully before complications emerge. The complication
+    (Elena''s presence) arrives before we see enough of the heist working.'
+  - 'Beat 1 - ''Introduction of an unexpected complication (minor)'': While Elena''s
+    appearance is a complication, it''s not minor—it''s catastrophic and belongs more
+    to Beat 2/3. A minor complication would be a guard patrol, a sensor malfunction,
+    or a guest interference. This skips the escalation structure.'
+  strengths:
+  - 'Exceptional Chekhov''s Gun execution: The nitrogen cooling lines mentioned casually
+    in dialogue become the critical solution in the climax. Setup-to-payoff is seamless
+    and satisfying.'
+  - 'Strong tonal escalation: Beat 1 opens with playful confidence (''wonderfully
+    distracting,'' dry wit), Beat 2 shifts to shock and betrayal (''ruin,'' ''curated
+    execution''), Beat 3 becomes gallows humor and survival (''Next time, we steal
+    something less flammable'').'
+  - 'Mentor presence perfectly calibrated: Elena is unknown in Beat 1 (only mentioned
+    as security consultant), revealed with devastating impact in Beat 2 (the camera
+    reveal), and becomes active antagonist in Beat 3 (forcing Miri''s impossible choice).'
+  - 'Jax''s arc is consistent and consequential: Introduced as capable tech specialist,
+    becomes trapped/vulnerable in Beat 2, forces Miri''s moral choice in Beat 3. His
+    presence drives the plot, not just accompanies it.'
+  - 'Context maintenance is excellent: Miri''s characterization (dry wit, meticulous,
+    wrongfully accused but now actually stealing), Monaco setting, Ocean''s Eleven
+    tone, and the moral complexity of stealing stolen art all shine through.'
+  - 'The false victory in Beat 2 is well-executed: Vault opens, painting secured—then
+    Elena appears and the entire situation inverts.'
+  - 'Coherence is strong: Each beat flows logically into the next; the yacht setting
+    allows for escalating physical danger (sealed doors, flooding, fire) that mirrors
+    emotional stakes.'
+  weaknesses:
+  - 'Word count exceeds limit (1016 vs. 700-1000 max): 16 words over, minor but fails
+    the constraint.'
+  - 'Beat 1 pacing issue: The transition from ''plan humming'' to ''vault door hissed
+    open'' compresses the Fun and Games beat. More moments of crew banter, problem-solving,
+    or near-misses would strengthen the ''things going according to plan'' requirement
+    before Elena''s reveal.'
+  - 'Minor complication missing: The story jumps from smooth execution to catastrophic
+    threat. A smaller obstacle (a guest blocking a corridor, a sensor glitch, a timing
+    issue) in Beat 1 would better establish the escalation pattern.'
+  - 'Elena''s motivation could be slightly clearer: Why does she want Miri caught
+    specifically? Is it professional, personal, or contractual? The ''cover her own
+    tracks'' reference hints at it but could be more explicit.'
+  calibration_notes: 'This is a strong execution that satisfies 13/15 beat requirements
+    and all 4 cross-beat constraints. The two missing requirements are both in Beat
+    1 and relate to pacing/escalation structure rather than fundamental storytelling
+    failure. The Chekhov''s Gun work is exemplary, tonal shifts are precise, and character
+    arcs are meaningful. The word count violation is technical but noted. Overall,
+    this lands in the 0.8-0.85 range (Good: fully satisfies requirements with only
+    minor issues).'
+  overall_score: 0.83
+error: null

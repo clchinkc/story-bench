@@ -12,20 +12,19 @@ final_score: 0.9765
 score_breakdown:
   final_score: 0.9765
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 276
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.946
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.91
         slop_score: 1.0
         overall: 0.946
+      word_count:
+        actual: 276
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 0.98
       weight: 0.5
@@ -42,13 +41,13 @@ llm_results:
   minimal_change_score: 0.9
   word_count_valid: true
   quality_score: 0.9
-  evidence: 'The model addressed the actual flaw (Sophie showed no lasting change)
-    by adding concrete, minimal beats that demonstrate transformation: she pauses,
-    places the phone face-down (physical marker), reframes the emergencies (''Linda
-    will survive one more night''), and explicitly applies an insight from the retreat
-    (''noticing a thought rather than living it'' / ''didn''t have to let the chaos
-    define her anymore''). The mother notices (a surprised glance), and there''s a
-    clear contrast between Sophie’s old automatic panic and her new measured response.
-    Changes were surgical—key lines and structure were preserved and a few targeted
-    sentences were inserted to show integration of the journey.'
+  evidence: "The model addressed the actual flaw (Sophie showed no lasting change)\
+    \ by adding concrete, minimal beats that demonstrate transformation: she pauses,\
+    \ places the phone face-down (physical marker), reframes the emergencies ('Linda\
+    \ will survive one more night'), and explicitly applies an insight from the retreat\
+    \ ('noticing a thought rather than living it' / 'didn't have to let the chaos\
+    \ define her anymore'). The mother notices (a surprised glance), and there's a\
+    \ clear contrast between Sophie\u2019s old automatic panic and her new measured\
+    \ response. Changes were surgical\u2014key lines and structure were preserved\
+    \ and a few targeted sentences were inserted to show integration of the journey."
 error: null

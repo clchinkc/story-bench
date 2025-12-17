@@ -12,20 +12,19 @@ final_score: 0.9730000000000001
 score_breakdown:
   final_score: 0.973
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 255
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.922
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.87
         slop_score: 1.0
         overall: 0.922
+      word_count:
+        actual: 255
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 0.985
       weight: 0.5
@@ -42,11 +41,11 @@ llm_results:
   minimal_change_score: 0.9
   word_count_valid: true
   quality_score: 0.95
-  evidence: 'The model addressed the actual flaw—Sophie previously showed no lasting
-    change—by explicitly demonstrating transformation: she places her phone face-down,
-    refuses to handle work emergencies until morning, cites a lesson from the retreat
-    (watching monks), and perceives familiar Chicago sights differently. Her mother''s
-    surprise underscores the contrast. All four required elements and phrases were
-    preserved exactly. Changes were concise and targeted (behavioral marker, specific
-    insight, visible contrast), not a wholesale rewrite.'
+  evidence: "The model addressed the actual flaw\u2014Sophie previously showed no\
+    \ lasting change\u2014by explicitly demonstrating transformation: she places her\
+    \ phone face-down, refuses to handle work emergencies until morning, cites a lesson\
+    \ from the retreat (watching monks), and perceives familiar Chicago sights differently.\
+    \ Her mother's surprise underscores the contrast. All four required elements and\
+    \ phrases were preserved exactly. Changes were concise and targeted (behavioral\
+    \ marker, specific insight, visible contrast), not a wholesale rewrite."
 error: null

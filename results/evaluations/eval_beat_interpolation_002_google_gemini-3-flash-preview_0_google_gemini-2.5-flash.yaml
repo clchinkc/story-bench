@@ -1,0 +1,47 @@
+evaluation_id: b274a2d5
+task_id: beat_interpolation_002
+generation_id: beat_interpolation_002_google/gemini-3-flash-preview_0
+task_type: beat_interpolation
+model: google/gemini-3-flash-preview
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0009679
+timestamp: '2025-12-18T23:29:10.849914'
+success: true
+final_score: 0.9632430556761175
+score_breakdown:
+  final_score: 0.9632
+  components:
+    programmatic:
+      score: 0.9265
+      weight: 0.5
+      breakdown:
+        word_count_score: 1.0
+        repetition_score: 0.79
+        slop_score: 1.0
+        overall: 0.9265
+      word_count:
+        actual: 401
+        target_range:
+        - 250
+        - 400
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: false
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: All required elements are present and well-executed. Sarah considers recanting,
+    going through official channels with Marcus, and her internal conflict between
+    duty and family is central. The conversation with Marcus and her observation of
+    the sedan tips her towards her eventual decision. All 'must not' items were successfully
+    avoided.
+error: null

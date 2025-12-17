@@ -12,20 +12,19 @@ final_score: 0.675000000044689
 score_breakdown:
   final_score: 0.675
   components:
-    word_count:
-      score: 0.0
-      weight: 0.25
-      actual: 785
-      target_range:
-      - 300
-      - 450
     programmatic:
       score: 0.7
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.0
         repetition_score: 0.5
         slop_score: 1.0
         overall: 0.7
+      word_count:
+        actual: 785
+        target_range:
+        - 300
+        - 450
     llm_judge:
       score: 1.0
       weight: 0.5
@@ -40,14 +39,14 @@ llm_results:
   character_score: 1.0
   bridge_score: 1.0
   continuity_score: 1.0
-  evidence: 'All four required elements are present: Maya learns about Alejandro''s
-    dulled sense of taste and emotional guardedness (vulnerability); their relationship
-    moves from contractual to personal via the shared soup and balcony moment; a genuine
-    connection is formed; Maya explicitly chooses to stay (''I want to''). The scene
-    functions clearly as a midpoint — a commitment that raises stakes and propels
-    her from reactive to proactive. None of the prohibited items appear (no pre-existing
-    love, no decision to leave, no photograph, Alejandro lowers his walls). Character
-    behavior and setting remain consistent with the provided Before/After beats. The
-    only formal issue is word count: the provided scene exceeds the requested 300–450
-    range, so word_count_valid is false.'
+  evidence: "All four required elements are present: Maya learns about Alejandro's\
+    \ dulled sense of taste and emotional guardedness (vulnerability); their relationship\
+    \ moves from contractual to personal via the shared soup and balcony moment; a\
+    \ genuine connection is formed; Maya explicitly chooses to stay ('I want to').\
+    \ The scene functions clearly as a midpoint \u2014 a commitment that raises stakes\
+    \ and propels her from reactive to proactive. None of the prohibited items appear\
+    \ (no pre-existing love, no decision to leave, no photograph, Alejandro lowers\
+    \ his walls). Character behavior and setting remain consistent with the provided\
+    \ Before/After beats. The only formal issue is word count: the provided scene\
+    \ exceeds the requested 300\u2013450 range, so word_count_valid is false."
 error: null

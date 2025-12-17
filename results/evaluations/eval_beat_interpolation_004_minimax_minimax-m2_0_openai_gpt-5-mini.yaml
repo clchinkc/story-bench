@@ -12,20 +12,19 @@ final_score: 0.9383852964947126
 score_breakdown:
   final_score: 0.9384
   components:
-    word_count:
-      score: 0.8735
-      weight: 0.25
-      actual: 476
-      target_range:
-      - 300
-      - 450
     programmatic:
       score: 0.88
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.8735
         repetition_score: 0.8
         slop_score: 1.0
         overall: 0.88
+      word_count:
+        actual: 476
+        target_range:
+        - 300
+        - 450
     llm_judge:
       score: 1.0
       weight: 0.5
@@ -40,15 +39,15 @@ llm_results:
   character_score: 1.0
   bridge_score: 1.0
   continuity_score: 1.0
-  evidence: 'All four required elements are present: Thomas directly questions Dr.
-    Okonkwo; there is a clear moment of near-recant as she falters and looks fearful;
-    Thomas takes decisive action (requests recess, personally intervenes, offers to
-    help secure treatment) that influences her decision; the turning point occurs
-    when she breaks the seal and testifies, allowing truth to prevail. None of the
-    must-not items occur (Dr. Okonkwo struggles before speaking, Thomas is active,
-    the defense does not win, and no deus ex machina appears). Character behavior
-    and voices are consistent with prior setup, the climax clearly bridges the rising
-    action and the falling action, and setting continuity is maintained. The only
-    issue is word count: 476 words, which exceeds the specified 300–450 range, so
-    word_count_valid is false.'
+  evidence: "All four required elements are present: Thomas directly questions Dr.\
+    \ Okonkwo; there is a clear moment of near-recant as she falters and looks fearful;\
+    \ Thomas takes decisive action (requests recess, personally intervenes, offers\
+    \ to help secure treatment) that influences her decision; the turning point occurs\
+    \ when she breaks the seal and testifies, allowing truth to prevail. None of the\
+    \ must-not items occur (Dr. Okonkwo struggles before speaking, Thomas is active,\
+    \ the defense does not win, and no deus ex machina appears). Character behavior\
+    \ and voices are consistent with prior setup, the climax clearly bridges the rising\
+    \ action and the falling action, and setting continuity is maintained. The only\
+    \ issue is word count: 476 words, which exceeds the specified 300\u2013450 range,\
+    \ so word_count_valid is false."
 error: null

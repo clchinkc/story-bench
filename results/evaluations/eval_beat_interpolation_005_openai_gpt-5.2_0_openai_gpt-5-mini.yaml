@@ -12,20 +12,19 @@ final_score: 0.7000103137415987
 score_breakdown:
   final_score: 0.7
   components:
-    word_count:
-      score: 0.004
-      weight: 0.25
-      actual: 616
-      target_range:
-      - 300
-      - 450
     programmatic:
       score: 0.796
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.004
         repetition_score: 0.66
         slop_score: 1.0
         overall: 0.796
+      word_count:
+        actual: 616
+        target_range:
+        - 300
+        - 450
     llm_judge:
       score: 1.0
       weight: 0.5
@@ -40,13 +39,13 @@ llm_results:
   character_score: 1.0
   bridge_score: 1.0
   continuity_score: 1.0
-  evidence: 'All four required elements are present: Maya discovers Alejandro''s loss
-    of taste (vulnerability); their relationship shifts from strictly professional
-    to personal through shared memories and conversation; a concrete shared moment
-    (the caldo, tasting with eyes closed, balcony) creates genuine connection; Maya
-    explicitly commits beyond the contract (''I''ll stay... Not because I have to.
-    Because I want to.''). None of the prohibited items appear (no premature love,
-    no photo scene, no decision to leave, Alejandro does lower his guard). The only
-    issue is structural: the provided word count (616) is outside the requested 300–450
-    range.'
+  evidence: "All four required elements are present: Maya discovers Alejandro's loss\
+    \ of taste (vulnerability); their relationship shifts from strictly professional\
+    \ to personal through shared memories and conversation; a concrete shared moment\
+    \ (the caldo, tasting with eyes closed, balcony) creates genuine connection; Maya\
+    \ explicitly commits beyond the contract ('I'll stay... Not because I have to.\
+    \ Because I want to.'). None of the prohibited items appear (no premature love,\
+    \ no photo scene, no decision to leave, Alejandro does lower his guard). The only\
+    \ issue is structural: the provided word count (616) is outside the requested\
+    \ 300\u2013450 range."
 error: null

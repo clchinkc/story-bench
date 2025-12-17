@@ -12,20 +12,19 @@ final_score: 0.9575
 score_breakdown:
   final_score: 0.9575
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 296
-      target_range:
-      - 250
-      - 400
     programmatic:
       score: 0.91
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.85
         slop_score: 1.0
         overall: 0.91
+      word_count:
+        actual: 296
+        target_range:
+        - 250
+        - 400
     llm_judge:
       score: 0.96
       weight: 0.5
@@ -42,25 +41,25 @@ llm_results:
   minimal_change_score: 0.75
   word_count_valid: true
   quality_score: 0.95
-  evidence: 'The model correctly diagnosed the actual flaw: The Ordeal was treated
-    as a boss battle rather than a transformative crisis. The revision expertly addresses
-    all four required components: (1) Dragon exploits Kira''s deepest fear—guilt over
-    brother''s death, weaponizing the memory (''You couldn''t even save your brother'');
-    (2) Clear ''death'' moment—Kira collapses twice, accepts defeat, experiences psychological
-    death through shame and helplessness; (3) Rebirth/transformation—she rises after
-    touching the broken blade, recalls her brother''s wisdom (''Don''t let fear be
-    your grave''), and experiences internal shift; (4) Victory from insight—she defeats
-    the dragon not through renewed strength but through understanding (''Not for revenge.
-    To live differently''), and the guilt ''felt lighter, unspooled.'' All 4 required
-    phrases are preserved verbatim or near-verbatim: ''Kira faced the Shadow Dragon
-    across the chasm'' (exact), ''The creature was massive—twenty feet of obsidian
-    scales and burning eyes'' (exact), ''You cannot defeat me, child,'' the dragon
-    rumbled'' (exact), ''The Shadow Dragon collapsed with an earth-shaking roar''
-    (exact—minor article change ''an'' vs ''a'' is negligible). The changes were surgical:
-    the original fight sequence was replaced with psychological/emotional confrontation
-    while maintaining setting, antagonist, protagonist, brother reference, and victory.
-    The writing quality is high with no new errors; the emotional arc is compelling
-    and thematically coherent. Minor deduction from minimal_change_score (0.75 vs
-    1.0) because approximately 40% of the original text was replaced rather than edited,
-    though this was necessary to fix the fundamental structural flaw.'
+  evidence: "The model correctly diagnosed the actual flaw: The Ordeal was treated\
+    \ as a boss battle rather than a transformative crisis. The revision expertly\
+    \ addresses all four required components: (1) Dragon exploits Kira's deepest fear\u2014\
+    guilt over brother's death, weaponizing the memory ('You couldn't even save your\
+    \ brother'); (2) Clear 'death' moment\u2014Kira collapses twice, accepts defeat,\
+    \ experiences psychological death through shame and helplessness; (3) Rebirth/transformation\u2014\
+    she rises after touching the broken blade, recalls her brother's wisdom ('Don't\
+    \ let fear be your grave'), and experiences internal shift; (4) Victory from insight\u2014\
+    she defeats the dragon not through renewed strength but through understanding\
+    \ ('Not for revenge. To live differently'), and the guilt 'felt lighter, unspooled.'\
+    \ All 4 required phrases are preserved verbatim or near-verbatim: 'Kira faced\
+    \ the Shadow Dragon across the chasm' (exact), 'The creature was massive\u2014\
+    twenty feet of obsidian scales and burning eyes' (exact), 'You cannot defeat me,\
+    \ child,' the dragon rumbled' (exact), 'The Shadow Dragon collapsed with an earth-shaking\
+    \ roar' (exact\u2014minor article change 'an' vs 'a' is negligible). The changes\
+    \ were surgical: the original fight sequence was replaced with psychological/emotional\
+    \ confrontation while maintaining setting, antagonist, protagonist, brother reference,\
+    \ and victory. The writing quality is high with no new errors; the emotional arc\
+    \ is compelling and thematically coherent. Minor deduction from minimal_change_score\
+    \ (0.75 vs 1.0) because approximately 40% of the original text was replaced rather\
+    \ than edited, though this was necessary to fix the fundamental structural flaw."
 error: null

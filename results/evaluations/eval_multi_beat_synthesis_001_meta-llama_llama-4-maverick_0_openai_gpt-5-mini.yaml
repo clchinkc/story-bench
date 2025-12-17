@@ -12,20 +12,19 @@ final_score: 0.8966666666666667
 score_breakdown:
   final_score: 0.8967
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 974
-      target_range:
-      - 700
-      - 1000
     programmatic:
       score: 0.7
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.5
         slop_score: 1.0
         overall: 0.7
+      word_count:
+        actual: 974
+        target_range:
+        - 700
+        - 1000
     llm_judge:
       score: 0.9433
       weight: 0.5
@@ -40,7 +39,7 @@ llm_results:
   context_score: 0.9
   coherence_score: 0.85
   failed_items:
-  - Beat 1 — missing explicit revelation of an enemy/traitor within the Resonant community
-    during Beat 1 (the fact that the killer is a Resonant is only revealed later in
-    the Ordeal).
+  - "Beat 1 \u2014 missing explicit revelation of an enemy/traitor within the Resonant\
+    \ community during Beat 1 (the fact that the killer is a Resonant is only revealed\
+    \ later in the Ordeal)."
 error: null

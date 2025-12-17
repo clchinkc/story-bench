@@ -12,20 +12,19 @@ final_score: 0.9515
 score_breakdown:
   final_score: 0.9515
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 299
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.946
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.91
         slop_score: 1.0
         overall: 0.946
+      word_count:
+        actual: 299
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 0.93
       weight: 0.5
@@ -42,16 +41,17 @@ llm_results:
   minimal_change_score: 0.6
   word_count_valid: true
   quality_score: 0.9
-  evidence: 'The revision explicitly addresses the All Is Lost shortcomings by adding:
-    (1) the fundraiser is effectively failed (only $847), (2) the grant was rejected,
-    (3) Denise is revealed to be complicit/benefitting from the sale (her husband''s
-    company among creditors) and leaves the scene, (4) Marcus faces personal/family
-    financial collapse (wife''s bank call), and (5) a ''whiff of death'' through the
-    ruined future of the kids and the fifteen years of photographs. These changes
-    remove obvious rescue options and isolate Marcus emotionally, creating a genuine
-    rock-bottom. The edit preserves the required pieces (exact opening line, the ''Thirty
-    days...'' community center phrase, Denise''s line, and ''He rubbed his temples'')
-    and keeps Marcus, the eviction, the community center, and Denise in the scene.
-    Changes are moderate rather than strictly surgical—new paragraphs and specifics
-    are added to achieve the beat—hence a mid-level minimal_change score.'
+  evidence: "The revision explicitly addresses the All Is Lost shortcomings by adding:\
+    \ (1) the fundraiser is effectively failed (only $847), (2) the grant was rejected,\
+    \ (3) Denise is revealed to be complicit/benefitting from the sale (her husband's\
+    \ company among creditors) and leaves the scene, (4) Marcus faces personal/family\
+    \ financial collapse (wife's bank call), and (5) a 'whiff of death' through the\
+    \ ruined future of the kids and the fifteen years of photographs. These changes\
+    \ remove obvious rescue options and isolate Marcus emotionally, creating a genuine\
+    \ rock-bottom. The edit preserves the required pieces (exact opening line, the\
+    \ 'Thirty days...' community center phrase, Denise's line, and 'He rubbed his\
+    \ temples') and keeps Marcus, the eviction, the community center, and Denise in\
+    \ the scene. Changes are moderate rather than strictly surgical\u2014new paragraphs\
+    \ and specifics are added to achieve the beat\u2014hence a mid-level minimal_change\
+    \ score."
 error: null

@@ -12,20 +12,19 @@ final_score: 0.9095362407645127
 score_breakdown:
   final_score: 0.9095
   components:
-    word_count:
-      score: 0.9731
-      weight: 0.25
-      actual: 486
-      target_range:
-      - 500
-      - 700
     programmatic:
       score: 0.7
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.9731
         repetition_score: 0.5
         slop_score: 1.0
         overall: 0.7
+      word_count:
+        actual: 486
+        target_range:
+        - 500
+        - 700
     llm_judge:
       score: 0.9825
       weight: 0.5
@@ -42,20 +41,21 @@ llm_results:
   structural_accuracy_score: 0.95
   tone_score: 0.95
   overall_score: 0.95
-  evidence: 'Conversion successfully maps all 8 Story Circle beats: (1) You—Zoe in
-    library comfort zone, social anxiety established; (2) Need—''something was missing,''
-    hollow feeling articulated; (3) Go—accepts recorder, enters oral history program;
-    (4) Search—fumbles through interviews, learns listening as courage; (5) Find—breakthrough
-    with Bernard''s trust and deeper story; (6) Take—town hall presentation, takes
-    responsibility for sharing; (7) Return—comes back to ordinary life, continues
-    library work; (8) Change—demonstrates transformation through action (orders coffee,
-    asks questions, listens, applies to journalism school). All 8 core elements preserved:
-    Zoe, library, oral history program, Ms. Okafor, Bernard Park, social anxiety,
-    town hall, Bernard''s death, journalism ending. Tone is consistently gentle, intimate,
-    emotionally true throughout. Structure cleanly follows Harmon''s framework with
-    clear emotional progression. Primary deduction: word count is 486, falling 14
-    words short of 500-word minimum (2.8% shortfall). Minor structural note: the ''Return''
-    beat could be slightly more distinct from ''Change,'' though the distinction is
-    present (Return=October/funeral; Change=ongoing transformation). Conversion demonstrates
-    sophisticated understanding of both frameworks.'
+  evidence: "Conversion successfully maps all 8 Story Circle beats: (1) You\u2014\
+    Zoe in library comfort zone, social anxiety established; (2) Need\u2014'something\
+    \ was missing,' hollow feeling articulated; (3) Go\u2014accepts recorder, enters\
+    \ oral history program; (4) Search\u2014fumbles through interviews, learns listening\
+    \ as courage; (5) Find\u2014breakthrough with Bernard's trust and deeper story;\
+    \ (6) Take\u2014town hall presentation, takes responsibility for sharing; (7)\
+    \ Return\u2014comes back to ordinary life, continues library work; (8) Change\u2014\
+    demonstrates transformation through action (orders coffee, asks questions, listens,\
+    \ applies to journalism school). All 8 core elements preserved: Zoe, library,\
+    \ oral history program, Ms. Okafor, Bernard Park, social anxiety, town hall, Bernard's\
+    \ death, journalism ending. Tone is consistently gentle, intimate, emotionally\
+    \ true throughout. Structure cleanly follows Harmon's framework with clear emotional\
+    \ progression. Primary deduction: word count is 486, falling 14 words short of\
+    \ 500-word minimum (2.8% shortfall). Minor structural note: the 'Return' beat\
+    \ could be slightly more distinct from 'Change,' though the distinction is present\
+    \ (Return=October/funeral; Change=ongoing transformation). Conversion demonstrates\
+    \ sophisticated understanding of both frameworks."
 error: null

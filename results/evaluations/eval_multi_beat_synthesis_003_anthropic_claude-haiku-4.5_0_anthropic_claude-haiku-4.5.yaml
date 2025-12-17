@@ -12,20 +12,19 @@ final_score: 0.644375796237959
 score_breakdown:
   final_score: 0.6444
   components:
-    word_count:
-      score: 0.1825
-      weight: 0.25
-      actual: 534
-      target_range:
-      - 700
-      - 1000
     programmatic:
       score: 0.79
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.1825
         repetition_score: 0.65
         slop_score: 1.0
         overall: 0.79
+      word_count:
+        actual: 534
+        target_range:
+        - 700
+        - 1000
     llm_judge:
       score: 0.8025
       weight: 0.5
@@ -47,20 +46,21 @@ llm_results:
   - Cross-beat Chekhov's Gun - The communicator earpiece is introduced but never becomes
     critical in later beats; Dev's camera-kill capability is mentioned but not paid
     off in the action sequence shown
-  - Cross-beat Tonal Escalation - Tone shift from Beat 1→2 is present but Beat 3 lacks
-    sufficient gallows humor to complete the escalation arc; tension is high but comedic
-    relief is absent
+  - "Cross-beat Tonal Escalation - Tone shift from Beat 1\u21922 is present but Beat\
+    \ 3 lacks sufficient gallows humor to complete the escalation arc; tension is\
+    \ high but comedic relief is absent"
   strengths:
   - Exceptional setup of crew skills and coordination (Marcus, Jade, Dev roles clearly
     defined)
   - 'Strong Midpoint revelation: Eleanor Price''s appearance is a genuine plot twist
     that raises stakes dramatically'
-  - 'Mentor presence escalates perfectly across beats: unknown→revealed→active threat'
+  - "Mentor presence escalates perfectly across beats: unknown\u2192revealed\u2192\
+    active threat"
   - 'Excellent context maintenance: Monaco setting, art history detail, protagonist
     voice consistent'
   - The final decision point (staying vs. leaving) creates genuine narrative momentum
-  - Dev's character arc is tracked across beats (calm→sharpened breathing→positioned
-    for escape)
+  - "Dev's character arc is tracked across beats (calm\u2192sharpened breathing\u2192\
+    positioned for escape)"
   weaknesses:
   - Word count (534) falls significantly short of 700-1000 requirement; story feels
     rushed, especially Beat 3
@@ -74,11 +74,11 @@ llm_results:
     moment
   - The painting's emotional weight (Amsterdam family) is mentioned but not leveraged
     for tension
-  calibration_notes: Story demonstrates strong structural understanding and character
-    work, particularly with Eleanor Price's reveal and Dev's consistent presence.
-    However, execution is undermined by insufficient word count and tonal inconsistency.
-    The heist mechanics are solid but lack the clever banter and humor that define
-    the Ocean's Eleven tone. Chekhov's Gun constraint is partially satisfied—elements
-    are introduced but not meaningfully paid off. The narrative coherence is strong
-    despite brevity; with expansion, this could easily reach 0.9+ scores.
+  calibration_notes: "Story demonstrates strong structural understanding and character\
+    \ work, particularly with Eleanor Price's reveal and Dev's consistent presence.\
+    \ However, execution is undermined by insufficient word count and tonal inconsistency.\
+    \ The heist mechanics are solid but lack the clever banter and humor that define\
+    \ the Ocean's Eleven tone. Chekhov's Gun constraint is partially satisfied\u2014\
+    elements are introduced but not meaningfully paid off. The narrative coherence\
+    \ is strong despite brevity; with expansion, this could easily reach 0.9+ scores."
 error: null

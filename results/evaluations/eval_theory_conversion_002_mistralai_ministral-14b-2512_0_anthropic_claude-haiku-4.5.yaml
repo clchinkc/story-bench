@@ -12,20 +12,19 @@ final_score: 0.89725
 score_breakdown:
   final_score: 0.8972
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 800
-      target_range:
-      - 600
-      - 800
     programmatic:
       score: 0.7
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.5
         slop_score: 1.0
         overall: 0.7
+      word_count:
+        actual: 800
+        target_range:
+        - 600
+        - 800
     llm_judge:
       score: 0.9445
       weight: 0.5
@@ -39,24 +38,25 @@ llm_results:
   word_count_valid: true
   structural_accuracy_score: 0.9
   tone_score: 0.95
-  evidence: 'BEATS ANALYSIS: Present: (1) Ordinary World—Maya''s quiet pottery life
-    established vividly; (2) Call to Adventure—dried spring and elders'' expectation;
-    (3) Refusal of Call—''She expected herself to refuse''; (4) Meeting the Mentor—grandmother''s
-    journal discovered; (5) Crossing the Threshold—three-day mountain climb; (6) Tests/Allies/Enemies—clay
-    resistance, internal doubt as antagonist; (7) Approach to Inmost Cave—gathering
-    sacred clay, preparing for transformation; (8) The Ordeal—clay splits, moment
-    of despair and breakthrough; (9) Reward—vessel created, mastery achieved; (10)
-    The Road Back—return journey with cracked vessel; (11) Resurrection—water returns,
-    transformation proven. MISSING: (12) Return with Elixir is implied but underdeveloped—the
-    ending shows Maya renamed and changed, but lacks explicit articulation of how
-    she brings wisdom back to transform the community beyond the immediate well-filling.
-    The elixir (the philosophy of listening to clay) isn''t fully integrated into
-    village practice. PRESERVATION: All 7 elements intact—Maya (protagonist), pottery
-    (central), grandmother''s legacy (journal), shrine journey (detailed), dried spring
-    (catalyst), surrender theme (core transformation), Maya''s change (complete arc).
-    STRUCTURE: Follows Campbell''s 12-stage framework with strong narrative coherence,
-    though the final stage feels slightly rushed. TONE: Consistently meditative, lyrical,
-    and transformative throughout—the prose maintains quiet intensity with effective
-    use of metaphor (''clay speaks,'' ''listening'') and sensory detail. Minor deduction
-    for incomplete elixir integration.'
+  evidence: "BEATS ANALYSIS: Present: (1) Ordinary World\u2014Maya's quiet pottery\
+    \ life established vividly; (2) Call to Adventure\u2014dried spring and elders'\
+    \ expectation; (3) Refusal of Call\u2014'She expected herself to refuse'; (4)\
+    \ Meeting the Mentor\u2014grandmother's journal discovered; (5) Crossing the Threshold\u2014\
+    three-day mountain climb; (6) Tests/Allies/Enemies\u2014clay resistance, internal\
+    \ doubt as antagonist; (7) Approach to Inmost Cave\u2014gathering sacred clay,\
+    \ preparing for transformation; (8) The Ordeal\u2014clay splits, moment of despair\
+    \ and breakthrough; (9) Reward\u2014vessel created, mastery achieved; (10) The\
+    \ Road Back\u2014return journey with cracked vessel; (11) Resurrection\u2014water\
+    \ returns, transformation proven. MISSING: (12) Return with Elixir is implied\
+    \ but underdeveloped\u2014the ending shows Maya renamed and changed, but lacks\
+    \ explicit articulation of how she brings wisdom back to transform the community\
+    \ beyond the immediate well-filling. The elixir (the philosophy of listening to\
+    \ clay) isn't fully integrated into village practice. PRESERVATION: All 7 elements\
+    \ intact\u2014Maya (protagonist), pottery (central), grandmother's legacy (journal),\
+    \ shrine journey (detailed), dried spring (catalyst), surrender theme (core transformation),\
+    \ Maya's change (complete arc). STRUCTURE: Follows Campbell's 12-stage framework\
+    \ with strong narrative coherence, though the final stage feels slightly rushed.\
+    \ TONE: Consistently meditative, lyrical, and transformative throughout\u2014\
+    the prose maintains quiet intensity with effective use of metaphor ('clay speaks,'\
+    \ 'listening') and sensory detail. Minor deduction for incomplete elixir integration."
 error: null

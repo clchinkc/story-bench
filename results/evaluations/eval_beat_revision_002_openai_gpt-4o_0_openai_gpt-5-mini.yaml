@@ -12,20 +12,19 @@ final_score: 0.946
 score_breakdown:
   final_score: 0.946
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 251
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.964
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.94
         slop_score: 1.0
         overall: 0.964
+      word_count:
+        actual: 251
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 0.91
       weight: 0.5
@@ -42,14 +41,14 @@ llm_results:
   minimal_change_score: 0.6
   word_count_valid: true
   quality_score: 0.9
-  evidence: 'The revision clearly targeted the All Is Lost problem: it adds a failed/insufficient
-    fundraiser (donations half of projection), an explicitly rejected grant, a personal
-    betrayal (Denise accepts a job with the developer), and a concrete family pressure
-    (school fees), leaving Marcus isolated and emotionally crushed. These changes
-    address the actual flaw (lack of hopelessness/isolation) and create a ''whiff
-    of death'' (loss of program, support, financial stability, identity). All four
-    required elements/phrases are preserved verbatim. Changes are moderate rather
-    than surgical—the opening lines and key beats remain, but the middle was expanded
-    to close off options and deepen the low point, so minimal_change_score is below
-    ''surgical edits.'' Writing quality is strong with no major errors.'
+  evidence: "The revision clearly targeted the All Is Lost problem: it adds a failed/insufficient\
+    \ fundraiser (donations half of projection), an explicitly rejected grant, a personal\
+    \ betrayal (Denise accepts a job with the developer), and a concrete family pressure\
+    \ (school fees), leaving Marcus isolated and emotionally crushed. These changes\
+    \ address the actual flaw (lack of hopelessness/isolation) and create a 'whiff\
+    \ of death' (loss of program, support, financial stability, identity). All four\
+    \ required elements/phrases are preserved verbatim. Changes are moderate rather\
+    \ than surgical\u2014the opening lines and key beats remain, but the middle was\
+    \ expanded to close off options and deepen the low point, so minimal_change_score\
+    \ is below 'surgical edits.' Writing quality is strong with no major errors."
 error: null

@@ -12,20 +12,19 @@ final_score: 0.6915221539585665
 score_breakdown:
   final_score: 0.6915
   components:
-    word_count:
-      score: 0.0001
-      weight: 0.25
-      actual: 566
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.766
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.0001
         repetition_score: 0.61
         slop_score: 1.0
         overall: 0.766
+      word_count:
+        actual: 566
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 1.0
       weight: 0.5
@@ -40,10 +39,11 @@ llm_results:
   character_score: 1.0
   bridge_score: 1.0
   continuity_score: 1.0
-  evidence: 'All four required elements are present: Marcus is introduced; he provides
-    practical wisdom and tools (compass, satchel, guidance); Elena''s doubt shifts
-    to reluctant acceptance; her librarian skills are referenced as useful. The mentor
-    does not solve her problems or offer to accompany her, Elena does not become immediately
-    confident or discover magic, and she is not already in the forest. The only failure
-    is word count: output exceeds the specified 200–350 range.'
+  evidence: "All four required elements are present: Marcus is introduced; he provides\
+    \ practical wisdom and tools (compass, satchel, guidance); Elena's doubt shifts\
+    \ to reluctant acceptance; her librarian skills are referenced as useful. The\
+    \ mentor does not solve her problems or offer to accompany her, Elena does not\
+    \ become immediately confident or discover magic, and she is not already in the\
+    \ forest. The only failure is word count: output exceeds the specified 200\u2013\
+    350 range."
 error: null

@@ -1,0 +1,56 @@
+evaluation_id: e716010d
+task_id: beat_revision_004
+generation_id: beat_revision_004_google/gemini-3-flash-preview_0
+task_type: beat_revision
+model: google/gemini-3-flash-preview
+sample_index: 0
+evaluator_model: openai/gpt-5-mini
+evaluator_cost: 0.0024655000000000002
+timestamp: '2025-12-18T23:32:23.245884'
+success: true
+final_score: 0.9305000000000001
+score_breakdown:
+  final_score: 0.9305
+  components:
+    programmatic:
+      score: 0.986
+      weight: 0.5
+      breakdown:
+        word_count_score: 1.0
+        repetition_score: 0.96
+        slop_score: 1.0
+        overall: 0.986
+      word_count:
+        actual: 296
+        target_range:
+        - 200
+        - 350
+    llm_judge:
+      score: 0.875
+      weight: 0.5
+llm_results:
+  diagnosis_score: 1.0
+  flaw_correction_score: 1.0
+  beat_satisfaction_score: 0.9
+  preservation_score: 1.0
+  preserved_count: 5
+  preserved_total: 5
+  required_preserved_score: 0.75
+  required_preserved_count: 3
+  required_preserved_total: 4
+  minimal_change_score: 0.3
+  word_count_valid: true
+  quality_score: 0.9
+  evidence: 'The model addressed the actual flaw (telling exposition) by converting
+    the info-dump into a lived scene: sensory detail (jazz, steam from coffee, autumn
+    air), characteristic behavior (studying a 1998 photograph, noting a forensics
+    discrepancy), and a shown partnership via workplace interaction and dialogue with
+    Detective James Oyelaran. The cat appears naturally (Sherlock, described as a
+    tabby scratching the desk). This fixes the core problems (show vs tell, sensory
+    grounding, showing relationships) though a small telling line remains (''they
+    were the reason their clearance rate...''). Required-preserved phrase check: ''Detective
+    James Oyelaran'' and ''Tuesday morning in October'' appear exactly/near-exactly;
+    ''cat named Sherlock'' is implied clearly though not as that exact phrase; ''Detective
+    Rachel Torres'' appears as ''Rachel Torres'' (title omitted). Changes were substantive
+    (scene created) rather than surgical edits, hence a low minimal_change_score.'
+error: null

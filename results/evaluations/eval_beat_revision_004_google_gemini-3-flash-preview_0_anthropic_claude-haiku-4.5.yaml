@@ -1,0 +1,62 @@
+evaluation_id: d23715f4
+task_id: beat_revision_004
+generation_id: beat_revision_004_google/gemini-3-flash-preview_0
+task_type: beat_revision
+model: google/gemini-3-flash-preview
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.02036
+timestamp: '2025-12-18T23:32:13.965422'
+success: true
+final_score: 0.973
+score_breakdown:
+  final_score: 0.973
+  components:
+    programmatic:
+      score: 0.986
+      weight: 0.5
+      breakdown:
+        word_count_score: 1.0
+        repetition_score: 0.96
+        slop_score: 1.0
+        overall: 0.986
+      word_count:
+        actual: 296
+        target_range:
+        - 200
+        - 350
+    llm_judge:
+      score: 0.96
+      weight: 0.5
+llm_results:
+  diagnosis_score: 1.0
+  flaw_correction_score: 1.0
+  beat_satisfaction_score: 0.95
+  preservation_score: 1.0
+  preserved_count: 5
+  preserved_total: 5
+  required_preserved_score: 1.0
+  required_preserved_count: 4
+  required_preserved_total: 4
+  minimal_change_score: 0.75
+  word_count_valid: true
+  quality_score: 0.95
+  evidence: 'The model correctly diagnosed the core flaw: the original segment was
+    pure exposition-through-telling (info-dump style) lacking sensory grounding, action,
+    and scene. The revision transforms this into SHOWN exposition through: (1) Rachel
+    actively examining a cold case file with sensory details (yellowed photograph,
+    steam from coffee, jazz record, cat scratching), (2) Her detective instincts revealed
+    through behavior (noticing witness statement inconsistencies with forensics),
+    (3) Partnership with James demonstrated through natural dialogue and wordless
+    interaction (his respectful nod, their three-year rhythm), (4) Setting established
+    through action and sensory detail (precinct maze, desks, windows rattling, autumn
+    air, rain/exhaust scent). All 5 preserved elements present: Detective Rachel Torres,
+    Detective James Oyelaran, Sherlock the cat, Queens apartment, October Tuesday
+    timing. All 4 required phrases intact. Changes were surgical but substantial—the
+    model restructured from summary to scene while maintaining core information. The
+    revision introduces a subtle inciting incident hook (captain''s phone ring) that
+    propels toward rising action, enhancing narrative momentum. Minor: the ending
+    phone ring feels slightly abrupt but serves as effective transition. No new errors
+    introduced; prose quality is professional with strong sensory language and natural
+    dialogue. The revision fully executes Freytag''s Exposition beat definition.'
+error: null

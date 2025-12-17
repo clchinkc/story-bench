@@ -12,20 +12,19 @@ final_score: 0.971
 score_breakdown:
   final_score: 0.971
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 296
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.964
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.94
         slop_score: 1.0
         overall: 0.964
+      word_count:
+        actual: 296
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 0.96
       weight: 0.5
@@ -42,23 +41,24 @@ llm_results:
   minimal_change_score: 0.75
   word_count_valid: true
   quality_score: 0.95
-  evidence: 'The model correctly diagnosed the actual flaw: Marcus still had multiple
-    viable options (fundraiser, grant, new location) and intact support systems, creating
-    a ''setback'' rather than ''rock bottom.'' The revision systematically eliminates
-    all escape routes: (1) fundraiser venue canceled by developer, (2) grant denied
-    due to lease contingency, (3) wife leaves due to his obsession, (4) Denise betrays
-    him by accepting developer''s job offer. The ''whiff of death'' is multi-layered—loss
-    of marriage, staff loyalty, and identity as a youth program director. Marcus is
-    left genuinely hopeless with no cards to play. All 4 required phrases preserved
-    verbatim: ''Marcus stared at the eviction notice in his hands,'' ''Thirty days
-    to vacate the community center,'' ''"There has to be something we can do," said
-    Denise,'' and ''He rubbed his temples.'' All 4 story elements preserved: Marcus
-    as protagonist, community center setting, eviction crisis, Denise''s presence.
-    Changes were surgical rather than wholesale—the model kept the opening structure
-    and dialogue framework while inserting specific failures and emotional devastation.
-    The writing quality is strong with effective sensory details (''The clink of metal
-    on wood was final,'' ''sounds of kids playing basketball...now sounded like ghosts'')
-    and appropriate emotional escalation. Minor deduction from minimal_change_score
-    (0.75 vs 1.0) because approximately 40% of the revision is new content, though
-    this is justified by the beat''s requirements. No new errors introduced.'
+  evidence: "The model correctly diagnosed the actual flaw: Marcus still had multiple\
+    \ viable options (fundraiser, grant, new location) and intact support systems,\
+    \ creating a 'setback' rather than 'rock bottom.' The revision systematically\
+    \ eliminates all escape routes: (1) fundraiser venue canceled by developer, (2)\
+    \ grant denied due to lease contingency, (3) wife leaves due to his obsession,\
+    \ (4) Denise betrays him by accepting developer's job offer. The 'whiff of death'\
+    \ is multi-layered\u2014loss of marriage, staff loyalty, and identity as a youth\
+    \ program director. Marcus is left genuinely hopeless with no cards to play. All\
+    \ 4 required phrases preserved verbatim: 'Marcus stared at the eviction notice\
+    \ in his hands,' 'Thirty days to vacate the community center,' '\"There has to\
+    \ be something we can do,\" said Denise,' and 'He rubbed his temples.' All 4 story\
+    \ elements preserved: Marcus as protagonist, community center setting, eviction\
+    \ crisis, Denise's presence. Changes were surgical rather than wholesale\u2014\
+    the model kept the opening structure and dialogue framework while inserting specific\
+    \ failures and emotional devastation. The writing quality is strong with effective\
+    \ sensory details ('The clink of metal on wood was final,' 'sounds of kids playing\
+    \ basketball...now sounded like ghosts') and appropriate emotional escalation.\
+    \ Minor deduction from minimal_change_score (0.75 vs 1.0) because approximately\
+    \ 40% of the revision is new content, though this is justified by the beat's requirements.\
+    \ No new errors introduced."
 error: null

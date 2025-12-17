@@ -1,0 +1,51 @@
+evaluation_id: 5adfbe61
+task_id: beat_interpolation_002
+generation_id: beat_interpolation_002_google/gemini-3-flash-preview_0
+task_type: beat_interpolation
+model: google/gemini-3-flash-preview
+sample_index: 0
+evaluator_model: openai/gpt-5-mini
+evaluator_cost: 0.00153125
+timestamp: '2025-12-18T23:28:54.846507'
+success: true
+final_score: 0.9432430556761174
+score_breakdown:
+  final_score: 0.9432
+  components:
+    programmatic:
+      score: 0.9265
+      weight: 0.5
+      breakdown:
+        word_count_score: 1.0
+        repetition_score: 0.79
+        slop_score: 1.0
+        overall: 0.9265
+      word_count:
+        actual: 401
+        target_range:
+        - 250
+        - 400
+    llm_judge:
+      score: 0.96
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 0.9
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: false
+  character_score: 1.0
+  bridge_score: 0.9
+  continuity_score: 1.0
+  evidence: 'All four required elements are present: Sarah weighs recanting, discusses
+    official channels with Marcus, wrestles duty vs. sister, and has a clear tipping
+    moment (spotting the sedan and internal realization) that pushes her toward action.
+    Deductions: beat_execution_score slightly reduced (0.9) because her decision to
+    leave is fairly swift—while still clearly a product of the debate, it verges on
+    early commitment. Bridge_score slightly reduced (0.9) because the scene sets up
+    the Break into Two very well but stops short of the formal resignation, so the
+    transition is implied rather than shown. No must-not violations or continuity/character
+    problems. Word count flagged invalid per the provided range.'
+error: null

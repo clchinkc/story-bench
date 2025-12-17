@@ -12,20 +12,19 @@ final_score: 0.9032499999999999
 score_breakdown:
   final_score: 0.9032
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 832
-      target_range:
-      - 700
-      - 1000
     programmatic:
       score: 0.7
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.5
         slop_score: 1.0
         overall: 0.7
+      word_count:
+        actual: 832
+        target_range:
+        - 700
+        - 1000
     llm_judge:
       score: 0.9565
       weight: 0.5
@@ -66,30 +65,30 @@ llm_results:
       crew_member_compromised: 1.0
       miri_choice_dilemma: 1.0
       walls_closing_in: 1.0
-      notes: Carmen cornered, Jules panicking, sirens, guards tightening—all converge
-        perfectly.
+      notes: "Carmen cornered, Jules panicking, sirens, guards tightening\u2014all\
+        \ converge perfectly."
     chekhov_gun:
       satisfied: true
       setup: Jammer reboot window ('skylight') introduced as tactical advantage in
         Beat 1
       payoff: Becomes critical escape mechanism in Beat 3; Miri uses it to launch
         drone with painting
-      quality: Excellent—audience can trace setup to payoff clearly
+      quality: "Excellent\u2014audience can trace setup to payoff clearly"
     tonal_escalation:
       satisfied: true
-      beat_1_tone: Playful confidence—banter about ABBA, smooth execution, adrenaline
-        hum
-      beat_2_tone: Confidence shattered—'false victory shattered,' recognition flares,
-        theater lights trap
-      beat_3_tone: Genuine danger with gallows humor—'Gallows humor tasted bitter,'
-        surrender play, life-or-death stakes
+      beat_1_tone: "Playful confidence\u2014banter about ABBA, smooth execution, adrenaline\
+        \ hum"
+      beat_2_tone: "Confidence shattered\u2014'false victory shattered,' recognition\
+        \ flares, theater lights trap"
+      beat_3_tone: "Genuine danger with gallows humor\u2014'Gallows humor tasted bitter,'\
+        \ surrender play, life-or-death stakes"
       quality: Excellent progression
     mentor_presence:
       satisfied: true
-      beat_1: Unknown/background—no mention
+      beat_1: "Unknown/background\u2014no mention"
       beat_2: Revealed on video wall with full antagonistic presence; smirk and recognition
-      beat_3: Active threat—voice pounding toward Miri, direct confrontation, 'cool
-        and certain' dialogue
+      beat_3: "Active threat\u2014voice pounding toward Miri, direct confrontation,\
+        \ 'cool and certain' dialogue"
       quality: Perfect escalation of antagonist presence
     team_dynamics:
       satisfied: true
@@ -101,13 +100,13 @@ llm_results:
         forced to choose between mission and crew safety
       quality: Strong arc showing emotional escalation while maintaining loyalty
     context_maintenance:
-      protagonist: Miri fully realized—dry wit, meticulous planning, moral code (returns
-        stolen art), complex relationship with Eleonora
-      setting: Monaco Grand Prix, yacht 'Tsarina,' contemporary—vivid sensory details
-        (Vivaldi, Champagne, race engines, salt and engine fumes)
-      tone: Ocean's Eleven meets art history—clever banter ('Waterloo' joke, 'Chekhov's
-        skylight'), glamorous heist with intellectual depth (Nazi-stolen Titian, Amsterdam
-        family)
+      protagonist: "Miri fully realized\u2014dry wit, meticulous planning, moral code\
+        \ (returns stolen art), complex relationship with Eleonora"
+      setting: "Monaco Grand Prix, yacht 'Tsarina,' contemporary\u2014vivid sensory\
+        \ details (Vivaldi, Champagne, race engines, salt and engine fumes)"
+      tone: "Ocean's Eleven meets art history\u2014clever banter ('Waterloo' joke,\
+        \ 'Chekhov's skylight'), glamorous heist with intellectual depth (Nazi-stolen\
+        \ Titian, Amsterdam family)"
       quality: Excellent fidelity to all context elements
     narrative_coherence:
       beat_flow: Seamless progression from setup through complication to crisis

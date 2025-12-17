@@ -12,20 +12,19 @@ final_score: 0.944
 score_breakdown:
   final_score: 0.944
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 294
-      target_range:
-      - 250
-      - 400
     programmatic:
       score: 0.916
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.86
         slop_score: 1.0
         overall: 0.916
+      word_count:
+        actual: 294
+        target_range:
+        - 250
+        - 400
     llm_judge:
       score: 0.93
       weight: 0.5
@@ -42,15 +41,15 @@ llm_results:
   minimal_change_score: 0.6
   word_count_valid: true
   quality_score: 0.9
-  evidence: The revision directly addresses the identified flaw by making the dragon
-    exploit Kira's deepest fear (guilt over her brother's death), creating a psychological
-    'death' moment when she surrenders to that truth, and then depicting a rebirth
-    through acceptance that enables victory. The outcome and setting are preserved.
-    All four required phrases/elements appear (the line about the dragon, the opening
-    sentence, the creature description, and the dragon's collapse—note the article
-    in 'earth-shaking' was corrected to 'an' but the phrase is near-exact). Changes
-    were not purely surgical—the model added new dialogue and internal introspection
-    and rearranged some beats to create the symbolic death/rebirth, so edits are moderate
-    rather than minimal, but preservation of key elements and the victorious outcome
-    is complete.
+  evidence: "The revision directly addresses the identified flaw by making the dragon\
+    \ exploit Kira's deepest fear (guilt over her brother's death), creating a psychological\
+    \ 'death' moment when she surrenders to that truth, and then depicting a rebirth\
+    \ through acceptance that enables victory. The outcome and setting are preserved.\
+    \ All four required phrases/elements appear (the line about the dragon, the opening\
+    \ sentence, the creature description, and the dragon's collapse\u2014note the\
+    \ article in 'earth-shaking' was corrected to 'an' but the phrase is near-exact).\
+    \ Changes were not purely surgical\u2014the model added new dialogue and internal\
+    \ introspection and rearranged some beats to create the symbolic death/rebirth,\
+    \ so edits are moderate rather than minimal, but preservation of key elements\
+    \ and the victorious outcome is complete."
 error: null

@@ -12,20 +12,19 @@ final_score: 0.9070837175123365
 score_breakdown:
   final_score: 0.9071
   components:
-    word_count:
-      score: 0.9833
-      weight: 0.25
-      actual: 539
-      target_range:
-      - 550
-      - 750
     programmatic:
       score: 0.7
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.9833
         repetition_score: 0.5
         slop_score: 1.0
         overall: 0.7
+      word_count:
+        actual: 539
+        target_range:
+        - 550
+        - 750
     llm_judge:
       score: 0.9725
       weight: 0.5
@@ -39,16 +38,16 @@ llm_results:
   word_count_valid: false
   structural_accuracy_score: 0.9
   tone_score: 0.95
-  evidence: 'All four three-act beats are present: Act I establishes the ordinary
-    world and inciting incident (the letter) and ends with the first plot point (Kenji
-    boards the train); Act II shows a clear first-half (adjusting to village life,
-    meeting Haruki, emotional midpoint of seeing Yuki whole) and second-half complications
-    (rivals'' offer and Yuki''s rejection) that push to Act III; Act III resolves
-    with Kenji''s choice, the wedding denouement, and the shop epilogue. All eight
-    required elements are retained. Small deductions: the conversion could more explicitly
-    signpost the midpoint and the second plot point (they are present but somewhat
-    implicit), hence a slight reduction in structural_accuracy_score; tone is very
-    well maintained with only a minimal deduction for occasional directness in phrasing
-    compared to a consistently spare Japanese aesthetic. Word count is invalid per
-    the given range (the piece is 539 words; required 550–750).'
+  evidence: "All four three-act beats are present: Act I establishes the ordinary\
+    \ world and inciting incident (the letter) and ends with the first plot point\
+    \ (Kenji boards the train); Act II shows a clear first-half (adjusting to village\
+    \ life, meeting Haruki, emotional midpoint of seeing Yuki whole) and second-half\
+    \ complications (rivals' offer and Yuki's rejection) that push to Act III; Act\
+    \ III resolves with Kenji's choice, the wedding denouement, and the shop epilogue.\
+    \ All eight required elements are retained. Small deductions: the conversion could\
+    \ more explicitly signpost the midpoint and the second plot point (they are present\
+    \ but somewhat implicit), hence a slight reduction in structural_accuracy_score;\
+    \ tone is very well maintained with only a minimal deduction for occasional directness\
+    \ in phrasing compared to a consistently spare Japanese aesthetic. Word count\
+    \ is invalid per the given range (the piece is 539 words; required 550\u2013750)."
 error: null

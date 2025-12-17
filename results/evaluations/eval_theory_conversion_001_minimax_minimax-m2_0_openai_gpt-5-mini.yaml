@@ -12,20 +12,19 @@ final_score: 0.7018338208091531
 score_breakdown:
   final_score: 0.7018
   components:
-    word_count:
-      score: 0.1353
-      weight: 0.25
-      actual: 820
-      target_range:
-      - 500
-      - 700
     programmatic:
       score: 0.7
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.1353
         repetition_score: 0.5
         slop_score: 1.0
         overall: 0.7
+      word_count:
+        actual: 820
+        target_range:
+        - 500
+        - 700
     llm_judge:
       score: 0.986
       weight: 0.5
@@ -39,9 +38,9 @@ llm_results:
   word_count_valid: false
   structural_accuracy_score: 0.96
   tone_score: 0.96
-  evidence: 'All five Freytag beats are clearly present and all six core elements
-    are retained. Minor deductions: the climax slightly conflates revelation and public
-    confrontation (discovery begins in rising action, press conference functions as
-    peak), and the tone is polished and resolves a bit rapidly — nevertheless it maintains
-    strong medical-thriller tension and ethical weight.'
+  evidence: "All five Freytag beats are clearly present and all six core elements\
+    \ are retained. Minor deductions: the climax slightly conflates revelation and\
+    \ public confrontation (discovery begins in rising action, press conference functions\
+    \ as peak), and the tone is polished and resolves a bit rapidly \u2014 nevertheless\
+    \ it maintains strong medical-thriller tension and ethical weight."
 error: null

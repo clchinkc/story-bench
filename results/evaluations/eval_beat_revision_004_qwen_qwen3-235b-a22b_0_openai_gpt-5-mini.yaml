@@ -12,20 +12,19 @@ final_score: 0.9602672794474201
 score_breakdown:
   final_score: 0.9603
   components:
-    word_count:
-      score: 0.9651
-      weight: 0.25
-      actual: 382
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.976
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.9651
         repetition_score: 0.96
         slop_score: 1.0
         overall: 0.976
+      word_count:
+        actual: 382
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 0.95
       weight: 0.5
@@ -42,13 +41,13 @@ llm_results:
   minimal_change_score: 0.5
   word_count_valid: false
   quality_score: 1.0
-  evidence: 'The model addressed the actual flaw (telling vs. showing) by staging
-    a scene: Rachel adjusts the crime board, handles a decade-old case file, exchanges
-    dialogue with Detective James Oyelaran, and reacts to precinct noises and a notification
-    showing her Queens apartment and cat. Sensory details (disinfectant tang, rain
-    mist, microwave beep) and action reveal character traits and relationships rather
-    than summarizing them. All five required story elements were preserved. Changes
-    were moderate—the revision is a substantial rewrite to convert exposition into
-    a scene rather than a few surgical edits. Word count exceeds the specified range
-    (382 words), so word_count_valid is false.'
+  evidence: "The model addressed the actual flaw (telling vs. showing) by staging\
+    \ a scene: Rachel adjusts the crime board, handles a decade-old case file, exchanges\
+    \ dialogue with Detective James Oyelaran, and reacts to precinct noises and a\
+    \ notification showing her Queens apartment and cat. Sensory details (disinfectant\
+    \ tang, rain mist, microwave beep) and action reveal character traits and relationships\
+    \ rather than summarizing them. All five required story elements were preserved.\
+    \ Changes were moderate\u2014the revision is a substantial rewrite to convert\
+    \ exposition into a scene rather than a few surgical edits. Word count exceeds\
+    \ the specified range (382 words), so word_count_valid is false."
 error: null

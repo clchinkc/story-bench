@@ -12,20 +12,19 @@ final_score: 0.95
 score_breakdown:
   final_score: 0.95
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 320
-      target_range:
-      - 250
-      - 400
     programmatic:
       score: 0.88
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.8
         slop_score: 1.0
         overall: 0.88
+      word_count:
+        actual: 320
+        target_range:
+        - 250
+        - 400
     llm_judge:
       score: 0.96
       weight: 0.5
@@ -42,25 +41,25 @@ llm_results:
   minimal_change_score: 0.75
   word_count_valid: true
   quality_score: 0.95
-  evidence: 'The model correctly diagnosed the actual flaw: The Ordeal was executed
-    as a mere boss battle rather than a transformative psychological crisis. The revision
-    precisely addresses all four required elements: (1) The dragon explicitly exploits
-    Kira''s deepest fear—guilt over her brother''s death and her perceived cowardice;
-    (2) A clear ''death'' moment occurs when Kira accepts her failure (''What right
-    did she have...pretending to be a hero?''), experiencing psychological surrender;
-    (3) Transformation is explicit—her brother''s forgiving voice triggers rebirth,
-    reframing her guilt into purpose; (4) Victory now stems from internal understanding
-    (''She had finally confronted her deepest fear'') rather than mere persistence.
-    All four required phrases are preserved verbatim: ''Kira faced the Shadow Dragon
-    across the chasm,'' ''The creature was massive—twenty feet of obsidian scales
-    and burning eyes,'' the dragon''s dialogue, and ''The Shadow Dragon collapsed
-    with a earth-shaking roar.'' The changes are surgical rather than wholesale: the
-    model inserted psychological depth into existing battle sequences, added the brother''s
-    forgiving voice as a turning point, and recontextualized the final strike as symbolic
-    of internal liberation. Approximately 60% of original text remains structurally
-    intact, with insertions rather than replacements. The writing quality is high—no
-    grammatical errors, improved prose rhythm, and thematic coherence. Minor deduction
-    (0.05) only because the phrase ''an earth-shaking roar'' contains a grammatical
-    article inconsistency (''a earth'' should be ''an earth''), though this was present
-    in the original.'
+  evidence: "The model correctly diagnosed the actual flaw: The Ordeal was executed\
+    \ as a mere boss battle rather than a transformative psychological crisis. The\
+    \ revision precisely addresses all four required elements: (1) The dragon explicitly\
+    \ exploits Kira's deepest fear\u2014guilt over her brother's death and her perceived\
+    \ cowardice; (2) A clear 'death' moment occurs when Kira accepts her failure ('What\
+    \ right did she have...pretending to be a hero?'), experiencing psychological\
+    \ surrender; (3) Transformation is explicit\u2014her brother's forgiving voice\
+    \ triggers rebirth, reframing her guilt into purpose; (4) Victory now stems from\
+    \ internal understanding ('She had finally confronted her deepest fear') rather\
+    \ than mere persistence. All four required phrases are preserved verbatim: 'Kira\
+    \ faced the Shadow Dragon across the chasm,' 'The creature was massive\u2014twenty\
+    \ feet of obsidian scales and burning eyes,' the dragon's dialogue, and 'The Shadow\
+    \ Dragon collapsed with a earth-shaking roar.' The changes are surgical rather\
+    \ than wholesale: the model inserted psychological depth into existing battle\
+    \ sequences, added the brother's forgiving voice as a turning point, and recontextualized\
+    \ the final strike as symbolic of internal liberation. Approximately 60% of original\
+    \ text remains structurally intact, with insertions rather than replacements.\
+    \ The writing quality is high\u2014no grammatical errors, improved prose rhythm,\
+    \ and thematic coherence. Minor deduction (0.05) only because the phrase 'an earth-shaking\
+    \ roar' contains a grammatical article inconsistency ('a earth' should be 'an\
+    \ earth'), though this was present in the original."
 error: null

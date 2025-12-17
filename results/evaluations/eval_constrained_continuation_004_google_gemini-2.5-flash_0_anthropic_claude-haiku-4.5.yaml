@@ -12,20 +12,19 @@ final_score: 0.9605521582733813
 score_breakdown:
   final_score: 0.9606
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 546
-      target_range:
-      - 500
-      - 700
     programmatic:
       score: 0.8572
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.78
         slop_score: 0.973
         overall: 0.8572
+      word_count:
+        actual: 546
+        target_range:
+        - 500
+        - 700
     llm_judge:
       score: 0.9925
       weight: 0.5
@@ -45,9 +44,9 @@ llm_results:
   failed_constraints: []
   detailed_analysis:
     beats:
-      first_plot_point: Eleanor's declaration 'We will publish it' marks the irrevocable
-        point of no return—she crosses from contemplation into action, committing
-        to a dangerous path with full awareness of consequences.
+      first_plot_point: "Eleanor's declaration 'We will publish it' marks the irrevocable\
+        \ point of no return\u2014she crosses from contemplation into action, committing\
+        \ to a dangerous path with full awareness of consequences."
       act_2_opening: 'The final paragraphs (''The whispers of London''s elite...The
         game had begun'') establish the new world of Act 2 with rising action: Eleanor
         now faces the concrete challenges of production, societal scrutiny, and unknown
@@ -68,12 +67,14 @@ llm_results:
       6_threshold_crossed: 'Definitively met: ''There was no turning back from this
         precipice'' and the finality of her commitment.'
     must_not_elements:
-      1_ripper_as_character: Successfully avoided—only referenced as subject of manuscript.
-      2_graphic_violence: Successfully avoided—no descriptions of murders or violence.
-      3_romantic_subplot: Successfully avoided—relationship remains professional and
-        respectful.
-      4_easy_solution: Successfully avoided—publishing is presented as dangerous gamble,
-        not simple fix.
+      1_ripper_as_character: "Successfully avoided\u2014only referenced as subject\
+        \ of manuscript."
+      2_graphic_violence: "Successfully avoided\u2014no descriptions of murders or\
+        \ violence."
+      3_romantic_subplot: "Successfully avoided\u2014relationship remains professional\
+        \ and respectful."
+      4_easy_solution: "Successfully avoided\u2014publishing is presented as dangerous\
+        \ gamble, not simple fix."
     tone_assessment:
       gothic_tension: 'Excellent: fog imagery, ''poison on her tongue,'' ''dance with
         the devil,'' ''shroud over the city,'' ominous atmosphere throughout.'
@@ -83,8 +84,8 @@ llm_results:
       victorian_atmosphere: 'Authentic: period details (gas lamps, gloved fingers,
         solicitor, typesetters), formal dialogue, social constraints, 1888 London
         setting.'
-      minor_note: Tone is consistently maintained with only minor variation in intensity—no
-        tonal breaks detected.
+      minor_note: "Tone is consistently maintained with only minor variation in intensity\u2014\
+        no tonal breaks detected."
     ending_assessment:
       commitment_to_path: 'Perfect: Eleanor is fully committed, decision made, production
         beginning.'

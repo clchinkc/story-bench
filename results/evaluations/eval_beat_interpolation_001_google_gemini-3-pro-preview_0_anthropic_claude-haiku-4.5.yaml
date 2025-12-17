@@ -12,20 +12,19 @@ final_score: 0.994
 score_breakdown:
   final_score: 0.994
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 348
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.976
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.96
         slop_score: 1.0
         overall: 0.976
+      word_count:
+        actual: 348
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 1.0
       weight: 0.5
@@ -40,22 +39,22 @@ llm_results:
   character_score: 1.0
   bridge_score: 1.0
   continuity_score: 1.0
-  evidence: 'REQUIRED ELEMENTS (4/4): (1) Marcus introduced as mentor character with
-    distinctive voice and physical presence (scarred, dragon-bone cane, gravel laugh);
-    (2) Practical wisdom provided (''forest tests intentions, not abilities,'' ''read
-    it'' instead of fighting, compass that points to intent) and tangible tools (satchel,
-    compass); (3) Elena''s doubt shifts to reluctant acceptance (''panic was still
-    there, but beneath it, a small, stubborn curiosity had taken root''); (4) Librarian
-    skills reframed as useful (''organize chaos into order,'' ''listen to stories
-    and find truth in margins,'' ''weapon''). MUST-NOT VIOLATIONS (0/4 avoided): Elena
-    remains doubtful and resistant throughout, not confident; Marcus explicitly does
-    not accompany her (''does not solve their problems''); setting is curiosity shop,
-    not forest; no magical powers discovered. EXECUTION: Perfectly executes mentor
-    beat function—Marcus provides wisdom, tools, and reframing of Elena''s self-perception
-    without solving her problems. CHARACTER CONSISTENCY: Elena''s voice remains consistent
-    (skeptical librarian), Marcus''s voice is distinctive and memorable. BRIDGE QUALITY:
-    Seamless transition from refusal to mentor meeting to threshold crossing; each
-    beat flows naturally. CONTINUITY: Setting (village shop) is consistent with ''BEFORE''
-    context, and the ''AFTER'' section properly shows Elena at forest edge with Marcus''s
-    gifts, maintaining logical progression.'
+  evidence: "REQUIRED ELEMENTS (4/4): (1) Marcus introduced as mentor character with\
+    \ distinctive voice and physical presence (scarred, dragon-bone cane, gravel laugh);\
+    \ (2) Practical wisdom provided ('forest tests intentions, not abilities,' 'read\
+    \ it' instead of fighting, compass that points to intent) and tangible tools (satchel,\
+    \ compass); (3) Elena's doubt shifts to reluctant acceptance ('panic was still\
+    \ there, but beneath it, a small, stubborn curiosity had taken root'); (4) Librarian\
+    \ skills reframed as useful ('organize chaos into order,' 'listen to stories and\
+    \ find truth in margins,' 'weapon'). MUST-NOT VIOLATIONS (0/4 avoided): Elena\
+    \ remains doubtful and resistant throughout, not confident; Marcus explicitly\
+    \ does not accompany her ('does not solve their problems'); setting is curiosity\
+    \ shop, not forest; no magical powers discovered. EXECUTION: Perfectly executes\
+    \ mentor beat function\u2014Marcus provides wisdom, tools, and reframing of Elena's\
+    \ self-perception without solving her problems. CHARACTER CONSISTENCY: Elena's\
+    \ voice remains consistent (skeptical librarian), Marcus's voice is distinctive\
+    \ and memorable. BRIDGE QUALITY: Seamless transition from refusal to mentor meeting\
+    \ to threshold crossing; each beat flows naturally. CONTINUITY: Setting (village\
+    \ shop) is consistent with 'BEFORE' context, and the 'AFTER' section properly\
+    \ shows Elena at forest edge with Marcus's gifts, maintaining logical progression."
 error: null

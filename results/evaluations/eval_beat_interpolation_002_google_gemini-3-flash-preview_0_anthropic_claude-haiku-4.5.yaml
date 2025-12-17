@@ -1,0 +1,60 @@
+evaluation_id: 849e869d
+task_id: beat_interpolation_002
+generation_id: beat_interpolation_002_google/gemini-3-flash-preview_0
+task_type: beat_interpolation
+model: google/gemini-3-flash-preview
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.02015
+timestamp: '2025-12-18T23:28:48.624782'
+success: true
+final_score: 0.8044930556761175
+score_breakdown:
+  final_score: 0.8045
+  components:
+    programmatic:
+      score: 0.9265
+      weight: 0.5
+      breakdown:
+        word_count_score: 1.0
+        repetition_score: 0.79
+        slop_score: 1.0
+        overall: 0.9265
+      word_count:
+        actual: 401
+        target_range:
+        - 250
+        - 400
+    llm_judge:
+      score: 0.6825
+      weight: 0.5
+llm_results:
+  beat_elements_score: 0.75
+  elements_found: 3
+  elements_total: 4
+  beat_execution_score: 0.6
+  must_not_score: 0.5
+  violations_found: 2
+  word_count_valid: false
+  word_count: 401
+  word_count_range: 250-400
+  character_score: 0.85
+  bridge_score: 0.7
+  continuity_score: 0.8
+  evidence: 'ELEMENTS FOUND (3/4): (1) Sarah considers recanting—explicitly stated
+    ''Recanting was the path of least resistance.'' (2) Official channels discussed—Marcus
+    proposes Captain, feds, protocol. (3) Internal conflict about duty vs. sister—''My
+    duty is to my blood'' vs. Marcus''s ''duty to the law.'' MISSING: No clear moment/conversation
+    that tips her toward the third option (going rogue without resigning). The decision
+    feels premature. VIOLATIONS (2/4): (1) MAJOR: Sarah already decides to resign
+    and go vigilante during this beat (''she couldn''t be a cop''), which skips the
+    debate''s function—the decision should crystallize BY the end, not be fully formed
+    mid-beat. (2) MODERATE: The dark sedan observation and internal realization about
+    the failing system feels like she''s already committed to going rogue, not wrestling
+    with it. WORD COUNT: 401 exceeds 400-word limit by 1 word (minor). CHARACTER:
+    Sarah''s voice is consistent—sharp, conflicted, determined. Marcus is well-drawn
+    as the voice of protocol. BRIDGE: Connects well to ''Break Into Two'' (resignation
+    letter), though the transition happens too early within the Debate beat itself.
+    CONTINUITY: Setting (diner, sedan, precinct) is coherent. The photo and stakes
+    remain consistent with the Catalyst.'
+error: null

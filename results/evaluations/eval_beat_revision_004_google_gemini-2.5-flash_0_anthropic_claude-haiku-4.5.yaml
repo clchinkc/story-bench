@@ -12,20 +12,19 @@ final_score: 0.9355
 score_breakdown:
   final_score: 0.9355
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 270
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.988
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.98
         slop_score: 1.0
         overall: 0.988
+      word_count:
+        actual: 270
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 0.877
       weight: 0.5
@@ -42,32 +41,33 @@ llm_results:
   minimal_change_score: 0.35
   word_count_valid: true
   quality_score: 0.88
-  evidence: 'DIAGNOSIS: The model correctly identified the core flaw—the original
-    was pure exposition-as-summary (telling, not showing). The revision demonstrates
-    clear understanding by converting static description into a lived scene with sensory
-    grounding, action, and dialogue. FLAW CORRECTION: Excellent execution. The revision
-    shows Rachel''s detective instincts through her lingering gaze on the cold case
-    poster; her partnership with James through natural dialogue and interaction; her
-    devotion to work through behavior (late nights, cold cases that gnaw at her);
-    and setting through rich sensory detail (stale coffee, worn desk, precinct hum).
-    The cat appears naturally through Rachel''s thought about Sherlock waiting at
-    home, with backstory revealed through action (found at crime scene). BEAT SATISFACTION:
-    The exposition now establishes baseline, character through behavior, relationships
-    through interaction, and creates investment. The final line (''It was a Tuesday
-    morning in October when everything changed'') signals the inciting incident is
-    imminent, properly framing this as exposition. PRESERVATION: All 5 elements preserved—Rachel
-    Torres (protagonist), James Oyelaran (partner), Sherlock (cat), Queens apartment
-    (referenced), October Tuesday (explicit). All 4 required phrases present verbatim
-    or near-exact. MINIMAL CHANGE SCORE: 0.35 reflects that this is a SUBSTANTIAL
-    REWRITE, not surgical edits. The original 270-word info-dump was completely restructured
-    into scene-based narrative. However, this level of revision was necessary to fix
-    the fundamental flaw; minimal surface edits would have failed to address the ''telling
-    vs. showing'' problem. The constraint to preserve elements was met, but the constraint
-    to make ''minimal modifications'' was violated—though arguably unavoidable given
-    the severity of the original flaw. QUALITY: Writing is professional, no new errors
-    introduced. Sensory language is vivid (''steam kissed her face,'' ''low thrum
-    beneath surface calm''). Dialogue feels natural. Minor: the Sherlock paragraph
-    breaks the scene slightly (shifts to internal thought/memory), but this is a minor
-    structural choice, not an error. Overall strong execution of the fix despite the
-    rewrite scope.'
+  evidence: "DIAGNOSIS: The model correctly identified the core flaw\u2014the original\
+    \ was pure exposition-as-summary (telling, not showing). The revision demonstrates\
+    \ clear understanding by converting static description into a lived scene with\
+    \ sensory grounding, action, and dialogue. FLAW CORRECTION: Excellent execution.\
+    \ The revision shows Rachel's detective instincts through her lingering gaze on\
+    \ the cold case poster; her partnership with James through natural dialogue and\
+    \ interaction; her devotion to work through behavior (late nights, cold cases\
+    \ that gnaw at her); and setting through rich sensory detail (stale coffee, worn\
+    \ desk, precinct hum). The cat appears naturally through Rachel's thought about\
+    \ Sherlock waiting at home, with backstory revealed through action (found at crime\
+    \ scene). BEAT SATISFACTION: The exposition now establishes baseline, character\
+    \ through behavior, relationships through interaction, and creates investment.\
+    \ The final line ('It was a Tuesday morning in October when everything changed')\
+    \ signals the inciting incident is imminent, properly framing this as exposition.\
+    \ PRESERVATION: All 5 elements preserved\u2014Rachel Torres (protagonist), James\
+    \ Oyelaran (partner), Sherlock (cat), Queens apartment (referenced), October Tuesday\
+    \ (explicit). All 4 required phrases present verbatim or near-exact. MINIMAL CHANGE\
+    \ SCORE: 0.35 reflects that this is a SUBSTANTIAL REWRITE, not surgical edits.\
+    \ The original 270-word info-dump was completely restructured into scene-based\
+    \ narrative. However, this level of revision was necessary to fix the fundamental\
+    \ flaw; minimal surface edits would have failed to address the 'telling vs. showing'\
+    \ problem. The constraint to preserve elements was met, but the constraint to\
+    \ make 'minimal modifications' was violated\u2014though arguably unavoidable given\
+    \ the severity of the original flaw. QUALITY: Writing is professional, no new\
+    \ errors introduced. Sensory language is vivid ('steam kissed her face,' 'low\
+    \ thrum beneath surface calm'). Dialogue feels natural. Minor: the Sherlock paragraph\
+    \ breaks the scene slightly (shifts to internal thought/memory), but this is a\
+    \ minor structural choice, not an error. Overall strong execution of the fix despite\
+    \ the rewrite scope."
 error: null

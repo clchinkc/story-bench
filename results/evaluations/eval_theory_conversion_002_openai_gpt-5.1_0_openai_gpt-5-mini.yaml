@@ -12,20 +12,19 @@ final_score: 0.665
 score_breakdown:
   final_score: 0.665
   components:
-    word_count:
-      score: 0.0
-      weight: 0.25
-      actual: 2174
-      target_range:
-      - 600
-      - 800
     programmatic:
       score: 0.7
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.0
         repetition_score: 0.5
         slop_score: 1.0
         overall: 0.7
+      word_count:
+        actual: 2174
+        target_range:
+        - 600
+        - 800
     llm_judge:
       score: 0.98
       weight: 0.5
@@ -39,21 +38,21 @@ llm_results:
   word_count_valid: false
   structural_accuracy_score: 0.9
   tone_score: 1.0
-  evidence: 'All 12 Campbell beats are present and clearly mapped: Ordinary World
-    (workshop life), Call to Adventure (spring dries), Refusal (Maya hesitates), Meeting
-    the Mentor (grandmother''s journal/ancestral guidance), Crossing the Threshold
-    (journey to shrine), Tests/Allies/Enemies (climb, scarce water, ravens, struggle
-    with clay), Approach to the Inmost Cave (ruined shrine, preparing kiln), Ordeal
-    (surrendering control to shape the vessel), Reward (completed vessel), The Road
-    Back (descent carrying the vessel, temptation to abandon), Resurrection (setting
-    the vessel and water returning; Maya reborn), Return with Elixir (water restored;
-    her changed role). All 7 required elements are preserved (Maya protagonist; pottery
-    central; grandmother''s legacy; mountain shrine journey; dried spring problem;
-    theme of surrender; Maya''s transformation). Deduction from perfect structural
-    accuracy (scored 0.9) because the ''Meeting the Mentor'' functions as a journal/ancestral
-    voice rather than a distinct living mentor and ''Tests/Allies/Enemies'' lacks
-    clearly delineated allies or antagonists—these are present but not strongly personified.
-    Word count is invalid (provided text = 2174 words, outside requested 600–800),
-    so word_count_valid is false. Tone remains quiet, meditative, and transformative
-    throughout.'
+  evidence: "All 12 Campbell beats are present and clearly mapped: Ordinary World\
+    \ (workshop life), Call to Adventure (spring dries), Refusal (Maya hesitates),\
+    \ Meeting the Mentor (grandmother's journal/ancestral guidance), Crossing the\
+    \ Threshold (journey to shrine), Tests/Allies/Enemies (climb, scarce water, ravens,\
+    \ struggle with clay), Approach to the Inmost Cave (ruined shrine, preparing kiln),\
+    \ Ordeal (surrendering control to shape the vessel), Reward (completed vessel),\
+    \ The Road Back (descent carrying the vessel, temptation to abandon), Resurrection\
+    \ (setting the vessel and water returning; Maya reborn), Return with Elixir (water\
+    \ restored; her changed role). All 7 required elements are preserved (Maya protagonist;\
+    \ pottery central; grandmother's legacy; mountain shrine journey; dried spring\
+    \ problem; theme of surrender; Maya's transformation). Deduction from perfect\
+    \ structural accuracy (scored 0.9) because the 'Meeting the Mentor' functions\
+    \ as a journal/ancestral voice rather than a distinct living mentor and 'Tests/Allies/Enemies'\
+    \ lacks clearly delineated allies or antagonists\u2014these are present but not\
+    \ strongly personified. Word count is invalid (provided text = 2174 words, outside\
+    \ requested 600\u2013800), so word_count_valid is false. Tone remains quiet, meditative,\
+    \ and transformative throughout."
 error: null

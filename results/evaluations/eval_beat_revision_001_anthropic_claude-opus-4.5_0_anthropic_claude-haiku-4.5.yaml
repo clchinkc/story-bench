@@ -12,20 +12,19 @@ final_score: 0.938
 score_breakdown:
   final_score: 0.938
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 347
-      target_range:
-      - 250
-      - 400
     programmatic:
       score: 0.832
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.72
         slop_score: 1.0
         overall: 0.832
+      word_count:
+        actual: 347
+        target_range:
+        - 250
+        - 400
     llm_judge:
       score: 0.96
       weight: 0.5
@@ -42,27 +41,28 @@ llm_results:
   minimal_change_score: 0.75
   word_count_valid: true
   quality_score: 0.95
-  evidence: 'The model correctly diagnosed the actual flaw: The Ordeal was executed
-    as a mere boss battle lacking internal transformation, fear confrontation, symbolic
-    death, and rebirth. The revision precisely addresses all four deficiencies: (1)
-    Dragon exploits Kira''s deepest fear—guilt over brother''s death, weaponizing
-    her buried shame; (2) Clear death moment—Kira collapses at chasm''s edge, crushed
-    by guilt, unable to rise, accepting defeat (''Die knowing what you are''); (3)
-    Transformation occurs—she recontextualizes her survival from cowardice to courage
-    through her brother''s remembered words, experiencing psychological rebirth; (4)
-    Victory flows from new understanding—she rises ''no longer fighting her shame''
-    and defeats the dragon with ''crystalline clarity,'' not mere persistence. All
-    four required phrases preserved exactly: ''Kira faced the Shadow Dragon across
-    the chasm,'' ''The creature was massive—twenty feet of obsidian scales and burning
-    eyes,'' ''You cannot defeat me, child,'' the dragon rumbled,'' and ''The Shadow
-    Dragon collapsed with an earth-shaking roar.'' All four story elements preserved:
-    Shadow Dragon antagonist, Kira protagonist with sword, brother''s death reference,
-    victorious outcome. Changes were surgical rather than wholesale—the model retained
-    the battle structure, three knockdowns, physical combat details, and victory moment
-    while inserting psychological depth through dragon dialogue that targets her fear,
-    internal monologue during the death moment, and the rebirth epiphany. The revision
-    maintains setting, tone, and pacing while fundamentally transforming the beat''s
-    meaning. Minor: ''an earth-shaking roar'' vs. original ''an earth-shaking roar''
-    (article difference is negligible). Writing quality improved with stronger emotional
-    resonance and thematic coherence. No new errors introduced.'
+  evidence: "The model correctly diagnosed the actual flaw: The Ordeal was executed\
+    \ as a mere boss battle lacking internal transformation, fear confrontation, symbolic\
+    \ death, and rebirth. The revision precisely addresses all four deficiencies:\
+    \ (1) Dragon exploits Kira's deepest fear\u2014guilt over brother's death, weaponizing\
+    \ her buried shame; (2) Clear death moment\u2014Kira collapses at chasm's edge,\
+    \ crushed by guilt, unable to rise, accepting defeat ('Die knowing what you are');\
+    \ (3) Transformation occurs\u2014she recontextualizes her survival from cowardice\
+    \ to courage through her brother's remembered words, experiencing psychological\
+    \ rebirth; (4) Victory flows from new understanding\u2014she rises 'no longer\
+    \ fighting her shame' and defeats the dragon with 'crystalline clarity,' not mere\
+    \ persistence. All four required phrases preserved exactly: 'Kira faced the Shadow\
+    \ Dragon across the chasm,' 'The creature was massive\u2014twenty feet of obsidian\
+    \ scales and burning eyes,' 'You cannot defeat me, child,' the dragon rumbled,'\
+    \ and 'The Shadow Dragon collapsed with an earth-shaking roar.' All four story\
+    \ elements preserved: Shadow Dragon antagonist, Kira protagonist with sword, brother's\
+    \ death reference, victorious outcome. Changes were surgical rather than wholesale\u2014\
+    the model retained the battle structure, three knockdowns, physical combat details,\
+    \ and victory moment while inserting psychological depth through dragon dialogue\
+    \ that targets her fear, internal monologue during the death moment, and the rebirth\
+    \ epiphany. The revision maintains setting, tone, and pacing while fundamentally\
+    \ transforming the beat's meaning. Minor: 'an earth-shaking roar' vs. original\
+    \ 'an earth-shaking roar' (article difference is negligible). Writing quality\
+    \ improved with stronger emotional resonance and thematic coherence. No new errors\
+    \ introduced."
 error: null

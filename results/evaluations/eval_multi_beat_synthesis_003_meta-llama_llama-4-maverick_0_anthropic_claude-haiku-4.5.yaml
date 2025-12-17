@@ -12,20 +12,19 @@ final_score: 0.43712553509210167
 score_breakdown:
   final_score: 0.4371
   components:
-    word_count:
-      score: 0.0175
-      weight: 0.25
-      actual: 444
-      target_range:
-      - 700
-      - 1000
     programmatic:
       score: 0.802
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.0175
         repetition_score: 0.67
         slop_score: 1.0
         overall: 0.802
+      word_count:
+        actual: 444
+        target_range:
+        - 700
+        - 1000
     llm_judge:
       score: 0.4645
       weight: 0.5
@@ -68,15 +67,15 @@ llm_results:
     background); no escalating presence arc'
   - 'TEAM DYNAMICS: Crew members (Javier, Lena, Marcus) introduced but have no individual
     arcs or plot impact across beats'
-  summary: The generated story establishes setting and character effectively but fails
-    to structure the three beats as distinct narrative movements. Beat 1 lacks the
-    playful heist execution and clever problem-solving that should define 'Fun and
-    Games.' Beat 2 never achieves a false victory and doesn't escalate stakes beyond
-    the mentor reveal. Beat 3 is entirely absent—no security pursuit, team crisis,
-    or moral choice. The mentor's sudden appearance violates the constraint of gradual
-    escalation. Crew members are named but never developed. The 444-word count falls
-    significantly short of the 700-1000 requirement, preventing full narrative development.
-    While context (protagonist, setting, tone) is partially maintained, the story
-    reads as a single scene rather than three distinct beats with escalating tension
-    and consequences.
+  summary: "The generated story establishes setting and character effectively but\
+    \ fails to structure the three beats as distinct narrative movements. Beat 1 lacks\
+    \ the playful heist execution and clever problem-solving that should define 'Fun\
+    \ and Games.' Beat 2 never achieves a false victory and doesn't escalate stakes\
+    \ beyond the mentor reveal. Beat 3 is entirely absent\u2014no security pursuit,\
+    \ team crisis, or moral choice. The mentor's sudden appearance violates the constraint\
+    \ of gradual escalation. Crew members are named but never developed. The 444-word\
+    \ count falls significantly short of the 700-1000 requirement, preventing full\
+    \ narrative development. While context (protagonist, setting, tone) is partially\
+    \ maintained, the story reads as a single scene rather than three distinct beats\
+    \ with escalating tension and consequences."
 error: null

@@ -12,20 +12,19 @@ final_score: 0.6712499999999999
 score_breakdown:
   final_score: 0.6712
   components:
-    word_count:
-      score: 0.0
-      weight: 0.25
-      actual: 1340
-      target_range:
-      - 500
-      - 700
     programmatic:
       score: 0.7
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.0
         repetition_score: 0.5
         slop_score: 1.0
         overall: 0.7
+      word_count:
+        actual: 1340
+        target_range:
+        - 500
+        - 700
     llm_judge:
       score: 0.9925
       weight: 0.5
@@ -48,34 +47,34 @@ llm_results:
   - 'CRITICAL: Word count 1340 exceeds maximum of 700 by 640 words (91% over limit)'
   analysis:
     beats_present_detail:
-    - '✓ Approach to the Inmost Cave: Service tunnel descent, Gate of Teeth mechanism,
-      escalating pursuit'
-    - '✓ The Ordeal: The Maw pit with shifting sand, physical and psychological death/rebirth,
-      emergence transformed'
+    - "\u2713 Approach to the Inmost Cave: Service tunnel descent, Gate of Teeth mechanism,\
+      \ escalating pursuit"
+    - "\u2713 The Ordeal: The Maw pit with shifting sand, physical and psychological\
+      \ death/rebirth, emergence transformed"
     must_include_detail:
-    - '✓ Choice between escape and helping Tomás: Grate scene where Zara could slip
-      through alone but instead grabs his cloak'
-    - '✓ Trap requiring thief skills: Gate of Teeth lock mechanism solved through
-      tactile reading; Maw sand currents mapped through observation and weight distribution'
-    - '✓ Tomás''s true motivation revealed: Guilt over broken oath, desire for redemption,
-      parallel to Zara''s fear of failure'
-    - '✓ Zara confronting fear of failure: Extended internal monologue about becoming
-      the story told about her, mother''s trust, proving herself real'
-    - '✓ Symbolic death/rebirth: Drowning in sand, stillness as survival technique,
-      emergence as ''harder, more deliberate'' version of self'
-    - '✓ Zara changed by Ordeal: Explicitly stated—''the part of her that waited for
-      others to rescue her...had drowned back there'''
+    - "\u2713 Choice between escape and helping Tom\xE1s: Grate scene where Zara could\
+      \ slip through alone but instead grabs his cloak"
+    - "\u2713 Trap requiring thief skills: Gate of Teeth lock mechanism solved through\
+      \ tactile reading; Maw sand currents mapped through observation and weight distribution"
+    - "\u2713 Tom\xE1s's true motivation revealed: Guilt over broken oath, desire\
+      \ for redemption, parallel to Zara's fear of failure"
+    - "\u2713 Zara confronting fear of failure: Extended internal monologue about\
+      \ becoming the story told about her, mother's trust, proving herself real"
+    - "\u2713 Symbolic death/rebirth: Drowning in sand, stillness as survival technique,\
+      \ emergence as 'harder, more deliberate' version of self"
+    - "\u2713 Zara changed by Ordeal: Explicitly stated\u2014'the part of her that\
+      \ waited for others to rescue her...had drowned back there'"
     must_not_detail:
-    - ✓ No cure found (saved for later narrative)
-    - ✓ No romantic subplot (relationship remains mentor/ally with emotional depth
-      but no romance)
-    - ✓ Tomás survives (both characters reach the balcony alive)
-    - ✓ No magic/supernatural abilities (all solutions use thief skills, physics,
-      psychology)
-    tone_assessment: Excellent execution of tense, morally complex tone. Desperation
-      balanced with agency. Moments of hope (Tomás's vulnerability, Zara's determination)
-      interspersed with genuine danger. Internal conflict matches external stakes.
-      Minor deduction only for occasional slight melodrama in mother-memory sequences.
+    - "\u2713 No cure found (saved for later narrative)"
+    - "\u2713 No romantic subplot (relationship remains mentor/ally with emotional\
+      \ depth but no romance)"
+    - "\u2713 Tom\xE1s survives (both characters reach the balcony alive)"
+    - "\u2713 No magic/supernatural abilities (all solutions use thief skills, physics,\
+      \ psychology)"
+    tone_assessment: "Excellent execution of tense, morally complex tone. Desperation\
+      \ balanced with agency. Moments of hope (Tom\xE1s's vulnerability, Zara's determination)\
+      \ interspersed with genuine danger. Internal conflict matches external stakes.\
+      \ Minor deduction only for occasional slight melodrama in mother-memory sequences."
     ending_assessment: Perfect execution. Zara has demonstrably passed the Ordeal
       (emerged transformed, survived the Maw). New complication introduced (Scorpion
       Guild blocking exit on balcony). Sets up next beat (Resurrection/confrontation).
@@ -85,7 +84,7 @@ llm_results:
     - Psychological depth matches action sequences
     - Zara's character arc within this section is complete and earned
     - Excellent use of sensory detail (sand, dust, metal, cold)
-    - Tomás's revelation reframes both characters' motivations
+    - "Tom\xE1s's revelation reframes both characters' motivations"
     - Ending complication is organic, not arbitrary
     critical_issue: Word count violation is severe. At 1340 words, the piece is 91%
       over the 700-word maximum. This is a hard constraint failure that cannot be

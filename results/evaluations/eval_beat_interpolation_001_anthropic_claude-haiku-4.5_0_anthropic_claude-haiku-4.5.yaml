@@ -12,20 +12,19 @@ final_score: 0.982
 score_breakdown:
   final_score: 0.982
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 333
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.928
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.88
         slop_score: 1.0
         overall: 0.928
+      word_count:
+        actual: 333
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 1.0
       weight: 0.5
@@ -40,20 +39,21 @@ llm_results:
   character_score: 1.0
   bridge_score: 1.0
   continuity_score: 1.0
-  evidence: 'All four required elements present: (1) Marcus introduced as mentor character
-    with clear backstory (map keeper''s granddaughter reference, missing arm, prior
-    journey); (2) Practical wisdom and tools provided (compass, journal, rope, cloth-wrapped
-    object; explicit guidance about forest testing intentions not abilities; librarian
-    skills reframed as asset); (3) Elena''s doubt shifts to reluctant acceptance (moves
-    from ''I don''t want to be here'' to ''She took it, surprised by how right it
-    felt in her hands''); (4) Librarian skills explicitly validated (''You''re a librarian...information
-    is a weapon''). All must-not violations avoided: Elena remains doubtful and reluctant
-    (not confident/eager); Marcus explicitly refuses to accompany her and doesn''t
-    solve problems; setting is village shop, not forest; no magical powers discovered.
-    Character voice consistent throughout—Elena''s internal conflict and practical
-    nature maintained. Bridge seamless: BEFORE ends with Elena walking out; GENERATED
-    shows her arriving at shop; AFTER shows her at forest threshold with Marcus''s
-    teachings internalized. Continuity perfect: satchel, compass, and Marcus''s words
-    carry through all three sections. Execution clearly fulfills mentor beat''s narrative
-    function: wisdom transfer, tool provision, psychological preparation without problem-solving.'
+  evidence: "All four required elements present: (1) Marcus introduced as mentor character\
+    \ with clear backstory (map keeper's granddaughter reference, missing arm, prior\
+    \ journey); (2) Practical wisdom and tools provided (compass, journal, rope, cloth-wrapped\
+    \ object; explicit guidance about forest testing intentions not abilities; librarian\
+    \ skills reframed as asset); (3) Elena's doubt shifts to reluctant acceptance\
+    \ (moves from 'I don't want to be here' to 'She took it, surprised by how right\
+    \ it felt in her hands'); (4) Librarian skills explicitly validated ('You're a\
+    \ librarian...information is a weapon'). All must-not violations avoided: Elena\
+    \ remains doubtful and reluctant (not confident/eager); Marcus explicitly refuses\
+    \ to accompany her and doesn't solve problems; setting is village shop, not forest;\
+    \ no magical powers discovered. Character voice consistent throughout\u2014Elena's\
+    \ internal conflict and practical nature maintained. Bridge seamless: BEFORE ends\
+    \ with Elena walking out; GENERATED shows her arriving at shop; AFTER shows her\
+    \ at forest threshold with Marcus's teachings internalized. Continuity perfect:\
+    \ satchel, compass, and Marcus's words carry through all three sections. Execution\
+    \ clearly fulfills mentor beat's narrative function: wisdom transfer, tool provision,\
+    \ psychological preparation without problem-solving."
 error: null

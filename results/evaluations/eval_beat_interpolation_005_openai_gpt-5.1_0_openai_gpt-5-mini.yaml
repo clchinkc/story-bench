@@ -12,20 +12,19 @@ final_score: 0.675
 score_breakdown:
   final_score: 0.675
   components:
-    word_count:
-      score: 0.0
-      weight: 0.25
-      actual: 1001
-      target_range:
-      - 300
-      - 450
     programmatic:
       score: 0.7
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.0
         repetition_score: 0.5
         slop_score: 1.0
         overall: 0.7
+      word_count:
+        actual: 1001
+        target_range:
+        - 300
+        - 450
     llm_judge:
       score: 1.0
       weight: 0.5
@@ -40,14 +39,14 @@ llm_results:
   character_score: 1.0
   bridge_score: 1.0
   continuity_score: 1.0
-  evidence: 'All four required elements are present: Maya discovers Alejandro''s vulnerability
-    (scar, nerve damage, shaking hand), their relationship pivots from professional
-    to personal (shared cooking, brushing shoulders, unguarded look), there is a clear
-    shared moment creating genuine connection (making and eating his mother''s tortilla),
-    and Maya explicitly makes a commitment that deepens beyond the contract. The scene
-    functions well as a midpoint—Maya shifts from transactional to proactive. None
-    of the forbidden items appear (the intimacy shown is suggestive but not declaring
-    them already in love; no contract breach or photo; Alejandro opens up). The only
-    deduction is word_count_valid=false because the provided text exceeds the specified
-    300–450 word range.'
+  evidence: "All four required elements are present: Maya discovers Alejandro's vulnerability\
+    \ (scar, nerve damage, shaking hand), their relationship pivots from professional\
+    \ to personal (shared cooking, brushing shoulders, unguarded look), there is a\
+    \ clear shared moment creating genuine connection (making and eating his mother's\
+    \ tortilla), and Maya explicitly makes a commitment that deepens beyond the contract.\
+    \ The scene functions well as a midpoint\u2014Maya shifts from transactional to\
+    \ proactive. None of the forbidden items appear (the intimacy shown is suggestive\
+    \ but not declaring them already in love; no contract breach or photo; Alejandro\
+    \ opens up). The only deduction is word_count_valid=false because the provided\
+    \ text exceeds the specified 300\u2013450 word range."
 error: null

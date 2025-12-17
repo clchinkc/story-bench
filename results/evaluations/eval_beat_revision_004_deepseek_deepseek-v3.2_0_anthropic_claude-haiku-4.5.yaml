@@ -12,20 +12,19 @@ final_score: 0.9726958525345621
 score_breakdown:
   final_score: 0.9727
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 212
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.9908
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 1.0
         slop_score: 0.977
         overall: 0.9908
+      word_count:
+        actual: 212
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 0.95
       weight: 0.5
@@ -42,24 +41,25 @@ llm_results:
   minimal_change_score: 0.65
   word_count_valid: true
   quality_score: 0.95
-  evidence: 'The model correctly diagnosed the core flaw: the original segment was
-    pure exposition-through-telling (info-dump style) with no scene, action, or sensory
-    grounding. The revision transforms this into SHOWN exposition through: (1) A concrete
-    scene with Rachel at her cubicle examining the cold case board, (2) Dialogue with
-    James that reveals their 3-year partnership dynamic and mutual respect naturally,
-    (3) Rachel''s detective instincts and obsession with unsolved cases demonstrated
-    through her behavior (refusing to close Jenkins file), (4) Sensory details (bitter
-    precinct coffee, saxophone, faded photographs, demanding meow), (5) The apartment
-    scene showing her solitary life devoted to work. All 4 required phrases are present:
-    ''Detective Rachel Torres,'' ''Detective James Oyelaran,'' ''cat named Sherlock,''
-    ''Tuesday morning in October.'' All 5 preserved elements intact. The changes were
-    substantial but necessary—the original ~400-word info-dump was compressed to 212
-    words of active scene, which represents moderate-to-significant restructuring
-    rather than surgical edits. However, this level of change was appropriate given
-    the severity of the flaw. The revision successfully establishes the ordinary world
-    before disruption, creates investment in Rachel''s character through action, and
-    ends with a hook (''Tomorrow, everything would change'') that signals the inciting
-    incident. Writing quality is professional with no new errors. Minor: the phrase
-    ''a familiar rhythm to their three-year partnership'' slightly tells rather than
-    purely shows, but this is minimal and acceptable within the scene-based approach.'
+  evidence: "The model correctly diagnosed the core flaw: the original segment was\
+    \ pure exposition-through-telling (info-dump style) with no scene, action, or\
+    \ sensory grounding. The revision transforms this into SHOWN exposition through:\
+    \ (1) A concrete scene with Rachel at her cubicle examining the cold case board,\
+    \ (2) Dialogue with James that reveals their 3-year partnership dynamic and mutual\
+    \ respect naturally, (3) Rachel's detective instincts and obsession with unsolved\
+    \ cases demonstrated through her behavior (refusing to close Jenkins file), (4)\
+    \ Sensory details (bitter precinct coffee, saxophone, faded photographs, demanding\
+    \ meow), (5) The apartment scene showing her solitary life devoted to work. All\
+    \ 4 required phrases are present: 'Detective Rachel Torres,' 'Detective James\
+    \ Oyelaran,' 'cat named Sherlock,' 'Tuesday morning in October.' All 5 preserved\
+    \ elements intact. The changes were substantial but necessary\u2014the original\
+    \ ~400-word info-dump was compressed to 212 words of active scene, which represents\
+    \ moderate-to-significant restructuring rather than surgical edits. However, this\
+    \ level of change was appropriate given the severity of the flaw. The revision\
+    \ successfully establishes the ordinary world before disruption, creates investment\
+    \ in Rachel's character through action, and ends with a hook ('Tomorrow, everything\
+    \ would change') that signals the inciting incident. Writing quality is professional\
+    \ with no new errors. Minor: the phrase 'a familiar rhythm to their three-year\
+    \ partnership' slightly tells rather than purely shows, but this is minimal and\
+    \ acceptable within the scene-based approach."
 error: null

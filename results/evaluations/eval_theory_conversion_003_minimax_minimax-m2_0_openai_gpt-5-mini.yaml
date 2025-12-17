@@ -12,20 +12,19 @@ final_score: 0.6973962073542892
 score_breakdown:
   final_score: 0.6974
   components:
-    word_count:
-      score: 0.1446
-      weight: 0.25
-      actual: 868
-      target_range:
-      - 550
-      - 750
     programmatic:
       score: 0.7
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.1446
         repetition_score: 0.5
         slop_score: 1.0
         overall: 0.7
+      word_count:
+        actual: 868
+        target_range:
+        - 550
+        - 750
     llm_judge:
       score: 0.9725
       weight: 0.5
@@ -39,14 +38,14 @@ llm_results:
   word_count_valid: false
   structural_accuracy_score: 0.9
   tone_score: 0.95
-  evidence: 'All four three-act beats are present: Act I (ordinary world, inciting
-    letter, first plot point = train departure), Act IIa (reconnection, Haruki, festival;
-    midpoint = temptation/offer), Act IIb (complication: Yuki''s discovery, ''all
-    is lost''; second plot point = declining the deal), Act III (climax outside the
-    wedding, denouement = bamboo shop). All eight required elements are preserved
-    intact. Deductions: word count falls outside requested 550–750 range (given 868).
-    Minor structural deduction for slight ambiguity about which moment functions as
-    a clean midpoint (temptation is present but not sharply framed as a reversible
-    midpoint), and a very small tone deduction for a few explicit explanatory lines
-    that lightly reduce the subtlety of the requested quiet, Japanese aesthetic.'
+  evidence: "All four three-act beats are present: Act I (ordinary world, inciting\
+    \ letter, first plot point = train departure), Act IIa (reconnection, Haruki,\
+    \ festival; midpoint = temptation/offer), Act IIb (complication: Yuki's discovery,\
+    \ 'all is lost'; second plot point = declining the deal), Act III (climax outside\
+    \ the wedding, denouement = bamboo shop). All eight required elements are preserved\
+    \ intact. Deductions: word count falls outside requested 550\u2013750 range (given\
+    \ 868). Minor structural deduction for slight ambiguity about which moment functions\
+    \ as a clean midpoint (temptation is present but not sharply framed as a reversible\
+    \ midpoint), and a very small tone deduction for a few explicit explanatory lines\
+    \ that lightly reduce the subtlety of the requested quiet, Japanese aesthetic."
 error: null

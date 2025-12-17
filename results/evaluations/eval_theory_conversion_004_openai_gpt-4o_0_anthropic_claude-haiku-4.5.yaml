@@ -12,20 +12,19 @@ final_score: 0.9087028301886791
 score_breakdown:
   final_score: 0.9087
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 504
-      target_range:
-      - 500
-      - 700
     programmatic:
       score: 0.6698
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.5
         slop_score: 0.9245
         overall: 0.6698
+      word_count:
+        actual: 504
+        target_range:
+        - 500
+        - 700
     llm_judge:
       score: 0.9825
       weight: 0.5
@@ -40,19 +39,20 @@ llm_results:
   word_count: 504
   structural_accuracy_score: 0.95
   tone_score: 0.95
-  evidence: 'All 8 Story Circle beats are clearly present and well-sequenced: (1)
-    You—library comfort zone established; (2) Need—''gnawing sense of incompleteness'';
-    (3) Go—Zoe enters oral history program; (4) Search—learning to interview, navigating
-    obstacles; (5) Find—Bernard''s breakthrough moment; (6) Take—town hall presentation;
-    (7) Return—summer ends, ordinary life resumed; (8) Change—journalism applications,
-    transformed capability. All 8 core elements preserved: Zoe (protagonist), library
-    setting, oral history program, Ms. Okafor (initiating figure), Bernard Park (key
-    relationship), social anxiety (central conflict), town hall presentation (climactic
-    moment), Bernard''s death and funeral (emotional anchor), journalism school ending.
-    Tone is consistently gentle, intimate, and emotionally resonant throughout. Minor
-    deduction (0.05) for structural accuracy: the ''Search'' beat could be slightly
-    more distinct from ''Find''—they blend somewhat rather than showing clear separation.
-    Minor tone deduction (0.05): one sentence (''Though she still rehearsed coffee
-    orders...'') slightly shifts toward lighter tone, breaking the gentle intimacy
-    momentarily. Word count exactly 504, within valid range.'
+  evidence: "All 8 Story Circle beats are clearly present and well-sequenced: (1)\
+    \ You\u2014library comfort zone established; (2) Need\u2014'gnawing sense of incompleteness';\
+    \ (3) Go\u2014Zoe enters oral history program; (4) Search\u2014learning to interview,\
+    \ navigating obstacles; (5) Find\u2014Bernard's breakthrough moment; (6) Take\u2014\
+    town hall presentation; (7) Return\u2014summer ends, ordinary life resumed; (8)\
+    \ Change\u2014journalism applications, transformed capability. All 8 core elements\
+    \ preserved: Zoe (protagonist), library setting, oral history program, Ms. Okafor\
+    \ (initiating figure), Bernard Park (key relationship), social anxiety (central\
+    \ conflict), town hall presentation (climactic moment), Bernard's death and funeral\
+    \ (emotional anchor), journalism school ending. Tone is consistently gentle, intimate,\
+    \ and emotionally resonant throughout. Minor deduction (0.05) for structural accuracy:\
+    \ the 'Search' beat could be slightly more distinct from 'Find'\u2014they blend\
+    \ somewhat rather than showing clear separation. Minor tone deduction (0.05):\
+    \ one sentence ('Though she still rehearsed coffee orders...') slightly shifts\
+    \ toward lighter tone, breaking the gentle intimacy momentarily. Word count exactly\
+    \ 504, within valid range."
 error: null

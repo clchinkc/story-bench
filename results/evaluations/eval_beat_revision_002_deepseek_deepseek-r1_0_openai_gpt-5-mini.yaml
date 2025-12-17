@@ -12,20 +12,19 @@ final_score: 0.977
 score_breakdown:
   final_score: 0.977
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 214
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.988
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.98
         slop_score: 1.0
         overall: 0.988
+      word_count:
+        actual: 214
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 0.96
       weight: 0.5
@@ -42,16 +41,16 @@ llm_results:
   minimal_change_score: 0.7
   word_count_valid: true
   quality_score: 0.9
-  evidence: 'The model addressed the correct flaw: the original segment lacked a true
-    ''All Is Lost'' moment. The revision removes remaining options (fundraiser permit
-    canceled, grant rejected), strips support (Denise resigns and leaves, board can’t
-    meet quorum), introduces personal stakes (family co-signed loan, risk of losing
-    their home) and a ''whiff of death'' (the center as a ghost, Marcus isolated and
-    defeated). All four required elements were preserved (Marcus protagonist; community
-    center/youth program; eviction crisis; Denise present), and all four required
-    phrases appear verbatim or effectively intact. Changes were not surgical but were
-    conservative—opening lines and key beats retained while adding decisive events
-    and emotional fallout—hence a moderate-to-high minimal_change_score (0.7). Writing
-    quality is strong and coherent with no major errors; the beat reads as a convincing
-    low point.'
+  evidence: "The model addressed the correct flaw: the original segment lacked a true\
+    \ 'All Is Lost' moment. The revision removes remaining options (fundraiser permit\
+    \ canceled, grant rejected), strips support (Denise resigns and leaves, board\
+    \ can\u2019t meet quorum), introduces personal stakes (family co-signed loan,\
+    \ risk of losing their home) and a 'whiff of death' (the center as a ghost, Marcus\
+    \ isolated and defeated). All four required elements were preserved (Marcus protagonist;\
+    \ community center/youth program; eviction crisis; Denise present), and all four\
+    \ required phrases appear verbatim or effectively intact. Changes were not surgical\
+    \ but were conservative\u2014opening lines and key beats retained while adding\
+    \ decisive events and emotional fallout\u2014hence a moderate-to-high minimal_change_score\
+    \ (0.7). Writing quality is strong and coherent with no major errors; the beat\
+    \ reads as a convincing low point."
 error: null

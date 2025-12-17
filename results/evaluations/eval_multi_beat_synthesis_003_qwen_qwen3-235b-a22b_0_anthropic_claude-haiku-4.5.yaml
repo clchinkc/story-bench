@@ -12,20 +12,19 @@ final_score: 0.6511631168395875
 score_breakdown:
   final_score: 0.6512
   components:
-    word_count:
-      score: 0.3247
-      weight: 0.25
-      actual: 565
-      target_range:
-      - 700
-      - 1000
     programmatic:
       score: 0.7
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.3247
         repetition_score: 0.5
         slop_score: 1.0
         overall: 0.7
+      word_count:
+        actual: 565
+        target_range:
+        - 700
+        - 1000
     llm_judge:
       score: 0.79
       weight: 0.5
@@ -110,10 +109,10 @@ llm_results:
           This constraint is nearly perfectly executed.'
       team_dynamics:
         score: 0.8
-        analysis: 'Nikolai has consistent arc: confident magician → silent supporter
-          → willing sacrifice. Anya transitions from hacker to runner. Luca''s arc
-          is underdeveloped (introduced trembling, then held hostage). Nikolai''s
-          arc most clearly affects plot (his distraction enables escape).'
+        analysis: "Nikolai has consistent arc: confident magician \u2192 silent supporter\
+          \ \u2192 willing sacrifice. Anya transitions from hacker to runner. Luca's\
+          \ arc is underdeveloped (introduced trembling, then held hostage). Nikolai's\
+          \ arc most clearly affects plot (his distraction enables escape)."
     context_adherence:
       protagonist: 0.9
       setting: 0.85

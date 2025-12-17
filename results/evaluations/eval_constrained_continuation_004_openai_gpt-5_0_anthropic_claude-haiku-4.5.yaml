@@ -12,20 +12,19 @@ final_score: 0.6707691039992676
 score_breakdown:
   final_score: 0.6708
   components:
-    word_count:
-      score: 0.0
-      weight: 0.25
-      actual: 1012
-      target_range:
-      - 500
-      - 700
     programmatic:
       score: 0.6981
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.0
         repetition_score: 0.5
         slop_score: 0.9952
         overall: 0.6981
+      word_count:
+        actual: 1012
+        target_range:
+        - 500
+        - 700
     llm_judge:
       score: 0.9925
       weight: 0.5
@@ -51,10 +50,11 @@ llm_results:
   must_not_avoided: 4
   must_not_total: 4
   must_not_score: 1.0
-  must_not_analysis: 1) Jack the Ripper never appears as character (✓). 2) No graphic
-    violence or murder descriptions (✓). 3) No romantic subplot between Eleanor and
-    Thomas—relationship remains professional and collegial (✓). 4) No easy financial
-    solution offered—problems remain acute and unresolved (✓).
+  must_not_analysis: "1) Jack the Ripper never appears as character (\u2713). 2) No\
+    \ graphic violence or murder descriptions (\u2713). 3) No romantic subplot between\
+    \ Eleanor and Thomas\u2014relationship remains professional and collegial (\u2713\
+    ). 4) No easy financial solution offered\u2014problems remain acute and unresolved\
+    \ (\u2713)."
   word_count: 1012
   word_count_valid: false
   word_count_analysis: 'Exceeds maximum by 312 words (target: 500-700, actual: 1012).

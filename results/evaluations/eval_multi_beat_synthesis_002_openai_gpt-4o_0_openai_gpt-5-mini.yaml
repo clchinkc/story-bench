@@ -12,20 +12,19 @@ final_score: 0.8073072139303482
 score_breakdown:
   final_score: 0.8073
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 792
-      target_range:
-      - 700
-      - 1000
     programmatic:
       score: 0.6876
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.5
         slop_score: 0.9689
         overall: 0.6876
+      word_count:
+        actual: 792
+        target_range:
+        - 700
+        - 1000
     llm_judge:
       score: 0.7708
       weight: 0.5
@@ -40,13 +39,13 @@ llm_results:
   context_score: 0.95
   coherence_score: 0.8
   failed_items:
-  - Beat 2 — did not clearly show Amara learning new, specific information about the
-    resistance she did not already know (requirement not satisfied).
-  - 'Cross-beat (Chekhov''s Gun) — the specific skill/knowledge demonstrated at the
-    threshold (Beat 1: use of language/wit) is not the same specific skill (terrain
-    descriptions/route knowledge) made essential to overcome the final obstacle in
-    Beat 3.'
-  - Cross-beat (Escalating Danger) — physical danger does not clearly escalate to
-    active pursuit or imminent capture by Beat 3; the final obstacle is environmental
-    rather than an increased enemy threat.
+  - "Beat 2 \u2014 did not clearly show Amara learning new, specific information about\
+    \ the resistance she did not already know (requirement not satisfied)."
+  - "Cross-beat (Chekhov's Gun) \u2014 the specific skill/knowledge demonstrated at\
+    \ the threshold (Beat 1: use of language/wit) is not the same specific skill (terrain\
+    \ descriptions/route knowledge) made essential to overcome the final obstacle\
+    \ in Beat 3."
+  - "Cross-beat (Escalating Danger) \u2014 physical danger does not clearly escalate\
+    \ to active pursuit or imminent capture by Beat 3; the final obstacle is environmental\
+    \ rather than an increased enemy threat."
 error: null

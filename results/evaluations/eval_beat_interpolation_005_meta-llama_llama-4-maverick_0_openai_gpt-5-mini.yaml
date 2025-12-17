@@ -12,20 +12,19 @@ final_score: 0.9632499999999999
 score_breakdown:
   final_score: 0.9632
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 355
-      target_range:
-      - 300
-      - 450
     programmatic:
       score: 0.868
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.78
         slop_score: 1.0
         overall: 0.868
+      word_count:
+        actual: 355
+        target_range:
+        - 300
+        - 450
     llm_judge:
       score: 0.9925
       weight: 0.5
@@ -40,12 +39,13 @@ llm_results:
   character_score: 1.0
   bridge_score: 0.95
   continuity_score: 1.0
-  evidence: 'All four required elements are present: Alejandro reveals vulnerability
-    (grandmother/recipes), the relationship shifts from professional to personal (shared
-    meal, spark), there is a genuine connecting moment (tortilla and shared appreciation),
-    and Maya explicitly chooses to stay/commit beyond the paycheck (''I''ll make it
-    again''). No prohibited items appear—no photograph, no pre-existing love, no contract
-    breach, and Alejandro softens. Minor deduction on bridge_score (0.95) for a small
-    tendency toward conventional phrasing that slightly softens the dramatic turning-point
-    impact; otherwise execution, character consistency, and continuity are strong.'
+  evidence: "All four required elements are present: Alejandro reveals vulnerability\
+    \ (grandmother/recipes), the relationship shifts from professional to personal\
+    \ (shared meal, spark), there is a genuine connecting moment (tortilla and shared\
+    \ appreciation), and Maya explicitly chooses to stay/commit beyond the paycheck\
+    \ ('I'll make it again'). No prohibited items appear\u2014no photograph, no pre-existing\
+    \ love, no contract breach, and Alejandro softens. Minor deduction on bridge_score\
+    \ (0.95) for a small tendency toward conventional phrasing that slightly softens\
+    \ the dramatic turning-point impact; otherwise execution, character consistency,\
+    \ and continuity are strong."
 error: null

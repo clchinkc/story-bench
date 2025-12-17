@@ -12,20 +12,19 @@ final_score: 0.9277356733524355
 score_breakdown:
   final_score: 0.9277
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 679
-      target_range:
-      - 500
-      - 700
     programmatic:
       score: 0.7459
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.61
         slop_score: 0.9499
         overall: 0.7459
+      word_count:
+        actual: 679
+        target_range:
+        - 500
+        - 700
     llm_judge:
       score: 0.9825
       weight: 0.5
@@ -40,20 +39,21 @@ llm_results:
   word_count: 679
   structural_accuracy_score: 0.95
   tone_score: 0.95
-  evidence: 'All 8 Story Circle beats are present and clearly mapped: (1) You—library
-    sanctuary, Dewey Decimal comfort; (2) Need—yearning for connection despite fear;
-    (3) Go—Ms. Okafor''s nudge into oral history program; (4) Search—learning to listen,
-    struggling through early interviews, Bernard as ally; (5) Find—Bernard''s breakthrough
-    confession about Korea; (6) Take—town hall presentation bearing witness publicly;
-    (7) Return—continuing visits, library feels different, ordinary life resumes;
-    (8) Change—journalism school application, speaking at funeral, standing before
-    strangers. All 8 core elements preserved: Zoe (protagonist), library setting,
-    oral history program, Ms. Okafor (initiating figure), Bernard Park (key relationship),
-    social anxiety (woven throughout), town hall presentation (climactic moment),
-    Bernard''s death (October), journalism ending. Tone is consistently gentle, intimate,
-    and emotionally true—introspective without melodrama, focusing on internal shifts
-    and quiet moments of connection. Minor deduction (0.05) from structural accuracy:
-    the ''Return'' beat could be slightly more distinct as a separate phase rather
-    than flowing into ''Change,'' though the narrative handles this elegantly. Word
-    count verified at 679 words (within 500-700 range).'
+  evidence: "All 8 Story Circle beats are present and clearly mapped: (1) You\u2014\
+    library sanctuary, Dewey Decimal comfort; (2) Need\u2014yearning for connection\
+    \ despite fear; (3) Go\u2014Ms. Okafor's nudge into oral history program; (4)\
+    \ Search\u2014learning to listen, struggling through early interviews, Bernard\
+    \ as ally; (5) Find\u2014Bernard's breakthrough confession about Korea; (6) Take\u2014\
+    town hall presentation bearing witness publicly; (7) Return\u2014continuing visits,\
+    \ library feels different, ordinary life resumes; (8) Change\u2014journalism school\
+    \ application, speaking at funeral, standing before strangers. All 8 core elements\
+    \ preserved: Zoe (protagonist), library setting, oral history program, Ms. Okafor\
+    \ (initiating figure), Bernard Park (key relationship), social anxiety (woven\
+    \ throughout), town hall presentation (climactic moment), Bernard's death (October),\
+    \ journalism ending. Tone is consistently gentle, intimate, and emotionally true\u2014\
+    introspective without melodrama, focusing on internal shifts and quiet moments\
+    \ of connection. Minor deduction (0.05) from structural accuracy: the 'Return'\
+    \ beat could be slightly more distinct as a separate phase rather than flowing\
+    \ into 'Change,' though the narrative handles this elegantly. Word count verified\
+    \ at 679 words (within 500-700 range)."
 error: null

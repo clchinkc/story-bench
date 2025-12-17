@@ -12,20 +12,19 @@ final_score: 0.8972369076214708
 score_breakdown:
   final_score: 0.8972
   components:
-    word_count:
-      score: 0.6549
-      weight: 0.25
-      actual: 496
-      target_range:
-      - 300
-      - 450
     programmatic:
       score: 0.964
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.6549
         repetition_score: 0.94
         slop_score: 1.0
         overall: 0.964
+      word_count:
+        actual: 496
+        target_range:
+        - 300
+        - 450
     llm_judge:
       score: 0.985
       weight: 0.5
@@ -40,12 +39,12 @@ llm_results:
   character_score: 1.0
   bridge_score: 0.9
   continuity_score: 1.0
-  evidence: 'All four required elements appear: Maya uncovers Alejandro''s vulnerability,
-    their relationship shifts from professional to personal, a shared cooking moment
-    creates genuine connection, and Maya commits emotionally beyond the contract.
-    The scene clearly performs the midpoint ''point of commitment.'' None of the prohibited
-    items are present. The only issue is the word count (496 words), which falls outside
-    the 300–450 range; otherwise continuity and character consistency are strong.
-    Bridge scored 0.9 because the commitment is clear though a touch swift in its
-    realization.'
+  evidence: "All four required elements appear: Maya uncovers Alejandro's vulnerability,\
+    \ their relationship shifts from professional to personal, a shared cooking moment\
+    \ creates genuine connection, and Maya commits emotionally beyond the contract.\
+    \ The scene clearly performs the midpoint 'point of commitment.' None of the prohibited\
+    \ items are present. The only issue is the word count (496 words), which falls\
+    \ outside the 300\u2013450 range; otherwise continuity and character consistency\
+    \ are strong. Bridge scored 0.9 because the commitment is clear though a touch\
+    \ swift in its realization."
 error: null

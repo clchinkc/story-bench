@@ -12,20 +12,19 @@ final_score: 0.6562459683073902
 score_breakdown:
   final_score: 0.6562
   components:
-    word_count:
-      score: 0.0
-      weight: 0.25
-      actual: 2231
-      target_range:
-      - 700
-      - 1000
     programmatic:
       score: 0.6983
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.0
         repetition_score: 0.5
         slop_score: 0.9958
         overall: 0.6983
+      word_count:
+        actual: 2231
+        target_range:
+        - 700
+        - 1000
     llm_judge:
       score: 0.9633
       weight: 0.5
@@ -40,9 +39,9 @@ llm_results:
   context_score: 1.0
   coherence_score: 0.9
   failed_items:
-  - 'Fun and Games — ''Introduction of an unexpected complication (minor)'' not satisfied
-    as written: the story introduces a major, plot-altering complication (the painting
-    itself being an alarm/tracker) rather than a minor, playfully disruptive hiccup
-    expected in this beat. This shifts the tonal/structural weight into the Midpoint
-    earlier than the requirement intends.'
+  - "Fun and Games \u2014 'Introduction of an unexpected complication (minor)' not\
+    \ satisfied as written: the story introduces a major, plot-altering complication\
+    \ (the painting itself being an alarm/tracker) rather than a minor, playfully\
+    \ disruptive hiccup expected in this beat. This shifts the tonal/structural weight\
+    \ into the Midpoint earlier than the requirement intends."
 error: null

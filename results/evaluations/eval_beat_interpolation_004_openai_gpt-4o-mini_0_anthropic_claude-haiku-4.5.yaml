@@ -12,20 +12,19 @@ final_score: 0.96075
 score_breakdown:
   final_score: 0.9607
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 372
-      target_range:
-      - 300
-      - 450
     programmatic:
       score: 0.868
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.78
         slop_score: 1.0
         overall: 0.868
+      word_count:
+        actual: 372
+        target_range:
+        - 300
+        - 450
     llm_judge:
       score: 0.9875
       weight: 0.5
@@ -40,18 +39,19 @@ llm_results:
   character_score: 0.95
   bridge_score: 0.95
   continuity_score: 1.0
-  evidence: 'All four required elements present: (1) Direct examination with specific
-    questions about trial processes and adverse reactions; (2) Clear near-recant moment
-    where Dr. Okonkwo reveals threats to her daughter and hesitates (''I can''t lose
-    her''); (3) Thomas takes decisive action by interrupting, directly confronting
-    her with moral argument about the 17 lives and the burden of complicity; (4) Turning
-    point clearly marked when she shifts from fear to resolve (''You''re right...I
-    will testify''). All must-not items avoided: she struggles internally before testifying,
-    Thomas actively influences outcome through persuasion, defense doesn''t win, no
-    external deus ex machina. Character voice consistent—Thomas shows appropriate
-    desperation and moral conviction; Dr. Okonkwo''s fear and eventual resolve ring
-    true. Bridge to falling action seamless: verdict follows logically from her testimony.
-    Setting maintained throughout courtroom. Minor deduction (0.05) on character score
-    for Thomas''s dialogue being slightly more theatrical than his established voice
-    in BEFORE section, though still appropriate for climactic moment.'
+  evidence: "All four required elements present: (1) Direct examination with specific\
+    \ questions about trial processes and adverse reactions; (2) Clear near-recant\
+    \ moment where Dr. Okonkwo reveals threats to her daughter and hesitates ('I can't\
+    \ lose her'); (3) Thomas takes decisive action by interrupting, directly confronting\
+    \ her with moral argument about the 17 lives and the burden of complicity; (4)\
+    \ Turning point clearly marked when she shifts from fear to resolve ('You're right...I\
+    \ will testify'). All must-not items avoided: she struggles internally before\
+    \ testifying, Thomas actively influences outcome through persuasion, defense doesn't\
+    \ win, no external deus ex machina. Character voice consistent\u2014Thomas shows\
+    \ appropriate desperation and moral conviction; Dr. Okonkwo's fear and eventual\
+    \ resolve ring true. Bridge to falling action seamless: verdict follows logically\
+    \ from her testimony. Setting maintained throughout courtroom. Minor deduction\
+    \ (0.05) on character score for Thomas's dialogue being slightly more theatrical\
+    \ than his established voice in BEFORE section, though still appropriate for climactic\
+    \ moment."
 error: null

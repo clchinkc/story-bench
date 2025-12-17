@@ -12,20 +12,19 @@ final_score: 0.873
 score_breakdown:
   final_score: 0.873
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 245
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.932
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.9
         slop_score: 0.98
         overall: 0.932
+      word_count:
+        actual: 245
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 0.78
       weight: 0.5
@@ -42,16 +41,17 @@ llm_results:
   minimal_change_score: 0.6
   word_count_valid: true
   quality_score: 0.8
-  evidence: 'The model clearly targeted the ''telling vs. showing'' flaw by converting
-    much of the exposition into a scene: Rachel arrives with coffee and jazz on the
-    radio, greets colleagues, exchanges dialogue with Detective James Oyelaran, scans
-    reports, and glances at cold-case files—showing some traits through action. It
-    preserved all required elements and phrases (Detective Rachel Torres; Detective
-    James Oyelaran; cat Sherlock; Tuesday morning in October) and kept the Queens
-    apartment and other story anchors. However, some telling remains (the paragraph
-    summarizing how she found Sherlock and that her career took precedence after a
-    failed engagement), and the depiction of her detective instincts and devotion
-    to cold cases is only lightly dramatized (a narrowed eye and a glance at files
-    rather than investigative action). Changes were moderate rather than purely surgical:
-    structure and wording were rewritten into a scene but original facts were retained.'
+  evidence: "The model clearly targeted the 'telling vs. showing' flaw by converting\
+    \ much of the exposition into a scene: Rachel arrives with coffee and jazz on\
+    \ the radio, greets colleagues, exchanges dialogue with Detective James Oyelaran,\
+    \ scans reports, and glances at cold-case files\u2014showing some traits through\
+    \ action. It preserved all required elements and phrases (Detective Rachel Torres;\
+    \ Detective James Oyelaran; cat Sherlock; Tuesday morning in October) and kept\
+    \ the Queens apartment and other story anchors. However, some telling remains\
+    \ (the paragraph summarizing how she found Sherlock and that her career took precedence\
+    \ after a failed engagement), and the depiction of her detective instincts and\
+    \ devotion to cold cases is only lightly dramatized (a narrowed eye and a glance\
+    \ at files rather than investigative action). Changes were moderate rather than\
+    \ purely surgical: structure and wording were rewritten into a scene but original\
+    \ facts were retained."
 error: null

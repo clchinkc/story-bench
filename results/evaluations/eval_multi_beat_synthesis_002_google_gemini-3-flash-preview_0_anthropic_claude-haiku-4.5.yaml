@@ -1,0 +1,141 @@
+evaluation_id: 4824a50e
+task_id: multi_beat_synthesis_002
+generation_id: multi_beat_synthesis_002_google/gemini-3-flash-preview_0
+task_type: multi_beat_synthesis
+model: google/gemini-3-flash-preview
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.052635
+timestamp: '2025-12-18T23:39:20.630219'
+success: true
+final_score: 0.8907499999999999
+score_breakdown:
+  final_score: 0.8907
+  components:
+    programmatic:
+      score: 0.825
+      weight: 0.5
+      breakdown:
+        word_count_score: 1.0
+        repetition_score: 0.5
+        slop_score: 1.0
+        overall: 0.825
+      word_count:
+        actual: 821
+        target_range:
+        - 700
+        - 1000
+    llm_judge:
+      score: 0.9565
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 14
+  beat_reqs_total: 15
+  beat_requirements_score: 0.93
+  cross_beat_satisfied: 4
+  cross_beat_total: 4
+  cross_beat_score: 1.0
+  word_count_valid: true
+  context_score: 0.95
+  coherence_score: 0.92
+  failed_items:
+  - 'Beat 2, Req 5 (learns something about resistance): While Amara learns the resistance
+    is ''a network of mothers, scholars, and spies,'' this revelation is somewhat
+    surface-level and could be deeper. The insight is present but underdeveloped compared
+    to other beat requirements.'
+  detailed_analysis:
+    beat_1_crossing_threshold:
+      leaves_cape_coast: EXCELLENT - Opening vividly establishes departure from colonial
+        capital with sensory detail ('salt spray,' 'shadow of Cape Coast Castle')
+      point_of_no_return: EXCELLENT - 'There was no returning to the safety of the
+        archives or the quiet life of a servant; she was now a ghost in the machinery'
+        explicitly marks irreversibility
+      immediate_danger: EXCELLENT - Sergeant checkpoint creates immediate threat of
+        discovery; pass inspection is tense
+      uses_wits_not_force: EXCELLENT - Amara manipulates sergeant's ego, uses trembling
+        voice, exploits his condescension; no physical confrontation
+      internal_shift: 'EXCELLENT - Explicit transformation: ''the scholar''s daughter
+        died'' marks shift from passive servant to active agent'
+    beat_2_tests_allies_enemies:
+      uncertain_ally: 'EXCELLENT - Mercenary scout is ambiguous: hostile initially,
+        becomes ally after test; loyalty remains conditional'
+      commitment_test: EXCELLENT - Reading the German-notated British missive proves
+        her value and commitment to the cause
+      enemy_or_obstacle: EXCELLENT - Mercenary scout with musket represents both enemy
+        and obstacle; forces adaptation through linguistic/intellectual proof
+      language_skills_crucial: EXCELLENT - Formal Twi, English reading, German notation
+        interpretation all become weapons; directly saves her life
+      learns_about_resistance: ADEQUATE - Learns resistance is 'network of mothers,
+        scholars, and spies' but this feels somewhat generic; could be more specific
+        or transformative
+    beat_3_approach_inmost_cave:
+      nearing_stronghold: EXCELLENT - Sacred cliffs, hidden fires, final ridge all
+        establish proximity to destination
+      moment_of_preparation: EXCELLENT - 'Crouched in undergrowth, heart hammering'
+        shows steeling; internal resolve before final push
+      recognition_of_cost: EXCELLENT - 'She discarded the humble persona of the servant
+        forever' acknowledges permanent identity change; implicit cost of full commitment
+      final_obstacle: EXCELLENT - West India Regiment with bayonets, lanterns, high
+        alert; most dangerous obstacle yet
+      thematic_resistance_vs_survival: EXCELLENT - 'Survival dictated she hide and
+        wait, but resistance demanded she move' explicitly contrasts the two; she
+        chooses resistance
+    cross_beat_chekhov_gun:
+      status: SATISFIED
+      analysis: Memorized patrol rotations, password 'Cumberland,' triangular scout
+        mark, and defense blueprint gaps from Beat 1 become the exact tools used to
+        bypass West India Regiment in Beat 3. The sergeant's ledger observation is
+        weaponized perfectly.
+    cross_beat_identity_transformation:
+      status: SATISFIED
+      beat_1: Still cautious, uses trembling voice, presents as servant, 'downcast
+        eyes'
+      beat_2: 'Realizes capability: ''she was no longer just a messenger; she was
+        a strategist'''
+      beat_3: 'Fully claims role: ''she was the intelligence the empire feared'';
+        ''discarded the humble persona forever'''
+      analysis: Clear progression from passive to active to fully realized resistance
+        fighter
+    cross_beat_escalating_danger:
+      status: SATISFIED
+      beat_1: Threat of discovery at checkpoint (moderate, controlled environment)
+      beat_2: Direct confrontation with armed mercenary (high, isolated, lethal)
+      beat_3: Active pursuit by British forces + imminent capture by regiment (extreme,
+        multiple threats converging)
+      analysis: Each beat raises stakes meaningfully
+    cross_beat_thematic_thread:
+      status: SATISFIED
+      beat_1: Literacy as surveillance tool; reading maps and memoranda
+      beat_2: Languages as proof of worth; reading German notations; formal Twi as
+        authority marker
+      beat_3: Knowledge of defense blueprints and patrol procedures as escape mechanism;
+        'intelligence the empire feared'
+      analysis: Knowledge/literacy consistently positioned as primary resistance weapon
+        across all beats
+    context_adherence:
+      protagonist: 'EXCELLENT - Amara''s character fully realized: scholar''s daughter,
+        polyglot, intelligence operative, 24, sharp-witted'
+      setting: EXCELLENT - Cape Coast Castle, Prah River, Ashanti forest, sacred cliffs,
+        colonial architecture all present; 1896 timeframe maintained
+      tone: EXCELLENT - Historical adventure with anti-colonial themes, survival,
+        resistance, dignity in defiance all permeate narrative
+      thematic_depth: EXCELLENT - Colonialism critiqued through Amara's perspective;
+        empire's vulnerability to its own logic; dignity through defiance
+    narrative_coherence:
+      beat_flow: EXCELLENT - Logical progression from escape to encounter to infiltration
+      pacing: EXCELLENT - Tension builds steadily; each section has distinct rhythm
+      character_consistency: EXCELLENT - Amara's voice, choices, and capabilities
+        remain consistent
+      minor_note: The transition from Beat 2 to Beat 3 could be slightly smoother
+        (time jump from 'third night' feels abrupt but acceptable)
+  overall_assessment: This is a strong, well-crafted narrative that satisfies nearly
+    all requirements with professional execution. The story demonstrates sophisticated
+    understanding of the Hero's Journey framework while maintaining historical authenticity
+    and thematic coherence. Amara's character arc is compelling, the anti-colonial
+    themes are woven throughout, and the cross-beat constraints are all satisfied
+    with particular excellence in the Chekhov's Gun payoff. The single minor weakness
+    is the somewhat underdeveloped revelation about the resistance network in Beat
+    2, which could have been more specific or personally transformative. Overall,
+    this exceeds baseline requirements.
+  final_score: 0.92
+error: null

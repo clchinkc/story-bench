@@ -12,20 +12,19 @@ final_score: 0.9574011035653649
 score_breakdown:
   final_score: 0.9574
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 551
-      target_range:
-      - 500
-      - 700
     programmatic:
       score: 0.8646
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.78
         slop_score: 0.9915
         overall: 0.8646
+      word_count:
+        actual: 551
+        target_range:
+        - 500
+        - 700
     llm_judge:
       score: 0.9825
       weight: 0.5
@@ -40,24 +39,25 @@ llm_results:
   word_count: 551
   structural_accuracy_score: 0.95
   tone_score: 0.95
-  evidence: 'All 8 Story Circle beats are present and clearly delineated: (1) You—library
-    comfort zone established with vivid sensory detail; (2) Need—lack of voice/connection
-    implied through mother''s concern and Zoe''s self-awareness; (3) Go—Ms. Okafor''s
-    program and Bernard interview initiate departure; (4) Search—five interviews showing
-    iterative learning, voice cracking, hands steadying; (5) Find—Bernard''s confession
-    about the firefight and ''You asked the right questions''; (6) Take—town hall
-    presentation where Zoe speaks publicly despite fear; (7) Return—visiting Bernard
-    through October, attending funeral, ordinary life resumes; (8) Change—journalism
-    school application, walking into unknown with recorder, demonstrating internal
-    transformation. All 8 core elements preserved: Zoe (protagonist), library setting,
-    oral history program, Ms. Okafor (initiating figure), Bernard Park (key relationship),
-    social anxiety (stutters, rehearsing, pulse thrashing), town hall presentation,
-    Bernard''s death, journalism ending. Tone is consistently gentle and intimate—introspective
-    yet warm, with emotionally true moments (Bernard''s watery smile, the bridge metaphor,
-    ''her own'' final line). Minor deduction from perfect scores: structural_accuracy
-    slightly reduced (0.95) because the Return beat could be more explicitly marked
-    as distinct from Take; tone slightly reduced (0.95) because one or two moments
-    approach sentimentality rather than restraint, though this is minimal. Conversion
-    successfully transforms monomyth''s external hero''s journey into Story Circle''s
-    internal psychological arc.'
+  evidence: "All 8 Story Circle beats are present and clearly delineated: (1) You\u2014\
+    library comfort zone established with vivid sensory detail; (2) Need\u2014lack\
+    \ of voice/connection implied through mother's concern and Zoe's self-awareness;\
+    \ (3) Go\u2014Ms. Okafor's program and Bernard interview initiate departure; (4)\
+    \ Search\u2014five interviews showing iterative learning, voice cracking, hands\
+    \ steadying; (5) Find\u2014Bernard's confession about the firefight and 'You asked\
+    \ the right questions'; (6) Take\u2014town hall presentation where Zoe speaks\
+    \ publicly despite fear; (7) Return\u2014visiting Bernard through October, attending\
+    \ funeral, ordinary life resumes; (8) Change\u2014journalism school application,\
+    \ walking into unknown with recorder, demonstrating internal transformation. All\
+    \ 8 core elements preserved: Zoe (protagonist), library setting, oral history\
+    \ program, Ms. Okafor (initiating figure), Bernard Park (key relationship), social\
+    \ anxiety (stutters, rehearsing, pulse thrashing), town hall presentation, Bernard's\
+    \ death, journalism ending. Tone is consistently gentle and intimate\u2014introspective\
+    \ yet warm, with emotionally true moments (Bernard's watery smile, the bridge\
+    \ metaphor, 'her own' final line). Minor deduction from perfect scores: structural_accuracy\
+    \ slightly reduced (0.95) because the Return beat could be more explicitly marked\
+    \ as distinct from Take; tone slightly reduced (0.95) because one or two moments\
+    \ approach sentimentality rather than restraint, though this is minimal. Conversion\
+    \ successfully transforms monomyth's external hero's journey into Story Circle's\
+    \ internal psychological arc."
 error: null

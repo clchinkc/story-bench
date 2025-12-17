@@ -12,20 +12,19 @@ final_score: 0.665
 score_breakdown:
   final_score: 0.665
   components:
-    word_count:
-      score: 0.0
-      weight: 0.25
-      actual: 1769
-      target_range:
-      - 600
-      - 800
     programmatic:
       score: 0.7
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.0
         repetition_score: 0.5
         slop_score: 1.0
         overall: 0.7
+      word_count:
+        actual: 1769
+        target_range:
+        - 600
+        - 800
     llm_judge:
       score: 0.98
       weight: 0.5
@@ -39,12 +38,12 @@ llm_results:
   word_count_valid: false
   structural_accuracy_score: 0.9
   tone_score: 1.0
-  evidence: All 12 Campbell beats appear in clear sequence (Ordinary World through
-    Return with Elixir). All 7 required elements are retained (Maya, pottery, grandmother,
-    shrine journey, dried spring, surrender theme, transformation). Structural score
-    is slightly reduced because the Mentor figure is represented indirectly (journal/pendant
-    and memory rather than a living guide) and the Tests/Allies/Enemies beat is compressed
-    into a brief passage; otherwise sequencing and functions are faithful. Tone is
-    quiet, meditative, and transformative throughout. Word count falls outside the
-    requested 600–800 range.
+  evidence: "All 12 Campbell beats appear in clear sequence (Ordinary World through\
+    \ Return with Elixir). All 7 required elements are retained (Maya, pottery, grandmother,\
+    \ shrine journey, dried spring, surrender theme, transformation). Structural score\
+    \ is slightly reduced because the Mentor figure is represented indirectly (journal/pendant\
+    \ and memory rather than a living guide) and the Tests/Allies/Enemies beat is\
+    \ compressed into a brief passage; otherwise sequencing and functions are faithful.\
+    \ Tone is quiet, meditative, and transformative throughout. Word count falls outside\
+    \ the requested 600\u2013800 range."
 error: null

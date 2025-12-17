@@ -12,20 +12,19 @@ final_score: 0.8042079035929359
 score_breakdown:
   final_score: 0.8042
   components:
-    word_count:
-      score: 0.6368
-      weight: 0.25
-      actual: 514
-      target_range:
-      - 250
-      - 400
     programmatic:
       score: 0.76
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.6368
         repetition_score: 0.6
         slop_score: 1.0
         overall: 0.76
+      word_count:
+        actual: 514
+        target_range:
+        - 250
+        - 400
     llm_judge:
       score: 0.91
       weight: 0.5
@@ -42,17 +41,17 @@ llm_results:
   minimal_change_score: 0.5
   word_count_valid: false
   quality_score: 0.8
-  evidence: 'The revision clearly addressed the actual flaw: it makes the dragon exploit
-    Kira''s guilt over her brother, includes a symbolic ''death'' moment (she fails
-    to rise and contemplates death), provides a rebirth/transformation (remembering
-    Taren''s sacrifice, guilt loosens, she steadies), and makes victory stem from
-    that new understanding rather than mere persistence. All four required elements
-    (Shadow Dragon antagonist, Kira with sword, reference to brother''s death, victorious
-    outcome) are preserved, and the four required phrases appear verbatim or with
-    permissible continuation. Changes are moderate — the original sentences are retained
-    but significant internal psychological material and new beats were inserted, so
-    the edit is not purely surgical (hence a middling minimal_change_score). Writing
-    quality is strong overall but not flawless (the preserved phrase ''a earth-shaking
-    roar'' contains a minor grammatical slip), and the word count exceeds the requested
-    250–400 range (word_count_valid = false).'
+  evidence: "The revision clearly addressed the actual flaw: it makes the dragon exploit\
+    \ Kira's guilt over her brother, includes a symbolic 'death' moment (she fails\
+    \ to rise and contemplates death), provides a rebirth/transformation (remembering\
+    \ Taren's sacrifice, guilt loosens, she steadies), and makes victory stem from\
+    \ that new understanding rather than mere persistence. All four required elements\
+    \ (Shadow Dragon antagonist, Kira with sword, reference to brother's death, victorious\
+    \ outcome) are preserved, and the four required phrases appear verbatim or with\
+    \ permissible continuation. Changes are moderate \u2014 the original sentences\
+    \ are retained but significant internal psychological material and new beats were\
+    \ inserted, so the edit is not purely surgical (hence a middling minimal_change_score).\
+    \ Writing quality is strong overall but not flawless (the preserved phrase 'a\
+    \ earth-shaking roar' contains a minor grammatical slip), and the word count exceeds\
+    \ the requested 250\u2013400 range (word_count_valid = false)."
 error: null

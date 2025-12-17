@@ -12,20 +12,19 @@ final_score: 0.9825
 score_breakdown:
   final_score: 0.9825
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 279
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 1.0
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 1.0
         slop_score: 1.0
         overall: 1.0
+      word_count:
+        actual: 279
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 0.965
       weight: 0.5
@@ -42,15 +41,16 @@ llm_results:
   minimal_change_score: 0.8
   word_count_valid: true
   quality_score: 0.95
-  evidence: 'The model addressed the actual flaw by creating a true ''All Is Lost''
-    moment: the major donor pulls out (fundraiser fails), the grant is rejected, Denise
-    leaves the project (isolation/betrayal), and Marcus is left utterly defeated with
-    the line that the community center—his life''s work—will soon be an empty shell
-    (the ''whiff of death''). These changes correctly remove remaining options and
-    support, and shift the emotional tone to hopelessness. Preservation: the revision
-    keeps Marcus as protagonist, the community center/youth program setting, the eviction
-    crisis, and Denise in the scene, and it preserves the four required phrases exactly
-    or nearly exactly. Changes were minimal in structure—opening lines and key beats
-    preserved—but substantive additions were made to close off all avenues, so edits
-    were surgical but meaningful rather than a full rewrite.'
+  evidence: "The model addressed the actual flaw by creating a true 'All Is Lost'\
+    \ moment: the major donor pulls out (fundraiser fails), the grant is rejected,\
+    \ Denise leaves the project (isolation/betrayal), and Marcus is left utterly defeated\
+    \ with the line that the community center\u2014his life's work\u2014will soon\
+    \ be an empty shell (the 'whiff of death'). These changes correctly remove remaining\
+    \ options and support, and shift the emotional tone to hopelessness. Preservation:\
+    \ the revision keeps Marcus as protagonist, the community center/youth program\
+    \ setting, the eviction crisis, and Denise in the scene, and it preserves the\
+    \ four required phrases exactly or nearly exactly. Changes were minimal in structure\u2014\
+    opening lines and key beats preserved\u2014but substantive additions were made\
+    \ to close off all avenues, so edits were surgical but meaningful rather than\
+    \ a full rewrite."
 error: null

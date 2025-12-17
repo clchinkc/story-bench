@@ -12,20 +12,19 @@ final_score: 0.6830860654047797
 score_breakdown:
   final_score: 0.6831
   components:
-    word_count:
-      score: 0.1209
-      weight: 0.25
-      actual: 1185
-      target_range:
-      - 700
-      - 1000
     programmatic:
       score: 0.6984
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.1209
         repetition_score: 0.5
         slop_score: 0.9961
         overall: 0.6984
+      word_count:
+        actual: 1185
+        target_range:
+        - 700
+        - 1000
     llm_judge:
       score: 0.9565
       weight: 0.5
@@ -98,8 +97,8 @@ llm_results:
         carrying')
       beat_3: Guilt transformed through acceptance ('Guilt means we cared. That you
         can't take.')
-      analysis: Clear three-stage evolution from suppressed guilt → acknowledged obstacle
-        → integrated strength
+      analysis: "Clear three-stage evolution from suppressed guilt \u2192 acknowledged\
+        \ obstacle \u2192 integrated strength"
     rising_stakes:
       score: 1.0
       satisfied: true
@@ -127,10 +126,11 @@ llm_results:
         could have slightly more explicit Chicago setting details.'
     narrative_coherence:
       score: 0.92
-      analysis: 'Beats flow logically: suspicion → alliance → planning → confrontation.
-        Emotional logic is strong. Pacing is tight. Minor issue: the killer''s identity
-        reveal (the dealer) feels slightly compressed in the final beat—could have
-        been foreshadowed more explicitly in Beat 1 or 2 for maximum impact.'
+      analysis: "Beats flow logically: suspicion \u2192 alliance \u2192 planning \u2192\
+        \ confrontation. Emotional logic is strong. Pacing is tight. Minor issue:\
+        \ the killer's identity reveal (the dealer) feels slightly compressed in the\
+        \ final beat\u2014could have been foreshadowed more explicitly in Beat 1 or\
+        \ 2 for maximum impact."
     strengths:
     - Exceptional integration of recovery/addiction theme throughout all beats
     - Sophisticated use of emotional residue as both plot device and metaphor for
@@ -143,8 +143,8 @@ llm_results:
     weaknesses:
     - Word count exceeds limit by 185 words (significant structural issue)
     - Killer's identity reveal could use more foreshadowing
-    - Marcus Chen's role feels slightly underdeveloped—he's present but not deeply
-      characterized
+    - "Marcus Chen's role feels slightly underdeveloped\u2014he's present but not\
+      \ deeply characterized"
     - Could expand on the mechanics of how Dante channels the NA chip's power for
       clarity
 error: null

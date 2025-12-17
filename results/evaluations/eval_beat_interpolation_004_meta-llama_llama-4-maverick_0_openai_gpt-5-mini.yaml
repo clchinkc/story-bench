@@ -12,20 +12,19 @@ final_score: 0.85625
 score_breakdown:
   final_score: 0.8562
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 404
-      target_range:
-      - 300
-      - 450
     programmatic:
       score: 0.7
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.5
         slop_score: 1.0
         overall: 0.7
+      word_count:
+        actual: 404
+        target_range:
+        - 300
+        - 450
     llm_judge:
       score: 0.8625
       weight: 0.5
@@ -40,10 +39,10 @@ llm_results:
   character_score: 0.9
   bridge_score: 0.9
   continuity_score: 1.0
-  evidence: 'Deductions: Missing a clear near-recant moment—Dr. Okonkwo struggles
-    but does not come close to recanting, so one required element is absent (hence
-    3/4 => 0.75). Execution downgraded to 0.80 for being generally effective but somewhat
-    generic and not fully dramatized around the pivotal hesitation. Character, bridge,
-    and continuity scores slightly reduced for minor stylistic bluntness; all must-not
-    items are avoided.'
+  evidence: "Deductions: Missing a clear near-recant moment\u2014Dr. Okonkwo struggles\
+    \ but does not come close to recanting, so one required element is absent (hence\
+    \ 3/4 => 0.75). Execution downgraded to 0.80 for being generally effective but\
+    \ somewhat generic and not fully dramatized around the pivotal hesitation. Character,\
+    \ bridge, and continuity scores slightly reduced for minor stylistic bluntness;\
+    \ all must-not items are avoided."
 error: null

@@ -12,20 +12,19 @@ final_score: 0.955809963099631
 score_breakdown:
   final_score: 0.9558
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 530
-      target_range:
-      - 500
-      - 700
     programmatic:
       score: 0.8532
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.78
         slop_score: 0.9631
         overall: 0.8532
+      word_count:
+        actual: 530
+        target_range:
+        - 500
+        - 700
     llm_judge:
       score: 0.985
       weight: 0.5
@@ -39,14 +38,15 @@ llm_results:
   word_count_valid: true
   structural_accuracy_score: 1.0
   tone_score: 0.9
-  evidence: 'All five Freytag beats are present and appear in the correct order: Exposition
-    (Samira, lab, status quo), Rising Action (quarantine, escalating cases, discovery
-    of Nexus), Climax (decision to go public and confrontation with Nexus at the press
-    event), Falling Action (press conference and immediate fallout), Denouement (outbreak
-    contained, investigations, Samira''s new equilibrium). All six core elements are
-    preserved (Samira, engineered virus, Raj, Nexus Biotech, public release of the
-    cure, career sacrifice). Structural mapping to Freytag’s Pyramid is clear and
-    faithful, so no deduction there. A small deduction in tone (0.9) because the final
-    resolution is somewhat swift and tidy, which slightly reduces sustained medical-thriller
-    suspense in the closing paragraphs despite maintaining the ethical weight.'
+  evidence: "All five Freytag beats are present and appear in the correct order: Exposition\
+    \ (Samira, lab, status quo), Rising Action (quarantine, escalating cases, discovery\
+    \ of Nexus), Climax (decision to go public and confrontation with Nexus at the\
+    \ press event), Falling Action (press conference and immediate fallout), Denouement\
+    \ (outbreak contained, investigations, Samira's new equilibrium). All six core\
+    \ elements are preserved (Samira, engineered virus, Raj, Nexus Biotech, public\
+    \ release of the cure, career sacrifice). Structural mapping to Freytag\u2019\
+    s Pyramid is clear and faithful, so no deduction there. A small deduction in tone\
+    \ (0.9) because the final resolution is somewhat swift and tidy, which slightly\
+    \ reduces sustained medical-thriller suspense in the closing paragraphs despite\
+    \ maintaining the ethical weight."
 error: null

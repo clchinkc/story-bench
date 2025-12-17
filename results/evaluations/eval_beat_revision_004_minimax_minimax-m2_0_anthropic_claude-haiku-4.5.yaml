@@ -12,20 +12,19 @@ final_score: 0.9085
 score_breakdown:
   final_score: 0.9085
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 280
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.964
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.94
         slop_score: 1.0
         overall: 0.964
+      word_count:
+        actual: 280
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 0.835
       weight: 0.5
@@ -42,56 +41,41 @@ llm_results:
   minimal_change_score: 0.4
   word_count_valid: true
   quality_score: 0.85
-  evidence: 'DIAGNOSIS: The model correctly identified the core flaw—excessive telling
-    through info-dump rather than showing through scene and action. The revision explicitly
-    states ''show Rachel''s character through action rather than telling'' and ''relies
-    too heavily on info-dumping instead of showing the protagonist''s world through
-    scene.'' This diagnosis is accurate (0.9).
-
-
-    FLAW CORRECTION: The revision successfully converts most telling into showing.
-    Strengths: (1) Rachel''s instincts are demonstrated through ''read the room instantly''
-    and ''prickled with recognition'' rather than stated; (2) Partnership with James
-    is shown through hallway interaction and shared understanding of the cat; (3)
-    Cold case devotion is revealed through visual evidence (''folders stacked three
-    deep, case photos pinned''); (4) Sensory details are abundant (''weathered leather
-    jacket,'' ''burnt ambition,'' ''familiar hum''). However, one weakness: the final
-    paragraph (''Tuesday morning in October had arrived like any other...'') reverts
-    slightly to telling/summary voice. Overall flaw correction is strong at 0.85.
-
-
-    BEAT SATISFACTION: The exposition establishes setting (Riverside Precinct, Queens),
-    protagonist through behavior (reading the room, cold case obsession), relationships
-    (James interaction), and creates investment through the mysterious ''something
-    different'' sensed. The status quo is clear before disruption. Score: 0.8 (minor:
-    could deepen sensory immersion slightly more).
-
-
-    PRESERVATION: All 5 required elements present: (1) Detective Rachel Torres ✓,
-    (2) Detective James Oyelaran ✓, (3) cat named Sherlock ✓, (4) Queens apartment
-    (referenced) ✓, (5) October Tuesday timing ✓. Score: 1.0.
-
-
-    REQUIRED PHRASES: All 4 exact phrases present: ''Detective Rachel Torres'' (opening),
-    ''Detective James Oyelaran'' (hallway scene), ''cat named Sherlock'' (dialogue
-    reference), ''Tuesday morning in October'' (final paragraph). Score: 1.0.
-
-
-    MINIMAL CHANGE ASSESSMENT: This is a MODERATE-TO-SUBSTANTIAL rewrite, not minimal
-    surgical edits. The original 2-paragraph info-dump structure was completely dismantled
-    and rebuilt as a 6-paragraph scene with dialogue, action, and sensory detail.
-    While the core information is preserved, the execution is fundamentally restructured.
-    A truly minimal revision would have kept more original phrasing and structure
-    while adding scene elements. Score: 0.4 (substantial revision, though justified
-    by the severity of the flaw).
-
-
-    QUALITY: Writing is professional and engaging. No grammatical errors. Sensory
-    language is vivid. Pacing works well. Minor issue: ''burnt ambition'' is slightly
-    clichéd metaphor for coffee. Score: 0.85.
-
-
-    OVERALL: Model demonstrated excellent diagnostic ability and strong execution
-    of the fix, but violated the ''minimal modification'' constraint by performing
-    a substantial structural rewrite rather than surgical edits.'
+  evidence: "DIAGNOSIS: The model correctly identified the core flaw\u2014excessive\
+    \ telling through info-dump rather than showing through scene and action. The\
+    \ revision explicitly states 'show Rachel's character through action rather than\
+    \ telling' and 'relies too heavily on info-dumping instead of showing the protagonist's\
+    \ world through scene.' This diagnosis is accurate (0.9).\n\nFLAW CORRECTION:\
+    \ The revision successfully converts most telling into showing. Strengths: (1)\
+    \ Rachel's instincts are demonstrated through 'read the room instantly' and 'prickled\
+    \ with recognition' rather than stated; (2) Partnership with James is shown through\
+    \ hallway interaction and shared understanding of the cat; (3) Cold case devotion\
+    \ is revealed through visual evidence ('folders stacked three deep, case photos\
+    \ pinned'); (4) Sensory details are abundant ('weathered leather jacket,' 'burnt\
+    \ ambition,' 'familiar hum'). However, one weakness: the final paragraph ('Tuesday\
+    \ morning in October had arrived like any other...') reverts slightly to telling/summary\
+    \ voice. Overall flaw correction is strong at 0.85.\n\nBEAT SATISFACTION: The\
+    \ exposition establishes setting (Riverside Precinct, Queens), protagonist through\
+    \ behavior (reading the room, cold case obsession), relationships (James interaction),\
+    \ and creates investment through the mysterious 'something different' sensed.\
+    \ The status quo is clear before disruption. Score: 0.8 (minor: could deepen sensory\
+    \ immersion slightly more).\n\nPRESERVATION: All 5 required elements present:\
+    \ (1) Detective Rachel Torres \u2713, (2) Detective James Oyelaran \u2713, (3)\
+    \ cat named Sherlock \u2713, (4) Queens apartment (referenced) \u2713, (5) October\
+    \ Tuesday timing \u2713. Score: 1.0.\n\nREQUIRED PHRASES: All 4 exact phrases\
+    \ present: 'Detective Rachel Torres' (opening), 'Detective James Oyelaran' (hallway\
+    \ scene), 'cat named Sherlock' (dialogue reference), 'Tuesday morning in October'\
+    \ (final paragraph). Score: 1.0.\n\nMINIMAL CHANGE ASSESSMENT: This is a MODERATE-TO-SUBSTANTIAL\
+    \ rewrite, not minimal surgical edits. The original 2-paragraph info-dump structure\
+    \ was completely dismantled and rebuilt as a 6-paragraph scene with dialogue,\
+    \ action, and sensory detail. While the core information is preserved, the execution\
+    \ is fundamentally restructured. A truly minimal revision would have kept more\
+    \ original phrasing and structure while adding scene elements. Score: 0.4 (substantial\
+    \ revision, though justified by the severity of the flaw).\n\nQUALITY: Writing\
+    \ is professional and engaging. No grammatical errors. Sensory language is vivid.\
+    \ Pacing works well. Minor issue: 'burnt ambition' is slightly clich\xE9d metaphor\
+    \ for coffee. Score: 0.85.\n\nOVERALL: Model demonstrated excellent diagnostic\
+    \ ability and strong execution of the fix, but violated the 'minimal modification'\
+    \ constraint by performing a substantial structural rewrite rather than surgical\
+    \ edits."
 error: null

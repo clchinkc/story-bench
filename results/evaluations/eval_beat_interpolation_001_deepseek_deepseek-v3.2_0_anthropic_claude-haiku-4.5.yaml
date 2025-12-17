@@ -12,20 +12,19 @@ final_score: 0.9805
 score_breakdown:
   final_score: 0.9805
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 311
-      target_range:
-      - 200
-      - 350
     programmatic:
       score: 0.922
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.87
         slop_score: 1.0
         overall: 0.922
+      word_count:
+        actual: 311
+        target_range:
+        - 200
+        - 350
     llm_judge:
       score: 1.0
       weight: 0.5
@@ -40,19 +39,19 @@ llm_results:
   character_score: 1.0
   bridge_score: 1.0
   continuity_score: 1.0
-  evidence: 'All four required elements present and well-executed: (1) Marcus introduced
-    as wise mentor figure with clear authority (''topography of scars,'' ''bright
-    eyes,'' knowledge of magic); (2) Practical wisdom provided through reframing librarian
-    skills as assets (''Precise language, attention to detail, historical context'')
-    and tools given (compass, satchel); (3) Elena''s doubt shifts to reluctant acceptance
-    (''refusal still sat on her tongue, but beneath it, a terrible, curious question
-    had begun to form''); (4) Librarian skills explicitly validated as potentially
-    useful for reading the forest. All must-not violations avoided: Elena remains
-    doubtful and hesitant, Marcus explicitly refuses to accompany her, setting remains
-    in the shop (not forest), no magical powers discovered. Character voice consistent
-    throughout—Elena''s skepticism and Marcus''s measured wisdom maintained. Bridge
-    seamless: connects directly from grandmother''s ghost scene to Marcus''s shop,
-    explains map''s reappearance, and leads naturally to threshold crossing. Continuity
-    perfect: map, satchel, compass all referenced consistently; Elena''s emotional
-    state progresses logically from refusal to reluctant curiosity.'
+  evidence: "All four required elements present and well-executed: (1) Marcus introduced\
+    \ as wise mentor figure with clear authority ('topography of scars,' 'bright eyes,'\
+    \ knowledge of magic); (2) Practical wisdom provided through reframing librarian\
+    \ skills as assets ('Precise language, attention to detail, historical context')\
+    \ and tools given (compass, satchel); (3) Elena's doubt shifts to reluctant acceptance\
+    \ ('refusal still sat on her tongue, but beneath it, a terrible, curious question\
+    \ had begun to form'); (4) Librarian skills explicitly validated as potentially\
+    \ useful for reading the forest. All must-not violations avoided: Elena remains\
+    \ doubtful and hesitant, Marcus explicitly refuses to accompany her, setting remains\
+    \ in the shop (not forest), no magical powers discovered. Character voice consistent\
+    \ throughout\u2014Elena's skepticism and Marcus's measured wisdom maintained.\
+    \ Bridge seamless: connects directly from grandmother's ghost scene to Marcus's\
+    \ shop, explains map's reappearance, and leads naturally to threshold crossing.\
+    \ Continuity perfect: map, satchel, compass all referenced consistently; Elena's\
+    \ emotional state progresses logically from refusal to reluctant curiosity."
 error: null

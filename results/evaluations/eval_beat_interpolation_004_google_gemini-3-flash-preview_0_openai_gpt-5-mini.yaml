@@ -1,0 +1,49 @@
+evaluation_id: d6d8f4fd
+task_id: beat_interpolation_004
+generation_id: beat_interpolation_004_google/gemini-3-flash-preview_0
+task_type: beat_interpolation
+model: google/gemini-3-flash-preview
+sample_index: 0
+evaluator_model: openai/gpt-5-mini
+evaluator_cost: 0.00168375
+timestamp: '2025-12-18T23:29:52.434639'
+success: true
+final_score: 0.9895
+score_breakdown:
+  final_score: 0.9895
+  components:
+    programmatic:
+      score: 0.979
+      weight: 0.5
+      breakdown:
+        word_count_score: 1.0
+        repetition_score: 0.94
+        slop_score: 1.0
+        overall: 0.979
+      word_count:
+        actual: 406
+        target_range:
+        - 300
+        - 450
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: true
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: 'All four required elements are present: direct examination, apparent
+    recanting, Thomas''s decisive action that influences Patricia, and the turning
+    point where the truth prevails. No must-not items occur. Character behavior is
+    consistent with established stakes. The climax cleanly bridges the setup and the
+    aftermath. Minor, non-deducting ambiguity: ''the judge remained frozen'' could
+    be read as ambiguous (presiding judge vs. Thomas''s father), but it does not create
+    a continuity error.'
+error: null

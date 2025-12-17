@@ -12,20 +12,19 @@ final_score: 0.9450000000000001
 score_breakdown:
   final_score: 0.945
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 350
-      target_range:
-      - 250
-      - 400
     programmatic:
       score: 0.94
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.9
         slop_score: 1.0
         overall: 0.94
+      word_count:
+        actual: 350
+        target_range:
+        - 250
+        - 400
     llm_judge:
       score: 0.92
       weight: 0.5
@@ -42,16 +41,17 @@ llm_results:
   minimal_change_score: 0.5
   word_count_valid: true
   quality_score: 0.9
-  evidence: 'The model clearly addressed the actual flaw: it made the Ordeal an internal
-    confrontation by having the dragon exploit Kira''s guilt over her brother''s death,
-    inserted a symbolic ''death'' (the hero she thought she was dies as she sinks
-    to her knees and surrenders), and provided a rebirth/transformation (the whispered
-    oath, acceptance, and a changed approach to the strike). Victory results from
-    new understanding/acceptance rather than mere persistence. Preservation was strong:
-    all four required phrases and all four preservation elements (Shadow Dragon antagonist,
-    Kira with a sword, reference to brother''s death, Kira''s victory) are present.
-    Changes were moderate — the original structure and many lines were kept, but substantial
-    interior material and emotional beats were added (hence a midline minimal_change_score).
-    Writing quality is high and no new substantive errors were introduced, though
-    the original grammatical quirk ''a earth-shaking roar'' was preserved as required.'
+  evidence: "The model clearly addressed the actual flaw: it made the Ordeal an internal\
+    \ confrontation by having the dragon exploit Kira's guilt over her brother's death,\
+    \ inserted a symbolic 'death' (the hero she thought she was dies as she sinks\
+    \ to her knees and surrenders), and provided a rebirth/transformation (the whispered\
+    \ oath, acceptance, and a changed approach to the strike). Victory results from\
+    \ new understanding/acceptance rather than mere persistence. Preservation was\
+    \ strong: all four required phrases and all four preservation elements (Shadow\
+    \ Dragon antagonist, Kira with a sword, reference to brother's death, Kira's victory)\
+    \ are present. Changes were moderate \u2014 the original structure and many lines\
+    \ were kept, but substantial interior material and emotional beats were added\
+    \ (hence a midline minimal_change_score). Writing quality is high and no new substantive\
+    \ errors were introduced, though the original grammatical quirk 'a earth-shaking\
+    \ roar' was preserved as required."
 error: null

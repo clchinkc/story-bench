@@ -12,20 +12,19 @@ final_score: 0.6712499999999999
 score_breakdown:
   final_score: 0.6712
   components:
-    word_count:
-      score: 0.0
-      weight: 0.25
-      actual: 1260
-      target_range:
-      - 500
-      - 700
     programmatic:
       score: 0.7
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.0
         repetition_score: 0.5
         slop_score: 1.0
         overall: 0.7
+      word_count:
+        actual: 1260
+        target_range:
+        - 500
+        - 700
     llm_judge:
       score: 0.9925
       weight: 0.5
@@ -46,28 +45,29 @@ llm_results:
   ending_score: 1.0
   overall_score: 0.78
   analysis:
-    beats_analysis: Both required beats are clearly present and well-executed. First
-      Plot Point occurs when Eleanor decides to publish ('I do') at the cemetery—this
-      is her irreversible commitment. Act 2 Opening begins immediately after with
-      the shift to the printing house, the practical work of setting type, and the
-      introduction of rising action (the mysterious watcher, the anonymous threat,
-      the serial publication plan). The transition is sharp and propels the narrative
-      forward.
-    must_include_analysis: 'All 6 elements successfully integrated: (1) Eleanor''s
-      decision to publish is explicit and emotionally weighted; (2) Central conflict
-      clearly established through profit vs. ethics vs. danger (debts, desecration,
-      the threatening note, potential retaliation); (3) Eleanor defies Victorian expectations
-      by signing her name to the work, taking proprietorship, commanding the presses;
-      (4) Thomas Chen is a fully realized ally with personal stakes (family laundry,
-      respectability, employment); (5) Danger is hinted through the anonymous warning
-      slip and the mysterious watcher at the end; (6) Eleanor crosses an irreversible
-      threshold—signing her name to the manuscript and the ledger, committing to publication.'
-    must_not_analysis: 'All 4 forbidden elements successfully avoided: (1) Jack the
-      Ripper never appears as a character; (2) No graphic violence or murder descriptions—only
-      references to the manuscript''s content and newspaper rumors; (3) No romantic
-      subplot between Eleanor and Thomas—their relationship remains professional and
-      respectful; (4) No easy financial solution offered—the problem remains dire
-      and the publication is a desperate gamble, not a guaranteed fix.'
+    beats_analysis: "Both required beats are clearly present and well-executed. First\
+      \ Plot Point occurs when Eleanor decides to publish ('I do') at the cemetery\u2014\
+      this is her irreversible commitment. Act 2 Opening begins immediately after\
+      \ with the shift to the printing house, the practical work of setting type,\
+      \ and the introduction of rising action (the mysterious watcher, the anonymous\
+      \ threat, the serial publication plan). The transition is sharp and propels\
+      \ the narrative forward."
+    must_include_analysis: "All 6 elements successfully integrated: (1) Eleanor's\
+      \ decision to publish is explicit and emotionally weighted; (2) Central conflict\
+      \ clearly established through profit vs. ethics vs. danger (debts, desecration,\
+      \ the threatening note, potential retaliation); (3) Eleanor defies Victorian\
+      \ expectations by signing her name to the work, taking proprietorship, commanding\
+      \ the presses; (4) Thomas Chen is a fully realized ally with personal stakes\
+      \ (family laundry, respectability, employment); (5) Danger is hinted through\
+      \ the anonymous warning slip and the mysterious watcher at the end; (6) Eleanor\
+      \ crosses an irreversible threshold\u2014signing her name to the manuscript\
+      \ and the ledger, committing to publication."
+    must_not_analysis: "All 4 forbidden elements successfully avoided: (1) Jack the\
+      \ Ripper never appears as a character; (2) No graphic violence or murder descriptions\u2014\
+      only references to the manuscript's content and newspaper rumors; (3) No romantic\
+      \ subplot between Eleanor and Thomas\u2014their relationship remains professional\
+      \ and respectful; (4) No easy financial solution offered\u2014the problem remains\
+      \ dire and the publication is a desperate gamble, not a guaranteed fix."
     tone_analysis: 'Gothic tension is masterfully maintained throughout: fog as metaphor,
       the cemetery setting, the mysterious watcher, the threatening note, the shadowy
       implications of danger. Feminist undertones are strong: Eleanor''s defiance
@@ -86,8 +86,8 @@ llm_results:
       limit). This is a significant structural violation despite excellent content
       quality.'
     strengths:
-    - Exceptional character development for Eleanor—her internal conflict and ultimate
-      resolve feel earned
+    - "Exceptional character development for Eleanor\u2014her internal conflict and\
+      \ ultimate resolve feel earned"
     - Thomas Chen is a nuanced, fully-realized character with agency and complexity
     - Atmospheric writing with strong gothic and Victorian sensibilities
     - Both plot beats are clearly marked and well-executed
@@ -98,8 +98,8 @@ llm_results:
     weaknesses:
     - 'MAJOR: Severe word count violation (1260 vs. 700 max) suggests lack of constraint
       adherence'
-    - The opening continuation feels somewhat disconnected from the opening fragment—could
-      be tightened
+    - "The opening continuation feels somewhat disconnected from the opening fragment\u2014\
+      could be tightened"
     - Some passages could be condensed without losing impact (e.g., the cemetery scene
       is beautifully written but lengthy)
 error: null

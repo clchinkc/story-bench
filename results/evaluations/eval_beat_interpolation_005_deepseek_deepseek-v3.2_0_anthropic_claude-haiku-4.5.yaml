@@ -12,20 +12,19 @@ final_score: 0.9796798143851508
 score_breakdown:
   final_score: 0.9797
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 419
-      target_range:
-      - 300
-      - 450
     programmatic:
       score: 0.9187
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.88
         slop_score: 0.9768
         overall: 0.9187
+      word_count:
+        actual: 419
+        target_range:
+        - 300
+        - 450
     llm_judge:
       score: 1.0
       weight: 0.5
@@ -40,24 +39,25 @@ llm_results:
   character_score: 1.0
   bridge_score: 1.0
   continuity_score: 1.0
-  evidence: 'STRENGTHS: All 4 required elements present and executed excellently:
-    (1) Maya discovers Alejandro''s vulnerability through his ''El Muro'' confession
-    about his father''s death and emotional walls; (2) Relationship shifts from professional
-    (meals left in warming oven, no contact) to personal (midnight kitchen scene,
-    shared meal); (3) Genuine connection created through the tortilla española moment—intimate
-    but not romantic, grounded in empathy and recognition of loneliness; (4) Maya
-    makes explicit commitment choice (''The contract says I cook for you. It doesn''t
-    say I have to let you eat alone'') that transcends the original financial motivation.
-    BEAT EXECUTION: Perfectly executes Act 2 Midpoint function—raises emotional stakes,
-    shifts Maya from reactive employee to proactive emotional participant, creates
-    point of no return in their dynamic. The shared fork and silence represent genuine
-    commitment beyond contract. MUST-NOT VIOLATIONS: Zero violations. No premature
-    love declaration, no intimacy beyond forehead-touching (saved for photograph reveal),
-    no contract breach decision, no wall remaining unbroken. CHARACTERIZATION: Maya''s
-    voice remains steady and compassionate; Alejandro''s vulnerability feels earned
-    and specific (not generic). BRIDGE: Seamlessly connects BEFORE (contract signing,
-    financial motivation) to AFTER (photograph scandal, forced separation)—the intimacy
-    built here justifies the scandal''s impact. CONTINUITY: Kitchen setting maintained,
-    timeline logical (3 weeks → midnight scene), Lucia''s instructions referenced,
-    storm provides atmospheric coherence.'
+  evidence: "STRENGTHS: All 4 required elements present and executed excellently:\
+    \ (1) Maya discovers Alejandro's vulnerability through his 'El Muro' confession\
+    \ about his father's death and emotional walls; (2) Relationship shifts from professional\
+    \ (meals left in warming oven, no contact) to personal (midnight kitchen scene,\
+    \ shared meal); (3) Genuine connection created through the tortilla espa\xF1ola\
+    \ moment\u2014intimate but not romantic, grounded in empathy and recognition of\
+    \ loneliness; (4) Maya makes explicit commitment choice ('The contract says I\
+    \ cook for you. It doesn't say I have to let you eat alone') that transcends the\
+    \ original financial motivation. BEAT EXECUTION: Perfectly executes Act 2 Midpoint\
+    \ function\u2014raises emotional stakes, shifts Maya from reactive employee to\
+    \ proactive emotional participant, creates point of no return in their dynamic.\
+    \ The shared fork and silence represent genuine commitment beyond contract. MUST-NOT\
+    \ VIOLATIONS: Zero violations. No premature love declaration, no intimacy beyond\
+    \ forehead-touching (saved for photograph reveal), no contract breach decision,\
+    \ no wall remaining unbroken. CHARACTERIZATION: Maya's voice remains steady and\
+    \ compassionate; Alejandro's vulnerability feels earned and specific (not generic).\
+    \ BRIDGE: Seamlessly connects BEFORE (contract signing, financial motivation)\
+    \ to AFTER (photograph scandal, forced separation)\u2014the intimacy built here\
+    \ justifies the scandal's impact. CONTINUITY: Kitchen setting maintained, timeline\
+    \ logical (3 weeks \u2192 midnight scene), Lucia's instructions referenced, storm\
+    \ provides atmospheric coherence."
 error: null

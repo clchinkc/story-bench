@@ -26,11 +26,11 @@ Traditional story theories (Hero's Journey, Save the Cat, etc.) are **objective,
 
 | Rank | Model | Score | Cost | Value |
 |------|-------|-------|------|-------|
-| 🥇 | **DeepSeek v3.2** | **95.5%** | $0.02 | 5845.8 |
-| 🥈 | Claude Opus 4.5 | 95.0% | $0.64 | 142.1 |
-| 🥉 | Claude Sonnet 4.5 | 94.0% | $0.40 | 219.9 |
-| 4 | o3 | 93.4% | $0.26 | 335.2 |
-| 5 | GPT-4o | 93.2% | $0.18 | 494.1 |
+| 🥇 | **DeepSeek v3.2** | **91.9%** | $0.20 | 426.9 |
+| 🥈 | Claude Opus 4.5 | 90.8% | $2.85 | 29.0 |
+| 🥉 | Claude Sonnet 4.5 | 90.1% | $1.74 | 46.6 |
+| 4 | Claude Sonnet 4 | 89.6% | $1.59 | 50.4 |
+| 5 | o3 | 89.3% | $0.96 | 83.2 |
 
 **Full leaderboard**: See [LEADERBOARD.md](results/LEADERBOARD.md)
 
@@ -38,11 +38,18 @@ Traditional story theories (Hero's Journey, Save the Cat, etc.) are **objective,
 
 ![Performance Heatmap](results/visualizations/benchmark_heatmap.png)
 
+**Standard Tasks:**
 - **Best in Beat Interpolation**: o3-mini (99.2%)
-- **Best in Beat Revision**: gpt-5 (97.2%)
+- **Best in Beat Revision**: GPT-5 (97.2%)
 - **Best in Multi-Beat Synthesis**: o3 (92.9%) — Tests long-range planning
 - **Best in Constrained Continuation**: o3-mini (95.8%)
-- **Best in Theory Conversion**: deepseek-v3.2 (95.8%)
+- **Best in Theory Conversion**: DeepSeek v3.2 (95.8%)
+
+**Agentic Tasks:**
+- **Best in Constraint Discovery**: GPT-5.2 (81.4%) — Strategic questioning
+- **Best in Planning Execution**: Grok 4 (96.4%) — Plan-then-execute
+- **Best in Iterative Revision**: o3 (93.9%) — Rule-based feedback
+- **Best in Critique Improvement**: GPT-5.2 (88.8%) — LLM critic feedback
 
 ---
 
@@ -104,22 +111,23 @@ Results are **median aggregated across 3 evaluator models**:
 ### Key Findings
 
 1. **Cost-Effectiveness Winner**: DeepSeek v3.2
-   - 95.5% score on just $0.02 generation cost
-   - ~5846× value score (Score²/Cost ratio)
+   - 91.9% score at $0.20 generation cost
+   - ~427× value score (Score²/Cost ratio)
 
 2. **Quality Leaders**: Anthropic models excel across most tasks
-   - Claude Opus 4.5: 95.0% (consistent across all tasks)
-   - Claude Sonnet 4.5: 94.0% (best value for premium quality)
+   - Claude Opus 4.5: 90.8% (consistent across all tasks)
+   - Claude Sonnet 4.5: 90.1% (best value for premium quality)
 
-3. **Task Difficulty Spread**:
-   - **Easiest**: Beat Revision 003 (96.8% avg) — near ceiling
-   - **Hardest**: Beat Revision 005 (72.5% avg) — high discrimination
-   - **Most Discriminative**: Beat Revision 002 (61.0% score spread)
+3. **Agentic Tasks Reveal New Gaps**:
+   - **Constraint Discovery**: Hardest task type (avg 63%)
+   - **Planning Execution**: Grok 4 excels (96.4%)
+   - **Iterative Revision**: o3 dominates (93.9%)
 
 4. **Task Type Insights**:
    - Multi-beat synthesis shows clear capability gaps
    - Constrained continuation tests multi-constraint planning
    - Beat interpolation has near-ceiling performance for top models
+   - Agentic tasks discriminate 2-3× better than single-shot
 
 ---
 
@@ -127,10 +135,10 @@ Results are **median aggregated across 3 evaluator models**:
 
 | Metric | Value |
 |--------|-------|
-| Total tasks | 21 (standard tasks) |
-| Generation runs | 420 (20 models × 21 tasks) |
-| Evaluations | 1,260 (3 evaluators each) |
-| **Total cost** | ~$17 |
+| Total tasks | 34 (21 standard + 13 agentic) |
+| Generation runs | 680 (20 models × 34 tasks) |
+| Evaluations | 2,040 (3 evaluators each, 100% complete) |
+| **Total cost** | $35.27 |
 
 ---
 
@@ -317,10 +325,10 @@ Tasks with high score spreads (difference between best/worst model) are more use
 
 | Category | Model | Score | Cost | Value |
 |----------|-------|-------|------|-------|
-| Best Quality | Claude Opus 4.5 | 95.0% | $0.64 | 142.1 |
-| Best Overall | DeepSeek v3.2 | 95.5% | $0.02 | 5845.8 |
-| Best Value | GPT-4o-mini | 89.4% | $0.01 | 7087.3 |
-| Best Budget | Ministral-14B | 74.8% | $0.01 | 5787.8 |
+| Best Quality | Claude Opus 4.5 | 90.8% | $2.85 | 29.0 |
+| Best Overall | DeepSeek v3.2 | 91.9% | $0.20 | 426.9 |
+| Best Value | Qwen3-235b | 83.4% | $0.18 | 392.9 |
+| Best Budget | GPT-4o-mini | 81.7% | $0.18 | 364.7 |
 
 ---
 
@@ -331,7 +339,7 @@ If you use Story Theory Benchmark in your research, please cite:
 ```bibtex
 @software{story_theory_benchmark_2024,
   title = {Story Theory Benchmark: Narrative Generation Evaluation Framework},
-  author = {Your Name},
+  author = {firstoryapp},
   year = {2024},
   url = {https://github.com/clchinkc/story-bench},
   note = {34 tasks across 9 task types, 20 models evaluated}

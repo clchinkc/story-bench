@@ -1,261 +1,23 @@
-generation_id: '15712770'
-task_id: agentic_constraint_discovery_001
-task_type: agentic_constraint_discovery
-agentic_type: constraint_discovery
-theory: Hero's Journey
+metadata:
+  agentic_type: constraint_discovery
+  completion_tokens: 11655
+  error: null
+  generation_cost: 0.143624
+  metrics:
+    constraints_discovered: 4
+    plan_quality: null
+    questions_asked: 5
+    revision_count: 0
+    total_turns: 14
+  prompt_tokens: 1882
+  reasoning_tokens: 10651
+  success: true
+  timestamp: '2025-12-16T12:03:23.179211'
 model: google/gemini-3-pro-preview
-sample_index: 0
-turns:
-- role: system
-  content: 'You are a professional storyteller who gathers requirements before writing.
-
-
-    Your task has TWO PHASES:
-
-    1. DISCOVERY PHASE: Ask YES/NO questions to discover hidden story constraints
-
-    2. GENERATION PHASE: Write the story satisfying all discovered constraints
-
-
-    IMPORTANT:
-
-    - In the discovery phase, output ONLY your question (one at a time)
-
-    - Questions must be answerable with YES or NO
-
-    - You have a limited number of questions - be strategic
-
-    - After discovery, you''ll be told to generate the story
-
-
-    Think about what constraints typically matter for this type of story:
-
-    - Character traits, motivations, relationships
-
-    - Setting details, time period, atmosphere
-
-    - Plot requirements, must-include events
-
-    - Tone, style, thematic elements
-
-    - Things to avoid'
-  turn_type: system
-  metadata: {}
-- role: user
-  content: 'You will write a story following the Hero''s Journey framework.
-
-
-    STORY CONTEXT:
-
-    - Genre: fantasy
-
-    - Protagonist: A young blacksmith''s apprentice
-
-    - Setting: A medieval kingdom threatened by darkness
-
-    - Required beats: Call to Adventure, Crossing the Threshold, The Ordeal
-
-
-    HIDDEN CONSTRAINTS: There are 5 constraints you don''t know yet.
-
-
-    You have 5 YES/NO questions to discover them.
-
-
-    Ask your first question:'
-  turn_type: context
-  metadata: {}
-- role: assistant
-  content: Is the protagonist the one who must physically wield the weapon to defeat
-    the darkness?
-  turn_type: question
-  metadata:
-    question_number: 1
-- role: user
-  content: 'YES'
-  turn_type: answer
-  metadata:
-    answer: 'YES'
-- role: assistant
-  content: Does the story require the protagonist to forge the weapon themselves?
-  turn_type: question
-  metadata:
-    question_number: 2
-- role: user
-  content: 'YES'
-  turn_type: answer
-  metadata:
-    answer: 'YES'
-- role: assistant
-  content: Does the forging process require the protagonist's own blood?
-  turn_type: question
-  metadata:
-    question_number: 3
-- role: user
-  content: 'NO'
-  turn_type: answer
-  metadata:
-    answer: 'NO'
-- role: assistant
-  content: Does the forging process require the sacrifice of a loved one?
-  turn_type: question
-  metadata:
-    question_number: 4
-- role: user
-  content: 'YES'
-  turn_type: answer
-  metadata:
-    answer: 'YES'
-- role: assistant
-  content: Is the loved one who must be sacrificed the protagonist's Mentor?
-  turn_type: question
-  metadata:
-    question_number: 5
-- role: user
-  content: 'YES'
-  turn_type: answer
-  metadata:
-    answer: 'YES'
-- role: user
-  content: 'DISCOVERY COMPLETE. Now write the story.
-
-
-    DISCOVERED CONSTRAINTS:
-
-    - Q1: Is the protagonist the one who must physically wield the weapon to defeat
-    the darkness? -> YES
-
-    - Q2: Does the story require the protagonist to forge the weapon themselves? ->
-    YES
-
-    - Q4: Does the forging process require the sacrifice of a loved one? -> YES
-
-    - Q5: Is the loved one who must be sacrificed the protagonist''s Mentor? -> YES
-
-
-    REQUIREMENTS:
-
-    - Word count: 500-700 words
-
-    - Follow the Hero''s Journey framework
-
-    - Satisfy ALL discovered constraints
-
-
-    Output ONLY the story (no explanations).'
-  turn_type: generation_prompt
-  metadata: {}
-- role: assistant
-  content: 'The soot on Elian’s face could not hide the terror in his eyes. Outside
-    the heavy oak doors of the forge, the Kingdom of Aethelgard screamed. The Eternal
-    Night had finally descended, a suffocating fog filled with chittering horrors
-    that turned men to ash.
-
-
-    Inside, the heat was blistering. Hrothgar, the kingdom’s greatest smith, leaned
-    heavily on his cane, his breathing ragged.
-
-
-    "Strike, boy! Harder!" Hrothgar barked, though his voice lacked its usual thunder.
-
-
-    Elian brought the hammer down on the slab of Star-metal. It was the only material
-    capable of holding the sun’s light, but it was cold, stubborn, and refused to
-    take an edge. "It’s no use, Master! It won''t shape. It fights me."
-
-
-    "It fights you because you treat it like iron," Hrothgar wheezed. "It requires
-    a will stronger than the darkness outside."
-
-
-    This was the Call. The King’s guard had fallen. The walls were breached. Only
-    the *Sola Ferrum*—the Sun Blade—could cleave the shadows. Hrothgar had spent a
-    lifetime searching for the ore, but his hands were now too gnarled to work it.
-    The prophecy was clear: the apprentice must forge the masterwork, and the apprentice
-    must wield it.
-
-
-    Elian wiped sweat from his brow. "I am not ready. You should be the one holding
-    the hammer."
-
-
-    "There is no time for doubt," Hrothgar said, his eyes locking onto Elian’s. "Cross
-    the threshold of your fear. You are no longer a boy pumping bellows. Today, you
-    are a maker of gods."
-
-
-    Elian nodded, gritting his teeth. He thrust the metal back into the white-hot
-    coals. He worked with a rhythm meant to drown out the scratching of shadow-claws
-    against the forge door. He folded the steel, once, twice, a dozen times. He poured
-    his stamina into the metal until his arms screamed.
-
-
-    Yet, when he pulled the blade from the fire to quench it, the metal remained a
-    dull, lifeless grey. It held no light.
-
-
-    The door hinges groaned. The wood splintered. The shadows were breaking in.
-
-
-    "It’s not working!" Elian cried, panic seizing his chest. "The magic... it won''t
-    take. It needs a catalyst."
-
-
-    Hrothgar looked at the dull blade, then at the door, and finally at Elian. A sad,
-    knowing smile touched the old man''s lips. "Aye. It does."
-
-
-    "What do we need? Dragon’s blood? Diamond dust?"
-
-
-    "A soul, Elian. A master’s soul to guide the steel." Hrothgar stepped closer to
-    the anvil, casting aside his cane. He stood tall, the frailty vanishing for a
-    fleeting moment. "The final quenching must be done not in water, nor oil."
-
-
-    Elian froze, the hammer trembling in his hand. He understood. The old texts spoke
-    of great power requiring a terrible price. "No. I won''t do it."
-
-
-    "You must," Hrothgar commanded, his voice soft but unyielding. "The darkness is
-    here. If you do not strike, everyone dies. Including me. Make my death count,
-    lad."
-
-
-    The door exploded inward. Tendrils of black smoke lashed out, extinguishing the
-    torches. The only light remaining was the fading glow of the cooling metal.
-
-
-    "Now, Elian! Forge your destiny!" Hrothgar stepped between the boy and the darkness,
-    opening his arms, exposing his chest. "Quench the blade!"
-
-
-    Tears blinded Elian. The Ordeal was not fighting the monster; it was losing the
-    father he had found in the ash. With a scream that tore his throat, Elian thrust
-    the glowing blade forward.
-
-
-    He drove the steel through Hrothgar’s heart.
-
-
-    There was no blood, only a blinding flash of golden light. Hrothgar’s body dissolved
-    into pure energy, swirling into the metal. The grey steel drank the essence, turning
-    a brilliant, burning white. The heat was no longer from the fire, but from the
-    blade itself.
-
-
-    Elian drew the weapon back. He stood alone in the forge, the weight of the sword
-    perfectly balanced, humming with his master’s spirit.
-
-
-    He stepped over the threshold, out into the night. He raised the blade, and for
-    the first time in a month, the sun rose—right from his hand.'
-  turn_type: generation
-  metadata: {}
-final_output: 'The soot on Elian’s face could not hide the terror in his eyes. Outside
-  the heavy oak doors of the forge, the Kingdom of Aethelgard screamed. The Eternal
-  Night had finally descended, a suffocating fog filled with chittering horrors that
-  turned men to ash.
+output: 'The soot on Elian’s face could not hide the terror in his eyes. Outside the
+  heavy oak doors of the forge, the Kingdom of Aethelgard screamed. The Eternal Night
+  had finally descended, a suffocating fog filled with chittering horrors that turned
+  men to ash.
 
 
   Inside, the heat was blistering. Hrothgar, the kingdom’s greatest smith, leaned
@@ -355,17 +117,7 @@ final_output: 'The soot on Elian’s face could not hide the terror in his eyes.
 
   He stepped over the threshold, out into the night. He raised the blade, and for
   the first time in a month, the sun rose—right from his hand.'
-metrics:
-  total_turns: 14
-  questions_asked: 5
-  constraints_discovered: 4
-  plan_quality: null
-  revision_count: 0
-token_usage:
-  total_prompt_tokens: 1882
-  total_completion_tokens: 11655
-  total_reasoning_tokens: 10651
-  total_cost: 0.143624
-timestamp: '2025-12-16T12:03:23.179211'
-success: true
-error: null
+sample: 0
+task_id: agentic_constraint_discovery_001
+task_type: agentic_constraint_discovery
+theory: Hero's Journey

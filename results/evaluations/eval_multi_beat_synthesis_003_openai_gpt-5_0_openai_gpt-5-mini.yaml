@@ -12,20 +12,19 @@ final_score: 0.6591666666666767
 score_breakdown:
   final_score: 0.6592
   components:
-    word_count:
-      score: 0.0
-      weight: 0.25
-      actual: 1707
-      target_range:
-      - 700
-      - 1000
     programmatic:
       score: 0.7
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 0.0
         repetition_score: 0.5
         slop_score: 1.0
         overall: 0.7
+      word_count:
+        actual: 1707
+        target_range:
+        - 700
+        - 1000
     llm_judge:
       score: 0.9683
       weight: 0.5
@@ -40,10 +39,10 @@ llm_results:
   context_score: 1.0
   coherence_score: 0.95
   failed_items:
-  - 'Beat 3 — ''Team friction or trust issues surface'': The text shows stress and
-    a compromised crew member (Saffron) but does not present a clear interpersonal
-    conflict or trust breakdown among team members; the crew largely remains cohesive
-    rather than fracturing.'
-  - 'Word count outside required range: 1707 words (required 700–1000).'
+  - "Beat 3 \u2014 'Team friction or trust issues surface': The text shows stress\
+    \ and a compromised crew member (Saffron) but does not present a clear interpersonal\
+    \ conflict or trust breakdown among team members; the crew largely remains cohesive\
+    \ rather than fracturing."
+  - "Word count outside required range: 1707 words (required 700\u20131000)."
   - Excerpt ends abruptly mid-sentence, leaving the immediate confrontation unresolved.
 error: null

@@ -12,20 +12,19 @@ final_score: 0.9685
 score_breakdown:
   final_score: 0.9685
   components:
-    word_count:
-      score: 1.0
-      weight: 0.25
-      actual: 371
-      target_range:
-      - 300
-      - 450
     programmatic:
       score: 0.874
-      weight: 0.25
+      weight: 0.5
       breakdown:
+        word_count_score: 1.0
         repetition_score: 0.79
         slop_score: 1.0
         overall: 0.874
+      word_count:
+        actual: 371
+        target_range:
+        - 300
+        - 450
     llm_judge:
       score: 1.0
       weight: 0.5
@@ -40,10 +39,10 @@ llm_results:
   character_score: 1.0
   bridge_score: 1.0
   continuity_score: 1.0
-  evidence: 'All four required elements are present: Thomas''s direct examination,
-    an apparent recant, Thomas taking decisive action that influences her, and the
-    turning point where she confesses. The scene functions clearly as the climax—high
-    tension, decisive action, and an irrevocable turning point. No prohibited items
-    were violated; the flash drive is produced by the witness as a result of her choice
-    (not an external deus ex machina), so no deductions were made.'
+  evidence: "All four required elements are present: Thomas's direct examination,\
+    \ an apparent recant, Thomas taking decisive action that influences her, and the\
+    \ turning point where she confesses. The scene functions clearly as the climax\u2014\
+    high tension, decisive action, and an irrevocable turning point. No prohibited\
+    \ items were violated; the flash drive is produced by the witness as a result\
+    \ of her choice (not an external deus ex machina), so no deductions were made."
 error: null
