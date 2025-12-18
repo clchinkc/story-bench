@@ -1213,7 +1213,7 @@ class ResultsDatabase:
                             "theory": data.get("theory", "Unknown"),
                             "model": data["model"],
                             "sample": data.get("sample_index", 0),
-                            "output": data.get("final_output", ""),
+                            "output": data.get("output", "") or data.get("final_output", ""),
                             "prompt_tokens": token_usage.get("total_prompt_tokens", 0),
                             "completion_tokens": token_usage.get("total_completion_tokens", 0),
                             "reasoning_tokens": token_usage.get("total_reasoning_tokens", 0),

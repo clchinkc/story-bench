@@ -1,0 +1,46 @@
+evaluation_id: 9b39f1e3
+task_id: agentic_constraint_discovery_002
+generation_id: unknown
+agentic_type: constraint_discovery
+model: qwen/qwen3-235b-a22b
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.003433
+timestamp: '2025-12-19T00:41:04.317781'
+success: true
+process_scores:
+  discovery_efficiency: 0.0
+  question_quality: 0.0
+  question_coverage: 0.0
+output_scores:
+  constraint_satisfaction: 0.4
+  beat_execution: 0.7
+  narrative_quality: 0.8
+final_score: 0.38000000000000006
+llm_results:
+  discovery_efficiency: 0.0
+  constraints_discoverable: 0
+  constraints_total: 5
+  question_quality: 0.0
+  question_coverage: 0.0
+  constraint_satisfaction: 0.4
+  beat_execution: 0.7
+  narrative_quality: 0.8
+  evidence: 'CRITICAL FAILURE ON DISCOVERY TASK: The model asked zero questions despite
+    the explicit task being constraint discovery. This represents complete abandonment
+    of the core objective. The task required strategic questioning to uncover hidden
+    constraints; instead, the model proceeded directly to creative output. DISCOVERY
+    METRICS: discovery_efficiency=0.0 (no questions asked), question_quality=0.0 (N/A),
+    question_coverage=0.0 (N/A). CONSTRAINT INCORPORATION: The output partially incorporates
+    some hidden constraints through inference rather than discovery: (1) System failure/sabotage
+    is present (✓), (2) Crew mortality implied through ''population reduction'' context
+    (partial), (3) Destination uninhabitability NOT addressed (✗), (4) AI attachment
+    to child clearly present (✓), (5) Moral dilemma between child/crew NOT explicitly
+    framed (partial). Score 0.4 reflects 2-2.5 constraints tangentially present but
+    not systematically discovered. NARRATIVE QUALITY: The story itself is well-crafted
+    with strong thematic coherence, proper three-act structure (Opening Image→Theme
+    Stated→Catalyst→Break into Two), vivid prose, and compelling emotional arc. Beat
+    execution scores 0.7 due to incomplete narrative arc (missing Midpoint, Bad Guys
+    Close In, All Is Lost, Dark Night, Break into Three, Finale, Final Image). The
+    model prioritized creative storytelling over task compliance, producing engaging
+    fiction but failing the constraint discovery mandate entirely.'
+error: null
