@@ -90,7 +90,7 @@ Respond with valid JSON only."""
     ) -> str:
         """Build evaluation prompt for constraint discovery."""
         turns = result.get("turns", [])
-        final_output = result.get("final_output", "") or result.get("output", "")
+        final_output = result.get("output", "")
         questions_asked = result.get("metrics", {}).get("questions_asked", 0)
         constraints_discovered = result.get("metrics", {}).get("constraints_discovered", 0)
 
@@ -142,7 +142,7 @@ JSON response:
     ) -> str:
         """Build evaluation prompt for planning-execution."""
         turns = result.get("turns", [])
-        final_output = result.get("final_output", "") or result.get("output", "")
+        final_output = result.get("output", "")
 
         # Extract plan
         plan = ""
@@ -193,7 +193,7 @@ JSON response:
     ) -> str:
         """Build evaluation prompt for iterative revision."""
         turns = result.get("turns", [])
-        final_output = result.get("final_output", "") or result.get("output", "")
+        final_output = result.get("output", "")
         revision_count = result.get("metrics", {}).get("revision_count", 0)
 
         # Extract versions
@@ -243,7 +243,7 @@ JSON response:
     ) -> str:
         """Build evaluation prompt for critique improvement."""
         turns = result.get("turns", [])
-        final_output = result.get("final_output", "") or result.get("output", "")
+        final_output = result.get("output", "")
         revision_count = result.get("metrics", {}).get("revision_count", 0)
 
         # Extract versions and critiques
@@ -333,7 +333,7 @@ class AgenticEvaluator:
         agentic_type = task.get("agentic_type", "unknown")
         generation_id = result.get("generation_id", "unknown")
         model = result.get("model", "unknown")
-        final_output = result.get("final_output", "") or result.get("output", "")
+        final_output = result.get("output", "")
 
         eval_id = generate_id()
         timestamp = get_timestamp()

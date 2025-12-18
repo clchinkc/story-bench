@@ -43,7 +43,7 @@ class AgenticResult:
     turns: list[AgenticTurn]
 
     # Final output
-    final_output: str
+    output: str
 
     # Metrics
     total_turns: int
@@ -81,7 +81,7 @@ class AgenticResult:
                 }
                 for t in self.turns
             ],
-            "final_output": self.final_output,
+            "output": self.output,
             "metrics": {
                 "total_turns": self.total_turns,
                 "questions_asked": self.questions_asked,
@@ -481,7 +481,7 @@ class AgenticGenerator:
         self.config = config or AgenticConfig()
         self.llm_client = llm_client or LLMClient()
 
-    def _validate_final_output(self, turns: list[AgenticTurn], agentic_type: str) -> str:
+    def _validate_output(self, turns: list[AgenticTurn], agentic_type: str) -> str:
         """
         Validate final output is non-empty.
 
@@ -499,18 +499,18 @@ class AgenticGenerator:
         logger = logging.getLogger(__name__)
 
         # Find last assistant generation
-        final_output = ""
+        output = ""
         for turn in reversed(turns):
             if turn.role == "assistant" and turn.turn_type == "generation":
-                final_output = turn.content
+                output = turn.content
                 break
 
         # FAIL if empty
-        if not final_output.strip():
+        if not output.strip():
             logger.error(f"[{agentic_type}] Generation failed: final output is empty")
             raise RuntimeError("Empty generation - no valid output produced")
 
-        return final_output.strip()
+        return output.strip()
 
     def _call_model(
         self,
@@ -643,7 +643,7 @@ class AgenticGenerator:
                 turn_type="generation_prompt",
             ))
 
-            final_output, pt, ct, rt, cost = self._call_model(
+            output, pt, ct, rt, cost = self._call_model(
                 model, messages,
                 max_tokens=self.config.execution_max_tokens
             )
@@ -654,12 +654,12 @@ class AgenticGenerator:
 
             turns.append(AgenticTurn(
                 role="assistant",
-                content=final_output,
+                content=output,
                 turn_type="generation",
             ))
 
             # Validate final output is non-empty
-            final_output = self._validate_final_output(turns, "constraint_discovery")
+            final_output = self._validate_output(turns, "constraint_discovery")
 
             return AgenticResult(
                 generation_id=generation_id,
@@ -670,7 +670,7 @@ class AgenticGenerator:
                 model=model,
                 sample_index=sample_index,
                 turns=turns,
-                final_output=final_output,
+                output=output,
                 total_turns=len(turns),
                 questions_asked=questions_asked,
                 constraints_discovered=len(discovered_constraints),
@@ -694,7 +694,7 @@ class AgenticGenerator:
                 model=model,
                 sample_index=sample_index,
                 turns=turns,
-                final_output="",
+                output="",
                 total_turns=len(turns),
                 questions_asked=questions_asked,
                 constraints_discovered=len(discovered_constraints),
@@ -765,7 +765,7 @@ class AgenticGenerator:
 
             turns.append(AgenticTurn(role="user", content=exec_prompt, turn_type="execution_prompt"))
 
-            final_output, pt, ct, rt, cost = self._call_model(
+            output, pt, ct, rt, cost = self._call_model(
                 model, messages,
                 max_tokens=self.config.execution_max_tokens
             )
@@ -776,12 +776,12 @@ class AgenticGenerator:
 
             turns.append(AgenticTurn(
                 role="assistant",
-                content=final_output,
+                content=output,
                 turn_type="generation",
             ))
 
             # Validate final output is non-empty
-            final_output = self._validate_final_output(turns, "planning_execution")
+            final_output = self._validate_output(turns, "planning_execution")
 
             return AgenticResult(
                 generation_id=generation_id,
@@ -792,7 +792,7 @@ class AgenticGenerator:
                 model=model,
                 sample_index=sample_index,
                 turns=turns,
-                final_output=final_output,
+                output=output,
                 total_turns=len(turns),
                 questions_asked=0,
                 constraints_discovered=0,
@@ -816,7 +816,7 @@ class AgenticGenerator:
                 model=model,
                 sample_index=sample_index,
                 turns=turns,
-                final_output="",
+                output="",
                 total_turns=len(turns),
                 questions_asked=0,
                 constraints_discovered=0,
@@ -930,7 +930,7 @@ class AgenticGenerator:
                 messages.append({"role": "assistant", "content": current_output})
 
             # Validate final output is non-empty
-            final_output = self._validate_final_output(turns, "iterative_revision")
+            final_output = self._validate_output(turns, "iterative_revision")
 
             return AgenticResult(
                 generation_id=generation_id,
@@ -941,7 +941,7 @@ class AgenticGenerator:
                 model=model,
                 sample_index=sample_index,
                 turns=turns,
-                final_output=current_output,
+                output=current_output,
                 total_turns=len(turns),
                 questions_asked=0,
                 constraints_discovered=0,
@@ -965,7 +965,7 @@ class AgenticGenerator:
                 model=model,
                 sample_index=sample_index,
                 turns=turns,
-                final_output="",
+                output="",
                 total_turns=len(turns),
                 questions_asked=0,
                 constraints_discovered=0,
@@ -1097,7 +1097,7 @@ class AgenticGenerator:
                 messages.append({"role": "assistant", "content": current_output})
 
             # Validate final output is non-empty
-            final_output = self._validate_final_output(turns, "critique_improvement")
+            final_output = self._validate_output(turns, "critique_improvement")
 
             return AgenticResult(
                 generation_id=generation_id,
@@ -1108,7 +1108,7 @@ class AgenticGenerator:
                 model=model,
                 sample_index=sample_index,
                 turns=turns,
-                final_output=current_output,
+                output=current_output,
                 total_turns=len(turns),
                 questions_asked=0,
                 constraints_discovered=0,
@@ -1132,7 +1132,7 @@ class AgenticGenerator:
                 model=model,
                 sample_index=sample_index,
                 turns=turns,
-                final_output="",
+                output="",
                 total_turns=len(turns),
                 questions_asked=0,
                 constraints_discovered=0,
