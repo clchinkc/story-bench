@@ -1,0 +1,48 @@
+evaluation_id: b9ae14be
+task_id: beat_revision_004
+generation_id: beat_revision_004_moonshotai/kimi-k2-thinking_0
+task_type: beat_revision
+model: moonshotai/kimi-k2-thinking
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0010509
+timestamp: '2025-12-20T15:00:19.200526'
+success: true
+final_score: 0.96
+score_breakdown:
+  final_score: 0.96
+  components:
+    programmatic:
+      score: 1.0
+      weight: 0.5
+      breakdown:
+        word_count_score: 1.0
+        repetition_score: 1.0
+        slop_score: 1.0
+        overall: 1.0
+      word_count:
+        actual: 232
+        target_range:
+        - 200
+        - 350
+    llm_judge:
+      score: 0.92
+      weight: 0.5
+llm_results:
+  diagnosis_score: 1.0
+  flaw_correction_score: 1.0
+  beat_satisfaction_score: 1.0
+  preservation_score: 1.0
+  preserved_count: 5
+  required_preserved_score: 1.0
+  required_preserved_count: 4
+  minimal_change_score: 0.2
+  word_count_valid: true
+  quality_score: 1.0
+  evidence: The model correctly identified that the original segment was 'telling'
+    rather than 'showing' for exposition. It completely rewrote the segment to demonstrate
+    Rachel's detective skills, her relationship with James, her devotion to work,
+    and the setting through action, dialogue, and sensory details. While the fix is
+    excellent, the changes were extensive, making it a complete rewrite rather than
+    minimal edits. All required preserved phrases and elements are present.
+error: null

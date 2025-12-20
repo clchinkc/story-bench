@@ -1,0 +1,46 @@
+evaluation_id: 68be512a
+task_id: multi_beat_synthesis_002
+generation_id: multi_beat_synthesis_002_moonshotai/kimi-k2-thinking_0
+task_type: multi_beat_synthesis
+model: moonshotai/kimi-k2-thinking
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0011323
+timestamp: '2025-12-20T15:06:03.902304'
+success: true
+final_score: 0.8985
+score_breakdown:
+  final_score: 0.8985
+  components:
+    programmatic:
+      score: 0.825
+      weight: 0.5
+      breakdown:
+        word_count_score: 1.0
+        repetition_score: 0.5
+        slop_score: 1.0
+        overall: 0.825
+      word_count:
+        actual: 849
+        target_range:
+        - 700
+        - 1000
+    llm_judge:
+      score: 0.972
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 14
+  beat_reqs_total: 15
+  beat_requirements_score: 0.93
+  cross_beat_satisfied: 4
+  cross_beat_total: 4
+  cross_beat_score: 1.0
+  word_count_valid: true
+  context_score: 1.0
+  coherence_score: 1.0
+  failed_items:
+  - 'Beat 3: Recognition of what reaching the stronghold will cost or change - While
+    there''s a sense of urgency and danger, the story doesn''t explicitly state Amara''s
+    recognition of the personal cost or change reaching the stronghold will entail
+    beyond the immediate threat.'
+error: null

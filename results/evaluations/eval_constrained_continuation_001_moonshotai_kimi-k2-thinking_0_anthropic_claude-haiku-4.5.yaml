@@ -1,0 +1,86 @@
+evaluation_id: 5bcfe9c0
+task_id: constrained_continuation_001
+generation_id: constrained_continuation_001_moonshotai/kimi-k2-thinking_0
+task_type: constrained_continuation
+model: moonshotai/kimi-k2-thinking
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.031235
+timestamp: '2025-12-20T15:00:40.731429'
+success: true
+final_score: 0.9012510350596836
+score_breakdown:
+  final_score: 0.9013
+  components:
+    programmatic:
+      score: 0.815
+      weight: 0.5
+      breakdown:
+        word_count_score: 0.975
+        repetition_score: 0.5
+        slop_score: 1.0
+        overall: 0.815
+      word_count:
+        actual: 736
+        target_range:
+        - 500
+        - 700
+    llm_judge:
+      score: 0.9875
+      weight: 0.5
+llm_results:
+  beats_present: 2
+  beats_total: 2
+  beats_score: 1.0
+  must_include_present: 6
+  must_include_total: 6
+  must_include_score: 1.0
+  must_not_avoided: 4
+  must_not_total: 4
+  must_not_score: 1.0
+  word_count_valid: false
+  word_count: 736
+  word_count_range: 500-700
+  tone_score: 0.95
+  ending_score: 0.95
+  failed_constraints:
+  - 'Word count exceeds maximum: 736 words vs. 700-word limit (36 words over)'
+  analysis:
+    beats_present_detail:
+    - 'Approach to the Inmost Cave: The Bridge of False Leads sequence and the vault
+      of mirrors represent the approach—Zara and Tomás navigate physical and psychological
+      obstacles before entering the true Library chamber'
+    - 'The Ordeal: The bridge crossing itself serves as the ordeal, but more importantly,
+      the confrontation with failure and grief in the mirror vault is the true ordeal—both
+      characters face their deepest fears about inability to save loved ones'
+    must_include_detail:
+    - '✓ Choice between escape and helping: ''Go,'' she told Tomás. ''I''ll hold them.''
+      Zara sacrifices safety to ensure Tomás reaches the bridge'
+    - '✓ Trap requiring thief skills: The Bridge of False Leads—Zara uses her thief''s
+      instincts to feel the safe planks rather than test them methodically'
+    - '✓ Revelation about Tomás: His daughter died; he sought forbidden knowledge
+      to undo death; his obsession is grief-driven, not scholarly'
+    - '✓ Zara confronting fear of failure: ''She''d spent her whole life stealing
+      to save her mother, believing that if she just found the right thing, she could
+      fix everything. But some things couldn''t be fixed.'''
+    - '✓ Symbolic death/rebirth: The mirror vault showing moments of failure, then
+      shattering—both characters see their failures reflected and emerge transformed'
+    - '✓ Zara changed by Ordeal: ''She felt different—lighter, though the weight of
+      her mission remained. She''d crossed the bridge of her own fear'''
+    must_not_detail:
+    - '✓ No cure found: The map dissolves; the Library remains unopened'
+    - '✓ No romantic subplot: Relationship remains mentor-student/ally-ally, emotionally
+      intimate but not romantic'
+    - '✓ Tomás survives: He reaches the other side and emerges transformed'
+    - '✓ No supernatural abilities: Zara uses thief skills (instinct, physical ability,
+      pattern recognition) only'
+    tone_assessment: 'Tense and morally complex throughout. Desperate hope evident
+      in Zara''s sacrifice and Tomás''s emotional breakthrough. The tone wavers slightly
+      toward philosophical reflection in the mirror vault section but recovers with
+      the immediate threat of the Guild. Minor: could be slightly more tense in final
+      paragraph.'
+    ending_assessment: 'Excellent execution. Zara has passed through the Ordeal (internal
+      transformation + bridge crossing), but faces new complication: Guild approaching
+      from above, map dissolving, and unknown final guardian ahead. Sets up next stage
+      perfectly.'
+error: null

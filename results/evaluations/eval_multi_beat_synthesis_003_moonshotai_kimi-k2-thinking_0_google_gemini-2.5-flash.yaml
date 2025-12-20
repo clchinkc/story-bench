@@ -1,0 +1,45 @@
+evaluation_id: 31077c38
+task_id: multi_beat_synthesis_003
+generation_id: multi_beat_synthesis_003_moonshotai/kimi-k2-thinking_0
+task_type: multi_beat_synthesis
+model: moonshotai/kimi-k2-thinking
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0011392
+timestamp: '2025-12-20T15:06:49.813433'
+success: true
+final_score: 0.8985
+score_breakdown:
+  final_score: 0.8985
+  components:
+    programmatic:
+      score: 0.825
+      weight: 0.5
+      breakdown:
+        word_count_score: 1.0
+        repetition_score: 0.5
+        slop_score: 1.0
+        overall: 0.825
+      word_count:
+        actual: 795
+        target_range:
+        - 700
+        - 1000
+    llm_judge:
+      score: 0.972
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 14
+  beat_reqs_total: 15
+  beat_requirements_score: 0.93
+  cross_beat_satisfied: 4
+  cross_beat_total: 4
+  cross_beat_score: 1.0
+  word_count_valid: true
+  context_score: 1.0
+  coherence_score: 1.0
+  failed_items:
+  - 'Beat 1: Introduction of an unexpected complication (minor) - The hedge fund manager
+    is a very minor complication, almost immediately resolved, and doesn''t really
+    set up anything for later. It''s more of a momentary hiccup than a complication.'
+error: null

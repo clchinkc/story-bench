@@ -342,7 +342,7 @@ If you use Story Theory Benchmark in your research, please cite:
   author = {firstoryapp},
   year = {2024},
   url = {https://github.com/clchinkc/story-bench},
-  note = {34 tasks across 9 task types, 20 models evaluated}
+  note = {34 tasks across 9 task types, 22 models evaluated}
 }
 ```
 

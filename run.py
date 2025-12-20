@@ -275,7 +275,7 @@ def cmd_run(args):
                             theory=task.get("theory", "Unknown"),
                             model=model,
                             sample=0,
-                            output=result.final_output,
+                            output=result.output,
                             prompt_tokens=result.total_prompt_tokens,
                             completion_tokens=result.total_completion_tokens,
                             reasoning_tokens=result.total_reasoning_tokens,

@@ -1,0 +1,66 @@
+evaluation_id: 8cfaa069
+task_id: beat_revision_004
+generation_id: beat_revision_004_moonshotai/kimi-k2-thinking_0
+task_type: beat_revision
+model: moonshotai/kimi-k2-thinking
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.021795000000000002
+timestamp: '2025-12-20T14:59:48.672921'
+success: true
+final_score: 0.99
+score_breakdown:
+  final_score: 0.99
+  components:
+    programmatic:
+      score: 1.0
+      weight: 0.5
+      breakdown:
+        word_count_score: 1.0
+        repetition_score: 1.0
+        slop_score: 1.0
+        overall: 1.0
+      word_count:
+        actual: 232
+        target_range:
+        - 200
+        - 350
+    llm_judge:
+      score: 0.98
+      weight: 0.5
+llm_results:
+  diagnosis_score: 1.0
+  flaw_correction_score: 1.0
+  beat_satisfaction_score: 1.0
+  preservation_score: 1.0
+  preserved_count: 5
+  preserved_total: 5
+  required_preserved_score: 1.0
+  required_preserved_count: 4
+  required_preserved_total: 4
+  minimal_change_score: 0.85
+  word_count_valid: true
+  quality_score: 0.95
+  evidence: 'The model correctly diagnosed the core flaw: the original segment was
+    pure exposition-through-telling (info-dump style) with no scene, action, or sensory
+    grounding. The revision transforms this into a SHOWN scene that reveals character
+    through behavior. Key corrections: (1) Rachel''s detective instincts shown through
+    her cold case work and the Jensen file discovery, not stated; (2) Partnership
+    with James demonstrated through natural dialogue, anticipation, and synchronized
+    work rhythm rather than summary; (3) Her devotion to cases revealed through 5:47
+    AM pre-dawn review and ''haunt this thing until it breaks'' rather than told;
+    (4) Setting established through sensory details (worn file edge, cold coffee,
+    Miles Davis, October leaves, waterfront condos) rather than summary description;
+    (5) Sherlock integrated naturally into the scene (butting her leg, scar tissue
+    catching light) with organic backstory reference. All 4 required phrases preserved
+    exactly: ''Detective Rachel Torres,'' ''Detective James Oyelaran,'' ''cat named
+    Sherlock,'' ''Tuesday morning in October.'' All 5 elements maintained: protagonist,
+    partner, cat, Queens setting, October timing. Changes were surgical—the model
+    kept the core character facts and relationships but converted them from exposition-dump
+    to lived scene. The final line ''Everything was about to change'' signals the
+    approaching inciting incident, properly framing this as true Exposition. Minor
+    deduction from minimal_change_score (0.85 vs 1.0) because the revision is substantially
+    restructured as a scene rather than a line-edit, though this restructuring was
+    necessary and appropriate to fix the flaw. Writing quality is professional with
+    no new errors introduced.'
+error: null

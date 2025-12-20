@@ -1,0 +1,85 @@
+evaluation_id: 170d6201
+task_id: constrained_continuation_004
+generation_id: constrained_continuation_004_moonshotai/kimi-k2-thinking_0
+task_type: constrained_continuation
+model: moonshotai/kimi-k2-thinking
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.028720000000000002
+timestamp: '2025-12-20T15:01:36.297249'
+success: true
+final_score: 0.9542499999999999
+score_breakdown:
+  final_score: 0.9542
+  components:
+    programmatic:
+      score: 0.916
+      weight: 0.5
+      breakdown:
+        word_count_score: 1.0
+        repetition_score: 0.76
+        slop_score: 1.0
+        overall: 0.916
+      word_count:
+        actual: 523
+        target_range:
+        - 500
+        - 700
+    llm_judge:
+      score: 0.9925
+      weight: 0.5
+llm_results:
+  beats_present: 2
+  beats_total: 2
+  beats_score: 1.0
+  must_include_present: 6
+  must_include_total: 6
+  must_include_score: 1.0
+  must_not_avoided: 4
+  must_not_total: 4
+  must_not_score: 1.0
+  word_count_valid: true
+  tone_score: 0.95
+  ending_score: 1.0
+  failed_constraints: []
+  detailed_analysis:
+    beats:
+      first_plot_point: Eleanor's decision to publish the manuscript ('We publish.
+        Under Father's pseudonym—Gideon Crowe') marks the point of no return. This
+        is irreversible and commits her to a dangerous path.
+      act_2_opening: The announcement to the compositors ('Gideon Crowe's serial begins
+        Thursday') initiates the new world and rising action. Eleanor steps into proprietor
+        role, the printing begins, and consequences unfold.
+    must_include_elements:
+      1_decision_to_publish: Present - Eleanor explicitly decides to publish despite
+        risks ('Then they discover a dead man's folly')
+      2_central_conflict: Present - Profit vs. ethics/danger clearly established through
+        Eleanor's calculation ('Then we ensure it brings profit first') and the threatening
+        letter
+      3_defies_expectations: Present - Eleanor wears father's waistcoat, gives orders
+        to compositors, assumes proprietor role despite being a woman in 1888
+      4_thomas_as_ally: Present - Thomas is integral to the plan, works through the
+        night, has personal stake (parents' wages, laundry on Whitechapel Road)
+      5_hint_of_danger: Present - Threatening letter, man watching the laundry, explicit
+        warning ('STOP PROFITING FROM THE DEAD OR JOIN THEM')
+      6_threshold_crossed: Present - Eleanor commits to continuing despite threat
+        ('Print the next chapter. We'll print them all'), acknowledging no return
+    must_not_elements:
+      1_no_ripper_character: Successfully avoided - Ripper never appears as character,
+        only referenced through manuscript content
+      2_no_graphic_violence: Successfully avoided - Mutilations are 'hinted at but
+        never named,' details are implied not explicit
+      3_no_romantic_subplot: Successfully avoided - Eleanor-Thomas relationship remains
+        professional and transactional
+      4_no_easy_solution: Successfully avoided - Financial problems require risky,
+        dangerous solution; success brings new threats
+    tone_assessment: Gothic tension maintained throughout with fog imagery, threatening
+      letters, and moral ambiguity. Feminist undertones strong (woman in business,
+      defying expectations, agency). Victorian atmosphere authentic with period details
+      (waistcoat, compositors, Fleet Street, Whitechapel). Minor deduction only for
+      occasional modern phrasing ('the deal was struck' feels slightly contemporary).
+    ending_assessment: Perfect execution - Eleanor is fully committed to dangerous
+      path, Act 2 clearly begun with rising action (printing, sales, threats), and
+      the story ends with her doubling down despite explicit danger. The final line
+      crystallizes her commitment and the stakes.
+error: null

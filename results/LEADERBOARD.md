@@ -1,17 +1,17 @@
 # Story Theory Benchmark Leaderboard
 
-*Last updated: 2025-12-19T00:45:15.651196*
+*Last updated: 2025-12-20T15:46:08.200712*
 
 ## Overview
 
-- **Models evaluated**: 21
+- **Models evaluated**: 22
 - **Tasks**: 34
 - **Evaluator models**: claude-haiku-4.5, gemini-2.5-flash, gpt-5-mini
 - **Aggregation**: Median across evaluators
 - **Scoring**: Programmatic (50%) + LLM Judge (50%)
-- **Total generations**: 714
-- **Total evaluations**: 2145
-- **Total cost**: $36.2910
+- **Total generations**: 748
+- **Total evaluations**: 2247
+- **Total cost**: $37.6029
 
 ## Model Rankings
 
@@ -22,22 +22,23 @@
 | 3 | claude-sonnet-4.5 | Anthropic | 90.1% | $1.7390 | 46.6 | 93.6% |
 | 4 | claude-sonnet-4 | Anthropic | 89.6% | $1.5932 | 50.4 | 93.3% |
 | 5 | o3 | OpenAI | 89.3% | $0.9582 | 83.2 | 92.9% |
-| 6 | gemini-3-flash-preview | Google | 88.3% | $0.5896 | 132.3 | 91.2% |
-| 7 | claude-haiku-4.5 | Anthropic | 86.9% | $0.6956 | 108.5 | 90.0% |
-| 8 | deepseek-r1 | DeepSeek | 86.9% | $0.4157 | 181.5 | 93.4% |
-| 9 | o3-mini | OpenAI | 86.7% | $0.5620 | 133.7 | 86.8% |
-| 10 | gemini-2.5-flash | Google | 85.7% | $0.4177 | 175.8 | 89.9% |
-| 11 | gpt-4o | OpenAI | 85.6% | $0.8069 | 90.9 | 88.4% |
-| 12 | grok-4 | xAI | 85.3% | $1.8858 | 38.6 | 92.9% |
-| 13 | gemini-3-pro-preview | Google | 83.9% | $2.1086 | 33.4 | 93.0% |
-| 14 | qwen3-235b-a22b | Alibaba | 83.6% | $0.2177 | 321.4 | 94.0% |
-| 15 | gpt-4o-mini | OpenAI | 81.7% | $0.1829 | 364.7 | 82.1% |
-| 16 | gpt-5 | OpenAI | 81.1% | $1.6176 | 40.6 | 91.8% |
-| 17 | gpt-5.2 | OpenAI | 80.3% | $1.7564 | 36.7 | 92.4% |
-| 18 | gpt-5.1 | OpenAI | 77.9% | $1.5230 | 39.9 | 94.6% |
-| 19 | minimax-m2 | MiniMax | 76.7% | $0.3116 | 188.7 | 93.4% |
-| 20 | ministral-14b-2512 | Mistral | 76.6% | $0.1906 | 308.1 | 86.5% |
-| 21 | llama-4-maverick | Meta | 72.2% | $0.1938 | 268.8 | 71.0% |
+| 6 | kimi-k2-thinking | Moonshotai | 88.8% | $0.5782 | 136.2 | 95.9% |
+| 7 | gemini-3-flash-preview | Google | 88.3% | $0.5896 | 132.3 | 91.2% |
+| 8 | claude-haiku-4.5 | Anthropic | 86.9% | $0.6956 | 108.5 | 90.0% |
+| 9 | deepseek-r1 | DeepSeek | 86.9% | $0.4157 | 181.5 | 93.4% |
+| 10 | o3-mini | OpenAI | 86.7% | $0.5620 | 133.7 | 86.8% |
+| 11 | gemini-2.5-flash | Google | 85.7% | $0.4177 | 175.8 | 89.9% |
+| 12 | gpt-4o | OpenAI | 85.6% | $0.8069 | 90.9 | 88.4% |
+| 13 | grok-4 | xAI | 85.3% | $1.8858 | 38.6 | 92.9% |
+| 14 | gemini-3-pro-preview | Google | 83.9% | $2.1086 | 33.4 | 93.0% |
+| 15 | qwen3-235b-a22b | Alibaba | 83.6% | $0.2177 | 321.4 | 94.0% |
+| 16 | gpt-4o-mini | OpenAI | 81.7% | $0.1829 | 364.7 | 82.1% |
+| 17 | gpt-5 | OpenAI | 81.1% | $1.6176 | 40.6 | 91.8% |
+| 18 | gpt-5.2 | OpenAI | 80.3% | $1.7564 | 36.7 | 92.4% |
+| 19 | gpt-5.1 | OpenAI | 77.9% | $1.5230 | 39.9 | 94.6% |
+| 20 | minimax-m2 | MiniMax | 76.7% | $0.3116 | 188.7 | 93.4% |
+| 21 | ministral-14b-2512 | Mistral | 76.6% | $0.1906 | 308.1 | 86.5% |
+| 22 | llama-4-maverick | Meta | 72.2% | $0.1938 | 268.8 | 71.0% |
 
 ## Best Value (Score²/Cost)
 
@@ -53,19 +54,20 @@
 | 6 | minimax-m2 | MiniMax | 76.7% | $0.3116 | 188.7 |
 | 7 | deepseek-r1 | DeepSeek | 86.9% | $0.4157 | 181.5 |
 | 8 | gemini-2.5-flash | Google | 85.7% | $0.4177 | 175.8 |
-| 9 | o3-mini | OpenAI | 86.7% | $0.5620 | 133.7 |
-| 10 | gemini-3-flash-preview | Google | 88.3% | $0.5896 | 132.3 |
-| 11 | claude-haiku-4.5 | Anthropic | 86.9% | $0.6956 | 108.5 |
-| 12 | gpt-4o | OpenAI | 85.6% | $0.8069 | 90.9 |
-| 13 | o3 | OpenAI | 89.3% | $0.9582 | 83.2 |
-| 14 | claude-sonnet-4 | Anthropic | 89.6% | $1.5932 | 50.4 |
-| 15 | claude-sonnet-4.5 | Anthropic | 90.1% | $1.7390 | 46.6 |
-| 16 | gpt-5 | OpenAI | 81.1% | $1.6176 | 40.6 |
-| 17 | gpt-5.1 | OpenAI | 77.9% | $1.5230 | 39.9 |
-| 18 | grok-4 | xAI | 85.3% | $1.8858 | 38.6 |
-| 19 | gpt-5.2 | OpenAI | 80.3% | $1.7564 | 36.7 |
-| 20 | gemini-3-pro-preview | Google | 83.9% | $2.1086 | 33.4 |
-| 21 | claude-opus-4.5 | Anthropic | 90.8% | $2.8457 | 29.0 |
+| 9 | kimi-k2-thinking | Moonshotai | 88.8% | $0.5782 | 136.2 |
+| 10 | o3-mini | OpenAI | 86.7% | $0.5620 | 133.7 |
+| 11 | gemini-3-flash-preview | Google | 88.3% | $0.5896 | 132.3 |
+| 12 | claude-haiku-4.5 | Anthropic | 86.9% | $0.6956 | 108.5 |
+| 13 | gpt-4o | OpenAI | 85.6% | $0.8069 | 90.9 |
+| 14 | o3 | OpenAI | 89.3% | $0.9582 | 83.2 |
+| 15 | claude-sonnet-4 | Anthropic | 89.6% | $1.5932 | 50.4 |
+| 16 | claude-sonnet-4.5 | Anthropic | 90.1% | $1.7390 | 46.6 |
+| 17 | gpt-5 | OpenAI | 81.1% | $1.6176 | 40.6 |
+| 18 | gpt-5.1 | OpenAI | 77.9% | $1.5230 | 39.9 |
+| 19 | grok-4 | xAI | 85.3% | $1.8858 | 38.6 |
+| 20 | gpt-5.2 | OpenAI | 80.3% | $1.7564 | 36.7 |
+| 21 | gemini-3-pro-preview | Google | 83.9% | $2.1086 | 33.4 |
+| 22 | claude-opus-4.5 | Anthropic | 90.8% | $2.8457 | 29.0 |
 
 ## Scores by Task Type
 
@@ -76,6 +78,7 @@
 | claude-sonnet-4.5 | 69.0% | 89.7% | 86.9% | 98.1% | 94.9% | 95.2% | 88.0% | 84.7% | 93.4% |
 | claude-sonnet-4 | 69.6% | 90.8% | 87.8% | 98.2% | 94.0% | 93.4% | 87.0% | 83.1% | 92.3% |
 | o3 | 59.3% | 93.9% | 91.6% | 99.0% | 96.7% | 87.9% | 88.1% | 92.9% | 89.2% |
+| kimi-k2-thinking | 73.7% | 91.4% | 94.7% | 91.9% | 95.3% | 93.2% | 80.9% | 90.3% | 83.7% |
 | gemini-3-flash-preview | 62.2% | 90.4% | 94.4% | 97.4% | 86.9% | 91.5% | 86.3% | 89.8% | 90.1% |
 | claude-haiku-4.5 | 62.0% | 85.9% | 90.8% | 98.0% | 86.7% | 94.2% | 86.3% | 74.0% | 92.6% |
 | deepseek-r1 | 65.3% | 92.2% | 92.5% | 93.1% | 95.0% | 79.2% | 88.2% | 73.0% | 93.5% |
@@ -165,6 +168,20 @@
 | critique_improvement | 88.1% | - | 91.2% |
 | multi_beat_synthesis | 92.9% | 72.0% | 99.8% |
 | theory_conversion | 89.2% | 80.4% | 98.2% |
+
+### kimi-k2-thinking
+
+| Task Type | Score | Programmatic | LLM Judge |
+|-----------|-------|--------------|-----------|
+| agentic_constraint_discovery | 73.7% | - | - |
+| agentic_iterative_revision | 91.4% | - | - |
+| agentic_planning_execution | 94.7% | - | - |
+| beat_interpolation | 91.9% | 84.2% | 99.6% |
+| beat_revision | 95.3% | 94.8% | 95.9% |
+| constrained_continuation | 93.2% | 87.0% | 99.3% |
+| critique_improvement | 80.9% | - | - |
+| multi_beat_synthesis | 90.3% | 82.5% | 98.1% |
+| theory_conversion | 83.7% | 81.2% | 86.2% |
 
 ### gemini-3-flash-preview
 
@@ -401,6 +418,7 @@
 | claude-sonnet-4.5 | $1.7390 | 67,672 | 32.4% | $0.0257 |
 | claude-sonnet-4 | $1.5932 | 59,896 | 35.1% | $0.0266 |
 | o3 | $0.9582 | 65,172 | 34.5% | $0.0147 |
+| kimi-k2-thinking | $0.5782 | 38,833 | 82.0% | $0.0149 |
 | gemini-3-flash-preview | $0.5896 | 74,378 | 49.6% | $0.0079 |
 | claude-haiku-4.5 | $0.6956 | 65,063 | 38.6% | $0.0107 |
 | deepseek-r1 | $0.4157 | 52,697 | 51.4% | $0.0079 |

@@ -1,0 +1,44 @@
+evaluation_id: 3800a343
+task_id: beat_interpolation_005
+generation_id: beat_interpolation_005_moonshotai/kimi-k2-thinking_0
+task_type: beat_interpolation
+model: moonshotai/kimi-k2-thinking
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0012557
+timestamp: '2025-12-20T14:58:11.913783'
+success: true
+final_score: 0.7125000089981803
+score_breakdown:
+  final_score: 0.7125
+  components:
+    programmatic:
+      score: 0.425
+      weight: 0.5
+      breakdown:
+        word_count_score: 0.0
+        repetition_score: 0.5
+        slop_score: 1.0
+        overall: 0.425
+      word_count:
+        actual: 1148
+        target_range:
+        - 300
+        - 450
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: false
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: The word count is 1148, which is significantly over the 300-450 word limit.
+    All other criteria are met exceptionally well.
+error: null

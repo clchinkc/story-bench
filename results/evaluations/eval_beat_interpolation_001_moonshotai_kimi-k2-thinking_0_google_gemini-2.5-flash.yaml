@@ -1,0 +1,45 @@
+evaluation_id: d0914456
+task_id: beat_interpolation_001
+generation_id: beat_interpolation_001_moonshotai/kimi-k2-thinking_0
+task_type: beat_interpolation
+model: moonshotai/kimi-k2-thinking
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0009001
+timestamp: '2025-12-20T14:56:27.106136'
+success: true
+final_score: 0.993
+score_breakdown:
+  final_score: 0.993
+  components:
+    programmatic:
+      score: 0.986
+      weight: 0.5
+      breakdown:
+        word_count_score: 1.0
+        repetition_score: 0.96
+        slop_score: 1.0
+        overall: 0.986
+      word_count:
+        actual: 298
+        target_range:
+        - 200
+        - 350
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: true
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: All required elements are present and well-executed. No 'must not' items
+    were violated. The characterization of Elena and Marcus is consistent, and the
+    bridge between the 'Refusal' and 'Crossing the Threshold' beats is seamless.
+error: null
