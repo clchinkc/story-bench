@@ -140,6 +140,18 @@ The full leaderboard with task-by-task breakdowns is in the GitHub repository.
 
 ---
 
+### Update: Two Strong Additions
+
+Since the initial benchmark run, two new models have been evaluated:
+
+**kimi-k2-thinking** (Rank #6, 88.8%) — Moonshotai's reasoning model shows surprising strength on narrative tasks. Scored 95.9% on LLM judge evaluation and handles both standard and agentic tasks well. At $0.58/M, it's a solid mid-range option.
+
+**mistral-small-creative** (Rank #14, 84.3%) — The budget alternative that actually competes. Outperforms similarly-priced models like gpt-4o-mini on narrative structure. Strong on single-shot tasks (beat generation, theory conversion) but weaker on multi-turn work. At $0.21/M, it's the best value in the budget tier.
+
+Both show that the narrative task landscape is competitive beyond just the frontier models.
+
+---
+
 ### Beyond Benchmarks
 
 The verification gap in creative AI isn't just an evaluation problem — it's a training bottleneck.
