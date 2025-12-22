@@ -6,7 +6,7 @@
 
 ## Title
 
-`Story Theory Benchmark: Which AI models actually understand narrative structure? (34 tasks, 21 models compared)`
+`Story Theory Benchmark: Which AI models actually understand narrative structure? (34 tasks, 23 models compared)`
 
 ---
 
@@ -31,8 +31,10 @@ I built **Story Theory Benchmark** — an open-source framework that tests AI mo
 | Claude Opus 4.5 | 90.8% | $2.85 | Most consistent |
 | Claude Sonnet 4.5 | 90.1% | $1.74 | Balance |
 | o3 | 89.3% | $0.96 | Long-range planning |
+| kimi-k2-thinking | 88.8% | $0.58 | Reasoning strength |
+| mistral-small-creative | 84.3% | $0.21 | Budget option |
 
-DeepSeek matches frontier quality at a fraction of the cost — unexpected for narrative tasks.
+DeepSeek matches frontier quality at a fraction of the cost. Mistral-small-creative offers solid budget alternative for straightforward narrative generation.
 
 ### Why multi-turn matters for writers
 

@@ -19,7 +19,7 @@ Twitter Thread → GitHub (detailed results)
 ```
 Story Theory Benchmark launched
 
-34 tasks | 21 models | 5 narrative theories
+34 tasks | 23 models | 5 narrative theories
 
 Tests whether LLMs understand story structure — using frameworks screenwriters have used for decades.
 

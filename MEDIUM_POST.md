@@ -64,7 +64,7 @@ This isn't a perfect solution — story theory captures structure, not prose qua
 
 I built **Story Theory Benchmark** to test whether LLMs can reason about narrative structure.
 
-**34 tasks** across 9 types. **21 frontier models** evaluated. **5 story theory frameworks** as evaluation criteria.
+**34 tasks** across 9 types. **23 frontier models** evaluated. **5 story theory frameworks** as evaluation criteria.
 
 The tasks range from straightforward (generate a missing story beat) to complex (write three interconnected beats while maintaining cross-dependencies and character consistency).
 
@@ -154,7 +154,7 @@ This won't solve the full problem. Structure isn't everything — prose quality,
 
 The benchmark is open source.
 
-34 tasks. 21 models evaluated. Full results and methodology documented.
+34 tasks. 23 models evaluated. Full results and methodology documented.
 
 If you're working on AI writing tools or interested in narrative evaluation, I'd love to hear what you find.
 
