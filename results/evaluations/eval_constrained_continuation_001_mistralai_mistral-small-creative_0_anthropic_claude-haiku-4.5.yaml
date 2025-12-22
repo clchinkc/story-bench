@@ -1,0 +1,87 @@
+evaluation_id: 4915b2c2
+task_id: constrained_continuation_001
+generation_id: constrained_continuation_001_mistralai/mistral-small-creative_0
+task_type: constrained_continuation
+model: mistralai/mistral-small-creative
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.03255
+timestamp: '2025-12-22T12:02:42.496984'
+success: true
+final_score: 0.9006528475358746
+score_breakdown:
+  final_score: 0.9007
+  components:
+    programmatic:
+      score: 0.8088
+      weight: 0.5
+      breakdown:
+        word_count_score: 0.9595
+        repetition_score: 0.5
+        slop_score: 1.0
+        overall: 0.8088
+      word_count:
+        actual: 746
+        target_range:
+        - 500
+        - 700
+    llm_judge:
+      score: 0.9925
+      weight: 0.5
+llm_results:
+  beats_present: 2
+  beats_total: 2
+  beats_score: 1.0
+  must_include_present: 6
+  must_include_total: 6
+  must_include_score: 1.0
+  must_not_avoided: 4
+  must_not_total: 4
+  must_not_score: 1.0
+  word_count_valid: false
+  word_count: 746
+  word_count_range: 500-700
+  tone_score: 0.95
+  ending_score: 1.0
+  failed_constraints:
+  - 'Word count exceeds maximum: 746 words vs. 700-word limit (46 words over)'
+  analysis:
+    beats_present_detail:
+    - 'Approach to the Inmost Cave: Clearly marked (''The Approach begins now''),
+      featuring the choice between two paths and Zara''s decision to draw off pursuers'
+    - 'The Ordeal: Excellently executed with the Chamber of Whispers—both physical
+      (blade trap) and psychological (mirror chamber confronting failure) elements'
+    must_include_detail:
+    - 'Choice between safety and helping: Zara sacrifices her safety by sprinting
+      toward the archway to draw off the Scorpion Guild, allowing Tomás to escape'
+    - 'Trap requiring thief skills: The blade archway test demands Zara''s agility
+      and balance—skills honed from her slum background'
+    - 'Tomás''s true motivation revealed: His sister disappeared in the Library; he''s
+      been using Zara to find answers'
+    - 'Fear of failure confronted: The mirror chamber forces Zara to face her deepest
+      fear—not death, but failure and inability to save her mother'
+    - 'Symbolic death/rebirth: The shattering mirrors and Zara''s emergence ''changed''
+      represents psychological transformation and acceptance'
+    - 'Zara changed by Ordeal: She emerges with scraped hands, torn clothes, and internal
+      shift—understanding her own motivations and Tomás''s'
+    must_not_detail:
+    - 'Cure not found: ✓ Avoided—cure remains a future goal'
+    - 'No romantic subplot: ✓ Avoided—relationship remains complex and morally ambiguous'
+    - 'Tomás survives: ✓ Avoided—he lives and returns to help'
+    - 'No supernatural abilities for Zara: ✓ Avoided—all her actions rely on learned
+      thief skills and physical ability'
+    tone_assessment: Tense and morally complex throughout. Desperate hope evident
+      in Zara's determination to find the cure. Moments of doubt and betrayal add
+      nuance. Minor deduction only for occasional slight melodrama in internal monologue
+      ('crushing her chest'), but overall maintains sophisticated tension.
+    ending_assessment: 'Perfect execution: Zara has passed the Ordeal (symbolic and
+      literal), emerged changed, but faces immediate new complication (walls shifting,
+      mechanism engaging). Cliffhanger is organic and raises stakes for next beat.'
+  overall_score: 0.88
+  score_rationale: Exceptional execution of narrative requirements with all beats,
+    inclusions, and exclusions met perfectly. Tone is sophisticated and tense. Ending
+    is compelling. Single constraint failure is the word count overage of 46 words
+    (6.6% over limit), which is a technical violation but not severe enough to undermine
+    the otherwise outstanding quality. The story demonstrates mastery of Campbell's
+    monomyth structure and character development.
+error: null

@@ -1,0 +1,63 @@
+evaluation_id: fa0217bd
+task_id: beat_interpolation_005
+generation_id: beat_interpolation_005_mistralai/mistral-small-creative_0
+task_type: beat_interpolation
+model: mistralai/mistral-small-creative
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.02274
+timestamp: '2025-12-22T11:58:59.139589'
+success: true
+final_score: 0.7915685590207625
+score_breakdown:
+  final_score: 0.7916
+  components:
+    programmatic:
+      score: 0.5831
+      weight: 0.5
+      breakdown:
+        word_count_score: 0.3166
+        repetition_score: 0.59
+        slop_score: 1.0
+        overall: 0.5831
+      word_count:
+        actual: 632
+        target_range:
+        - 300
+        - 450
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: false
+  word_count: 632
+  word_count_range: 300-450
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: 'STRENGTHS: All 4 required elements present and executed excellently.
+    (1) Alejandro''s vulnerability about the accident, his father, and his mother''s
+    cooking is deeply revealed. (2) Relationship shifts from professional distance
+    (Lucia delivering meals, avoidance) to genuine personal connection. (3) The candlelit
+    moment with hand-holding and emotional confession creates authentic connection
+    without premature intimacy. (4) Maya''s choice to stay ''for the man'' rather
+    than ''the money'' represents clear commitment deepening beyond contract. The
+    beat perfectly executes the narrative function: Alejandro lowers his walls, Maya
+    responds with compassion, and both are emotionally committed now. MUST-NOT ITEMS:
+    All avoided. They are not in love yet (connection is nascent). Maya doesn''t decide
+    to leave or breach contract. The photograph isn''t taken during this scene. Alejandro
+    does lower his walls significantly. CHARACTER CONSISTENCY: Both characters remain
+    true to established personas—Maya''s empathy and Alejandro''s guarded pain are
+    consistent with BEFORE. BRIDGE: Seamless connection between BEFORE (contract signed,
+    stakes established) and AFTER (photograph scandal, expulsion). This midpoint explains
+    why they''re on the balcony together later. CONTINUITY: Storm, power outage, candles,
+    kitchen setting all internally consistent. ONLY DEDUCTION: Word count exceeds
+    range (632 vs 300-450 max), which is a technical violation but doesn''t affect
+    narrative quality.'
+error: null

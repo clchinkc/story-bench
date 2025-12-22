@@ -1,0 +1,49 @@
+evaluation_id: d19f7a15
+task_id: beat_interpolation_005
+generation_id: beat_interpolation_005_mistralai/mistral-small-creative_0
+task_type: beat_interpolation
+model: mistralai/mistral-small-creative
+sample_index: 0
+evaluator_model: openai/gpt-5-mini
+evaluator_cost: 0.0014665000000000001
+timestamp: '2025-12-22T11:59:05.788073'
+success: true
+final_score: 0.7915685590207625
+score_breakdown:
+  final_score: 0.7916
+  components:
+    programmatic:
+      score: 0.5831
+      weight: 0.5
+      breakdown:
+        word_count_score: 0.3166
+        repetition_score: 0.59
+        slop_score: 1.0
+        overall: 0.5831
+      word_count:
+        actual: 632
+        target_range:
+        - 300
+        - 450
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: false
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: 'All four required elements are present: Alejandro reveals a vulnerable
+    backstory, the relationship shifts from professional to personal, a shared intimate
+    moment (storm, candles, meal, brief touch) creates genuine connection, and Maya
+    explicitly chooses to stay for him rather than the money. None of the forbidden
+    items appear (no pre-existing love, no decision to leave, no photograph, and Alejandro
+    lowers his guard). The only deduction is that the scene exceeds the specified
+    word-count range (632 words vs. required 300–450), so word_count_valid is false.'
+error: null

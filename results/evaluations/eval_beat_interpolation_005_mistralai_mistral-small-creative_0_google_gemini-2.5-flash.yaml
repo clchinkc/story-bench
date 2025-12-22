@@ -1,0 +1,50 @@
+evaluation_id: dc97c6b3
+task_id: beat_interpolation_005
+generation_id: beat_interpolation_005_mistralai/mistral-small-creative_0
+task_type: beat_interpolation
+model: mistralai/mistral-small-creative
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.001235
+timestamp: '2025-12-22T11:59:26.733745'
+success: true
+final_score: 0.7665685590207625
+score_breakdown:
+  final_score: 0.7666
+  components:
+    programmatic:
+      score: 0.5831
+      weight: 0.5
+      breakdown:
+        word_count_score: 0.3166
+        repetition_score: 0.59
+        slop_score: 1.0
+        overall: 0.5831
+      word_count:
+        actual: 632
+        target_range:
+        - 300
+        - 450
+    llm_judge:
+      score: 0.95
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: false
+  character_score: 0.8
+  bridge_score: 0.8
+  continuity_score: 1.0
+  evidence: The word count is significantly over the requested range, which is a minor
+    issue. Character voice is mostly consistent, but Alejandro's quick shift from
+    'difficult man' to sharing deep trauma and accepting comfort feels a little fast,
+    though the storm and shared meal help to justify it. The bridge is good, but the
+    'Point of No Return' from Act 1 felt a bit more about Maya's financial desperation,
+    and this Midpoint shifts the focus heavily to Alejandro's emotional state, which
+    is a good development but the connection to the initial 'Point of No Return' could
+    be slightly stronger.
+error: null

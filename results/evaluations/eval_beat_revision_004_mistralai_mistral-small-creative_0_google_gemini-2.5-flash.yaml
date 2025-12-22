@@ -1,0 +1,51 @@
+evaluation_id: 6c14816a
+task_id: beat_revision_004
+generation_id: beat_revision_004_mistralai/mistral-small-creative_0
+task_type: beat_revision
+model: mistralai/mistral-small-creative
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0011962000000000001
+timestamp: '2025-12-22T12:02:21.130541'
+success: true
+final_score: 0.9160000000000001
+score_breakdown:
+  final_score: 0.916
+  components:
+    programmatic:
+      score: 0.937
+      weight: 0.5
+      breakdown:
+        word_count_score: 1.0
+        repetition_score: 0.82
+        slop_score: 1.0
+        overall: 0.937
+      word_count:
+        actual: 350
+        target_range:
+        - 200
+        - 350
+    llm_judge:
+      score: 0.895
+      weight: 0.5
+llm_results:
+  diagnosis_score: 1.0
+  flaw_correction_score: 1.0
+  beat_satisfaction_score: 1.0
+  preservation_score: 1.0
+  preserved_count: 5
+  preserved_total: 5
+  required_preserved_score: 0.75
+  required_preserved_count: 3
+  required_preserved_total: 4
+  minimal_change_score: 0.2
+  word_count_valid: true
+  quality_score: 1.0
+  evidence: The model correctly identified that the original segment was 'telling'
+    rather than 'showing' and revised it to demonstrate Rachel's character, relationships,
+    and setting through action and dialogue. It shows her dedication to cold cases,
+    her interaction with James, and sensory details of the precinct and Queens. The
+    changes were extensive, essentially a rewrite, rather than minimal surgical edits,
+    to achieve the 'showing' requirement. 'Tuesday morning in October' was changed
+    to 'Tuesday morning chaos' and 'sliver of October sunlight'.
+error: null

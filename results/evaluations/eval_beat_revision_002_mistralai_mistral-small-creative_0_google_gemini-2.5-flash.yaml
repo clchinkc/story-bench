@@ -1,0 +1,52 @@
+evaluation_id: e5d7a46f
+task_id: beat_revision_002
+generation_id: beat_revision_002_mistralai/mistral-small-creative_0
+task_type: beat_revision
+model: mistralai/mistral-small-creative
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0012703999999999999
+timestamp: '2025-12-22T12:00:56.559925'
+success: true
+final_score: 0.9377500000000001
+score_breakdown:
+  final_score: 0.9378
+  components:
+    programmatic:
+      score: 0.9755
+      weight: 0.5
+      breakdown:
+        word_count_score: 1.0
+        repetition_score: 0.93
+        slop_score: 1.0
+        overall: 0.9755
+      word_count:
+        actual: 306
+        target_range:
+        - 200
+        - 350
+    llm_judge:
+      score: 0.9
+      weight: 0.5
+llm_results:
+  diagnosis_score: 1.0
+  flaw_correction_score: 1.0
+  beat_satisfaction_score: 1.0
+  preservation_score: 1.0
+  preserved_count: 4
+  preserved_total: 4
+  required_preserved_score: 0.5
+  required_preserved_count: 2
+  required_preserved_total: 4
+  minimal_change_score: 0.6
+  word_count_valid: true
+  quality_score: 0.9
+  evidence: 'The model correctly identified that the original segment failed to convey
+    a true ''All Is Lost'' moment. It addressed the flaw by: 1) having the fundraiser
+    already fail and the grant rejected, 2) introducing a personal loss (father''s
+    health crisis) to isolate Marcus and provide a ''whiff of death,'' and 3) showing
+    Marcus genuinely giving up hope. The changes were not minimal, as significant
+    new text was added and some original lines were altered or removed to achieve
+    the desired effect. For instance, ''He rubbed his temples'' was removed, and the
+    line about Denise''s initial suggestion was changed.'
+error: null

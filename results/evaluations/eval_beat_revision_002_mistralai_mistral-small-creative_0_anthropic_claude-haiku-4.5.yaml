@@ -1,0 +1,63 @@
+evaluation_id: 77644f1e
+task_id: beat_revision_002
+generation_id: beat_revision_002_mistralai/mistral-small-creative_0
+task_type: beat_revision
+model: mistralai/mistral-small-creative
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.02247
+timestamp: '2025-12-22T12:00:19.144145'
+success: true
+final_score: 0.9297500000000001
+score_breakdown:
+  final_score: 0.9298
+  components:
+    programmatic:
+      score: 0.9755
+      weight: 0.5
+      breakdown:
+        word_count_score: 1.0
+        repetition_score: 0.93
+        slop_score: 1.0
+        overall: 0.9755
+      word_count:
+        actual: 306
+        target_range:
+        - 200
+        - 350
+    llm_judge:
+      score: 0.884
+      weight: 0.5
+llm_results:
+  diagnosis_score: 0.9
+  flaw_correction_score: 0.95
+  beat_satisfaction_score: 0.92
+  preservation_score: 1.0
+  preserved_count: 4
+  preserved_total: 4
+  required_preserved_score: 0.75
+  required_preserved_count: 3
+  required_preserved_total: 4
+  minimal_change_score: 0.65
+  word_count_valid: true
+  quality_score: 0.9
+  evidence: 'The model correctly diagnosed the flaw: the original segment lacked true
+    ''All Is Lost'' devastation because Marcus retained multiple viable options (fundraiser,
+    grant, new location) and intact support systems. The revision systematically eliminates
+    all escape routes: (1) fundraiser already failed with sponsor pullouts, (2) grant
+    explicitly rejected with damning language (''unsustainable''), (3) personal betrayal/isolation
+    through father''s medical crisis, (4) Marcus genuinely surrenders hope (''There''s
+    nothing left''), (5) strong ''whiff of death'' metaphor (father in hospital, program
+    ''collapsing into dust''). Preserved elements: Marcus as protagonist ✓, community
+    center setting ✓, eviction crisis ✓, Denise present ✓. Required phrases: ''Marcus
+    stared at the eviction notice'' ✓, ''Thirty days to vacate the community center''
+    ✓, ''There has to be something we can do, said Denise'' ✓, ''He rubbed his temples''
+    ✗ (removed—this was a minor requirement). The revision is NOT minimal (approximately
+    50% new content added), but the changes are surgical and purposeful rather than
+    wholesale rewriting. New material focuses on: grant rejection email, failed fundraiser
+    details, father''s hospital crisis via text messages, and Marcus''s emotional
+    breakdown. Original structure and dialogue framework preserved. Writing quality
+    is strong with effective emotional escalation, though the father subplot, while
+    effective, represents a moderate expansion beyond minimal editing. The beat now
+    fully satisfies Save the Cat requirements for All Is Lost.'
+error: null

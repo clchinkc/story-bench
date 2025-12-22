@@ -1,0 +1,51 @@
+evaluation_id: df79f635
+task_id: beat_interpolation_002
+generation_id: beat_interpolation_002_mistralai/mistral-small-creative_0
+task_type: beat_interpolation
+model: mistralai/mistral-small-creative
+sample_index: 0
+evaluator_model: openai/gpt-5-mini
+evaluator_cost: 0.001467
+timestamp: '2025-12-22T11:57:43.636008'
+success: true
+final_score: 0.9492499999999999
+score_breakdown:
+  final_score: 0.9492
+  components:
+    programmatic:
+      score: 0.8985
+      weight: 0.5
+      breakdown:
+        word_count_score: 1.0
+        repetition_score: 0.71
+        slop_score: 1.0
+        overall: 0.8985
+      word_count:
+        actual: 378
+        target_range:
+        - 250
+        - 400
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: true
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: 'All four required elements are present: (1) Sarah explicitly considers
+    recanting; (2) she calls Marcus and they discuss going through Internal Affairs/protective
+    detail/feds; (3) internal conflict between duty and saving her sister is clear;
+    (4) the conversation with Marcus tips her toward going off-book. The passage performs
+    the Debate beat well—wrestling with choices, seeking counsel, and committing at
+    the end—without violating any must-not constraints (no immediate, unexamined decision,
+    no one else making the choice, no prior resignation, no direct confrontation).
+    Character voice and continuity with the Catalyst and subsequent Break Into Two
+    are consistent.'
+error: null

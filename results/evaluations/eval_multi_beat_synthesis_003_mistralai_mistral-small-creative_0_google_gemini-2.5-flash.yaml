@@ -1,0 +1,50 @@
+evaluation_id: 0aae170a
+task_id: multi_beat_synthesis_003
+generation_id: multi_beat_synthesis_003_mistralai/mistral-small-creative_0
+task_type: multi_beat_synthesis
+model: mistralai/mistral-small-creative
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0014452
+timestamp: '2025-12-22T12:10:11.802993'
+success: true
+final_score: 0.856002493839463
+score_breakdown:
+  final_score: 0.856
+  components:
+    programmatic:
+      score: 0.793
+      weight: 0.5
+      breakdown:
+        word_count_score: 0.92
+        repetition_score: 0.5
+        slop_score: 1.0
+        overall: 0.793
+      word_count:
+        actual: 1098
+        target_range:
+        - 700
+        - 1000
+    llm_judge:
+      score: 0.919
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 13
+  beat_reqs_total: 15
+  beat_requirements_score: 0.86
+  cross_beat_satisfied: 4
+  cross_beat_total: 4
+  cross_beat_score: 1.0
+  word_count_valid: false
+  context_score: 0.9
+  coherence_score: 0.9
+  failed_items:
+  - 'Beat 1: Introduction of an unexpected complication (minor) - The complication
+    (Claire''s involvement) is major, not minor, and immediately shifts the tone and
+    stakes significantly.'
+  - 'Beat 2: False victory: a key objective achieved - While Miri gets the painting,
+    the immediate revelation of Claire and Sorokin''s presence makes it feel less
+    like a ''false victory'' and more like a direct confrontation. The ''victory''
+    is immediately overshadowed by the new threat, rather than being a moment of perceived
+    success that then unravels.'
+error: null

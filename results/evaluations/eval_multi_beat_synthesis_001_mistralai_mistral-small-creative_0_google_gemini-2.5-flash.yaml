@@ -1,0 +1,53 @@
+evaluation_id: 090c614a
+task_id: multi_beat_synthesis_001
+generation_id: multi_beat_synthesis_001_mistralai/mistral-small-creative_0
+task_type: multi_beat_synthesis
+model: mistralai/mistral-small-creative
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0016843
+timestamp: '2025-12-22T12:08:41.604032'
+success: true
+final_score: 0.6786202145388337
+score_breakdown:
+  final_score: 0.6786
+  components:
+    programmatic:
+      score: 0.5877
+      weight: 0.5
+      breakdown:
+        word_count_score: 0.4157
+        repetition_score: 0.5
+        slop_score: 0.9859
+        overall: 0.5877
+      word_count:
+        actual: 1318
+        target_range:
+        - 700
+        - 1000
+    llm_judge:
+      score: 0.7695
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 11
+  beat_reqs_total: 15
+  beat_requirements_score: 0.73
+  cross_beat_satisfied: 3
+  cross_beat_total: 4
+  cross_beat_score: 0.75
+  word_count_valid: false
+  context_score: 0.9
+  coherence_score: 0.8
+  failed_items:
+  - 'Beat 1 - Revelation of an enemy within the Resonant community (a traitor): The
+    killer is revealed to be the man who sold his sister the bad batch, not explicitly
+    a ''traitor'' within the Resonant community itself, though he targets Resonants.'
+  - 'Beat 2 - Dante and his new ally plan how to confront the killer: There is no
+    planning scene with Lila. She gives him instructions, but it''s not a collaborative
+    ''plan''.'
+  - 'Beat 2 - Preparation scene—gathering tools, information, or courage: Dante doesn''t
+    gather tools or information; he''s given the dampener and sent in.'
+  - 'Beat 3 - Ally Continuity: The ally (Lila) is not present in the confrontation
+    (Beat 3) until after the ordeal is over. She appears in the doorway at the very
+    end.'
+error: null

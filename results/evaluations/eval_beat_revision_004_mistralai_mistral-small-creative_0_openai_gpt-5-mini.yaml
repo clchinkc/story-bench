@@ -1,0 +1,54 @@
+evaluation_id: e909027c
+task_id: beat_revision_004
+generation_id: beat_revision_004_mistralai/mistral-small-creative_0
+task_type: beat_revision
+model: mistralai/mistral-small-creative
+sample_index: 0
+evaluator_model: openai/gpt-5-mini
+evaluator_cost: 0.0024335
+timestamp: '2025-12-22T12:01:45.456782'
+success: true
+final_score: 0.9085000000000001
+score_breakdown:
+  final_score: 0.9085
+  components:
+    programmatic:
+      score: 0.937
+      weight: 0.5
+      breakdown:
+        word_count_score: 1.0
+        repetition_score: 0.82
+        slop_score: 1.0
+        overall: 0.937
+      word_count:
+        actual: 350
+        target_range:
+        - 200
+        - 350
+    llm_judge:
+      score: 0.88
+      weight: 0.5
+llm_results:
+  diagnosis_score: 1.0
+  flaw_correction_score: 1.0
+  beat_satisfaction_score: 0.9
+  preservation_score: 0.8
+  preserved_count: 4
+  preserved_total: 5
+  required_preserved_score: 1.0
+  required_preserved_count: 4
+  required_preserved_total: 4
+  minimal_change_score: 0.3
+  word_count_valid: true
+  quality_score: 0.9
+  evidence: The model addressed the actual flaw (telling vs. showing) by converting
+    the info-dump into a lived precinct scene with sensory detail, dialogue with James,
+    and action (handling the cold-case file, coffee, cat on the windowsill). That
+    correctly targets the listed problems (lack of sensory detail, no showing of partnership
+    or behavior). It preserved four of five requested story elements (Rachel, James,
+    Sherlock, October Tuesday/Queens) but omitted the explicit Queens apartment residence
+    (Queens is present but not the apartment). The rewrite is substantial rather than
+    surgical—it replaces summary with a fresh scene—so minimal_change_score is low
+    despite meeting the exposition goals. Overall writing quality is high with no
+    new errors.
+error: null

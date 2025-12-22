@@ -1,0 +1,59 @@
+evaluation_id: 222b8c1a
+task_id: beat_interpolation_003
+generation_id: beat_interpolation_003_mistralai/mistral-small-creative_0
+task_type: beat_interpolation
+model: mistralai/mistral-small-creative
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.019110000000000002
+timestamp: '2025-12-22T11:58:02.839371'
+success: true
+final_score: 0.95625
+score_breakdown:
+  final_score: 0.9563
+  components:
+    programmatic:
+      score: 0.9125
+      weight: 0.5
+      breakdown:
+        word_count_score: 1.0
+        repetition_score: 0.75
+        slop_score: 1.0
+        overall: 0.9125
+      word_count:
+        actual: 400
+        target_range:
+        - 250
+        - 400
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: true
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: 'All 4 required elements present and well-executed: (1) Multiple station
+    areas explored (crew quarters, medical bay, hydroponics bay, lab wing) with environmental
+    details; (2) Clues discovered progressively (warm coffee cup, medical logs with
+    cryptic notes about ''Subject 47'' and neural resonance, withered plants); (3)
+    Transformed crew encountered as mysterious, flickering entities with void eyes—their
+    nature remains ambiguous and threatening; (4) Clear obstacles overcome (scanner
+    dies, physical stumble, navigating past dozens of transformed figures). All must-not
+    items avoided: data core not found yet (cliffhanger ending), crew doesn''t explain
+    themselves (only cryptic whispers), Yuki persists despite fear, and she arrives
+    without prior knowledge of transformation. Character voice remains consistent—scientific
+    training overriding terror, methodical observation despite horror. Bridge seamless:
+    BEFORE establishes mystery and silence; SEARCH shows active investigation with
+    escalating discovery and danger; AFTER setup (partial) shows she''s reached the
+    data core location. Setting continuity perfect: station details, emergency lighting,
+    and spatial geography maintained throughout. The narrative executes the Search
+    beat''s core function: struggle through an unfamiliar environment with incremental
+    discoveries and mounting obstacles, not immediate resolution.'
+error: null

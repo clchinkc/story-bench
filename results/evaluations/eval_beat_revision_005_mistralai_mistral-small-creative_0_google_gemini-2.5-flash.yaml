@@ -1,0 +1,41 @@
+evaluation_id: 05dca0df
+task_id: beat_revision_005
+generation_id: beat_revision_005_mistralai/mistral-small-creative_0
+task_type: beat_revision
+model: mistralai/mistral-small-creative
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0007783
+timestamp: '2025-12-22T12:02:40.764901'
+success: true
+final_score: 0.5285
+score_breakdown:
+  final_score: 0.5285
+  components:
+    programmatic:
+      score: 0.937
+      weight: 0.5
+      breakdown:
+        word_count_score: 1.0
+        repetition_score: 0.82
+        slop_score: 1.0
+        overall: 0.937
+      word_count:
+        actual: 281
+        target_range:
+        - 200
+        - 350
+    llm_judge:
+      score: 0.12
+      weight: 0.5
+llm_results:
+  correct_diagnosis_score: 0.0
+  beat_understanding_score: 0.8
+  false_positive_avoided_score: 0.0
+  reasoning_quality_score: 0.0
+  model_said_no_revision: false
+  evidence: The model provided a revised segment instead of stating 'NO REVISION NEEDED'.
+    It did, however, capture the essence of the Dark Night of the Soul well in its
+    revision, indicating a good understanding of the beat, but failed to recognize
+    the original segment was already sufficient.
+error: null

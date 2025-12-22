@@ -1,0 +1,84 @@
+evaluation_id: 4e66bef0
+task_id: multi_beat_synthesis_003
+generation_id: multi_beat_synthesis_003_mistralai/mistral-small-creative_0
+task_type: multi_beat_synthesis
+model: mistralai/mistral-small-creative
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.03647
+timestamp: '2025-12-22T12:09:30.207595'
+success: true
+final_score: 0.8117524938394631
+score_breakdown:
+  final_score: 0.8118
+  components:
+    programmatic:
+      score: 0.793
+      weight: 0.5
+      breakdown:
+        word_count_score: 0.92
+        repetition_score: 0.5
+        slop_score: 1.0
+        overall: 0.793
+      word_count:
+        actual: 1098
+        target_range:
+        - 700
+        - 1000
+    llm_judge:
+      score: 0.8305
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 13
+  beat_reqs_total: 15
+  beat_requirements_score: 0.87
+  cross_beat_satisfied: 3
+  cross_beat_total: 4
+  cross_beat_score: 0.75
+  word_count_valid: false
+  context_score: 0.9
+  coherence_score: 0.85
+  failed_items:
+  - 'Beat 1 - Things going according to plan (mostly): The heist encounters the Claire
+    complication too early; the ''mostly'' qualifier isn''t satisfied because the
+    plan derails significantly before the midpoint'
+  - 'Cross-beat constraint - Chekhov''s Gun: Leo cutting the engines and the starboard
+    explosion are introduced late (during Bad Guys Close In) rather than being established
+    as available tools during Fun and Games; the lockpicks and pressure plate bypass
+    are used but not revisited as critical payoffs'
+  strengths:
+  - 'Excellent tonal escalation: Opens with playful confidence (''Child''s play''),
+    shifts to shaken confidence at Claire''s reveal (''Her stomach dropped''), culminates
+    in genuine danger with gallows humor (''I''m making sure it floats'')'
+  - 'Strong mentor presence arc: Claire moves from background (unknown security consultant)
+    → revealed/recognized (the reveal scene) → active threat (physical confrontation
+    on deck)'
+  - 'Vivid heist execution: Crew skills showcased (Leo''s tech, Jace''s distraction,
+    Lina''s forgery, Elias''s lockpicking) with clever problem-solving and style'
+  - 'High stakes and pressure: Party setting intensifies, yacht explosion raises stakes
+    dramatically, multiple threats converge'
+  - 'Character consistency: Miri''s dry wit maintained throughout (''If it were child''s
+    play, we wouldn''t be getting paid''; ''even thieves had standards'')'
+  - 'Lina''s arc: Introduced as crew member, becomes compromised/in danger, forces
+    Miri''s choice between painting and saving her—satisfies team dynamics requirement'
+  weaknesses:
+  - 'Word count exceeds range (1098 vs. 700-1000 max): 98 words over limit'
+  - 'Chekhov''s Gun partially missed: The lockpicks and pressure plates are used but
+    not revisited as critical during climax; the panic button and engine-cutting feel
+    introduced too late to feel like established setup'
+  - 'Beat 1 pacing: Claire''s reveal happens too quickly (mid-heist rather than at
+    true midpoint), compressing the ''things going according to plan'' phase'
+  - 'Midpoint clarity: The false victory (painting retrieved) is somewhat muddled
+    by immediate Claire confrontation; the beat transition isn''t as clean as it could
+    be'
+  - 'Crew member arcs: While Lina has an arc, Leo, Jace, and Elias remain relatively
+    flat—only Lina truly develops across beats'
+  calibration_notes: 'The story executes the core heist premise with style and delivers
+    strong tonal escalation and mentor antagonism. However, it falls short on two
+    specific requirements: (1) the ''mostly according to plan'' setup for Beat 1 is
+    undermined by early Claire revelation, and (2) Chekhov''s Gun isn''t cleanly satisfied
+    because tools feel introduced rather than established-then-deployed. The word
+    count violation is objective. Despite these gaps, the narrative cohesion is strong,
+    context is well-maintained, and the three-beat structure is recognizable and functional.
+    Score reflects ''Good'' work with noticeable gaps rather than ''Exceptional.'''
+error: null

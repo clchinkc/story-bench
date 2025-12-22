@@ -1,0 +1,47 @@
+evaluation_id: a2c9ae86
+task_id: multi_beat_synthesis_002
+generation_id: multi_beat_synthesis_002_mistralai/mistral-small-creative_0
+task_type: multi_beat_synthesis
+model: mistralai/mistral-small-creative
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0014281
+timestamp: '2025-12-22T12:09:27.761248'
+success: true
+final_score: 0.7592449356874134
+score_breakdown:
+  final_score: 0.7592
+  components:
+    programmatic:
+      score: 0.5565
+      weight: 0.5
+      breakdown:
+        word_count_score: 0.3287
+        repetition_score: 0.5
+        slop_score: 1.0
+        overall: 0.5565
+      word_count:
+        actual: 1358
+        target_range:
+        - 700
+        - 1000
+    llm_judge:
+      score: 0.962
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 14
+  beat_reqs_total: 15
+  beat_requirements_score: 0.93
+  cross_beat_satisfied: 4
+  cross_beat_total: 4
+  cross_beat_score: 1.0
+  word_count_valid: false
+  context_score: 1.0
+  coherence_score: 0.9
+  failed_items:
+  - 'Beat 3 - A final obstacle before arrival: The story has Amara arriving at the
+    stronghold, then immediately facing an attack. The ''final obstacle before arrival''
+    implies something that must be overcome *to get in*, not something that happens
+    *after* arrival. While the attack is a significant obstacle, it doesn''t quite
+    fit the ''before arrival'' phrasing of this specific requirement.'
+error: null

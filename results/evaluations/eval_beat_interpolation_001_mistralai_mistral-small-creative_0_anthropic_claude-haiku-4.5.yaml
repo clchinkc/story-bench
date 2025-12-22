@@ -1,0 +1,62 @@
+evaluation_id: f2efab56
+task_id: beat_interpolation_001
+generation_id: beat_interpolation_001_mistralai/mistral-small-creative_0
+task_type: beat_interpolation
+model: mistralai/mistral-small-creative
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.020804999999999997
+timestamp: '2025-12-22T11:57:14.387968'
+success: true
+final_score: 0.9615138235579361
+score_breakdown:
+  final_score: 0.9615
+  components:
+    programmatic:
+      score: 0.923
+      weight: 0.5
+      breakdown:
+        word_count_score: 0.9651
+        repetition_score: 0.82
+        slop_score: 1.0
+        overall: 0.923
+      word_count:
+        actual: 382
+        target_range:
+        - 200
+        - 350
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: false
+  word_count: 382
+  word_count_range: 200-350
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: 'STRENGTHS: All 4 required elements present and well-executed: (1) Marcus
+    introduced with vivid characterization (salt-and-pepper beard, eye patch, astrolabe),
+    (2) Practical wisdom delivered (''Fear''s useful. Means you''re paying attention'')
+    and tangible tools provided (compass, tinderbox, satchel), (3) Elena''s doubt
+    shifts to reluctant acceptance (''the weight didn''t feel like a burden. It felt
+    like a choice''), (4) Librarian skills reframed as valuable (''pattern recognition...That''s
+    half the battle''). All 4 must-not items avoided: Elena remains doubtful/hesitant,
+    Marcus explicitly refuses to accompany her, setting is shop not forest, no magical
+    powers discovered. Character voice consistent throughout—Elena''s skepticism and
+    Marcus''s gruff wisdom maintain established tones. Bridge between beats seamless:
+    BEFORE ends with Elena refusing and walking out; GENERATED shows her arriving
+    at shop (feet carrying her despite resistance), creating natural progression;
+    AFTER shows her at forest threshold with Marcus''s wisdom internalized. Continuity
+    perfect: satchel, compass, and Marcus''s words all carry forward. ONLY ISSUE:
+    Word count 382 exceeds 350-word maximum by 32 words (9% over), which is a technical
+    violation but does not diminish narrative quality or beat execution.'
+  overall_assessment: Exceptional execution of the Meeting the Mentor beat with only
+    minor technical constraint violation
+error: null

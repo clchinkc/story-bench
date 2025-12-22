@@ -1,0 +1,53 @@
+evaluation_id: a65aedfe
+task_id: theory_conversion_001
+generation_id: theory_conversion_001_mistralai/mistral-small-creative_0
+task_type: theory_conversion
+model: mistralai/mistral-small-creative
+sample_index: 0
+evaluator_model: openai/gpt-5-mini
+evaluator_cost: 0.0015010000000000002
+timestamp: '2025-12-22T12:04:57.749274'
+success: true
+final_score: 0.9375151977170331
+score_breakdown:
+  final_score: 0.9375
+  components:
+    programmatic:
+      score: 0.91
+      weight: 0.5
+      breakdown:
+        word_count_score: 0.8626
+        repetition_score: 0.9
+        slop_score: 1.0
+        overall: 0.91
+      word_count:
+        actual: 413
+        target_range:
+        - 500
+        - 700
+    llm_judge:
+      score: 0.965
+      weight: 0.5
+llm_results:
+  beats_present: 5
+  beats_total: 5
+  beats_score: 1.0
+  preserved_count: 6
+  preserved_total: 6
+  preservation_score: 1.0
+  word_count_valid: false
+  structural_accuracy_score: 0.9
+  tone_score: 0.9
+  evidence: 'All five Freytag beats are present: Exposition (Samira''s status and
+    discovery), Rising Action (quarantine, escalating cases, Nexus connection), Climax
+    (confrontation/press conference and release of the cure), Falling Action (immediate
+    aftermath and legal/PR fallout), Denouement (six weeks later, containment and
+    Samira''s new equilibrium). All six core elements are preserved (protagonist,
+    engineered virus, Raj, Nexus, public cure release, career sacrifice). Deduction
+    on structural_accuracy_score (-0.1) because the press conference functions as
+    both climax and falling-action marker in places, creating a slight compression
+    of stages; otherwise structure maps well. Tone preserved strongly (medical-thriller
+    tension + ethical weight), minor deduction (-0.1) for occasionally compressed
+    pacing and concise wording. Word count is invalid: 413 words (outside required
+    500–700).'
+error: null

@@ -1,0 +1,86 @@
+evaluation_id: 2374e749
+task_id: multi_beat_synthesis_001
+generation_id: multi_beat_synthesis_001_mistralai/mistral-small-creative_0
+task_type: multi_beat_synthesis
+model: mistralai/mistral-small-creative
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.036495
+timestamp: '2025-12-22T12:07:56.025734'
+success: true
+final_score: 0.7143702145388336
+score_breakdown:
+  final_score: 0.7144
+  components:
+    programmatic:
+      score: 0.5877
+      weight: 0.5
+      breakdown:
+        word_count_score: 0.4157
+        repetition_score: 0.5
+        slop_score: 0.9859
+        overall: 0.5877
+      word_count:
+        actual: 1318
+        target_range:
+        - 700
+        - 1000
+    llm_judge:
+      score: 0.841
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 13
+  beat_reqs_total: 15
+  beat_requirements_score: 0.87
+  cross_beat_satisfied: 3
+  cross_beat_total: 4
+  cross_beat_score: 0.75
+  word_count_valid: false
+  word_count: 1318
+  word_count_range: 700-1000
+  context_score: 0.95
+  coherence_score: 0.88
+  failed_items:
+  - Beat 2 - Preparation scene is minimal/underdeveloped; the planning between Dante
+    and Lila lacks detail about gathering tools or information
+  - Beat 2 - Moment of doubt/fear before proceeding is absent; Dante moves directly
+    from meeting Lila to entering the ballroom without internal hesitation
+  - 'Cross-beat constraint: Rising Stakes - The stakes don''t escalate clearly between
+    beats; Beat 1 establishes the killer exists, Beat 2 lacks distinct escalation,
+    Beat 3 delivers confrontation but the progression feels compressed'
+  strengths:
+  - 'Beat 1 fully realized: Lila introduced as distrusting ally, dampener device as
+    test of ability, killer''s identity as enemy revelation, Dante proves himself
+    through action, addiction/recovery woven throughout'
+  - 'Beat 3 exceptionally strong: Direct confrontation with killer, symbolic death
+    through overwhelming guilt and sensory overload, moment of near-defeat when dampener
+    drops, transformation through acceptance of guilt rather than escape'
+  - 'Chekhov''s Gun executed perfectly: dampener introduced in Beat 1 as seemingly
+    minor tool, becomes essential to defeating killer in Beat 3'
+  - 'Character arc progression excellent: Beat 1 (guilt mentioned as ghost), Beat
+    2 (guilt recognized as internal obstacle), Beat 3 (guilt accepted as burden to
+    carry)'
+  - 'Ally continuity strong: Lila present and relevant throughout all three beats,
+    relationship evolves from distrust to partnership'
+  - 'Context maintenance exceptional: Dante''s voice, Chicago setting, emotional residue
+    mechanics, noir tone, redemption arc all consistently present'
+  - 'Coherence strong: narrative flows logically despite compressed timeline; emotional
+    beats land effectively'
+  weaknesses:
+  - Word count exceeds range by 318 words (1318 vs 700-1000 max); violates explicit
+    constraint
+  - 'Beat 2 underdeveloped: transitions too quickly from meeting Lila to ballroom
+    confrontation; lacks planning scene showing how they''ll approach the trap'
+  - 'Beat 2 missing fear/doubt moment: Dante should hesitate before entering, wrestling
+    with whether he''s ready or if his addiction will resurface under pressure'
+  - 'Rising stakes progression unclear: each beat doesn''t distinctly escalate tension;
+    the jump from Beat 1 (meeting ally) to Beat 3 (confrontation) feels abrupt'
+  - 'Preparation scene absent: no gathering of information, tools beyond dampener,
+    or strategic discussion of how to handle the killer'
+  calibration_notes: Story demonstrates strong narrative instincts and excellent execution
+    of Ordeal and character arc, but structural requirements for Beat 2 are underserved.
+    The word count violation is objective and significant. Cross-beat constraint on
+    rising stakes is partially met but could be sharper. Context and coherence scores
+    reflect strong thematic work despite structural gaps.
+  overall_assessment: 0.82
+error: null

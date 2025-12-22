@@ -1,0 +1,62 @@
+evaluation_id: 7a402143
+task_id: beat_interpolation_002
+generation_id: beat_interpolation_002_mistralai/mistral-small-creative_0
+task_type: beat_interpolation
+model: mistralai/mistral-small-creative
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.02032
+timestamp: '2025-12-22T11:57:36.418530'
+success: true
+final_score: 0.82675
+score_breakdown:
+  final_score: 0.8267
+  components:
+    programmatic:
+      score: 0.8985
+      weight: 0.5
+      breakdown:
+        word_count_score: 1.0
+        repetition_score: 0.71
+        slop_score: 1.0
+        overall: 0.8985
+      word_count:
+        actual: 378
+        target_range:
+        - 250
+        - 400
+    llm_judge:
+      score: 0.755
+      weight: 0.5
+llm_results:
+  beat_elements_score: 0.75
+  elements_found: 3
+  elements_total: 4
+  beat_execution_score: 0.85
+  must_not_score: 0.5
+  violations_found: 2
+  word_count_valid: true
+  character_score: 0.9
+  bridge_score: 0.8
+  continuity_score: 0.7
+  evidence: 'STRENGTHS: The Debate beat is well-executed with strong internal conflict.
+    Sarah considers recanting (element 1: present), considers official channels through
+    Marcus (element 2: present), and shows internal conflict between duty and sister
+    (element 3: present). The fourth element—a tipping moment toward the third option—is
+    partially present but underdeveloped; her realization ''But she could'' and decision
+    to go off-book hints at it but lacks the clarity of a decisive tipping point.
+    Character voice is consistent and compelling throughout. Bridge to Break Into
+    Two is strong—the resignation letter and vigilante pivot follow naturally. VIOLATIONS:
+    (1) Sarah has already mentally committed to going rogue before the beat ends (''No
+    more rules. No more oversight''), which partially skips the debate''s function
+    of reaching a decision—the decision is already made by mid-beat rather than emerging
+    from the debate itself. (2) The AFTER section explicitly states she''s already
+    resigned and is ''current vigilante,'' which violates the must-not requirement
+    that she shouldn''t already have resigned during the Debate beat. This is a significant
+    structural violation that bleeds into the next beat prematurely. CONTINUITY: Minor
+    issue—the ''seventy-two hours'' becomes ''seventy hours'' between sections, a
+    small inconsistency. The setting (kitchen table to car outside compound) is reasonable
+    but the transition feels slightly rushed. EXECUTION: Despite violations, the beat
+    captures genuine internal struggle and the emotional weight of an impossible choice,
+    which is the core function of Debate.'
+error: null
