@@ -1,32 +1,53 @@
-evaluation_id: f095e162
+evaluation_id: 8765f0fb
 task_id: beat_interpolation_002
 generation_id: beat_interpolation_002_openai/gpt-5_0
 task_type: beat_interpolation
 model: openai/gpt-5
 sample_index: 0
 evaluator_model: openai/gpt-5-mini
-evaluator_cost: 0
-timestamp: '2025-12-17T23:36:36.711421'
-success: false
-final_score: 0.0
+evaluator_cost: 0.00148925
+timestamp: '2025-12-24T19:38:11.846941'
+success: true
+final_score: 0.9238812335343828
 score_breakdown:
-  final_score: 0.0
+  final_score: 0.9239
   components:
     programmatic:
-      score: 0.0
+      score: 0.8478
       weight: 0.5
       breakdown:
-        word_count_score: 0.0
-        repetition_score: 0.0
-        slop_score: 1.0
-        overall: 0.0
+        word_count_score: 0.8268
+        repetition_score: 0.77
+        slop_score: 0.9901
+        overall: 0.8478
       word_count:
-        actual: 0
+        actual: 474
         target_range:
-        - 0
-        - 0
+        - 250
+        - 400
     llm_judge:
-      score: 0.0
+      score: 1.0
       weight: 0.5
-llm_results: {}
-error: calculate_final_score() got an unexpected keyword argument 'word_count_method'
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: false
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: 'All four required elements are present: (1) recant option is explicitly
+    considered; (2) going official (calling Morrison/Feds) is weighed; (3) internal
+    duty-vs-sister conflict is clear and forceful; (4) a turning moment toward a third
+    option occurs (her own realization—spurred by Marcus''s visit and the paint fleck—leads
+    her to ''do both''). The passage fulfills the Debate beat''s function of weighing
+    alternatives before committing, and it ends with a decisive step toward action
+    (''I need the case files,'' offline), which bridges cleanly to the Break Into
+    Two. No disallowed items appear (she does not immediately go rogue, no one else
+    makes the decision for her, she hasn''t resigned in this beat, and there''s no
+    direct confrontation with Marchetti or his people). The only issue: the provided
+    word count is invalid (word_count_valid = false) per the specified 250–400 range.'
+error: null

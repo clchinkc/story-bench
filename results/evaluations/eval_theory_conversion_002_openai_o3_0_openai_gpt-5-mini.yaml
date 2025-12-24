@@ -1,32 +1,54 @@
-evaluation_id: 53e5779c
+evaluation_id: f0b8e067
 task_id: theory_conversion_002
 generation_id: theory_conversion_002_openai/o3_0
 task_type: theory_conversion
 model: openai/o3
 sample_index: 0
 evaluator_model: openai/gpt-5-mini
-evaluator_cost: 0
-timestamp: '2025-12-17T23:30:49.281719'
-success: false
-final_score: 0.0
+evaluator_cost: 0.00200025
+timestamp: '2025-12-24T19:32:16.955215'
+success: true
+final_score: 0.877249380516919
 score_breakdown:
-  final_score: 0.0
+  final_score: 0.8772
   components:
     programmatic:
-      score: 0.0
+      score: 0.778
       weight: 0.5
       breakdown:
-        word_count_score: 0.0
-        repetition_score: 0.0
+        word_count_score: 0.8825
+        repetition_score: 0.5
         slop_score: 1.0
-        overall: 0.0
+        overall: 0.778
       word_count:
-        actual: 0
+        actual: 880
         target_range:
-        - 0
-        - 0
+        - 600
+        - 800
     llm_judge:
-      score: 0.0
+      score: 0.9765
       weight: 0.5
-llm_results: {}
-error: calculate_final_score() got an unexpected keyword argument 'word_count_method'
+llm_results:
+  beats_present: 12
+  beats_total: 12
+  beats_score: 1.0
+  preserved_count: 7
+  preserved_total: 7
+  preservation_score: 1.0
+  word_count_valid: false
+  structural_accuracy_score: 0.92
+  tone_score: 0.95
+  evidence: 'All 12 Campbell beats are clearly represented: Ordinary World (Maya’s
+    quiet workshop), Call to Adventure (elders’ request), Refusal (she demurs), Meeting
+    the Mentor (old potter and shard), Crossing the Threshold (leaving village), Tests/Allies/Enemies
+    (journey hardships and shepherd boy), Approach to Inmost Cave (ruined shrine and
+    filled sketchbook), Ordeal (rebuilding kiln, surrendering to clay), Reward (the
+    finished living vessel), The Road Back (dangerous descent and temptation), Resurrection
+    (the tense moment before water rises, then renewal), Return with the Elixir (teaching
+    children, new words in sketchbook). All seven required elements are preserved.
+    Word count is flagged invalid per the given range. Minor deductions from perfect
+    structural/tone scores because a couple of beats (notably Reward vs. Resurrection)
+    are tightly adjacent and slightly compressed—still effectively handled—and because
+    very small passages shift from meditative to plot-forward; overall the quiet,
+    transformative tone is very well maintained.'
+error: null

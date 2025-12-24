@@ -1,32 +1,147 @@
-evaluation_id: 682f156a
+evaluation_id: e38588f1
 task_id: multi_beat_synthesis_002
 generation_id: multi_beat_synthesis_002_google/gemini-3-pro-preview_0
 task_type: multi_beat_synthesis
 model: google/gemini-3-pro-preview
 sample_index: 0
 evaluator_model: anthropic/claude-haiku-4.5
-evaluator_cost: 0
-timestamp: '2025-12-17T23:39:31.652976'
-success: false
-final_score: 0.0
+evaluator_cost: 0.054195
+timestamp: '2025-12-24T19:42:07.706625'
+success: true
+final_score: 0.8927499999999999
 score_breakdown:
-  final_score: 0.0
+  final_score: 0.8927
   components:
     programmatic:
-      score: 0.0
+      score: 0.825
       weight: 0.5
       breakdown:
-        word_count_score: 0.0
-        repetition_score: 0.0
+        word_count_score: 1.0
+        repetition_score: 0.5
         slop_score: 1.0
-        overall: 0.0
+        overall: 0.825
       word_count:
-        actual: 0
+        actual: 916
         target_range:
-        - 0
-        - 0
+        - 700
+        - 1000
     llm_judge:
-      score: 0.0
+      score: 0.9605
       weight: 0.5
-llm_results: {}
-error: calculate_final_score() got an unexpected keyword argument 'word_count_method'
+llm_results:
+  beat_reqs_satisfied: 14
+  beat_reqs_total: 15
+  beat_requirements_score: 0.93
+  cross_beat_satisfied: 4
+  cross_beat_total: 4
+  cross_beat_score: 1.0
+  word_count_valid: true
+  context_score: 0.95
+  coherence_score: 0.96
+  failed_items:
+  - 'Beat 2, Req 5 (learns something about resistance she didn''t know): The story
+    shows Amara learning about British surveillance tactics and the Broad Arrow marking
+    system, but this is more about the enemy''s methods than about the resistance
+    organization itself. The revelation about the ambush at the cave is significant
+    but comes in Beat 3, not Beat 2. In Beat 2, the encounter with Kwesi primarily
+    tests her linguistic abilities and reveals his identity as a spy, but doesn''t
+    provide new intelligence about the resistance network''s structure, plans, or
+    capabilities.'
+  detailed_analysis:
+    beat_1_crossing_threshold:
+      score: 0.95
+      analysis: Exceptionally executed. Amara leaves Cape Coast (clear departure),
+        the checkpoint represents point of no return (forged papers, garrison behind
+        her), immediate danger is present (checkpoint inspection, potential discovery),
+        she uses wit to pass (forged signature, servant disguise, feigned ignorance),
+        and internal shift is profound (spine straightens, 'servant girl dissolved,'
+        'only the messenger remained'). The laterite dust and basket imagery grounds
+        the physical reality while the metaphorical transformation is crystal clear.
+    beat_2_tests_allies_enemies:
+      score: 0.88
+      analysis: Strong execution with one gap. Kwesi is an uncertain ally (revealed
+        as spy, not true ally), the test proves commitment (Amara gambles with German,
+        maintains composure), obstacle forces adaptation (patrol forces hiding, quick
+        thinking), language skills are crucial (German reveals the deception), but
+        the fifth requirement about learning something new about the resistance is
+        weak. The encounter teaches her about enemy infiltration tactics, not about
+        the resistance itself. The patrol and hiding sequence is excellent for demonstrating
+        her capabilities, but doesn't advance her knowledge of the resistance network.
+    beat_3_approach_inmost_cave:
+      score: 0.95
+      analysis: Masterfully executed. Nearing stronghold (cave mouth visible), moment
+        of steeling (pause at clearing edge), recognition of cost (realizes it's a
+        trap, must abandon the direct mission), final obstacle (Broad Arrow marking
+        reveals ambush), thematic element (choosing to become the warning rather than
+        deliver it—resistance through survival and adaptation). The discovery of the
+        marked mahogany tree is a brilliant callback to the crates at the checkpoint,
+        creating narrative cohesion.
+    chekhov_gun_constraint:
+      score: 1.0
+      analysis: Perfect execution. In Beat 1, Amara demonstrates her ability to read
+        symbols and details (forged signature, servant disguise, observing the Broad
+        Arrow on crates). In Beat 3, this exact skill—recognizing the Broad Arrow
+        marking on the mahogany tree—becomes the crucial obstacle that saves her from
+        the ambush. The symbol is introduced, its significance explained, and then
+        becomes the pivotal discovery.
+    identity_transformation_constraint:
+      score: 1.0
+      analysis: 'Flawlessly tracked. Beat 1: ''extinguishing the intelligence in her
+        eyes,'' servant persona maintained, cautious approach. Beat 2: ''The fear
+        that had plagued her in Cape Coast was gone,'' she commands the spy, realizes
+        ''she was the resistance,'' possesses ''weapons.'' Beat 3: ''fully claims
+        her role'' by choosing to become the warning, turning away from the cave to
+        find secondary outpost, ''the war had truly begun''—she is now an active agent,
+        not a messenger.'
+    escalating_danger_constraint:
+      score: 1.0
+      analysis: 'Perfectly calibrated. Beat 1: Threat of discovery at checkpoint (passive
+        danger, bureaucratic). Beat 2: Direct confrontation with spy, then active
+        patrol presence (active danger, immediate). Beat 3: Realization of ambush,
+        surrounded by British forces, must evade capture (imminent danger, existential
+        threat). Each beat raises stakes and physical jeopardy.'
+    thematic_thread_constraint:
+      score: 1.0
+      analysis: 'Consistently woven throughout. Beat 1: ''silently absorbed the King''s
+        English, German, and strategic maps''—literacy as intelligence gathering.
+        Beat 2: German language reveals the spy''s deception—languages as weapons.
+        Beat 3: Ability to read the Broad Arrow symbol (knowledge of colonial marking
+        systems) saves her life—literacy and observation as survival. The theme that
+        ''knowledge is resistance'' is present and escalating in sophistication.'
+    context_maintenance:
+      score: 0.95
+      analysis: 'Excellent adherence to context. Protagonist: Amara''s scholar background,
+        multilingualism, and dual identity are central. Setting: 1890s Gold Coast,
+        Cape Coast to Ashanti forest, colonial architecture, laterite dust, silk-cotton
+        trees, cave stronghold—all historically grounded. Tone: Anti-colonial themes
+        (Broad Arrow as symbol of seizure), survival and resistance (choosing to become
+        the warning), dignity in defiance (spine straightening, commanding the spy).
+        Minor: Could have included slightly more sensory detail of Ashanti territory,
+        but overall very strong.'
+    narrative_coherence:
+      score: 0.96
+      analysis: Exceptional flow and unity. The checkpoint encounter introduces the
+        Broad Arrow symbol, which becomes the crucial discovery at the cave. Amara's
+        internal transformation is gradual and believable. The spy encounter tests
+        her capabilities and builds confidence. The final revelation ties everything
+        together thematically and narratively. Pacing is excellent—tension builds
+        steadily. The ending is ambiguous but purposeful (she must find secondary
+        outpost), leaving room for continuation while providing narrative closure
+        for this arc. Transitions between beats are smooth and motivated.
+  overall_assessment:
+    score: 0.96
+    tier: Exceptional
+    summary: 'This is professional-quality historical fiction that masterfully executes
+      the Hero''s Journey framework while maintaining thematic coherence and historical
+      authenticity. The story demonstrates sophisticated narrative craft: Chekhov''s
+      Gun is elegantly deployed, identity transformation is psychologically convincing,
+      danger escalates logically, and the thematic thread of ''knowledge as resistance''
+      is woven throughout with increasing sophistication. The only minor gap is that
+      Beat 2 doesn''t fully deliver new intelligence about the resistance organization
+      itself, though this is a subtle requirement and the encounter still serves multiple
+      narrative functions. The prose is vivid, the protagonist is compelling, and
+      the anti-colonial themes are integrated organically rather than didactically.
+      The ending is particularly strong—Amara''s choice to become the warning rather
+      than deliver it represents a profound shift in her agency and understanding
+      of resistance.'
+error: null

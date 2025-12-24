@@ -1,32 +1,52 @@
-evaluation_id: 1ea37938
+evaluation_id: b3f70150
 task_id: beat_revision_002
 generation_id: beat_revision_002_openai/gpt-5.1_0
 task_type: beat_revision
 model: openai/gpt-5.1
 sample_index: 0
 evaluator_model: openai/gpt-5-mini
-evaluator_cost: 0
-timestamp: '2025-12-17T23:39:10.225264'
-success: false
-final_score: 0.0
+evaluator_cost: 0.00152825
+timestamp: '2025-12-24T19:41:49.610614'
+success: true
+final_score: 0.9715
 score_breakdown:
-  final_score: 0.0
+  final_score: 0.9715
   components:
     programmatic:
-      score: 0.0
+      score: 0.993
       weight: 0.5
       breakdown:
-        word_count_score: 0.0
-        repetition_score: 0.0
+        word_count_score: 1.0
+        repetition_score: 0.98
         slop_score: 1.0
-        overall: 0.0
+        overall: 0.993
       word_count:
-        actual: 0
+        actual: 322
         target_range:
-        - 0
-        - 0
+        - 200
+        - 350
     llm_judge:
-      score: 0.0
+      score: 0.95
       weight: 0.5
-llm_results: {}
-error: calculate_final_score() got an unexpected keyword argument 'word_count_method'
+llm_results:
+  diagnosis_score: 1.0
+  flaw_correction_score: 1.0
+  beat_satisfaction_score: 1.0
+  preservation_score: 1.0
+  preserved_count: 4
+  preserved_total: 4
+  required_preserved_score: 1.0
+  required_preserved_count: 4
+  required_preserved_total: 4
+  minimal_change_score: 0.6
+  word_count_valid: true
+  quality_score: 0.9
+  evidence: 'The model addressed the actual All Is Lost flaw by introducing: the fundraiser''s
+    failure, the grant rejection, a board betrayal (Denise joining Keller), and a
+    personal/emotional isolation (wife''s plea, Marcus turning the phone face down).
+    This creates a clear ''whiff of death'' and leaves Marcus with no realistic options,
+    conveying genuine hopelessness. The required phrases and scene elements were preserved
+    exactly. Changes were moderate—several new lines and beats were added to deepen
+    the defeat rather than a full rewrite—so the edit is not minimal but constrained
+    and effective. Writing quality is strong with no major errors.'
+error: null

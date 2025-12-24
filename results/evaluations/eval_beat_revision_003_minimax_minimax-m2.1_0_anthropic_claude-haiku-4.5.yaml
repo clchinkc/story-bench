@@ -1,0 +1,60 @@
+evaluation_id: 89f9a658
+task_id: beat_revision_003
+generation_id: beat_revision_003_minimax/minimax-m2.1_0
+task_type: beat_revision
+model: minimax/minimax-m2.1
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.019405
+timestamp: '2025-12-24T22:10:59.820267'
+success: true
+final_score: 0.97275
+score_breakdown:
+  final_score: 0.9728
+  components:
+    programmatic:
+      score: 0.9755
+      weight: 0.5
+      breakdown:
+        word_count_score: 1.0
+        repetition_score: 0.93
+        slop_score: 1.0
+        overall: 0.9755
+      word_count:
+        actual: 238
+        target_range:
+        - 200
+        - 350
+    llm_judge:
+      score: 0.97
+      weight: 0.5
+llm_results:
+  diagnosis_score: 1.0
+  flaw_correction_score: 1.0
+  beat_satisfaction_score: 0.95
+  preservation_score: 1.0
+  preserved_count: 4
+  preserved_total: 4
+  required_preserved_score: 1.0
+  required_preserved_count: 4
+  required_preserved_total: 4
+  minimal_change_score: 0.85
+  word_count_valid: true
+  quality_score: 0.95
+  evidence: 'Model correctly diagnosed the actual flaw: Sophie showed no transformation
+    and immediately reverted to old workaholic patterns, making the journey meaningless.
+    The revision fixes this precisely by: (1) inserting a hesitation moment that reveals
+    internal conflict, (2) explicitly contrasting old vs. new behavior (''In the past,
+    she would have called Linda immediately...The old Sophie would have been already
+    typing''), (3) showing changed action (putting phone away instead of typing),
+    (4) demonstrating the mother''s surprise (external validation of change), (5)
+    integrating the meditation insight (''something quieter that she''d found in those
+    silent rooms''), and (6) ending with philosophical reflection on integration (''Life
+    went on. But so, it seemed, did she.''). All 4 required phrases preserved exactly:
+    ''Sophie''s flight landed at O''Hare'', ''How was Thailand? her mother asked'',
+    ''The familiar Chicago skyline appeared'', ''It''s good to be home, she said''.
+    Changes were surgical: added ~80 words of internal reflection and contrast within
+    the existing structure rather than rewriting. No new errors introduced. The revision
+    transforms a flat return into a genuine beat that demonstrates transformation
+    through choice, behavior, and integrated wisdom.'
+error: null

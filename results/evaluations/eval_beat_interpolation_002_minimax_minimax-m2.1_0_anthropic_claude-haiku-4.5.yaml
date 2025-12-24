@@ -1,0 +1,60 @@
+evaluation_id: 72e5355f
+task_id: beat_interpolation_002
+generation_id: beat_interpolation_002_minimax/minimax-m2.1_0
+task_type: beat_interpolation
+model: minimax/minimax-m2.1
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.019435
+timestamp: '2025-12-24T22:07:31.930928'
+success: true
+final_score: 0.8157115700812846
+score_breakdown:
+  final_score: 0.8157
+  components:
+    programmatic:
+      score: 0.8989
+      weight: 0.5
+      breakdown:
+        word_count_score: 0.9486
+        repetition_score: 0.77
+        slop_score: 1.0
+        overall: 0.8989
+      word_count:
+        actual: 439
+        target_range:
+        - 250
+        - 400
+    llm_judge:
+      score: 0.7325
+      weight: 0.5
+llm_results:
+  beat_elements_score: 0.75
+  elements_found: 3
+  elements_total: 4
+  beat_execution_score: 0.7
+  must_not_score: 0.5
+  violations_found: 2
+  word_count_valid: false
+  word_count: 439
+  word_count_range: 250-400
+  character_score: 0.85
+  bridge_score: 0.8
+  continuity_score: 0.9
+  evidence: 'STRENGTHS: Present are (1) recanting testimony as easy wrong choice,
+    (2) considering official channels/Morrison/IA, (3) strong internal conflict between
+    duty and sister. Missing element: No clear moment/conversation that tips her toward
+    the third option—the decision to go rogue emerges internally without a catalyst
+    within the beat itself. VIOLATIONS: (1) Sarah already decides to resign and go
+    rogue during this beat (''I need you to trust me...time to start saying goodbye''),
+    which should occur at Break Into Two, not during Debate. This compresses two beats
+    into one. (2) The AFTER section explicitly shows her resignation already completed,
+    confirming the decision was made during this beat rather than being the threshold
+    moment. EXECUTION: The beat captures internal wrestling well but fails the narrative
+    function by resolving the debate too conclusively—she should end uncertain or
+    on the cusp, not committed to vigilantism. CHARACTER: Sarah''s voice remains consistent
+    and credible throughout. BRIDGE: Good connection between BEFORE (catalyst/threat)
+    and GENERATED (debate options), though the AFTER section violates beat boundaries.
+    CONTINUITY: Setting and timeline maintained coherently (71-hour countdown, apartment/kitchen,
+    Marcus conversation).'
+error: null

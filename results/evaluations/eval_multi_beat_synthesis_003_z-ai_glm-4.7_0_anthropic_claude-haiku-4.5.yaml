@@ -1,0 +1,85 @@
+evaluation_id: 6fbd9193
+task_id: multi_beat_synthesis_003
+generation_id: multi_beat_synthesis_003_z-ai/glm-4.7_0
+task_type: multi_beat_synthesis
+model: z-ai/glm-4.7
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.03225
+timestamp: '2025-12-24T19:03:12.770115'
+success: true
+final_score: 0.82775
+score_breakdown:
+  final_score: 0.8277
+  components:
+    programmatic:
+      score: 0.825
+      weight: 0.5
+      breakdown:
+        word_count_score: 1.0
+        repetition_score: 0.5
+        slop_score: 1.0
+        overall: 0.825
+      word_count:
+        actual: 855
+        target_range:
+        - 700
+        - 1000
+    llm_judge:
+      score: 0.8305
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 13
+  beat_reqs_total: 15
+  beat_requirements_score: 0.87
+  cross_beat_satisfied: 3
+  cross_beat_total: 4
+  cross_beat_score: 0.75
+  word_count_valid: true
+  context_score: 0.9
+  coherence_score: 0.85
+  failed_items:
+  - 'Beat 1 - ''Things going according to plan (mostly)'': The plan deteriorates too
+    quickly; the minor complication (Elena''s presence) is revealed at the end of
+    Beat 1 rather than emerging gradually, making the ''mostly successful'' phase
+    too compressed'
+  - 'Cross-beat constraint - ''Chekhov''s Gun'': The magnetic decoupler is introduced
+    and used within the same beat (Bad Guys Close In) rather than being established
+    in Fun and Games and paid off later. The crushed glass detail from Beat 1 is never
+    revisited or becomes critical in subsequent beats'
+  strengths:
+  - 'Exceptional tonal escalation: playful confidence (''You scratch the paint, Sorokin
+    notices'') → shaken confidence (Elena reveal) → genuine danger (sonic cannon,
+    blast doors)'
+  - 'Strong mentor presence arc: Elena moves from unknown → recognized on monitor
+    → active threat with voice and deployed weapons'
+  - 'Jax provides consistent crew member arc: enthusiastic participant → compromised/injured
+    → becomes the moral choice point for Miri'
+  - 'Excellent context maintenance: Monaco setting, Grand Prix cover, art history
+    details (Madonna provenance), Ocean''s Eleven tone with clever banter intact'
+  - 'Coherent narrative flow: Each beat builds logically; the revelation of Elena
+    as antagonist recontextualizes the entire heist'
+  - 'Strong character moment: Miri''s final choice (saving Jax over the painting)
+    demonstrates her arc from criminal to conservator'
+  - 'Vivid sensory details and pacing: The sonic cannon, blast doors, magnetic decoupler
+    create visceral stakes'
+  weaknesses:
+  - Beat 1 (Fun and Games) lacks sufficient 'things going according to plan' phase—the
+    complication arrives too early, compressing the playful heist portion
+  - 'Chekhov''s Gun constraint partially missed: The crushed glass (Beat 1) is never
+    revisited; the decoupler should have been introduced earlier to satisfy setup-payoff
+    structure'
+  - Beat 2 (Midpoint) is very brief—the false victory moment (painting secured) is
+    immediately undercut by Elena's reveal, leaving little room for the 'stakes raised'
+    to breathe
+  - Party setting intensification (Beat 2 requirement) is mentioned but not deeply
+    explored—the party above remains distant rather than creating mounting pressure
+  calibration_notes: The story executes 13 of 15 beat requirements effectively, with
+    only minor structural gaps. The two failed items are technical constraint violations
+    rather than narrative failures. The writing quality is strong (1.0 level), but
+    the structure slightly underserves the Fun and Games beat by rushing to the complication.
+    Cross-beat score of 0.75 reflects solid execution of mentor presence, tonal escalation,
+    and team dynamics, but the Chekhov's Gun constraint is only partially satisfied.
+    Overall coherence is high because the narrative logic is sound despite structural
+    compression.
+error: null

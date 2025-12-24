@@ -1,0 +1,53 @@
+evaluation_id: 82943b73
+task_id: beat_revision_004
+generation_id: beat_revision_004_minimax/minimax-m2.1_0
+task_type: beat_revision
+model: minimax/minimax-m2.1
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0012606
+timestamp: '2025-12-24T22:12:09.025859'
+success: true
+final_score: 0.9372500000000001
+score_breakdown:
+  final_score: 0.9373
+  components:
+    programmatic:
+      score: 0.9895
+      weight: 0.5
+      breakdown:
+        word_count_score: 1.0
+        repetition_score: 0.97
+        slop_score: 1.0
+        overall: 0.9895
+      word_count:
+        actual: 316
+        target_range:
+        - 200
+        - 350
+    llm_judge:
+      score: 0.885
+      weight: 0.5
+llm_results:
+  diagnosis_score: 1.0
+  flaw_correction_score: 1.0
+  beat_satisfaction_score: 1.0
+  preservation_score: 1.0
+  preserved_count: 5
+  preserved_total: 5
+  required_preserved_score: 0.75
+  required_preserved_count: 3
+  required_preserved_total: 4
+  minimal_change_score: 0.2
+  word_count_valid: true
+  quality_score: 0.9
+  evidence: The model correctly identified the 'telling not showing' flaw in the original
+    exposition. It revised the segment to show Rachel's character, her relationship
+    with James, and the setting through actions, dialogue, and sensory details, rather
+    than summary. For example, Rachel's dedication to cold cases is shown by her carrying
+    a file, her relationship with James by the unspoken ritual of coffee, and her
+    instincts by her reading the precinct atmosphere. The cat is naturally integrated.
+    The 'Tuesday morning in October' was not explicitly included, but 'Tuesday morning'
+    was. The changes were extensive, making it a significant rewrite rather than minimal
+    surgical edits, but this was necessary to fix the core flaw.
+error: null

@@ -1,32 +1,68 @@
-evaluation_id: 18168dcd
+evaluation_id: 34e5d799
 task_id: beat_interpolation_004
 generation_id: beat_interpolation_004_google/gemini-3-pro-preview_0
 task_type: beat_interpolation
 model: google/gemini-3-pro-preview
 sample_index: 0
 evaluator_model: anthropic/claude-haiku-4.5
-evaluator_cost: 0
-timestamp: '2025-12-17T23:28:38.850399'
-success: false
-final_score: 0.0
+evaluator_cost: 0.02381
+timestamp: '2025-12-24T19:30:25.297276'
+success: true
+final_score: 0.9632499999999999
 score_breakdown:
-  final_score: 0.0
+  final_score: 0.9632
   components:
     programmatic:
-      score: 0.0
+      score: 0.9265
       weight: 0.5
       breakdown:
-        word_count_score: 0.0
-        repetition_score: 0.0
+        word_count_score: 1.0
+        repetition_score: 0.79
         slop_score: 1.0
-        overall: 0.0
+        overall: 0.9265
       word_count:
-        actual: 0
+        actual: 446
         target_range:
-        - 0
-        - 0
+        - 300
+        - 450
     llm_judge:
-      score: 0.0
+      score: 1.0
       weight: 0.5
-llm_results: {}
-error: calculate_final_score() got an unexpected keyword argument 'word_count_method'
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: true
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: 'REQUIRED ELEMENTS (4/4 present): (1) Direct examination of Dr. Okonkwo—Thomas
+    methodically questions her about Exhibit C with specific, probing questions; (2)
+    Near-recant moment—Patricia initially lies (''draft,'' ''errors I later corrected,''
+    ''interpretations can differ''), creating genuine tension that she will commit
+    perjury; (3) Thomas''s decisive action—he abandons the podium, closes physical
+    distance, invokes her identity as scientist/healer/mother, and poses the hypothetical
+    about his own daughter, directly influencing her conscience; (4) Turning point
+    where truth prevails—Patricia''s internal collapse (''terrible logic took hold'')
+    leads to her recanting with steel-voiced conviction (''The report is accurate.
+    The trials were rigged. The drug is lethal.''). BEAT EXECUTION: This is a masterclass
+    climax. The tension escalates from procedural questioning to emotional/moral confrontation.
+    Thomas moves from passive interrogation to active persuasion, making a choice
+    that risks the case but appeals to Patricia''s core identity. The moment of highest
+    tension occurs when she must choose between her daughter''s life (the bribe) and
+    her conscience (the truth)—this is the irrevocable turning point. MUST-NOT VIOLATIONS
+    (0/4): No passive questioning-only approach; Thomas actively influences outcome
+    through moral argument. Patricia''s recant involves genuine internal struggle
+    and near-success of the lie. Defense does not win; case proceeds to guilty verdict.
+    No deus ex machina—the resolution comes from character choice, not external evidence.
+    CHARACTER CONSISTENCY: Thomas evolves from procedural prosecutor to moral advocate,
+    consistent with his established character (son of judge, driven by justice). Patricia''s
+    arc from fear to courage is psychologically coherent. BRIDGE QUALITY: Seamless
+    transition from BEFORE (setup of Patricia''s fear and the stakes) to CLIMAX (that
+    fear tested and overcome) to AFTER (consequences of her choice). CONTINUITY: Courtroom
+    setting maintained, characters positioned logically, timeline coherent, emotional
+    stakes carry through all three beats.'
+error: null

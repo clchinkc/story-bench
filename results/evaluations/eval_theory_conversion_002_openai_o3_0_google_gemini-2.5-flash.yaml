@@ -1,32 +1,46 @@
-evaluation_id: 5076163d
+evaluation_id: 0ff99462
 task_id: theory_conversion_002
 generation_id: theory_conversion_002_openai/o3_0
 task_type: theory_conversion
 model: openai/o3
 sample_index: 0
 evaluator_model: google/gemini-2.5-flash
-evaluator_cost: 0
-timestamp: '2025-12-17T23:31:10.151665'
-success: false
-final_score: 0.0
+evaluator_cost: 0.0010682
+timestamp: '2025-12-24T19:33:12.565957'
+success: true
+final_score: 0.868999380516919
 score_breakdown:
-  final_score: 0.0
+  final_score: 0.869
   components:
     programmatic:
-      score: 0.0
+      score: 0.778
       weight: 0.5
       breakdown:
-        word_count_score: 0.0
-        repetition_score: 0.0
+        word_count_score: 0.8825
+        repetition_score: 0.5
         slop_score: 1.0
-        overall: 0.0
+        overall: 0.778
       word_count:
-        actual: 0
+        actual: 880
         target_range:
-        - 0
-        - 0
+        - 600
+        - 800
     llm_judge:
-      score: 0.0
+      score: 0.96
       weight: 0.5
-llm_results: {}
-error: calculate_final_score() got an unexpected keyword argument 'word_count_method'
+llm_results:
+  beats_present: 12
+  beats_total: 12
+  beats_score: 1.0
+  preserved_count: 7
+  preserved_total: 7
+  preservation_score: 1.0
+  word_count_valid: false
+  structural_accuracy_score: 0.8
+  tone_score: 1.0
+  evidence: The story successfully hits all 12 beats of the Hero's Journey and preserves
+    all 7 core elements. The tone is perfectly maintained. The only minor structural
+    issue is that the 'Refusal of the Call' and 'Meeting the Mentor' beats are somewhat
+    intertwined and less distinct than they could be, but still present. The word
+    count is slightly over the requested range.
+error: null

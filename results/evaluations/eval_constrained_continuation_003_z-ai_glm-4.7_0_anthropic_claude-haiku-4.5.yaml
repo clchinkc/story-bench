@@ -1,0 +1,90 @@
+evaluation_id: 9b47c31c
+task_id: constrained_continuation_003
+generation_id: constrained_continuation_003_z-ai/glm-4.7_0
+task_type: constrained_continuation
+model: z-ai/glm-4.7
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.0295
+timestamp: '2025-12-24T18:59:05.241159'
+success: true
+final_score: 0.9301661184210526
+score_breakdown:
+  final_score: 0.9302
+  components:
+    programmatic:
+      score: 0.8678
+      weight: 0.5
+      breakdown:
+        word_count_score: 1.0
+        repetition_score: 0.64
+        slop_score: 0.9753
+        overall: 0.8678
+      word_count:
+        actual: 589
+        target_range:
+        - 550
+        - 750
+    llm_judge:
+      score: 0.9925
+      weight: 0.5
+llm_results:
+  beats_present: 3
+  beats_total: 3
+  beats_score: 1.0
+  must_include_present: 6
+  must_include_total: 6
+  must_include_score: 1.0
+  must_not_avoided: 4
+  must_not_total: 4
+  must_not_score: 1.0
+  word_count_valid: true
+  tone_score: 0.95
+  ending_score: 1.0
+  failed_constraints: []
+  detailed_analysis:
+    beats_analysis:
+      Search: Present - Jin navigates the Collective seeking a terminal and platform,
+        encounters hostile indifference, descends to lower sectors searching for solutions
+      Find: Present - Jin discovers Mara and the server farm; finds the carbon capture
+        data already exists; learns the true suppression reason and the Collective's
+        complicity
+      Take: Present - Jin inserts the drive into the system, accepting silence and
+        becoming an accomplice; pays the price of moral compromise and lost idealism
+    must_include_analysis:
+      1_unfamiliar_culture: Excellent - Detailed portrayal of Collective's chaotic
+        bureaucracy, factional politics, hostile indifference, and survival-based
+        economy contrasted with Council labs
+      2_mentor_figure: Excellent - Mara serves as mentor, teaches Jin about the Collective's
+        true nature, reveals hidden truths, and guides him toward compromise
+      3_unexpected_discovery: Excellent - The carbon capture technology already exists
+        and works; suppression is due to atmospheric destabilization risk, not ineffectiveness;
+        Collective holds cure hostage
+      4_finds_what_wanted: Excellent - Jin finds safety, platform, and access to continue
+        his work through the Collective's server farm and resources
+      5_action_with_cost: Excellent - Inserting the drive represents action; cost
+        is moral compromise, loss of idealism, becoming an accomplice to suppression
+      6_moral_compromise: 'Excellent - Central to ending: Jin chooses silence and
+        complicity over chaos; recognizes both sides are jailers; accepts realpolitik
+        over principle'
+    must_not_analysis:
+      1_easy_integration: Successfully avoided - Jin struggles with hostile indifference,
+        lacks credits, needs patronage, must descend to lower sectors, faces difficult
+        choice
+      2_earth_family_contact: Successfully avoided - No family members appear or are
+        contacted
+      3_violence_weapons: Successfully avoided - No combat, weapons, or physical violence
+        present
+      4_complete_resolution: Successfully avoided - Conspiracy remains unresolved;
+        Jin's silence perpetuates suppression; no climactic exposure or victory
+    tone_assessment: 'Contemplative and politically charged throughout. Personal stakes
+      are acute (exile, moral compromise). Political complexity is sophisticated (three-way
+      power dynamics: Council, Collective, Earth). Minor deduction only for slight
+      reduction in introspection in final paragraph, though the ending''s hollow tone
+      compensates.'
+    ending_assessment: Perfect execution of 'Take' beat. Jin gains access/safety but
+      pays price of silence and complicity. The final line 'he was an accomplice'
+      crystallizes the moral cost. Ambiguous, unsettling, and thematically resonant.
+      Stops at exactly the right moment without resolving the larger conspiracy.
+  overall_score: 0.99
+error: null

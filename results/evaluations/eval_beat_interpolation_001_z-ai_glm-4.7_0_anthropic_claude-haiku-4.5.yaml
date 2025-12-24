@@ -1,0 +1,57 @@
+evaluation_id: aa552703
+task_id: beat_interpolation_001
+generation_id: beat_interpolation_001_z-ai/glm-4.7_0
+task_type: beat_interpolation
+model: z-ai/glm-4.7
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.01768
+timestamp: '2025-12-24T18:53:43.734025'
+success: true
+final_score: 0.98075
+score_breakdown:
+  final_score: 0.9808
+  components:
+    programmatic:
+      score: 0.9615
+      weight: 0.5
+      breakdown:
+        word_count_score: 1.0
+        repetition_score: 0.89
+        slop_score: 1.0
+        overall: 0.9615
+      word_count:
+        actual: 274
+        target_range:
+        - 200
+        - 350
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: true
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: 'All required elements present: (1) Marcus introduced as mentor character
+    with clear backstory hints (scar, retired adventurer); (2) Practical wisdom provided
+    (''research,'' ''finding patterns,'' ''cross-reference'') and tangible tools given
+    (satchel, compass); (3) Elena''s doubt shifts to reluctant acceptance (''I guess...
+    I can always organize the chaos''); (4) Librarian skills explicitly reframed as
+    valuable (''You know how to cross-reference... That is what this journey needs'').
+    No violations of must-not criteria: Elena remains doubtful/reluctant, Marcus explicitly
+    refuses to accompany her (''I can''t go with you''), setting remains at curiosity
+    shop (not forest), no magical powers discovered. Character voice consistent throughout—Elena''s
+    self-deprecating tone and Marcus''s grandfatherly wisdom maintain established
+    personalities. Bridge between beats seamless: shame drives her to Marcus, mentor
+    guidance propels her toward forest threshold. Continuity perfect: map and shame
+    from previous beat motivate this scene; compass and satchel carry forward to next
+    beat. Execution exemplary—this is a textbook Meeting the Mentor beat that transforms
+    the hero''s self-perception through wisdom and tools rather than false confidence.'
+error: null

@@ -1,32 +1,47 @@
-evaluation_id: 0cc6ac95
+evaluation_id: ef592ae1
 task_id: beat_revision_005
 generation_id: beat_revision_005_qwen/qwen3-235b-a22b_0
 task_type: beat_revision
 model: qwen/qwen3-235b-a22b
 sample_index: 0
 evaluator_model: anthropic/claude-haiku-4.5
-evaluator_cost: 0
-timestamp: '2025-12-17T23:33:44.153467'
-success: false
-final_score: 0.0
+evaluator_cost: 0.012115
+timestamp: '2025-12-24T19:35:34.134860'
+success: true
+final_score: 0.9082145659172463
 score_breakdown:
-  final_score: 0.0
+  final_score: 0.9082
   components:
     programmatic:
-      score: 0.0
+      score: 0.8164
       weight: 0.5
       breakdown:
-        word_count_score: 0.0
-        repetition_score: 0.0
+        word_count_score: 0.5411
+        repetition_score: 1.0
         slop_score: 1.0
-        overall: 0.0
+        overall: 0.8164
       word_count:
-        actual: 0
+        actual: 67
         target_range:
-        - 0
-        - 0
+        - 200
+        - 350
     llm_judge:
-      score: 0.0
+      score: 1.0
       weight: 0.5
-llm_results: {}
-error: calculate_final_score() got an unexpected keyword argument 'word_count_method'
+llm_results:
+  correct_diagnosis_score: 1.0
+  beat_understanding_score: 1.0
+  false_positive_avoided_score: 1.0
+  reasoning_quality_score: 1.0
+  model_said_no_revision: true
+  evidence: 'The model correctly identified that NO REVISION NEEDED and provided comprehensive
+    reasoning. The model accurately recognized all five key requirements were satisfied:
+    (1) follows major defeat (gallery closure), (2) protagonist isolated (dark apartment,
+    brother not answering), (3) genuine despair demonstrated (sitting on floor, tears,
+    internal monologue of failure), (4) no solutions presented (wallowing phase),
+    and (5) whiff of death element present (mother''s death, hospice memory, promise
+    to dying mother). The model''s explanation was specific, referenced the beat definition
+    accurately, and explicitly noted that word count and core elements remained intact
+    without contradictions. The model avoided the false positive trap of over-diagnosing
+    and making unnecessary revisions to a well-executed segment.'
+error: null

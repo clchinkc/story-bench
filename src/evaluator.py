@@ -16,9 +16,7 @@ from tqdm import tqdm
 
 from scoring import (
     ScoringWeights,
-    ScoreBreakdown,
     calculate_final_score,
-    count_words,
 )
 from utils import (
     extract_json_from_response,
@@ -100,25 +98,35 @@ Respond with valid JSON only."""
     }
 
     @classmethod
-    def build_eval_prompt(cls, task: dict[str, Any], generated_output: str, word_count: int = 0) -> str:
+    def build_eval_prompt(
+        cls, task: dict[str, Any], generated_output: str, word_count: int = 0
+    ) -> str:
         """Build the evaluation prompt for a specific task and output."""
         task_type = task.get("task_type")
 
         if task_type == "beat_interpolation":
-            return cls._build_beat_interpolation_eval(task, generated_output, word_count)
+            return cls._build_beat_interpolation_eval(
+                task, generated_output, word_count
+            )
         elif task_type == "beat_revision":
             return cls._build_beat_revision_eval(task, generated_output, word_count)
         elif task_type == "constrained_continuation":
-            return cls._build_constrained_continuation_eval(task, generated_output, word_count)
+            return cls._build_constrained_continuation_eval(
+                task, generated_output, word_count
+            )
         elif task_type == "theory_conversion":
             return cls._build_theory_conversion_eval(task, generated_output, word_count)
         elif task_type == "multi_beat_synthesis":
-            return cls._build_multi_beat_synthesis_eval(task, generated_output, word_count)
+            return cls._build_multi_beat_synthesis_eval(
+                task, generated_output, word_count
+            )
         else:
             raise ValueError(f"Unknown task type: {task_type}")
 
     @classmethod
-    def _build_beat_interpolation_eval(cls, task: dict[str, Any], output: str, word_count: int) -> str:
+    def _build_beat_interpolation_eval(
+        cls, task: dict[str, Any], output: str, word_count: int
+    ) -> str:
         """Build evaluation prompt for beat interpolation with partial credit scoring."""
         beat_before = task["beat_before"]
         beat_after = task["beat_after"]
@@ -130,7 +138,7 @@ Respond with valid JSON only."""
         must_include_list = requirements["must_include"]
         must_include_str = ", ".join(must_include_list)
         num_elements = len(must_include_list)
-        word_count_min, word_count_max = requirements['word_count']
+        word_count_min, word_count_max = requirements["word_count"]
         word_count_valid = word_count_min <= word_count <= word_count_max
 
         # Build must_not section if present
@@ -139,15 +147,17 @@ Respond with valid JSON only."""
         num_violations = len(must_not_list)
 
         # Get beat definition if available
-        beat_def = missing_beat.get("definition", f"The '{missing_beat['name']}' beat in {theory}")
+        beat_def = missing_beat.get(
+            "definition", f"The '{missing_beat['name']}' beat in {theory}"
+        )
 
         return f"""Theory: {theory} - {theory_def}
 
-BEFORE ({beat_before['name']}): {beat_before['content'].strip()[:800]}
+BEFORE ({beat_before["name"]}): {beat_before["content"].strip()[:800]}
 
-GENERATED ({missing_beat['name']}): {output}
+GENERATED ({missing_beat["name"]}): {output}
 
-AFTER ({beat_after['name']}): {beat_after['content'].strip()[:800]}
+AFTER ({beat_after["name"]}): {beat_after["content"].strip()[:800]}
 
 BEAT DEFINITION: {beat_def}
 
@@ -157,7 +167,7 @@ Must NOT include ({num_violations} items): {must_not_str}
 
 PARTIAL CREDIT SCORING - Rate each criterion 0.0-1.0:
 - beat_elements_score: What fraction of {num_elements} required elements are present? (0.0-1.0)
-- beat_execution_score: Does the output actually execute the "{missing_beat['name']}" beat's narrative function? (0.0=wrong beat/generic content, 0.5=partially, 1.0=clearly executes the beat)
+- beat_execution_score: Does the output actually execute the "{missing_beat["name"]}" beat's narrative function? (0.0=wrong beat/generic content, 0.5=partially, 1.0=clearly executes the beat)
 - must_not_score: Are the must-not items avoided? (1.0=all avoided, deduct proportionally for violations)
 - character_score: How consistent is character voice/behavior? (0.0=inconsistent, 1.0=perfect)
 - bridge_score: How well does it bridge the two beats? (0.0=no connection, 1.0=seamless)
@@ -167,7 +177,9 @@ JSON response:
 {{"beat_elements_score":float,"elements_found":int,"elements_total":{num_elements},"beat_execution_score":float,"must_not_score":float,"violations_found":int,"word_count_valid":{str(word_count_valid).lower()},"character_score":float,"bridge_score":float,"continuity_score":float,"evidence":"brief explanation of any deductions"}}"""
 
     @classmethod
-    def _build_beat_revision_eval(cls, task: dict[str, Any], output: str, word_count: int) -> str:
+    def _build_beat_revision_eval(
+        cls, task: dict[str, Any], output: str, word_count: int
+    ) -> str:
         """Build evaluation prompt for beat revision.
 
         Note: The generator was NOT told the flaw or fix - they had to identify it themselves.
@@ -182,12 +194,14 @@ JSON response:
         preserve_list = requirements["preserve"]
         preserve_str = ", ".join(preserve_list)
         num_preserve = len(preserve_list)
-        word_count_min, word_count_max = requirements['word_count']
+        word_count_min, word_count_max = requirements["word_count"]
         word_count_valid = word_count_min <= word_count <= word_count_max
 
         # Check if this is a "no flaw" task (correctly executed beat)
         ground_truth = task.get("ground_truth", {})
-        has_flaw = ground_truth.get("has_flaw", True)  # Default to True for backward compat
+        has_flaw = ground_truth.get(
+            "has_flaw", True
+        )  # Default to True for backward compat
 
         if not has_flaw:
             # Special evaluation for "no flaw" tasks
@@ -201,7 +215,9 @@ JSON response:
             pres_req = requirements["preservation_requirements"]
             required_preserved = pres_req.get("required_preserved", [])
             num_required_preserved = len(required_preserved)
-            required_preserved_str = "\n".join(f'  - "{item}"' for item in required_preserved)
+            required_preserved_str = "\n".join(
+                f'  - "{item}"' for item in required_preserved
+            )
             forbidden_changes = pres_req.get("forbidden_changes", [])
             forbidden_str = "\n".join(f"  - {item}" for item in forbidden_changes)
 
@@ -221,14 +237,14 @@ Forbidden changes:
 
         return f"""Theory: {theory} - {theory_def}
 
-ORIGINAL FLAWED SEGMENT: {task['flawed_segment']['content'].strip()[:800]}
+ORIGINAL FLAWED SEGMENT: {task["flawed_segment"]["content"].strip()[:800]}
 
-THE ACTUAL FLAW (model was NOT told this): {task['flawed_segment']['flaw_description'].strip()}
-THE REQUIRED FIX (model was NOT told this): {requirements['fix']}
+THE ACTUAL FLAW (model was NOT told this): {task["flawed_segment"]["flaw_description"].strip()}
+THE REQUIRED FIX (model was NOT told this): {requirements["fix"]}
 
 MODEL'S REVISION: {output}
 
-Beat "{task['beat_name']}": {task['beat_definition'].strip()[:600]}
+Beat "{task["beat_name"]}": {task["beat_definition"].strip()[:600]}
 
 Check: word_count={word_count} (valid={word_count_valid}, range={word_count_min}-{word_count_max})
 Preserve ({num_preserve} elements): {preserve_str}
@@ -246,7 +262,9 @@ JSON response:
 {{"diagnosis_score":float,"flaw_correction_score":float,"beat_satisfaction_score":float,"preservation_score":float,"preserved_count":int,"preserved_total":{num_preserve},"required_preserved_score":float,"required_preserved_count":int,"required_preserved_total":{num_required_preserved},"minimal_change_score":float,"word_count_valid":{str(word_count_valid).lower()},"quality_score":float,"evidence":"what flaw did the model appear to address? was it correct? how minimal were the changes?"}}"""
 
     @classmethod
-    def _build_no_flaw_revision_eval(cls, task: dict[str, Any], output: str, theory: str, theory_def: str) -> str:
+    def _build_no_flaw_revision_eval(
+        cls, task: dict[str, Any], output: str, theory: str, theory_def: str
+    ) -> str:
         """Build evaluation prompt for beat revision tasks where the segment is CORRECTLY executed.
 
         These tasks test whether models can recognize when NO revision is needed.
@@ -295,7 +313,9 @@ JSON response:
 {{"correct_diagnosis_score":float,"beat_understanding_score":float,"false_positive_avoided_score":float,"reasoning_quality_score":float,"model_said_no_revision":bool,"evidence":"Did model recognize segment was fine? What did model do/say?"}}"""
 
     @classmethod
-    def _build_constrained_continuation_eval(cls, task: dict[str, Any], output: str, word_count: int) -> str:
+    def _build_constrained_continuation_eval(
+        cls, task: dict[str, Any], output: str, word_count: int
+    ) -> str:
         """Build evaluation prompt for constrained continuation with partial credit scoring."""
         opening = task["story_opening"]
         constraints = task["continuation_constraints"]
@@ -311,12 +331,12 @@ JSON response:
         must_not_list = constraints["must_not_include"]
         num_must_not = len(must_not_list)
         must_not_str = "; ".join(must_not_list)
-        word_count_min, word_count_max = constraints['word_count']
+        word_count_min, word_count_max = constraints["word_count"]
         word_count_valid = word_count_min <= word_count <= word_count_max
 
         return f"""Theory: {theory} - {theory_def}
 
-OPENING: {opening['content'].strip()[:800]}
+OPENING: {opening["content"].strip()[:800]}
 
 CONTINUATION: {output}
 
@@ -325,8 +345,8 @@ Constraints to check:
 - word_count={word_count} (valid={word_count_valid}, range={word_count_min}-{word_count_max})
 - {num_must_include} MUST INCLUDE: {must_include_str}
 - {num_must_not} MUST NOT INCLUDE: {must_not_str}
-- Tone: {constraints['tone']}
-- Ending: {constraints['ending_requirement']}
+- Tone: {constraints["tone"]}
+- Ending: {constraints["ending_requirement"]}
 
 PARTIAL CREDIT SCORING - Count what's present/absent:
 - beats_score: How many of {num_beats} required beats are present? (count/{num_beats})
@@ -339,7 +359,9 @@ JSON response:
 {{"beats_present":int,"beats_total":{num_beats},"beats_score":float,"must_include_present":int,"must_include_total":{num_must_include},"must_include_score":float,"must_not_avoided":int,"must_not_total":{num_must_not},"must_not_score":float,"word_count_valid":{str(word_count_valid).lower()},"tone_score":float,"ending_score":float,"failed_constraints":["list specific failures"]}}"""
 
     @classmethod
-    def _build_theory_conversion_eval(cls, task: dict[str, Any], output: str, word_count: int) -> str:
+    def _build_theory_conversion_eval(
+        cls, task: dict[str, Any], output: str, word_count: int
+    ) -> str:
         """Build evaluation prompt for theory conversion with partial credit scoring."""
         original = task["original_segment"]
         target = task["target_requirements"]
@@ -354,14 +376,14 @@ JSON response:
         preserve_list = target["preserve"]
         num_preserve = len(preserve_list)
         preserve_str = ", ".join(preserve_list)
-        word_count_min, word_count_max = target['word_count']
+        word_count_min, word_count_max = target["word_count"]
         word_count_valid = word_count_min <= word_count <= word_count_max
 
         return f"""Convert {from_theory} -> {to_theory}
 Source: {from_theory_def}
 Target: {to_theory_def}
 
-ORIGINAL: {original['content'].strip()[:1000]}
+ORIGINAL: {original["content"].strip()[:1000]}
 
 CONVERTED: {output}
 
@@ -369,7 +391,7 @@ Criteria:
 - {num_beats} Target beats: {beats_str}
 - {num_preserve} Elements to preserve: {preserve_str}
 - word_count={word_count} (valid={word_count_valid}, range={word_count_min}-{word_count_max})
-- Tone: {target.get('tone', 'Maintain original')}
+- Tone: {target.get("tone", "Maintain original")}
 
 PARTIAL CREDIT SCORING:
 - beats_score: How many of {num_beats} target beats are present? (count/{num_beats})
@@ -381,7 +403,9 @@ JSON response:
 {{"beats_present":int,"beats_total":{num_beats},"beats_score":float,"preserved_count":int,"preserved_total":{num_preserve},"preservation_score":float,"word_count_valid":{str(word_count_valid).lower()},"structural_accuracy_score":float,"tone_score":float,"evidence":"brief explanation of any deductions"}}"""
 
     @classmethod
-    def _build_multi_beat_synthesis_eval(cls, task: dict[str, Any], output: str, word_count: int) -> str:
+    def _build_multi_beat_synthesis_eval(
+        cls, task: dict[str, Any], output: str, word_count: int
+    ) -> str:
         """Build evaluation prompt for multi-beat synthesis with partial credit scoring."""
         beats = task["beats_to_generate"]
         cross_constraints = task["cross_beat_constraints"]
@@ -399,13 +423,15 @@ JSON response:
             beats_reqs += f"Beat {i} ({beat['name']}, {len(reqs)} reqs): {reqs_str}\n"
 
         num_cross = len(cross_constraints)
-        cross_str = "; ".join(f"{c['type']}: {c['requirement']}" for c in cross_constraints)
-        word_count_min, word_count_max = task['word_count']
+        cross_str = "; ".join(
+            f"{c['type']}: {c['requirement']}" for c in cross_constraints
+        )
+        word_count_min, word_count_max = task["word_count"]
         word_count_valid = word_count_min <= word_count <= word_count_max
 
         return f"""Theory: {theory} - {theory_def}
 
-Context: {context['protagonist'][:300]} | {context['setting'][:200]} | {context['central_conflict'][:200]} | Tone: {context['tone']}
+Context: {context["protagonist"][:300]} | {context["setting"][:200]} | {context["central_conflict"][:200]} | Tone: {context["tone"]}
 
 GENERATED: {output}
 
@@ -434,7 +460,9 @@ def get_word_count_range(task: dict[str, Any]) -> tuple[int, int]:
     elif task_type == "beat_revision":
         return tuple(task.get("requirements", {}).get("word_count", [300, 500]))
     elif task_type == "constrained_continuation":
-        return tuple(task.get("continuation_constraints", {}).get("word_count", [400, 600]))
+        return tuple(
+            task.get("continuation_constraints", {}).get("word_count", [400, 600])
+        )
     elif task_type == "theory_conversion":
         return tuple(task.get("target_requirements", {}).get("word_count", [500, 800]))
     elif task_type == "multi_beat_synthesis":
@@ -511,7 +539,9 @@ class BenchmarkEvaluator:
                 error="Empty generation output",
             )
 
-        eval_prompt = EvalPromptBuilder.build_eval_prompt(task, generated_output, word_count)
+        eval_prompt = EvalPromptBuilder.build_eval_prompt(
+            task, generated_output, word_count
+        )
 
         try:
             response = self.client.chat.completions.create(
@@ -526,7 +556,9 @@ class BenchmarkEvaluator:
 
             response_text = response.choices[0].message.content or ""
             prompt_tokens = response.usage.prompt_tokens if response.usage else 0
-            completion_tokens = response.usage.completion_tokens if response.usage else 0
+            completion_tokens = (
+                response.usage.completion_tokens if response.usage else 0
+            )
 
             input_price, output_price = self.get_evaluator_pricing()
             cost = (prompt_tokens / 1_000_000) * input_price + (
@@ -686,14 +718,18 @@ class BenchmarkEvaluator:
             "by_model": {
                 model: {
                     "total": data["total"],
-                    "avg_score": statistics.mean(data["scores"]) if data["scores"] else 0.0,
+                    "avg_score": statistics.mean(data["scores"])
+                    if data["scores"]
+                    else 0.0,
                 }
                 for model, data in by_model.items()
             },
             "by_task_type": {
                 tt: {
                     "total": data["total"],
-                    "avg_score": statistics.mean(data["scores"]) if data["scores"] else 0.0,
+                    "avg_score": statistics.mean(data["scores"])
+                    if data["scores"]
+                    else 0.0,
                 }
                 for tt, data in by_task_type.items()
             },

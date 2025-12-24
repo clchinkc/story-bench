@@ -1,32 +1,40 @@
-evaluation_id: a0562891
+evaluation_id: 9368295f
 task_id: beat_revision_005
 generation_id: beat_revision_005_qwen/qwen3-235b-a22b_0
 task_type: beat_revision
 model: qwen/qwen3-235b-a22b
 sample_index: 0
 evaluator_model: google/gemini-2.5-flash
-evaluator_cost: 0
-timestamp: '2025-12-17T23:33:56.541963'
-success: false
-final_score: 0.0
+evaluator_cost: 0.0006448999999999999
+timestamp: '2025-12-24T19:35:45.994578'
+success: true
+final_score: 0.9082145659172463
 score_breakdown:
-  final_score: 0.0
+  final_score: 0.9082
   components:
     programmatic:
-      score: 0.0
+      score: 0.8164
       weight: 0.5
       breakdown:
-        word_count_score: 0.0
-        repetition_score: 0.0
+        word_count_score: 0.5411
+        repetition_score: 1.0
         slop_score: 1.0
-        overall: 0.0
+        overall: 0.8164
       word_count:
-        actual: 0
+        actual: 67
         target_range:
-        - 0
-        - 0
+        - 200
+        - 350
     llm_judge:
-      score: 0.0
+      score: 1.0
       weight: 0.5
-llm_results: {}
-error: calculate_final_score() got an unexpected keyword argument 'word_count_method'
+llm_results:
+  correct_diagnosis_score: 1.0
+  beat_understanding_score: 1.0
+  false_positive_avoided_score: 1.0
+  reasoning_quality_score: 1.0
+  model_said_no_revision: true
+  evidence: The model explicitly stated 'NO REVISION NEEDED' and provided a detailed
+    explanation of how the segment effectively executes the Dark Night of the Soul
+    beat, referencing all key requirements.
+error: null

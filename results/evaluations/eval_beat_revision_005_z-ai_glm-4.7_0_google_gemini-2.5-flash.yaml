@@ -1,0 +1,43 @@
+evaluation_id: edcac4c4
+task_id: beat_revision_005
+generation_id: beat_revision_005_z-ai/glm-4.7_0
+task_type: beat_revision
+model: z-ai/glm-4.7
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0008487
+timestamp: '2025-12-24T18:57:57.292379'
+success: true
+final_score: 0.532
+score_breakdown:
+  final_score: 0.532
+  components:
+    programmatic:
+      score: 0.944
+      weight: 0.5
+      breakdown:
+        word_count_score: 1.0
+        repetition_score: 0.84
+        slop_score: 1.0
+        overall: 0.944
+      word_count:
+        actual: 266
+        target_range:
+        - 200
+        - 350
+    llm_judge:
+      score: 0.12
+      weight: 0.5
+llm_results:
+  correct_diagnosis_score: 0.0
+  beat_understanding_score: 0.8
+  false_positive_avoided_score: 0.0
+  reasoning_quality_score: 0.0
+  model_said_no_revision: false
+  evidence: The model did not state 'NO REVISION NEEDED'. Instead, it provided a revised
+    segment, indicating it believed changes were necessary. While the revised segment
+    is good and largely maintains the original's intent, it still constitutes an unnecessary
+    revision of a correctly executed beat. The model's changes are subtle, mostly
+    enhancing existing elements rather than fixing flaws, which suggests it understood
+    the beat but still felt compelled to 'improve' it.
+error: null

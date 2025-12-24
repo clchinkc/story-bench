@@ -1,32 +1,103 @@
-evaluation_id: 166a0cc9
+evaluation_id: 441ecdcb
 task_id: constrained_continuation_002
 generation_id: constrained_continuation_002_openai/gpt-5_0
 task_type: constrained_continuation
 model: openai/gpt-5
 sample_index: 0
 evaluator_model: anthropic/claude-haiku-4.5
-evaluator_cost: 0
-timestamp: '2025-12-17T23:26:09.030954'
-success: false
-final_score: 0.0
+evaluator_cost: 0.03791
+timestamp: '2025-12-24T19:28:53.028143'
+success: true
+final_score: 0.8909908356815078
 score_breakdown:
-  final_score: 0.0
+  final_score: 0.891
   components:
     programmatic:
-      score: 0.0
+      score: 0.7895
       weight: 0.5
       breakdown:
-        word_count_score: 0.0
-        repetition_score: 0.0
+        word_count_score: 0.9112
+        repetition_score: 0.5
         slop_score: 1.0
-        overall: 0.0
+        overall: 0.7895
       word_count:
-        actual: 0
+        actual: 719
         target_range:
-        - 0
-        - 0
+        - 450
+        - 650
     llm_judge:
-      score: 0.0
+      score: 0.9925
       weight: 0.5
-llm_results: {}
-error: calculate_final_score() got an unexpected keyword argument 'word_count_method'
+llm_results:
+  beats_present: 2
+  beats_total: 2
+  beats_score: 1.0
+  must_include_present: 6
+  must_include_total: 6
+  must_include_score: 1.0
+  must_not_avoided: 4
+  must_not_total: 4
+  must_not_score: 1.0
+  word_count_valid: false
+  word_count: 719
+  word_count_range: 450-650
+  tone_score: 0.95
+  ending_score: 1.0
+  failed_constraints:
+  - 'Word count exceeds maximum: 719 words vs. 650-word limit (69 words over)'
+  analysis:
+    beats_present_detail: 'Fun and Games beat is fully realized in the continuation
+      with the viral moment, customer rush, and choreographed teamwork. Midpoint false
+      victory is expertly executed: the qualifier invitation arrives, creating apparent
+      triumph, immediately followed by the raised-stakes revelation (commissary kitchen,
+      propane variance, 500-plate capacity, surprise inspection at 8am, TikkaTex''s
+      superior setup).'
+    must_include_analysis:
+      viral_moment: Present - The 'Disaster Special' strategy, blogger's live stream,
+        and 'it slaps' endorsement create organic viral success
+      teamwork_under_pressure: Present - Detailed choreography of Priya and Dev working
+        as 'one organism,' with specific examples (naan folding, paneer sound-reading,
+        improvised warming tray, Wi-Fi sprint)
+      rival_competitor: Present - Roxy and TikkaTex introduced as formidable competitor
+        with gleaming second rig, competitive but cordial dynamic
+      midpoint_false_victory: Present - Championship qualifier invitation feels like
+        triumph, immediately undercut by impossible requirements and TikkaTex's superior
+        resources
+      genuine_partnership_connection: Present - The elbow bump moment ('It steadied
+        her more than the water'), Dev's 'You dream. I spreadsheet' line, and their
+        synchronized shorthand communication
+      complication_hint: Present - The almost-empty masala jar (rationed without admitting
+        it), foreshadowing supply chain vulnerability; also the gap between their
+        single griddle and TikkaTex's double rig
+    must_not_analysis:
+      no_romance: Successfully avoided - relationship remains professional partnership
+      no_complete_failure: Successfully avoided - business succeeds on opening day
+      no_dev_betrayal: Successfully avoided - Dev remains fully committed and collaborative
+      no_external_savior: Successfully avoided - success is earned through their own
+        strategy and effort
+    tone_assessment: Upbeat and energetic throughout (bhangra remixes, whooping, hand
+      cramps, soot-streaked faces) with building tension expertly woven in (empty
+      masala jar, Roxy's competitive presence, final message's 'official and unsmiling'
+      tone). The undercurrent of tension crescendos perfectly at the ending.
+    ending_assessment: 'Perfectly executed Midpoint beat. Apparent success (qualifier
+      slot, viral validation, sold-out cooler) immediately followed by raised stakes
+      (impossible requirements, surprise inspection, superior competitor). Final line
+      crystallizes the tension: ''victory tasted like smoke and cardamom—and the stakes
+      rose like heat.'' Ends exactly where required.'
+    strengths:
+    - Exceptional sensory detail and pacing
+    - Natural dialogue that reveals character
+    - Seamless integration of all required elements
+    - Strong voice and narrative momentum
+    - Perfect structural execution of both beats
+    weakness:
+    - 'Word count violation: 69 words over limit (719 vs. 650 max)'
+  overall_score: 0.85
+  score_rationale: 'Exceptional execution of story structure, character dynamics,
+    and all required elements. Tone and ending are flawless. The sole issue is the
+    word count overage, which is a clear, measurable constraint violation. Despite
+    this technical failure, the quality of writing and beat execution is professional-grade.
+    Score reflects: perfect beats (1.0) × perfect must-includes (1.0) × perfect must-nots
+    (1.0) × excellent tone (0.95) × perfect ending (1.0) × word count penalty (0.85
+    for 10.6% overage) = 0.85 overall.'
+error: null

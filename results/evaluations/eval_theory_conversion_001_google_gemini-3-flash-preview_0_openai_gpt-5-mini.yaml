@@ -1,33 +1,51 @@
-evaluation_id: b731370f
+evaluation_id: 11c792e2
 task_id: theory_conversion_001
 generation_id: theory_conversion_001_google/gemini-3-flash-preview_0
 task_type: theory_conversion
 model: google/gemini-3-flash-preview
 sample_index: 0
 evaluator_model: openai/gpt-5-mini
-evaluator_cost: 0.002884
-timestamp: '2025-12-18T23:36:11.885789'
-success: false
-final_score: 0.0
+evaluator_cost: 0.0023669999999999997
+timestamp: '2025-12-24T19:44:50.776945'
+success: true
+final_score: 0.9106259370314842
 score_breakdown:
-  final_score: 0.0
+  final_score: 0.9106
   components:
     programmatic:
-      score: 0.0
+      score: 0.8213
       weight: 0.5
       breakdown:
-        word_count_score: 0.0
-        repetition_score: 0.0
-        slop_score: 1.0
-        overall: 0.0
+        word_count_score: 1.0
+        repetition_score: 0.5
+        slop_score: 0.985
+        overall: 0.8213
       word_count:
-        actual: 0
+        actual: 650
         target_range:
-        - 0
-        - 0
+        - 500
+        - 700
     llm_judge:
-      score: 0.0
+      score: 1.0
       weight: 0.5
 llm_results:
-  raw_response: ''
-error: Failed to parse JSON from evaluator response
+  beats_present: 5
+  beats_total: 5
+  beats_score: 1.0
+  preserved_count: 6
+  preserved_total: 6
+  preservation_score: 1.0
+  word_count_valid: true
+  structural_accuracy_score: 1.0
+  tone_score: 1.0
+  evidence: 'All five Freytag beats are clearly present: Exposition (Samira''s world/reputation
+    and the impossible protein), Rising Action (containment, escalating cases, investigation
+    pointing to Nexus), Climax (Nexus confrontation and Samira''s decision to dump
+    the data), Falling Action (press conference and immediate legal/federal fallout,
+    vaccine deployment), Denouement (six-week-later containment, Samira''s exile and
+    new equilibrium). All six required elements are preserved (Samira, engineered
+    virus discovery, Raj, Nexus Biotech, public release of the cure, Samira''s career
+    sacrifice). The supplied text length (~666 words) falls within the 500–700 range,
+    and the tone consistently matches a medical thriller with ethical weight. No deductions
+    applied.'
+error: null

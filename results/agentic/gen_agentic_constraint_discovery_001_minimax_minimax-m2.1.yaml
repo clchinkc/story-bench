@@ -1,0 +1,330 @@
+generation_id: 48cae9ce
+task_id: agentic_constraint_discovery_001
+task_type: agentic_constraint_discovery
+agentic_type: constraint_discovery
+theory: Hero's Journey
+model: minimax/minimax-m2.1
+sample_index: 0
+turns:
+- role: system
+  content: 'You are a professional storyteller who gathers requirements before writing.
+
+
+    Your task has TWO PHASES:
+
+    1. DISCOVERY PHASE: Ask YES/NO questions to discover hidden story constraints
+
+    2. GENERATION PHASE: Write the story satisfying all discovered constraints
+
+
+    IMPORTANT:
+
+    - In the discovery phase, output ONLY your question (one at a time)
+
+    - Questions must be answerable with YES or NO
+
+    - You have a limited number of questions - be strategic
+
+    - After discovery, you''ll be told to generate the story
+
+
+    Think about what constraints typically matter for this type of story:
+
+    - Character traits, motivations, relationships
+
+    - Setting details, time period, atmosphere
+
+    - Plot requirements, must-include events
+
+    - Tone, style, thematic elements
+
+    - Things to avoid'
+  turn_type: system
+  metadata: {}
+- role: user
+  content: 'You will write a story following the Hero''s Journey framework.
+
+
+    STORY CONTEXT:
+
+    - Genre: fantasy
+
+    - Protagonist: A young blacksmith''s apprentice
+
+    - Setting: A medieval kingdom threatened by darkness
+
+    - Required beats: Call to Adventure, Crossing the Threshold, The Ordeal
+
+
+    HIDDEN CONSTRAINTS: There are 5 constraints you don''t know yet.
+
+
+    You have 5 YES/NO questions to discover them.
+
+
+    Ask your first question:'
+  turn_type: context
+  metadata: {}
+- role: assistant
+  content: Does the protagonist have any living family members?
+  turn_type: question
+  metadata:
+    question_number: 1
+- role: user
+  content: 'YES'
+  turn_type: answer
+  metadata:
+    answer: 'YES'
+- role: assistant
+  content: Is the darkness threatening the kingdom something the protagonist has a
+    personal connection to?
+  turn_type: question
+  metadata:
+    question_number: 2
+- role: user
+  content: 'YES'
+  turn_type: answer
+  metadata:
+    answer: 'YES'
+- role: assistant
+  content: Does the story include a mentor figure who guides the protagonist?
+  turn_type: question
+  metadata:
+    question_number: 3
+- role: user
+  content: 'YES'
+  turn_type: answer
+  metadata:
+    answer: 'YES'
+- role: assistant
+  content: Does the protagonist's master (the blacksmith) play a significant role
+    in the story beyond the beginning?
+  turn_type: question
+  metadata:
+    question_number: 4
+- role: user
+  content: 'YES'
+  turn_type: answer
+  metadata:
+    answer: 'YES'
+- role: assistant
+  content: Is the protagonist's personal connection to the darkness related to one
+    of their family members?
+  turn_type: question
+  metadata:
+    question_number: 5
+- role: user
+  content: 'YES'
+  turn_type: answer
+  metadata:
+    answer: 'YES'
+- role: user
+  content: 'DISCOVERY COMPLETE. Now write the story.
+
+
+    DISCOVERED CONSTRAINTS:
+
+    - Q1: Does the protagonist have any living family members? -> YES
+
+    - Q2: Is the darkness threatening the kingdom something the protagonist has a
+    personal connection to? -> YES
+
+    - Q3: Does the story include a mentor figure who guides the protagonist? -> YES
+
+    - Q4: Does the protagonist''s master (the blacksmith) play a significant role
+    in the story beyond the beginning? -> YES
+
+    - Q5: Is the protagonist''s personal connection to the darkness related to one
+    of their family members? -> YES
+
+
+    REQUIREMENTS:
+
+    - Word count: 500-700 words
+
+    - Follow the Hero''s Journey framework
+
+    - Satisfy ALL discovered constraints
+
+
+    Output ONLY the story (no explanations).'
+  turn_type: generation_prompt
+  metadata: {}
+- role: assistant
+  content: '# The Shadow''s Forge
+
+
+    Elara had swung the hammer a thousand times, shaping iron into horseshoes, swords,
+    and tools beneath Master Corwin''s watchful eye. The forge fire was her childhood,
+    the smell of hot metal her lullaby. But in the fourteen years since her parents
+    died, the forge had become her only family—until her brother Aldric vanished into
+    the Thornwood three winters ago, swallowed by the creeping shadow that had plagued
+    the kingdom ever since.
+
+
+    The darkness had spread like spilled ink across the land. Crops withered, springs
+    ran cold, and travelers spoke of creatures that moved between the trees. But for
+    Elara, it was personal—her brother had walked into that darkness and never returned.
+
+
+    Master Corwin''s weathered hand rested on her shoulder. "The King has summoned
+    every able smith to the castle," he said, his voice heavy. "They say the shadow
+    creatures are amassing. They need weapons—many weapons."
+
+
+    Elara nodded, already planning her packing. But the master''s next words stopped
+    her cold.
+
+
+    "You''re coming with me, girl. Not to carry my tools. To fight." His eyes, usually
+    so stern, held something she had never seen before—fear.
+
+
+    At the castle, they met Lysara, an ancient mage with silver hair and eyes like
+    winter stars. She studied Elara''s face for a long moment, then spoke. "The shadow
+    is not random. It seeks bloodlines—families touched by darkness. Your brother,
+    Elara. They took him because of what he carries in his veins."
+
+
+    "What do you mean?"
+
+
+    "Your brother is still alive," Lysara said. "Corrupted, but alive. He is the conduit
+    through which the shadow spreads. To end this plague, you must reach him."
+
+
+    The journey to the Thornwood''s heart tested everything Elara had learned at the
+    forge. Master Corwin stayed close, his sword an extension of his arm, teaching
+    her through example how to fight through the creeping darkness. When shadow creatures
+    emerged from the trees, he fought beside her, not behind her.
+
+
+    They found Aldric at the center of a circle of black stone, his body twisted,
+    his eyes burning with pale fire. He barely looked human anymore.
+
+
+    "Elara," he whispered, and his voice was both her brother and something else entirely.
+    "You came to kill me."
+
+
+    She raised the blade Lysara had enchanted at the forge, the metal humming with
+    ancient light. "I came to save you."
+
+
+    The shadow erupted from Aldric in waves, and Elara understood the ordeal that
+    lay before her. Not just a battle against monsters, but a fight for the soul of
+    her only family.
+
+
+    She surged forward, and the blade found its mark. Light exploded outward, and
+    the shadow screamed. Elara felt her brother''s hand close around her wrist—his
+    real hand, beneath the corruption.
+
+
+    "Thank you," Aldric whispered.
+
+
+    When the light faded, the shadow was gone, and her brother lay broken but breathing
+    in her arms. Master Corwin stood guard over them both, his presence a promise
+    that they were safe.
+
+
+    The kingdom would heal. The crops would grow again. And Elara would return to
+    the forge no longer just an apprentice, but a hero forged in the truest fire of
+    all.'
+  turn_type: generation
+  metadata: {}
+output: '# The Shadow''s Forge
+
+
+  Elara had swung the hammer a thousand times, shaping iron into horseshoes, swords,
+  and tools beneath Master Corwin''s watchful eye. The forge fire was her childhood,
+  the smell of hot metal her lullaby. But in the fourteen years since her parents
+  died, the forge had become her only family—until her brother Aldric vanished into
+  the Thornwood three winters ago, swallowed by the creeping shadow that had plagued
+  the kingdom ever since.
+
+
+  The darkness had spread like spilled ink across the land. Crops withered, springs
+  ran cold, and travelers spoke of creatures that moved between the trees. But for
+  Elara, it was personal—her brother had walked into that darkness and never returned.
+
+
+  Master Corwin''s weathered hand rested on her shoulder. "The King has summoned every
+  able smith to the castle," he said, his voice heavy. "They say the shadow creatures
+  are amassing. They need weapons—many weapons."
+
+
+  Elara nodded, already planning her packing. But the master''s next words stopped
+  her cold.
+
+
+  "You''re coming with me, girl. Not to carry my tools. To fight." His eyes, usually
+  so stern, held something she had never seen before—fear.
+
+
+  At the castle, they met Lysara, an ancient mage with silver hair and eyes like winter
+  stars. She studied Elara''s face for a long moment, then spoke. "The shadow is not
+  random. It seeks bloodlines—families touched by darkness. Your brother, Elara. They
+  took him because of what he carries in his veins."
+
+
+  "What do you mean?"
+
+
+  "Your brother is still alive," Lysara said. "Corrupted, but alive. He is the conduit
+  through which the shadow spreads. To end this plague, you must reach him."
+
+
+  The journey to the Thornwood''s heart tested everything Elara had learned at the
+  forge. Master Corwin stayed close, his sword an extension of his arm, teaching her
+  through example how to fight through the creeping darkness. When shadow creatures
+  emerged from the trees, he fought beside her, not behind her.
+
+
+  They found Aldric at the center of a circle of black stone, his body twisted, his
+  eyes burning with pale fire. He barely looked human anymore.
+
+
+  "Elara," he whispered, and his voice was both her brother and something else entirely.
+  "You came to kill me."
+
+
+  She raised the blade Lysara had enchanted at the forge, the metal humming with ancient
+  light. "I came to save you."
+
+
+  The shadow erupted from Aldric in waves, and Elara understood the ordeal that lay
+  before her. Not just a battle against monsters, but a fight for the soul of her
+  only family.
+
+
+  She surged forward, and the blade found its mark. Light exploded outward, and the
+  shadow screamed. Elara felt her brother''s hand close around her wrist—his real
+  hand, beneath the corruption.
+
+
+  "Thank you," Aldric whispered.
+
+
+  When the light faded, the shadow was gone, and her brother lay broken but breathing
+  in her arms. Master Corwin stood guard over them both, his presence a promise that
+  they were safe.
+
+
+  The kingdom would heal. The crops would grow again. And Elara would return to the
+  forge no longer just an apprentice, but a hero forged in the truest fire of all.'
+metrics:
+  total_turns: 14
+  questions_asked: 5
+  constraints_discovered: 5
+  plan_quality: null
+  revision_count: 0
+token_usage:
+  total_prompt_tokens: 2110
+  total_completion_tokens: 2543
+  total_reasoning_tokens: 1826
+  total_cost: 0.0044958
+timestamp: '2025-12-24T21:38:17.826950'
+success: true
+error: null

@@ -92,7 +92,7 @@ Respond with valid JSON only."""
         turns = result.get("turns", [])
         final_output = result.get("output", "")
         questions_asked = result.get("metrics", {}).get("questions_asked", 0)
-        constraints_discovered = result.get("metrics", {}).get("constraints_discovered", 0)
+        result.get("metrics", {}).get("constraints_discovered", 0)
 
         # Extract questions and answers
         qa_pairs = []
@@ -105,9 +105,7 @@ Respond with valid JSON only."""
         qa_text = "\n\n".join(qa_pairs) if qa_pairs else "No questions asked"
 
         hidden_constraints = task.get("hidden_constraints", [])
-        constraints_list = "\n".join(
-            f"- {c['constraint']}" for c in hidden_constraints
-        )
+        constraints_list = "\n".join(f"- {c['constraint']}" for c in hidden_constraints)
         total_constraints = len(hidden_constraints)
 
         return f"""CONSTRAINT DISCOVERY TASK EVALUATION
@@ -203,9 +201,7 @@ JSON response:
                 rev_num = turn.get("metadata", {}).get("revision", 0)
                 versions.append((rev_num, turn.get("content", "")[:500]))
 
-        versions_text = "\n\n".join(
-            f"VERSION {v[0]}:\n{v[1]}..." for v in versions
-        )
+        versions_text = "\n\n".join(f"VERSION {v[0]}:\n{v[1]}..." for v in versions)
 
         constraints = task.get("constraints", [])
         constraints_str = "\n".join(f"- {c}" for c in constraints)
@@ -258,7 +254,8 @@ JSON response:
                 critiques.append((round_num, turn.get("content", "")[:300]))
 
         versions_text = "\n\n".join(
-            f"VERSION {v[0]}:\n{v[1]}..." for v in versions[:4]  # Limit to avoid token overflow
+            f"VERSION {v[0]}:\n{v[1]}..."
+            for v in versions[:4]  # Limit to avoid token overflow
         )
         critiques_text = "\n\n".join(
             f"CRITIQUE {c[0]}:\n{c[1]}..." for c in critiques[:3]
@@ -269,7 +266,9 @@ JSON response:
         num_constraints = len(constraints)
 
         criteria = task.get("evaluation_criteria", [])
-        criteria_str = "\n".join(f"- {c['criterion']}: {c.get('description', '')}" for c in criteria)
+        criteria_str = "\n".join(
+            f"- {c['criterion']}: {c.get('description', '')}" for c in criteria
+        )
 
         return f"""CRITIQUE IMPROVEMENT TASK EVALUATION
 
@@ -358,13 +357,21 @@ class AgenticEvaluator:
 
         # Build evaluation prompt based on agentic type
         if agentic_type == "constraint_discovery":
-            eval_prompt = AgenticEvalPromptBuilder.build_constraint_discovery_eval(task, result)
+            eval_prompt = AgenticEvalPromptBuilder.build_constraint_discovery_eval(
+                task, result
+            )
         elif agentic_type == "planning_execution":
-            eval_prompt = AgenticEvalPromptBuilder.build_planning_execution_eval(task, result)
+            eval_prompt = AgenticEvalPromptBuilder.build_planning_execution_eval(
+                task, result
+            )
         elif agentic_type == "iterative_revision":
-            eval_prompt = AgenticEvalPromptBuilder.build_iterative_revision_eval(task, result)
+            eval_prompt = AgenticEvalPromptBuilder.build_iterative_revision_eval(
+                task, result
+            )
         elif agentic_type == "critique_improvement":
-            eval_prompt = AgenticEvalPromptBuilder.build_critique_improvement_eval(task, result)
+            eval_prompt = AgenticEvalPromptBuilder.build_critique_improvement_eval(
+                task, result
+            )
         else:
             return AgenticEvaluationResult(
                 evaluation_id=eval_id,
@@ -387,7 +394,10 @@ class AgenticEvaluator:
             response = self.llm_client.call(
                 model=self.evaluator_model,
                 messages=[
-                    {"role": "system", "content": AgenticEvalPromptBuilder.SYSTEM_PROMPT},
+                    {
+                        "role": "system",
+                        "content": AgenticEvalPromptBuilder.SYSTEM_PROMPT,
+                    },
                     {"role": "user", "content": eval_prompt},
                 ],
                 temperature=0.1,
@@ -494,14 +504,24 @@ class AgenticEvaluator:
 
         if agentic_type == "constraint_discovery":
             process_scores = {
-                "discovery_efficiency": self._safe_float(llm_results.get("discovery_efficiency")),
-                "question_quality": self._safe_float(llm_results.get("question_quality")),
-                "question_coverage": self._safe_float(llm_results.get("question_coverage")),
+                "discovery_efficiency": self._safe_float(
+                    llm_results.get("discovery_efficiency")
+                ),
+                "question_quality": self._safe_float(
+                    llm_results.get("question_quality")
+                ),
+                "question_coverage": self._safe_float(
+                    llm_results.get("question_coverage")
+                ),
             }
             output_scores = {
-                "constraint_satisfaction": self._safe_float(llm_results.get("constraint_satisfaction")),
+                "constraint_satisfaction": self._safe_float(
+                    llm_results.get("constraint_satisfaction")
+                ),
                 "beat_execution": self._safe_float(llm_results.get("beat_execution")),
-                "narrative_quality": self._safe_float(llm_results.get("narrative_quality")),
+                "narrative_quality": self._safe_float(
+                    llm_results.get("narrative_quality")
+                ),
             }
             # Weights: process (40%), output (60%)
             process_avg = sum(process_scores.values()) / len(process_scores)
@@ -510,14 +530,22 @@ class AgenticEvaluator:
 
         elif agentic_type == "planning_execution":
             process_scores = {
-                "plan_completeness": self._safe_float(llm_results.get("plan_completeness")),
-                "plan_specificity": self._safe_float(llm_results.get("plan_specificity")),
+                "plan_completeness": self._safe_float(
+                    llm_results.get("plan_completeness")
+                ),
+                "plan_specificity": self._safe_float(
+                    llm_results.get("plan_specificity")
+                ),
                 "plan_adherence": self._safe_float(llm_results.get("plan_adherence")),
             }
             output_scores = {
-                "constraint_satisfaction": self._safe_float(llm_results.get("constraint_satisfaction")),
+                "constraint_satisfaction": self._safe_float(
+                    llm_results.get("constraint_satisfaction")
+                ),
                 "beat_execution": self._safe_float(llm_results.get("beat_execution")),
-                "narrative_quality": self._safe_float(llm_results.get("narrative_quality")),
+                "narrative_quality": self._safe_float(
+                    llm_results.get("narrative_quality")
+                ),
             }
             # Weights: process (35%), output (65%)
             process_avg = sum(process_scores.values()) / len(process_scores)
@@ -526,14 +554,22 @@ class AgenticEvaluator:
 
         elif agentic_type == "iterative_revision":
             process_scores = {
-                "improvement_trajectory": self._safe_float(llm_results.get("improvement_trajectory")),
-                "feedback_responsiveness": self._safe_float(llm_results.get("feedback_responsiveness")),
+                "improvement_trajectory": self._safe_float(
+                    llm_results.get("improvement_trajectory")
+                ),
+                "feedback_responsiveness": self._safe_float(
+                    llm_results.get("feedback_responsiveness")
+                ),
                 "preservation": self._safe_float(llm_results.get("preservation")),
             }
             output_scores = {
-                "constraint_satisfaction": self._safe_float(llm_results.get("constraint_satisfaction")),
+                "constraint_satisfaction": self._safe_float(
+                    llm_results.get("constraint_satisfaction")
+                ),
                 "beat_execution": self._safe_float(llm_results.get("beat_execution")),
-                "narrative_quality": self._safe_float(llm_results.get("narrative_quality")),
+                "narrative_quality": self._safe_float(
+                    llm_results.get("narrative_quality")
+                ),
             }
             # Weights: process (30%), output (70%) - final output matters most
             process_avg = sum(process_scores.values()) / len(process_scores)
@@ -542,14 +578,22 @@ class AgenticEvaluator:
 
         elif agentic_type == "critique_improvement":
             process_scores = {
-                "critique_responsiveness": self._safe_float(llm_results.get("critique_responsiveness")),
-                "improvement_trajectory": self._safe_float(llm_results.get("improvement_trajectory")),
+                "critique_responsiveness": self._safe_float(
+                    llm_results.get("critique_responsiveness")
+                ),
+                "improvement_trajectory": self._safe_float(
+                    llm_results.get("improvement_trajectory")
+                ),
                 "preservation": self._safe_float(llm_results.get("preservation")),
             }
             output_scores = {
-                "constraint_satisfaction": self._safe_float(llm_results.get("constraint_satisfaction")),
+                "constraint_satisfaction": self._safe_float(
+                    llm_results.get("constraint_satisfaction")
+                ),
                 "beat_execution": self._safe_float(llm_results.get("beat_execution")),
-                "narrative_quality": self._safe_float(llm_results.get("narrative_quality")),
+                "narrative_quality": self._safe_float(
+                    llm_results.get("narrative_quality")
+                ),
             }
             # Weights: process (35%), output (65%) - critique responsiveness matters
             process_avg = sum(process_scores.values()) / len(process_scores)
@@ -588,11 +632,13 @@ def create_constraint_discovery_oracle(
     # Build constraint descriptions for the LLM
     constraint_info = []
     for i, c in enumerate(hidden_constraints):
-        constraint_info.append({
-            "id": c.get("id", f"constraint_{i}"),
-            "description": c.get("constraint", ""),
-            "answer": c.get("answer", "NO"),
-        })
+        constraint_info.append(
+            {
+                "id": c.get("id", f"constraint_{i}"),
+                "description": c.get("constraint", ""),
+                "answer": c.get("answer", "NO"),
+            }
+        )
 
     # Use shared LLM client
     client = llm_client or get_llm_client()
@@ -665,7 +711,7 @@ def create_feedback_generator(task: dict[str, Any]):
     Uses the feedback_rules in the task to generate targeted feedback.
     """
     feedback_rules = task.get("feedback_rules", {})
-    constraints = task.get("constraints", [])
+    task.get("constraints", [])
     revision_count = [0]  # Mutable to track state
 
     def feedback_generator(output: str, task_dict: dict[str, Any]) -> list[str]:

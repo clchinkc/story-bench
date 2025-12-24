@@ -1,0 +1,53 @@
+evaluation_id: 69420dd4
+task_id: multi_beat_synthesis_003
+generation_id: multi_beat_synthesis_003_minimax/minimax-m2.1_0
+task_type: multi_beat_synthesis
+model: minimax/minimax-m2.1
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0013127
+timestamp: '2025-12-24T22:18:31.625989'
+success: true
+final_score: 0.776047809254845
+score_breakdown:
+  final_score: 0.776
+  components:
+    programmatic:
+      score: 0.8106
+      weight: 0.5
+      breakdown:
+        word_count_score: 0.964
+        repetition_score: 0.5
+        slop_score: 1.0
+        overall: 0.8106
+      word_count:
+        actual: 635
+        target_range:
+        - 700
+        - 1000
+    llm_judge:
+      score: 0.7415
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 10
+  beat_reqs_total: 15
+  beat_requirements_score: 0.66
+  cross_beat_satisfied: 3
+  cross_beat_total: 4
+  cross_beat_score: 0.75
+  word_count_valid: false
+  context_score: 0.9
+  coherence_score: 0.8
+  failed_items:
+  - 'Beat 1: Moments of humor and style (minimal)'
+  - 'Beat 1: Things going according to plan (mostly) (plan immediately derailed)'
+  - 'Beat 2: False victory: a key objective achieved (no objective achieved, plan
+    immediately derailed)'
+  - 'Beat 2: The nature of the heist changes (from simple theft to something more)
+    (not fully developed, more of a direct confrontation)'
+  - 'Beat 3: Security closing in on the crew (implied, but not explicitly shown)'
+  - 'Beat 3: Team friction or trust issues surface (not explicitly shown, Miri gives
+    orders)'
+  - 'Cross-beat constraint: Chekhov''s Gun (ventilation shaft mentioned, but not used
+    as a critical payoff)'
+error: null

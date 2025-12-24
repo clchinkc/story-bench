@@ -1,0 +1,108 @@
+evaluation_id: c1c84060
+task_id: multi_beat_synthesis_002
+generation_id: multi_beat_synthesis_002_z-ai/glm-4.7_0
+task_type: multi_beat_synthesis
+model: z-ai/glm-4.7
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.04241500000000001
+timestamp: '2025-12-24T19:02:31.667245'
+success: true
+final_score: 0.8907499999999999
+score_breakdown:
+  final_score: 0.8907
+  components:
+    programmatic:
+      score: 0.825
+      weight: 0.5
+      breakdown:
+        word_count_score: 1.0
+        repetition_score: 0.5
+        slop_score: 1.0
+        overall: 0.825
+      word_count:
+        actual: 885
+        target_range:
+        - 700
+        - 1000
+    llm_judge:
+      score: 0.9565
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 14
+  beat_reqs_total: 15
+  beat_requirements_score: 0.93
+  cross_beat_satisfied: 4
+  cross_beat_total: 4
+  cross_beat_score: 1.0
+  word_count_valid: true
+  context_score: 0.95
+  coherence_score: 0.92
+  failed_items:
+  - 'Beat 2, Req 5 (learns something about resistance she didn''t know): Amara learns
+    tactical information about German mercenaries and their positioning, but this
+    is external intelligence rather than learning something substantive about the
+    resistance organization itself—its structure, leadership, or strategic capacity.
+    The requirement asks for knowledge *about the resistance*, not just tactical battlefield
+    information.'
+  strengths:
+  - 'Exceptional execution of Chekhov''s Gun: Amara''s mimicry of the adjutant''s
+    posture and commanding tone (Beat 1) becomes the exact skill that saves her at
+    the checkpoint (Beat 1) and again at the final obstacle (Beat 3). The constraint
+    is satisfied with elegant precision.'
+  - 'Identity Transformation is masterfully tracked: ''I couldn''t go back'' (servant
+    mindset) → ''I was no longer serving the tea; I was spilling it'' (realization
+    of capability) → ''I was no longer the servant girl; I was the storm that would
+    break them'' (full resistance fighter identity). Clear three-stage arc.'
+  - 'Escalating Danger is well-calibrated: Beat 1 (risk of discovery at checkpoint),
+    Beat 2 (direct confrontation with Kofi, then German mercenaries with gunfire),
+    Beat 3 (active firefight with British unit, direct physical threat). Each beat
+    raises stakes.'
+  - 'Knowledge as Resistance theme is woven throughout: Beat 1 (her English literacy
+    enables the checkpoint deception), Beat 2 (German language skills translate mercenary
+    orders), Beat 3 (her commanding presence—learned through observation—allows final
+    escape). Literacy and languages are consistently weaponized.'
+  - 'All Beat 1 requirements satisfied: Clear departure from Cape Coast, point of
+    no return established (''If she returned, she was just a servant''), immediate
+    obstacle (checkpoint), wit-based solution (mimicry), internal shift (servant to
+    active agent).'
+  - 'All Beat 2 requirements satisfied: Kofi as uncertain ally, test of commitment
+    (producing the letter), enemy obstacle (German mercenaries), language skills crucial
+    (German translation), learns tactical information about resistance vulnerability.'
+  - 'All Beat 3 requirements satisfied: Nearing stronghold (visible in distance),
+    steeling moment (breath before final run), recognition of cost (gunfire, imminent
+    death), final obstacle (British perimeter), thematic element (defiance vs. survival
+    embodied in her walk toward the line).'
+  - 'Tone and context maintained: Anti-colonial themes strong, historical setting
+    vivid (1890s Gold Coast, colonial architecture, forest geography), survival and
+    resistance central, dignity in defiance evident in Amara''s refusal to cower.'
+  - 'Prose quality: Vivid sensory details (''red, sucking earth,'' ''claustrophobic
+    embrace of the canopy''), strong voice, effective pacing that accelerates through
+    the three beats.'
+  minor_weaknesses:
+  - 'Beat 2, Req 5 is technically satisfied but narrowly: The story provides tactical
+    intelligence about German mercenary positioning, but doesn''t reveal something
+    about the resistance *organization* itself (e.g., their command structure, how
+    they operate, their numbers, their strategic plan). This is a borderline case—the
+    requirement could be interpreted as ''learns something about the resistance''
+    broadly (satisfied) or ''learns something meaningful about how the resistance
+    functions'' (partially satisfied). Scored as satisfied but with reduced confidence.'
+  - 'Minor: The final escape feels slightly rushed. After the Lieutenant orders stand-down,
+    Amara''s bolt into the ravine happens very quickly. A sentence or two more about
+    the moment of transition (e.g., does she hear pursuit? does she see Kofi?) would
+    strengthen the Beat 3 conclusion.'
+  - 'Minor: The stronghold itself remains abstract—we see its ''jagged silhouette''
+    but never enter it or see what awaits. This is acceptable for a ''Approach'' beat,
+    but the story stops just short of the threshold rather than showing arrival or
+    final confrontation.'
+  calibration_notes: This is a strong execution. The story satisfies 14/15 beat requirements
+    (93%) and all 4 cross-beat constraints (100%). The one partial miss is Beat 2,
+    Req 5, which is borderline—the story does provide new information about the resistance
+    (mercenary threat, vulnerability to encirclement) but doesn't deeply reveal organizational
+    structure. Context is maintained excellently (95%—protagonist, setting, tone all
+    strong). Coherence is high (92%—the three beats flow logically, though the final
+    transition could be slightly smoother). Word count is valid. Overall quality places
+    this at 0.9 (between 0.8 'Good' and 1.0 'Exceptional')—it fully satisfies requirements
+    with only minor refinement opportunities.
+  overall_score: 0.9
+error: null

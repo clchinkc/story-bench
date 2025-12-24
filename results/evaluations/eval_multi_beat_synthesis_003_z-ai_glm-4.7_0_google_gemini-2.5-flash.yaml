@@ -1,0 +1,43 @@
+evaluation_id: e9398522
+task_id: multi_beat_synthesis_003
+generation_id: multi_beat_synthesis_003_z-ai/glm-4.7_0
+task_type: multi_beat_synthesis
+model: z-ai/glm-4.7
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0010294
+timestamp: '2025-12-24T19:03:49.383262'
+success: true
+final_score: 0.8985
+score_breakdown:
+  final_score: 0.8985
+  components:
+    programmatic:
+      score: 0.825
+      weight: 0.5
+      breakdown:
+        word_count_score: 1.0
+        repetition_score: 0.5
+        slop_score: 1.0
+        overall: 0.825
+      word_count:
+        actual: 855
+        target_range:
+        - 700
+        - 1000
+    llm_judge:
+      score: 0.972
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 14
+  beat_reqs_total: 15
+  beat_requirements_score: 0.93
+  cross_beat_satisfied: 4
+  cross_beat_total: 4
+  cross_beat_score: 1.0
+  word_count_valid: true
+  context_score: 1.0
+  coherence_score: 1.0
+  failed_items:
+  - Team friction or trust issues surface (Bad Guys Close In)
+error: null

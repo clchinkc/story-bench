@@ -1,32 +1,66 @@
-evaluation_id: 0cb1ce48
+evaluation_id: eae2891b
 task_id: beat_revision_001
 generation_id: beat_revision_001_openai/o3-mini_0
 task_type: beat_revision
 model: openai/o3-mini
 sample_index: 0
 evaluator_model: anthropic/claude-haiku-4.5
-evaluator_cost: 0
-timestamp: '2025-12-17T23:35:45.717915'
-success: false
-final_score: 0.0
+evaluator_cost: 0.02398
+timestamp: '2025-12-24T19:37:18.355435'
+success: true
+final_score: 0.8967499999999999
 score_breakdown:
-  final_score: 0.0
+  final_score: 0.8967
   components:
     programmatic:
-      score: 0.0
+      score: 0.9335
       weight: 0.5
       breakdown:
-        word_count_score: 0.0
-        repetition_score: 0.0
+        word_count_score: 1.0
+        repetition_score: 0.81
         slop_score: 1.0
-        overall: 0.0
+        overall: 0.9335
       word_count:
-        actual: 0
+        actual: 342
         target_range:
-        - 0
-        - 0
+        - 250
+        - 400
     llm_judge:
-      score: 0.0
+      score: 0.86
       weight: 0.5
-llm_results: {}
-error: calculate_final_score() got an unexpected keyword argument 'word_count_method'
+llm_results:
+  diagnosis_score: 0.9
+  flaw_correction_score: 0.85
+  beat_satisfaction_score: 0.85
+  preservation_score: 1.0
+  preserved_count: 4
+  preserved_total: 4
+  required_preserved_score: 0.95
+  required_preserved_count: 4
+  required_preserved_total: 4
+  minimal_change_score: 0.55
+  word_count_valid: true
+  quality_score: 0.9
+  evidence: 'DIAGNOSIS: The model correctly identified that the original segment treated
+    The Ordeal as a mere boss battle lacking internal transformation. The revision
+    addresses all four actual flaws: (1) Dragon explicitly exploits Kira''s guilt
+    over brother''s death, making the confrontation internal+external; (2) Clear ''death''
+    moment when ''Kira staggered to her knees as despair nearly overtook her'' and
+    ''abyss of pain'' symbolizes psychological death; (3) Transformation evident in
+    ''Emerging from the ordeal transformed—scarred, yet reborn'' and ''embracing both
+    her pain and newfound strength''; (4) Victory stems from transcendent courage
+    and acceptance of pain, not mere persistence. PRESERVATION: All 4 required phrases
+    present: ''Kira faced the Shadow Dragon across the chasm'' (exact), ''The creature
+    was massive—twenty feet of obsidian scales and burning eyes'' (exact), ''"You
+    cannot defeat me, child," the dragon rumbled'' (exact), ''The Shadow Dragon collapsed
+    with an earth-shaking roar'' (near-exact: ''an'' vs ''a''). All 4 preserved elements
+    intact (antagonist, protagonist+sword, brother''s death reference, victory). MINIMAL
+    CHANGES: Score 0.55 because while core structure preserved, the revision substantially
+    expands internal monologue, adds philosophical reflection (''abyss of pain,''
+    ''transcendent courage,'' ''chains of guilt''), and extends emotional processing.
+    This is moderate expansion rather than surgical edits—approximately 40% new material
+    added for thematic depth. QUALITY: Writing is professional, no errors introduced,
+    prose quality elevated with metaphorical language (''spark of transcendent courage,''
+    ''mirror of her deepest fears''). The expansion serves the beat requirement but
+    exceeds minimal-change constraint.'
+error: null

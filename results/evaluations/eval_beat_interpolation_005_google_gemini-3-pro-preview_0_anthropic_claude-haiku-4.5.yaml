@@ -1,32 +1,62 @@
-evaluation_id: 2407e36c
+evaluation_id: b4cd8d2a
 task_id: beat_interpolation_005
 generation_id: beat_interpolation_005_google/gemini-3-pro-preview_0
 task_type: beat_interpolation
 model: google/gemini-3-pro-preview
 sample_index: 0
 evaluator_model: anthropic/claude-haiku-4.5
-evaluator_cost: 0
-timestamp: '2025-12-17T23:32:56.049743'
-success: false
-final_score: 0.0
+evaluator_cost: 0.020405
+timestamp: '2025-12-24T19:35:09.885001'
+success: true
+final_score: 0.98075
 score_breakdown:
-  final_score: 0.0
+  final_score: 0.9808
   components:
     programmatic:
-      score: 0.0
+      score: 0.9615
       weight: 0.5
       breakdown:
-        word_count_score: 0.0
-        repetition_score: 0.0
+        word_count_score: 1.0
+        repetition_score: 0.89
         slop_score: 1.0
-        overall: 0.0
+        overall: 0.9615
       word_count:
-        actual: 0
+        actual: 401
         target_range:
-        - 0
-        - 0
+        - 300
+        - 450
     llm_judge:
-      score: 0.0
+      score: 1.0
       weight: 0.5
-llm_results: {}
-error: calculate_final_score() got an unexpected keyword argument 'word_count_method'
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: true
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: 'STRENGTHS: All four required elements are present and well-executed.
+    (1) Maya discovers Alejandro''s vulnerability through his emotional response to
+    the rice pudding and his confession about commodification and lost identity. (2)
+    Relationship shifts from purely professional (90 days of minimal interaction,
+    critiques only) to genuinely personal (he opens up, laughs, thanks her beyond
+    the job). (3) The shared moment is the rice pudding scene—intimate without being
+    romantic, creating authentic connection through food and vulnerability. (4) Maya''s
+    commitment deepens beyond contract when she realizes ''The debt, the restaurant,
+    the salary—they suddenly felt secondary'' and she''s now ''guarding him'' rather
+    than guarding a paycheck. All must-not items are avoided: they are not in love
+    or overly intimate (forehead touch comes later in the AFTER section), Maya doesn''t
+    decide to leave, the photograph isn''t taken during this scene, and Alejandro''s
+    wall is explicitly lowered (''the steel wall behind his eyes was gone''). Character
+    consistency is strong—Maya remains compassionate and perceptive, Alejandro''s
+    arc from cold to vulnerable is earned and believable. The bridge between BEFORE
+    and AFTER is seamless: this midpoint establishes the emotional stakes that make
+    the photograph scandal devastating. Setting continuity is perfect—kitchen location,
+    time of night, physical details all cohere. The beat executes its narrative function
+    precisely: it''s the point where Maya commits emotionally and the relationship
+    becomes about more than money.'
+error: null

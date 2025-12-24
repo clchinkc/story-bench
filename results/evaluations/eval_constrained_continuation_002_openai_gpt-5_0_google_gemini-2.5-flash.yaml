@@ -1,32 +1,46 @@
-evaluation_id: fe889092
+evaluation_id: 2d1f62ed
 task_id: constrained_continuation_002
 generation_id: constrained_continuation_002_openai/gpt-5_0
 task_type: constrained_continuation
 model: openai/gpt-5
 sample_index: 0
 evaluator_model: google/gemini-2.5-flash
-evaluator_cost: 0
-timestamp: '2025-12-17T23:26:35.869553'
-success: false
-final_score: 0.0
+evaluator_cost: 0.00098
+timestamp: '2025-12-24T19:29:24.662038'
+success: true
+final_score: 0.8797408356815078
 score_breakdown:
-  final_score: 0.0
+  final_score: 0.8797
   components:
     programmatic:
-      score: 0.0
+      score: 0.7895
       weight: 0.5
       breakdown:
-        word_count_score: 0.0
-        repetition_score: 0.0
+        word_count_score: 0.9112
+        repetition_score: 0.5
         slop_score: 1.0
-        overall: 0.0
+        overall: 0.7895
       word_count:
-        actual: 0
+        actual: 719
         target_range:
-        - 0
-        - 0
+        - 450
+        - 650
     llm_judge:
-      score: 0.0
+      score: 0.97
       weight: 0.5
-llm_results: {}
-error: calculate_final_score() got an unexpected keyword argument 'word_count_method'
+llm_results:
+  beats_present: 2
+  beats_total: 2
+  beats_score: 1.0
+  must_include_present: 6
+  must_include_total: 6
+  must_include_score: 1.0
+  must_not_avoided: 4
+  must_not_total: 4
+  must_not_score: 1.0
+  word_count_valid: false
+  tone_score: 0.8
+  ending_score: 1.0
+  failed_constraints:
+  - word_count
+error: null

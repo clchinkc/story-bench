@@ -11,14 +11,6 @@ from typing import Any
 
 from tqdm import tqdm
 
-# Configure logging for generation errors
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s',
-    handlers=[logging.StreamHandler(sys.stderr)]
-)
-logger = logging.getLogger(__name__)
-
 from llm_client import LLMClient, TASK_TOKEN_CONFIG, get_llm_client
 from utils import (
     generate_id,
@@ -28,6 +20,14 @@ from utils import (
     load_config,
     save_yaml,
 )
+
+# Configure logging for generation errors
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s - %(levelname)s - %(message)s",
+    handlers=[logging.StreamHandler(sys.stderr)],
+)
+logger = logging.getLogger(__name__)
 
 
 @dataclass
@@ -161,33 +161,39 @@ IMPORTANT: Plan your word budget BEFORE writing. Keep reasoning brief."""
         # Build must_not section if present
         must_not_section = ""
         if requirements.get("must_not_include"):
-            must_not_items = "\n".join(f"  - {item}" for item in requirements["must_not_include"])
+            must_not_items = "\n".join(
+                f"  - {item}" for item in requirements["must_not_include"]
+            )
             must_not_section = f"\nMUST NOT include (these would be easy but wrong):\n{must_not_items}\n"
 
         # Get beat definition if available
         beat_def = missing_beat.get("definition", "")
-        beat_def_section = f"\nBEAT DEFINITION ({missing_beat['name']}): {beat_def}\n" if beat_def else ""
+        beat_def_section = (
+            f"\nBEAT DEFINITION ({missing_beat['name']}): {beat_def}\n"
+            if beat_def
+            else ""
+        )
 
-        prompt = f"""Given these two story beats from the {task['theory']}:
+        prompt = f"""Given these two story beats from the {task["theory"]}:
 
-BEAT BEFORE ({beat_before['name']}):
-{beat_before['content'].strip()}
+BEAT BEFORE ({beat_before["name"]}):
+{beat_before["content"].strip()}
 
-BEAT AFTER ({beat_after['name']}):
-{beat_after['content'].strip()}
+BEAT AFTER ({beat_after["name"]}):
+{beat_after["content"].strip()}
 
-Write the missing beat: {missing_beat['name']}
+Write the missing beat: {missing_beat["name"]}
 {beat_def_section}
 Requirements:
-- Word count: {requirements['word_count'][0]}-{requirements['word_count'][1]} words
+- Word count: {requirements["word_count"][0]}-{requirements["word_count"][1]} words
 - Must include ALL of:
-  - {chr(10).join('  - ' + item for item in requirements['must_include'])}
-- Maintain character voice: {requirements.get('character_voice', 'Consistent with the given beats')}
+  - {chr(10).join("  - " + item for item in requirements["must_include"])}
+- Maintain character voice: {requirements.get("character_voice", "Consistent with the given beats")}
 - Setting continuity: No contradictions with established details
 - Logical bridge: Your beat must connect naturally FROM the beat before TO the beat after—ensure cause-and-effect makes sense
-- Beat execution: Your beat must fulfill the narrative function of "{missing_beat['name']}" in {task['theory']}—not just connect the scenes
+- Beat execution: Your beat must fulfill the narrative function of "{missing_beat["name"]}" in {task["theory"]}—not just connect the scenes
 {must_not_section}
-{task.get('generator_prompt_additions', '')}
+{task.get("generator_prompt_additions", "")}
 
 Output ONLY the beat text."""
         return prompt
@@ -210,8 +216,12 @@ Output ONLY the beat text."""
         preservation_section = ""
         if "preservation_requirements" in requirements:
             pres_req = requirements["preservation_requirements"]
-            preserved_items = "\n".join(f'  - "{item}"' for item in pres_req.get("required_preserved", []))
-            forbidden_items = "\n".join(f"  - {item}" for item in pres_req.get("forbidden_changes", []))
+            preserved_items = "\n".join(
+                f'  - "{item}"' for item in pres_req.get("required_preserved", [])
+            )
+            forbidden_items = "\n".join(
+                f"  - {item}" for item in pres_req.get("forbidden_changes", [])
+            )
 
             # Add conflicting constraints if present (makes task harder)
             conflicts_section = ""
@@ -225,7 +235,7 @@ TENSION POINTS (these requirements may conflict - resolve skillfully):
 
             preservation_section = f"""
 === CONSTRAINED REVISION REQUIREMENTS ===
-{pres_req.get('min_preservation_description', 'Preserve as much of the original as possible while fixing any issues.')}
+{pres_req.get("min_preservation_description", "Preserve as much of the original as possible while fixing any issues.")}
 
 MUST PRESERVE (keep these exact or nearly exact):
 {preserved_items}
@@ -237,22 +247,22 @@ Your goal is MINIMAL MODIFICATION - address any beat execution issues while keep
 of the original text intact as possible. Do not rewrite from scratch.
 """
 
-        prompt = f"""You are a professional storyteller and editor with expertise in {task['theory']}.
+        prompt = f"""You are a professional storyteller and editor with expertise in {task["theory"]}.
 
-This story segment attempts to execute the "{task['beat_name']}" beat. Your task is to:
+This story segment attempts to execute the "{task["beat_name"]}" beat. Your task is to:
 1. Analyze how well this segment executes the beat (compare to the beat definition)
 2. Identify any execution problems (there may or may not be issues)
 3. If problems exist, rewrite the segment to properly execute the beat
 {preservation_section}
 SEGMENT TO ANALYZE:
-{task['flawed_segment']['content'].strip()}
+{task["flawed_segment"]["content"].strip()}
 
-BEAT DEFINITION ({task['beat_name']}):
-{task['beat_definition'].strip()}
+BEAT DEFINITION ({task["beat_name"]}):
+{task["beat_definition"].strip()}
 
 Requirements:
-- Word count: {requirements['word_count'][0]}-{requirements['word_count'][1]} words
-- Preserve these elements: {', '.join(requirements['preserve'])}
+- Word count: {requirements["word_count"][0]}-{requirements["word_count"][1]} words
+- Preserve these elements: {", ".join(requirements["preserve"])}
 - If you identify flaws, your revision must address them
 - Quality check: Do NOT introduce new narrative errors, contradictions, or problems
 
@@ -265,19 +275,23 @@ Output ONLY the revised segment (no explanation of what you changed). If the seg
         opening = task["story_opening"]
         constraints = task["continuation_constraints"]
 
-        must_include = "\n".join(f"  [_] {item}" for item in constraints["must_include"])
-        must_not_include = "\n".join(f"  [X] {item}" for item in constraints["must_not_include"])
+        must_include = "\n".join(
+            f"  [_] {item}" for item in constraints["must_include"]
+        )
+        must_not_include = "\n".join(
+            f"  [X] {item}" for item in constraints["must_not_include"]
+        )
 
-        min_wc, max_wc = constraints['word_count']
+        min_wc, max_wc = constraints["word_count"]
         prompt = f"""=== WORD LIMIT: {min_wc}-{max_wc} WORDS (DO NOT EXCEED {max_wc}) ===
 
-Continue this story according to the {task['theory']} framework.
+Continue this story according to the {task["theory"]} framework.
 
 STORY OPENING:
-{opening['content'].strip()}
+{opening["content"].strip()}
 
-Current beat: {opening['current_beat']}
-Continue through these beats: {', '.join(constraints['next_beats'])}
+Current beat: {opening["current_beat"]}
+Continue through these beats: {", ".join(constraints["next_beats"])}
 
 === CHECKLIST (satisfy ALL requirements) ===
 
@@ -287,8 +301,8 @@ MUST INCLUDE (ensure each appears in your continuation):
 MUST NOT INCLUDE (avoid these completely):
 {must_not_include}
 
-[_] Tone: {constraints['tone']}
-[_] Ending: {constraints['ending_requirement']}
+[_] Tone: {constraints["tone"]}
+[_] Ending: {constraints["ending_requirement"]}
 
 ⚠️ WORD COUNT: {min_wc}-{max_wc} words. Count as you write. Stop at {max_wc}.
 
@@ -301,23 +315,23 @@ Output ONLY the story continuation as continuous prose."""
         original = task["original_segment"]
         target = task["target_requirements"]
 
-        min_wc, max_wc = target['word_count']
+        min_wc, max_wc = target["word_count"]
         prompt = f"""=== WORD LIMIT: {min_wc}-{max_wc} WORDS (DO NOT EXCEED {max_wc}) ===
 
-Rewrite this story from {task['from_theory']} structure to {task['to_theory']} structure.
+Rewrite this story from {task["from_theory"]} structure to {task["to_theory"]} structure.
 
-ORIGINAL ({task['from_theory']}):
-{original['content'].strip()}
+ORIGINAL ({task["from_theory"]}):
+{original["content"].strip()}
 
 ORIGINAL BEATS:
-{', '.join(original['beats'])}
+{", ".join(original["beats"])}
 
-TARGET STRUCTURE ({task['to_theory']}):
-Required beats: {', '.join(target['beats'])}
+TARGET STRUCTURE ({task["to_theory"]}):
+Required beats: {", ".join(target["beats"])}
 
 REQUIREMENTS:
-- Preserve these elements: {', '.join(target['preserve'])}
-- Tone: {target.get('tone', 'Maintain original tone')}
+- Preserve these elements: {", ".join(target["preserve"])}
+- Tone: {target.get("tone", "Maintain original tone")}
 
 ⚠️ WORD COUNT: {min_wc}-{max_wc} words. Exceeding {max_wc} words is FAILURE.
 
@@ -332,8 +346,8 @@ Output ONLY the rewritten story."""
         cross_constraints = task["cross_beat_constraints"]
 
         # Calculate suggested word allocation per beat
-        min_words = task['word_count'][0]
-        max_words = task['word_count'][1]
+        min_words = task["word_count"][0]
+        max_words = task["word_count"][1]
         num_beats = len(beats)
         words_per_beat_min = min_words // num_beats
         words_per_beat_max = max_words // num_beats
@@ -342,7 +356,7 @@ Output ONLY the rewritten story."""
         for i, beat in enumerate(beats, 1):
             reqs = "\n".join(f"    - {r}" for r in beat["requirements"])
             beats_text += f"""
-  Beat {i}: {beat['name']} (~{words_per_beat_min}-{words_per_beat_max} words)
+  Beat {i}: {beat["name"]} (~{words_per_beat_min}-{words_per_beat_max} words)
   Requirements:
 {reqs}
 """
@@ -353,13 +367,13 @@ Output ONLY the rewritten story."""
 
         prompt = f"""=== HARD WORD LIMIT: {min_words}-{max_words} WORDS (DO NOT EXCEED {max_words}) ===
 
-Write these connected beats following the {task['theory']}:
+Write these connected beats following the {task["theory"]}:
 
 STORY CONTEXT:
-- Protagonist: {context['protagonist'].strip()}
-- Setting: {context['setting'].strip()}
-- Central Conflict: {context['central_conflict'].strip()}
-- Tone: {context['tone']}
+- Protagonist: {context["protagonist"].strip()}
+- Setting: {context["setting"].strip()}
+- Central Conflict: {context["central_conflict"].strip()}
+- Tone: {context["tone"]}
 
 === WORD BUDGET ===
 Total: {min_words}-{max_words} words MAXIMUM
@@ -405,10 +419,13 @@ class BenchmarkGenerator:
         theory = task.get("theory", "Unknown")
 
         # Get task-specific token configuration (same for all models - fairness)
-        task_config = TASK_TOKEN_CONFIG.get(task_type, {
-            "max_tokens": self.config.max_tokens,
-            "max_reasoning_tokens": self.config.max_reasoning_tokens,
-        })
+        task_config = TASK_TOKEN_CONFIG.get(
+            task_type,
+            {
+                "max_tokens": self.config.max_tokens,
+                "max_reasoning_tokens": self.config.max_reasoning_tokens,
+            },
+        )
         max_tokens = task_config["max_tokens"]
         max_reasoning_tokens = task_config["max_reasoning_tokens"]
 
@@ -458,7 +475,10 @@ class BenchmarkGenerator:
         # Detect empty output: tokens generated but no actual content
         if response.completion_tokens > 0 and not output.strip():
             # Distinguish between content filtering and reasoning-only
-            if response.reasoning_tokens > 0 and response.reasoning_tokens >= response.completion_tokens * 0.9:
+            if (
+                response.reasoning_tokens > 0
+                and response.reasoning_tokens >= response.completion_tokens * 0.9
+            ):
                 error_msg = f"Model produced only reasoning tokens (reasoning={response.reasoning_tokens}, output={output_tokens})"
             else:
                 error_msg = f"Content filtered (tokens={response.completion_tokens})"
@@ -608,7 +628,9 @@ class BenchmarkGenerator:
             "total_cost": total_cost,
             "total_prompt_tokens": total_prompt_tokens,
             "total_completion_tokens": total_completion_tokens,
-            "success_rate": sum(1 for r in results if r.success) / len(results) if results else 0,
+            "success_rate": sum(1 for r in results if r.success) / len(results)
+            if results
+            else 0,
             "by_model": by_model,
             "by_task_type": by_task_type,
         }

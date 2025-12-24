@@ -1,0 +1,61 @@
+evaluation_id: 4a59778c
+task_id: beat_interpolation_003
+generation_id: beat_interpolation_003_minimax/minimax-m2.1_0
+task_type: beat_interpolation
+model: minimax/minimax-m2.1
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.019110000000000002
+timestamp: '2025-12-24T22:08:02.470555'
+success: true
+final_score: 0.9825
+score_breakdown:
+  final_score: 0.9825
+  components:
+    programmatic:
+      score: 0.965
+      weight: 0.5
+      breakdown:
+        word_count_score: 1.0
+        repetition_score: 0.9
+        slop_score: 1.0
+        overall: 0.965
+      word_count:
+        actual: 377
+        target_range:
+        - 250
+        - 400
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: true
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: 'All 4 required elements present: (1) Multiple area exploration (crew
+    quarters, common area, Commander''s office, medical bay, corridors, Lab Seven
+    approach); (2) Clues discovered progressively (coffee cups, chess game, research
+    notes on quantum equations and phase transitions, emergency medical reports);
+    (3) Transformed crew encounter (shimmer effect, heat-haze distortion, disembodied
+    voice, ''human shape stretched wrong''); (4) Obstacle overcome (blast doors, pursuit
+    through station, scanner interference). Beat execution is exemplary—Yuki actively
+    searches, adapts to discoveries, faces escalating trials, and makes incremental
+    progress toward understanding. All must-not items avoided: data core not immediately
+    found (only located at end), crew doesn''t explain everything (only cryptic voice),
+    mission continues (no abandonment), Yuki arrives ignorant of transformation (learns
+    through discovery). Character voice remains consistent—clinical precision, scientific
+    mind cataloging impossibility, appropriate fear response. Bridge between beats
+    seamless: BEFORE ends with arrival/mystery setup; GENERATED shows active investigation
+    and escalation; AFTER begins with core discovery and revelation of crew''s fate.
+    Setting continuity perfect: station details consistent (red emergency lighting,
+    life support functioning, specific locations), physics logic maintained (dimensional
+    echoes, heat signatures), timeline coherent (three-day silence explained by transformation
+    event).'
+error: null

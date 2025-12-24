@@ -1,32 +1,63 @@
-evaluation_id: 91dbe86d
+evaluation_id: b1382dbf
 task_id: beat_revision_002
 generation_id: beat_revision_002_openai/gpt-5.1_0
 task_type: beat_revision
 model: openai/gpt-5.1
 sample_index: 0
 evaluator_model: anthropic/claude-haiku-4.5
-evaluator_cost: 0
-timestamp: '2025-12-17T23:39:01.977430'
-success: false
-final_score: 0.0
+evaluator_cost: 0.02243
+timestamp: '2025-12-24T19:41:42.792227'
+success: true
+final_score: 0.9764999999999999
 score_breakdown:
-  final_score: 0.0
+  final_score: 0.9765
   components:
     programmatic:
-      score: 0.0
+      score: 0.993
       weight: 0.5
       breakdown:
-        word_count_score: 0.0
-        repetition_score: 0.0
+        word_count_score: 1.0
+        repetition_score: 0.98
         slop_score: 1.0
-        overall: 0.0
+        overall: 0.993
       word_count:
-        actual: 0
+        actual: 322
         target_range:
-        - 0
-        - 0
+        - 200
+        - 350
     llm_judge:
-      score: 0.0
+      score: 0.96
       weight: 0.5
-llm_results: {}
-error: calculate_final_score() got an unexpected keyword argument 'word_count_method'
+llm_results:
+  diagnosis_score: 1.0
+  flaw_correction_score: 1.0
+  beat_satisfaction_score: 0.95
+  preservation_score: 1.0
+  preserved_count: 4
+  preserved_total: 4
+  required_preserved_score: 1.0
+  required_preserved_count: 4
+  required_preserved_total: 4
+  minimal_change_score: 0.75
+  word_count_valid: true
+  quality_score: 0.95
+  evidence: 'The model correctly diagnosed the actual flaw: Marcus still had multiple
+    viable options (fundraiser, grant, new location) and intact support systems, creating
+    a ''setback'' rather than ''rock bottom.'' The revision systematically eliminates
+    all escape routes: (1) Appeal/petition/judge ruling finalized, (2) Fundraiser
+    canceled due to donor flight, (3) Grant rejected, (4) Board betrayal—Denise joins
+    the developer, isolating Marcus professionally, (5) Wife''s ultimatum about losing
+    the house creates personal/financial pressure. The ''whiff of death'' is multi-layered:
+    loss of identity (15-year purpose), loss of community (kids'' voices fade as lights
+    die), loss of support (Denise''s betrayal), and metaphorical death of his life''s
+    work. All four required phrases preserved verbatim: ''Marcus stared at the eviction
+    notice in his hands,'' ''Thirty days to vacate the community center,'' ''"There
+    has to be something we can do," said Denise,'' and ''He rubbed his temples.''
+    All four story elements preserved: Marcus as protagonist, community center setting,
+    eviction crisis, Denise present throughout. Changes were surgical rather than
+    wholesale—the model kept the opening, Denise dialogue, and basic structure while
+    replacing the middle section''s false hope with cascading failures. The emotional
+    arc now genuinely reaches despair. Minor: the final image (lights dying) is slightly
+    more poetic than the original''s abrupt cut, but this enhances rather than violates
+    the beat. Writing quality remains strong with no new errors.'
+error: null

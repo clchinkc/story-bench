@@ -1,0 +1,54 @@
+evaluation_id: 7e6ac3e1
+task_id: beat_revision_002
+generation_id: beat_revision_002_z-ai/glm-4.7_0
+task_type: beat_revision
+model: z-ai/glm-4.7
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0013155
+timestamp: '2025-12-24T18:56:45.079339'
+success: true
+final_score: 0.9865
+score_breakdown:
+  final_score: 0.9865
+  components:
+    programmatic:
+      score: 0.993
+      weight: 0.5
+      breakdown:
+        word_count_score: 1.0
+        repetition_score: 0.98
+        slop_score: 1.0
+        overall: 0.993
+      word_count:
+        actual: 286
+        target_range:
+        - 200
+        - 350
+    llm_judge:
+      score: 0.98
+      weight: 0.5
+llm_results:
+  diagnosis_score: 1.0
+  flaw_correction_score: 1.0
+  beat_satisfaction_score: 1.0
+  preservation_score: 1.0
+  preserved_count: 4
+  preserved_total: 4
+  required_preserved_score: 1.0
+  required_preserved_count: 4
+  required_preserved_total: 4
+  minimal_change_score: 0.8
+  word_count_valid: true
+  quality_score: 1.0
+  evidence: 'The model correctly identified that the original segment failed to convey
+    a true ''All Is Lost'' moment. It addressed all points of the actual flaw: Marcus''s
+    options (fundraiser, grant) are explicitly removed, his support system (Denise,
+    wife) crumbles, he genuinely gives up hope (''It''s over'', ''He was alone in
+    the ruin of his life''), and there''s a strong ''whiff of death'' through the
+    loss of his purpose, family, and home. The changes were surgical and effective,
+    building upon the original text rather than rewriting it entirely. All required
+    preserved phrases and elements are present, and no forbidden changes were made.
+    The quality of writing is excellent, enhancing the emotional impact without introducing
+    new errors.'
+error: null

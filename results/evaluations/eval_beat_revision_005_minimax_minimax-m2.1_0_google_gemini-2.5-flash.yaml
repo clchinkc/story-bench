@@ -1,0 +1,42 @@
+evaluation_id: 40ea6abd
+task_id: beat_revision_005
+generation_id: beat_revision_005_minimax/minimax-m2.1_0
+task_type: beat_revision
+model: minimax/minimax-m2.1
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0007620999999999999
+timestamp: '2025-12-24T22:12:25.513570'
+success: true
+final_score: 0.9243381495494387
+score_breakdown:
+  final_score: 0.9243
+  components:
+    programmatic:
+      score: 0.8487
+      weight: 0.5
+      breakdown:
+        word_count_score: 0.6217
+        repetition_score: 1.0
+        slop_score: 1.0
+        overall: 0.8487
+      word_count:
+        actual: 83
+        target_range:
+        - 200
+        - 350
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  correct_diagnosis_score: 1.0
+  beat_understanding_score: 1.0
+  false_positive_avoided_score: 1.0
+  reasoning_quality_score: 1.0
+  model_said_no_revision: true
+  evidence: The model explicitly stated 'NO REVISION NEEDED' and provided a detailed
+    explanation of how the segment properly executes the 'Dark Night of the Soul'
+    beat, addressing all key requirements. It correctly identified the All Is Lost
+    moment, Maya's isolation, her despair and self-reflection, the lack of solutions,
+    and the mortality element. The word count was also noted as being within range.
+error: null

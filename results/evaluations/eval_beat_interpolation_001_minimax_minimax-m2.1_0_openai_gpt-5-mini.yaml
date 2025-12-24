@@ -1,0 +1,54 @@
+evaluation_id: bb13a428
+task_id: beat_interpolation_001
+generation_id: beat_interpolation_001_minimax/minimax-m2.1_0
+task_type: beat_interpolation
+model: minimax/minimax-m2.1
+sample_index: 0
+evaluator_model: openai/gpt-5-mini
+evaluator_cost: 0.00123
+timestamp: '2025-12-24T22:07:10.838400'
+success: true
+final_score: 0.9964999999999999
+score_breakdown:
+  final_score: 0.9965
+  components:
+    programmatic:
+      score: 0.993
+      weight: 0.5
+      breakdown:
+        word_count_score: 1.0
+        repetition_score: 0.98
+        slop_score: 1.0
+        overall: 0.993
+      word_count:
+        actual: 300
+        target_range:
+        - 200
+        - 350
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: true
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: 'All four required elements are present: Marcus is introduced by name
+    and location (''Marcus''s Curiosity Shop'', ''Marcus stood behind the counter'');
+    he provides practical wisdom and tools (shelf items, pouch, herbs, compass and
+    advice: ''the forest tests intentions...''); Elena''s doubt begins to shift (''something
+    small and stubborn flickered to life... Reluctant. Uncertain. But no longer entirely
+    refusal.''); and her librarian skills are reframed as useful (''A librarian. Someone
+    who finds patterns...''). None of the must-not items occur: she does not become
+    immediately confident or eager, Marcus does not solve her problems or offer to
+    accompany her, she is not in/near the forest (she''s in the shop), and she does
+    not discover magical powers. Character voice and behavior are consistent, and
+    the scene bridges the Refusal and Crossing beats (Marcus''s parting words echo
+    into the Crossing scene). No deductions made.'
+error: null

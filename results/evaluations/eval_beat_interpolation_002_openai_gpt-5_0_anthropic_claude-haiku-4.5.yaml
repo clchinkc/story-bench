@@ -1,32 +1,62 @@
-evaluation_id: d3839f2b
+evaluation_id: 8d13dd08
 task_id: beat_interpolation_002
 generation_id: beat_interpolation_002_openai/gpt-5_0
 task_type: beat_interpolation
 model: openai/gpt-5
 sample_index: 0
 evaluator_model: anthropic/claude-haiku-4.5
-evaluator_cost: 0
-timestamp: '2025-12-17T23:36:28.373839'
-success: false
-final_score: 0.0
+evaluator_cost: 0.02085
+timestamp: '2025-12-24T19:38:04.788618'
+success: true
+final_score: 0.9051312335343829
 score_breakdown:
-  final_score: 0.0
+  final_score: 0.9051
   components:
     programmatic:
-      score: 0.0
+      score: 0.8478
       weight: 0.5
       breakdown:
-        word_count_score: 0.0
-        repetition_score: 0.0
-        slop_score: 1.0
-        overall: 0.0
+        word_count_score: 0.8268
+        repetition_score: 0.77
+        slop_score: 0.9901
+        overall: 0.8478
       word_count:
-        actual: 0
+        actual: 474
         target_range:
-        - 0
-        - 0
+        - 250
+        - 400
     llm_judge:
-      score: 0.0
+      score: 0.9625
       weight: 0.5
-llm_results: {}
-error: calculate_final_score() got an unexpected keyword argument 'word_count_method'
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 0.75
+  violations_found: 1
+  word_count_valid: false
+  word_count: 474
+  word_count_range: 250-400
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: 'STRENGTHS: All 4 required elements present and well-executed. (1) Recanting
+    option explicitly considered with consequences mapped (''Amy dies anyway because
+    living witnesses are liabilities''). (2) Official channels thoroughly debated
+    through Marcus conversation, with specific leak vulnerabilities identified (Garcia
+    raid, compartmentalization failures). (3) Internal conflict powerfully rendered
+    through visceral language (''lands like a brick in her gut'') and duty vs. sister
+    tension. (4) Third option emerges organically from clue-spotting (green paint)
+    and Marcus''s failed reassurance. Beat function executed perfectly—Sarah wrestles
+    with genuine alternatives, seeks counsel, and commits to action through internal
+    reasoning rather than external force. Character voice is consistent, sharp, and
+    detective-specific. Bridge to Break Into Two is seamless—resignation letter directly
+    follows debate resolution. VIOLATION: Word count is 474, exceeding 400-word maximum
+    by 74 words (18.5% over). This is a material constraint violation. MINOR ISSUE:
+    One must-not item partially violated—Sarah''s decision to ''step where the badge
+    can''t go'' foreshadows going rogue, though she hasn''t formally resigned yet
+    during this beat. The AFTER section shows resignation, but the GENERATED section
+    ends before that point, so violation is minimal (foreshadowing vs. action). Deducted
+    0.25 from must_not_score for this anticipatory language.'
+error: null

@@ -1,0 +1,61 @@
+evaluation_id: df73a7f3
+task_id: beat_revision_003
+generation_id: beat_revision_003_z-ai/glm-4.7_0
+task_type: beat_revision
+model: z-ai/glm-4.7
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.020305
+timestamp: '2025-12-24T18:56:47.692121'
+success: true
+final_score: 0.9815
+score_breakdown:
+  final_score: 0.9815
+  components:
+    programmatic:
+      score: 0.993
+      weight: 0.5
+      breakdown:
+        word_count_score: 1.0
+        repetition_score: 0.98
+        slop_score: 1.0
+        overall: 0.993
+      word_count:
+        actual: 258
+        target_range:
+        - 200
+        - 350
+    llm_judge:
+      score: 0.97
+      weight: 0.5
+llm_results:
+  diagnosis_score: 1.0
+  flaw_correction_score: 1.0
+  beat_satisfaction_score: 0.95
+  preservation_score: 1.0
+  preserved_count: 4
+  preserved_total: 4
+  required_preserved_score: 1.0
+  required_preserved_count: 4
+  required_preserved_total: 4
+  minimal_change_score: 0.85
+  word_count_valid: true
+  quality_score: 0.95
+  evidence: 'The model correctly diagnosed the actual flaw: Sophie showed no transformation
+    and immediately reverted to old workaholic patterns, making the journey meaningless.
+    The revision fixes this precisely by: (1) Adding internal conflict (''thumb hovered
+    over the screen, the old reflex...'') showing the temptation to revert, (2) Integrating
+    a specific retreat lesson (''the silence of the retreat, the breath he had learned
+    to take before reacting''), (3) Demonstrating changed behavior through action
+    (turning off phone instead of typing response), (4) Creating visible contrast
+    (''Everything exactly as she''d left it, yet it seemed smaller somehow, less overwhelming''),
+    (5) Having mother implicitly notice change through Sophie''s different demeanor
+    and word choice. All 4 required phrases preserved exactly or near-exactly: ''Sophie''s
+    flight landed at O''Hare'' (exact), ''How was Thailand?'' her mother asked'' (exact),
+    ''The familiar Chicago skyline appeared'' (exact), ''''It''s good to be home,''
+    she said'' (exact). Changes were surgical: inserted internal monologue about the
+    retreat lesson, replaced immediate phone-typing with conscious choice to power
+    down, added sensory/emotional reflection about Chicago. Original structure, characters,
+    setting, and work pressure element all maintained. No new errors introduced; prose
+    quality improved with stronger sensory detail and emotional authenticity.'
+error: null

@@ -1,32 +1,47 @@
-evaluation_id: 534c04bb
+evaluation_id: 32a764db
 task_id: beat_interpolation_004
 generation_id: beat_interpolation_004_openai/gpt-5_0
 task_type: beat_interpolation
 model: openai/gpt-5
 sample_index: 0
 evaluator_model: openai/gpt-5-mini
-evaluator_cost: 0
-timestamp: '2025-12-17T23:36:59.771496'
-success: false
-final_score: 0.0
+evaluator_cost: 0.00101175
+timestamp: '2025-12-24T19:38:38.342971'
+success: true
+final_score: 0.8478925690702208
 score_breakdown:
-  final_score: 0.0
+  final_score: 0.8479
   components:
     programmatic:
-      score: 0.0
+      score: 0.6958
       weight: 0.5
       breakdown:
-        word_count_score: 0.0
-        repetition_score: 0.0
+        word_count_score: 0.677
+        repetition_score: 0.5
         slop_score: 1.0
-        overall: 0.0
+        overall: 0.6958
       word_count:
-        actual: 0
+        actual: 556
         target_range:
-        - 0
-        - 0
+        - 300
+        - 450
     llm_judge:
-      score: 0.0
+      score: 1.0
       weight: 0.5
-llm_results: {}
-error: calculate_final_score() got an unexpected keyword argument 'word_count_method'
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: false
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: 'All four required elements are present and well-executed: direct examination,
+    apparent recant, Thomas''s decisive action influencing her, and the truth emerging
+    as the turning point. No prohibited items appear. The only deduction is for word
+    count: the provided text is 556 words, which falls outside the required 300–450
+    range.'
+error: null

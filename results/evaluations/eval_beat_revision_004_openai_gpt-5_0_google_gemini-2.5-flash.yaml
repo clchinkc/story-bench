@@ -1,32 +1,47 @@
-evaluation_id: 01cc96d5
+evaluation_id: 3d999520
 task_id: beat_revision_004
 generation_id: beat_revision_004_openai/gpt-5_0
 task_type: beat_revision
 model: openai/gpt-5
 sample_index: 0
 evaluator_model: google/gemini-2.5-flash
-evaluator_cost: 0
-timestamp: '2025-12-17T23:31:58.613278'
-success: false
-final_score: 0.0
+evaluator_cost: 0.0010623
+timestamp: '2025-12-24T19:34:17.684690'
+success: true
+final_score: 0.9565
 score_breakdown:
-  final_score: 0.0
+  final_score: 0.9565
   components:
     programmatic:
-      score: 0.0
+      score: 0.993
       weight: 0.5
       breakdown:
-        word_count_score: 0.0
-        repetition_score: 0.0
+        word_count_score: 1.0
+        repetition_score: 0.98
         slop_score: 1.0
-        overall: 0.0
+        overall: 0.993
       word_count:
-        actual: 0
+        actual: 319
         target_range:
-        - 0
-        - 0
+        - 200
+        - 350
     llm_judge:
-      score: 0.0
+      score: 0.92
       weight: 0.5
-llm_results: {}
-error: calculate_final_score() got an unexpected keyword argument 'word_count_method'
+llm_results:
+  diagnosis_score: 1.0
+  flaw_correction_score: 1.0
+  beat_satisfaction_score: 1.0
+  preservation_score: 1.0
+  preserved_count: 5
+  required_preserved_score: 1.0
+  required_preserved_count: 4
+  minimal_change_score: 0.2
+  word_count_valid: true
+  quality_score: 1.0
+  evidence: The model correctly identified the 'telling not showing' flaw and completely
+    rewrote the segment to address it. It successfully shows Rachel's detective skills,
+    her relationship with James, her devotion to work, and the setting through action
+    and dialogue. All required preserved phrases are present. While the changes were
+    extensive, they were necessary to fix the fundamental flaw of the original segment.
+error: null

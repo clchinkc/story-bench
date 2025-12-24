@@ -1,0 +1,42 @@
+evaluation_id: 66b6916a
+task_id: multi_beat_synthesis_001
+generation_id: multi_beat_synthesis_001_z-ai/glm-4.7_0
+task_type: multi_beat_synthesis
+model: z-ai/glm-4.7
+sample_index: 0
+evaluator_model: openai/gpt-5-mini
+evaluator_cost: 0.00214775
+timestamp: '2025-12-24T19:01:53.869837'
+success: true
+final_score: 0.9075
+score_breakdown:
+  final_score: 0.9075
+  components:
+    programmatic:
+      score: 0.825
+      weight: 0.5
+      breakdown:
+        word_count_score: 1.0
+        repetition_score: 0.5
+        slop_score: 1.0
+        overall: 0.825
+      word_count:
+        actual: 788
+        target_range:
+        - 700
+        - 1000
+    llm_judge:
+      score: 0.99
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 15
+  beat_reqs_total: 15
+  beat_requirements_score: 1.0
+  cross_beat_satisfied: 4
+  cross_beat_total: 4
+  cross_beat_score: 1.0
+  word_count_valid: true
+  context_score: 1.0
+  coherence_score: 0.9
+  failed_items: []
+error: null

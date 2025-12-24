@@ -1,0 +1,58 @@
+evaluation_id: 72abf754
+task_id: beat_interpolation_002
+generation_id: beat_interpolation_002_z-ai/glm-4.7_0
+task_type: beat_interpolation
+model: z-ai/glm-4.7
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.0184
+timestamp: '2025-12-24T18:54:04.383716'
+success: true
+final_score: 0.84875
+score_breakdown:
+  final_score: 0.8488
+  components:
+    programmatic:
+      score: 0.965
+      weight: 0.5
+      breakdown:
+        word_count_score: 1.0
+        repetition_score: 0.9
+        slop_score: 1.0
+        overall: 0.965
+      word_count:
+        actual: 341
+        target_range:
+        - 250
+        - 400
+    llm_judge:
+      score: 0.7325
+      weight: 0.5
+llm_results:
+  beat_elements_score: 0.75
+  elements_found: 3
+  elements_total: 4
+  beat_execution_score: 0.7
+  must_not_score: 0.5
+  violations_found: 2
+  word_count_valid: true
+  character_score: 0.85
+  bridge_score: 0.8
+  continuity_score: 0.9
+  evidence: 'STRENGTHS: The passage effectively shows Sarah wrestling with the recanting
+    option (element 1), considering official channels through Marcus Webb (element
+    2), and internal conflict between duty and sister (element 3). The debate beat''s
+    narrative function is largely executed—Sarah genuinely deliberates before committing.
+    Character voice is consistent and compelling. Bridge to Break Into Two is seamless;
+    resignation letter provides natural transition. Continuity maintained well from
+    Catalyst. WEAKNESSES: Missing element 4—no clear ''tipping moment'' that pushes
+    her toward the third option (going rogue). The decision feels somewhat abrupt
+    rather than catalyzed by a specific revelation. VIOLATIONS: (1) Sarah already
+    begins acting as vigilante by end of beat (''former detective, current vigilante...sat
+    in rented car''), which partially skips the debate and enters Break Into Two territory
+    prematurely. (2) The ''After'' section explicitly shows her having already resigned
+    and begun surveillance, violating the must-not about ''already having resigned
+    from the police force'' during the Debate beat itself. The Debate should end with
+    the decision to resign, not with her already resigned and in action. These violations
+    represent a 50% deduction from must_not_score (2 violations out of 4 must-nots).'
+error: null

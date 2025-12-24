@@ -1,32 +1,58 @@
-evaluation_id: cc718b9f
+evaluation_id: 2bd641ec
 task_id: beat_revision_004
 generation_id: beat_revision_004_openai/gpt-5_0
 task_type: beat_revision
 model: openai/gpt-5
 sample_index: 0
 evaluator_model: openai/gpt-5-mini
-evaluator_cost: 0
-timestamp: '2025-12-17T23:31:41.292672'
-success: false
-final_score: 0.0
+evaluator_cost: 0.001937
+timestamp: '2025-12-24T19:33:38.815869'
+success: true
+final_score: 0.9465000000000001
 score_breakdown:
-  final_score: 0.0
+  final_score: 0.9465
   components:
     programmatic:
-      score: 0.0
+      score: 0.993
       weight: 0.5
       breakdown:
-        word_count_score: 0.0
-        repetition_score: 0.0
+        word_count_score: 1.0
+        repetition_score: 0.98
         slop_score: 1.0
-        overall: 0.0
+        overall: 0.993
       word_count:
-        actual: 0
+        actual: 319
         target_range:
-        - 0
-        - 0
+        - 200
+        - 350
     llm_judge:
-      score: 0.0
+      score: 0.9
       weight: 0.5
-llm_results: {}
-error: calculate_final_score() got an unexpected keyword argument 'word_count_method'
+llm_results:
+  diagnosis_score: 1.0
+  flaw_correction_score: 1.0
+  beat_satisfaction_score: 0.95
+  preservation_score: 0.8
+  preserved_count: 4
+  preserved_total: 5
+  required_preserved_score: 1.0
+  required_preserved_count: 4
+  required_preserved_total: 4
+  minimal_change_score: 0.35
+  word_count_valid: true
+  quality_score: 0.95
+  evidence: 'The model addressed the actual flaw (info-dump/telling rather than showing)
+    by converting summary into a lived scene: Rachel demonstrates detective instincts
+    (tracing the printout, noting the mismatched shadow), the apartment and precinct
+    are rendered with sensory detail (jazz on the radio, lukewarm coffee, fluorescents
+    buzzing), and her partnership with Detective James Oyelaran is shown through natural
+    dialogue and shared actions (handing coffee, trading jabs, pointing at the board).
+    Her devotion to work and cold cases is implied via the ''Cold—Photocopies'' box,
+    the crime board, and the drawer she keeps opening. The required phrases (''Detective
+    Rachel Torres'', ''Detective James Oyelaran'', ''cat named Sherlock'', ''Tuesday
+    morning in October'') are all preserved exactly; however, an explicit reference
+    to ''Queens apartment'' was not retained, so 4 of 5 preservation elements remain.
+    The revision is high-quality prose with no notable errors, but it is more than
+    a surgical edit—effectively a scene rewrite—so the minimal_change_score reflects
+    a moderate rather than minimal change.'
+error: null

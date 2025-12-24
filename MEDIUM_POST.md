@@ -64,7 +64,7 @@ This isn't a perfect solution — story theory captures structure, not prose qua
 
 I built **Story Theory Benchmark** to test whether LLMs can reason about narrative structure.
 
-**34 tasks** across 9 types. **23 frontier models** evaluated. **5 story theory frameworks** as evaluation criteria.
+**34 tasks** across 9 types. **25 frontier models** evaluated. **5 story theory frameworks** as evaluation criteria.
 
 The tasks range from straightforward (generate a missing story beat) to complex (write three interconnected beats while maintaining cross-dependencies and character consistency).
 
@@ -140,15 +140,19 @@ The full leaderboard with task-by-task breakdowns is in the GitHub repository.
 
 ---
 
-### Update: Two Strong Additions
+### Update: Four Strong Additions
 
-Since the initial benchmark run, two new models have been evaluated:
+Since the initial benchmark run, four new models have been evaluated:
 
-**kimi-k2-thinking** (Rank #6, 88.8%) — Moonshotai's reasoning model shows surprising strength on narrative tasks. Scored 95.9% on LLM judge evaluation and handles both standard and agentic tasks well. At $0.58/M, it's a solid mid-range option.
+**kimi-k2-thinking** (Rank #7, 88.7%) — Moonshotai's reasoning model shows surprising strength on narrative tasks. Scored 95.9% on LLM judge evaluation and handles both standard and agentic tasks well. At $0.58/M, it's a solid mid-range option.
 
-**mistral-small-creative** (Rank #14, 84.3%) — The budget alternative that actually competes. Outperforms similarly-priced models like gpt-4o-mini on narrative structure. Strong on single-shot tasks (beat generation, theory conversion) but weaker on multi-turn work. At $0.21/M, it's the best value in the budget tier.
+**glm-4.7** (Rank #6, 88.8%) — Z-AI's latest model edges out kimi-k2-thinking for 6th place. Strong across both standard and agentic tasks. At $0.61/gen, it offers competitive value for creative applications.
 
-Both show that the narrative task landscape is competitive beyond just the frontier models.
+**minimax-m2.1** (Rank #9, 86.9%) — MiniMax's updated model scores the highest LLM Judge rating (97.0%) of any model tested, though programmatic scores bring the overall down. Major improvement over minimax-m2 (77.1% → 86.9%). At $0.38/gen, excellent value.
+
+**mistral-small-creative** (Rank #18, 84.3%) — The budget alternative that actually competes. Outperforms similarly-priced models like gpt-4o-mini on narrative structure. Strong on single-shot tasks (beat generation, theory conversion) but weaker on multi-turn work. At $0.21/M, it's the best value in the budget tier.
+
+All four show that the narrative task landscape is competitive beyond just the frontier models.
 
 ---
 
@@ -166,7 +170,7 @@ This won't solve the full problem. Structure isn't everything — prose quality,
 
 The benchmark is open source.
 
-34 tasks. 23 models evaluated. Full results and methodology documented.
+34 tasks. 25 models evaluated. Full results and methodology documented.
 
 If you're working on AI writing tools or interested in narrative evaluation, I'd love to hear what you find.
 

@@ -1,25 +1,40 @@
-evaluation_id: ea4a2ad1
+evaluation_id: 1c2d26ec
 task_id: agentic_constraint_discovery_003
 generation_id: affc6d48
 agentic_type: constraint_discovery
 model: moonshotai/kimi-k2-thinking
 evaluator_model: openai/gpt-5-mini
-evaluator_cost: 0.0052155
-timestamp: '2025-12-20T15:39:41.462120'
-success: false
-process_scores: {}
-output_scores: {}
-final_score: 0.0
+evaluator_cost: 0.0050875
+timestamp: '2025-12-24T20:18:58.696871'
+success: true
+process_scores:
+  discovery_efficiency: 0.0
+  question_quality: 0.6
+  question_coverage: 0.3
+output_scores:
+  constraint_satisfaction: 0.2
+  beat_execution: 0.6
+  narrative_quality: 0.8
+final_score: 0.44
 llm_results:
-  raw_response: "{\n  \"discovery_efficiency\": 0.2,\n  \"constraints_discoverable\"\
-    : 1,\n  \"constraints_total\": 5,\n  \"question_quality\": 0.4,\n  \"question_coverage\"\
-    : 0.2,\n  \"constraint_satisfaction\": 0.2,\n  \"beat_execution\": 0.2,\n  \"\
-    narrative_quality\": 0.8,\n  \"evidence\": \"The question set targeted only the\
-    \ romantic thread (ex, secret, current relationship, child) and failed to probe\
-    \ family/stakes/timing, so only one hidden constraint (that the protagonist left\
-    \ after a past romantic rupture) was effectively discoverable. The story incorporates\
-    \ the ex-relationship and the revealed secret, but it omits or contradicts several\
-    \ key hidden beats (mother's dementia, shop foreclosure/last-chance festival,\
-    \ and the former fiancé being mayor and unmarried). Questions were clear but narrowly\
-    \ focused, yielding poor coverage of non-romantic constraints"
-error: Failed to parse JSON from evaluator response
+  discovery_efficiency: 0.0
+  constraints_discoverable: 0
+  constraints_total: 5
+  question_quality: 0.6
+  question_coverage: 0.3
+  constraint_satisfaction: 0.2
+  beat_execution: 0.6
+  narrative_quality: 0.8
+  evidence: 'None of the five hidden constraints were reliably discoverable from the
+    provided questions: the question set focused tightly on romantic history (Q1–Q3,
+    Q5) and marital status (Q4) but omitted family motive (mother''s dementia), the
+    shop''s financial crisis, the festival deadline, the protagonist''s exact time
+    away, and the love interest''s civic role. The story does include the protagonist
+    returning after twenty years and a festival scene and features a revealed secret
+    about money that caused the breakup, but it fails to incorporate the mother''s
+    dementia, the bookshop foreclosure/urgent deadline, and incorrectly aligns with
+    Q4 (questions indicated the love interest was in a serious relationship; the hidden
+    constraint specified he was unmarried). Questions were well-formed for probing
+    romantic backstory (adequate), but coverage was narrow, missing key non-romantic
+    constraints and stakes.'
+error: null

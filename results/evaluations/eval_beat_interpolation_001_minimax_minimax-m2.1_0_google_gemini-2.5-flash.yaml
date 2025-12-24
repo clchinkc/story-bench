@@ -1,0 +1,48 @@
+evaluation_id: 63576d31
+task_id: beat_interpolation_001
+generation_id: beat_interpolation_001_minimax/minimax-m2.1_0
+task_type: beat_interpolation
+model: minimax/minimax-m2.1
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0010010000000000002
+timestamp: '2025-12-24T22:07:29.938035'
+success: true
+final_score: 0.9964999999999999
+score_breakdown:
+  final_score: 0.9965
+  components:
+    programmatic:
+      score: 0.993
+      weight: 0.5
+      breakdown:
+        word_count_score: 1.0
+        repetition_score: 0.98
+        slop_score: 1.0
+        overall: 0.993
+      word_count:
+        actual: 300
+        target_range:
+        - 200
+        - 350
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: true
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: 'All required elements are present: Marcus is introduced as the mentor,
+    he provides practical wisdom and tools (compass, herbs, pouch), Elena''s doubt
+    shifts (''no longer entirely refusal''), and her librarian skills are reframed
+    as useful. All ''must not'' conditions are avoided. Character voice and behavior
+    are consistent with the ''BEFORE'' beat. The transition from refusal to reluctant
+    acceptance is well-handled, and the setting continuity is maintained.'
+error: null

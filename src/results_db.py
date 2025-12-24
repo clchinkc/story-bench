@@ -24,6 +24,7 @@ from utils import get_project_root, load_all_tasks
 @dataclass
 class GenerationRecord:
     """A single generation result."""
+
     task_id: str
     task_type: str
     theory: str
@@ -32,7 +33,9 @@ class GenerationRecord:
     output: str
     prompt_tokens: int
     completion_tokens: int
-    reasoning_tokens: int  # Reasoning/thinking tokens (for CoT models like o3, DeepSeek-R1)
+    reasoning_tokens: (
+        int  # Reasoning/thinking tokens (for CoT models like o3, DeepSeek-R1)
+    )
     generation_cost: float
     timestamp: str
     success: bool
@@ -42,6 +45,7 @@ class GenerationRecord:
 @dataclass
 class EvaluationRecord:
     """A single evaluation result with composite scoring."""
+
     task_id: str
     task_type: str
     model: str
@@ -101,7 +105,7 @@ class ResultsDatabase:
                 "total_evaluation_cost": 0.0,
                 "models_evaluated": [],
                 "tasks_evaluated": [],
-            }
+            },
         }
 
     def _reload(self) -> dict[str, Any]:
@@ -132,9 +136,7 @@ class ResultsDatabase:
             try:
                 # Write to temp file first (atomic write pattern)
                 fd, temp_path = tempfile.mkstemp(
-                    dir=self.db_path.parent,
-                    prefix=".benchmark_results_",
-                    suffix=".tmp"
+                    dir=self.db_path.parent, prefix=".benchmark_results_", suffix=".tmp"
                 )
                 try:
                     with os.fdopen(fd, "w") as f:
@@ -231,7 +233,11 @@ class ResultsDatabase:
     def get_generation(self, task_id: str, model: str, sample: int = 0) -> dict | None:
         """Get a specific generation record."""
         for g in self._data["generations"]:
-            if g["task_id"] == task_id and g["model"] == model and g["sample"] == sample:
+            if (
+                g["task_id"] == task_id
+                and g["model"] == model
+                and g["sample"] == sample
+            ):
                 return g
         return None
 
@@ -264,10 +270,13 @@ class ResultsDatabase:
 
                 # Remove existing record for same combo if exists (for re-runs)
                 self._data["generations"] = [
-                    g for g in self._data["generations"]
-                    if not (g["task_id"] == record.task_id and
-                           g["model"] == record.model and
-                           g["sample"] == record.sample)
+                    g
+                    for g in self._data["generations"]
+                    if not (
+                        g["task_id"] == record.task_id
+                        and g["model"] == record.model
+                        and g["sample"] == record.sample
+                    )
                 ]
                 self._data["generations"].append(asdict(record))
 
@@ -294,10 +303,13 @@ class ResultsDatabase:
 
                 # Remove existing record for same combo if exists
                 self._data["evaluations"] = [
-                    e for e in self._data["evaluations"]
-                    if not (e["task_id"] == record.task_id and
-                           e["model"] == record.model and
-                           e["evaluator_model"] == record.evaluator_model)
+                    e
+                    for e in self._data["evaluations"]
+                    if not (
+                        e["task_id"] == record.task_id
+                        and e["model"] == record.model
+                        and e["evaluator_model"] == record.evaluator_model
+                    )
                 ]
                 self._data["evaluations"].append(asdict(record))
 
@@ -313,9 +325,7 @@ class ResultsDatabase:
 
         # Write to temp file first (atomic write pattern)
         fd, temp_path = tempfile.mkstemp(
-            dir=self.db_path.parent,
-            prefix=".benchmark_results_",
-            suffix=".tmp"
+            dir=self.db_path.parent, prefix=".benchmark_results_", suffix=".tmp"
         )
         try:
             with os.fdopen(fd, "w") as f:
@@ -350,13 +360,13 @@ class ResultsDatabase:
                 # Remove failed generations
                 if model:
                     self._data["generations"] = [
-                        g for g in self._data["generations"]
+                        g
+                        for g in self._data["generations"]
                         if not (g["model"] == model and not g.get("success", True))
                     ]
                 else:
                     self._data["generations"] = [
-                        g for g in self._data["generations"]
-                        if g.get("success", True)
+                        g for g in self._data["generations"] if g.get("success", True)
                     ]
 
                 removed = before_count - len(self._data["generations"])
@@ -388,13 +398,13 @@ class ResultsDatabase:
                 # Remove failed evaluations
                 if model:
                     self._data["evaluations"] = [
-                        e for e in self._data["evaluations"]
+                        e
+                        for e in self._data["evaluations"]
                         if not (e["model"] == model and not e.get("success", True))
                     ]
                 else:
                     self._data["evaluations"] = [
-                        e for e in self._data["evaluations"]
-                        if e.get("success", True)
+                        e for e in self._data["evaluations"] if e.get("success", True)
                     ]
 
                 removed = before_count - len(self._data["evaluations"])
@@ -415,10 +425,13 @@ class ResultsDatabase:
                 self._data = self._reload()
                 for record in records:
                     self._data["generations"] = [
-                        g for g in self._data["generations"]
-                        if not (g["task_id"] == record.task_id and
-                               g["model"] == record.model and
-                               g["sample"] == record.sample)
+                        g
+                        for g in self._data["generations"]
+                        if not (
+                            g["task_id"] == record.task_id
+                            and g["model"] == record.model
+                            and g["sample"] == record.sample
+                        )
                     ]
                     self._data["generations"].append(asdict(record))
                 self._save_unlocked()
@@ -436,10 +449,13 @@ class ResultsDatabase:
                 self._data = self._reload()
                 for record in records:
                     self._data["evaluations"] = [
-                        e for e in self._data["evaluations"]
-                        if not (e["task_id"] == record.task_id and
-                               e["model"] == record.model and
-                               e["sample"] == record.sample)
+                        e
+                        for e in self._data["evaluations"]
+                        if not (
+                            e["task_id"] == record.task_id
+                            and e["model"] == record.model
+                            and e["sample"] == record.sample
+                        )
                     ]
                     self._data["evaluations"].append(asdict(record))
                 self._save_unlocked()
@@ -454,10 +470,14 @@ class ResultsDatabase:
         Returns None if no evaluations with scores exist.
         """
         import statistics
+
         evals = [
-            e for e in self._data["evaluations"]
-            if e["task_id"] == task_id and e["model"] == gen_model
-            and e.get("success", True) and e.get("final_score") is not None
+            e
+            for e in self._data["evaluations"]
+            if e["task_id"] == task_id
+            and e["model"] == gen_model
+            and e.get("success", True)
+            and e.get("final_score") is not None
         ]
         if not evals:
             return None
@@ -465,7 +485,9 @@ class ResultsDatabase:
         scores = [e["final_score"] for e in evals]
         return statistics.median(scores)
 
-    def get_score_breakdown(self, task_id: str, gen_model: str) -> dict[str, float] | None:
+    def get_score_breakdown(
+        self, task_id: str, gen_model: str
+    ) -> dict[str, float] | None:
         """
         Get aggregated score breakdown for a task/model combo.
         Returns median of each score component.
@@ -474,18 +496,21 @@ class ResultsDatabase:
         For agentic tasks: process, output (averaged sub-scores)
         """
         import statistics
+
         evals = [
-            e for e in self._data["evaluations"]
-            if e["task_id"] == task_id and e["model"] == gen_model
-            and e.get("success", True) and e.get("score_breakdown") is not None
+            e
+            for e in self._data["evaluations"]
+            if e["task_id"] == task_id
+            and e["model"] == gen_model
+            and e.get("success", True)
+            and e.get("score_breakdown") is not None
         ]
         if not evals:
             return None
 
         # Check if these are agentic evaluations
         agentic_evals = [
-            e for e in evals
-            if e.get("score_breakdown", {}).get("agentic", False)
+            e for e in evals if e.get("score_breakdown", {}).get("agentic", False)
         ]
 
         if agentic_evals:
@@ -500,7 +525,9 @@ class ResultsDatabase:
 
                 # Average all process scores
                 if proc:
-                    proc_vals = [v for v in proc.values() if isinstance(v, (int, float))]
+                    proc_vals = [
+                        v for v in proc.values() if isinstance(v, (int, float))
+                    ]
                     if proc_vals:
                         process_scores.append(statistics.mean(proc_vals))
 
@@ -511,15 +538,20 @@ class ResultsDatabase:
                         output_scores.append(statistics.mean(out_vals))
 
             return {
-                "process": statistics.median(process_scores) if process_scores else None,
+                "process": statistics.median(process_scores)
+                if process_scores
+                else None,
                 "output": statistics.median(output_scores) if output_scores else None,
                 # For compatibility with leaderboard display
-                "llm_judge": statistics.median(output_scores) if output_scores else None,
+                "llm_judge": statistics.median(output_scores)
+                if output_scores
+                else None,
             }
 
         # Standard evaluations: word_count, programmatic, llm_judge
         standard_evals = [
-            e for e in evals
+            e
+            for e in evals
             if e.get("score_breakdown", {}).get("components") is not None
         ]
         if not standard_evals:
@@ -535,7 +567,9 @@ class ResultsDatabase:
             components = e["score_breakdown"]["components"]
 
             # Extract word count score from programmatic breakdown
-            wc_score = components["programmatic"]["breakdown"].get("word_count_score", 0.0)
+            wc_score = components["programmatic"]["breakdown"].get(
+                "word_count_score", 0.0
+            )
             wc_scores.append(wc_score)
 
             # Extract programmatic score
@@ -556,7 +590,8 @@ class ResultsDatabase:
 
         # Get unique evaluators
         evaluators = set(
-            e["evaluator_model"] for e in self._data["evaluations"]
+            e["evaluator_model"]
+            for e in self._data["evaluations"]
             if e.get("success", True)
         )
 
@@ -605,7 +640,7 @@ class ResultsDatabase:
 
         # Group by model
         by_model: dict[str, dict[str, Any]] = {}
-        for (gen_model, task_id) in task_types_map.keys():
+        for gen_model, task_id in task_types_map.keys():
             if gen_model not in by_model:
                 by_model[gen_model] = {"tasks": {}}
             task_type = task_types_map[(gen_model, task_id)]
@@ -637,7 +672,10 @@ class ResultsDatabase:
                         wc_scores.append(t["breakdown"]["word_count"])
                     if "programmatic" in t["breakdown"]:
                         prog_scores.append(t["breakdown"]["programmatic"])
-                    if "llm_judge" in t["breakdown"] and t["breakdown"]["llm_judge"] is not None:
+                    if (
+                        "llm_judge" in t["breakdown"]
+                        and t["breakdown"]["llm_judge"] is not None
+                    ):
                         llm_scores.append(t["breakdown"]["llm_judge"])
 
             avg_components = {
@@ -662,29 +700,48 @@ class ResultsDatabase:
             gen_cost = model_gen_costs.get(model, 0)
             gen_count = model_gen_counts.get(model, 0)
             avg_cost = gen_cost / gen_count if gen_count > 0 else 0
-            token_stats = model_token_stats.get(model, {
-                "prompt_tokens": 0,
-                "completion_tokens": 0,
-                "reasoning_tokens": 0,
-                "output_tokens": 0,
-            })
+            token_stats = model_token_stats.get(
+                model,
+                {
+                    "prompt_tokens": 0,
+                    "completion_tokens": 0,
+                    "reasoning_tokens": 0,
+                    "output_tokens": 0,
+                },
+            )
 
             # Build by_task_type with safe component extraction
             by_task_type_stats = {}
             for tt, d in by_type.items():
                 # Safely extract component scores (handle missing keys)
-                wc_vals = [b["word_count"] for b in d["breakdowns"] if "word_count" in b and b["word_count"] is not None]
-                prog_vals = [b["programmatic"] for b in d["breakdowns"] if "programmatic" in b and b["programmatic"] is not None]
-                llm_vals = [b["llm_judge"] for b in d["breakdowns"] if "llm_judge" in b and b["llm_judge"] is not None]
+                wc_vals = [
+                    b["word_count"]
+                    for b in d["breakdowns"]
+                    if "word_count" in b and b["word_count"] is not None
+                ]
+                prog_vals = [
+                    b["programmatic"]
+                    for b in d["breakdowns"]
+                    if "programmatic" in b and b["programmatic"] is not None
+                ]
+                llm_vals = [
+                    b["llm_judge"]
+                    for b in d["breakdowns"]
+                    if "llm_judge" in b and b["llm_judge"] is not None
+                ]
 
                 by_task_type_stats[tt] = {
                     "total": d["total"],
                     "avg_score": statistics.mean(d["scores"]) if d["scores"] else None,
                     "avg_components": {
                         "word_count": statistics.mean(wc_vals) if wc_vals else None,
-                        "programmatic": statistics.mean(prog_vals) if prog_vals else None,
+                        "programmatic": statistics.mean(prog_vals)
+                        if prog_vals
+                        else None,
                         "llm_judge": statistics.mean(llm_vals) if llm_vals else None,
-                    } if d["breakdowns"] else None,
+                    }
+                    if d["breakdowns"]
+                    else None,
                 }
 
             model_stats[model] = {
@@ -723,9 +780,11 @@ class ResultsDatabase:
         lines.append("## Overview\n")
         lines.append(f"- **Models evaluated**: {len(meta.get('models_evaluated', []))}")
         lines.append(f"- **Tasks**: {len(meta.get('tasks_evaluated', []))}")
-        lines.append(f"- **Evaluator models**: {', '.join(e.split('/')[-1] for e in evaluators) if evaluators else 'None'}")
-        lines.append(f"- **Aggregation**: Median across evaluators")
-        lines.append(f"- **Scoring**: Programmatic (50%) + LLM Judge (50%)")
+        lines.append(
+            f"- **Evaluator models**: {', '.join(e.split('/')[-1] for e in evaluators) if evaluators else 'None'}"
+        )
+        lines.append("- **Aggregation**: Median across evaluators")
+        lines.append("- **Scoring**: Programmatic (50%) + LLM Judge (50%)")
         lines.append(f"- **Total generations**: {meta.get('generation_count', 0)}")
         lines.append(f"- **Total evaluations**: {meta.get('evaluation_count', 0)}")
         lines.append(f"- **Total cost**: ${meta.get('total_cost', 0):.4f}\n")
@@ -733,14 +792,18 @@ class ResultsDatabase:
         # Model rankings
         if summary["models"]:
             lines.append("## Model Rankings\n")
-            lines.append("| Rank | Model | Company | Score | Gen Cost | Value | LLM Judge |")
-            lines.append("|------|-------|---------|-------|----------|---------|-----------|")
+            lines.append(
+                "| Rank | Model | Company | Score | Gen Cost | Value | LLM Judge |"
+            )
+            lines.append(
+                "|------|-------|---------|-------|----------|---------|-----------|"
+            )
 
             # Sort by score
             sorted_models = sorted(
                 summary["models"].items(),
                 key=lambda x: x[1].get("avg_score") or 0,
-                reverse=True
+                reverse=True,
             )
 
             # Company mapping
@@ -766,14 +829,18 @@ class ResultsDatabase:
 
                 # Quality-to-cost ratio: Score²/Cost (rewards quality quadratically)
                 if avg_score is not None and gen_cost > 0:
-                    score_per_dollar = (avg_score ** 2 * 100) / gen_cost
+                    score_per_dollar = (avg_score**2 * 100) / gen_cost
                     ratio_str = f"{score_per_dollar:.1f}"
                 else:
                     ratio_str = "-"
 
                 # Component scores
                 comps = stats.get("avg_components", {})
-                llm_str = f"{comps.get('llm_judge'):.1%}" if comps.get('llm_judge') is not None else "-"
+                llm_str = (
+                    f"{comps.get('llm_judge'):.1%}"
+                    if comps.get("llm_judge") is not None
+                    else "-"
+                )
 
                 lines.append(
                     f"| {rank} | {model_short} | {company_name} | {score_str} | ${gen_cost:.4f} | {ratio_str} | {llm_str} |"
@@ -781,7 +848,9 @@ class ResultsDatabase:
 
             # Best Value Rankings (sorted by Score²/$)
             lines.append("\n## Best Value (Score²/Cost)\n")
-            lines.append("*Higher = better value. Formula: Score² / Cost (rewards quality quadratically)*\n")
+            lines.append(
+                "*Higher = better value. Formula: Score² / Cost (rewards quality quadratically)*\n"
+            )
             lines.append("| Rank | Model | Company | Score | Gen Cost | Value |")
             lines.append("|------|-------|---------|-------|----------|-------|")
 
@@ -791,7 +860,7 @@ class ResultsDatabase:
                 avg_score = stats.get("avg_score")
                 gen_cost = stats.get("generation_cost", 0)
                 if avg_score is not None and gen_cost > 0:
-                    score_per_dollar = (avg_score ** 2 * 100) / gen_cost
+                    score_per_dollar = (avg_score**2 * 100) / gen_cost
                     value_rankings.append((model, stats, score_per_dollar))
 
             value_rankings.sort(key=lambda x: x[2], reverse=True)
@@ -846,16 +915,30 @@ class ResultsDatabase:
                         score_str = f"{score:.1%}" if score is not None else "-"
 
                         comps = tt_stats.get("avg_components", {}) or {}
-                        prog_str = f"{comps.get('programmatic'):.1%}" if comps.get('programmatic') is not None else "-"
-                        llm_str = f"{comps.get('llm_judge'):.1%}" if comps.get('llm_judge') is not None else "-"
+                        prog_str = (
+                            f"{comps.get('programmatic'):.1%}"
+                            if comps.get("programmatic") is not None
+                            else "-"
+                        )
+                        llm_str = (
+                            f"{comps.get('llm_judge'):.1%}"
+                            if comps.get("llm_judge") is not None
+                            else "-"
+                        )
 
                         lines.append(f"| {tt} | {score_str} | {prog_str} | {llm_str} |")
 
             # Cost Efficiency section (integrates token usage with cost)
             lines.append("\n## Cost Efficiency\n")
-            lines.append("*Note: Reasoning tokens (for CoT models) are billed but don't produce output, affecting cost efficiency.*\n")
-            lines.append("| Model | Gen Cost | Output Tokens | Reasoning % | $/1K Output |")
-            lines.append("|-------|----------|---------------|-------------|-------------|")
+            lines.append(
+                "*Note: Reasoning tokens (for CoT models) are billed but don't produce output, affecting cost efficiency.*\n"
+            )
+            lines.append(
+                "| Model | Gen Cost | Output Tokens | Reasoning % | $/1K Output |"
+            )
+            lines.append(
+                "|-------|----------|---------------|-------------|-------------|"
+            )
 
             for model, stats in sorted_models:
                 model_short = model.split("/")[-1] if "/" in model else model
@@ -917,8 +1000,7 @@ class ResultsDatabase:
 
             # Compute median per model
             model_medians = {
-                m: statistics.median(scores)
-                for m, scores in model_scores.items()
+                m: statistics.median(scores) for m, scores in model_scores.items()
             }
 
             all_scores = list(model_medians.values())
@@ -932,7 +1014,9 @@ class ResultsDatabase:
             std_dev = statistics.stdev(all_scores) if len(all_scores) > 1 else 0
 
             # Best and worst models
-            sorted_models = sorted(model_medians.items(), key=lambda x: x[1], reverse=True)
+            sorted_models = sorted(
+                model_medians.items(), key=lambda x: x[1], reverse=True
+            )
             best_model = sorted_models[0] if sorted_models else (None, None)
             worst_model = sorted_models[-1] if sorted_models else (None, None)
 
@@ -945,7 +1029,9 @@ class ResultsDatabase:
             info = task_info.get(task_id, {})
 
             task_stats[task_id] = {
-                "task_type": info.get("task_type", evals[0].get("task_type", "unknown")),
+                "task_type": info.get(
+                    "task_type", evals[0].get("task_type", "unknown")
+                ),
                 "theory": info.get("theory", "Unknown"),
                 "models_evaluated": len(model_medians),
                 "evaluations_count": len(evals),
@@ -978,16 +1064,26 @@ class ResultsDatabase:
 
         # Overview
         lines.append("## Overview\n")
-        lines.append("This document provides detailed analysis of each benchmark task, including:")
-        lines.append("- **Score Spread**: Difference between best and worst model (higher = more discriminative)")
+        lines.append(
+            "This document provides detailed analysis of each benchmark task, including:"
+        )
+        lines.append(
+            "- **Score Spread**: Difference between best and worst model (higher = more discriminative)"
+        )
         lines.append("- **Average Score**: Mean score across all models")
-        lines.append("- **Best/Worst Models**: Which models excel or struggle on each task")
+        lines.append(
+            "- **Best/Worst Models**: Which models excel or struggle on each task"
+        )
         lines.append("- **Cost Analysis**: Generation costs per task\n")
 
         # Task Type Summary
         lines.append("## Task Type Summary\n")
-        lines.append("| Task Type | Tasks | Avg Score | Avg Spread | Best Spread | Discriminative Power |")
-        lines.append("|-----------|-------|-----------|------------|-------------|---------------------|")
+        lines.append(
+            "| Task Type | Tasks | Avg Score | Avg Spread | Best Spread | Discriminative Power |"
+        )
+        lines.append(
+            "|-----------|-------|-----------|------------|-------------|---------------------|"
+        )
 
         # Group by task type
         by_type: dict[str, list[dict]] = {}
@@ -1013,21 +1109,33 @@ class ResultsDatabase:
             else:
                 power = "Low"
 
-            type_summary.append((tt, len(tasks), avg_score, avg_spread, best_spread, power))
+            type_summary.append(
+                (tt, len(tasks), avg_score, avg_spread, best_spread, power)
+            )
 
         # Sort by discriminative power (avg_spread)
         type_summary.sort(key=lambda x: x[3], reverse=True)
 
         for tt, count, avg_score, avg_spread, best_spread, power in type_summary:
-            lines.append(f"| {tt} | {count} | {avg_score:.1%} | {avg_spread:.1%} | {best_spread:.1%} | {power} |")
+            lines.append(
+                f"| {tt} | {count} | {avg_score:.1%} | {avg_spread:.1%} | {best_spread:.1%} | {power} |"
+            )
 
         # Most Discriminative Tasks (Best for benchmarking)
         lines.append("\n## Most Discriminative Tasks\n")
-        lines.append("*Tasks with highest score spread - best for distinguishing model capabilities*\n")
-        lines.append("| Rank | Task ID | Type | Spread | Avg Score | Best Model | Worst Model |")
-        lines.append("|------|---------|------|--------|-----------|------------|-------------|")
+        lines.append(
+            "*Tasks with highest score spread - best for distinguishing model capabilities*\n"
+        )
+        lines.append(
+            "| Rank | Task ID | Type | Spread | Avg Score | Best Model | Worst Model |"
+        )
+        lines.append(
+            "|------|---------|------|--------|-----------|------------|-------------|"
+        )
 
-        sorted_by_spread = sorted(task_stats.items(), key=lambda x: x[1]["spread"], reverse=True)
+        sorted_by_spread = sorted(
+            task_stats.items(), key=lambda x: x[1]["spread"], reverse=True
+        )
         for rank, (task_id, stats) in enumerate(sorted_by_spread[:10], 1):
             best = stats["best_model"].split("/")[-1] if stats["best_model"] else "-"
             worst = stats["worst_model"].split("/")[-1] if stats["worst_model"] else "-"
@@ -1039,10 +1147,16 @@ class ResultsDatabase:
         # Hardest Tasks (Lowest average score)
         lines.append("\n## Hardest Tasks\n")
         lines.append("*Tasks with lowest average scores across models*\n")
-        lines.append("| Rank | Task ID | Type | Avg Score | Spread | Best Score | Best Model |")
-        lines.append("|------|---------|------|-----------|--------|------------|------------|")
+        lines.append(
+            "| Rank | Task ID | Type | Avg Score | Spread | Best Score | Best Model |"
+        )
+        lines.append(
+            "|------|---------|------|-----------|--------|------------|------------|"
+        )
 
-        sorted_by_difficulty = sorted(task_stats.items(), key=lambda x: x[1]["avg_score"])
+        sorted_by_difficulty = sorted(
+            task_stats.items(), key=lambda x: x[1]["avg_score"]
+        )
         for rank, (task_id, stats) in enumerate(sorted_by_difficulty[:10], 1):
             best = stats["best_model"].split("/")[-1] if stats["best_model"] else "-"
             lines.append(
@@ -1052,11 +1166,19 @@ class ResultsDatabase:
 
         # Easiest Tasks (Highest average score)
         lines.append("\n## Easiest Tasks\n")
-        lines.append("*Tasks with highest average scores across models (potential ceiling effects)*\n")
-        lines.append("| Rank | Task ID | Type | Avg Score | Spread | Worst Score | Worst Model |")
-        lines.append("|------|---------|------|-----------|--------|-------------|-------------|")
+        lines.append(
+            "*Tasks with highest average scores across models (potential ceiling effects)*\n"
+        )
+        lines.append(
+            "| Rank | Task ID | Type | Avg Score | Spread | Worst Score | Worst Model |"
+        )
+        lines.append(
+            "|------|---------|------|-----------|--------|-------------|-------------|"
+        )
 
-        sorted_by_ease = sorted(task_stats.items(), key=lambda x: x[1]["avg_score"], reverse=True)
+        sorted_by_ease = sorted(
+            task_stats.items(), key=lambda x: x[1]["avg_score"], reverse=True
+        )
         for rank, (task_id, stats) in enumerate(sorted_by_ease[:10], 1):
             worst = stats["worst_model"].split("/")[-1] if stats["worst_model"] else "-"
             lines.append(
@@ -1073,8 +1195,12 @@ class ResultsDatabase:
             tasks = by_type[tt]
             tasks.sort(key=lambda x: x["spread"], reverse=True)
 
-            lines.append("| Task ID | Theory | Avg | Min | Max | Spread | Std Dev | Best Model | Worst Model |")
-            lines.append("|---------|--------|-----|-----|-----|--------|---------|------------|-------------|")
+            lines.append(
+                "| Task ID | Theory | Avg | Min | Max | Spread | Std Dev | Best Model | Worst Model |"
+            )
+            lines.append(
+                "|---------|--------|-----|-----|-----|--------|---------|------------|-------------|"
+            )
 
             for t in tasks:
                 best = t["best_model"].split("/")[-1] if t["best_model"] else "-"
@@ -1098,7 +1224,9 @@ class ResultsDatabase:
 
         # Per-Task Model Scores Matrix
         lines.append("\n## Per-Task Model Scores\n")
-        lines.append("*Detailed scores for each model on each task (median across evaluators)*\n")
+        lines.append(
+            "*Detailed scores for each model on each task (median across evaluators)*\n"
+        )
 
         # Get all models
         all_models = set()
@@ -1132,12 +1260,13 @@ class ResultsDatabase:
         """Print current benchmark status."""
         meta = self._data["metadata"]
         evaluators = set(
-            e["evaluator_model"] for e in self._data["evaluations"]
+            e["evaluator_model"]
+            for e in self._data["evaluations"]
             if e.get("success", True)
         )
         print("\n=== Story Theory Benchmark Status ===\n")
         print(f"Generation models: {len(meta.get('models_evaluated', []))}")
-        for m in meta.get('models_evaluated', []):
+        for m in meta.get("models_evaluated", []):
             print(f"  - {m}")
         print(f"\nEvaluator models: {len(evaluators)}")
         for e in sorted(evaluators):
@@ -1148,7 +1277,6 @@ class ResultsDatabase:
         print(f"Total cost: ${meta.get('total_cost', 0):.4f}")
         print(f"\nLast updated: {self._data.get('last_updated', 'never')}")
 
-
     def rebuild_from_yaml(self) -> tuple[int, int]:
         """
         Rebuild database from YAML files in results/generations, results/evaluations,
@@ -1157,7 +1285,6 @@ class ResultsDatabase:
         Returns: (generations_loaded, evaluations_loaded)
         """
         import yaml
-        from pathlib import Path
 
         project_root = get_project_root()
         gen_dir = project_root / "results" / "generations"
@@ -1185,9 +1312,15 @@ class ResultsDatabase:
                             "model": data["model"],
                             "sample": data.get("sample_index", 0),
                             "output": data.get("output", ""),
-                            "prompt_tokens": data.get("metadata", {}).get("prompt_tokens", 0),
-                            "completion_tokens": data.get("metadata", {}).get("completion_tokens", 0),
-                            "reasoning_tokens": data.get("metadata", {}).get("reasoning_tokens", 0),
+                            "prompt_tokens": data.get("metadata", {}).get(
+                                "prompt_tokens", 0
+                            ),
+                            "completion_tokens": data.get("metadata", {}).get(
+                                "completion_tokens", 0
+                            ),
+                            "reasoning_tokens": data.get("metadata", {}).get(
+                                "reasoning_tokens", 0
+                            ),
                             "generation_cost": data.get("metadata", {}).get("cost", 0),
                             "timestamp": data.get("metadata", {}).get("timestamp", ""),
                             "success": data.get("metadata", {}).get("success", True),
@@ -1215,8 +1348,12 @@ class ResultsDatabase:
                             "sample": data.get("sample_index", 0),
                             "output": data.get("output", ""),
                             "prompt_tokens": token_usage.get("total_prompt_tokens", 0),
-                            "completion_tokens": token_usage.get("total_completion_tokens", 0),
-                            "reasoning_tokens": token_usage.get("total_reasoning_tokens", 0),
+                            "completion_tokens": token_usage.get(
+                                "total_completion_tokens", 0
+                            ),
+                            "reasoning_tokens": token_usage.get(
+                                "total_reasoning_tokens", 0
+                            ),
                             "generation_cost": token_usage.get("total_cost", 0),
                             "timestamp": data.get("timestamp", ""),
                             "success": data.get("success", True),
@@ -1310,6 +1447,7 @@ class ResultsDatabase:
 
 
 # =========== Helper Functions ===========
+
 
 def get_missing_work(
     gen_models: list[str],

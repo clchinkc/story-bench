@@ -25,6 +25,7 @@ class Turn:
     Standard tasks have 3 turns: [system, user, assistant]
     Agentic tasks have N turns: [system, user, assistant, user, assistant, ...]
     """
+
     role: str  # "system", "user", "assistant"
     content: str
     turn_type: str  # "system", "prompt", "generation", "feedback", "critique", etc.
@@ -38,6 +39,7 @@ class GenerationResult:
 
     This replaces both the old GenerationResult (standard) and AgenticResult.
     """
+
     generation_id: str
     task_id: str
     task_type: str
@@ -90,7 +92,8 @@ class GenerationResult:
                 "total_prompt_tokens": self.total_prompt_tokens,
                 "total_completion_tokens": self.total_completion_tokens,
                 "total_reasoning_tokens": self.total_reasoning_tokens,
-                "output_tokens": self.total_completion_tokens - self.total_reasoning_tokens,
+                "output_tokens": self.total_completion_tokens
+                - self.total_reasoning_tokens,
                 "total_cost": self.total_cost,
             },
             "timestamp": self.timestamp,

@@ -1,0 +1,50 @@
+evaluation_id: 7bdac904
+task_id: beat_interpolation_002
+generation_id: beat_interpolation_002_minimax/minimax-m2.1_0
+task_type: beat_interpolation
+model: minimax/minimax-m2.1
+sample_index: 0
+evaluator_model: openai/gpt-5-mini
+evaluator_cost: 0.00145825
+timestamp: '2025-12-24T22:07:38.284908'
+success: true
+final_score: 0.9494615700812846
+score_breakdown:
+  final_score: 0.9495
+  components:
+    programmatic:
+      score: 0.8989
+      weight: 0.5
+      breakdown:
+        word_count_score: 0.9486
+        repetition_score: 0.77
+        slop_score: 1.0
+        overall: 0.8989
+      word_count:
+        actual: 439
+        target_range:
+        - 250
+        - 400
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: false
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: 'All four required elements are present: Sarah considers recanting, considers
+    going to authorities (Morrison/Internal Affairs), struggles with duty vs. saving
+    her sister, and a conversation with Marcus pushes her toward the third option
+    (working outside the system). No forbidden items appear: she does not immediately
+    go rogue, no one else makes the decision for her, she has not already resigned,
+    and there''s no direct confrontation with Marchetti or his people. The only deduction
+    is word_count_valid=false because the provided text is ~439 words, which falls
+    outside the 250–400 range.'
+error: null

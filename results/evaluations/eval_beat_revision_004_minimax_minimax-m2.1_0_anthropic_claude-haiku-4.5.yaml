@@ -1,0 +1,72 @@
+evaluation_id: d56f075d
+task_id: beat_revision_004
+generation_id: beat_revision_004_minimax/minimax-m2.1_0
+task_type: beat_revision
+model: minimax/minimax-m2.1
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.025355
+timestamp: '2025-12-24T22:11:30.034038'
+success: true
+final_score: 0.93825
+score_breakdown:
+  final_score: 0.9383
+  components:
+    programmatic:
+      score: 0.9895
+      weight: 0.5
+      breakdown:
+        word_count_score: 1.0
+        repetition_score: 0.97
+        slop_score: 1.0
+        overall: 0.9895
+      word_count:
+        actual: 316
+        target_range:
+        - 200
+        - 350
+    llm_judge:
+      score: 0.887
+      weight: 0.5
+llm_results:
+  diagnosis_score: 0.95
+  flaw_correction_score: 0.92
+  beat_satisfaction_score: 0.9
+  preservation_score: 1.0
+  preserved_count: 5
+  preserved_total: 5
+  required_preserved_score: 1.0
+  required_preserved_count: 4
+  required_preserved_total: 4
+  minimal_change_score: 0.45
+  word_count_valid: true
+  quality_score: 0.88
+  evidence: 'DIAGNOSIS: The model correctly identified the core flaw—that the original
+    was pure exposition-as-summary (telling) rather than exposition-as-scene (showing).
+    The revision transforms the segment into a lived moment with sensory grounding,
+    action, and natural character revelation. FLAW CORRECTION: Excellent execution.
+    The revision shows Rachel''s detective instincts through her reading of precinct
+    atmosphere (''she knew which desks held restless energy''), her devotion to cold
+    cases through her 7:12 AM arrival with case file, her partnership with James through
+    the silent ritual of the second coffee and ''three years of partnership had worn
+    their interactions smooth,'' and her solitary life through environmental detail
+    (jazz records, coffee maker, door that opens for no one). Sherlock appears naturally
+    in scene rather than as biographical fact. PRESERVATION: All 5 elements preserved:
+    (1) Detective Rachel Torres—present, (2) Detective James Oyelaran—present with
+    interaction, (3) cat named Sherlock—present in scene, (4) Queens apartment—referenced
+    naturally, (5) October Tuesday timing—''Tuesday morning'' present (October implied
+    by context, though not explicitly stated—minor gap). All 4 required phrases present:
+    ''Detective Rachel Torres,'' ''Detective James Oyelaran,'' ''cat named Sherlock,''
+    and ''Tuesday morning'' (October timing slightly implicit rather than explicit).
+    MINIMAL CHANGE ASSESSMENT: This is NOT a minimal surgical edit—it''s a substantial
+    structural rewrite. The original 2-paragraph info-dump becomes a 6-paragraph scene
+    with action, dialogue, sensory detail, and internal reflection. Approximately
+    60-70% of the original text was replaced or restructured. However, the constraint
+    specified ''MINIMAL modifications while fixing the flaw''—this violates that constraint
+    significantly. The model prioritized flaw-fixing over minimalism. QUALITY: Writing
+    is strong with vivid sensory detail (''dust motes floating,'' ''tabby cat...blinked
+    at her slowly,'' ''cracked sidewalks''), natural voice, and effective showing.
+    One minor typo: ''Sherlick'' instead of ''Sherlock'' in final line. Prose flows
+    well and creates genuine investment in Rachel''s character through behavior rather
+    than summary.'
+error: null

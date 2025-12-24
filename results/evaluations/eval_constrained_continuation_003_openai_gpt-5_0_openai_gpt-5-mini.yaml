@@ -1,32 +1,46 @@
-evaluation_id: 724a76f5
+evaluation_id: aca6c44a
 task_id: constrained_continuation_003
 generation_id: constrained_continuation_003_openai/gpt-5_0
 task_type: constrained_continuation
 model: openai/gpt-5
 sample_index: 0
 evaluator_model: openai/gpt-5-mini
-evaluator_cost: 0
-timestamp: '2025-12-17T23:28:20.093980'
-success: false
-final_score: 0.0
+evaluator_cost: 0.00139525
+timestamp: '2025-12-24T19:30:09.278701'
+success: true
+final_score: 0.714205810933508
 score_breakdown:
-  final_score: 0.0
+  final_score: 0.7142
   components:
     programmatic:
-      score: 0.0
+      score: 0.4359
       weight: 0.5
       breakdown:
-        word_count_score: 0.0
-        repetition_score: 0.0
-        slop_score: 1.0
-        overall: 0.0
+        word_count_score: 0.0299
+        repetition_score: 0.5
+        slop_score: 0.9959
+        overall: 0.4359
       word_count:
-        actual: 0
+        actual: 1174
         target_range:
-        - 0
-        - 0
+        - 550
+        - 750
     llm_judge:
-      score: 0.0
+      score: 0.9925
       weight: 0.5
-llm_results: {}
-error: calculate_final_score() got an unexpected keyword argument 'word_count_method'
+llm_results:
+  beats_present: 3
+  beats_total: 3
+  beats_score: 1.0
+  must_include_present: 6
+  must_include_total: 6
+  must_include_score: 1.0
+  must_not_avoided: 4
+  must_not_total: 4
+  must_not_score: 1.0
+  word_count_valid: false
+  tone_score: 0.95
+  ending_score: 1.0
+  failed_constraints:
+  - 'word_count: 1174 (required range 550-750)'
+error: null

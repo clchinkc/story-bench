@@ -21,6 +21,7 @@ class ScoringWeights:
     Programmatic (50%): word count + repetition + slop
     LLM Judge (50%): task-specific criteria
     """
+
     programmatic: float = 0.50
     llm_judge: float = 0.50
 
@@ -39,10 +40,11 @@ class ProgrammaticScores:
     - repetition_score: Penalizes overused words/phrases (1.0 = no repetition)
     - slop_score: Penalizes "GPT-isms" like "tapestry", "delve" (1.0 = no slop)
     """
-    word_count_score: float      # Word count penalty (1.0 = in target range)
-    repetition_score: float      # Word/phrase repetition penalty (1.0 = no repetition)
-    slop_score: float            # "GPT-isms" detection penalty (1.0 = no slop)
-    overall: float               # Weighted combination
+
+    word_count_score: float  # Word count penalty (1.0 = in target range)
+    repetition_score: float  # Word/phrase repetition penalty (1.0 = no repetition)
+    slop_score: float  # "GPT-isms" detection penalty (1.0 = no slop)
+    overall: float  # Weighted combination
 
     def to_dict(self) -> dict[str, float]:
         return {
@@ -59,6 +61,7 @@ class ScoreBreakdown:
     Complete score breakdown for a generation.
     Two components: Programmatic (50%) + LLM Judge (50%)
     """
+
     programmatic_scores: ProgrammaticScores
     llm_judge_score: float
     final_score: float
@@ -90,6 +93,7 @@ class ScoreBreakdown:
 
 
 # ============ Word Count Scoring ============
+
 
 def word_count_score_gaussian(
     word_count: int,
@@ -126,7 +130,7 @@ def word_count_score_gaussian(
         deviation = word_count - target_max
 
     # Gaussian penalty: e^(-(deviation^2)/(2*sigma^2))
-    score = math.exp(-(deviation ** 2) / (2 * sigma ** 2))
+    score = math.exp(-(deviation**2) / (2 * sigma**2))
 
     return max(0.0, min(1.0, score))
 
@@ -235,6 +239,7 @@ def word_count_score(
 
 # ============ Programmatic Metrics ============
 
+
 def count_words(text: str) -> int:
     """Count words in text."""
     return len(text.split())
@@ -243,14 +248,14 @@ def count_words(text: str) -> int:
 def tokenize_words(text: str) -> list[str]:
     """Tokenize text into lowercase words."""
     # Remove punctuation and split
-    words = re.findall(r'\b[a-zA-Z]+\b', text.lower())
+    words = re.findall(r"\b[a-zA-Z]+\b", text.lower())
     return words
 
 
 def get_sentences(text: str) -> list[str]:
     """Split text into sentences."""
     # Split on sentence-ending punctuation
-    sentences = re.split(r'[.!?]+', text)
+    sentences = re.split(r"[.!?]+", text)
     # Filter empty and strip
     sentences = [s.strip() for s in sentences if s.strip()]
     return sentences
@@ -258,46 +263,200 @@ def get_sentences(text: str) -> list[str]:
 
 # Common words to exclude from repetition counting
 COMMON_WORDS = {
-    "the", "a", "an", "and", "or", "but", "in", "on", "at", "to", "for",
-    "of", "with", "by", "from", "as", "is", "was", "are", "were", "been",
-    "be", "have", "has", "had", "do", "does", "did", "will", "would",
-    "could", "should", "may", "might", "must", "shall", "can", "need",
-    "it", "its", "this", "that", "these", "those", "i", "you", "he",
-    "she", "we", "they", "me", "him", "her", "us", "them", "my", "your",
-    "his", "our", "their", "what", "which", "who", "whom", "whose",
-    "where", "when", "why", "how", "all", "each", "every", "both",
-    "few", "more", "most", "other", "some", "such", "no", "not",
-    "only", "same", "so", "than", "too", "very", "just", "also",
-    "now", "here", "there", "then", "once", "again", "into", "out",
-    "up", "down", "about", "after", "before", "over", "under", "through",
+    "the",
+    "a",
+    "an",
+    "and",
+    "or",
+    "but",
+    "in",
+    "on",
+    "at",
+    "to",
+    "for",
+    "of",
+    "with",
+    "by",
+    "from",
+    "as",
+    "is",
+    "was",
+    "are",
+    "were",
+    "been",
+    "be",
+    "have",
+    "has",
+    "had",
+    "do",
+    "does",
+    "did",
+    "will",
+    "would",
+    "could",
+    "should",
+    "may",
+    "might",
+    "must",
+    "shall",
+    "can",
+    "need",
+    "it",
+    "its",
+    "this",
+    "that",
+    "these",
+    "those",
+    "i",
+    "you",
+    "he",
+    "she",
+    "we",
+    "they",
+    "me",
+    "him",
+    "her",
+    "us",
+    "them",
+    "my",
+    "your",
+    "his",
+    "our",
+    "their",
+    "what",
+    "which",
+    "who",
+    "whom",
+    "whose",
+    "where",
+    "when",
+    "why",
+    "how",
+    "all",
+    "each",
+    "every",
+    "both",
+    "few",
+    "more",
+    "most",
+    "other",
+    "some",
+    "such",
+    "no",
+    "not",
+    "only",
+    "same",
+    "so",
+    "than",
+    "too",
+    "very",
+    "just",
+    "also",
+    "now",
+    "here",
+    "there",
+    "then",
+    "once",
+    "again",
+    "into",
+    "out",
+    "up",
+    "down",
+    "about",
+    "after",
+    "before",
+    "over",
+    "under",
+    "through",
 }
 
 # "Slop" words - overused LLM phrases that indicate poor creative writing
 # Based on EQ-Bench research and common "GPT-isms"
 SLOP_WORDS = {
     # High-frequency slop (2 points each)
-    "tapestry": 2, "testament": 2, "delve": 2, "realm": 2, "crucial": 2,
-    "multifaceted": 2, "intricacies": 2, "nuanced": 2, "embark": 2,
-    "captivate": 2, "captivating": 2, "resonate": 2, "resonated": 2,
-    "resonating": 2, "landscape": 2, "navigating": 2, "navigate": 2,
-    "elevate": 2, "elevating": 2, "evolving": 2, "pivotal": 2,
-    "unravel": 2, "unraveling": 2, "unveil": 2, "unveiling": 2,
-    "profound": 2, "profoundly": 2, "intricate": 2, "intricately": 2,
-    "overarching": 2, "underscore": 2, "underscores": 2, "underscoring": 2,
-    "superb": 2, "meticulously": 2, "meticulous": 2, "seamlessly": 2,
-    "seamless": 2, "intrinsic": 2, "intrinsically": 2, "noteworthy": 2,
-
+    "tapestry": 2,
+    "testament": 2,
+    "delve": 2,
+    "realm": 2,
+    "crucial": 2,
+    "multifaceted": 2,
+    "intricacies": 2,
+    "nuanced": 2,
+    "embark": 2,
+    "captivate": 2,
+    "captivating": 2,
+    "resonate": 2,
+    "resonated": 2,
+    "resonating": 2,
+    "landscape": 2,
+    "navigating": 2,
+    "navigate": 2,
+    "elevate": 2,
+    "elevating": 2,
+    "evolving": 2,
+    "pivotal": 2,
+    "unravel": 2,
+    "unraveling": 2,
+    "unveil": 2,
+    "unveiling": 2,
+    "profound": 2,
+    "profoundly": 2,
+    "intricate": 2,
+    "intricately": 2,
+    "overarching": 2,
+    "underscore": 2,
+    "underscores": 2,
+    "underscoring": 2,
+    "superb": 2,
+    "meticulously": 2,
+    "meticulous": 2,
+    "seamlessly": 2,
+    "seamless": 2,
+    "intrinsic": 2,
+    "intrinsically": 2,
+    "noteworthy": 2,
     # Medium-frequency slop (1 point each)
-    "foray": 1, "myriad": 1, "plethora": 1, "albeit": 1, "whilst": 1,
-    "amidst": 1, "burgeoning": 1, "endeavor": 1, "endeavors": 1,
-    "paramount": 1, "quintessential": 1, "tantalizing": 1, "tantalize": 1,
-    "whimsical": 1, "whimsy": 1, "heartwarming": 1, "heartfelt": 1,
-    "poignant": 1, "evocative": 1, "visceral": 1, "palpable": 1,
-    "cacophony": 1, "symphony": 1, "kaleidoscope": 1, "mosaic": 1,
-    "beacon": 1, "harbinger": 1, "testament": 1, "pinnacle": 1,
-    "zenith": 1, "nadir": 1, "cusp": 1, "brink": 1, "precipice": 1,
-    "labyrinth": 1, "labyrinthine": 1, "enigmatic": 1, "enigma": 1,
-    "conundrum": 1, "dichotomy": 1, "juxtaposition": 1, "paradox": 1,
+    "foray": 1,
+    "myriad": 1,
+    "plethora": 1,
+    "albeit": 1,
+    "whilst": 1,
+    "amidst": 1,
+    "burgeoning": 1,
+    "endeavor": 1,
+    "endeavors": 1,
+    "paramount": 1,
+    "quintessential": 1,
+    "tantalizing": 1,
+    "tantalize": 1,
+    "whimsical": 1,
+    "whimsy": 1,
+    "heartwarming": 1,
+    "heartfelt": 1,
+    "poignant": 1,
+    "evocative": 1,
+    "visceral": 1,
+    "palpable": 1,
+    "cacophony": 1,
+    "symphony": 1,
+    "kaleidoscope": 1,
+    "mosaic": 1,
+    "beacon": 1,
+    "harbinger": 1,
+    "pinnacle": 1,
+    "zenith": 1,
+    "nadir": 1,
+    "cusp": 1,
+    "brink": 1,
+    "precipice": 1,
+    "labyrinth": 1,
+    "labyrinthine": 1,
+    "enigmatic": 1,
+    "enigma": 1,
+    "conundrum": 1,
+    "dichotomy": 1,
+    "juxtaposition": 1,
+    "paradox": 1,
 }
 
 
@@ -322,6 +481,7 @@ def repetition_score(text: str) -> float:
 
     # Count word frequencies
     from collections import Counter
+
     word_counts = Counter(content_words)
 
     # Calculate expected frequency (uniform distribution)
@@ -341,7 +501,7 @@ def repetition_score(text: str) -> float:
             penalty += excess * 0.02  # 2% per excess repetition
 
     # Also check for repeated phrases (2-3 word combinations)
-    bigrams = [' '.join(words[i:i+2]) for i in range(len(words)-1)]
+    bigrams = [" ".join(words[i : i + 2]) for i in range(len(words) - 1)]
     bigram_counts = Counter(bigrams)
     for phrase, count in bigram_counts.items():
         # Exclude common phrases
@@ -430,7 +590,9 @@ def calculate_programmatic_scores(
     Returns:
         ProgrammaticScores with individual and overall scores
     """
-    wc_score = word_count_score(word_count, target_min, target_max, method=word_count_method)
+    wc_score = word_count_score(
+        word_count, target_min, target_max, method=word_count_method
+    )
     rep_score = repetition_score(text)
     slop = slop_score(text)
 
@@ -446,6 +608,7 @@ def calculate_programmatic_scores(
 
 
 # ============ LLM Judge Score Normalization ============
+
 
 def _safe_float(value: Any, default: float = 0.0) -> float:
     """Safely convert a value to float, returning default if not possible."""
@@ -481,11 +644,20 @@ def normalize_llm_results_to_score(
         # Weighted scoring: elements (25%), beat_execution (25%), must_not (15%), character (10%), bridge (15%), continuity (10%)
         elements = _safe_float(results.get("beat_elements_score"), 0.5)
         beat_exec = _safe_float(results.get("beat_execution_score"), 0.5)
-        must_not = _safe_float(results.get("must_not_score"), 1.0)  # Default 1.0 if no violations specified
+        must_not = _safe_float(
+            results.get("must_not_score"), 1.0
+        )  # Default 1.0 if no violations specified
         character = _safe_float(results.get("character_score"), 0.5)
         bridge = _safe_float(results.get("bridge_score"), 0.5)
         continuity = _safe_float(results.get("continuity_score"), 0.5)
-        return 0.25 * elements + 0.25 * beat_exec + 0.15 * must_not + 0.10 * character + 0.15 * bridge + 0.10 * continuity
+        return (
+            0.25 * elements
+            + 0.25 * beat_exec
+            + 0.15 * must_not
+            + 0.10 * character
+            + 0.15 * bridge
+            + 0.10 * continuity
+        )
 
     elif task_type == "beat_revision":
         # Check if this is a "no flaw" task (different scoring fields)
@@ -494,11 +666,19 @@ def normalize_llm_results_to_score(
             # Weighted: correct_diagnosis (40%), false_positive_avoided (30%),
             #           beat_understanding (15%), reasoning_quality (15%)
             correct_diagnosis = _safe_float(results.get("correct_diagnosis_score"), 0.0)
-            false_positive = _safe_float(results.get("false_positive_avoided_score"), 0.0)
-            beat_understanding = _safe_float(results.get("beat_understanding_score"), 0.5)
+            false_positive = _safe_float(
+                results.get("false_positive_avoided_score"), 0.0
+            )
+            beat_understanding = _safe_float(
+                results.get("beat_understanding_score"), 0.5
+            )
             reasoning = _safe_float(results.get("reasoning_quality_score"), 0.5)
-            return (0.40 * correct_diagnosis + 0.30 * false_positive +
-                    0.15 * beat_understanding + 0.15 * reasoning)
+            return (
+                0.40 * correct_diagnosis
+                + 0.30 * false_positive
+                + 0.15 * beat_understanding
+                + 0.15 * reasoning
+            )
 
         # Standard FLAWED task: Model must identify flaw themselves (not told what's wrong)
         # CONSTRAINED REVISION: Also evaluates minimal modification
@@ -508,11 +688,20 @@ def normalize_llm_results_to_score(
         flaw = _safe_float(results.get("flaw_correction_score"), 0.5)
         beat = _safe_float(results.get("beat_satisfaction_score"), 0.5)
         preserve = _safe_float(results.get("preservation_score"), 0.5)
-        required_preserved = _safe_float(results.get("required_preserved_score"), 1.0)  # Default 1.0 if no requirements
+        required_preserved = _safe_float(
+            results.get("required_preserved_score"), 1.0
+        )  # Default 1.0 if no requirements
         minimal_change = _safe_float(results.get("minimal_change_score"), 0.5)
         quality = _safe_float(results.get("quality_score"), 0.5)
-        return (0.20 * diagnosis + 0.20 * flaw + 0.20 * beat +
-                0.10 * preserve + 0.10 * required_preserved + 0.10 * minimal_change + 0.10 * quality)
+        return (
+            0.20 * diagnosis
+            + 0.20 * flaw
+            + 0.20 * beat
+            + 0.10 * preserve
+            + 0.10 * required_preserved
+            + 0.10 * minimal_change
+            + 0.10 * quality
+        )
 
     elif task_type == "constrained_continuation":
         # Weighted: beats (20%), must_include (30%), must_not (25%), tone (15%), ending (10%)
@@ -521,7 +710,13 @@ def normalize_llm_results_to_score(
         must_not = _safe_float(results.get("must_not_score"), 0.5)
         tone = _safe_float(results.get("tone_score"), 0.5)
         ending = _safe_float(results.get("ending_score"), 0.5)
-        return 0.20 * beats + 0.30 * must_include + 0.25 * must_not + 0.15 * tone + 0.10 * ending
+        return (
+            0.20 * beats
+            + 0.30 * must_include
+            + 0.25 * must_not
+            + 0.15 * tone
+            + 0.10 * ending
+        )
 
     elif task_type == "theory_conversion":
         # Weighted: beats (35%), preservation (30%), structural (20%), tone (15%)
@@ -544,6 +739,7 @@ def normalize_llm_results_to_score(
 
 
 # ============ Final Score Calculation ============
+
 
 def calculate_final_score(
     text: str,
@@ -589,10 +785,7 @@ def calculate_final_score(
     llm_score = normalize_llm_results_to_score(llm_results, task_type)
 
     # Weighted final score (50/50)
-    final = (
-        weights.programmatic * prog_scores.overall +
-        weights.llm_judge * llm_score
-    )
+    final = weights.programmatic * prog_scores.overall + weights.llm_judge * llm_score
 
     return ScoreBreakdown(
         programmatic_scores=prog_scores,
@@ -610,18 +803,20 @@ if __name__ == "__main__":
     # Test word count scoring
     print("=== Word Count Scoring Tests ===")
     test_cases = [
-        (500, 400, 600),   # In range
-        (350, 400, 600),   # Slightly under
-        (200, 400, 600),   # Way under
-        (650, 400, 600),   # Slightly over
-        (900, 400, 600),   # Way over
+        (500, 400, 600),  # In range
+        (350, 400, 600),  # Slightly under
+        (200, 400, 600),  # Way under
+        (650, 400, 600),  # Slightly over
+        (900, 400, 600),  # Way over
     ]
 
     for wc, min_wc, max_wc in test_cases:
         g = word_count_score_gaussian(wc, min_wc, max_wc)
         t = word_count_score_tanh(wc, min_wc, max_wc)
         s = word_count_score_sigmoid(wc, min_wc, max_wc)
-        print(f"WC={wc} (target {min_wc}-{max_wc}): gaussian={g:.3f}, tanh={t:.3f}, sigmoid={s:.3f}")
+        print(
+            f"WC={wc} (target {min_wc}-{max_wc}): gaussian={g:.3f}, tanh={t:.3f}, sigmoid={s:.3f}"
+        )
 
     print("\n=== Programmatic Scoring Tests ===")
     # Good text - no repetition, no slop
@@ -633,7 +828,9 @@ if __name__ == "__main__":
     """
 
     prog = calculate_programmatic_scores(good_text, len(good_text.split()), 50, 100)
-    print(f"Good text - WC: {prog.word_count_score:.3f}, Rep: {prog.repetition_score:.3f}, Slop: {prog.slop_score:.3f}, Overall: {prog.overall:.3f}")
+    print(
+        f"Good text - WC: {prog.word_count_score:.3f}, Rep: {prog.repetition_score:.3f}, Slop: {prog.slop_score:.3f}, Overall: {prog.overall:.3f}"
+    )
 
     # Sloppy text - contains GPT-isms
     sloppy_text = """
@@ -645,7 +842,9 @@ if __name__ == "__main__":
     """
 
     prog = calculate_programmatic_scores(sloppy_text, len(sloppy_text.split()), 50, 100)
-    print(f"Sloppy text - WC: {prog.word_count_score:.3f}, Rep: {prog.repetition_score:.3f}, Slop: {prog.slop_score:.3f}, Overall: {prog.overall:.3f}")
+    print(
+        f"Sloppy text - WC: {prog.word_count_score:.3f}, Rep: {prog.repetition_score:.3f}, Slop: {prog.slop_score:.3f}, Overall: {prog.overall:.3f}"
+    )
 
     # Repetitive text
     repetitive_text = """
@@ -654,8 +853,12 @@ if __name__ == "__main__":
     The hero attacked. The hero dodged. The hero struck. The hero won.
     """
 
-    prog = calculate_programmatic_scores(repetitive_text, len(repetitive_text.split()), 50, 100)
-    print(f"Repetitive text - WC: {prog.word_count_score:.3f}, Rep: {prog.repetition_score:.3f}, Slop: {prog.slop_score:.3f}, Overall: {prog.overall:.3f}")
+    prog = calculate_programmatic_scores(
+        repetitive_text, len(repetitive_text.split()), 50, 100
+    )
+    print(
+        f"Repetitive text - WC: {prog.word_count_score:.3f}, Rep: {prog.repetition_score:.3f}, Slop: {prog.slop_score:.3f}, Overall: {prog.overall:.3f}"
+    )
 
     print("\n=== Full Score Test ===")
     # New partial credit format
@@ -677,8 +880,12 @@ if __name__ == "__main__":
     )
 
     print(f"Final score: {breakdown.final_score:.3f}")
-    print(f"  1. Programmatic ({breakdown.weights.programmatic}): {breakdown.programmatic_scores.overall:.3f}")
+    print(
+        f"  1. Programmatic ({breakdown.weights.programmatic}): {breakdown.programmatic_scores.overall:.3f}"
+    )
     print(f"     - Word Count: {breakdown.programmatic_scores.word_count_score:.3f}")
     print(f"     - Repetition: {breakdown.programmatic_scores.repetition_score:.3f}")
     print(f"     - Slop: {breakdown.programmatic_scores.slop_score:.3f}")
-    print(f"  2. LLM judge ({breakdown.weights.llm_judge}): {breakdown.llm_judge_score:.3f}")
+    print(
+        f"  2. LLM judge ({breakdown.weights.llm_judge}): {breakdown.llm_judge_score:.3f}"
+    )

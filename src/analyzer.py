@@ -85,9 +85,11 @@ class BenchmarkAnalyzer:
         # Group by task type
         by_task_type: dict[str, list[bool]] = defaultdict(list)
         # Group by theory (need to look up from task)
-        by_theory: dict[str, list[bool]] = defaultdict(list)
+        defaultdict(list)
         # Cross-tabulation: model × task_type
-        model_task_type: dict[str, dict[str, list[bool]]] = defaultdict(lambda: defaultdict(list))
+        model_task_type: dict[str, dict[str, list[bool]]] = defaultdict(
+            lambda: defaultdict(list)
+        )
 
         for e in self.evaluations:
             model = e.get("model", "unknown")
@@ -105,7 +107,9 @@ class BenchmarkAnalyzer:
             "model_x_task_type": {},
             "overall": {
                 "total_evaluations": len(self.evaluations),
-                "passed": sum(1 for e in self.evaluations if e.get("overall_pass", False)),
+                "passed": sum(
+                    1 for e in self.evaluations if e.get("overall_pass", False)
+                ),
             },
         }
 
@@ -288,8 +292,12 @@ class BenchmarkAnalyzer:
         comparisons = self.statistical_analysis()
         if comparisons:
             lines.append("\n## Statistical Comparisons\n")
-            lines.append("| Comparison | t-stat | p-value | Significant | Effect Size |")
-            lines.append("|------------|--------|---------|-------------|-------------|")
+            lines.append(
+                "| Comparison | t-stat | p-value | Significant | Effect Size |"
+            )
+            lines.append(
+                "|------------|--------|---------|-------------|-------------|"
+            )
 
             for c in comparisons:
                 model_a_short = c.model_a.split("/")[-1]
@@ -302,7 +310,9 @@ class BenchmarkAnalyzer:
 
         return "\n".join(lines)
 
-    def generate_visualizations(self, output_dir: str | Path | None = None) -> list[str]:
+    def generate_visualizations(
+        self, output_dir: str | Path | None = None
+    ) -> list[str]:
         """Generate visualization plots."""
         if output_dir is None:
             output_dir = get_project_root() / "results" / "analysis"
@@ -344,7 +354,9 @@ class BenchmarkAnalyzer:
         # 2. Task type performance chart
         fig, ax = plt.subplots(figsize=(12, 6))
         task_types = list(aggregated["by_task_type"].keys())
-        task_rates = [aggregated["by_task_type"][t]["pass_rate"] * 100 for t in task_types]
+        task_rates = [
+            aggregated["by_task_type"][t]["pass_rate"] * 100 for t in task_types
+        ]
 
         bars = ax.barh(task_types, task_rates, color="#9C27B0")
         ax.set_xlabel("Pass Rate (%)")
@@ -368,7 +380,9 @@ class BenchmarkAnalyzer:
 
         # 3. Radar chart for model × task type (if enough data)
         if len(models) >= 2 and len(task_types) >= 3:
-            fig, ax = plt.subplots(figsize=(10, 10), subplot_kw=dict(projection="polar"))
+            fig, ax = plt.subplots(
+                figsize=(10, 10), subplot_kw=dict(projection="polar")
+            )
 
             angles = np.linspace(0, 2 * np.pi, len(task_types), endpoint=False).tolist()
             angles += angles[:1]  # Complete the loop
@@ -377,10 +391,20 @@ class BenchmarkAnalyzer:
 
             for idx, model in enumerate(models[:4]):  # Max 4 models
                 model_data = aggregated["model_x_task_type"].get(model, {})
-                values = [model_data.get(tt, {}).get("pass_rate", 0) * 100 for tt in task_types]
+                values = [
+                    model_data.get(tt, {}).get("pass_rate", 0) * 100
+                    for tt in task_types
+                ]
                 values += values[:1]  # Complete the loop
 
-                ax.plot(angles, values, "o-", linewidth=2, label=model.split("/")[-1], color=colors[idx % len(colors)])
+                ax.plot(
+                    angles,
+                    values,
+                    "o-",
+                    linewidth=2,
+                    label=model.split("/")[-1],
+                    color=colors[idx % len(colors)],
+                )
                 ax.fill(angles, values, alpha=0.25, color=colors[idx % len(colors)])
 
             ax.set_xticks(angles[:-1])
@@ -438,12 +462,14 @@ class BenchmarkAnalyzer:
                 rates.sort(key=lambda x: x[1], reverse=True)
                 gap = rates[0][1] - rates[-1][1]
                 if gap > 0.15:  # Significant gap
-                    insights["biggest_model_gaps"].append({
-                        "task_type": task_type,
-                        "best_model": rates[0][0],
-                        "worst_model": rates[-1][0],
-                        "gap": gap,
-                    })
+                    insights["biggest_model_gaps"].append(
+                        {
+                            "task_type": task_type,
+                            "best_model": rates[0][0],
+                            "worst_model": rates[-1][0],
+                            "gap": gap,
+                        }
+                    )
 
         return insights
 

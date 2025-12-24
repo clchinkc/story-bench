@@ -1,0 +1,50 @@
+evaluation_id: 0c5871eb
+task_id: beat_interpolation_004
+generation_id: beat_interpolation_004_minimax/minimax-m2.1_0
+task_type: beat_interpolation
+model: minimax/minimax-m2.1
+sample_index: 0
+evaluator_model: openai/gpt-5-mini
+evaluator_cost: 0.001595
+timestamp: '2025-12-24T22:08:44.453581'
+success: true
+final_score: 0.945438290274569
+score_breakdown:
+  final_score: 0.9454
+  components:
+    programmatic:
+      score: 0.9009
+      weight: 0.5
+      breakdown:
+        word_count_score: 0.9972
+        repetition_score: 0.72
+        slop_score: 1.0
+        overall: 0.9009
+      word_count:
+        actual: 459
+        target_range:
+        - 300
+        - 450
+    llm_judge:
+      score: 0.99
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: false
+  character_score: 0.9
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: 'All four required elements are present: Thomas''s direct examination,
+    a clear moment of near-recant/internal struggle from Dr. Okonkwo, Thomas takes
+    decisive action (personal appeal and promise of help) that influences her, and
+    the turning point where she chooses to submit the documents so truth prevails.
+    The climax functions well as the story''s turning point. No must-not items are
+    violated. Word count is invalid (459, outside the 300–450 range). Minor deduction
+    in character_score for a small courtroom procedural oddity and slightly heightened
+    melodramatic pacing in places.'
+error: null

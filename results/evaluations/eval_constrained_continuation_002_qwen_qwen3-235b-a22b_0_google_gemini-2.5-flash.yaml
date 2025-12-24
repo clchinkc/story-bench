@@ -1,32 +1,45 @@
-evaluation_id: 364780e1
+evaluation_id: 0b7855ee
 task_id: constrained_continuation_002
 generation_id: constrained_continuation_002_qwen/qwen3-235b-a22b_0
 task_type: constrained_continuation
 model: qwen/qwen3-235b-a22b
 sample_index: 0
 evaluator_model: google/gemini-2.5-flash
-evaluator_cost: 0
-timestamp: '2025-12-17T23:34:29.465276'
-success: false
-final_score: 0.0
+evaluator_cost: 0.0009120999999999999
+timestamp: '2025-12-24T19:36:16.441760'
+success: true
+final_score: 0.9125
 score_breakdown:
-  final_score: 0.0
+  final_score: 0.9125
   components:
     programmatic:
-      score: 0.0
+      score: 0.825
       weight: 0.5
       breakdown:
-        word_count_score: 0.0
-        repetition_score: 0.0
+        word_count_score: 1.0
+        repetition_score: 0.5
         slop_score: 1.0
-        overall: 0.0
+        overall: 0.825
       word_count:
-        actual: 0
+        actual: 538
         target_range:
-        - 0
-        - 0
+        - 450
+        - 650
     llm_judge:
-      score: 0.0
+      score: 1.0
       weight: 0.5
-llm_results: {}
-error: calculate_final_score() got an unexpected keyword argument 'word_count_method'
+llm_results:
+  beats_present: 2
+  beats_total: 2
+  beats_score: 1.0
+  must_include_present: 6
+  must_include_total: 6
+  must_include_score: 1.0
+  must_not_avoided: 4
+  must_not_total: 4
+  must_not_score: 1.0
+  word_count_valid: true
+  tone_score: 1.0
+  ending_score: 1.0
+  failed_constraints: []
+error: null

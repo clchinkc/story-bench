@@ -1,0 +1,92 @@
+evaluation_id: bb9b9785
+task_id: constrained_continuation_001
+generation_id: constrained_continuation_001_minimax/minimax-m2.1_0
+task_type: constrained_continuation
+model: minimax/minimax-m2.1
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.03158
+timestamp: '2025-12-24T22:12:27.480935'
+success: true
+final_score: 0.8529279315838156
+score_breakdown:
+  final_score: 0.8529
+  components:
+    programmatic:
+      score: 0.7184
+      weight: 0.5
+      breakdown:
+        word_count_score: 0.7334
+        repetition_score: 0.5
+        slop_score: 1.0
+        overall: 0.7184
+      word_count:
+        actual: 826
+        target_range:
+        - 500
+        - 700
+    llm_judge:
+      score: 0.9875
+      weight: 0.5
+llm_results:
+  beats_present: 2
+  beats_total: 2
+  beats_score: 1.0
+  must_include_present: 6
+  must_include_total: 6
+  must_include_score: 1.0
+  must_not_avoided: 4
+  must_not_total: 4
+  must_not_score: 1.0
+  word_count_valid: false
+  word_count: 826
+  word_count_range: 500-700
+  tone_score: 0.95
+  ending_score: 0.95
+  failed_constraints:
+  - 'Word count exceeds maximum: 826 words vs. 700-word limit (126 words over)'
+  analysis:
+    beats_present_detail:
+    - 'Approach to the Inmost Cave: Excellently executed through the narrowing tunnel
+      passage, Zara''s internal fear confrontation, and the symbolic stone door requiring
+      blood sacrifice'
+    - 'The Ordeal: Powerfully rendered as a drowning/rebirth sequence in the underground
+      lake, stripping away identity and fear, emerging transformed'
+    must_include_present_detail:
+    - 'Choice between escape and helping Tomás: Zara catches Tomás dangling over the
+      void and chooses to save him despite time pressure and personal stakes'
+    - 'Trap requiring thief skills: The trap door mechanism that Zara identifies and
+      disables using her expertise in reading stone wear patterns'
+    - 'Tomás''s true motivation revealed: His confession about his dead daughter and
+      three-year search, driven by guilt rather than altruism'
+    - 'Zara confronting fear of failure: Explicit moment in the tunnel where she whispers
+      her deepest fear about the cure being a myth'
+    - 'Symbolic death/rebirth in Ordeal: The drowning sequence where she loses her
+      identity and emerges transformed'
+    - 'Zara emerging changed: Narrative explicitly states ''she was no longer the
+      girl who had entered'' with shifted motivation from running from death to running
+      toward life'
+    tone_assessment: Tense and morally complex throughout. Desperate hope evident
+      in Zara's sacrifice for Tomás and her internal struggle. Minor deduction only
+      for slight unevenness in pacing near the end.
+    ending_assessment: 'Excellently meets requirement: Zara has passed through the
+      Ordeal (emerged from the lake transformed) but faces immediate new complication
+      (Scorpion Guild arrival with mysterious older force). Sets up next stage perfectly.'
+    strengths:
+    - Both required beats are fully realized and thematically rich
+    - All six must-include elements seamlessly woven into narrative
+    - Excellent character development and emotional depth
+    - Morally complex choices presented authentically
+    - Symbolic language and imagery throughout
+    - Strong ending that honors the requirement while maintaining momentum
+    weaknesses:
+    - 'Word count violation: 126 words over limit (18% excess) - significant constraint
+      failure'
+    - Could trim some descriptive passages without losing impact
+  overall_assessment: Exceptional narrative execution with professional-quality storytelling.
+    All content requirements met perfectly. Single critical failure is the word count
+    constraint, which is objective and measurable. The story demonstrates sophisticated
+    understanding of Campbell's monomyth structure and delivers compelling character
+    work with genuine moral complexity. The constraint violation prevents a perfect
+    score despite the quality of the work.
+error: null

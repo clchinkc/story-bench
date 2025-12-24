@@ -1,32 +1,61 @@
-evaluation_id: 08e5ef83
+evaluation_id: c12b9583
 task_id: beat_interpolation_005
 generation_id: beat_interpolation_005_openai/gpt-5_0
 task_type: beat_interpolation
 model: openai/gpt-5
 sample_index: 0
 evaluator_model: anthropic/claude-haiku-4.5
-evaluator_cost: 0
-timestamp: '2025-12-17T23:37:19.368744'
-success: false
-final_score: 0.0
+evaluator_cost: 0.021720000000000003
+timestamp: '2025-12-24T19:38:49.760704'
+success: true
+final_score: 0.9137547094258839
 score_breakdown:
-  final_score: 0.0
+  final_score: 0.9138
   components:
     programmatic:
-      score: 0.0
+      score: 0.8275
       weight: 0.5
       breakdown:
-        word_count_score: 0.0
-        repetition_score: 0.0
+        word_count_score: 0.7963
+        repetition_score: 0.74
         slop_score: 1.0
-        overall: 0.0
+        overall: 0.8275
       word_count:
-        actual: 0
+        actual: 531
         target_range:
-        - 0
-        - 0
+        - 300
+        - 450
     llm_judge:
-      score: 0.0
+      score: 1.0
       weight: 0.5
-llm_results: {}
-error: calculate_final_score() got an unexpected keyword argument 'word_count_method'
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: false
+  word_count: 531
+  word_count_range: 300-450
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: 'STRENGTHS: All 4 required elements present and excellently executed:
+    (1) Maya discovers Alejandro''s vulnerability—post-surgery taste loss, emotional
+    isolation masked by legend status; (2) Relationship shifts from professional to
+    personal—she moves from ''here to cook'' to ''here to feed you'' with emotional
+    investment; (3) Shared moment creates genuine connection—the sopa de ajo scene
+    with egg-stirring, sherry vinegar, and balcony threshold standing is intimate
+    without being romantic; (4) Maya commits beyond contract—''I''m not here to perform.
+    I''m here to feed you'' and ''meant more than the contract'' show emotional commitment.
+    All must-not items avoided: they''re not in love (connection is nascent), she
+    doesn''t leave, photo isn''t taken here, Alejandro''s walls lower (he laughs,
+    admits truth, shows hope). Character voices are consistent—Maya''s practical warmth,
+    Alejandro''s guarded-then-vulnerable arc. Bridge is seamless: BEFORE establishes
+    stakes (debt, difficult employer, contract); GENERATED shows the emotional turning
+    point where professional relationship becomes personal; AFTER shows the consequence
+    (photo leak, separation). Setting continuity perfect: kitchen→balcony threshold→study.
+    DEDUCTION: Word count exceeds range by 81 words (531 vs 300-450 max). This is
+    a significant technical violation despite narrative excellence.'
+error: null

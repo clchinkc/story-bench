@@ -1,32 +1,46 @@
-evaluation_id: 96d1cb75
+evaluation_id: eb78a6a0
 task_id: multi_beat_synthesis_002
 generation_id: multi_beat_synthesis_002_google/gemini-3-pro-preview_0
 task_type: multi_beat_synthesis
 model: google/gemini-3-pro-preview
 sample_index: 0
 evaluator_model: openai/gpt-5-mini
-evaluator_cost: 0
-timestamp: '2025-12-17T23:39:52.992524'
-success: false
-final_score: 0.0
+evaluator_cost: 0.00256625
+timestamp: '2025-12-24T19:42:27.511346'
+success: true
+final_score: 0.8966666666600001
 score_breakdown:
-  final_score: 0.0
+  final_score: 0.8967
   components:
     programmatic:
-      score: 0.0
+      score: 0.825
       weight: 0.5
       breakdown:
-        word_count_score: 0.0
-        repetition_score: 0.0
+        word_count_score: 1.0
+        repetition_score: 0.5
         slop_score: 1.0
-        overall: 0.0
+        overall: 0.825
       word_count:
-        actual: 0
+        actual: 916
         target_range:
-        - 0
-        - 0
+        - 700
+        - 1000
     llm_judge:
-      score: 0.0
+      score: 0.9683
       weight: 0.5
-llm_results: {}
-error: calculate_final_score() got an unexpected keyword argument 'word_count_method'
+llm_results:
+  beat_reqs_satisfied: 14
+  beat_reqs_total: 15
+  beat_requirements_score: 0.9333333333
+  cross_beat_satisfied: 4
+  cross_beat_total: 4
+  cross_beat_score: 1.0
+  word_count_valid: true
+  context_score: 1.0
+  coherence_score: 0.95
+  failed_items:
+  - 'Beat 2, requirement 5: The story does not clearly show Amara learning something
+    new about the resistance organization itself. She gains personal insight (becoming
+    the resistance) and detects enemy infiltration, but no explicit new factual knowledge
+    about the resistance''s structure, plans, or members is revealed in Beat 2.'
+error: null

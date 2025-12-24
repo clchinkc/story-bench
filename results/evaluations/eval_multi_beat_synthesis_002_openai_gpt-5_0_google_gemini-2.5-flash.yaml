@@ -1,32 +1,42 @@
-evaluation_id: 753814b3
+evaluation_id: 9d88e008
 task_id: multi_beat_synthesis_002
 generation_id: multi_beat_synthesis_002_openai/gpt-5_0
 task_type: multi_beat_synthesis
 model: openai/gpt-5
 sample_index: 0
 evaluator_model: google/gemini-2.5-flash
-evaluator_cost: 0
-timestamp: '2025-12-17T23:32:53.505129'
-success: false
-final_score: 0.0
+evaluator_cost: 0.0012387
+timestamp: '2025-12-24T19:35:08.309512'
+success: true
+final_score: 0.7343578185517683
 score_breakdown:
-  final_score: 0.0
+  final_score: 0.7344
   components:
     programmatic:
-      score: 0.0
+      score: 0.4687
       weight: 0.5
       breakdown:
-        word_count_score: 0.0
-        repetition_score: 0.0
+        word_count_score: 0.1093
+        repetition_score: 0.5
         slop_score: 1.0
-        overall: 0.0
+        overall: 0.4687
       word_count:
-        actual: 0
+        actual: 1505
         target_range:
-        - 0
-        - 0
+        - 700
+        - 1000
     llm_judge:
-      score: 0.0
+      score: 1.0
       weight: 0.5
-llm_results: {}
-error: calculate_final_score() got an unexpected keyword argument 'word_count_method'
+llm_results:
+  beat_reqs_satisfied: 15
+  beat_reqs_total: 15
+  beat_requirements_score: 1.0
+  cross_beat_satisfied: 4
+  cross_beat_total: 4
+  cross_beat_score: 1.0
+  word_count_valid: false
+  context_score: 1.0
+  coherence_score: 1.0
+  failed_items: []
+error: null

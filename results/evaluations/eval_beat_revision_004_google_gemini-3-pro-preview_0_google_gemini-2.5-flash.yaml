@@ -1,32 +1,50 @@
-evaluation_id: 31a09381
+evaluation_id: e3e5d7cc
 task_id: beat_revision_004
 generation_id: beat_revision_004_google/gemini-3-pro-preview_0
 task_type: beat_revision
 model: google/gemini-3-pro-preview
 sample_index: 0
 evaluator_model: google/gemini-2.5-flash
-evaluator_cost: 0
-timestamp: '2025-12-17T23:38:59.823940'
-success: false
-final_score: 0.0
+evaluator_cost: 0.0011053
+timestamp: '2025-12-24T19:41:40.480176'
+success: true
+final_score: 0.9530000000000001
 score_breakdown:
-  final_score: 0.0
+  final_score: 0.953
   components:
     programmatic:
-      score: 0.0
+      score: 0.986
       weight: 0.5
       breakdown:
-        word_count_score: 0.0
-        repetition_score: 0.0
+        word_count_score: 1.0
+        repetition_score: 0.96
         slop_score: 1.0
-        overall: 0.0
+        overall: 0.986
       word_count:
-        actual: 0
+        actual: 291
         target_range:
-        - 0
-        - 0
+        - 200
+        - 350
     llm_judge:
-      score: 0.0
+      score: 0.92
       weight: 0.5
-llm_results: {}
-error: calculate_final_score() got an unexpected keyword argument 'word_count_method'
+llm_results:
+  diagnosis_score: 1.0
+  flaw_correction_score: 1.0
+  beat_satisfaction_score: 1.0
+  preservation_score: 1.0
+  preserved_count: 5
+  preserved_total: 5
+  required_preserved_score: 1.0
+  required_preserved_count: 4
+  required_preserved_total: 4
+  minimal_change_score: 0.2
+  word_count_valid: true
+  quality_score: 1.0
+  evidence: The model correctly identified and addressed the 'telling not showing'
+    flaw. It transformed the summary into a scene, showing Rachel's instincts, her
+    relationship with James, her devotion to cold cases, and the setting through sensory
+    details and action. The changes were significant, essentially a rewrite, but necessary
+    to fix the core flaw of 'telling' vs 'showing'. All required elements and phrases
+    were preserved.
+error: null

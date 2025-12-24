@@ -1,32 +1,46 @@
-evaluation_id: 3bca0c06
+evaluation_id: a8c26f31
 task_id: beat_interpolation_002
 generation_id: beat_interpolation_002_openai/gpt-5_0
 task_type: beat_interpolation
 model: openai/gpt-5
 sample_index: 0
 evaluator_model: google/gemini-2.5-flash
-evaluator_cost: 0
-timestamp: '2025-12-17T23:36:50.637226'
-success: false
-final_score: 0.0
+evaluator_cost: 0.0009987
+timestamp: '2025-12-24T19:38:29.950373'
+success: true
+final_score: 0.9238812335343828
 score_breakdown:
-  final_score: 0.0
+  final_score: 0.9239
   components:
     programmatic:
-      score: 0.0
+      score: 0.8478
       weight: 0.5
       breakdown:
-        word_count_score: 0.0
-        repetition_score: 0.0
-        slop_score: 1.0
-        overall: 0.0
+        word_count_score: 0.8268
+        repetition_score: 0.77
+        slop_score: 0.9901
+        overall: 0.8478
       word_count:
-        actual: 0
+        actual: 474
         target_range:
-        - 0
-        - 0
+        - 250
+        - 400
     llm_judge:
-      score: 0.0
+      score: 1.0
       weight: 0.5
-llm_results: {}
-error: calculate_final_score() got an unexpected keyword argument 'word_count_method'
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: false
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: The output clearly shows Sarah considering recanting, going to authorities,
+    and her internal conflict. The conversation with Marcus helps solidify her decision
+    for a third option. All 'must not' items were avoided. The character voice is
+    consistent, and the bridge to the next beat is strong.
+error: null

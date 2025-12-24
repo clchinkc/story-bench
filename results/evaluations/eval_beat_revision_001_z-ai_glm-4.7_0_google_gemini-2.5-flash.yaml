@@ -1,0 +1,52 @@
+evaluation_id: 87d1641f
+task_id: beat_revision_001
+generation_id: beat_revision_001_z-ai/glm-4.7_0
+task_type: beat_revision
+model: z-ai/glm-4.7
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0012598
+timestamp: '2025-12-24T18:56:13.318105'
+success: true
+final_score: 0.9637500000000001
+score_breakdown:
+  final_score: 0.9638
+  components:
+    programmatic:
+      score: 0.9475
+      weight: 0.5
+      breakdown:
+        word_count_score: 1.0
+        repetition_score: 0.85
+        slop_score: 1.0
+        overall: 0.9475
+      word_count:
+        actual: 340
+        target_range:
+        - 250
+        - 400
+    llm_judge:
+      score: 0.98
+      weight: 0.5
+llm_results:
+  diagnosis_score: 1.0
+  flaw_correction_score: 1.0
+  beat_satisfaction_score: 1.0
+  preservation_score: 1.0
+  preserved_count: 4
+  preserved_total: 4
+  required_preserved_score: 1.0
+  required_preserved_count: 4
+  required_preserved_total: 4
+  minimal_change_score: 0.8
+  word_count_valid: true
+  quality_score: 1.0
+  evidence: 'The model correctly identified that the original segment treated The
+    Ordeal as a mere boss battle and not a transformative crisis. It addressed all
+    four points of the actual flaw: (1) The dragon exploited Kira''s guilt over her
+    brother''s death, (2) there was a clear ''death'' moment where she accepted failure/unworthiness,
+    (3) a rebirth/transformation occurred with new understanding, and (4) victory
+    came from this new insight. The changes were significant enough to fix the flaw
+    but still preserved much of the original structure and key phrases, indicating
+    a good balance of revision and preservation.'
+error: null

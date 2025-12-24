@@ -1,32 +1,65 @@
-evaluation_id: a855ee50
+evaluation_id: e58e2b1a
 task_id: theory_conversion_002
 generation_id: theory_conversion_002_openai/o3_0
 task_type: theory_conversion
 model: openai/o3
 sample_index: 0
 evaluator_model: anthropic/claude-haiku-4.5
-evaluator_cost: 0
-timestamp: '2025-12-17T23:30:41.035283'
-success: false
-final_score: 0.0
+evaluator_cost: 0.025
+timestamp: '2025-12-24T19:32:09.137536'
+success: true
+final_score: 0.8562493805169191
 score_breakdown:
-  final_score: 0.0
+  final_score: 0.8562
   components:
     programmatic:
-      score: 0.0
+      score: 0.778
       weight: 0.5
       breakdown:
-        word_count_score: 0.0
-        repetition_score: 0.0
+        word_count_score: 0.8825
+        repetition_score: 0.5
         slop_score: 1.0
-        overall: 0.0
+        overall: 0.778
       word_count:
-        actual: 0
+        actual: 880
         target_range:
-        - 0
-        - 0
+        - 600
+        - 800
     llm_judge:
-      score: 0.0
+      score: 0.9345
       weight: 0.5
-llm_results: {}
-error: calculate_final_score() got an unexpected keyword argument 'word_count_method'
+llm_results:
+  beats_present: 11
+  beats_total: 12
+  beats_score: 0.92
+  preserved_count: 7
+  preserved_total: 7
+  preservation_score: 1.0
+  word_count_valid: false
+  word_count: 880
+  word_count_range: 600-800
+  structural_accuracy_score: 0.85
+  tone_score: 0.95
+  evidence: 'BEATS ANALYSIS: Present (11/12): 1) Ordinary World (coastal village,
+    simple pottery), 2) Call to Adventure (elders'' request for ceremonial vessel),
+    3) Refusal of Call (explicit: ''I''m a teacher of simple wares. Ask another''),
+    4) Meeting the Mentor (old tile potter with shard wisdom), 5) Crossing the Threshold
+    (dawn departure on cliff road), 6) Tests/Allies/Enemies (shepherd boy ally, wind/rain/loose
+    stones as obstacles), 7) Approach to Inmost Cave (shrine discovery, kiln reconstruction),
+    8) Ordeal (the creation process itself—surrender, loss of control), 9) Reward/Seizing
+    the Sword (completed vessel, understanding of surrender), 10) Road Back (treacherous
+    descent, temptation to abandon vessel), 11) Resurrection (water rises, transformation
+    complete). MISSING: 12) Return with Elixir is weakly rendered—the teaching moment
+    exists but lacks the full ''gift to community'' resonance Campbell emphasizes.
+    PRESERVATION: All 7 elements intact—Maya (protagonist), pottery/ceramics (central),
+    grandmother''s legacy (journal, shard, sketchbook), mountain shrine (three-day
+    journey), dried spring (catalyst and resolution), surrender theme (pervasive),
+    transformation (explicit internal shift). STRUCTURAL ACCURACY: Strong alignment
+    with monomyth structure; clear progression through stages. Minor weakness: Resurrection
+    beat conflates with Return—water rising IS the resurrection/proof, but lacks a
+    separate ''test of new knowledge'' moment. TONE: Exceptional meditative quality
+    maintained throughout—lyrical language (''salt-damp breezes,'' ''kiln she could
+    not leave''), introspection, spiritual undertones. WORD COUNT ISSUE: 880 words
+    exceeds 800-word ceiling by 80 words (10% over). This is a material constraint
+    violation despite strong content quality.'
+error: null

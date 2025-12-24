@@ -1,0 +1,54 @@
+evaluation_id: ced9087f
+task_id: beat_revision_001
+generation_id: beat_revision_001_minimax/minimax-m2.1_0
+task_type: beat_revision
+model: minimax/minimax-m2.1
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0013749
+timestamp: '2025-12-24T22:10:23.130445'
+success: true
+final_score: 0.9222012195121951
+score_breakdown:
+  final_score: 0.9222
+  components:
+    programmatic:
+      score: 0.8994
+      weight: 0.5
+      breakdown:
+        word_count_score: 1.0
+        repetition_score: 0.73
+        slop_score: 0.9756
+        overall: 0.8994
+      word_count:
+        actual: 385
+        target_range:
+        - 250
+        - 400
+    llm_judge:
+      score: 0.945
+      weight: 0.5
+llm_results:
+  diagnosis_score: 1.0
+  flaw_correction_score: 1.0
+  beat_satisfaction_score: 1.0
+  preservation_score: 1.0
+  preserved_count: 4
+  preserved_total: 4
+  required_preserved_score: 0.75
+  required_preserved_count: 3
+  required_preserved_total: 4
+  minimal_change_score: 0.7
+  word_count_valid: true
+  quality_score: 1.0
+  evidence: 'The model correctly identified that the original segment treated The
+    Ordeal as a mere boss battle and not a transformative crisis. It addressed all
+    four points of the actual flaw: (1) The dragon exploits Kira''s guilt over her
+    brother''s death, (2) Kira has a symbolic ''death'' moment where she gives up
+    due to guilt, (3) She experiences a rebirth/transformation by understanding her
+    brother''s life rather than his death, and (4) Her victory comes from this new
+    understanding and acceptance, not just persistence. The changes were significant
+    enough to fix the flaw but still retained much of the original structure and dialogue,
+    making them moderately minimal. One required phrase was slightly altered (''earth-shaking
+    roar'' vs ''a earth-shaking roar'').'
+error: null

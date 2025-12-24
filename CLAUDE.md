@@ -436,12 +436,12 @@ metadata:
 
 ## Benchmark Status
 
-**Current dataset** (as of 2025-12-22T13:44:29Z):
-- **23 models evaluated** across 34 tasks (9 task types: 5 standard + 4 agentic)
-- **782 generations** with 100% completion
-- **2,349 evaluations** with 100% completion (3 evaluators per generation: claude-haiku-4.5, gemini-2.5-flash, gpt-5-mini)
+**Current dataset** (as of 2025-12-25T00:31:56Z):
+- **25 models evaluated** across 34 tasks (9 task types: 5 standard + 4 agentic)
+- **850 generations** with 100% completion
+- **2,553 evaluations** with 100% completion (3 evaluators per generation: claude-haiku-4.5, gemini-2.5-flash, gpt-5-mini)
 - **Median aggregation** for robust pass/fail determination
-- **Total cost**: $38.56
+- **Total cost**: $41.73
 
 **Evaluation format**: All evaluations use a unified score breakdown structure with programmatic (50%) and LLM judge (50%) components. Scores are computed consistently across all task types.
 

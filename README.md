@@ -2,7 +2,7 @@
 
 A **rigorous, reproducible benchmark** for evaluating LLM narrative generation capabilities across mainstream story theory frameworks. **Hard to solve, easy to verify.**
 
-> **34 diverse tasks** × **20 frontier models** × **3 evaluators** = Comprehensive narrative AI evaluation
+> **34 diverse tasks** × **25 frontier models** × **3 evaluators** = Comprehensive narrative AI evaluation
 
 ## 🎯 Why Story Theory?
 
@@ -136,9 +136,9 @@ Results are **median aggregated across 3 evaluator models**:
 | Metric | Value |
 |--------|-------|
 | Total tasks | 34 (21 standard + 13 agentic) |
-| Generation runs | 680 (20 models × 34 tasks) |
-| Evaluations | 2,040 (3 evaluators each, 100% complete) |
-| **Total cost** | $35.27 |
+| Generation runs | 850 (25 models × 34 tasks) |
+| Evaluations | 2,553 (3 evaluators each, 100% complete) |
+| **Total cost** | $41.73 |
 
 ---
 
@@ -342,7 +342,7 @@ If you use Story Theory Benchmark in your research, please cite:
   author = {firstoryapp},
   year = {2024},
   url = {https://github.com/clchinkc/story-bench},
-  note = {34 tasks across 9 task types, 23 models evaluated}
+  note = {34 tasks across 9 task types, 25 models evaluated}
 }
 ```
 
@@ -398,4 +398,4 @@ MIT License — see [LICENSE](LICENSE) for details
 
 **Made with 📖 for story lovers and LLM researchers.**
 
-*Last updated: 2025-12-17*
+*Last updated: 2025-12-24*

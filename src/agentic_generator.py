@@ -22,6 +22,7 @@ from utils import (
 @dataclass
 class AgenticTurn:
     """A single turn in an agentic conversation."""
+
     role: str  # "system", "user", "assistant"
     content: str
     turn_type: str  # "question", "answer", "plan", "feedback", "generation", etc.
@@ -31,10 +32,13 @@ class AgenticTurn:
 @dataclass
 class AgenticResult:
     """Result of an agentic multi-turn generation."""
+
     generation_id: str
     task_id: str
     task_type: str
-    agentic_type: str  # "constraint_discovery", "planning_execution", "iterative_revision"
+    agentic_type: (
+        str  # "constraint_discovery", "planning_execution", "iterative_revision"
+    )
     theory: str
     model: str
     sample_index: int
@@ -108,9 +112,12 @@ class AgenticConfig:
     Token budgets must satisfy: max_tokens > max_reasoning_tokens
     OpenRouter enforces minimum 1024 for reasoning tokens.
     """
+
     temperature: float = 0.7
-    max_tokens_per_turn: int = 4000   # Default per-turn budget
-    max_reasoning_tokens: int = 1500  # Reasoning budget (min 1024 enforced by OpenRouter)
+    max_tokens_per_turn: int = 4000  # Default per-turn budget
+    max_reasoning_tokens: int = (
+        1500  # Reasoning budget (min 1024 enforced by OpenRouter)
+    )
 
     # Constraint discovery settings
     max_questions: int = 5
@@ -119,7 +126,7 @@ class AgenticConfig:
     max_revisions: int = 3
 
     # Planning-execution settings (must be > max_reasoning_tokens)
-    plan_max_tokens: int = 3500       # 1500 reasoning + 2000 plan output
+    plan_max_tokens: int = 3500  # 1500 reasoning + 2000 plan output
     execution_max_tokens: int = 5000  # 1500 reasoning + 3500 story output
 
     retry_attempts: int = 3
@@ -220,13 +227,13 @@ End with OVERALL_ASSESSMENT: [2-3 sentence summary]"""
         hidden_constraints = task["hidden_constraints"]
         num_hidden = len(hidden_constraints)
 
-        prompt = f"""You will write a story following the {task.get('theory', 'narrative')} framework.
+        prompt = f"""You will write a story following the {task.get("theory", "narrative")} framework.
 
 STORY CONTEXT:
-- Genre: {context.get('genre', 'Not specified')}
-- Protagonist: {context.get('protagonist', 'Not specified')}
-- Setting: {context.get('setting', 'Not specified')}
-- Required beats: {', '.join(task.get('required_beats', []))}
+- Genre: {context.get("genre", "Not specified")}
+- Protagonist: {context.get("protagonist", "Not specified")}
+- Setting: {context.get("setting", "Not specified")}
+- Required beats: {", ".join(task.get("required_beats", []))}
 
 HIDDEN CONSTRAINTS: There are {num_hidden} constraints you don't know yet.
 
@@ -236,7 +243,9 @@ Ask your first question:"""
         return prompt
 
     @classmethod
-    def build_constraint_discovery_generate(cls, task: dict[str, Any], discovered_constraints: list[str]) -> str:
+    def build_constraint_discovery_generate(
+        cls, task: dict[str, Any], discovered_constraints: list[str]
+    ) -> str:
         """Build generation prompt after constraint discovery."""
         constraints_str = "\n".join(f"- {c}" for c in discovered_constraints)
         word_range = task.get("word_count", [400, 600])
@@ -248,7 +257,7 @@ DISCOVERED CONSTRAINTS:
 
 REQUIREMENTS:
 - Word count: {word_range[0]}-{word_range[1]} words
-- Follow the {task.get('theory', 'narrative')} framework
+- Follow the {task.get("theory", "narrative")} framework
 - Satisfy ALL discovered constraints
 
 Output ONLY the story (no explanations)."""
@@ -274,16 +283,16 @@ Output ONLY the story (no explanations)."""
             Prompt for LLM to determine if question matches any constraint
         """
         constraints_desc = "\n".join(
-            f"{i+1}. ({c['id']}): {c['description']}"
+            f"{i + 1}. ({c['id']}): {c['description']}"
             for i, c in enumerate(constraint_info)
         )
 
         return f"""You are an oracle for a story constraint discovery game.
 
 STORY CONTEXT:
-- Genre: {story_context.get('genre', 'fantasy')}
-- Protagonist: {story_context.get('protagonist', 'Not specified')}
-- Setting: {story_context.get('setting', 'Not specified')}
+- Genre: {story_context.get("genre", "fantasy")}
+- Protagonist: {story_context.get("protagonist", "Not specified")}
+- Setting: {story_context.get("setting", "Not specified")}
 
 HIDDEN CONSTRAINTS (the storyteller must discover these through questions):
 {constraints_desc}
@@ -316,11 +325,11 @@ Respond with ONLY the number (1-{len(constraint_info)}) or "NONE":"""
         prompt = f"""Create a detailed story plan for the following:
 
 CONTEXT:
-- Theory: {task.get('theory', 'narrative')}
-- Protagonist: {context.get('protagonist', 'Not specified')}
-- Setting: {context.get('setting', 'Not specified')}
-- Conflict: {context.get('central_conflict', 'Not specified')}
-- Required beats: {', '.join(task.get('required_beats', []))}
+- Theory: {task.get("theory", "narrative")}
+- Protagonist: {context.get("protagonist", "Not specified")}
+- Setting: {context.get("setting", "Not specified")}
+- Conflict: {context.get("central_conflict", "Not specified")}
+- Required beats: {", ".join(task.get("required_beats", []))}
 
 CONSTRAINTS:
 {constraints_str}
@@ -364,10 +373,10 @@ Output ONLY the story (no beat labels or explanations)."""
         prompt = f"""Write a story with the following requirements:
 
 CONTEXT:
-- Theory: {task.get('theory', 'narrative')}
-- Protagonist: {context.get('protagonist', 'Not specified')}
-- Setting: {context.get('setting', 'Not specified')}
-- Required beats: {', '.join(task.get('required_beats', []))}
+- Theory: {task.get("theory", "narrative")}
+- Protagonist: {context.get("protagonist", "Not specified")}
+- Setting: {context.get("setting", "Not specified")}
+- Required beats: {", ".join(task.get("required_beats", []))}
 
 CONSTRAINTS:
 {constraints_str}
@@ -379,7 +388,9 @@ Output ONLY the story:"""
         return prompt
 
     @classmethod
-    def build_iterative_revision_feedback(cls, previous_output: str, feedback: list[str]) -> str:
+    def build_iterative_revision_feedback(
+        cls, previous_output: str, feedback: list[str]
+    ) -> str:
         """Build revision prompt with feedback."""
         feedback_str = "\n".join(f"- {f}" for f in feedback)
 
@@ -401,19 +412,21 @@ Output ONLY the revised story:"""
         constraints_str = "\n".join(f"- {c}" for c in constraints)
         word_range = task.get("word_count", [400, 600])
         criteria = task.get("evaluation_criteria", [])
-        criteria_str = "\n".join(f"- {c['criterion']}: {c.get('description', '')}" for c in criteria)
+        criteria_str = "\n".join(
+            f"- {c['criterion']}: {c.get('description', '')}" for c in criteria
+        )
 
         prompt = f"""Write a story with the following requirements:
 
-STORY THEORY: {task.get('theory', 'narrative')}
+STORY THEORY: {task.get("theory", "narrative")}
 
 STORY CONTEXT:
-- Protagonist: {context.get('protagonist', 'Not specified')}
-- Setting: {context.get('setting', 'Not specified')}
-- Central conflict: {context.get('central_conflict', 'Not specified')}
-- Tone: {context.get('tone', 'Not specified')}
+- Protagonist: {context.get("protagonist", "Not specified")}
+- Setting: {context.get("setting", "Not specified")}
+- Central conflict: {context.get("central_conflict", "Not specified")}
+- Tone: {context.get("tone", "Not specified")}
 
-REQUIRED BEATS: {', '.join(task.get('required_beats', []))}
+REQUIRED BEATS: {", ".join(task.get("required_beats", []))}
 
 CONSTRAINTS:
 {constraints_str}
@@ -433,14 +446,17 @@ Output ONLY the story:"""
         constraints = task.get("constraints", [])
         constraints_str = "\n".join(f"- {c}" for c in constraints)
         criteria = task.get("evaluation_criteria", [])
-        criteria_str = "\n".join(f"- {c['criterion']} (weight: {c.get('weight', 0.2)}): {c.get('description', '')}" for c in criteria)
+        criteria_str = "\n".join(
+            f"- {c['criterion']} (weight: {c.get('weight', 0.2)}): {c.get('description', '')}"
+            for c in criteria
+        )
 
         prompt = f"""Critique this story against the requirements:
 
 STORY:
 {story}
 
-REQUIRED BEATS: {', '.join(task.get('required_beats', []))}
+REQUIRED BEATS: {", ".join(task.get("required_beats", []))}
 
 CONSTRAINTS:
 {constraints_str}
@@ -496,6 +512,7 @@ class AgenticGenerator:
             RuntimeError: If final output is empty
         """
         import logging
+
         logger = logging.getLogger(__name__)
 
         # Find last assistant generation
@@ -586,16 +603,20 @@ class AgenticGenerator:
             {"role": "user", "content": initial_prompt},
         ]
 
-        turns.append(AgenticTurn(
-            role="system",
-            content=system_prompt,
-            turn_type="system",
-        ))
-        turns.append(AgenticTurn(
-            role="user",
-            content=initial_prompt,
-            turn_type="context",
-        ))
+        turns.append(
+            AgenticTurn(
+                role="system",
+                content=system_prompt,
+                turn_type="system",
+            )
+        )
+        turns.append(
+            AgenticTurn(
+                role="user",
+                content=initial_prompt,
+                turn_type="context",
+            )
+        )
 
         try:
             # Discovery phase
@@ -610,12 +631,14 @@ class AgenticGenerator:
                 question = output.strip()
                 questions_asked += 1
 
-                turns.append(AgenticTurn(
-                    role="assistant",
-                    content=question,
-                    turn_type="question",
-                    metadata={"question_number": q_num + 1},
-                ))
+                turns.append(
+                    AgenticTurn(
+                        role="assistant",
+                        content=question,
+                        turn_type="question",
+                        metadata={"question_number": q_num + 1},
+                    )
+                )
                 messages.append({"role": "assistant", "content": question})
 
                 # Get answer from oracle
@@ -623,43 +646,50 @@ class AgenticGenerator:
 
                 # Track discovered constraint if YES
                 if answer.upper() == "YES":
-                    discovered_constraints.append(f"Q{q_num+1}: {question} -> YES")
+                    discovered_constraints.append(f"Q{q_num + 1}: {question} -> YES")
 
-                turns.append(AgenticTurn(
-                    role="user",
-                    content=answer,
-                    turn_type="answer",
-                    metadata={"answer": answer},
-                ))
+                turns.append(
+                    AgenticTurn(
+                        role="user",
+                        content=answer,
+                        turn_type="answer",
+                        metadata={"answer": answer},
+                    )
+                )
                 messages.append({"role": "user", "content": answer})
 
             # Generation phase
-            gen_prompt = AgenticPromptBuilder.build_constraint_discovery_generate(task, discovered_constraints)
+            gen_prompt = AgenticPromptBuilder.build_constraint_discovery_generate(
+                task, discovered_constraints
+            )
             messages.append({"role": "user", "content": gen_prompt})
 
-            turns.append(AgenticTurn(
-                role="user",
-                content=gen_prompt,
-                turn_type="generation_prompt",
-            ))
+            turns.append(
+                AgenticTurn(
+                    role="user",
+                    content=gen_prompt,
+                    turn_type="generation_prompt",
+                )
+            )
 
             output, pt, ct, rt, cost = self._call_model(
-                model, messages,
-                max_tokens=self.config.execution_max_tokens
+                model, messages, max_tokens=self.config.execution_max_tokens
             )
             total_prompt_tokens += pt
             total_completion_tokens += ct
             total_reasoning_tokens += rt
             total_cost += cost
 
-            turns.append(AgenticTurn(
-                role="assistant",
-                content=output,
-                turn_type="generation",
-            ))
+            turns.append(
+                AgenticTurn(
+                    role="assistant",
+                    content=output,
+                    turn_type="generation",
+                )
+            )
 
             # Validate final output is non-empty
-            final_output = self._validate_output(turns, "constraint_discovery")
+            self._validate_output(turns, "constraint_discovery")
 
             return AgenticResult(
                 generation_id=generation_id,
@@ -740,48 +770,60 @@ class AgenticGenerator:
                 {"role": "user", "content": plan_prompt},
             ]
 
-            turns.append(AgenticTurn(role="system", content=system_prompt, turn_type="system"))
-            turns.append(AgenticTurn(role="user", content=plan_prompt, turn_type="plan_prompt"))
+            turns.append(
+                AgenticTurn(role="system", content=system_prompt, turn_type="system")
+            )
+            turns.append(
+                AgenticTurn(role="user", content=plan_prompt, turn_type="plan_prompt")
+            )
 
             plan_output, pt, ct, rt, cost = self._call_model(
-                model, messages,
-                max_tokens=self.config.plan_max_tokens
+                model, messages, max_tokens=self.config.plan_max_tokens
             )
             total_prompt_tokens += pt
             total_completion_tokens += ct
             total_reasoning_tokens += rt
             total_cost += cost
 
-            turns.append(AgenticTurn(
-                role="assistant",
-                content=plan_output,
-                turn_type="plan",
-            ))
+            turns.append(
+                AgenticTurn(
+                    role="assistant",
+                    content=plan_output,
+                    turn_type="plan",
+                )
+            )
             messages.append({"role": "assistant", "content": plan_output})
 
             # Execution phase
-            exec_prompt = AgenticPromptBuilder.build_planning_execution_execute(task, plan_output)
+            exec_prompt = AgenticPromptBuilder.build_planning_execution_execute(
+                task, plan_output
+            )
             messages.append({"role": "user", "content": exec_prompt})
 
-            turns.append(AgenticTurn(role="user", content=exec_prompt, turn_type="execution_prompt"))
+            turns.append(
+                AgenticTurn(
+                    role="user", content=exec_prompt, turn_type="execution_prompt"
+                )
+            )
 
             output, pt, ct, rt, cost = self._call_model(
-                model, messages,
-                max_tokens=self.config.execution_max_tokens
+                model, messages, max_tokens=self.config.execution_max_tokens
             )
             total_prompt_tokens += pt
             total_completion_tokens += ct
             total_reasoning_tokens += rt
             total_cost += cost
 
-            turns.append(AgenticTurn(
-                role="assistant",
-                content=output,
-                turn_type="generation",
-            ))
+            turns.append(
+                AgenticTurn(
+                    role="assistant",
+                    content=output,
+                    turn_type="generation",
+                )
+            )
 
             # Validate final output is non-empty
-            final_output = self._validate_output(turns, "planning_execution")
+            self._validate_output(turns, "planning_execution")
 
             return AgenticResult(
                 generation_id=generation_id,
@@ -870,8 +912,14 @@ class AgenticGenerator:
                 {"role": "user", "content": initial_prompt},
             ]
 
-            turns.append(AgenticTurn(role="system", content=system_prompt, turn_type="system"))
-            turns.append(AgenticTurn(role="user", content=initial_prompt, turn_type="initial_prompt"))
+            turns.append(
+                AgenticTurn(role="system", content=system_prompt, turn_type="system")
+            )
+            turns.append(
+                AgenticTurn(
+                    role="user", content=initial_prompt, turn_type="initial_prompt"
+                )
+            )
 
             current_output, pt, ct, rt, cost = self._call_model(model, messages)
             total_prompt_tokens += pt
@@ -879,12 +927,14 @@ class AgenticGenerator:
             total_reasoning_tokens += rt
             total_cost += cost
 
-            turns.append(AgenticTurn(
-                role="assistant",
-                content=current_output,
-                turn_type="generation",
-                metadata={"revision": 0},
-            ))
+            turns.append(
+                AgenticTurn(
+                    role="assistant",
+                    content=current_output,
+                    turn_type="generation",
+                    metadata={"revision": 0},
+                )
+            )
             messages.append({"role": "assistant", "content": current_output})
 
             # Revision rounds
@@ -907,12 +957,14 @@ class AgenticGenerator:
                 )
                 messages.append({"role": "user", "content": rev_prompt})
 
-                turns.append(AgenticTurn(
-                    role="user",
-                    content=rev_prompt,
-                    turn_type="feedback",
-                    metadata={"feedback": feedback, "revision": rev_num + 1},
-                ))
+                turns.append(
+                    AgenticTurn(
+                        role="user",
+                        content=rev_prompt,
+                        turn_type="feedback",
+                        metadata={"feedback": feedback, "revision": rev_num + 1},
+                    )
+                )
 
                 # Get revision
                 current_output, pt, ct, rt, cost = self._call_model(model, messages)
@@ -921,16 +973,18 @@ class AgenticGenerator:
                 total_reasoning_tokens += rt
                 total_cost += cost
 
-                turns.append(AgenticTurn(
-                    role="assistant",
-                    content=current_output,
-                    turn_type="generation",
-                    metadata={"revision": rev_num + 1},
-                ))
+                turns.append(
+                    AgenticTurn(
+                        role="assistant",
+                        content=current_output,
+                        turn_type="generation",
+                        metadata={"revision": rev_num + 1},
+                    )
+                )
                 messages.append({"role": "assistant", "content": current_output})
 
             # Validate final output is non-empty
-            final_output = self._validate_output(turns, "iterative_revision")
+            self._validate_output(turns, "iterative_revision")
 
             return AgenticResult(
                 generation_id=generation_id,
@@ -1015,15 +1069,23 @@ class AgenticGenerator:
 
         try:
             # Initial generation
-            initial_prompt = AgenticPromptBuilder.build_critique_improvement_initial(task)
+            initial_prompt = AgenticPromptBuilder.build_critique_improvement_initial(
+                task
+            )
 
             messages = [
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": initial_prompt},
             ]
 
-            turns.append(AgenticTurn(role="system", content=system_prompt, turn_type="system"))
-            turns.append(AgenticTurn(role="user", content=initial_prompt, turn_type="initial_prompt"))
+            turns.append(
+                AgenticTurn(role="system", content=system_prompt, turn_type="system")
+            )
+            turns.append(
+                AgenticTurn(
+                    role="user", content=initial_prompt, turn_type="initial_prompt"
+                )
+            )
 
             current_output, pt, ct, rt, cost = self._call_model(model, messages)
             total_prompt_tokens += pt
@@ -1031,12 +1093,14 @@ class AgenticGenerator:
             total_reasoning_tokens += rt
             total_cost += cost
 
-            turns.append(AgenticTurn(
-                role="assistant",
-                content=current_output,
-                turn_type="generation",
-                metadata={"revision": 0, "version": "initial"},
-            ))
+            turns.append(
+                AgenticTurn(
+                    role="assistant",
+                    content=current_output,
+                    turn_type="generation",
+                    metadata={"revision": 0, "version": "initial"},
+                )
+            )
             messages.append({"role": "assistant", "content": current_output})
 
             # Critique-revision rounds
@@ -1045,39 +1109,54 @@ class AgenticGenerator:
 
             for round_num in range(critique_rounds):
                 # Get critique from critic model
-                critique_prompt = AgenticPromptBuilder.build_critique_prompt(task, current_output)
+                critique_prompt = AgenticPromptBuilder.build_critique_prompt(
+                    task, current_output
+                )
 
                 critic_messages = [
-                    {"role": "system", "content": AgenticPromptBuilder.SYSTEM_PROMPT_CRITIC.format(
-                        criteria="\n".join(f"- {c['criterion']}: {c.get('description', '')}"
-                                          for c in task.get("evaluation_criteria", []))
-                    )},
+                    {
+                        "role": "system",
+                        "content": AgenticPromptBuilder.SYSTEM_PROMPT_CRITIC.format(
+                            criteria="\n".join(
+                                f"- {c['criterion']}: {c.get('description', '')}"
+                                for c in task.get("evaluation_criteria", [])
+                            )
+                        ),
+                    },
                     {"role": "user", "content": critique_prompt},
                 ]
 
-                critique, cpt, cct, crt, ccost = self._call_model(critic, critic_messages)
+                critique, cpt, cct, crt, ccost = self._call_model(
+                    critic, critic_messages
+                )
                 total_prompt_tokens += cpt
                 total_completion_tokens += cct
                 total_reasoning_tokens += crt
                 total_cost += ccost
 
-                turns.append(AgenticTurn(
-                    role="user",
-                    content=critique,
-                    turn_type="critique",
-                    metadata={"round": round_num + 1, "critic_model": critic},
-                ))
+                turns.append(
+                    AgenticTurn(
+                        role="user",
+                        content=critique,
+                        turn_type="critique",
+                        metadata={"round": round_num + 1, "critic_model": critic},
+                    )
+                )
 
                 # Build revision prompt
-                rev_prompt = AgenticPromptBuilder.build_critique_revision_prompt(current_output, critique)
+                rev_prompt = AgenticPromptBuilder.build_critique_revision_prompt(
+                    current_output, critique
+                )
                 messages.append({"role": "user", "content": rev_prompt})
 
-                turns.append(AgenticTurn(
-                    role="user",
-                    content=rev_prompt,
-                    turn_type="revision_prompt",
-                    metadata={"round": round_num + 1},
-                ))
+                turns.append(
+                    AgenticTurn(
+                        role="user",
+                        content=rev_prompt,
+                        turn_type="revision_prompt",
+                        metadata={"round": round_num + 1},
+                    )
+                )
 
                 # Get revised version
                 current_output, pt, ct, rt, cost = self._call_model(model, messages)
@@ -1088,16 +1167,21 @@ class AgenticGenerator:
 
                 revision_count += 1
 
-                turns.append(AgenticTurn(
-                    role="assistant",
-                    content=current_output,
-                    turn_type="generation",
-                    metadata={"revision": round_num + 1, "version": f"revision_{round_num + 1}"},
-                ))
+                turns.append(
+                    AgenticTurn(
+                        role="assistant",
+                        content=current_output,
+                        turn_type="generation",
+                        metadata={
+                            "revision": round_num + 1,
+                            "version": f"revision_{round_num + 1}",
+                        },
+                    )
+                )
                 messages.append({"role": "assistant", "content": current_output})
 
             # Validate final output is non-empty
-            final_output = self._validate_output(turns, "critique_improvement")
+            self._validate_output(turns, "critique_improvement")
 
             return AgenticResult(
                 generation_id=generation_id,
@@ -1151,7 +1235,9 @@ class AgenticGenerator:
 if __name__ == "__main__":
     print("Agentic generator module loaded successfully.")
     print("\nSupported agentic task types:")
-    print("  - constraint_discovery: Model asks questions to discover hidden constraints")
+    print(
+        "  - constraint_discovery: Model asks questions to discover hidden constraints"
+    )
     print("  - planning_execution: Model plans before executing")
     print("  - iterative_revision: Model revises based on feedback")
     print("  - critique_improvement: Model improves through LLM critique rounds")

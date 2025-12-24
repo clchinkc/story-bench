@@ -28,7 +28,11 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Default models
-DEFAULT_EVAL_MODELS = ["anthropic/claude-haiku-4.5", "openai/gpt-5-mini", "google/gemini-2.5-flash"]
+DEFAULT_EVAL_MODELS = [
+    "anthropic/claude-haiku-4.5",
+    "openai/gpt-5-mini",
+    "google/gemini-2.5-flash",
+]
 
 
 def check_api_key() -> bool:
@@ -96,7 +100,9 @@ def cmd_clean_failed(args):
     from results_db import ResultsDatabase
 
     db = ResultsDatabase()
-    model = args.clean_model if hasattr(args, 'clean_model') and args.clean_model else None
+    model = (
+        args.clean_model if hasattr(args, "clean_model") and args.clean_model else None
+    )
 
     if model:
         print(f"Cleaning failed records for model: {model}")
@@ -161,7 +167,14 @@ def cmd_run(args):
     from results_db import ResultsDatabase, GenerationRecord, EvaluationRecord
     from generator import BenchmarkGenerator
     from evaluator import BenchmarkEvaluator
-    from utils import load_all_tasks, count_words, save_yaml, get_generation_path, get_evaluation_path, is_agentic_task
+    from utils import (
+        load_all_tasks,
+        count_words,
+        save_yaml,
+        get_generation_path,
+        get_evaluation_path,
+        is_agentic_task,
+    )
 
     db = ResultsDatabase()
     tasks = load_all_tasks()
@@ -173,7 +186,7 @@ def cmd_run(args):
 
     # Limit number of tasks if specified
     if args.max_tasks:
-        tasks = tasks[:args.max_tasks]
+        tasks = tasks[: args.max_tasks]
         print(f"Limited to first {args.max_tasks} task(s)")
 
     # Build task lookup and get all task IDs (both standard and agentic)
@@ -187,7 +200,7 @@ def cmd_run(args):
     gen_models = args.gen_models
     eval_models = args.eval_models or DEFAULT_EVAL_MODELS
 
-    print(f"\n=== Story Theory Benchmark Runner ===")
+    print("\n=== Story Theory Benchmark Runner ===")
     print(f"Generation models: {gen_models}")
     print(f"Evaluator models: {eval_models}")
     print(f"Standard tasks: {standard_count}")
@@ -210,9 +223,7 @@ def cmd_run(args):
         if args.force:
             # Force re-run all
             missing_gens = [
-                (task_id, model)
-                for task_id in task_ids
-                for model in gen_models
+                (task_id, model) for task_id in task_ids for model in gen_models
             ]
             print(f"\nForce mode: re-running all {len(missing_gens)} generations")
         elif missing_gens:
@@ -242,6 +253,7 @@ def cmd_run(args):
             # Unified generation loop - handles both standard and agentic tasks
             print("\n--- Running Generations ---")
             from tqdm import tqdm
+
             for task_id, model in tqdm(missing_gens, desc="Generating"):
                 task = task_lookup[task_id]
 
@@ -252,20 +264,29 @@ def cmd_run(args):
                     try:
                         if agentic_type == "constraint_discovery":
                             oracle = create_constraint_discovery_oracle(task)
-                            result = agentic_gen.run_constraint_discovery(task, model, 0, oracle)
+                            result = agentic_gen.run_constraint_discovery(
+                                task, model, 0, oracle
+                            )
                         elif agentic_type == "planning_execution":
                             result = agentic_gen.run_planning_execution(task, model, 0)
                         elif agentic_type == "iterative_revision":
                             feedback_gen = create_feedback_generator(task)
-                            result = agentic_gen.run_iterative_revision(task, model, 0, feedback_gen)
+                            result = agentic_gen.run_iterative_revision(
+                                task, model, 0, feedback_gen
+                            )
                         elif agentic_type == "critique_improvement":
-                            result = agentic_gen.run_critique_improvement(task, model, 0)
+                            result = agentic_gen.run_critique_improvement(
+                                task, model, 0
+                            )
                         else:
                             print(f"  Unknown agentic type: {agentic_type}")
                             continue
 
                         # Save agentic generation result
-                        gen_path = results_dir / f"gen_{task_id}_{model.replace('/', '_')}.yaml"
+                        gen_path = (
+                            results_dir
+                            / f"gen_{task_id}_{model.replace('/', '_')}.yaml"
+                        )
                         save_yaml(result.to_dict(), gen_path)
 
                         # Store in DB for tracking
@@ -344,7 +365,10 @@ def cmd_run(args):
             print("\n--- Running Evaluations ---")
 
             from tqdm import tqdm
-            for task_id, gen_model, eval_model in tqdm(missing_evals, desc="Evaluating"):
+
+            for task_id, gen_model, eval_model in tqdm(
+                missing_evals, desc="Evaluating"
+            ):
                 task = task_lookup.get(task_id)
                 if not task:
                     continue
@@ -355,7 +379,10 @@ def cmd_run(args):
 
                 if is_agentic_task(task):
                     # Agentic task evaluation
-                    gen_path = results_dir / f"gen_{task_id}_{gen_model.replace('/', '_')}.yaml"
+                    gen_path = (
+                        results_dir
+                        / f"gen_{task_id}_{gen_model.replace('/', '_')}.yaml"
+                    )
 
                     if not gen_path.exists():
                         continue
@@ -367,7 +394,10 @@ def cmd_run(args):
                     result = agentic_eval.evaluate_agentic_result(task, gen_result)
 
                     # Save evaluation
-                    eval_path = results_dir / f"eval_{task_id}_{gen_model.replace('/', '_')}_{eval_model.replace('/', '_')}.yaml"
+                    eval_path = (
+                        results_dir
+                        / f"eval_{task_id}_{gen_model.replace('/', '_')}_{eval_model.replace('/', '_')}.yaml"
+                    )
                     save_yaml(result.to_dict(), eval_path)
 
                     # Store in DB
@@ -381,7 +411,10 @@ def cmd_run(args):
                         timestamp=result.timestamp,
                         success=result.success,
                         final_score=result.final_score,
-                        score_breakdown={"process": result.process_scores, "output": result.output_scores},
+                        score_breakdown={
+                            "process": result.process_scores,
+                            "output": result.output_scores,
+                        },
                         llm_results=result.llm_results,
                         error=result.error,
                     )
@@ -391,13 +424,16 @@ def cmd_run(args):
                     word_count = count_words(generation["output"])
 
                     evaluator = BenchmarkEvaluator(evaluator_model=eval_model)
-                    result = evaluator.evaluate_generation(task, {
-                        "generation_id": f"{task_id}_{gen_model}_0",
-                        "model": gen_model,
-                        "sample_index": 0,
-                        "output": generation["output"],
-                        "word_count": word_count,
-                    })
+                    result = evaluator.evaluate_generation(
+                        task,
+                        {
+                            "generation_id": f"{task_id}_{gen_model}_0",
+                            "model": gen_model,
+                            "sample_index": 0,
+                            "output": generation["output"],
+                            "word_count": word_count,
+                        },
+                    )
 
                     record = EvaluationRecord(
                         task_id=task_id,
@@ -453,67 +489,86 @@ Examples:
   python run.py --leaderboard
   python run.py --clean-failed
   python run.py --clean-failed "anthropic/claude-sonnet-4"
-        """
+        """,
     )
 
     # Commands
     parser.add_argument(
-        "--status", action="store_true",
-        help="Show current benchmark status"
+        "--status", action="store_true", help="Show current benchmark status"
     )
     parser.add_argument(
-        "--leaderboard", action="store_true",
-        help="Generate and display leaderboard"
+        "--leaderboard", action="store_true", help="Generate and display leaderboard"
     )
     parser.add_argument(
-        "--rebuild-db", action="store_true",
-        help="Rebuild JSON database from YAML files"
+        "--rebuild-db",
+        action="store_true",
+        help="Rebuild JSON database from YAML files",
     )
     parser.add_argument(
-        "--task-analysis", action="store_true",
-        help="Generate and display task analysis"
+        "--task-analysis",
+        action="store_true",
+        help="Generate and display task analysis",
     )
     parser.add_argument(
-        "--clean-failed", nargs="?", const=True, default=None, dest="clean_failed", metavar="MODEL",
-        help="Remove failed generations/evaluations (optionally filter by model)"
+        "--clean-failed",
+        nargs="?",
+        const=True,
+        default=None,
+        dest="clean_failed",
+        metavar="MODEL",
+        help="Remove failed generations/evaluations (optionally filter by model)",
     )
     parser.add_argument(
-        "--list-missing", nargs="+", dest="list_missing_models", metavar="MODEL",
-        help="List missing generations/evaluations for models"
+        "--list-missing",
+        nargs="+",
+        dest="list_missing_models",
+        metavar="MODEL",
+        help="List missing generations/evaluations for models",
     )
     parser.add_argument(
-        "--gen-model", "-g", nargs="+", dest="gen_models", metavar="MODEL",
-        help="Model(s) to generate stories with"
+        "--gen-model",
+        "-g",
+        nargs="+",
+        dest="gen_models",
+        metavar="MODEL",
+        help="Model(s) to generate stories with",
     )
     parser.add_argument(
-        "--eval-model", "-e", nargs="+", dest="eval_models", metavar="MODEL",
-        help=f"Model(s) to evaluate with (default: {DEFAULT_EVAL_MODELS})"
+        "--eval-model",
+        "-e",
+        nargs="+",
+        dest="eval_models",
+        metavar="MODEL",
+        help=f"Model(s) to evaluate with (default: {DEFAULT_EVAL_MODELS})",
     )
 
     # Options
     parser.add_argument(
-        "--force", "-f", action="store_true",
-        help="Force re-run even if results exist"
+        "--force", "-f", action="store_true", help="Force re-run even if results exist"
     )
     parser.add_argument(
-        "--dry-run", action="store_true",
-        help="Show what would be run without executing"
+        "--dry-run",
+        action="store_true",
+        help="Show what would be run without executing",
+    )
+    parser.add_argument("--verbose", "-v", action="store_true", help="Verbose output")
+    parser.add_argument(
+        "--max-reasoning-tokens",
+        type=int,
+        default=1000,
+        help="Max reasoning/thinking tokens for models that support it (default: 1000)",
     )
     parser.add_argument(
-        "--verbose", "-v", action="store_true",
-        help="Verbose output"
+        "--max-tasks",
+        type=int,
+        default=None,
+        help="Limit to first N tasks (for testing)",
     )
     parser.add_argument(
-        "--max-reasoning-tokens", type=int, default=1000,
-        help="Max reasoning/thinking tokens for models that support it (default: 1000)"
-    )
-    parser.add_argument(
-        "--max-tasks", type=int, default=None,
-        help="Limit to first N tasks (for testing)"
-    )
-    parser.add_argument(
-        "--task-type", type=str, default=None,
-        help="Filter to specific task type (e.g., 'beat_interpolation', 'agentic_constraint_discovery')"
+        "--task-type",
+        type=str,
+        default=None,
+        help="Filter to specific task type (e.g., 'beat_interpolation', 'agentic_constraint_discovery')",
     )
 
     args = parser.parse_args()
@@ -529,7 +584,9 @@ Examples:
         cmd_task_analysis(args)
     elif args.clean_failed is not None:
         # Handle both --clean-failed (True) and --clean-failed MODEL (string)
-        args.clean_model = args.clean_failed if isinstance(args.clean_failed, str) else None
+        args.clean_model = (
+            args.clean_failed if isinstance(args.clean_failed, str) else None
+        )
         cmd_clean_failed(args)
     elif args.list_missing_models:
         args.gen_models = args.list_missing_models

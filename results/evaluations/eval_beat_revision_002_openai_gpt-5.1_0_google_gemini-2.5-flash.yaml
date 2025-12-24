@@ -1,32 +1,52 @@
-evaluation_id: ec1f5a5b
+evaluation_id: d1168dbd
 task_id: beat_revision_002
 generation_id: beat_revision_002_openai/gpt-5.1_0
 task_type: beat_revision
 model: openai/gpt-5.1
 sample_index: 0
 evaluator_model: google/gemini-2.5-flash
-evaluator_cost: 0
-timestamp: '2025-12-17T23:39:28.904132'
-success: false
-final_score: 0.0
+evaluator_cost: 0.0012718999999999999
+timestamp: '2025-12-24T19:42:04.988624'
+success: true
+final_score: 0.9865
 score_breakdown:
-  final_score: 0.0
+  final_score: 0.9865
   components:
     programmatic:
-      score: 0.0
+      score: 0.993
       weight: 0.5
       breakdown:
-        word_count_score: 0.0
-        repetition_score: 0.0
+        word_count_score: 1.0
+        repetition_score: 0.98
         slop_score: 1.0
-        overall: 0.0
+        overall: 0.993
       word_count:
-        actual: 0
+        actual: 322
         target_range:
-        - 0
-        - 0
+        - 200
+        - 350
     llm_judge:
-      score: 0.0
+      score: 0.98
       weight: 0.5
-llm_results: {}
-error: calculate_final_score() got an unexpected keyword argument 'word_count_method'
+llm_results:
+  diagnosis_score: 1.0
+  flaw_correction_score: 1.0
+  beat_satisfaction_score: 1.0
+  preservation_score: 1.0
+  preserved_count: 4
+  preserved_total: 4
+  required_preserved_score: 1.0
+  required_preserved_count: 4
+  required_preserved_total: 4
+  minimal_change_score: 0.8
+  word_count_valid: true
+  quality_score: 1.0
+  evidence: 'The model correctly identified that the original segment failed to convey
+    a true ''All Is Lost'' moment. It addressed all aspects of the flaw: eliminating
+    Marcus''s options (fundraiser canceled, grant rejected), introducing a personal
+    loss/betrayal (Denise''s defection, board''s vote), showing Marcus giving up hope,
+    and including a ''whiff of death'' (loss of purpose, isolation, wife''s plea).
+    The changes were significant enough to fix the flaw but maintained the core structure
+    and characters, making them feel like surgical edits rather than a complete rewrite.
+    All required phrases and elements were preserved.'
+error: null

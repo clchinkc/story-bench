@@ -1,32 +1,49 @@
-evaluation_id: c31a83f4
+evaluation_id: 04efdf52
 task_id: beat_revision_005
 generation_id: beat_revision_005_minimax/minimax-m2_0
 task_type: beat_revision
 model: minimax/minimax-m2
 sample_index: 0
 evaluator_model: anthropic/claude-haiku-4.5
-evaluator_cost: 0
-timestamp: '2025-12-17T23:35:07.392667'
-success: false
-final_score: 0.0
+evaluator_cost: 0.012695
+timestamp: '2025-12-24T19:36:43.522561'
+success: true
+final_score: 0.9082145659172463
 score_breakdown:
-  final_score: 0.0
+  final_score: 0.9082
   components:
     programmatic:
-      score: 0.0
+      score: 0.8164
       weight: 0.5
       breakdown:
-        word_count_score: 0.0
-        repetition_score: 0.0
+        word_count_score: 0.5411
+        repetition_score: 1.0
         slop_score: 1.0
-        overall: 0.0
+        overall: 0.8164
       word_count:
-        actual: 0
+        actual: 67
         target_range:
-        - 0
-        - 0
+        - 200
+        - 350
     llm_judge:
-      score: 0.0
+      score: 1.0
       weight: 0.5
-llm_results: {}
-error: calculate_final_score() got an unexpected keyword argument 'word_count_method'
+llm_results:
+  correct_diagnosis_score: 1.0
+  beat_understanding_score: 1.0
+  false_positive_avoided_score: 1.0
+  reasoning_quality_score: 1.0
+  model_said_no_revision: true
+  evidence: 'The model correctly identified that NO REVISION NEEDED was the appropriate
+    response. The model explicitly stated ''NO REVISION NEEDED'' and provided comprehensive
+    reasoning demonstrating accurate understanding of the Dark Night of the Soul beat.
+    The explanation accurately traced how the segment satisfies all five key requirements:
+    (1) follows the All Is Lost moment (gallery closure), (2) shows protagonist isolation
+    (dark apartment, unanswered calls), (3) captures genuine despair through self-blame
+    and broken promises, (4) offers no solutions yet, and (5) includes mortality reflection
+    through the mother''s death and hospice memory. The model avoided the false positive
+    trap of over-diagnosing problems in a well-executed segment and instead recognized
+    the authentic emotional progression from loss to reflection to acceptance of defeat.
+    The reasoning was specific, grounded in beat theory, and demonstrated clear understanding
+    of why this segment works effectively.'
+error: null

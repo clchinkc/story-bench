@@ -1,0 +1,45 @@
+evaluation_id: 5f8a4ad1
+task_id: beat_interpolation_005
+generation_id: beat_interpolation_005_z-ai/glm-4.7_0
+task_type: beat_interpolation
+model: z-ai/glm-4.7
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0009373000000000001
+timestamp: '2025-12-24T18:55:44.084099'
+success: true
+final_score: 0.9604598214285714
+score_breakdown:
+  final_score: 0.9605
+  components:
+    programmatic:
+      score: 0.9209
+      weight: 0.5
+      breakdown:
+        word_count_score: 1.0
+        repetition_score: 0.79
+        slop_score: 0.9777
+        overall: 0.9209
+      word_count:
+        actual: 433
+        target_range:
+        - 300
+        - 450
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: true
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: All required elements are present and well-executed. No 'must not' items
+    were violated. Character voices are consistent, and the scene flows naturally
+    from the previous beat while setting up the next.
+error: null

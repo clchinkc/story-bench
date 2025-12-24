@@ -9,7 +9,6 @@ Used by both standard and agentic generators.
 import os
 import time
 from dataclasses import dataclass
-from typing import Any
 
 from dotenv import load_dotenv
 from openai import OpenAI
@@ -46,17 +45,26 @@ TASK_TOKEN_CONFIG = {
 # OpenRouter handles mapping reasoning.max_tokens to effort levels automatically for all models.
 REASONING_MODELS = [
     # Anthropic
-    "anthropic/claude-haiku-4.5", "anthropic/claude-opus-4.5",
-    "anthropic/claude-sonnet-4", "anthropic/claude-sonnet-4.5",
+    "anthropic/claude-haiku-4.5",
+    "anthropic/claude-opus-4.5",
+    "anthropic/claude-sonnet-4",
+    "anthropic/claude-sonnet-4.5",
     # DeepSeek
-    "deepseek/deepseek-r1", "deepseek-r1", "deepseek/deepseek-v3.2",
+    "deepseek/deepseek-r1",
+    "deepseek-r1",
+    "deepseek/deepseek-v3.2",
     # Google
-    "google/gemini-2.5-flash", "google/gemini-3-pro-preview",
+    "google/gemini-2.5-flash",
+    "google/gemini-3-pro-preview",
     # MiniMax
     "minimax/minimax-m2",
     # OpenAI
-    "openai/gpt-4o-mini", "openai/gpt-5", "openai/gpt-5.1", "openai/gpt-5.2",
-    "openai/o3", "openai/o3-mini",
+    "openai/gpt-4o-mini",
+    "openai/gpt-5",
+    "openai/gpt-5.1",
+    "openai/gpt-5.2",
+    "openai/o3",
+    "openai/o3-mini",
     # Qwen
     "qwen/qwen3-235b-a22b",
     # xAI
@@ -67,6 +75,7 @@ REASONING_MODELS = [
 @dataclass
 class LLMResponse:
     """Standardized response from LLM API call."""
+
     content: str
     prompt_tokens: int
     completion_tokens: int
@@ -156,7 +165,7 @@ class LLMClient:
             except Exception as e:
                 last_error = e
                 if attempt < retry_attempts - 1:
-                    time.sleep(retry_delay * (2 ** attempt))  # Exponential backoff
+                    time.sleep(retry_delay * (2**attempt))  # Exponential backoff
 
         return LLMResponse(
             content="",
@@ -178,15 +187,21 @@ class LLMClient:
         # Extract finish_reason from the response
         finish_reason = None
         if response.choices and len(response.choices) > 0:
-            finish_reason = getattr(response.choices[0], 'finish_reason', None)
+            finish_reason = getattr(response.choices[0], "finish_reason", None)
 
         # Extract usage dict for cost and reasoning tokens
         usage_dict = {}
         if response.usage:
-            usage_dict = response.usage.model_dump() if hasattr(response.usage, 'model_dump') else vars(response.usage)
+            usage_dict = (
+                response.usage.model_dump()
+                if hasattr(response.usage, "model_dump")
+                else vars(response.usage)
+            )
 
-        cost = float(usage_dict.get('cost', 0) or 0)
-        reasoning_tokens = (usage_dict.get('completion_tokens_details') or {}).get('reasoning_tokens', 0) or 0
+        cost = float(usage_dict.get("cost", 0) or 0)
+        reasoning_tokens = (usage_dict.get("completion_tokens_details") or {}).get(
+            "reasoning_tokens", 0
+        ) or 0
 
         return LLMResponse(
             content=content,
@@ -201,7 +216,9 @@ class LLMClient:
     @staticmethod
     def get_token_config(task_type: str) -> dict[str, int]:
         """Get token configuration for a task type."""
-        return TASK_TOKEN_CONFIG.get(task_type, {"max_tokens": 4000, "max_reasoning_tokens": 1024})
+        return TASK_TOKEN_CONFIG.get(
+            task_type, {"max_tokens": 4000, "max_reasoning_tokens": 1024}
+        )
 
 
 # Singleton instance for convenience

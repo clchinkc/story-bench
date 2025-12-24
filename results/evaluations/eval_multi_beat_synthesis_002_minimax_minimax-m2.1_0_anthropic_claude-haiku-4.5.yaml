@@ -1,0 +1,101 @@
+evaluation_id: eccbbf55
+task_id: multi_beat_synthesis_002
+generation_id: multi_beat_synthesis_002_minimax/minimax-m2.1_0
+task_type: multi_beat_synthesis
+model: minimax/minimax-m2.1
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.04251
+timestamp: '2025-12-24T22:17:14.030594'
+success: true
+final_score: 0.8251449219581556
+score_breakdown:
+  final_score: 0.8251
+  components:
+    programmatic:
+      score: 0.6938
+      weight: 0.5
+      breakdown:
+        word_count_score: 0.672
+        repetition_score: 0.5
+        slop_score: 1.0
+        overall: 0.6938
+      word_count:
+        actual: 1214
+        target_range:
+        - 700
+        - 1000
+    llm_judge:
+      score: 0.9565
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 14
+  beat_reqs_total: 15
+  beat_requirements_score: 0.93
+  cross_beat_satisfied: 4
+  cross_beat_total: 4
+  cross_beat_score: 1.0
+  word_count_valid: false
+  context_score: 0.95
+  coherence_score: 0.92
+  overall_score: 0.93
+  failed_items:
+  - Word count exceeds maximum (1214 vs. 1000 limit) - technical violation but narratively
+    justified
+  strengths:
+  - 'Beat 1 (Crossing Threshold): Exceptionally executed. Clear point of no return
+    (leaving Cape Coast), immediate danger (checkpoint), wit-based survival (accent/language
+    shifting), internal transformation (servant to active agent), unfamiliar territory
+    established.'
+  - 'Beat 2 (Tests, Allies, Enemies): Masterfully developed. Adjoa encounter creates
+    genuine uncertainty about loyalty. Trust test with high stakes. Language skills
+    prove essential (German, Twi, English). Learns about British surveillance and
+    the resistance network''s reach. Enemy obstacle (burning texts, soldiers) forces
+    adaptation.'
+  - 'Beat 3 (Approach to Inmost Cave): Sophisticated execution. Physical proximity
+    to stronghold established. Preparation moment (studying patrol). Recognition of
+    transformation cost (can''t return to servant role). Final obstacle (German-speaking
+    officer) overcome through accumulated skills. Thematic culmination strong.'
+  - 'Chekhov''s Gun (Cross-beat 1): Language mastery demonstrated in Beat 1 (accent
+    shifting at checkpoint) becomes the decisive tool in Beat 3 (German fluency defeats
+    final patrol). Perfectly calibrated.'
+  - 'Identity Transformation (Cross-beat 2): Clear arc—Beat 1: cautious, hiding (''armor
+    and weapon''), Beat 2: realizes capability (''passed a test she hadn''t known''),
+    Beat 3: fully claims role (''no longer a servant''). Explicit internal monologue
+    supports progression.'
+  - 'Escalating Danger (Cross-beat 3): Beat 1 (discovery risk at checkpoint), Beat
+    2 (direct confrontation with Adjoa, burning texts, suspicious soldiers), Beat
+    3 (active pursuit implied, imminent capture threat). Danger escalates logically.'
+  - 'Thematic Thread (Cross-beat 4): ''Knowledge as resistance'' woven throughout—Beat
+    1 (memorized letter, literacy as armor), Beat 2 (learning from texts, father''s
+    teaching), Beat 3 (German language as weapon, knowledge as shield). Thematic consistency
+    excellent.'
+  - 'Context Maintenance: Protagonist voice authentic, 1890s Gold Coast setting vivid,
+    anti-colonial resistance theme pervasive, tone balances historical detail with
+    adventure pacing, dignity in defiance evident throughout.'
+  - 'Narrative Coherence: Beats flow naturally with clear causality. Each section
+    builds on previous. Adjoa''s introduction in Beat 2 feels organic to Beat 1''s
+    setup. Beat 3 synthesizes skills from both prior beats. Pacing accelerates appropriately.'
+  weaknesses:
+  - 'Word count violation: 1214 words exceeds 1000-word maximum by 21%. While narratively
+    justified (complexity of three beats), this is a technical failure of the constraint.'
+  - 'Beat 1 requirement ambiguity: ''Immediate danger or obstacle at the threshold''
+    is satisfied (checkpoint), but could be more visceral/physical. Checkpoint is
+    bureaucratic rather than kinetic danger.'
+  - 'Minor: Beat 2''s ''learns something about the resistance'' could be more explicit.
+    Amara learns Adjoa''s husband was arrested and the network extends to villages,
+    but this could be stated more directly as new intelligence.'
+  - 'Pacing: The transition between beats (end of Beat 1 to start of Beat 2) compresses
+    three days into a paragraph. Could benefit from slightly more scene-setting.'
+  calibration_notes: 'This is a strong 0.9+ performance. The story demonstrates sophisticated
+    understanding of the Hero''s Journey framework and executes all cross-beat constraints
+    flawlessly. The only material failure is the word count overage, which prevents
+    a perfect 1.0 score. The narrative quality, thematic coherence, and character
+    arc are exceptional. The word count violation is significant enough to prevent
+    0.95+ scoring despite near-perfect execution of all other criteria. Score of 0.93
+    reflects: (15/15 beat reqs × 0.95 for one minor ambiguity) + (4/4 cross-beats
+    × 1.0) + (context 0.95) + (coherence 0.92) averaged with word count penalty applied.'
+  recommendation: 'Accept with minor revision request: trim 200-250 words to meet
+    word count constraint. Story quality is professional-grade and fully satisfies
+    narrative requirements.'
+error: null

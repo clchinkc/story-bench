@@ -1,0 +1,67 @@
+evaluation_id: 9f2bf3e7
+task_id: beat_revision_004
+generation_id: beat_revision_004_z-ai/glm-4.7_0
+task_type: beat_revision
+model: z-ai/glm-4.7
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.022735
+timestamp: '2025-12-24T18:57:14.731880'
+success: true
+final_score: 0.954
+score_breakdown:
+  final_score: 0.954
+  components:
+    programmatic:
+      score: 0.993
+      weight: 0.5
+      breakdown:
+        word_count_score: 1.0
+        repetition_score: 0.98
+        slop_score: 1.0
+        overall: 0.993
+      word_count:
+        actual: 248
+        target_range:
+        - 200
+        - 350
+    llm_judge:
+      score: 0.915
+      weight: 0.5
+llm_results:
+  diagnosis_score: 1.0
+  flaw_correction_score: 1.0
+  beat_satisfaction_score: 0.95
+  preservation_score: 1.0
+  preserved_count: 5
+  preserved_total: 5
+  required_preserved_score: 1.0
+  required_preserved_count: 4
+  required_preserved_total: 4
+  minimal_change_score: 0.3
+  word_count_valid: true
+  quality_score: 0.95
+  evidence: 'DIAGNOSIS: The model correctly identified the core flaw—the original
+    segment was pure exposition-as-info-dump (telling, not showing). The revision
+    transforms this into a lived scene that reveals character through action and behavior.
+    FLAW CORRECTION: Fully addressed. The revision: (1) Shows Rachel''s detective
+    instincts through her obsessive focus on a cold case file and her ability to read
+    crime scene details; (2) Demonstrates her relationship with James through natural
+    dialogue, comfortable silence, and their ''silent language'' built on partnership;
+    (3) Reveals her devotion to work through her Tuesday morning cold case obsession;
+    (4) Grounds the scene in sensory detail (bitter coffee, manila folder, jazz station,
+    homicide photo); (5) Naturally incorporates Sherlock through a phone background
+    reference tied to her rescue work. PRESERVATION: All 5 required elements present:
+    Detective Rachel Torres (exact), Detective James Oyelaran (exact), cat named Sherlock
+    (exact), Tuesday morning in October (exact), Queens apartment (referenced). All
+    4 required phrases present verbatim. MINIMAL CHANGE ASSESSMENT: This is NOT a
+    minimal surgical edit—it''s a substantial structural rewrite. The original 2-paragraph
+    info-dump (248 words of summary) is replaced with a 3-paragraph scene (248 words
+    of action/dialogue). However, this level of restructuring was necessary to fix
+    the fundamental flaw (telling→showing). The constraint to preserve elements was
+    met, but the constraint to make ''minimal modifications'' was violated. The model
+    chose correctness over minimalism, which is defensible given the severity of the
+    original flaw. QUALITY: Writing is professional, dialogue feels natural, sensory
+    details are vivid and purposeful (cold coffee, jazz, homicide photo), and no new
+    errors introduced. The pacing and beat execution are strong.'
+error: null

@@ -1,0 +1,64 @@
+evaluation_id: 1d82b8f8
+task_id: beat_interpolation_005
+generation_id: beat_interpolation_005_minimax/minimax-m2.1_0
+task_type: beat_interpolation
+model: minimax/minimax-m2.1
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.023469999999999998
+timestamp: '2025-12-24T22:09:16.094914'
+success: true
+final_score: 0.7512887439005236
+score_breakdown:
+  final_score: 0.7513
+  components:
+    programmatic:
+      score: 0.5026
+      weight: 0.5
+      breakdown:
+        word_count_score: 0.1064
+        repetition_score: 0.6
+        slop_score: 1.0
+        overall: 0.5026
+      word_count:
+        actual: 704
+        target_range:
+        - 300
+        - 450
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: false
+  word_count: 704
+  word_count_range: 300-450
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: 'STRENGTHS: All 4 required elements present and executed excellently:
+    (1) Maya discovers Alejandro''s vulnerability through the saffron rice memory
+    and his admission ''I don''t know anymore''; (2) Relationship shifts from professional
+    distance (''efficient, proper, invisible'') to personal intimacy (sitting across
+    table, using his name); (3) Shared moment of genuine connection when he closes
+    his eyes and reveals his mother''s memory; (4) Maya makes explicit commitment
+    choice (''I''m not leaving'') that transcends the contract (''no longer working
+    for the salary''). The beat perfectly executes Act 2 Midpoint function—Maya moves
+    from reactive (following guidelines) to proactive (choosing vulnerability), raising
+    emotional stakes and creating point of no return. All must-not items avoided:
+    they''re not in love yet (connection is nascent), Maya doesn''t leave, photograph
+    isn''t taken here, Alejandro''s wall genuinely lowers. Character voices consistent—Maya''s
+    thoughtful introspection, Alejandro''s guarded vulnerability. Seamless bridge
+    from BEFORE (contract signing) through GENERATED (emotional breakthrough) to AFTER
+    (photograph scandal). Setting continuity perfect (kitchen→table→study). ONLY ISSUE:
+    Word count 704 exceeds 450-word maximum by 254 words (56% over limit). This is
+    a significant technical violation despite narrative excellence.'
+  overall_assessment: Exceptional narrative execution of the Act 2 Midpoint beat with
+    perfect character work, emotional arc, and thematic resonance. However, substantial
+    word count violation (704 vs. 450 max) prevents highest composite score.
+error: null

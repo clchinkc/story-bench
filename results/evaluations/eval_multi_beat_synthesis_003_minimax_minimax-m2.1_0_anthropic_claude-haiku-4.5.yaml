@@ -1,0 +1,143 @@
+evaluation_id: 470c735e
+task_id: multi_beat_synthesis_003
+generation_id: multi_beat_synthesis_003_minimax/minimax-m2.1_0
+task_type: multi_beat_synthesis
+model: minimax/minimax-m2.1
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.05191
+timestamp: '2025-12-24T22:17:54.028902'
+success: true
+final_score: 0.8065478092548449
+score_breakdown:
+  final_score: 0.8065
+  components:
+    programmatic:
+      score: 0.8106
+      weight: 0.5
+      breakdown:
+        word_count_score: 0.964
+        repetition_score: 0.5
+        slop_score: 1.0
+        overall: 0.8106
+      word_count:
+        actual: 635
+        target_range:
+        - 700
+        - 1000
+    llm_judge:
+      score: 0.8025
+      weight: 0.5
+llm_results:
+  beat_reqs_satisfied: 12
+  beat_reqs_total: 15
+  beat_requirements_score: 0.8
+  cross_beat_satisfied: 3
+  cross_beat_total: 4
+  cross_beat_score: 0.75
+  word_count_valid: false
+  context_score: 0.9
+  coherence_score: 0.85
+  failed_items:
+  - Beat 1 - Humor/style moments are minimal; banter is present but underdeveloped
+    compared to 'Ocean's Eleven' tone requirement
+  - Beat 1 - 'Things going according to plan (mostly)' is stated but not demonstrated;
+    we see setup but not execution
+  - Cross-beat Chekhov's Gun - The earring camera and Dex's electronic hum are established
+    but not paid off in subsequent beats; the ventilation shaft is mentioned but never
+    used
+  - Cross-beat Tonal Escalation - Tone shift from Beat 1 to Beat 2 is abrupt rather
+    than graduated; playful confidence drops too sharply when Elena appears
+  detailed_analysis:
+    beat_1_fun_and_games:
+      score: 0.75
+      satisfied:
+      - Crew skills showcased (Dex's electronics, Tasya's social engineering, Miri's
+        planning)
+      - Problem-solving demonstrated (security blindspots, access routes, timing)
+      - Unexpected complication introduced (Elena's presence)
+      gaps:
+      - Humor is dry and sparse; lacks the witty banter and style promised by 'Ocean's
+        Eleven meets art history' tone
+      - Plan execution not shown—we see setup but the heist action itself is interrupted
+        before it begins
+      - Mostly-going-according-to-plan is stated as intent but not dramatized
+    beat_2_midpoint:
+      score: 0.85
+      satisfied:
+      - 'False victory: painting acquisition is ordered (objective achieved)'
+      - 'Stakes raised: Elena''s blackmail threat (40M, crew exposure)'
+      - 'Mentor revealed: Elena Vasquez identified as antagonist with full backstory'
+      - 'Heist nature changes: from simple theft to survival/sacrifice scenario'
+      - Party setting intensifies pressure (confined space, active threat)
+      gaps:
+      - None significant; this beat is well-executed
+    beat_3_bad_guys_close_in:
+      score: 0.8
+      satisfied:
+      - 'Security closing in: hunt begins, footsteps, urgency'
+      - 'Team friction: Miri orders crew away despite their resistance'
+      - 'Crew member in danger: Tasya and Dex are vulnerable if caught'
+      - 'Miri''s choice: painting vs. crew safety (she chooses crew)'
+      - 'Walls closing in: literal (corridor pursuit) and figurative (Elena''s trap)'
+      gaps:
+      - Security presence is implied but not viscerally shown; no guards, alarms,
+        or active pursuit depicted
+    chekhov_gun_analysis:
+      score: 0.5
+      established_details:
+      - Earring camera/earbud (Beat 1)
+      - Dex's electronic hum security override (Beat 1)
+      - Ventilation shaft above desk (Beat 1)
+      - Service corridor exit (Beat 1)
+      payoff_in_beat_3:
+      - Ventilation shaft mentioned but never used
+      - Service corridor used but not as setup payoff—it's generic
+      - Earring and earbud disappear from narrative
+      - Electronic hum never deployed or referenced
+      issue: Setup-to-payoff chain is broken; details feel abandoned rather than critical
+    tonal_escalation_analysis:
+      score: 0.7
+      beat_1_tone: Confident, professional, controlled—but lacks playful humor
+      beat_2_tone: Shock, betrayal, stakes spike—good escalation
+      beat_3_tone: Danger and sacrifice—appropriate but tonal shift is jarring rather
+        than graduated
+      issue: Transition from Beat 1 to Beat 2 is too abrupt; confidence doesn't gradually
+        erode, it collapses
+    mentor_presence_analysis:
+      score: 1.0
+      beat_1: Elena absent/unknown—correct
+      beat_2: Elena revealed as active antagonist with clear motivation—excellent
+      beat_3: Elena is the immediate threat forcing Miri's choice—perfect escalation
+    team_dynamics_arc:
+      score: 0.85
+      tasya_arc: Introduced as seeking approval → trusted with critical role → endangered
+        by Miri's sacrifice. Arc is present and affects plot.
+      dex_arc: Competent specialist → follows orders → implied vulnerability. Arc
+        is minimal but functional.
+      issue: Tasya's arc is stronger; Dex feels more functional than character-driven
+    context_maintenance:
+      protagonist: Miri's voice, skills, and moral complexity well-maintained
+      setting: Monaco, yacht, Grand Prix—vivid and consistent
+      tone: Ocean's Eleven comparison partially met; art history element present but
+        underutilized; clever banter underdeveloped
+      antagonist: Elena's reveal is powerful; her motivation (revenge + payment) is
+        clear
+    coherence:
+      strengths:
+      - Clear narrative progression across three beats
+      - Miri's character arc (learning to trust) threads through
+      - Elena's presence creates through-line
+      weaknesses:
+      - Abrupt tonal shifts disrupt flow
+      - Established details (earring, hum, shaft) create loose ends
+      - Beat 1 setup doesn't fully pay off in Beat 3
+  summary: 'The story executes Beats 2 and 3 strongly, with Elena''s reveal and Miri''s
+    sacrifice creating genuine stakes. However, Beat 1 underdevelops the heist action
+    and humor, and the Chekhov''s Gun constraint is largely unmet—established details
+    don''t become critical payoffs. The word count shortfall (635 vs. 700-1000) compounds
+    these gaps. Tonal escalation is present but jerky. Overall: solid character work
+    and high-stakes drama, but incomplete heist execution and broken setup-payoff
+    chains.'
+  overall_score: 0.78
+error: null

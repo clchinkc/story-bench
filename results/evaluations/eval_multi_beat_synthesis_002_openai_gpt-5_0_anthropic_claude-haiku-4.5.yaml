@@ -1,32 +1,149 @@
-evaluation_id: 6ac277ed
+evaluation_id: c9a09074
 task_id: multi_beat_synthesis_002
 generation_id: multi_beat_synthesis_002_openai/gpt-5_0
 task_type: multi_beat_synthesis
 model: openai/gpt-5
 sample_index: 0
 evaluator_model: anthropic/claude-haiku-4.5
-evaluator_cost: 0
-timestamp: '2025-12-17T23:32:01.497471'
-success: false
-final_score: 0.0
+evaluator_cost: 0.05792
+timestamp: '2025-12-24T19:34:19.955770'
+success: true
+final_score: 0.7126078185517682
 score_breakdown:
-  final_score: 0.0
+  final_score: 0.7126
   components:
     programmatic:
-      score: 0.0
+      score: 0.4687
       weight: 0.5
       breakdown:
-        word_count_score: 0.0
-        repetition_score: 0.0
+        word_count_score: 0.1093
+        repetition_score: 0.5
         slop_score: 1.0
-        overall: 0.0
+        overall: 0.4687
       word_count:
-        actual: 0
+        actual: 1505
         target_range:
-        - 0
-        - 0
+        - 700
+        - 1000
     llm_judge:
-      score: 0.0
+      score: 0.9565
       weight: 0.5
-llm_results: {}
-error: calculate_final_score() got an unexpected keyword argument 'word_count_method'
+llm_results:
+  beat_reqs_satisfied: 14
+  beat_reqs_total: 15
+  beat_requirements_score: 0.93
+  cross_beat_satisfied: 4
+  cross_beat_total: 4
+  cross_beat_score: 1.0
+  word_count_valid: false
+  context_score: 0.95
+  coherence_score: 0.92
+  overall_score: 0.93
+  failed_items:
+  - Word count exceeds maximum (1505 vs. 1000 limit) - significant overage
+  detailed_analysis:
+    beat_1_crossing_threshold:
+      leaves_cape_coast: true
+      point_of_no_return: true
+      immediate_danger: true
+      wits_over_force: true
+      internal_shift: true
+      score: 1.0
+      notes: Exceptional execution. The forged pass, the constable encounter, and
+        the apron-dropping all mark irreversible commitment. Servant-to-agent transformation
+        is visceral.
+    beat_2_tests_allies_enemies:
+      uncertain_ally: true
+      commitment_test: true
+      obstacle_adaptation: true
+      language_skills_crucial: true
+      learns_resistance_intel: true
+      score: 1.0
+      notes: Kofi's introduction is perfectly calibrated—mission worker with hidden
+        allegiance. Ferry scene tests her under direct threat. The proverb 'Knowledge
+        drunk alone chokes the drinker' becomes her password and thematic anchor.
+    beat_3_approach_inmost_cave:
+      nearing_stronghold: true
+      moment_of_preparation: true
+      recognition_of_cost: true
+      final_obstacle: true
+      thematic_element_present: false
+      score: 0.8
+      notes: The rest-house confrontation and forged order are masterful. The cost
+        recognition ('she would not be a girl who wiped floors anymore') is powerful.
+        However, the thematic element—what resistance *means* vs. survival—is implied
+        rather than explicitly explored. The final line gestures at it ('resistance
+        was not another word for survival') but arrives late.
+    chekhov_gun:
+      satisfied: true
+      score: 1.0
+      notes: Forgery skill demonstrated in Beat 1 (market pass) becomes the decisive
+        weapon in Beat 3 (Willoughby order). The progression from copying signatures
+        in candlelight to wielding them under pressure is seamless.
+    identity_transformation:
+      satisfied: true
+      score: 1.0
+      notes: 'Beat 1: ''let her voice be small, the treble of a laundress'' (servant
+        mindset). Beat 2: ''To stop them'' (realizes capability). Beat 3: ''she was
+        the weapon the secrets had made'' (full claim). Arc is clear and earned.'
+    escalating_danger:
+      satisfied: true
+      score: 1.0
+      notes: 'Beat 1: Gate guard scrutiny (low risk, high stakes if caught). Beat
+        2: Ferry sergeant with arrest notices, direct confrontation (medium risk).
+        Beat 3: Active pursuit, soldiers on her trail, imminent capture (high risk).
+        Danger escalates logically.'
+    thematic_thread_knowledge_as_resistance:
+      satisfied: true
+      score: 1.0
+      notes: 'Literacy and languages are weapons throughout. Beat 1: forged English
+        pass. Beat 2: German conversation signals allegiance, Twi translation misdirects.
+        Beat 3: forged order in ''tight clipped diction of the Cape Coast office.''
+        Knowledge is consistently weaponized against colonialism.'
+    context_maintenance:
+      protagonist_consistency: true
+      setting_authenticity: true
+      tone_anti_colonial: true
+      historical_plausibility: true
+      score: 0.95
+      notes: 'Amara''s voice, the colonial architecture, the resistance network, the
+        1890s Gold Coast details (Hausa constables, Basel mission, Cape Coast office)
+        are all historically grounded. Tone balances survival urgency with dignity.
+        Minor: some dialogue feels slightly modern in cadence, but acceptable for
+        accessibility.'
+    narrative_coherence:
+      beat_flow: true
+      cause_effect_logic: true
+      character_agency: true
+      pacing: true
+      score: 0.92
+      notes: 'Beats flow naturally; each obstacle forces adaptation. Amara drives
+        action rather than reacting. Pacing is tight. Minor: the transition from Kofi''s
+        departure to the rest-house discovery could be slightly more explicit (how
+        much time passes? how does she know the path?), but context clues suffice.'
+  strengths:
+  - Masterful use of forged documents as both plot device and thematic anchor
+  - Kofi's introduction perfectly balances mystery and alliance-building
+  - Language code-switching (English/Twi/German) is functional and characterizing
+  - Sensory detail ('salt of the sea gave way to green breath of bush') grounds the
+    journey
+  - Final image ('she was the weapon the secrets had made') crystallizes identity
+    transformation
+  - All four cross-beat constraints fully satisfied with sophistication
+  weaknesses:
+  - Word count significantly exceeds limit (1505 vs. 1000)—requires ~33% trimming
+  - Beat 3's thematic exploration of 'resistance vs. survival' arrives late and could
+    be deepened
+  - Transition from Kofi's departure to rest-house encounter lacks explicit temporal/spatial
+    clarity
+  - Some dialogue cadence feels slightly anachronistic for 1890s setting
+  recommendations:
+  - 'Trim 500+ words: condense the ferry scene, streamline Kofi''s exposition, tighten
+    the forest passage'
+  - 'Expand Beat 3''s thematic moment: give Amara 1-2 lines of internal reflection
+    on what ''resistance'' means before the final obstacle'
+  - Add one sentence clarifying how she navigates from Kofi's departure to the rest-house
+    (e.g., 'The path forked twice; she chose the one that smelled of smoke')
+  - Review dialogue for period-appropriate phrasing (e.g., 'Babu lokaci' is good;
+    ensure all English matches colonial-era register)
+error: null

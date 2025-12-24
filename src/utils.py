@@ -6,7 +6,6 @@ validating schemas, and other common operations.
 """
 
 import json
-import os
 import re
 import uuid
 from datetime import datetime
@@ -31,7 +30,9 @@ def load_yaml(file_path: str | Path) -> dict[str, Any]:
 def save_yaml(data: dict[str, Any], file_path: str | Path) -> None:
     """Save data to a YAML file."""
     with open(file_path, "w", encoding="utf-8") as f:
-        yaml.dump(data, f, default_flow_style=False, allow_unicode=True, sort_keys=False)
+        yaml.dump(
+            data, f, default_flow_style=False, allow_unicode=True, sort_keys=False
+        )
 
 
 def load_json(file_path: str | Path) -> dict[str, Any]:
@@ -278,7 +279,9 @@ class TaskTypeInfo:
             if not all(evaluation_results.get(c, False) for c in required):
                 return False
             other_criteria = [c for c in info["criteria"] if c not in required]
-            passed_others = sum(1 for c in other_criteria if evaluation_results.get(c, False))
+            passed_others = sum(
+                1 for c in other_criteria if evaluation_results.get(c, False)
+            )
             return passed_others >= info["additional_pass_count"]
 
         elif task_type == "constrained_continuation":

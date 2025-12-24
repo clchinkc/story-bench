@@ -1,32 +1,51 @@
-evaluation_id: cd233215
+evaluation_id: acb97a4c
 task_id: beat_interpolation_005
 generation_id: beat_interpolation_005_openai/gpt-5_0
 task_type: beat_interpolation
 model: openai/gpt-5
 sample_index: 0
 evaluator_model: openai/gpt-5-mini
-evaluator_cost: 0
-timestamp: '2025-12-17T23:37:25.776426'
-success: false
-final_score: 0.0
+evaluator_cost: 0.00138975
+timestamp: '2025-12-24T19:38:56.281815'
+success: true
+final_score: 0.9137547094258839
 score_breakdown:
-  final_score: 0.0
+  final_score: 0.9138
   components:
     programmatic:
-      score: 0.0
+      score: 0.8275
       weight: 0.5
       breakdown:
-        word_count_score: 0.0
-        repetition_score: 0.0
+        word_count_score: 0.7963
+        repetition_score: 0.74
         slop_score: 1.0
-        overall: 0.0
+        overall: 0.8275
       word_count:
-        actual: 0
+        actual: 531
         target_range:
-        - 0
-        - 0
+        - 300
+        - 450
     llm_judge:
-      score: 0.0
+      score: 1.0
       weight: 0.5
-llm_results: {}
-error: calculate_final_score() got an unexpected keyword argument 'word_count_method'
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: false
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: 'All four required elements are present: Alejandro reveals vulnerability
+    about taste after surgery; the relationship clearly shifts from professional to
+    personal (shared cooking, physical brush, emotional softening); a concrete shared
+    moment (sopa de ajo, stirring eggs, first real taste) creates genuine connection;
+    Maya explicitly commits beyond the contract (''We’ll keep going... I’m not here
+    to perform. I’m here to feed you.'' and ''Tomorrow'' meaning more than the contract).
+    None of the prohibited items occur. Character behavior is consistent with the
+    setup. The only deduction is word_count_valid=false: the scene is 531 words, exceeding
+    the required 300–450 range.'
+error: null

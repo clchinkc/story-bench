@@ -1,0 +1,101 @@
+evaluation_id: 51d0bde2
+task_id: constrained_continuation_003
+generation_id: constrained_continuation_003_minimax/minimax-m2.1_0
+task_type: constrained_continuation
+model: minimax/minimax-m2.1
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.034615
+timestamp: '2025-12-24T22:13:34.055491'
+success: true
+final_score: 0.8809027435589964
+score_breakdown:
+  final_score: 0.8809
+  components:
+    programmatic:
+      score: 0.7693
+      weight: 0.5
+      breakdown:
+        word_count_score: 0.8713
+        repetition_score: 0.5
+        slop_score: 0.9832
+        overall: 0.7693
+      word_count:
+        actual: 834
+        target_range:
+        - 550
+        - 750
+    llm_judge:
+      score: 0.9925
+      weight: 0.5
+llm_results:
+  beats_present: 3
+  beats_total: 3
+  beats_score: 1.0
+  must_include_present: 6
+  must_include_total: 6
+  must_include_score: 1.0
+  must_not_avoided: 4
+  must_not_total: 4
+  must_not_score: 1.0
+  word_count_valid: false
+  word_count: 834
+  word_count_range: 550-750
+  word_count_overage: 84
+  tone_score: 0.95
+  ending_score: 1.0
+  overall_score: 0.88
+  analysis:
+    beats_analysis:
+      search: Present - Jin navigates Prom Station, learns unspoken rules, discovers
+        competing factions and hidden hierarchies through Kiran's guidance
+      find: Present - Jin discovers the suppressed carbon capture technology is in
+        Collective's possession; finds the platform/safety he sought
+      take: Present - Jin accepts the broadcast deal, paying the price of his independence
+        and becoming an instrument of the Collective's agenda
+    must_include_analysis:
+      1_unfamiliar_culture: Excellent - Detailed navigation of station politics, faction
+        hierarchies, maintenance tunnels, unspoken rules
+      2_mentor_figure: Excellent - Kiran serves as guide, explaining systems, revealing
+        hidden truths, though with manipulative intent
+      3_unexpected_discovery: Excellent - The revelation that Collective possessed
+        the technology all along, hidden for years
+      4_finds_what_wanted: Excellent - Jin gains platform, safety, and means to continue
+        his fight against the Council
+      5_action_with_cost: Excellent - Jin agrees to broadcast, explicitly recognizing
+        the cost to his independence and identity
+      6_moral_compromise: 'Excellent - Central tension: using humanitarian technology
+        as political leverage; Jin''s internal conflict about becoming a symbol/instrument'
+    must_not_analysis:
+      1_easy_integration: Successfully avoided - Jin struggles with suspicion, confusion,
+        moral qualms; integration is fraught
+      2_earth_family_contact: Successfully avoided - No family communication or relationships
+        depicted
+      3_violence_weapons: Successfully avoided - Conflict is entirely political and
+        psychological
+      4_complete_resolution: Successfully avoided - Conspiracy remains active; broadcast
+        is planned but not executed; larger plot unresolved
+    tone_analysis: Contemplative and politically charged tone maintained throughout.
+      Personal stakes (Jin's identity, independence) are woven through larger conflict
+      (climate conspiracy, Collective politics). Introspective moments balance political
+      exposition. Minor deduction only for occasional exposition-heavy dialogue.
+    ending_analysis: Perfect execution of 'Take' beat. Jin gains platform and safety
+      but pays price of independence and self-recognition. Final image ('Jin wondered
+      if he would ever recognize himself in the mirror again') crystallizes the moral
+      cost. Ends precisely at the moment of commitment with consequences acknowledged.
+    strengths:
+    - All three required beats present and well-executed
+    - All six must-include elements seamlessly integrated
+    - Sophisticated moral complexity—no easy answers
+    - Strong character voice and internal conflict
+    - Excellent pacing and tension escalation
+    - Kiran is a compelling, morally ambiguous mentor
+    - Ending lands with emotional and thematic weight
+    weaknesses:
+    - Word count exceeds limit by 84 words (11% over)
+    - 'Minor: One instance of non-English character (''功能性'' appears to be encoding
+      error, should be ''functional'')'
+    - Could tighten exposition in middle section to meet word count
+  failed_constraints:
+  - 'word_count_exceeds_maximum: 834 words vs 750 limit (84 words over)'
+error: null

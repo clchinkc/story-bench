@@ -1,0 +1,52 @@
+evaluation_id: 0d55abb5
+task_id: beat_interpolation_005
+generation_id: beat_interpolation_005_minimax/minimax-m2.1_0
+task_type: beat_interpolation
+model: minimax/minimax-m2.1
+sample_index: 0
+evaluator_model: openai/gpt-5-mini
+evaluator_cost: 0.0014365
+timestamp: '2025-12-24T22:09:23.458501'
+success: true
+final_score: 0.7512887439005236
+score_breakdown:
+  final_score: 0.7513
+  components:
+    programmatic:
+      score: 0.5026
+      weight: 0.5
+      breakdown:
+        word_count_score: 0.1064
+        repetition_score: 0.6
+        slop_score: 1.0
+        overall: 0.5026
+      word_count:
+        actual: 704
+        target_range:
+        - 300
+        - 450
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: false
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: 'All four required elements are present: Alejandro shows vulnerability
+    (admits confusion, recalls his mother), the relationship shifts from professional
+    to personal (sitting across, emotional exchange), there''s a clear shared, connective
+    moment (the saffron rice and his reaction), and Maya explicitly chooses to stay
+    beyond the contract (''I''m not leaving''). The scene functions well as a Midpoint/Point
+    of Commitment, moving Maya from obligation to personal commitment. None of the
+    prohibited items appear (no declaration of love, no contract breach, no photograph,
+    Alejandro softens). Character behavior and setting are consistent with prior beat.
+    The only deduction is technical: the provided word count falls outside the required
+    300–450 range, so word_count_valid is false.'
+error: null

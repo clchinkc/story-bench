@@ -1,15 +1,42 @@
-evaluation_id: e6c2f45d
+evaluation_id: df1907d8
 task_id: agentic_constraint_discovery_003
 generation_id: 6568db75
 agentic_type: constraint_discovery
 model: anthropic/claude-opus-4.5
 evaluator_model: openai/gpt-5-mini
-evaluator_cost: 0.00533325
-timestamp: '2025-12-17T23:40:57.225156'
-success: false
-process_scores: {}
-output_scores: {}
-final_score: 0.0
+evaluator_cost: 0.00417325
+timestamp: '2025-12-24T20:20:08.127012'
+success: true
+process_scores:
+  discovery_efficiency: 0.6
+  question_quality: 0.6
+  question_coverage: 0.6
+output_scores:
+  constraint_satisfaction: 0.6
+  beat_execution: 0.6
+  narrative_quality: 0.8
+final_score: 0.6399999999999999
 llm_results:
-  raw_response: ''
-error: Failed to parse JSON from evaluator response
+  discovery_efficiency: 0.6
+  constraints_discoverable: 3
+  constraints_total: 5
+  question_quality: 0.6
+  question_coverage: 0.6
+  constraint_satisfaction: 0.6
+  beat_execution: 0.6
+  narrative_quality: 0.8
+  evidence: 'The question sequence discovered and the story incorporated three hidden
+    elements: the love interest is a local (Jo), the autumn festival is central to
+    bringing characters together, and there is unresolved family conflict (Margaret
+    and her brother). Missed/discovered-but-incorrect elements: the second-chance/broken-engagement
+    backstory (hidden: left 20 years after a broken engagement) was not found (story
+    presents a fresh romance and a 15-year absence), the protagonist''s return reason
+    (hidden: mother''s early-stage dementia) was not discovered and the story instead
+    gives a prior funeral, and the urgent financial stakes (bookshop foreclosure /
+    festival as last chance) and the former-fiance-mayor reveal were not asked about
+    or included. Questions were generally clear and targeted to relationship, community
+    role, festival role, family tension, and staying decision, but they failed to
+    probe specific motivations and high-stakes plot constraints (caregiving/dementia,
+    foreclosure, ex-fiancé/mayor), limiting discovery. Overall the narrative is coherent
+    and engaging but omits several required hidden constraints and stakes.'
+error: null

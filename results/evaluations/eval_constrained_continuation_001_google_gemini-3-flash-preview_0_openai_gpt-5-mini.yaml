@@ -1,33 +1,46 @@
-evaluation_id: a61e040c
+evaluation_id: 4a393f0f
 task_id: constrained_continuation_001
 generation_id: constrained_continuation_001_google/gemini-3-flash-preview_0
 task_type: constrained_continuation
 model: google/gemini-3-flash-preview
 sample_index: 0
 evaluator_model: openai/gpt-5-mini
-evaluator_cost: 0.002942
-timestamp: '2025-12-18T23:33:32.008489'
-success: false
-final_score: 0.0
+evaluator_cost: 0.001554
+timestamp: '2025-12-24T19:43:01.356454'
+success: true
+final_score: 0.8838489941964407
 score_breakdown:
-  final_score: 0.0
+  final_score: 0.8838
   components:
     programmatic:
-      score: 0.0
+      score: 0.7677
       weight: 0.5
       breakdown:
-        word_count_score: 0.0
-        repetition_score: 0.0
-        slop_score: 1.0
-        overall: 0.0
+        word_count_score: 0.8684
+        repetition_score: 0.5
+        slop_score: 0.9814
+        overall: 0.7677
       word_count:
-        actual: 0
+        actual: 785
         target_range:
-        - 0
-        - 0
+        - 500
+        - 700
     llm_judge:
-      score: 0.0
+      score: 1.0
       weight: 0.5
 llm_results:
-  raw_response: ''
-error: Failed to parse JSON from evaluator response
+  beats_present: 2
+  beats_total: 2
+  beats_score: 1.0
+  must_include_present: 6
+  must_include_total: 6
+  must_include_score: 1.0
+  must_not_avoided: 4
+  must_not_total: 4
+  must_not_score: 1.0
+  word_count_valid: false
+  tone_score: 1.0
+  ending_score: 1.0
+  failed_constraints:
+  - word_count out of allowed range (785 words; required 500-700)
+error: null
