@@ -1,0 +1,66 @@
+evaluation_id: bb54dff2
+task_id: beat_interpolation_001
+generation_id: beat_interpolation_001_google/gemini-3.1-flash-lite-preview_0
+task_type: beat_interpolation
+model: google/gemini-3.1-flash-lite-preview
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.021670000000000002
+timestamp: '2026-03-06T17:22:17.196901'
+success: true
+final_score: 0.9861465542007254
+score_breakdown:
+  final_score: 0.9861
+  components:
+    programmatic:
+      score: 0.9723
+      weight: 0.5
+      breakdown:
+        word_count_score: 0.9818
+        repetition_score: 0.96
+        slop_score: 0.9743
+        overall: 0.9723
+      word_count:
+        actual: 373
+        target_range:
+        - 200
+        - 350
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: false
+  word_count: 373
+  word_count_range: 200-350
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: 'STRENGTHS: All 4 required elements present and well-executed: (1) Marcus
+    introduced as wise mentor figure with credible background (''seen a dozen wars'');
+    (2) Practical wisdom provided (''map chooses observant not reckless'') and tangible
+    tools given (brass compass, satchel); (3) Elena''s doubt shifts to reluctant acceptance
+    (''strange, burgeoning curiosity'' and ''time to read the one written for her'');
+    (4) Librarian skills reframed as valuable (''find patterns in chaos'', ''synthesize
+    disparate pieces''). All must-not violations avoided: Elena remains doubtful (''I
+    can''t promise I''ll succeed''), mentor doesn''t accompany her or solve problems,
+    setting is shop not forest, no magical powers discovered. Character voice consistent
+    throughout—Elena''s protests feel authentic and Marcus''s dialogue reflects earned
+    wisdom. Bridge between beats seamless: BEFORE shows refusal, GENERATED shows mentor
+    meeting shifting perspective, AFTER shows threshold crossing with Marcus''s words
+    echoing. Continuity perfect across all three sections. WEAKNESS: Word count exceeds
+    range (373 vs 200-350 max), though this is a minor technical issue that doesn''t
+    affect narrative quality or beat execution.'
+  overall_assessment: Exceptional execution of the Meeting the Mentor beat. The generated
+    content masterfully transforms Elena's self-doubt into curiosity through Marcus's
+    reframing of her ordinary skills as extraordinary assets. The mentor relationship
+    is properly calibrated—he provides wisdom and tools but explicitly does not solve
+    her problems. The narrative function of this beat is perfectly realized, with
+    Elena moving from refusal to reluctant acceptance without becoming overconfident.
+    Only technical deduction for word count overage.
+error: null

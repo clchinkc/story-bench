@@ -1,0 +1,47 @@
+evaluation_id: b717f472
+task_id: beat_interpolation_002
+generation_id: beat_interpolation_002_google/gemini-3.1-flash-lite-preview_0
+task_type: beat_interpolation
+model: google/gemini-3.1-flash-lite-preview
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0009903999999999998
+timestamp: '2026-03-06T17:23:09.326200'
+success: true
+final_score: 0.9825
+score_breakdown:
+  final_score: 0.9825
+  components:
+    programmatic:
+      score: 0.965
+      weight: 0.5
+      breakdown:
+        word_count_score: 1.0
+        repetition_score: 0.9
+        slop_score: 1.0
+        overall: 0.965
+      word_count:
+        actual: 395
+        target_range:
+        - 250
+        - 400
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: true
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: The output clearly shows Sarah considering recanting, going to authorities,
+    and her internal conflict. The conversation with Marcus and her realization about
+    the badge being an obstacle tips her towards the third option. All 'must not'
+    items are avoided. The character's internal struggle and eventual decision are
+    well-portrayed, and the transition to the next beat is seamless.
+error: null

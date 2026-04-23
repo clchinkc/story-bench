@@ -1,0 +1,61 @@
+evaluation_id: 1e31b3b3
+task_id: beat_interpolation_001
+generation_id: beat_interpolation_001_minimax/minimax-m2.5_0
+task_type: beat_interpolation
+model: minimax/minimax-m2.5
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.01985
+timestamp: '2026-03-06T21:52:50.902222'
+success: true
+final_score: 0.8517201767546417
+score_breakdown:
+  final_score: 0.8517
+  components:
+    programmatic:
+      score: 0.7034
+      weight: 0.5
+      breakdown:
+        word_count_score: 0.5561
+        repetition_score: 0.66
+        slop_score: 1.0
+        overall: 0.7034
+      word_count:
+        actual: 480
+        target_range:
+        - 200
+        - 350
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: false
+  word_count: 480
+  word_count_range: 200-350
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  overall_score: 0.8
+  evidence: 'STRENGTHS: All four required elements present and well-executed: (1)
+    Marcus introduced as wise mentor figure with clear characterization (scar, sharp
+    eyes, mysterious knowledge); (2) Practical wisdom provided (''Extraordinary things
+    are done by ordinary people'') and tangible tools given (satchel with supplies,
+    compass, journal); (3) Elena''s doubt shifts convincingly toward reluctant acceptance
+    (''Maybe she had made a mistake''); (4) Librarian skills reframed as valuable
+    (''knowing where things are. How they connect''). All must-not items successfully
+    avoided—Elena remains uncertain and hesitant, Marcus doesn''t accompany her or
+    solve problems, setting is village/shop (not forest), no magical powers discovered.
+    Character voice is consistent and authentic throughout. Bridge between beats is
+    seamless—Elena''s internal conflict from previous beat naturally leads to mentor
+    encounter. Continuity maintained perfectly with grandmother''s ghost reference
+    and map continuity. WEAKNESS: Word count (480) significantly exceeds requirement
+    (200-350 range), representing 37% overage. This is the only substantive issue—the
+    beat itself is exceptionally well-executed with strong narrative function, character
+    development, and thematic coherence.'
+error: null

@@ -1,0 +1,45 @@
+evaluation_id: 76c86266
+task_id: beat_interpolation_001
+generation_id: beat_interpolation_001_inception/mercury-2_0
+task_type: beat_interpolation
+model: inception/mercury-2
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0008753999999999999
+timestamp: '2026-03-06T21:55:13.416420'
+success: true
+final_score: 0.99125
+score_breakdown:
+  final_score: 0.9912
+  components:
+    programmatic:
+      score: 0.9825
+      weight: 0.5
+      breakdown:
+        word_count_score: 1.0
+        repetition_score: 0.95
+        slop_score: 1.0
+        overall: 0.9825
+      word_count:
+        actual: 333
+        target_range:
+        - 200
+        - 350
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: true
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: All required elements are present and all 'must not' items are avoided.
+    The beat is executed perfectly, bridging the previous and next beats seamlessly
+    while maintaining character and setting continuity.
+error: null

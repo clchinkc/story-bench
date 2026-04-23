@@ -1,0 +1,50 @@
+evaluation_id: 0f93ec99
+task_id: beat_interpolation_001
+generation_id: beat_interpolation_001_google/gemini-3.1-flash-lite-preview_0
+task_type: beat_interpolation
+model: google/gemini-3.1-flash-lite-preview
+sample_index: 0
+evaluator_model: openai/gpt-5-mini
+evaluator_cost: 0.00140625
+timestamp: '2026-03-06T17:22:24.527758'
+success: true
+final_score: 0.9861465542007254
+score_breakdown:
+  final_score: 0.9861
+  components:
+    programmatic:
+      score: 0.9723
+      weight: 0.5
+      breakdown:
+        word_count_score: 0.9818
+        repetition_score: 0.96
+        slop_score: 0.9743
+        overall: 0.9723
+      word_count:
+        actual: 373
+        target_range:
+        - 200
+        - 350
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: false
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: 'All four required elements are present: Marcus is introduced by name;
+    he provides practical wisdom and a compass/satchel; Elena''s doubt shifts toward
+    reluctant acceptance; her librarian skills are explicitly framed as useful. No
+    prohibited elements appear (she does not become immediately confident, Marcus
+    does not solve her problems or offer to accompany her, she is not in/near the
+    forest, and she does not discover magical powers). Character voices and setting
+    continuity are consistent. The sole deduction is technical: the passage is 373
+    words, exceeding the specified 200–350 range by 23 words.'
+error: null

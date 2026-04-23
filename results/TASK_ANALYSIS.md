@@ -1,6 +1,6 @@
 # Story Theory Benchmark - Task Analysis
 
-*Last updated: 2025-12-25T00:31:56.714446*
+*Last updated: 2026-03-06T21:55:41.874126*
 
 ## Overview
 
@@ -19,7 +19,7 @@ This document provides detailed analysis of each benchmark task, including:
 | critique_improvement | 4 | 84.4% | 36.8% | 78.3% | Excellent |
 | multi_beat_synthesis | 3 | 80.3% | 35.8% | 48.6% | Excellent |
 | theory_conversion | 4 | 86.6% | 32.9% | 40.5% | Excellent |
-| beat_interpolation | 5 | 92.6% | 31.7% | 33.9% | Excellent |
+| beat_interpolation | 5 | 92.9% | 31.7% | 33.9% | Excellent |
 | constrained_continuation | 4 | 86.1% | 31.2% | 33.3% | Excellent |
 | beat_revision | 5 | 90.1% | 31.0% | 61.0% | Excellent |
 | agentic_planning_execution | 3 | 88.9% | 30.5% | 37.0% | Excellent |
@@ -33,7 +33,7 @@ This document provides detailed analysis of each benchmark task, including:
 | 1 | agentic_iterative_revision_003 | agentic_iterative_revision | 90.2% | 84.8% | claude-sonnet-4 | llama-4-maverick |
 | 2 | critique_improvement_003 | critique_improvement | 78.3% | 80.3% | deepseek-r1 | llama-4-maverick |
 | 3 | agentic_constraint_discovery_003 | agentic_constraint_discovery | 66.7% | 63.3% | gpt-5.2 | minimax-m2 |
-| 4 | agentic_iterative_revision_002 | agentic_iterative_revision | 62.0% | 87.6% | gpt-5.2 | llama-4-maverick |
+| 4 | agentic_iterative_revision_002 | agentic_iterative_revision | 62.0% | 87.6% | kimi-k2-thinking | llama-4-maverick |
 | 5 | beat_revision_002 | beat_revision | 61.0% | 92.9% | gemini-2.5-flash | llama-4-maverick |
 | 6 | beat_revision_005 | beat_revision | 55.9% | 75.3% | gemini-2.5-flash | ministral-14b-2512 |
 | 7 | agentic_constraint_discovery_001 | agentic_constraint_discovery | 54.3% | 55.5% | claude-opus-4.5 | minimax-m2 |
@@ -67,10 +67,10 @@ This document provides detailed analysis of each benchmark task, including:
 | 1 | beat_revision_003 | beat_revision | 97.0% | 7.3% | 92.0% | gpt-4o-mini |
 | 2 | beat_interpolation_003 | beat_interpolation | 94.7% | 33.9% | 66.1% | minimax-m2 |
 | 3 | beat_interpolation_004 | beat_interpolation | 94.0% | 27.0% | 71.9% | gpt-5.2 |
-| 4 | beat_revision_004 | beat_revision | 93.5% | 11.3% | 86.0% | ministral-14b-2512 |
-| 5 | beat_revision_002 | beat_revision | 92.9% | 61.0% | 37.3% | llama-4-maverick |
-| 6 | beat_interpolation_002 | beat_interpolation | 92.6% | 32.5% | 67.5% | minimax-m2 |
-| 7 | beat_interpolation_001 | beat_interpolation | 92.5% | 31.2% | 68.8% | ministral-14b-2512 |
+| 4 | beat_interpolation_001 | beat_interpolation | 93.7% | 31.2% | 68.8% | ministral-14b-2512 |
+| 5 | beat_revision_004 | beat_revision | 93.5% | 11.3% | 86.0% | ministral-14b-2512 |
+| 6 | beat_revision_002 | beat_revision | 92.9% | 61.0% | 37.3% | llama-4-maverick |
+| 7 | beat_interpolation_002 | beat_interpolation | 92.8% | 32.5% | 67.5% | minimax-m2 |
 | 8 | beat_revision_001 | beat_revision | 92.1% | 19.7% | 77.4% | ministral-14b-2512 |
 | 9 | agentic_planning_execution_003 | agentic_planning_execution | 91.3% | 27.8% | 70.0% | gemini-2.5-flash |
 | 10 | constrained_continuation_002 | constrained_continuation | 90.0% | 31.6% | 65.0% | ministral-14b-2512 |
@@ -91,14 +91,14 @@ This document provides detailed analysis of each benchmark task, including:
 | Task ID | Theory | Avg | Min | Max | Spread | Std Dev | Best Model | Worst Model |
 |---------|--------|-----|-----|-----|--------|---------|------------|-------------|
 | agentic_iterative_revision_003 | Freytag's Pyramid | 84.8% | 7.5% | 97.7% | 90.2% | 0.19 | claude-sonnet-4 | llama-4-maverick |
-| agentic_iterative_revision_002 | Save the Cat | 87.6% | 33.7% | 95.7% | 62.0% | 0.12 | gpt-5.2 | llama-4-maverick |
+| agentic_iterative_revision_002 | Save the Cat | 87.6% | 33.7% | 95.7% | 62.0% | 0.12 | kimi-k2-thinking | llama-4-maverick |
 | agentic_iterative_revision_001 | Story Circle | 87.7% | 77.7% | 98.3% | 20.7% | 0.05 | gpt-5.1 | llama-4-maverick |
 
 ### agentic_planning_execution
 
 | Task ID | Theory | Avg | Min | Max | Spread | Std Dev | Best Model | Worst Model |
 |---------|--------|-----|-----|-----|--------|---------|------------|-------------|
-| agentic_planning_execution_001 | Save the Cat | 85.9% | 59.7% | 96.7% | 37.0% | 0.09 | deepseek-v3.2 | gemini-2.5-flash |
+| agentic_planning_execution_001 | Save the Cat | 85.9% | 59.7% | 96.7% | 37.0% | 0.09 | kimi-k2-thinking | gemini-2.5-flash |
 | agentic_planning_execution_003 | Three-Act Structure | 91.3% | 70.0% | 97.8% | 27.8% | 0.07 | gpt-5.2 | gemini-2.5-flash |
 | agentic_planning_execution_002 | Hero's Journey | 89.5% | 70.5% | 97.3% | 26.8% | 0.07 | deepseek-r1 | o3-mini |
 
@@ -108,8 +108,8 @@ This document provides detailed analysis of each benchmark task, including:
 |---------|--------|-----|-----|-----|--------|---------|------------|-------------|
 | beat_interpolation_005 | Three-Act Structure | 89.3% | 65.8% | 99.7% | 33.9% | 0.12 | claude-sonnet-4 | ministral-14b-2512 |
 | beat_interpolation_003 | Story Circle | 94.7% | 66.1% | 100.0% | 33.9% | 0.10 | o3-mini | minimax-m2 |
-| beat_interpolation_002 | Save the Cat | 92.6% | 67.5% | 100.0% | 32.5% | 0.09 | claude-opus-4.5 | minimax-m2 |
-| beat_interpolation_001 | Hero's Journey | 92.5% | 68.8% | 100.0% | 31.2% | 0.11 | gpt-5 | ministral-14b-2512 |
+| beat_interpolation_002 | Save the Cat | 92.8% | 67.5% | 100.0% | 32.5% | 0.09 | claude-opus-4.5 | minimax-m2 |
+| beat_interpolation_001 | Hero's Journey | 93.7% | 68.8% | 100.0% | 31.2% | 0.10 | gpt-5 | ministral-14b-2512 |
 | beat_interpolation_004 | Freytag's Pyramid | 94.0% | 71.9% | 99.0% | 27.0% | 0.06 | gemini-3-flash-preview | gpt-5.2 |
 
 ### beat_revision
@@ -166,7 +166,7 @@ This document provides detailed analysis of each benchmark task, including:
 | agentic_constraint_discovery | 3 | $1.4267 | $0.0190 |
 | agentic_iterative_revision | 3 | $3.3981 | $0.0453 |
 | agentic_planning_execution | 3 | $2.3217 | $0.0310 |
-| beat_interpolation | 5 | $1.0363 | $0.0083 |
+| beat_interpolation | 5 | $2.2385 | $0.0137 |
 | beat_revision | 5 | $0.9813 | $0.0079 |
 | constrained_continuation | 4 | $1.1767 | $0.0118 |
 | critique_improvement | 4 | $9.7484 | $0.0975 |
@@ -180,79 +180,79 @@ This document provides detailed analysis of each benchmark task, including:
 
 ### agentic_constraint_discovery
 
-| Task ID | claude-haiku-4.5 | claude-opus-4.5 | claude-sonnet-4 | claude-sonnet-4.5 | deepseek-r1 | deepseek-v3.2 | gemini-2.5-flash | gemini-3-flash-preview | gemini-3-pro-preview | llama-4-maverick | minimax-m2 | minimax-m2.1 | ministral-14b-2512 | mistral-small-creative | kimi-k2-thinking | gpt-4o | gpt-4o-mini | gpt-5 | gpt-5.1 | gpt-5.2 | o3 | o3-mini | qwen3-235b-a22b | grok-4 | glm-4.7 |
-|---------|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
-| agentic_constraint_discovery_001 | 56.0% | 76.3% | 59.3% | 68.0% | 70.3% | 61.3% | 54.7% | 68.7% | 50.0% | 34.7% | 22.0% | 52.0% | 66.0% | 57.3% | 60.3% | 51.3% | 32.0% | 36.7% | 53.3% | 70.7% | 58.0% | 61.3% | 40.0% | 68.7% | 59.3% |
-| agentic_constraint_discovery_002 | 70.7% | 76.0% | 74.7% | 64.0% | 63.3% | 72.0% | 63.3% | 42.7% | 36.0% | 48.0% | 30.0% | 50.0% | 69.3% | 61.0% | 82.7% | 44.0% | 68.0% | 69.0% | 77.3% | 81.0% | 64.0% | 68.0% | 38.0% | 58.7% | 70.7% |
-| agentic_constraint_discovery_003 | 59.3% | 64.0% | 74.7% | 75.0% | 58.0% | 85.0% | 68.3% | 75.3% | 43.0% | 57.3% | 26.0% | 63.3% | 68.7% | 68.7% | 76.3% | 66.7% | 58.7% | 57.0% | 64.3% | 92.7% | 56.0% | 64.3% | 38.0% | 66.0% | 57.0% |
+| Task ID | claude-haiku-4.5 | claude-opus-4.5 | claude-opus-4.6 | claude-sonnet-4 | claude-sonnet-4.5 | deepseek-r1 | deepseek-v3.2 | gemini-2.5-flash | gemini-3-flash-preview | gemini-3-pro-preview | gemini-3.1-flash-image-preview | gemini-3.1-flash-lite-preview | mercury-2 | llama-4-maverick | minimax-m2 | minimax-m2.1 | minimax-m2.5 | ministral-14b-2512 | mistral-small-creative | kimi-k2-thinking | gpt-4o | gpt-4o-mini | gpt-5 | gpt-5.1 | gpt-5.2 | gpt-5.4 | o3 | o3-mini | qwen3-235b-a22b | qwen3.5-27b | qwen3.5-flash-02-23 | step-3.5-flash | grok-4 | glm-4.7 | glm-5 |
+|---------|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+| agentic_constraint_discovery_001 | 56.0% | 76.3% | - | 59.3% | 68.0% | 70.3% | 61.3% | 54.7% | 68.7% | 50.0% | - | - | - | 34.7% | 22.0% | 52.0% | - | 66.0% | 57.3% | 60.3% | 51.3% | 32.0% | 36.7% | 53.3% | 70.7% | - | 58.0% | 61.3% | 40.0% | - | - | - | 68.7% | 59.3% | - |
+| agentic_constraint_discovery_002 | 70.7% | 76.0% | - | 74.7% | 64.0% | 63.3% | 72.0% | 63.3% | 42.7% | 36.0% | - | - | - | 48.0% | 30.0% | 50.0% | - | 69.3% | 61.0% | 82.7% | 44.0% | 68.0% | 69.0% | 77.3% | 81.0% | - | 64.0% | 68.0% | 38.0% | - | - | - | 58.7% | 70.7% | - |
+| agentic_constraint_discovery_003 | 59.3% | 64.0% | - | 74.7% | 75.0% | 58.0% | 85.0% | 68.3% | 75.3% | 43.0% | - | - | - | 57.3% | 26.0% | 63.3% | - | 68.7% | 68.7% | 76.3% | 66.7% | 58.7% | 57.0% | 64.3% | 92.7% | - | 56.0% | 64.3% | 38.0% | - | - | - | 66.0% | 57.0% | - |
 
 ### agentic_iterative_revision
 
-| Task ID | claude-haiku-4.5 | claude-opus-4.5 | claude-sonnet-4 | claude-sonnet-4.5 | deepseek-r1 | deepseek-v3.2 | gemini-2.5-flash | gemini-3-flash-preview | gemini-3-pro-preview | llama-4-maverick | minimax-m2 | minimax-m2.1 | ministral-14b-2512 | mistral-small-creative | kimi-k2-thinking | gpt-4o | gpt-4o-mini | gpt-5 | gpt-5.1 | gpt-5.2 | o3 | o3-mini | qwen3-235b-a22b | grok-4 | glm-4.7 |
-|---------|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
-| agentic_iterative_revision_001 | 84.4% | 84.3% | 88.7% | 80.2% | 88.6% | 88.6% | 77.8% | 88.8% | 90.0% | 77.7% | 89.3% | 90.0% | 87.7% | 91.8% | 90.0% | 91.0% | 82.0% | 89.3% | 98.3% | 91.0% | 95.4% | 86.3% | 90.0% | 82.0% | 88.4% |
-| agentic_iterative_revision_002 | 80.0% | 90.0% | 86.0% | 93.3% | 92.7% | 86.7% | 89.3% | 92.4% | 95.7% | 33.7% | 91.3% | 92.3% | 83.0% | 90.0% | 95.7% | 82.0% | 79.7% | 93.5% | 92.3% | 95.7% | 92.6% | 87.2% | 92.8% | 93.3% | 87.7% |
-| agentic_iterative_revision_003 | 93.3% | 90.0% | 97.7% | 95.7% | 95.3% | 93.3% | 88.6% | 90.0% | 93.7% | 7.5% | 90.0% | 92.2% | 82.0% | 83.3% | 88.6% | 75.5% | 51.3% | 95.7% | 82.0% | 90.0% | 93.8% | 83.0% | 90.0% | 88.6% | 88.6% |
+| Task ID | claude-haiku-4.5 | claude-opus-4.5 | claude-opus-4.6 | claude-sonnet-4 | claude-sonnet-4.5 | deepseek-r1 | deepseek-v3.2 | gemini-2.5-flash | gemini-3-flash-preview | gemini-3-pro-preview | gemini-3.1-flash-image-preview | gemini-3.1-flash-lite-preview | mercury-2 | llama-4-maverick | minimax-m2 | minimax-m2.1 | minimax-m2.5 | ministral-14b-2512 | mistral-small-creative | kimi-k2-thinking | gpt-4o | gpt-4o-mini | gpt-5 | gpt-5.1 | gpt-5.2 | gpt-5.4 | o3 | o3-mini | qwen3-235b-a22b | qwen3.5-27b | qwen3.5-flash-02-23 | step-3.5-flash | grok-4 | glm-4.7 | glm-5 |
+|---------|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+| agentic_iterative_revision_001 | 84.4% | 84.3% | - | 88.7% | 80.2% | 88.6% | 88.6% | 77.8% | 88.8% | 90.0% | - | - | - | 77.7% | 89.3% | 90.0% | - | 87.7% | 91.8% | 90.0% | 91.0% | 82.0% | 89.3% | 98.3% | 91.0% | - | 95.4% | 86.3% | 90.0% | - | - | - | 82.0% | 88.4% | - |
+| agentic_iterative_revision_002 | 80.0% | 90.0% | - | 86.0% | 93.3% | 92.7% | 86.7% | 89.3% | 92.4% | 95.7% | - | - | - | 33.7% | 91.3% | 92.3% | - | 83.0% | 90.0% | 95.7% | 82.0% | 79.7% | 93.5% | 92.3% | 95.7% | - | 92.6% | 87.2% | 92.8% | - | - | - | 93.3% | 87.7% | - |
+| agentic_iterative_revision_003 | 93.3% | 90.0% | - | 97.7% | 95.7% | 95.3% | 93.3% | 88.6% | 90.0% | 93.7% | - | - | - | 7.5% | 90.0% | 92.2% | - | 82.0% | 83.3% | 88.6% | 75.5% | 51.3% | 95.7% | 82.0% | 90.0% | - | 93.8% | 83.0% | 90.0% | - | - | - | 88.6% | 88.6% | - |
 
 ### agentic_planning_execution
 
-| Task ID | claude-haiku-4.5 | claude-opus-4.5 | claude-sonnet-4 | claude-sonnet-4.5 | deepseek-r1 | deepseek-v3.2 | gemini-2.5-flash | gemini-3-flash-preview | gemini-3-pro-preview | llama-4-maverick | minimax-m2 | minimax-m2.1 | ministral-14b-2512 | mistral-small-creative | kimi-k2-thinking | gpt-4o | gpt-4o-mini | gpt-5 | gpt-5.1 | gpt-5.2 | o3 | o3-mini | qwen3-235b-a22b | grok-4 | glm-4.7 |
-|---------|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
-| agentic_planning_execution_001 | 82.4% | 82.4% | 87.4% | 76.7% | 87.0% | 96.7% | 59.7% | 94.3% | 96.1% | 86.8% | 91.0% | 87.3% | 72.4% | 77.9% | 96.7% | 80.4% | 81.7% | 90.7% | 91.0% | 84.0% | 87.2% | 85.9% | 83.9% | 95.6% | 93.3% |
-| agentic_planning_execution_002 | 96.7% | 90.9% | 83.9% | 90.8% | 97.3% | 96.7% | 83.9% | 93.0% | 91.5% | 79.3% | 96.1% | 95.7% | 82.2% | 89.7% | 92.0% | 76.1% | 84.1% | 95.5% | 90.0% | 92.8% | 91.9% | 70.5% | 89.6% | 95.7% | 90.7% |
-| agentic_planning_execution_003 | 93.3% | 93.3% | 92.0% | 93.3% | 93.3% | 94.9% | 70.0% | 96.1% | 95.7% | 77.8% | 91.9% | 89.5% | 90.2% | 93.3% | 95.5% | 86.3% | 77.8% | 95.5% | 97.2% | 97.8% | 95.7% | 81.7% | 96.7% | 97.8% | 94.5% |
+| Task ID | claude-haiku-4.5 | claude-opus-4.5 | claude-opus-4.6 | claude-sonnet-4 | claude-sonnet-4.5 | deepseek-r1 | deepseek-v3.2 | gemini-2.5-flash | gemini-3-flash-preview | gemini-3-pro-preview | gemini-3.1-flash-image-preview | gemini-3.1-flash-lite-preview | mercury-2 | llama-4-maverick | minimax-m2 | minimax-m2.1 | minimax-m2.5 | ministral-14b-2512 | mistral-small-creative | kimi-k2-thinking | gpt-4o | gpt-4o-mini | gpt-5 | gpt-5.1 | gpt-5.2 | gpt-5.4 | o3 | o3-mini | qwen3-235b-a22b | qwen3.5-27b | qwen3.5-flash-02-23 | step-3.5-flash | grok-4 | glm-4.7 | glm-5 |
+|---------|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+| agentic_planning_execution_001 | 82.4% | 82.4% | - | 87.4% | 76.7% | 87.0% | 96.7% | 59.7% | 94.3% | 96.1% | - | - | - | 86.8% | 91.0% | 87.3% | - | 72.4% | 77.9% | 96.7% | 80.4% | 81.7% | 90.7% | 91.0% | 84.0% | - | 87.2% | 85.9% | 83.9% | - | - | - | 95.6% | 93.3% | - |
+| agentic_planning_execution_002 | 96.7% | 90.9% | - | 83.9% | 90.8% | 97.3% | 96.7% | 83.9% | 93.0% | 91.5% | - | - | - | 79.3% | 96.1% | 95.7% | - | 82.2% | 89.7% | 92.0% | 76.1% | 84.1% | 95.5% | 90.0% | 92.8% | - | 91.9% | 70.5% | 89.6% | - | - | - | 95.7% | 90.7% | - |
+| agentic_planning_execution_003 | 93.3% | 93.3% | - | 92.0% | 93.3% | 93.3% | 94.9% | 70.0% | 96.1% | 95.7% | - | - | - | 77.8% | 91.9% | 89.5% | - | 90.2% | 93.3% | 95.5% | 86.3% | 77.8% | 95.5% | 97.2% | 97.8% | - | 95.7% | 81.7% | 96.7% | - | - | - | 97.8% | 94.5% | - |
 
 ### beat_interpolation
 
-| Task ID | claude-haiku-4.5 | claude-opus-4.5 | claude-sonnet-4 | claude-sonnet-4.5 | deepseek-r1 | deepseek-v3.2 | gemini-2.5-flash | gemini-3-flash-preview | gemini-3-pro-preview | llama-4-maverick | minimax-m2 | minimax-m2.1 | ministral-14b-2512 | mistral-small-creative | kimi-k2-thinking | gpt-4o | gpt-4o-mini | gpt-5 | gpt-5.1 | gpt-5.2 | o3 | o3-mini | qwen3-235b-a22b | grok-4 | glm-4.7 |
-|---------|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
-| beat_interpolation_001 | 98.8% | 99.7% | 97.9% | 99.1% | 73.6% | 98.0% | 98.6% | 96.8% | 99.4% | 94.9% | 69.2% | 99.6% | 68.8% | 96.2% | 99.3% | 97.6% | 99.4% | 100.0% | 69.3% | 88.8% | 99.6% | 99.4% | 99.1% | 71.8% | 98.1% |
-| beat_interpolation_002 | 98.2% | 100.0% | 97.0% | 98.2% | 97.9% | 97.8% | 97.3% | 94.3% | 96.9% | 90.5% | 67.5% | 94.9% | 97.2% | 94.9% | 96.2% | 96.5% | 83.0% | 92.4% | 72.8% | 85.1% | 98.8% | 99.7% | 97.9% | 72.4% | 98.2% |
-| beat_interpolation_003 | 99.1% | 99.7% | 99.7% | 99.7% | 100.0% | 99.6% | 100.0% | 99.0% | 97.4% | 99.2% | 66.1% | 98.2% | 69.7% | 95.6% | 100.0% | 98.3% | 97.4% | 98.0% | 73.2% | 97.5% | 100.0% | 100.0% | 99.3% | 82.6% | 99.3% |
-| beat_interpolation_004 | 96.0% | 96.9% | 96.9% | 94.6% | 98.8% | 98.5% | 96.6% | 99.0% | 96.3% | 84.4% | 93.8% | 95.0% | 94.5% | 92.5% | 92.7% | 94.9% | 96.7% | 84.8% | 89.1% | 71.9% | 97.9% | 98.7% | 97.2% | 96.4% | 95.8% |
-| beat_interpolation_005 | 97.8% | 99.4% | 99.7% | 98.8% | 95.2% | 98.0% | 98.8% | 97.7% | 98.1% | 96.7% | 67.5% | 75.1% | 65.8% | 79.2% | 71.3% | 96.1% | 97.6% | 91.4% | 67.5% | 70.0% | 99.2% | 98.2% | 87.5% | 89.7% | 96.0% |
+| Task ID | claude-haiku-4.5 | claude-opus-4.5 | claude-opus-4.6 | claude-sonnet-4 | claude-sonnet-4.5 | deepseek-r1 | deepseek-v3.2 | gemini-2.5-flash | gemini-3-flash-preview | gemini-3-pro-preview | gemini-3.1-flash-image-preview | gemini-3.1-flash-lite-preview | mercury-2 | llama-4-maverick | minimax-m2 | minimax-m2.1 | minimax-m2.5 | ministral-14b-2512 | mistral-small-creative | kimi-k2-thinking | gpt-4o | gpt-4o-mini | gpt-5 | gpt-5.1 | gpt-5.2 | gpt-5.4 | o3 | o3-mini | qwen3-235b-a22b | qwen3.5-27b | qwen3.5-flash-02-23 | step-3.5-flash | grok-4 | glm-4.7 | glm-5 |
+|---------|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+| beat_interpolation_001 | 98.8% | 99.7% | 98.1% | 97.9% | 99.1% | 73.6% | 98.0% | 98.6% | 96.8% | 99.4% | 97.4% | 98.6% | 99.1% | 94.9% | 69.2% | 99.6% | 85.2% | 68.8% | 96.2% | 99.3% | 97.6% | 99.4% | 100.0% | 69.3% | 88.8% | 99.6% | 99.6% | 99.4% | 99.1% | 98.9% | 98.6% | 90.1% | 71.8% | 98.1% | 99.6% |
+| beat_interpolation_002 | 98.2% | 100.0% | - | 97.0% | 98.2% | 97.9% | 97.8% | 97.3% | 94.3% | 96.9% | - | 98.2% | - | 90.5% | 67.5% | 94.9% | - | 97.2% | 94.9% | 96.2% | 96.5% | 83.0% | 92.4% | 72.8% | 85.1% | - | 98.8% | 99.7% | 97.9% | - | - | - | 72.4% | 98.2% | - |
+| beat_interpolation_003 | 99.1% | 99.7% | - | 99.7% | 99.7% | 100.0% | 99.6% | 100.0% | 99.0% | 97.4% | - | - | - | 99.2% | 66.1% | 98.2% | - | 69.7% | 95.6% | 100.0% | 98.3% | 97.4% | 98.0% | 73.2% | 97.5% | - | 100.0% | 100.0% | 99.3% | - | - | - | 82.6% | 99.3% | - |
+| beat_interpolation_004 | 96.0% | 96.9% | - | 96.9% | 94.6% | 98.8% | 98.5% | 96.6% | 99.0% | 96.3% | - | - | - | 84.4% | 93.8% | 95.0% | - | 94.5% | 92.5% | 92.7% | 94.9% | 96.7% | 84.8% | 89.1% | 71.9% | - | 97.9% | 98.7% | 97.2% | - | - | - | 96.4% | 95.8% | - |
+| beat_interpolation_005 | 97.8% | 99.4% | - | 99.7% | 98.8% | 95.2% | 98.0% | 98.8% | 97.7% | 98.1% | - | - | - | 96.7% | 67.5% | 75.1% | - | 65.8% | 79.2% | 71.3% | 96.1% | 97.6% | 91.4% | 67.5% | 70.0% | - | 99.2% | 98.2% | 87.5% | - | - | - | 89.7% | 96.0% | - |
 
 ### beat_revision
 
-| Task ID | claude-haiku-4.5 | claude-opus-4.5 | claude-sonnet-4 | claude-sonnet-4.5 | deepseek-r1 | deepseek-v3.2 | gemini-2.5-flash | gemini-3-flash-preview | gemini-3-pro-preview | llama-4-maverick | minimax-m2 | minimax-m2.1 | ministral-14b-2512 | mistral-small-creative | kimi-k2-thinking | gpt-4o | gpt-4o-mini | gpt-5 | gpt-5.1 | gpt-5.2 | o3 | o3-mini | qwen3-235b-a22b | grok-4 | glm-4.7 |
-|---------|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
-| beat_revision_001 | 92.0% | 93.6% | 93.8% | 94.8% | 94.4% | 96.0% | 94.6% | 93.5% | 93.2% | 88.9% | 95.0% | 92.2% | 77.4% | 90.1% | 93.2% | 90.5% | 87.0% | 97.2% | 82.4% | 91.9% | 95.6% | 93.4% | 94.5% | 91.3% | 95.4% |
-| beat_revision_002 | 96.8% | 95.2% | 95.7% | 96.3% | 97.7% | 98.0% | 98.2% | 97.2% | 97.1% | 37.3% | 90.9% | 96.7% | 96.0% | 93.0% | 98.0% | 95.2% | 79.3% | 96.7% | 97.6% | 96.1% | 96.7% | 87.5% | 96.6% | 96.2% | 97.2% |
-| beat_revision_003 | 97.7% | 97.1% | 95.4% | 95.4% | 98.7% | 98.1% | 98.2% | 96.6% | 96.5% | 98.4% | 97.9% | 97.4% | 95.1% | 97.3% | 97.3% | 93.2% | 92.0% | 97.7% | 97.7% | 97.7% | 98.5% | 95.2% | 97.4% | 99.2% | 98.2% |
-| beat_revision_004 | 94.2% | 93.8% | 94.4% | 95.1% | 94.8% | 97.3% | 93.5% | 95.3% | 95.3% | 87.3% | 90.1% | 93.7% | 86.0% | 91.6% | 96.0% | 91.6% | 92.0% | 95.7% | 95.0% | 94.3% | 96.0% | 91.7% | 93.0% | 93.1% | 95.7% |
-| beat_revision_005 | 52.8% | 93.9% | 90.4% | 92.8% | 89.2% | 90.7% | 94.5% | 51.8% | 53.8% | 51.0% | 90.8% | 92.4% | 38.5% | 52.8% | 92.2% | 92.2% | 52.6% | 91.7% | 90.9% | 52.1% | 89.0% | 52.8% | 90.8% | 89.8% | 53.2% |
+| Task ID | claude-haiku-4.5 | claude-opus-4.5 | claude-opus-4.6 | claude-sonnet-4 | claude-sonnet-4.5 | deepseek-r1 | deepseek-v3.2 | gemini-2.5-flash | gemini-3-flash-preview | gemini-3-pro-preview | gemini-3.1-flash-image-preview | gemini-3.1-flash-lite-preview | mercury-2 | llama-4-maverick | minimax-m2 | minimax-m2.1 | minimax-m2.5 | ministral-14b-2512 | mistral-small-creative | kimi-k2-thinking | gpt-4o | gpt-4o-mini | gpt-5 | gpt-5.1 | gpt-5.2 | gpt-5.4 | o3 | o3-mini | qwen3-235b-a22b | qwen3.5-27b | qwen3.5-flash-02-23 | step-3.5-flash | grok-4 | glm-4.7 | glm-5 |
+|---------|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+| beat_revision_001 | 92.0% | 93.6% | - | 93.8% | 94.8% | 94.4% | 96.0% | 94.6% | 93.5% | 93.2% | - | - | - | 88.9% | 95.0% | 92.2% | - | 77.4% | 90.1% | 93.2% | 90.5% | 87.0% | 97.2% | 82.4% | 91.9% | - | 95.6% | 93.4% | 94.5% | - | - | - | 91.3% | 95.4% | - |
+| beat_revision_002 | 96.8% | 95.2% | - | 95.7% | 96.3% | 97.7% | 98.0% | 98.2% | 97.2% | 97.1% | - | - | - | 37.3% | 90.9% | 96.7% | - | 96.0% | 93.0% | 98.0% | 95.2% | 79.3% | 96.7% | 97.6% | 96.1% | - | 96.7% | 87.5% | 96.6% | - | - | - | 96.2% | 97.2% | - |
+| beat_revision_003 | 97.7% | 97.1% | - | 95.4% | 95.4% | 98.7% | 98.1% | 98.2% | 96.6% | 96.5% | - | - | - | 98.4% | 97.9% | 97.4% | - | 95.1% | 97.3% | 97.3% | 93.2% | 92.0% | 97.7% | 97.7% | 97.7% | - | 98.5% | 95.2% | 97.4% | - | - | - | 99.2% | 98.2% | - |
+| beat_revision_004 | 94.2% | 93.8% | - | 94.4% | 95.1% | 94.8% | 97.3% | 93.5% | 95.3% | 95.3% | - | - | - | 87.3% | 90.1% | 93.7% | - | 86.0% | 91.6% | 96.0% | 91.6% | 92.0% | 95.7% | 95.0% | 94.3% | - | 96.0% | 91.7% | 93.0% | - | - | - | 93.1% | 95.7% | - |
+| beat_revision_005 | 52.8% | 93.9% | - | 90.4% | 92.8% | 89.2% | 90.7% | 94.5% | 51.8% | 53.8% | - | - | - | 51.0% | 90.8% | 92.4% | - | 38.5% | 52.8% | 92.2% | 92.2% | 52.6% | 91.7% | 90.9% | 52.1% | - | 89.0% | 52.8% | 90.8% | - | - | - | 89.8% | 53.2% | - |
 
 ### constrained_continuation
 
-| Task ID | claude-haiku-4.5 | claude-opus-4.5 | claude-sonnet-4 | claude-sonnet-4.5 | deepseek-r1 | deepseek-v3.2 | gemini-2.5-flash | gemini-3-flash-preview | gemini-3-pro-preview | llama-4-maverick | minimax-m2 | minimax-m2.1 | ministral-14b-2512 | mistral-small-creative | kimi-k2-thinking | gpt-4o | gpt-4o-mini | gpt-5 | gpt-5.1 | gpt-5.2 | o3 | o3-mini | qwen3-235b-a22b | grok-4 | glm-4.7 |
-|---------|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
-| constrained_continuation_001 | 94.2% | 96.0% | 97.9% | 95.5% | 82.5% | 98.3% | 67.7% | 88.4% | 67.5% | 80.2% | 85.4% | 85.3% | 65.0% | 90.1% | 90.1% | 96.1% | 94.1% | 71.9% | 67.5% | 67.4% | 96.3% | 96.8% | 73.0% | 67.2% | 96.0% |
-| constrained_continuation_002 | 94.9% | 96.5% | 94.8% | 96.1% | 72.2% | 96.2% | 96.6% | 92.9% | 95.3% | 92.2% | 93.4% | 91.8% | 65.0% | 91.2% | 95.5% | 94.4% | 96.1% | 89.1% | 67.5% | 67.2% | 94.0% | 95.7% | 91.2% | 96.1% | 95.2% |
-| constrained_continuation_003 | 92.5% | 93.1% | 88.4% | 94.6% | 84.7% | 90.9% | 79.1% | 91.2% | 86.4% | 75.3% | 65.5% | 88.5% | 66.6% | 71.4% | 91.2% | 92.1% | 91.3% | 71.4% | 66.6% | 67.5% | 90.1% | 94.1% | 92.4% | 70.1% | 93.4% |
-| constrained_continuation_004 | 95.3% | 93.1% | 92.3% | 94.5% | 77.3% | 96.8% | 96.4% | 93.7% | 83.4% | 91.8% | 92.5% | 90.7% | 67.1% | 82.8% | 95.8% | 92.4% | 91.4% | 67.5% | 67.5% | 67.5% | 71.4% | 96.8% | 68.3% | 97.9% | 95.1% |
+| Task ID | claude-haiku-4.5 | claude-opus-4.5 | claude-opus-4.6 | claude-sonnet-4 | claude-sonnet-4.5 | deepseek-r1 | deepseek-v3.2 | gemini-2.5-flash | gemini-3-flash-preview | gemini-3-pro-preview | gemini-3.1-flash-image-preview | gemini-3.1-flash-lite-preview | mercury-2 | llama-4-maverick | minimax-m2 | minimax-m2.1 | minimax-m2.5 | ministral-14b-2512 | mistral-small-creative | kimi-k2-thinking | gpt-4o | gpt-4o-mini | gpt-5 | gpt-5.1 | gpt-5.2 | gpt-5.4 | o3 | o3-mini | qwen3-235b-a22b | qwen3.5-27b | qwen3.5-flash-02-23 | step-3.5-flash | grok-4 | glm-4.7 | glm-5 |
+|---------|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+| constrained_continuation_001 | 94.2% | 96.0% | - | 97.9% | 95.5% | 82.5% | 98.3% | 67.7% | 88.4% | 67.5% | - | - | - | 80.2% | 85.4% | 85.3% | - | 65.0% | 90.1% | 90.1% | 96.1% | 94.1% | 71.9% | 67.5% | 67.4% | - | 96.3% | 96.8% | 73.0% | - | - | - | 67.2% | 96.0% | - |
+| constrained_continuation_002 | 94.9% | 96.5% | - | 94.8% | 96.1% | 72.2% | 96.2% | 96.6% | 92.9% | 95.3% | - | - | - | 92.2% | 93.4% | 91.8% | - | 65.0% | 91.2% | 95.5% | 94.4% | 96.1% | 89.1% | 67.5% | 67.2% | - | 94.0% | 95.7% | 91.2% | - | - | - | 96.1% | 95.2% | - |
+| constrained_continuation_003 | 92.5% | 93.1% | - | 88.4% | 94.6% | 84.7% | 90.9% | 79.1% | 91.2% | 86.4% | - | - | - | 75.3% | 65.5% | 88.5% | - | 66.6% | 71.4% | 91.2% | 92.1% | 91.3% | 71.4% | 66.6% | 67.5% | - | 90.1% | 94.1% | 92.4% | - | - | - | 70.1% | 93.4% | - |
+| constrained_continuation_004 | 95.3% | 93.1% | - | 92.3% | 94.5% | 77.3% | 96.8% | 96.4% | 93.7% | 83.4% | - | - | - | 91.8% | 92.5% | 90.7% | - | 67.1% | 82.8% | 95.8% | 92.4% | 91.4% | 67.5% | 67.5% | 67.5% | - | 71.4% | 96.8% | 68.3% | - | - | - | 97.9% | 95.1% | - |
 
 ### critique_improvement
 
-| Task ID | claude-haiku-4.5 | claude-opus-4.5 | claude-sonnet-4 | claude-sonnet-4.5 | deepseek-r1 | deepseek-v3.2 | gemini-2.5-flash | gemini-3-flash-preview | gemini-3-pro-preview | llama-4-maverick | minimax-m2 | minimax-m2.1 | ministral-14b-2512 | mistral-small-creative | kimi-k2-thinking | gpt-4o | gpt-4o-mini | gpt-5 | gpt-5.1 | gpt-5.2 | o3 | o3-mini | qwen3-235b-a22b | grok-4 | glm-4.7 |
-|---------|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
-| critique_improvement_001 | 92.0% | 85.0% | 93.2% | 93.8% | 90.3% | 89.7% | 82.5% | 88.8% | 92.0% | 78.4% | 93.8% | 85.7% | 93.8% | 90.9% | 88.2% | 86.6% | 81.2% | 93.5% | 93.2% | 95.5% | 91.6% | 86.7% | 85.5% | 91.0% | 89.2% |
-| critique_improvement_002 | 80.9% | 87.2% | 87.2% | 85.2% | 86.3% | 89.8% | 77.8% | 87.8% | 91.3% | 73.4% | 83.7% | 88.5% | 82.8% | 83.3% | 81.7% | 61.7% | 71.2% | 79.5% | 88.2% | 91.4% | 90.0% | 75.9% | 84.8% | 84.2% | 87.8% |
-| critique_improvement_003 | 83.7% | 84.8% | 80.8% | 81.2% | 89.8% | 89.4% | 79.8% | 81.2% | 87.2% | 11.5% | 88.2% | 83.8% | 87.7% | 85.4% | 80.7% | 77.8% | 62.7% | 84.7% | 84.8% | 81.2% | 82.5% | 84.5% | 89.5% | 79.2% | 84.3% |
-| critique_improvement_004 | 88.8% | 90.0% | 87.0% | 91.7% | 86.5% | 82.5% | 81.6% | 87.4% | 92.2% | 76.8% | 80.0% | 87.5% | 84.3% | 80.8% | 73.0% | 75.3% | 70.0% | 91.7% | 87.2% | 87.2% | 88.5% | 85.5% | 92.2% | 87.6% | 83.7% |
+| Task ID | claude-haiku-4.5 | claude-opus-4.5 | claude-opus-4.6 | claude-sonnet-4 | claude-sonnet-4.5 | deepseek-r1 | deepseek-v3.2 | gemini-2.5-flash | gemini-3-flash-preview | gemini-3-pro-preview | gemini-3.1-flash-image-preview | gemini-3.1-flash-lite-preview | mercury-2 | llama-4-maverick | minimax-m2 | minimax-m2.1 | minimax-m2.5 | ministral-14b-2512 | mistral-small-creative | kimi-k2-thinking | gpt-4o | gpt-4o-mini | gpt-5 | gpt-5.1 | gpt-5.2 | gpt-5.4 | o3 | o3-mini | qwen3-235b-a22b | qwen3.5-27b | qwen3.5-flash-02-23 | step-3.5-flash | grok-4 | glm-4.7 | glm-5 |
+|---------|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+| critique_improvement_001 | 92.0% | 85.0% | - | 93.2% | 93.8% | 90.3% | 89.7% | 82.5% | 88.8% | 92.0% | - | - | - | 78.4% | 93.8% | 85.7% | - | 93.8% | 90.9% | 88.2% | 86.6% | 81.2% | 93.5% | 93.2% | 95.5% | - | 91.6% | 86.7% | 85.5% | - | - | - | 91.0% | 89.2% | - |
+| critique_improvement_002 | 80.9% | 87.2% | - | 87.2% | 85.2% | 86.3% | 89.8% | 77.8% | 87.8% | 91.3% | - | - | - | 73.4% | 83.7% | 88.5% | - | 82.8% | 83.3% | 81.7% | 61.7% | 71.2% | 79.5% | 88.2% | 91.4% | - | 90.0% | 75.9% | 84.8% | - | - | - | 84.2% | 87.8% | - |
+| critique_improvement_003 | 83.7% | 84.8% | - | 80.8% | 81.2% | 89.8% | 89.4% | 79.8% | 81.2% | 87.2% | - | - | - | 11.5% | 88.2% | 83.8% | - | 87.7% | 85.4% | 80.7% | 77.8% | 62.7% | 84.7% | 84.8% | 81.2% | - | 82.5% | 84.5% | 89.5% | - | - | - | 79.2% | 84.3% | - |
+| critique_improvement_004 | 88.8% | 90.0% | - | 87.0% | 91.7% | 86.5% | 82.5% | 81.6% | 87.4% | 92.2% | - | - | - | 76.8% | 80.0% | 87.5% | - | 84.3% | 80.8% | 73.0% | 75.3% | 70.0% | 91.7% | 87.2% | 87.2% | - | 88.5% | 85.5% | 92.2% | - | - | - | 87.6% | 83.7% | - |
 
 ### multi_beat_synthesis
 
-| Task ID | claude-haiku-4.5 | claude-opus-4.5 | claude-sonnet-4 | claude-sonnet-4.5 | deepseek-r1 | deepseek-v3.2 | gemini-2.5-flash | gemini-3-flash-preview | gemini-3-pro-preview | llama-4-maverick | minimax-m2 | minimax-m2.1 | ministral-14b-2512 | mistral-small-creative | kimi-k2-thinking | gpt-4o | gpt-4o-mini | gpt-5 | gpt-5.1 | gpt-5.2 | o3 | o3-mini | qwen3-235b-a22b | grok-4 | glm-4.7 |
-|---------|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
-| multi_beat_synthesis_001 | 67.3% | 92.5% | 92.5% | 70.5% | 62.9% | 89.0% | 81.3% | 90.3% | 70.7% | 89.7% | 65.5% | 71.5% | 82.6% | 69.3% | 91.2% | 89.3% | 85.9% | 67.5% | 67.5% | 66.8% | 92.5% | 89.8% | 65.2% | 87.0% | 90.8% |
-| multi_beat_synthesis_002 | 90.3% | 90.5% | 92.5% | 92.5% | 90.5% | 92.4% | 92.4% | 91.2% | 89.7% | 90.1% | 67.3% | 84.7% | 64.8% | 75.9% | 89.8% | 90.0% | 90.1% | 73.0% | 67.5% | 67.5% | 94.0% | 89.4% | 93.6% | 92.2% | 89.8% |
-| multi_beat_synthesis_003 | 64.4% | 89.1% | 64.4% | 91.1% | 65.5% | 91.1% | 91.0% | 87.8% | 73.7% | 43.7% | 47.1% | 77.6% | 55.1% | 83.4% | 89.8% | 87.0% | 84.0% | 65.9% | 66.1% | 64.1% | 92.2% | 87.1% | 65.1% | 74.0% | 89.7% |
+| Task ID | claude-haiku-4.5 | claude-opus-4.5 | claude-opus-4.6 | claude-sonnet-4 | claude-sonnet-4.5 | deepseek-r1 | deepseek-v3.2 | gemini-2.5-flash | gemini-3-flash-preview | gemini-3-pro-preview | gemini-3.1-flash-image-preview | gemini-3.1-flash-lite-preview | mercury-2 | llama-4-maverick | minimax-m2 | minimax-m2.1 | minimax-m2.5 | ministral-14b-2512 | mistral-small-creative | kimi-k2-thinking | gpt-4o | gpt-4o-mini | gpt-5 | gpt-5.1 | gpt-5.2 | gpt-5.4 | o3 | o3-mini | qwen3-235b-a22b | qwen3.5-27b | qwen3.5-flash-02-23 | step-3.5-flash | grok-4 | glm-4.7 | glm-5 |
+|---------|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+| multi_beat_synthesis_001 | 67.3% | 92.5% | - | 92.5% | 70.5% | 62.9% | 89.0% | 81.3% | 90.3% | 70.7% | - | - | - | 89.7% | 65.5% | 71.5% | - | 82.6% | 69.3% | 91.2% | 89.3% | 85.9% | 67.5% | 67.5% | 66.8% | - | 92.5% | 89.8% | 65.2% | - | - | - | 87.0% | 90.8% | - |
+| multi_beat_synthesis_002 | 90.3% | 90.5% | - | 92.5% | 92.5% | 90.5% | 92.4% | 92.4% | 91.2% | 89.7% | - | - | - | 90.1% | 67.3% | 84.7% | - | 64.8% | 75.9% | 89.8% | 90.0% | 90.1% | 73.0% | 67.5% | 67.5% | - | 94.0% | 89.4% | 93.6% | - | - | - | 92.2% | 89.8% | - |
+| multi_beat_synthesis_003 | 64.4% | 89.1% | - | 64.4% | 91.1% | 65.5% | 91.1% | 91.0% | 87.8% | 73.7% | - | - | - | 43.7% | 47.1% | 77.6% | - | 55.1% | 83.4% | 89.8% | 87.0% | 84.0% | 65.9% | 66.1% | 64.1% | - | 92.2% | 87.1% | 65.1% | - | - | - | 74.0% | 89.7% | - |
 
 ### theory_conversion
 
-| Task ID | claude-haiku-4.5 | claude-opus-4.5 | claude-sonnet-4 | claude-sonnet-4.5 | deepseek-r1 | deepseek-v3.2 | gemini-2.5-flash | gemini-3-flash-preview | gemini-3-pro-preview | llama-4-maverick | minimax-m2 | minimax-m2.1 | ministral-14b-2512 | mistral-small-creative | kimi-k2-thinking | gpt-4o | gpt-4o-mini | gpt-5 | gpt-5.1 | gpt-5.2 | o3 | o3-mini | qwen3-235b-a22b | grok-4 | glm-4.7 |
-|---------|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
-| theory_conversion_001 | 96.8% | 96.7% | 95.3% | 95.3% | 94.0% | 97.5% | 95.5% | 91.1% | 93.0% | 93.5% | 70.0% | 95.3% | 66.5% | 93.8% | 95.5% | 95.7% | 95.1% | 66.1% | 66.6% | 66.5% | 95.8% | 92.5% | 97.9% | 92.7% | 93.6% |
-| theory_conversion_002 | 91.9% | 92.0% | 91.1% | 91.7% | 91.3% | 91.6% | 79.6% | 90.0% | 78.1% | 70.4% | 69.8% | 89.2% | 91.5% | 88.8% | 90.6% | 92.1% | 88.6% | 66.6% | 65.5% | 66.5% | 86.9% | 90.1% | 72.1% | 91.0% | 90.4% |
-| theory_conversion_003 | 91.5% | 94.2% | 90.7% | 91.6% | 96.4% | 95.8% | 93.4% | 88.4% | 91.0% | 64.4% | 69.7% | 93.7% | 65.5% | 91.6% | 56.0% | 90.9% | 91.7% | 66.1% | 66.1% | 66.1% | 76.7% | 90.8% | 92.9% | 91.0% | 93.0% |
-| theory_conversion_004 | 90.5% | 92.2% | 92.2% | 95.0% | 92.3% | 98.2% | 93.0% | 91.2% | 92.4% | 91.2% | 92.7% | 94.2% | 92.0% | 90.4% | 92.8% | 90.9% | 91.6% | 65.5% | 66.6% | 66.6% | 95.0% | 93.6% | 96.1% | 76.1% | 91.0% |
+| Task ID | claude-haiku-4.5 | claude-opus-4.5 | claude-opus-4.6 | claude-sonnet-4 | claude-sonnet-4.5 | deepseek-r1 | deepseek-v3.2 | gemini-2.5-flash | gemini-3-flash-preview | gemini-3-pro-preview | gemini-3.1-flash-image-preview | gemini-3.1-flash-lite-preview | mercury-2 | llama-4-maverick | minimax-m2 | minimax-m2.1 | minimax-m2.5 | ministral-14b-2512 | mistral-small-creative | kimi-k2-thinking | gpt-4o | gpt-4o-mini | gpt-5 | gpt-5.1 | gpt-5.2 | gpt-5.4 | o3 | o3-mini | qwen3-235b-a22b | qwen3.5-27b | qwen3.5-flash-02-23 | step-3.5-flash | grok-4 | glm-4.7 | glm-5 |
+|---------|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+| theory_conversion_001 | 96.8% | 96.7% | - | 95.3% | 95.3% | 94.0% | 97.5% | 95.5% | 91.1% | 93.0% | - | - | - | 93.5% | 70.0% | 95.3% | - | 66.5% | 93.8% | 95.5% | 95.7% | 95.1% | 66.1% | 66.6% | 66.5% | - | 95.8% | 92.5% | 97.9% | - | - | - | 92.7% | 93.6% | - |
+| theory_conversion_002 | 91.9% | 92.0% | - | 91.1% | 91.7% | 91.3% | 91.6% | 79.6% | 90.0% | 78.1% | - | - | - | 70.4% | 69.8% | 89.2% | - | 91.5% | 88.8% | 90.6% | 92.1% | 88.6% | 66.6% | 65.5% | 66.5% | - | 86.9% | 90.1% | 72.1% | - | - | - | 91.0% | 90.4% | - |
+| theory_conversion_003 | 91.5% | 94.2% | - | 90.7% | 91.6% | 96.4% | 95.8% | 93.4% | 88.4% | 91.0% | - | - | - | 64.4% | 69.7% | 93.7% | - | 65.5% | 91.6% | 56.0% | 90.9% | 91.7% | 66.1% | 66.1% | 66.1% | - | 76.7% | 90.8% | 92.9% | - | - | - | 91.0% | 93.0% | - |
+| theory_conversion_004 | 90.5% | 92.2% | - | 92.2% | 95.0% | 92.3% | 98.2% | 93.0% | 91.2% | 92.4% | - | - | - | 91.2% | 92.7% | 94.2% | - | 92.0% | 90.4% | 92.8% | 90.9% | 91.6% | 65.5% | 66.6% | 66.6% | - | 95.0% | 93.6% | 96.1% | - | - | - | 76.1% | 91.0% | - |

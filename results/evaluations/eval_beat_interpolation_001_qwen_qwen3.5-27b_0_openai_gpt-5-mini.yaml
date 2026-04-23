@@ -1,0 +1,45 @@
+evaluation_id: 9302345f
+task_id: beat_interpolation_001
+generation_id: beat_interpolation_001_qwen/qwen3.5-27b_0
+task_type: beat_interpolation
+model: qwen/qwen3.5-27b
+sample_index: 0
+evaluator_model: openai/gpt-5-mini
+evaluator_cost: 0.00119775
+timestamp: '2026-03-06T21:52:10.692148'
+success: true
+final_score: 0.9888609271523179
+score_breakdown:
+  final_score: 0.9889
+  components:
+    programmatic:
+      score: 0.9777
+      weight: 0.5
+      breakdown:
+        word_count_score: 1.0
+        repetition_score: 0.96
+        slop_score: 0.9669
+        overall: 0.9777
+      word_count:
+        actual: 287
+        target_range:
+        - 200
+        - 350
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: true
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: All four required elements are present (Marcus introduced; provides tools/wisdom;
+    Elena's doubt begins to shift; librarian skills referenced). No must-not items
+    occur. No deductions applied.
+error: null

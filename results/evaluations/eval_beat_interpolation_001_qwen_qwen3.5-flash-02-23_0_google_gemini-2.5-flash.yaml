@@ -1,0 +1,45 @@
+evaluation_id: 10a20f8b
+task_id: beat_interpolation_001
+generation_id: beat_interpolation_001_qwen/qwen3.5-flash-02-23_0
+task_type: beat_interpolation
+model: qwen/qwen3.5-flash-02-23
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0008541
+timestamp: '2026-03-06T21:52:48.995302'
+success: true
+final_score: 0.986
+score_breakdown:
+  final_score: 0.986
+  components:
+    programmatic:
+      score: 0.972
+      weight: 0.5
+      breakdown:
+        word_count_score: 1.0
+        repetition_score: 0.92
+        slop_score: 1.0
+        overall: 0.972
+      word_count:
+        actual: 284
+        target_range:
+        - 200
+        - 350
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: true
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: All required elements are present and executed well. The 'must not' conditions
+    are successfully avoided. Character consistency is strong, and the bridge between
+    beats is smooth.
+error: null

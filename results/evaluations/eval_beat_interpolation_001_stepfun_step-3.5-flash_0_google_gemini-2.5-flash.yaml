@@ -1,0 +1,44 @@
+evaluation_id: 69aab0d7
+task_id: beat_interpolation_001
+generation_id: beat_interpolation_001_stepfun/step-3.5-flash_0
+task_type: beat_interpolation
+model: stepfun/step-3.5-flash
+sample_index: 0
+evaluator_model: google/gemini-2.5-flash
+evaluator_cost: 0.0009107
+timestamp: '2026-03-06T21:55:40.022756'
+success: true
+final_score: 0.9010775547312071
+score_breakdown:
+  final_score: 0.9011
+  components:
+    programmatic:
+      score: 0.8022
+      weight: 0.5
+      breakdown:
+        word_count_score: 0.7066
+        repetition_score: 0.8
+        slop_score: 0.958
+        overall: 0.8022
+      word_count:
+        actual: 450
+        target_range:
+        - 200
+        - 350
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: false
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: All required elements are present and executed well. No 'must not' violations.
+    Character consistency and bridging between beats are strong.
+error: null

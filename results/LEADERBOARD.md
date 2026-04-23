@@ -1,47 +1,57 @@
 # Story Theory Benchmark Leaderboard
 
-*Last updated: 2025-12-25T00:31:56.714446*
+*Last updated: 2026-03-06T21:55:41.874126*
 
 ## Overview
 
-- **Models evaluated**: 25
+- **Models evaluated**: 42
 - **Tasks**: 34
 - **Evaluator models**: claude-haiku-4.5, gemini-2.5-flash, gpt-5-mini
 - **Aggregation**: Median across evaluators
 - **Scoring**: Programmatic (50%) + LLM Judge (50%)
-- **Total generations**: 850
-- **Total evaluations**: 2553
-- **Total cost**: $41.7329
+- **Total generations**: 869
+- **Total evaluations**: 2586
+- **Total cost**: $43.1769
 
 ## Model Rankings
 
 | Rank | Model | Company | Score | Gen Cost | Value | LLM Judge |
 |------|-------|---------|-------|----------|---------|-----------|
-| 1 | deepseek-v3.2 | DeepSeek | 92.2% | $0.1978 | 430.2 | 95.2% |
-| 2 | claude-opus-4.5 | Anthropic | 90.9% | $2.8457 | 29.0 | 93.8% |
-| 3 | claude-sonnet-4.5 | Anthropic | 90.1% | $1.7390 | 46.6 | 93.6% |
-| 4 | claude-sonnet-4 | Anthropic | 89.6% | $1.5932 | 50.4 | 93.3% |
-| 5 | o3 | OpenAI | 89.5% | $0.9582 | 83.6 | 93.4% |
-| 6 | glm-4.7 | Z-Ai | 88.8% | $0.6058 | 130.3 | 94.2% |
-| 7 | kimi-k2-thinking | Moonshotai | 88.7% | $0.5782 | 136.1 | 95.9% |
-| 8 | gemini-3-flash-preview | Google | 88.3% | $0.5896 | 132.4 | 91.2% |
-| 9 | minimax-m2.1 | MiniMax | 86.9% | $0.3793 | 199.3 | 97.0% |
-| 10 | claude-haiku-4.5 | Anthropic | 86.9% | $0.6956 | 108.5 | 90.0% |
-| 11 | o3-mini | OpenAI | 86.9% | $0.5620 | 134.3 | 87.0% |
-| 12 | deepseek-r1 | DeepSeek | 86.7% | $0.4157 | 180.9 | 93.4% |
-| 13 | gemini-2.5-flash | Google | 85.7% | $0.4177 | 175.8 | 89.9% |
-| 14 | gpt-4o | OpenAI | 85.6% | $0.8069 | 90.9 | 88.4% |
-| 15 | grok-4 | xAI | 85.5% | $1.8858 | 38.7 | 93.1% |
-| 16 | gemini-3-pro-preview | Google | 85.3% | $2.1086 | 34.5 | 93.8% |
-| 17 | qwen3-235b-a22b | Alibaba | 84.5% | $0.2177 | 327.9 | 94.5% |
-| 18 | mistral-small-creative | Mistral | 84.3% | $0.2119 | 335.2 | 91.6% |
-| 19 | gpt-5 | OpenAI | 82.0% | $1.6176 | 41.6 | 93.7% |
-| 20 | gpt-4o-mini | OpenAI | 81.7% | $0.1829 | 364.7 | 82.1% |
-| 21 | gpt-5.2 | OpenAI | 80.3% | $1.7564 | 36.7 | 92.4% |
-| 22 | gpt-5.1 | OpenAI | 78.5% | $1.5230 | 40.5 | 94.7% |
-| 23 | minimax-m2 | MiniMax | 77.1% | $0.3116 | 190.7 | 93.6% |
-| 24 | ministral-14b-2512 | Mistral | 77.1% | $0.1906 | 311.6 | 86.5% |
-| 25 | llama-4-maverick | Meta | 72.2% | $0.1938 | 268.8 | 71.0% |
+| 1 | glm-5 | Z-Ai | 99.6% | $0.0033 | 30193.8 | 100.0% |
+| 2 | gpt-5.4 | OpenAI | 99.6% | $0.0128 | 7781.0 | 100.0% |
+| 3 | mercury-2 | Inception | 99.1% | $0.0006 | 176698.6 | 100.0% |
+| 4 | qwen3.5-27b | Alibaba | 98.9% | $0.0115 | 8517.5 | 100.0% |
+| 5 | qwen3.5-flash-02-23 | Alibaba | 98.6% | $0.0015 | 66735.0 | 100.0% |
+| 6 | gemini-3.1-flash-lite-preview | Google | 98.4% | $0.0050 | 19549.9 | 100.0% |
+| 7 | claude-opus-4.6 | Anthropic | 98.1% | $0.0226 | 4248.1 | 100.0% |
+| 8 | gemini-3.1-flash-image-preview | Google | 97.4% | $0.0057 | 16549.6 | 100.0% |
+| 9 | deepseek-v3.2 | DeepSeek | 92.2% | $0.1978 | 430.2 | 95.2% |
+| 10 | claude-opus-4.5 | Anthropic | 90.9% | $2.8457 | 29.0 | 93.9% |
+| 11 | step-3.5-flash | Stepfun | 90.1% | $0.0004 | 184280.7 | 100.0% |
+| 12 | claude-sonnet-4.5 | Anthropic | 90.1% | $1.7390 | 46.6 | 93.6% |
+| 13 | claude-sonnet-4 | Anthropic | 89.6% | $1.5932 | 50.4 | 93.3% |
+| 14 | o3 | OpenAI | 89.5% | $0.9582 | 83.6 | 93.4% |
+| 15 | glm-4.7 | Z-Ai | 88.8% | $0.6058 | 130.3 | 90.6% |
+| 16 | kimi-k2-thinking | Moonshotai | 88.7% | $0.5782 | 136.1 | 92.4% |
+| 17 | gemini-3-flash-preview | Google | 88.3% | $0.5896 | 132.4 | 91.2% |
+| 18 | minimax-m2.1 | MiniMax | 86.9% | $0.3793 | 199.3 | 91.3% |
+| 19 | claude-haiku-4.5 | Anthropic | 86.9% | $0.6956 | 108.5 | 90.0% |
+| 20 | o3-mini | OpenAI | 86.9% | $0.5620 | 134.3 | 87.0% |
+| 21 | deepseek-r1 | DeepSeek | 86.7% | $0.4157 | 180.9 | 93.1% |
+| 22 | gemini-2.5-flash | Google | 85.7% | $0.4177 | 175.8 | 89.9% |
+| 23 | gpt-4o | OpenAI | 85.6% | $0.8069 | 90.9 | 88.4% |
+| 24 | grok-4 | xAI | 85.5% | $1.8858 | 38.7 | 93.1% |
+| 25 | gemini-3-pro-preview | Google | 85.3% | $2.1086 | 34.5 | 91.8% |
+| 26 | minimax-m2.5 | MiniMax | 85.2% | $0.0021 | 34862.9 | 100.0% |
+| 27 | qwen3-235b-a22b | Alibaba | 84.5% | $0.2177 | 327.9 | 91.8% |
+| 28 | mistral-small-creative | Mistral | 84.3% | $0.2119 | 335.2 | 88.4% |
+| 29 | gpt-5 | OpenAI | 82.0% | $1.6176 | 41.6 | 93.7% |
+| 30 | gpt-4o-mini | OpenAI | 81.7% | $0.1829 | 364.7 | 82.1% |
+| 31 | gpt-5.2 | OpenAI | 80.3% | $1.7564 | 36.7 | 92.4% |
+| 32 | gpt-5.1 | OpenAI | 78.5% | $1.5230 | 40.5 | 94.7% |
+| 33 | minimax-m2 | MiniMax | 77.1% | $0.3116 | 190.7 | 89.1% |
+| 34 | ministral-14b-2512 | Mistral | 77.1% | $0.1906 | 311.6 | 86.8% |
+| 35 | llama-4-maverick | Meta | 72.2% | $0.1938 | 268.8 | 71.0% |
 
 ## Best Value (Score²/Cost)
 
@@ -49,38 +59,57 @@
 
 | Rank | Model | Company | Score | Gen Cost | Value |
 |------|-------|---------|-------|----------|-------|
-| 1 | deepseek-v3.2 | DeepSeek | 92.2% | $0.1978 | 430.2 |
-| 2 | gpt-4o-mini | OpenAI | 81.7% | $0.1829 | 364.7 |
-| 3 | mistral-small-creative | Mistral | 84.3% | $0.2119 | 335.2 |
-| 4 | qwen3-235b-a22b | Alibaba | 84.5% | $0.2177 | 327.9 |
-| 5 | ministral-14b-2512 | Mistral | 77.1% | $0.1906 | 311.6 |
-| 6 | llama-4-maverick | Meta | 72.2% | $0.1938 | 268.8 |
-| 7 | minimax-m2.1 | MiniMax | 86.9% | $0.3793 | 199.3 |
-| 8 | minimax-m2 | MiniMax | 77.1% | $0.3116 | 190.7 |
-| 9 | deepseek-r1 | DeepSeek | 86.7% | $0.4157 | 180.9 |
-| 10 | gemini-2.5-flash | Google | 85.7% | $0.4177 | 175.8 |
-| 11 | kimi-k2-thinking | Moonshotai | 88.7% | $0.5782 | 136.1 |
-| 12 | o3-mini | OpenAI | 86.9% | $0.5620 | 134.3 |
-| 13 | gemini-3-flash-preview | Google | 88.3% | $0.5896 | 132.4 |
-| 14 | glm-4.7 | Z-Ai | 88.8% | $0.6058 | 130.3 |
-| 15 | claude-haiku-4.5 | Anthropic | 86.9% | $0.6956 | 108.5 |
-| 16 | gpt-4o | OpenAI | 85.6% | $0.8069 | 90.9 |
-| 17 | o3 | OpenAI | 89.5% | $0.9582 | 83.6 |
-| 18 | claude-sonnet-4 | Anthropic | 89.6% | $1.5932 | 50.4 |
-| 19 | claude-sonnet-4.5 | Anthropic | 90.1% | $1.7390 | 46.6 |
-| 20 | gpt-5 | OpenAI | 82.0% | $1.6176 | 41.6 |
-| 21 | gpt-5.1 | OpenAI | 78.5% | $1.5230 | 40.5 |
-| 22 | grok-4 | xAI | 85.5% | $1.8858 | 38.7 |
-| 23 | gpt-5.2 | OpenAI | 80.3% | $1.7564 | 36.7 |
-| 24 | gemini-3-pro-preview | Google | 85.3% | $2.1086 | 34.5 |
-| 25 | claude-opus-4.5 | Anthropic | 90.9% | $2.8457 | 29.0 |
+| 1 | step-3.5-flash | Stepfun | 90.1% | $0.0004 | 184280.7 |
+| 2 | mercury-2 | Inception | 99.1% | $0.0006 | 176698.6 |
+| 3 | qwen3.5-flash-02-23 | Alibaba | 98.6% | $0.0015 | 66735.0 |
+| 4 | minimax-m2.5 | MiniMax | 85.2% | $0.0021 | 34862.9 |
+| 5 | glm-5 | Z-Ai | 99.6% | $0.0033 | 30193.8 |
+| 6 | gemini-3.1-flash-lite-preview | Google | 98.4% | $0.0050 | 19549.9 |
+| 7 | gemini-3.1-flash-image-preview | Google | 97.4% | $0.0057 | 16549.6 |
+| 8 | qwen3.5-27b | Alibaba | 98.9% | $0.0115 | 8517.5 |
+| 9 | gpt-5.4 | OpenAI | 99.6% | $0.0128 | 7781.0 |
+| 10 | claude-opus-4.6 | Anthropic | 98.1% | $0.0226 | 4248.1 |
+| 11 | deepseek-v3.2 | DeepSeek | 92.2% | $0.1978 | 430.2 |
+| 12 | gpt-4o-mini | OpenAI | 81.7% | $0.1829 | 364.7 |
+| 13 | mistral-small-creative | Mistral | 84.3% | $0.2119 | 335.2 |
+| 14 | qwen3-235b-a22b | Alibaba | 84.5% | $0.2177 | 327.9 |
+| 15 | ministral-14b-2512 | Mistral | 77.1% | $0.1906 | 311.6 |
+| 16 | llama-4-maverick | Meta | 72.2% | $0.1938 | 268.8 |
+| 17 | minimax-m2.1 | MiniMax | 86.9% | $0.3793 | 199.3 |
+| 18 | minimax-m2 | MiniMax | 77.1% | $0.3116 | 190.7 |
+| 19 | deepseek-r1 | DeepSeek | 86.7% | $0.4157 | 180.9 |
+| 20 | gemini-2.5-flash | Google | 85.7% | $0.4177 | 175.8 |
+| 21 | kimi-k2-thinking | Moonshotai | 88.7% | $0.5782 | 136.1 |
+| 22 | o3-mini | OpenAI | 86.9% | $0.5620 | 134.3 |
+| 23 | gemini-3-flash-preview | Google | 88.3% | $0.5896 | 132.4 |
+| 24 | glm-4.7 | Z-Ai | 88.8% | $0.6058 | 130.3 |
+| 25 | claude-haiku-4.5 | Anthropic | 86.9% | $0.6956 | 108.5 |
+| 26 | gpt-4o | OpenAI | 85.6% | $0.8069 | 90.9 |
+| 27 | o3 | OpenAI | 89.5% | $0.9582 | 83.6 |
+| 28 | claude-sonnet-4 | Anthropic | 89.6% | $1.5932 | 50.4 |
+| 29 | claude-sonnet-4.5 | Anthropic | 90.1% | $1.7390 | 46.6 |
+| 30 | gpt-5 | OpenAI | 82.0% | $1.6176 | 41.6 |
+| 31 | gpt-5.1 | OpenAI | 78.5% | $1.5230 | 40.5 |
+| 32 | grok-4 | xAI | 85.5% | $1.8858 | 38.7 |
+| 33 | gpt-5.2 | OpenAI | 80.3% | $1.7564 | 36.7 |
+| 34 | gemini-3-pro-preview | Google | 85.3% | $2.1086 | 34.5 |
+| 35 | claude-opus-4.5 | Anthropic | 90.9% | $2.8457 | 29.0 |
 
 ## Scores by Task Type
 
 | Model | agentic_constraint_discovery | agentic_iterative_revision | agentic_planning_execution | beat_interpolation | beat_revision | constrained_continuation | critique_improvement | multi_beat_synthesis | theory_conversion |
 |-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|
+| glm-5 | - | - | - | 99.6% | - | - | - | - | - |
+| gpt-5.4 | - | - | - | 99.6% | - | - | - | - | - |
+| mercury-2 | - | - | - | 99.1% | - | - | - | - | - |
+| qwen3.5-27b | - | - | - | 98.9% | - | - | - | - | - |
+| qwen3.5-flash-02-23 | - | - | - | 98.6% | - | - | - | - | - |
+| gemini-3.1-flash-lite-preview | - | - | - | 98.4% | - | - | - | - | - |
+| claude-opus-4.6 | - | - | - | 98.1% | - | - | - | - | - |
+| gemini-3.1-flash-image-preview | - | - | - | 97.4% | - | - | - | - | - |
 | deepseek-v3.2 | 72.8% | 89.5% | 96.1% | 98.4% | 96.0% | 95.5% | 87.9% | 90.9% | 95.8% |
 | claude-opus-4.5 | 72.1% | 88.1% | 88.9% | 99.1% | 94.7% | 94.7% | 86.7% | 90.7% | 93.8% |
+| step-3.5-flash | - | - | - | 90.1% | - | - | - | - | - |
 | claude-sonnet-4.5 | 69.0% | 89.7% | 86.9% | 98.1% | 94.9% | 95.2% | 88.0% | 84.7% | 93.4% |
 | claude-sonnet-4 | 69.6% | 90.8% | 87.8% | 98.2% | 94.0% | 93.4% | 87.0% | 83.1% | 92.3% |
 | o3 | 59.3% | 93.9% | 91.6% | 99.1% | 95.2% | 87.9% | 88.1% | 92.9% | 88.6% |
@@ -95,6 +124,7 @@
 | gpt-4o | 54.0% | 82.8% | 80.9% | 96.7% | 92.5% | 93.8% | 75.4% | 88.8% | 92.4% |
 | grok-4 | 64.4% | 88.0% | 96.4% | 82.6% | 93.9% | 82.8% | 85.5% | 84.4% | 87.7% |
 | gemini-3-pro-preview | 43.0% | 93.1% | 94.4% | 97.6% | 87.2% | 83.2% | 90.7% | 78.0% | 88.6% |
+| minimax-m2.5 | - | - | - | 85.2% | - | - | - | - | - |
 | qwen3-235b-a22b | 38.7% | 90.9% | 90.1% | 96.2% | 94.5% | 81.3% | 88.0% | 74.6% | 89.7% |
 | mistral-small-creative | 62.3% | 88.4% | 87.0% | 91.7% | 85.0% | 83.8% | 85.1% | 76.2% | 91.1% |
 | gpt-5 | 54.2% | 92.8% | 93.9% | 93.3% | 95.8% | 75.0% | 87.3% | 68.8% | 66.1% |
@@ -107,6 +137,54 @@
 
 ## Component Breakdown by Task Type
 
+
+### glm-5
+
+| Task Type | Score | Programmatic | LLM Judge |
+|-----------|-------|--------------|-----------|
+| beat_interpolation | 99.6% | 99.3% | 100.0% |
+
+### gpt-5.4
+
+| Task Type | Score | Programmatic | LLM Judge |
+|-----------|-------|--------------|-----------|
+| beat_interpolation | 99.6% | 99.3% | 100.0% |
+
+### mercury-2
+
+| Task Type | Score | Programmatic | LLM Judge |
+|-----------|-------|--------------|-----------|
+| beat_interpolation | 99.1% | 98.2% | 100.0% |
+
+### qwen3.5-27b
+
+| Task Type | Score | Programmatic | LLM Judge |
+|-----------|-------|--------------|-----------|
+| beat_interpolation | 98.9% | 97.8% | 100.0% |
+
+### qwen3.5-flash-02-23
+
+| Task Type | Score | Programmatic | LLM Judge |
+|-----------|-------|--------------|-----------|
+| beat_interpolation | 98.6% | 97.2% | 100.0% |
+
+### gemini-3.1-flash-lite-preview
+
+| Task Type | Score | Programmatic | LLM Judge |
+|-----------|-------|--------------|-----------|
+| beat_interpolation | 98.4% | 96.9% | 100.0% |
+
+### claude-opus-4.6
+
+| Task Type | Score | Programmatic | LLM Judge |
+|-----------|-------|--------------|-----------|
+| beat_interpolation | 98.1% | 96.1% | 100.0% |
+
+### gemini-3.1-flash-image-preview
+
+| Task Type | Score | Programmatic | LLM Judge |
+|-----------|-------|--------------|-----------|
+| beat_interpolation | 97.4% | 94.7% | 100.0% |
 
 ### deepseek-v3.2
 
@@ -126,7 +204,7 @@
 
 | Task Type | Score | Programmatic | LLM Judge |
 |-----------|-------|--------------|-----------|
-| agentic_constraint_discovery | 72.1% | - | 80.0% |
+| agentic_constraint_discovery | 72.1% | - | 80.6% |
 | agentic_iterative_revision | 88.1% | - | 90.0% |
 | agentic_planning_execution | 88.9% | - | 88.9% |
 | beat_interpolation | 99.1% | 96.5% | 100.0% |
@@ -135,6 +213,12 @@
 | critique_improvement | 86.7% | - | 89.2% |
 | multi_beat_synthesis | 90.7% | 73.2% | 95.5% |
 | theory_conversion | 93.8% | 77.3% | 98.9% |
+
+### step-3.5-flash
+
+| Task Type | Score | Programmatic | LLM Judge |
+|-----------|-------|--------------|-----------|
+| beat_interpolation | 90.1% | 80.2% | 100.0% |
 
 ### claude-sonnet-4.5
 
@@ -182,13 +266,13 @@
 
 | Task Type | Score | Programmatic | LLM Judge |
 |-----------|-------|--------------|-----------|
-| agentic_constraint_discovery | 62.3% | - | - |
-| agentic_iterative_revision | 88.2% | - | - |
-| agentic_planning_execution | 92.8% | - | - |
+| agentic_constraint_discovery | 62.3% | - | 68.3% |
+| agentic_iterative_revision | 88.2% | - | 88.1% |
+| agentic_planning_execution | 92.8% | - | 93.0% |
 | beat_interpolation | 97.5% | 95.0% | 100.0% |
 | beat_revision | 87.9% | 97.4% | 78.4% |
 | constrained_continuation | 94.9% | 89.9% | 100.0% |
-| critique_improvement | 86.3% | - | - |
+| critique_improvement | 86.3% | - | 87.9% |
 | multi_beat_synthesis | 90.1% | 82.5% | 97.7% |
 | theory_conversion | 92.0% | 85.6% | 98.4% |
 
@@ -196,13 +280,13 @@
 
 | Task Type | Score | Programmatic | LLM Judge |
 |-----------|-------|--------------|-----------|
-| agentic_constraint_discovery | 73.1% | - | - |
-| agentic_iterative_revision | 91.4% | - | - |
-| agentic_planning_execution | 94.7% | - | - |
+| agentic_constraint_discovery | 73.1% | - | 76.1% |
+| agentic_iterative_revision | 91.4% | - | 91.9% |
+| agentic_planning_execution | 94.7% | - | 95.2% |
 | beat_interpolation | 91.9% | 84.2% | 99.6% |
 | beat_revision | 95.3% | 94.8% | 95.9% |
 | constrained_continuation | 93.2% | 87.0% | 99.3% |
-| critique_improvement | 80.9% | - | - |
+| critique_improvement | 80.9% | - | 84.2% |
 | multi_beat_synthesis | 90.3% | 82.5% | 98.1% |
 | theory_conversion | 83.7% | 81.2% | 86.2% |
 
@@ -224,13 +308,13 @@
 
 | Task Type | Score | Programmatic | LLM Judge |
 |-----------|-------|--------------|-----------|
-| agentic_constraint_discovery | 55.1% | - | - |
-| agentic_iterative_revision | 91.5% | - | - |
-| agentic_planning_execution | 90.8% | - | - |
+| agentic_constraint_discovery | 55.1% | - | 56.7% |
+| agentic_iterative_revision | 91.5% | - | 92.2% |
+| agentic_planning_execution | 90.8% | - | 89.8% |
 | beat_interpolation | 92.6% | 85.2% | 100.0% |
 | beat_revision | 94.5% | 94.1% | 94.8% |
 | constrained_continuation | 89.1% | 78.8% | 99.3% |
-| critique_improvement | 86.4% | - | - |
+| critique_improvement | 86.4% | - | 88.0% |
 | multi_beat_synthesis | 77.9% | 64.5% | 91.4% |
 | theory_conversion | 93.1% | 88.3% | 97.9% |
 
@@ -266,7 +350,7 @@
 
 | Task Type | Score | Programmatic | LLM Judge |
 |-----------|-------|--------------|-----------|
-| agentic_constraint_discovery | 63.9% | - | 69.4% |
+| agentic_constraint_discovery | 63.9% | - | 66.7% |
 | agentic_iterative_revision | 92.2% | - | 92.2% |
 | agentic_planning_execution | 92.5% | - | 92.2% |
 | beat_interpolation | 93.1% | 94.1% | 100.0% |
@@ -322,7 +406,7 @@
 
 | Task Type | Score | Programmatic | LLM Judge |
 |-----------|-------|--------------|-----------|
-| agentic_constraint_discovery | 43.0% | - | - |
+| agentic_constraint_discovery | 43.0% | - | 71.7% |
 | agentic_iterative_revision | 93.1% | - | 93.3% |
 | agentic_planning_execution | 94.4% | - | 95.2% |
 | beat_interpolation | 97.6% | 94.5% | 100.0% |
@@ -332,11 +416,17 @@
 | multi_beat_synthesis | 78.0% | 73.9% | 96.7% |
 | theory_conversion | 88.6% | 71.1% | 97.7% |
 
+### minimax-m2.5
+
+| Task Type | Score | Programmatic | LLM Judge |
+|-----------|-------|--------------|-----------|
+| beat_interpolation | 85.2% | 70.3% | 100.0% |
+
 ### qwen3-235b-a22b
 
 | Task Type | Score | Programmatic | LLM Judge |
 |-----------|-------|--------------|-----------|
-| agentic_constraint_discovery | 38.7% | - | - |
+| agentic_constraint_discovery | 38.7% | - | 64.4% |
 | agentic_iterative_revision | 90.9% | - | 91.1% |
 | agentic_planning_execution | 90.1% | - | 90.1% |
 | beat_interpolation | 96.2% | 92.7% | 99.7% |
@@ -350,13 +440,13 @@
 
 | Task Type | Score | Programmatic | LLM Judge |
 |-----------|-------|--------------|-----------|
-| agentic_constraint_discovery | 62.3% | - | - |
-| agentic_iterative_revision | 88.4% | - | - |
-| agentic_planning_execution | 87.0% | - | - |
+| agentic_constraint_discovery | 62.3% | - | 68.3% |
+| agentic_iterative_revision | 88.4% | - | 88.9% |
+| agentic_planning_execution | 87.0% | - | 85.4% |
 | beat_interpolation | 91.7% | 83.3% | 100.0% |
 | beat_revision | 85.0% | 93.8% | 76.1% |
 | constrained_continuation | 83.8% | 69.6% | 98.1% |
-| critique_improvement | 85.1% | - | - |
+| critique_improvement | 85.1% | - | 88.2% |
 | multi_beat_synthesis | 76.2% | 64.6% | 87.8% |
 | theory_conversion | 91.1% | 85.3% | 97.0% |
 
@@ -420,7 +510,7 @@
 
 | Task Type | Score | Programmatic | LLM Judge |
 |-----------|-------|--------------|-----------|
-| agentic_constraint_discovery | 26.0% | - | - |
+| agentic_constraint_discovery | 26.0% | - | 43.3% |
 | agentic_iterative_revision | 90.2% | - | 90.8% |
 | agentic_planning_execution | 93.0% | - | 94.4% |
 | beat_interpolation | 72.8% | 78.0% | 97.7% |
@@ -434,7 +524,7 @@
 
 | Task Type | Score | Programmatic | LLM Judge |
 |-----------|-------|--------------|-----------|
-| agentic_constraint_discovery | 68.0% | - | 65.6% |
+| agentic_constraint_discovery | 68.0% | - | 69.4% |
 | agentic_iterative_revision | 84.2% | - | 82.4% |
 | agentic_planning_execution | 81.6% | - | 79.5% |
 | beat_interpolation | 79.2% | 78.4% | 99.2% |
@@ -464,8 +554,17 @@
 
 | Model | Gen Cost | Output Tokens | Reasoning % | $/1K Output |
 |-------|----------|---------------|-------------|-------------|
+| glm-5 | $0.0033 | 317 | 56.5% | $0.0104 |
+| gpt-5.4 | $0.0128 | 471 | 31.8% | $0.0271 |
+| mercury-2 | $0.0006 | 413 | 5.1% | $0.0013 |
+| qwen3.5-27b | $0.0115 | 406 | 91.3% | $0.0283 |
+| qwen3.5-flash-02-23 | $0.0015 | 391 | 88.5% | $0.0037 |
+| gemini-3.1-flash-lite-preview | $0.0050 | 1,019 | 65.7% | $0.0049 |
+| claude-opus-4.6 | $0.0226 | 552 | 19.9% | $0.0410 |
+| gemini-3.1-flash-image-preview | $0.0057 | 474 | 72.8% | $0.0121 |
 | deepseek-v3.2 | $0.1978 | 50,503 | 46.6% | $0.0039 |
 | claude-opus-4.5 | $2.8457 | 66,128 | 34.5% | $0.0430 |
+| step-3.5-flash | $0.0004 | 543 | 52.5% | $0.0008 |
 | claude-sonnet-4.5 | $1.7390 | 67,672 | 32.4% | $0.0257 |
 | claude-sonnet-4 | $1.5932 | 59,896 | 35.1% | $0.0266 |
 | o3 | $0.9582 | 65,172 | 34.5% | $0.0147 |
@@ -480,6 +579,7 @@
 | gpt-4o | $0.8069 | 54,647 | 17.8% | $0.0148 |
 | grok-4 | $1.8858 | 63,896 | 43.1% | $0.0295 |
 | gemini-3-pro-preview | $2.1086 | 76,538 | 53.1% | $0.0275 |
+| minimax-m2.5 | $0.0021 | 378 | 74.7% | $0.0055 |
 | qwen3-235b-a22b | $0.2177 | 51,903 | 52.8% | $0.0042 |
 | mistral-small-creative | $0.2119 | 99,682 | 8.2% | $0.0021 |
 | gpt-5 | $1.6176 | 81,045 | 49.1% | $0.0200 |

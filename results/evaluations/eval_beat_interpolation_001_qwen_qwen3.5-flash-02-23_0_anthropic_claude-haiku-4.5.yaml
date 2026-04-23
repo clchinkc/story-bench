@@ -1,0 +1,58 @@
+evaluation_id: 06d314ac
+task_id: beat_interpolation_001
+generation_id: beat_interpolation_001_qwen/qwen3.5-flash-02-23_0
+task_type: beat_interpolation
+model: qwen/qwen3.5-flash-02-23
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.017655
+timestamp: '2026-03-06T21:52:28.397141'
+success: true
+final_score: 0.986
+score_breakdown:
+  final_score: 0.986
+  components:
+    programmatic:
+      score: 0.972
+      weight: 0.5
+      breakdown:
+        word_count_score: 1.0
+        repetition_score: 0.92
+        slop_score: 1.0
+        overall: 0.972
+      word_count:
+        actual: 284
+        target_range:
+        - 200
+        - 350
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: true
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: 'All four required elements present: (1) Marcus introduced as mentor character
+    with clear credentials (''former adventurer''), (2) practical wisdom provided
+    (''Wellspring isn''t a destination you fight, but a truth you locate'') and tools
+    given (satchel, compass, brass compass), (3) Elena''s doubt shifts to reluctant
+    acceptance (''She took the satchel...Just walking''), (4) librarian skills reframed
+    as useful (''decipher the obscure, catalogue the forgotten''). All must-not violations
+    avoided: Elena remains doubtful (''I''m just a librarian''), Marcus explicitly
+    does not accompany her (''The ordinary librarian stayed in the shop''), location
+    is curiosity shop then village edge (not forest), no magical powers discovered.
+    Character voice consistent throughout—Elena''s self-deprecation and Marcus''s
+    gentle wisdom maintain established personalities. Bridge between beats seamless:
+    Elena''s refusal leads naturally to seeking Marcus, his mentorship propels her
+    toward threshold. Continuity perfect: map and grandmother referenced, satchel
+    carries forward to ''AFTER'' section, fog and forest approach consistent. Execution
+    clearly fulfills Campbell''s mentor archetype: provides guidance, tools, wisdom,
+    but sends hero forward alone.'
+error: null

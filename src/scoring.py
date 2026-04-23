@@ -39,20 +39,25 @@ class ProgrammaticScores:
     - word_count_score: Gaussian penalty for deviation from target range
     - repetition_score: Penalizes overused words/phrases (1.0 = no repetition)
     - slop_score: Penalizes "GPT-isms" like "tapestry", "delve" (1.0 = no slop)
+    - element_count_score: Count-Correct score for structural element adherence (1.0 = perfect match)
     """
 
     word_count_score: float  # Word count penalty (1.0 = in target range)
     repetition_score: float  # Word/phrase repetition penalty (1.0 = no repetition)
     slop_score: float  # "GPT-isms" detection penalty (1.0 = no slop)
-    overall: float  # Weighted combination
+    element_count_score: float | None = None  # Count-Correct for structural elements (1.0 = perfect match)
+    overall: float = 0.0  # Weighted combination
 
     def to_dict(self) -> dict[str, float]:
-        return {
+        result = {
             "word_count_score": round(self.word_count_score, 4),
             "repetition_score": round(self.repetition_score, 4),
             "slop_score": round(self.slop_score, 4),
             "overall": round(self.overall, 4),
         }
+        if self.element_count_score is not None:
+            result["element_count_score"] = round(self.element_count_score, 4)
+        return result
 
 
 @dataclass
@@ -90,6 +95,33 @@ class ScoreBreakdown:
                 },
             },
         }
+
+
+# ============ Element Count Scoring ============
+
+
+def element_count_score(gt_count: int, pd_count: int) -> float:
+    """
+    Count-Correct score for structural element adherence.
+
+    Measures how precisely the generated text meets the target count of
+    structural elements (dialogue beats, required inclusions, etc.).
+
+    Formula: score = 1 - |gt_count - pd_count| / (gt_count + pd_count)
+
+    Args:
+        gt_count: Ground truth / target element count from prompt constraints
+        pd_count: Predicted / actual element count in generated text
+
+    Returns:
+        Score from 0.0 to 1.0 where 1.0 = perfect match
+    """
+    if gt_count == 0 and pd_count == 0:
+        return 1.0  # Both zero = both want nothing = perfect
+    denominator = gt_count + pd_count
+    if denominator == 0:
+        return 1.0
+    return 1.0 - abs(gt_count - pd_count) / denominator
 
 
 # ============ Word Count Scoring ============
@@ -578,14 +610,20 @@ def calculate_programmatic_scores(
     target_min: int,
     target_max: int,
     word_count_method: str = "gaussian",
+    gt_element_count: int | None = None,
+    pd_element_count: int | None = None,
 ) -> ProgrammaticScores:
     """
     Calculate all programmatic metrics for a text.
 
-    Three components:
+    Three core components:
     - Word count score (40%): Penalty for deviation from target (method configurable)
     - Repetition score (35%): Penalizes excessive word/phrase repetition
     - Slop score (25%): Penalizes overused "GPT-isms"
+
+    Optional fourth component for tasks with strict structural counts:
+    - Element count score (Count-Correct): penalizes deviation from required element counts
+      Weighted at 10% when present; other three scores drop to 27% each.
 
     Returns:
         ProgrammaticScores with individual and overall scores
@@ -596,13 +634,21 @@ def calculate_programmatic_scores(
     rep_score = repetition_score(text)
     slop = slop_score(text)
 
-    # Weighted combination: word_count (40%) + repetition (35%) + slop (25%)
-    overall = 0.40 * wc_score + 0.35 * rep_score + 0.25 * slop
+    # Element count score is optional — included only when both counts are provided
+    elem_score: float | None = None
+    if gt_element_count is not None and pd_element_count is not None:
+        elem_score = element_count_score(gt_element_count, pd_element_count)
+        # With element count: wc (27%) + rep (27%) + slop (27%) + elem (10%)
+        overall = 0.27 * wc_score + 0.27 * rep_score + 0.27 * slop + 0.10 * elem_score
+    else:
+        # Standard: word_count (40%) + repetition (35%) + slop (25%)
+        overall = 0.40 * wc_score + 0.35 * rep_score + 0.25 * slop
 
     return ProgrammaticScores(
         word_count_score=wc_score,
         repetition_score=rep_score,
         slop_score=slop,
+        element_count_score=elem_score,
         overall=overall,
     )
 
@@ -749,12 +795,14 @@ def calculate_final_score(
     task_type: str,
     weights: ScoringWeights | None = None,
     word_count_method: str = "gaussian",
+    gt_element_count: int | None = None,
+    pd_element_count: int | None = None,
 ) -> ScoreBreakdown:
     """
     Calculate the final composite score for a generation.
 
     Two components (50/50 split):
-    1. Programmatic (50%): Word count + repetition + slop detection
+    1. Programmatic (50%): Word count + repetition + slop detection (+ optional element count)
     2. LLM Judge (50%): Normalized score from LLM criteria evaluation
 
     Args:
@@ -765,6 +813,8 @@ def calculate_final_score(
         task_type: Type of task
         weights: Scoring weights (default 50/50)
         word_count_method: Method for word count scoring ("gaussian", "tanh", or "sigmoid")
+        gt_element_count: Ground truth / target element count (optional)
+        pd_element_count: Predicted / actual element count (optional)
 
     Returns:
         ScoreBreakdown with all component scores and final score
@@ -772,13 +822,15 @@ def calculate_final_score(
     if weights is None:
         weights = ScoringWeights()
 
-    # 1. Programmatic scores (includes word count)
+    # 1. Programmatic scores (includes word count, optionally element count)
     prog_scores = calculate_programmatic_scores(
         text,
         word_count,
         target_word_range[0],
         target_word_range[1],
         word_count_method=word_count_method,
+        gt_element_count=gt_element_count,
+        pd_element_count=pd_element_count,
     )
 
     # 2. LLM judge score
@@ -889,3 +941,45 @@ if __name__ == "__main__":
     print(
         f"  2. LLM judge ({breakdown.weights.llm_judge}): {breakdown.llm_judge_score:.3f}"
     )
+
+    print("\n=== Element Count Score Tests ===")
+    # Perfect match
+    assert element_count_score(5, 5) == 1.0, "Perfect match should be 1.0"
+    # Moderate miss
+    score = element_count_score(5, 3)  # |5-3|/(5+3) = 2/8 = 0.25 → 1-0.25 = 0.75
+    assert abs(score - 0.75) < 0.001, f"Expected 0.75, got {score}"
+    # Total miss
+    assert element_count_score(5, 0) == 0.0, "Total miss should be 0.0"
+    # Zero-zero edge case
+    assert element_count_score(0, 0) == 1.0, "Both zero should be 1.0"
+    # One zero
+    assert element_count_score(0, 5) == 0.0, "gt=0, pd=5 should be 0.0"
+    assert element_count_score(5, 0) == 0.0, "gt=5, pd=0 should be 0.0"
+    # Large numbers
+    score = element_count_score(100, 80)  # |20|/180 = 0.111 → 0.889
+    assert abs(score - 0.889) < 0.001, f"Expected ~0.889, got {score}"
+    print("All element_count_score tests passed!")
+
+    print("\n=== Element Count in Programmatic Score Tests ===")
+    # Without element count — standard 40/35/25 weighting
+    prog_no_elem = calculate_programmatic_scores(
+        good_text, len(good_text.split()), 50, 100
+    )
+    assert prog_no_elem.element_count_score is None, "Should be None when not provided"
+    assert abs(prog_no_elem.overall - (0.40 * prog_no_elem.word_count_score +
+            0.35 * prog_no_elem.repetition_score +
+            0.25 * prog_no_elem.slop_score)) < 0.001
+
+    # With element count — 27/27/27/10 weighting
+    prog_with_elem = calculate_programmatic_scores(
+        good_text, len(good_text.split()), 50, 100,
+        gt_element_count=5, pd_element_count=5,
+    )
+    assert prog_with_elem.element_count_score == 1.0, "Perfect element match"
+    expected_with = (0.27 * prog_with_elem.word_count_score +
+                    0.27 * prog_with_elem.repetition_score +
+                    0.27 * prog_with_elem.slop_score +
+                    0.10 * 1.0)
+    assert abs(prog_with_elem.overall - expected_with) < 0.001, \
+        f"Expected {expected_with:.4f}, got {prog_with_elem.overall:.4f}"
+    print("Element count programmatic integration tests passed!")

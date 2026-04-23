@@ -1,0 +1,51 @@
+evaluation_id: 6f6aa6b0
+task_id: beat_interpolation_001
+generation_id: beat_interpolation_001_qwen/qwen3.5-flash-02-23_0
+task_type: beat_interpolation
+model: qwen/qwen3.5-flash-02-23
+sample_index: 0
+evaluator_model: openai/gpt-5-mini
+evaluator_cost: 0.00142
+timestamp: '2026-03-06T21:52:33.761177'
+success: true
+final_score: 0.986
+score_breakdown:
+  final_score: 0.986
+  components:
+    programmatic:
+      score: 0.972
+      weight: 0.5
+      breakdown:
+        word_count_score: 1.0
+        repetition_score: 0.92
+        slop_score: 1.0
+        overall: 0.972
+      word_count:
+        actual: 284
+        target_range:
+        - 200
+        - 350
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: true
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: 'All four required elements are present: Marcus is introduced by name;
+    he provides practical tools (satchel, brass compass) and wisdom; Elena''s doubt
+    shifts to reluctant acceptance (''I''ll try''); Marcus explicitly frames librarian
+    skills as useful. No must-not items occur: Elena remains hesitant rather than
+    immediately confident; Marcus doesn''t solve her problems or offer to accompany
+    her; the scene is set in Marcus''s shop (not the forest); Elena does not discover
+    magical powers. Character voices and behavior are consistent, the scene functions
+    clearly as a mentor beat, and it bridges neatly from refusal toward the threshold
+    while maintaining setting continuity.'
+error: null

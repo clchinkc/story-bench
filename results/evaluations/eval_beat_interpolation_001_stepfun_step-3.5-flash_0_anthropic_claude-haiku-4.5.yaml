@@ -1,0 +1,62 @@
+evaluation_id: 8a56b8f5
+task_id: beat_interpolation_001
+generation_id: beat_interpolation_001_stepfun/step-3.5-flash_0
+task_type: beat_interpolation
+model: stepfun/step-3.5-flash
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.02047
+timestamp: '2026-03-06T21:55:15.283357'
+success: true
+final_score: 0.9010775547312071
+score_breakdown:
+  final_score: 0.9011
+  components:
+    programmatic:
+      score: 0.8022
+      weight: 0.5
+      breakdown:
+        word_count_score: 0.7066
+        repetition_score: 0.8
+        slop_score: 0.958
+        overall: 0.8022
+      word_count:
+        actual: 450
+        target_range:
+        - 200
+        - 350
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: false
+  word_count: 450
+  word_count_range: 200-350
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  overall_score: 0.9
+  evidence: 'STRENGTHS: All four required elements present and well-executed: (1)
+    Marcus introduced as wise mentor figure with distinctive characterization (''eyes
+    the colour of weathered parchment'', runs curiosity shop); (2) Practical wisdom
+    and tools provided (brass compass pointing to truth, satchel with librarian tools,
+    philosophy about navigation vs. combat); (3) Elena''s doubt shifts to reluctant
+    acceptance (''For the first time, it wasn''t entirely impossible''); (4) Librarian
+    skills reframed as assets (''You see patterns. Connections.''). All must-not items
+    avoided: Elena remains doubtful and hesitant, Marcus doesn''t accompany her or
+    solve problems, setting is the shop (not forest), no magical powers discovered.
+    Character voice is consistent—Elena''s skepticism and Marcus''s gentle wisdom
+    ring true. Bridge between beats is seamless: BEFORE shows refusal, GENERATED shows
+    mentor encounter shifting perspective, AFTER shows threshold crossing. Setting
+    continuity maintained throughout (shop location, time progression). WEAKNESS:
+    Word count (450) exceeds specified range (200-350) by 100 words, representing
+    a 28.6% overage. This is a technical violation but doesn''t diminish narrative
+    quality or beat execution. The excess length actually strengthens character development
+    and dialogue, though it violates the constraint.'
+error: null

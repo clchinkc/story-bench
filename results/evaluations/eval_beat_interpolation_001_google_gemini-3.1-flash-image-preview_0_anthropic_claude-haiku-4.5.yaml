@@ -1,0 +1,57 @@
+evaluation_id: 57e9b2c4
+task_id: beat_interpolation_001
+generation_id: beat_interpolation_001_google/gemini-3.1-flash-image-preview_0
+task_type: beat_interpolation
+model: google/gemini-3.1-flash-image-preview
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.01832
+timestamp: '2026-03-06T21:54:15.797174'
+success: true
+final_score: 0.9737183098591549
+score_breakdown:
+  final_score: 0.9737
+  components:
+    programmatic:
+      score: 0.9474
+      weight: 0.5
+      breakdown:
+        word_count_score: 1.0
+        repetition_score: 0.88
+        slop_score: 0.9577
+        overall: 0.9474
+      word_count:
+        actual: 338
+        target_range:
+        - 200
+        - 350
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: true
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: 'All four required elements present and well-executed: (1) Marcus introduced
+    as mentor character with vivid physical description and established wisdom; (2)
+    Practical wisdom delivered through the compass metaphor and reframing of librarian
+    skills as quest-relevant tools, plus tangible gifts (satchel, rations, tinctures,
+    compass); (3) Elena''s doubt shifts from absolute refusal (''I still think the
+    map made a mistake'') to reluctant acceptance (''She picked up the satchel''),
+    showing gradual movement; (4) Librarian skills explicitly recontextualized as
+    valuable (''Your patience, your ability to read patterns, to find order in chaos'').
+    No violations of must-not criteria: Elena remains doubtful and hesitant (not confident/eager),
+    Marcus explicitly refuses to accompany her (''I can''t go with you''), setting
+    is the shop not the forest, no magical powers discovered. Character voice remains
+    consistent—Elena''s internal conflict and Marcus''s pragmatic mentorship are authentic.
+    Bridge between beats is seamless: the BEFORE shows refusal, the GENERATED shows
+    mentorship shifting perspective, and the AFTER shows Elena at the threshold ready
+    to cross. Setting continuity maintained throughout (village → shop → forest edge).'
+error: null

@@ -1,0 +1,58 @@
+evaluation_id: b862a5bc
+task_id: beat_interpolation_001
+generation_id: beat_interpolation_001_z-ai/glm-5_0
+task_type: beat_interpolation
+model: z-ai/glm-5
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.017745
+timestamp: '2026-03-06T21:54:36.102365'
+success: true
+final_score: 0.9964999999999999
+score_breakdown:
+  final_score: 0.9965
+  components:
+    programmatic:
+      score: 0.993
+      weight: 0.5
+      breakdown:
+        word_count_score: 1.0
+        repetition_score: 0.98
+        slop_score: 1.0
+        overall: 0.993
+      word_count:
+        actual: 292
+        target_range:
+        - 200
+        - 350
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: true
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: 'All four required elements present: (1) Marcus introduced as wise mentor
+    figure with clear backstory connection to grandmother; (2) Practical wisdom provided
+    (''forest tests intentions, not abilities'') and tangible tools given (satchel,
+    compass); (3) Elena''s doubt shifts toward reluctant acceptance (''crack in the
+    wall she''d built''); (4) Librarian skills reframed as valuable (''read forgotten
+    languages, notice patterns''). All must-not violations avoided: Elena remains
+    doubtful and hesitant, Marcus explicitly does not accompany her, setting is shop
+    (not forest), no magical powers discovered. Character voice consistent throughout—Elena''s
+    self-deprecation and resistance remain authentic while showing subtle movement.
+    Bridge between beats seamless: BEFORE ends with Elena walking away from grandmother''s
+    house; GENERATED shows her arriving at shop; AFTER shows her at forest edge with
+    Marcus''s gifts, creating natural progression. Continuity perfect: satchel and
+    compass from Generated appear in After, Marcus''s words echo in Elena''s mind,
+    fog/threshold imagery connects thematically. Execution of mentor beat is exemplary—Marcus
+    provides wisdom without solving problems, gives tools without accompanying her,
+    and catalyzes internal shift without forcing external change.'
+error: null

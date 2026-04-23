@@ -1,0 +1,50 @@
+evaluation_id: c39e1389
+task_id: beat_interpolation_001
+generation_id: beat_interpolation_001_minimax/minimax-m2.5_0
+task_type: beat_interpolation
+model: minimax/minimax-m2.5
+sample_index: 0
+evaluator_model: openai/gpt-5-mini
+evaluator_cost: 0.001405
+timestamp: '2026-03-06T21:52:57.320367'
+success: true
+final_score: 0.8517201767546417
+score_breakdown:
+  final_score: 0.8517
+  components:
+    programmatic:
+      score: 0.7034
+      weight: 0.5
+      breakdown:
+        word_count_score: 0.5561
+        repetition_score: 0.66
+        slop_score: 1.0
+        overall: 0.7034
+      word_count:
+        actual: 480
+        target_range:
+        - 200
+        - 350
+    llm_judge:
+      score: 1.0
+      weight: 0.5
+llm_results:
+  beat_elements_score: 1.0
+  elements_found: 4
+  elements_total: 4
+  beat_execution_score: 1.0
+  must_not_score: 1.0
+  violations_found: 0
+  word_count_valid: false
+  character_score: 1.0
+  bridge_score: 1.0
+  continuity_score: 1.0
+  evidence: 'All four required elements are present: Marcus is introduced, he provides
+    practical wisdom and tools (satchel, compass, advice), Elena''s doubt shifts toward
+    reluctant acceptance, and her librarian skills are explicitly referenced as useful.
+    The scene fulfills the Meeting the Mentor function and avoids the prohibited items
+    (no immediate confidence, no mentor solving problems or accompanying her, not
+    in/near the forest, no new magical powers). The only deduction is that the word
+    count exceeds the specified 200–350 range (noted as 480), so word_count_valid
+    is false.'
+error: null

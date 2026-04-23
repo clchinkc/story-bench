@@ -44,6 +44,56 @@ def check_api_key() -> bool:
     return True
 
 
+def cmd_compare(args):
+    """Compare two benchmark result files head-to-head."""
+    from src.comparison import StoryBenchmarkComparison
+
+    left_path = Path(args.compare[0])
+    right_path = Path(args.compare[1])
+
+    if not left_path.exists():
+        print(f"ERROR: Left results file not found: {left_path}")
+        return
+    if not right_path.exists():
+        print(f"ERROR: Right results file not found: {right_path}")
+        return
+
+    comp = StoryBenchmarkComparison(left_path, right_path)
+    summary = comp.compare()
+
+    print(f"\n=== Benchmark Comparison ===")
+    print(f"Left:  {summary.left_model}")
+    print(f"Right: {summary.right_model}")
+    print(f"Tasks evaluated: {summary.total_tasks}")
+    print(f"Right wins:  {summary.right_wins} ({summary.right_wins / max(summary.total_tasks, 1) * 100:.1f}%)")
+    print(f"Left wins:   {summary.left_wins} ({summary.left_wins / max(summary.total_tasks, 1) * 100:.1f}%)")
+    print(f"Ties:        {summary.ties}")
+    print(f"\nAvg Delta:          {summary.avg_delta:+.4f}")
+    print(f"Avg % Improvement:   {summary.avg_pct_improvement:+.2f}%")
+
+    if summary.task_type_breakdown:
+        print("\n--- Task Type Breakdown ---")
+        print(f"{'Task Type':<30} {'Count':>6} {'Left':>8} {'Right':>8} {'Delta':>8}")
+        print("-" * 64)
+        for tt, agg in summary.task_type_breakdown.items():
+            print(f"{tt:<30} {agg['count']:>6} {agg['mean_left']:>8.4f} {agg['mean_right']:>8.4f} {agg['mean_delta']:>+8.4f}")
+
+    if summary.component_breakdown:
+        print("\n--- Component Breakdown ---")
+        print(f"{'Component':<20} {'Left':>8} {'Right':>8} {'Delta':>8}")
+        print("-" * 48)
+        for comp, agg in summary.component_breakdown.items():
+            print(f"{comp:<20} {agg['mean_left']:>8.4f} {agg['mean_right']:>8.4f} {agg['mean_delta']:>+8.4f}")
+
+    # Also save to file
+    output_path = Path("results/COMPARISON.md")
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    md = comp.print_summary()
+    with open(output_path, "w") as f:
+        f.write(md)
+    print(f"\nSaved detailed comparison to: {output_path}")
+
+
 def cmd_status(args):
     """Show current benchmark status."""
     from results_db import ResultsDatabase
@@ -489,6 +539,7 @@ Examples:
   python run.py --leaderboard
   python run.py --clean-failed
   python run.py --clean-failed "anthropic/claude-sonnet-4"
+  python run.py --compare results_A.json results_B.json
         """,
     )
 
@@ -508,6 +559,13 @@ Examples:
         "--task-analysis",
         action="store_true",
         help="Generate and display task analysis",
+    )
+    parser.add_argument(
+        "--compare",
+        nargs=2,
+        dest="compare",
+        metavar=("LEFT.json", "RIGHT.json"),
+        help="Compare two benchmark result files head-to-head",
     )
     parser.add_argument(
         "--clean-failed",
@@ -582,6 +640,8 @@ Examples:
         cmd_rebuild_db(args)
     elif args.task_analysis:
         cmd_task_analysis(args)
+    elif args.compare:
+        cmd_compare(args)
     elif args.clean_failed is not None:
         # Handle both --clean-failed (True) and --clean-failed MODEL (string)
         args.clean_model = (

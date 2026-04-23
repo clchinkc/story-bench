@@ -1,0 +1,59 @@
+evaluation_id: 3e96f8d4
+task_id: beat_interpolation_002
+generation_id: beat_interpolation_002_google/gemini-3.1-flash-lite-preview_0
+task_type: beat_interpolation
+model: google/gemini-3.1-flash-lite-preview
+sample_index: 0
+evaluator_model: anthropic/claude-haiku-4.5
+evaluator_cost: 0.018404999999999998
+timestamp: '2026-03-06T17:22:46.755107'
+success: true
+final_score: 0.82375
+score_breakdown:
+  final_score: 0.8237
+  components:
+    programmatic:
+      score: 0.965
+      weight: 0.5
+      breakdown:
+        word_count_score: 1.0
+        repetition_score: 0.9
+        slop_score: 1.0
+        overall: 0.965
+      word_count:
+        actual: 395
+        target_range:
+        - 250
+        - 400
+    llm_judge:
+      score: 0.6825
+      weight: 0.5
+llm_results:
+  beat_elements_score: 0.75
+  elements_found: 3
+  elements_total: 4
+  beat_execution_score: 0.6
+  must_not_score: 0.5
+  violations_found: 2
+  word_count_valid: true
+  character_score: 0.8
+  bridge_score: 0.7
+  continuity_score: 0.85
+  evidence: 'STRENGTHS: Sarah clearly considers recanting (paragraph 1), considers
+    official channels with Marcus (paragraphs 3-4), and shows strong internal conflict
+    between duty and sister (throughout). Character voice is consistent and compelling.
+    Bridge to Break Into Two is logical. WEAKNESSES: Missing the 4th required element—no
+    clear moment/conversation that tips her toward the third option (going rogue).
+    The decision to resign feels somewhat abrupt rather than earned through debate.
+    VIOLATIONS: (1) Sarah already decides to resign and reaches for resignation forms
+    mid-beat (paragraph 5: ''She stood up, her jaw set, and reached for her resignation
+    forms''), which violates ''Sarah already having resigned from the police force''
+    by showing the action rather than just the decision. (2) The beat ends with her
+    already outside the Captain''s office with badge in hand, crossing into Break
+    Into Two territory prematurely. The Debate should end with decision, not execution.
+    The narrative function is partially executed—there IS debate, but it resolves
+    too quickly into action rather than lingering in the uncertainty that defines
+    this beat. Marcus''s warning is good but doesn''t truly tip the scales; Sarah''s
+    realization about the badge being an obstacle feels more like internal monologue
+    than earned debate outcome.'
+error: null
