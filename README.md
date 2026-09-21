@@ -9,7 +9,7 @@ The legacy scores and leaderboards are historical outputs, not validated literar
 - [Experiment contract](docs/experiment-contract.md): tasks, native environment, four skill/tool arms, dataset/annotation, critics, reward, statistics and spending.
 - [Repair register](docs/repair-register.md): observed defects, unresolved candidates, planned regressions and historical disposition.
 - [Strategic plan](https://linear.app/firstory/issue/DAILY-105).
-- [DAILY-105](https://linear.app/firstory/issue/DAILY-105): implementation Backlog, awaiting approval.
+- [DAILY-105](https://linear.app/firstory/issue/DAILY-105): owner-approved implementation in dependency-ordered waves; consumer qualification is the first open gate.
 
 Narrative Craft is the domain/runtime authority; this repository owns experiments and adapters. The initial study is revision/continuity across English, Traditional Chinese and Simplified Chinese. Generation, long form, training compatibility and actual author use follow gated phases. No benefit has been established.
 

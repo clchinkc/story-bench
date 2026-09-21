@@ -1,6 +1,6 @@
 # Story-bench experiment contract
 
-Protocol draft 2026-09-21. Implementation Backlog; AWAITING_IMPLEMENTATION_APPROVAL. This file specifies future behavior, not capabilities already present. The current legacy runner is not qualified for these claims. Strategy and locked author choices: [canonical plan](https://linear.app/firstory/issue/DAILY-105). Operational root: [DAILY-105](https://linear.app/firstory/issue/DAILY-105).
+Approved protocol, 2026-09-21 Query 2; implementation proceeds through the capsule's dependency-ordered waves. Approval identity and original content hashes are preserved in capsule `2026-09-21-story-evaluation-plan-consolidation/bindings/query2-authorization.json`. This file specifies required behavior, not capabilities already present. The current legacy runner is not qualified for these claims. Strategy and locked author choices: [canonical plan](https://linear.app/firstory/issue/DAILY-105). Operational root: [DAILY-105](https://linear.app/firstory/issue/DAILY-105).
 
 ## 1. Baseline and authority boundary
 

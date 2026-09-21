@@ -2,7 +2,7 @@
 
 Read [README.md](README.md), [docs/experiment-contract.md](docs/experiment-contract.md) and [docs/repair-register.md](docs/repair-register.md) before benchmark work. The contract is a planned protocol, not implemented behavior.
 
-Current program: [DAILY-105](https://linear.app/firstory/issue/DAILY-105). Implementation remains Backlog and AWAITING_IMPLEMENTATION_APPROVAL. Query 1 permits documentation/qualification only; do not implement repairs or start paid generation/judging/training.
+Current program: [DAILY-105](https://linear.app/firstory/issue/DAILY-105). Query 2 owner approval authorizes the consolidated plan's dependency-ordered implementation, including local scoped branches/worktrees and parent-only reviewed commits. The capsule `2026-09-21-story-evaluation-plan-consolidation/bindings/query2-authorization.json` binds approval to exact r1 hashes. Paid generation/judging/training remains blocked until spend controls, permissions and phase/human-evidence gates pass. Total incremental cap USD1,000; no push/merge/release/deploy or background work.
 
 Use Narrative Craft's native public authorities and installed artifact. Do not create a parallel story engine, shadow Evaluation store, custom author gate or hidden private-vault treatment. Test on disposable workspaces. Record current source/artifact identity, dependency resolution, model/harness/judge versions, rights and all costs before measurements.
 
