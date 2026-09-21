@@ -127,7 +127,7 @@ def load_tasks_by_type(task_type: str) -> list[dict[str, Any]]:
 
 def generate_id() -> str:
     """Generate a unique ID for generations and evaluations."""
-    return str(uuid.uuid4())[:8]
+    return str(uuid.uuid4())
 
 
 def get_timestamp() -> str:

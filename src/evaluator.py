@@ -6,11 +6,13 @@ Now includes multi-component scoring (word count + LLM + programmatic).
 """
 
 import os
+import json
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
-from dotenv import load_dotenv
+from measurement_contract import (require_paid_dispatch, require_qualified_oracle, complete_response, context_packet, digest, diagnostic_score, schema_weights, AGENT_PROCESS, AGENT_OUTPUT)
+
 from openai import OpenAI
 from tqdm import tqdm
 
@@ -30,7 +32,6 @@ from utils import (
     save_yaml,
 )
 
-load_dotenv()
 
 
 @dataclass
@@ -153,11 +154,11 @@ Respond with valid JSON only."""
 
         return f"""Theory: {theory} - {theory_def}
 
-BEFORE ({beat_before["name"]}): {beat_before["content"].strip()[:800]}
+BEFORE ({beat_before["name"]}): {beat_before["content"].strip()}
 
 GENERATED ({missing_beat["name"]}): {output}
 
-AFTER ({beat_after["name"]}): {beat_after["content"].strip()[:800]}
+AFTER ({beat_after["name"]}): {beat_after["content"].strip()}
 
 BEAT DEFINITION: {beat_def}
 
@@ -198,10 +199,8 @@ JSON response:
         word_count_valid = word_count_min <= word_count <= word_count_max
 
         # Check if this is a "no flaw" task (correctly executed beat)
-        ground_truth = task.get("ground_truth", {})
-        has_flaw = ground_truth.get(
-            "has_flaw", True
-        )  # Default to True for backward compat
+        schema_weights("beat_revision", task.get("subtype"))
+        has_flaw = task["subtype"] == "flawed"
 
         if not has_flaw:
             # Special evaluation for "no flaw" tasks
@@ -237,14 +236,14 @@ Forbidden changes:
 
         return f"""Theory: {theory} - {theory_def}
 
-ORIGINAL FLAWED SEGMENT: {task["flawed_segment"]["content"].strip()[:800]}
+ORIGINAL FLAWED SEGMENT: {task["flawed_segment"]["content"].strip()}
 
 THE ACTUAL FLAW (model was NOT told this): {task["flawed_segment"]["flaw_description"].strip()}
 THE REQUIRED FIX (model was NOT told this): {requirements["fix"]}
 
 MODEL'S REVISION: {output}
 
-Beat "{task["beat_name"]}": {task["beat_definition"].strip()[:600]}
+Beat "{task["beat_name"]}": {task["beat_definition"].strip()}
 
 Check: word_count={word_count} (valid={word_count_valid}, range={word_count_min}-{word_count_max})
 Preserve ({num_preserve} elements): {preserve_str}
@@ -279,10 +278,10 @@ JSON response:
         return f"""Theory: {theory} - {theory_def}
 
 ORIGINAL SEGMENT (this is CORRECTLY EXECUTED - no flaw exists):
-{original_segment[:1000]}
+{original_segment}
 
 Beat "{beat_name}" definition:
-{beat_definition[:600]}
+{beat_definition}
 
 MODEL'S RESPONSE:
 {output}
@@ -293,7 +292,7 @@ This segment was CORRECTLY executed and needed NO revision. The model should hav
 Expected correct response: "NO REVISION NEEDED" (or equivalent)
 
 Ground truth reasoning why no revision is needed:
-{expected_reasoning[:500]}
+{expected_reasoning}
 
 SCORING - Did the model correctly recognize this as a well-executed beat?
 
@@ -336,7 +335,7 @@ JSON response:
 
         return f"""Theory: {theory} - {theory_def}
 
-OPENING: {opening["content"].strip()[:800]}
+OPENING: {opening["content"].strip()}
 
 CONTINUATION: {output}
 
@@ -383,7 +382,7 @@ JSON response:
 Source: {from_theory_def}
 Target: {to_theory_def}
 
-ORIGINAL: {original["content"].strip()[:1000]}
+ORIGINAL: {original["content"].strip()}
 
 CONVERTED: {output}
 
@@ -431,7 +430,7 @@ JSON response:
 
         return f"""Theory: {theory} - {theory_def}
 
-Context: {context["protagonist"][:300]} | {context["setting"][:200]} | {context["central_conflict"][:200]} | Tone: {context["tone"]}
+Context: {context["protagonist"]} | {context["setting"]} | {context["central_conflict"]} | Tone: {context["tone"]}
 
 GENERATED: {output}
 
@@ -491,7 +490,7 @@ class BenchmarkEvaluator:
         )
         self.evaluator_model = evaluator_model
         self.model_config = load_config()["models"]
-        self.scoring_weights = scoring_weights or ScoringWeights()
+        self.scoring_weights = scoring_weights
         self.word_count_method = word_count_method
 
     def get_evaluator_pricing(self) -> tuple[float, float]:
@@ -510,6 +509,7 @@ class BenchmarkEvaluator:
         generation: dict[str, Any],
     ) -> EvaluationResult:
         """Evaluate a single generation and compute composite score."""
+        require_paid_dispatch()
         task_id = task["task_id"]
         task_type = task["task_type"]
         generation_id = generation.get("generation_id", "unknown")
@@ -543,7 +543,10 @@ class BenchmarkEvaluator:
             task, generated_output, word_count
         )
 
+        cost = None
         try:
+            eval_prompt, receipt = context_packet({"task": json.dumps(task, sort_keys=True, ensure_ascii=False), "output": generated_output, "instructions": eval_prompt}, max_bytes=task.get("context_budget_bytes"))
+            require_paid_dispatch()
             response = self.client.chat.completions.create(
                 model=self.evaluator_model,
                 messages=[
@@ -595,6 +598,7 @@ class BenchmarkEvaluator:
                 llm_results=llm_results,
                 task_type=task_type,
                 weights=self.scoring_weights,
+                subtype=task.get("subtype"),
                 word_count_method=self.word_count_method,
             )
 

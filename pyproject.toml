@@ -1,0 +1,18 @@
+[project]
+name = "story-bench-scripts"
+version = "0.1.0"
+requires-python = "==3.14.5"
+dependencies = [
+  "openai>=1.0", "httpx>=0.25", "pyyaml>=6", "jsonschema>=4.20",
+  "pydantic>=2.5", "tqdm>=4.66", "rich>=13", "python-dotenv>=1",
+]
+
+[dependency-groups]
+dev = ["pytest>=8"]
+
+[tool.uv]
+package = false
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

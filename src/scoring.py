@@ -1,11 +1,11 @@
 """
 Scoring module for the Story Theory Benchmark.
 
-Implements the two-component scoring system:
-- Programmatic Score (50%): Word count + repetition penalty + slop detection
-- LLM-as-Judge Score (50%): Normalized criteria evaluation
+Unvalidated mechanical and judge diagnostics (not literary quality):
+- Mechanical diagnostics: Word count + repetition penalty + slop detection
+- Judge diagnostics: Normalized criteria evaluation
 
-All scores are 0.0 - 1.0 where 1.0 is best.
+Named diagnostics lie in [0, 1]; calibration and literary preference remain unqualified.
 """
 
 import math
@@ -13,21 +13,23 @@ import re
 from dataclasses import dataclass
 from typing import Any
 
+from measurement_contract import diagnostic_score, number
+
 
 @dataclass
 class ScoringWeights:
     """
-    Configurable weights for score components.
-    Programmatic (50%): word count + repetition + slop
-    LLM Judge (50%): task-specific criteria
+    Optional explicit diagnostic weights; never calibrated literary quality.
     """
 
     programmatic: float = 0.50
     llm_judge: float = 0.50
 
     def __post_init__(self):
+        number(self.programmatic, "programmatic weight")
+        number(self.llm_judge, "judge weight")
         total = self.programmatic + self.llm_judge
-        if not math.isclose(total, 1.0, rel_tol=0.01):
+        if not math.isclose(total, 1.0, rel_tol=1e-12):
             raise ValueError(f"Weights must sum to 1.0, got {total}")
 
 
@@ -63,14 +65,13 @@ class ProgrammaticScores:
 @dataclass
 class ScoreBreakdown:
     """
-    Complete score breakdown for a generation.
-    Two components: Programmatic (50%) + LLM Judge (50%)
+    Unvalidated diagnostics; the composite is absent unless weights are explicit.
     """
 
     programmatic_scores: ProgrammaticScores
-    llm_judge_score: float
-    final_score: float
-    weights: ScoringWeights
+    llm_judge_score: float | None
+    final_score: float | None
+    weights: ScoringWeights | None
 
     # Metadata
     word_count: int
@@ -78,11 +79,12 @@ class ScoreBreakdown:
 
     def to_dict(self) -> dict[str, Any]:
         return {
-            "final_score": round(self.final_score, 4),
+            "diagnostic_status": "unvalidated; no literary quality claim",
+            "final_score": None if self.final_score is None else round(self.final_score, 4),
             "components": {
                 "programmatic": {
                     "score": round(self.programmatic_scores.overall, 4),
-                    "weight": self.weights.programmatic,
+                    "weight": None if self.weights is None else self.weights.programmatic,
                     "breakdown": self.programmatic_scores.to_dict(),
                     "word_count": {
                         "actual": self.word_count,
@@ -90,8 +92,8 @@ class ScoreBreakdown:
                     },
                 },
                 "llm_judge": {
-                    "score": round(self.llm_judge_score, 4),
-                    "weight": self.weights.llm_judge,
+                    "score": None if self.llm_judge_score is None else round(self.llm_judge_score, 4),
+                    "weight": None if self.weights is None else self.weights.llm_judge,
                 },
             },
         }
@@ -116,6 +118,8 @@ def element_count_score(gt_count: int, pd_count: int) -> float:
     Returns:
         Score from 0.0 to 1.0 where 1.0 = perfect match
     """
+    if type(gt_count) is not int or type(pd_count) is not int or min(gt_count, pd_count) < 0:
+        raise ValueError("Element counts must be nonnegative integers")
     if gt_count == 0 and pd_count == 0:
         return 1.0  # Both zero = both want nothing = perfect
     denominator = gt_count + pd_count
@@ -402,7 +406,7 @@ COMMON_WORDS = {
     "through",
 }
 
-# "Slop" words - overused LLM phrases that indicate poor creative writing
+# Historical English word-list diagnostic; not evidence of quality or AI authorship
 # Based on EQ-Bench research and common "GPT-isms"
 SLOP_WORDS = {
     # High-frequency slop (2 points each)
@@ -623,11 +627,13 @@ def calculate_programmatic_scores(
 
     Optional fourth component for tasks with strict structural counts:
     - Element count score (Count-Correct): penalizes deviation from required element counts
-      Weighted at 10% when present; other three scores drop to 27% each.
+      Legacy relative weights 27/27/27/10 are normalized by their sum .91.
 
     Returns:
         ProgrammaticScores with individual and overall scores
     """
+    if (gt_element_count is None) != (pd_element_count is None):
+        raise ValueError("Both element counts are required")
     wc_score = word_count_score(
         word_count, target_min, target_max, method=word_count_method
     )
@@ -639,7 +645,7 @@ def calculate_programmatic_scores(
     if gt_element_count is not None and pd_element_count is not None:
         elem_score = element_count_score(gt_element_count, pd_element_count)
         # With element count: wc (27%) + rep (27%) + slop (27%) + elem (10%)
-        overall = 0.27 * wc_score + 0.27 * rep_score + 0.27 * slop + 0.10 * elem_score
+        overall = (0.27 * wc_score + 0.27 * rep_score + 0.27 * slop + 0.10 * elem_score) / 0.91
     else:
         # Standard: word_count (40%) + repetition (35%) + slop (25%)
         overall = 0.40 * wc_score + 0.35 * rep_score + 0.25 * slop
@@ -657,131 +663,13 @@ def calculate_programmatic_scores(
 
 
 def _safe_float(value: Any, default: float = 0.0) -> float:
-    """Safely convert a value to float, returning default if not possible."""
-    if value is None:
-        return default
-    try:
-        return float(value)
-    except (TypeError, ValueError):
-        return default
+    """Reject invalid values; never substitute credit."""
+    return number(value, "criterion")
 
 
-def normalize_llm_results_to_score(
-    results: dict[str, Any],
-    task_type: str,
-) -> float:
-    """
-    Convert LLM evaluation results to a normalized score (0.0-1.0).
-
-    Supports both old binary format and new partial credit format.
-    Different task types have different criteria structures and weights.
-
-    Args:
-        results: Raw LLM evaluation results dict
-        task_type: Type of task for scoring rules
-
-    Returns:
-        Normalized score from 0.0 to 1.0
-    """
-    if not results:
-        return 0.0
-
-    if task_type == "beat_interpolation":
-        # Weighted scoring: elements (25%), beat_execution (25%), must_not (15%), character (10%), bridge (15%), continuity (10%)
-        elements = _safe_float(results.get("beat_elements_score"), 0.5)
-        beat_exec = _safe_float(results.get("beat_execution_score"), 0.5)
-        must_not = _safe_float(
-            results.get("must_not_score"), 1.0
-        )  # Default 1.0 if no violations specified
-        character = _safe_float(results.get("character_score"), 0.5)
-        bridge = _safe_float(results.get("bridge_score"), 0.5)
-        continuity = _safe_float(results.get("continuity_score"), 0.5)
-        return (
-            0.25 * elements
-            + 0.25 * beat_exec
-            + 0.15 * must_not
-            + 0.10 * character
-            + 0.15 * bridge
-            + 0.10 * continuity
-        )
-
-    elif task_type == "beat_revision":
-        # Check if this is a "no flaw" task (different scoring fields)
-        if "correct_diagnosis_score" in results:
-            # NO-FLAW task: Tests if model recognizes segment needs no revision
-            # Weighted: correct_diagnosis (40%), false_positive_avoided (30%),
-            #           beat_understanding (15%), reasoning_quality (15%)
-            correct_diagnosis = _safe_float(results.get("correct_diagnosis_score"), 0.0)
-            false_positive = _safe_float(
-                results.get("false_positive_avoided_score"), 0.0
-            )
-            beat_understanding = _safe_float(
-                results.get("beat_understanding_score"), 0.5
-            )
-            reasoning = _safe_float(results.get("reasoning_quality_score"), 0.5)
-            return (
-                0.40 * correct_diagnosis
-                + 0.30 * false_positive
-                + 0.15 * beat_understanding
-                + 0.15 * reasoning
-            )
-
-        # Standard FLAWED task: Model must identify flaw themselves (not told what's wrong)
-        # CONSTRAINED REVISION: Also evaluates minimal modification
-        # Weighted: diagnosis (20%), flaw fix (20%), beat satisfaction (20%),
-        #           preservation (10%), required_preserved (10%), minimal_change (10%), quality (10%)
-        diagnosis = _safe_float(results.get("diagnosis_score"), 0.5)
-        flaw = _safe_float(results.get("flaw_correction_score"), 0.5)
-        beat = _safe_float(results.get("beat_satisfaction_score"), 0.5)
-        preserve = _safe_float(results.get("preservation_score"), 0.5)
-        required_preserved = _safe_float(
-            results.get("required_preserved_score"), 1.0
-        )  # Default 1.0 if no requirements
-        minimal_change = _safe_float(results.get("minimal_change_score"), 0.5)
-        quality = _safe_float(results.get("quality_score"), 0.5)
-        return (
-            0.20 * diagnosis
-            + 0.20 * flaw
-            + 0.20 * beat
-            + 0.10 * preserve
-            + 0.10 * required_preserved
-            + 0.10 * minimal_change
-            + 0.10 * quality
-        )
-
-    elif task_type == "constrained_continuation":
-        # Weighted: beats (20%), must_include (30%), must_not (25%), tone (15%), ending (10%)
-        beats = _safe_float(results.get("beats_score"), 0.5)
-        must_include = _safe_float(results.get("must_include_score"), 0.5)
-        must_not = _safe_float(results.get("must_not_score"), 0.5)
-        tone = _safe_float(results.get("tone_score"), 0.5)
-        ending = _safe_float(results.get("ending_score"), 0.5)
-        return (
-            0.20 * beats
-            + 0.30 * must_include
-            + 0.25 * must_not
-            + 0.15 * tone
-            + 0.10 * ending
-        )
-
-    elif task_type == "theory_conversion":
-        # Weighted: beats (35%), preservation (30%), structural (20%), tone (15%)
-        beats = _safe_float(results.get("beats_score"), 0.5)
-        preserve = _safe_float(results.get("preservation_score"), 0.5)
-        structural = _safe_float(results.get("structural_accuracy_score"), 0.5)
-        tone = _safe_float(results.get("tone_score"), 0.5)
-        return 0.35 * beats + 0.30 * preserve + 0.20 * structural + 0.15 * tone
-
-    elif task_type == "multi_beat_synthesis":
-        # Weighted: beat reqs (40%), cross-beat (35%), context (15%), coherence (10%)
-        beat_reqs = _safe_float(results.get("beat_requirements_score"), 0.5)
-        cross_beat = _safe_float(results.get("cross_beat_score"), 0.5)
-        context = _safe_float(results.get("context_score"), 0.5)
-        coherence = _safe_float(results.get("coherence_score"), 0.5)
-        return 0.40 * beat_reqs + 0.35 * cross_beat + 0.15 * context + 0.10 * coherence
-
-    else:
-        raise ValueError(f"Unknown task type: {task_type}")
+def normalize_llm_results_to_score(results: dict[str, Any], task_type: str, subtype: str | None = None) -> float | None:
+    """Strict selected-schema diagnostic, not a literary quality outcome."""
+    return diagnostic_score(results, task_type, subtype)
 
 
 # ============ Final Score Calculation ============
@@ -797,13 +685,13 @@ def calculate_final_score(
     word_count_method: str = "gaussian",
     gt_element_count: int | None = None,
     pd_element_count: int | None = None,
+    subtype: str | None = None,
 ) -> ScoreBreakdown:
     """
     Calculate the final composite score for a generation.
 
-    Two components (50/50 split):
-    1. Programmatic (50%): Word count + repetition + slop detection (+ optional element count)
-    2. LLM Judge (50%): Normalized score from LLM criteria evaluation
+    Default: separate unvalidated diagnostics and no composite.
+    Explicit weights may request an unvalidated diagnostic composite.
 
     Args:
         text: The generated text
@@ -811,7 +699,7 @@ def calculate_final_score(
         target_word_range: (min, max) target word count
         llm_results: Results dict from LLM evaluation
         task_type: Type of task
-        weights: Scoring weights (default 50/50)
+        weights: Optional explicit diagnostic weights (default no composite)
         word_count_method: Method for word count scoring ("gaussian", "tanh", or "sigmoid")
         gt_element_count: Ground truth / target element count (optional)
         pd_element_count: Predicted / actual element count (optional)
@@ -819,8 +707,6 @@ def calculate_final_score(
     Returns:
         ScoreBreakdown with all component scores and final score
     """
-    if weights is None:
-        weights = ScoringWeights()
 
     # 1. Programmatic scores (includes word count, optionally element count)
     prog_scores = calculate_programmatic_scores(
@@ -834,10 +720,10 @@ def calculate_final_score(
     )
 
     # 2. LLM judge score
-    llm_score = normalize_llm_results_to_score(llm_results, task_type)
+    llm_score = normalize_llm_results_to_score(llm_results, task_type, subtype)
 
-    # Weighted final score (50/50)
-    final = weights.programmatic * prog_scores.overall + weights.llm_judge * llm_score
+    # Optional diagnostic composite; never a headline quality/value rank
+    final = None if weights is None or llm_score is None else weights.programmatic * prog_scores.overall + weights.llm_judge * llm_score
 
     return ScoreBreakdown(
         programmatic_scores=prog_scores,
@@ -849,137 +735,3 @@ def calculate_final_score(
     )
 
 
-# ============ Testing ============
-
-if __name__ == "__main__":
-    # Test word count scoring
-    print("=== Word Count Scoring Tests ===")
-    test_cases = [
-        (500, 400, 600),  # In range
-        (350, 400, 600),  # Slightly under
-        (200, 400, 600),  # Way under
-        (650, 400, 600),  # Slightly over
-        (900, 400, 600),  # Way over
-    ]
-
-    for wc, min_wc, max_wc in test_cases:
-        g = word_count_score_gaussian(wc, min_wc, max_wc)
-        t = word_count_score_tanh(wc, min_wc, max_wc)
-        s = word_count_score_sigmoid(wc, min_wc, max_wc)
-        print(
-            f"WC={wc} (target {min_wc}-{max_wc}): gaussian={g:.3f}, tanh={t:.3f}, sigmoid={s:.3f}"
-        )
-
-    print("\n=== Programmatic Scoring Tests ===")
-    # Good text - no repetition, no slop
-    good_text = """
-    The hero stood at the edge of the cliff, gazing down at the vast ocean below.
-    Waves crashed against the rocks. The wind howled through the canyon.
-    She knew what she had to do. There was no turning back now.
-    With a deep breath, she stepped forward into the unknown.
-    """
-
-    prog = calculate_programmatic_scores(good_text, len(good_text.split()), 50, 100)
-    print(
-        f"Good text - WC: {prog.word_count_score:.3f}, Rep: {prog.repetition_score:.3f}, Slop: {prog.slop_score:.3f}, Overall: {prog.overall:.3f}"
-    )
-
-    # Sloppy text - contains GPT-isms
-    sloppy_text = """
-    The tapestry of her journey was a testament to her resilience. She delved into
-    the intricacies of the realm, navigating the multifaceted landscape with
-    profound determination. Each pivotal moment unveiled new insights, resonating
-    deeply with her evolving understanding. The seamless integration of her
-    experiences was truly noteworthy, a beacon of hope in an enigmatic world.
-    """
-
-    prog = calculate_programmatic_scores(sloppy_text, len(sloppy_text.split()), 50, 100)
-    print(
-        f"Sloppy text - WC: {prog.word_count_score:.3f}, Rep: {prog.repetition_score:.3f}, Slop: {prog.slop_score:.3f}, Overall: {prog.overall:.3f}"
-    )
-
-    # Repetitive text
-    repetitive_text = """
-    The hero walked. The hero looked. The hero thought. The hero decided.
-    The hero moved forward. The hero saw the enemy. The hero raised her sword.
-    The hero attacked. The hero dodged. The hero struck. The hero won.
-    """
-
-    prog = calculate_programmatic_scores(
-        repetitive_text, len(repetitive_text.split()), 50, 100
-    )
-    print(
-        f"Repetitive text - WC: {prog.word_count_score:.3f}, Rep: {prog.repetition_score:.3f}, Slop: {prog.slop_score:.3f}, Overall: {prog.overall:.3f}"
-    )
-
-    print("\n=== Full Score Test ===")
-    # New partial credit format
-    mock_llm_results = {
-        "beat_elements_score": 0.8,
-        "elements_found": 4,
-        "elements_total": 5,
-        "character_score": 0.9,
-        "bridge_score": 0.85,
-        "continuity_score": 0.95,
-    }
-
-    breakdown = calculate_final_score(
-        text=good_text,
-        word_count=len(good_text.split()),
-        target_word_range=(50, 100),
-        llm_results=mock_llm_results,
-        task_type="beat_interpolation",
-    )
-
-    print(f"Final score: {breakdown.final_score:.3f}")
-    print(
-        f"  1. Programmatic ({breakdown.weights.programmatic}): {breakdown.programmatic_scores.overall:.3f}"
-    )
-    print(f"     - Word Count: {breakdown.programmatic_scores.word_count_score:.3f}")
-    print(f"     - Repetition: {breakdown.programmatic_scores.repetition_score:.3f}")
-    print(f"     - Slop: {breakdown.programmatic_scores.slop_score:.3f}")
-    print(
-        f"  2. LLM judge ({breakdown.weights.llm_judge}): {breakdown.llm_judge_score:.3f}"
-    )
-
-    print("\n=== Element Count Score Tests ===")
-    # Perfect match
-    assert element_count_score(5, 5) == 1.0, "Perfect match should be 1.0"
-    # Moderate miss
-    score = element_count_score(5, 3)  # |5-3|/(5+3) = 2/8 = 0.25 → 1-0.25 = 0.75
-    assert abs(score - 0.75) < 0.001, f"Expected 0.75, got {score}"
-    # Total miss
-    assert element_count_score(5, 0) == 0.0, "Total miss should be 0.0"
-    # Zero-zero edge case
-    assert element_count_score(0, 0) == 1.0, "Both zero should be 1.0"
-    # One zero
-    assert element_count_score(0, 5) == 0.0, "gt=0, pd=5 should be 0.0"
-    assert element_count_score(5, 0) == 0.0, "gt=5, pd=0 should be 0.0"
-    # Large numbers
-    score = element_count_score(100, 80)  # |20|/180 = 0.111 → 0.889
-    assert abs(score - 0.889) < 0.001, f"Expected ~0.889, got {score}"
-    print("All element_count_score tests passed!")
-
-    print("\n=== Element Count in Programmatic Score Tests ===")
-    # Without element count — standard 40/35/25 weighting
-    prog_no_elem = calculate_programmatic_scores(
-        good_text, len(good_text.split()), 50, 100
-    )
-    assert prog_no_elem.element_count_score is None, "Should be None when not provided"
-    assert abs(prog_no_elem.overall - (0.40 * prog_no_elem.word_count_score +
-            0.35 * prog_no_elem.repetition_score +
-            0.25 * prog_no_elem.slop_score)) < 0.001
-
-    # With element count — 27/27/27/10 weighting
-    prog_with_elem = calculate_programmatic_scores(
-        good_text, len(good_text.split()), 50, 100,
-        gt_element_count=5, pd_element_count=5,
-    )
-    assert prog_with_elem.element_count_score == 1.0, "Perfect element match"
-    expected_with = (0.27 * prog_with_elem.word_count_score +
-                    0.27 * prog_with_elem.repetition_score +
-                    0.27 * prog_with_elem.slop_score +
-                    0.10 * 1.0)
-    assert abs(prog_with_elem.overall - expected_with) < 0.001, \
-        f"Expected {expected_with:.4f}, got {prog_with_elem.overall:.4f}"
-    print("Element count programmatic integration tests passed!")

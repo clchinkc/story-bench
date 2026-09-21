@@ -9,8 +9,11 @@ This module handles multi-turn agentic tasks where models must:
 These tasks test higher-order capabilities beyond single-shot generation.
 """
 
+import json
 from dataclasses import dataclass, field
 from typing import Any, Callable
+
+from measurement_contract import (require_paid_dispatch, require_qualified_oracle, complete_response, context_packet, digest, diagnostic_score, schema_weights, AGENT_PROCESS, AGENT_OUTPUT)
 
 from llm_client import LLMClient
 from utils import (
@@ -131,6 +134,8 @@ class AgenticConfig:
 
     retry_attempts: int = 3
     retry_delay: int = 5
+
+    context_budget_bytes: int | None = None
 
 
 class AgenticPromptBuilder:
@@ -264,56 +269,8 @@ Output ONLY the story (no explanations)."""
         return prompt
 
     @classmethod
-    def build_oracle_prompt(
-        cls,
-        question: str,
-        story_context: dict[str, Any],
-        constraint_info: list[dict[str, Any]],
-    ) -> str:
-        """Build prompt for constraint discovery oracle.
-
-        The oracle uses LLM to semantically match questions to hidden constraints.
-
-        Args:
-            question: The YES/NO question asked by the model
-            story_context: Story context (genre, protagonist, setting)
-            constraint_info: List of constraint dicts with id, description, answer
-
-        Returns:
-            Prompt for LLM to determine if question matches any constraint
-        """
-        constraints_desc = "\n".join(
-            f"{i + 1}. ({c['id']}): {c['description']}"
-            for i, c in enumerate(constraint_info)
-        )
-
-        return f"""You are an oracle for a story constraint discovery game.
-
-STORY CONTEXT:
-- Genre: {story_context.get("genre", "fantasy")}
-- Protagonist: {story_context.get("protagonist", "Not specified")}
-- Setting: {story_context.get("setting", "Not specified")}
-
-HIDDEN CONSTRAINTS (the storyteller must discover these through questions):
-{constraints_desc}
-
-A storyteller is asking YES/NO questions to discover these constraints.
-
-QUESTION: "{question}"
-
-TASK: Determine if this question is semantically asking about ANY of the hidden constraints.
-- Match based on MEANING, not just keywords
-- "Does the protagonist have special abilities?" matches a constraint about "cannot use magic"
-- "Will a mentor guide the protagonist?" matches a constraint about "mentor death"
-- "Is there a time pressure?" matches a constraint about "deadline" or "time limit"
-- "Is there family history involved?" matches a constraint about "father failed hero"
-- "Is a special item required?" matches a constraint about "reforging a sword"
-- Questions about protagonist's motivation, duty, or revenge do NOT match unless a constraint specifically mentions them
-
-If the question matches a constraint, respond with that constraint's number (1-{len(constraint_info)}).
-If the question does NOT match any constraint, respond with "NONE".
-
-Respond with ONLY the number (1-{len(constraint_info)}) or "NONE":"""
+    def build_oracle_prompt(cls, question, story_context, constraint_info):
+        require_qualified_oracle()
 
     @classmethod
     def build_planning_execution_plan(cls, task: dict[str, Any]) -> str:
@@ -395,7 +352,7 @@ Output ONLY the story:"""
         feedback_str = "\n".join(f"- {f}" for f in feedback)
 
         prompt = f"""Your previous version:
-{previous_output[:2000]}{"..." if len(previous_output) > 2000 else ""}
+{previous_output}
 
 FEEDBACK TO ADDRESS:
 {feedback_str}
@@ -541,6 +498,7 @@ class AgenticGenerator:
         """
         max_tokens = max_tokens or self.config.max_tokens_per_turn
 
+        _, self.last_context_receipt = context_packet({"conversation": json.dumps(messages, ensure_ascii=False)}, max_bytes=self.config.context_budget_bytes)
         response = self.llm_client.call(
             model=model,
             messages=messages,
@@ -551,6 +509,7 @@ class AgenticGenerator:
             retry_delay=self.config.retry_delay,
         )
 
+        complete_response(response)
         if not response.success:
             raise RuntimeError(f"LLM call failed: {response.error}")
 
@@ -577,6 +536,7 @@ class AgenticGenerator:
             sample_index: Sample index
             answer_oracle: Function that takes a question and returns "YES" or "NO"
         """
+        require_qualified_oracle()
         task_id = task["task_id"]
         task_type = task["task_type"]
         theory = task.get("theory", "Unknown")

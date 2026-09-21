@@ -10,10 +10,10 @@ import os
 import time
 from dataclasses import dataclass
 
-from dotenv import load_dotenv
 from openai import OpenAI
+from measurement_contract import require_paid_dispatch, number
 
-load_dotenv()
+
 
 
 # Task-specific token budgets (same for all models for fairness)
@@ -77,10 +77,10 @@ class LLMResponse:
     """Standardized response from LLM API call."""
 
     content: str
-    prompt_tokens: int
-    completion_tokens: int
-    reasoning_tokens: int
-    cost: float
+    prompt_tokens: int | None
+    completion_tokens: int | None
+    reasoning_tokens: int | None
+    cost: float | None
     success: bool
     error: str | None = None
     finish_reason: str | None = None  # "stop", "length", "content_filter", etc.
@@ -135,6 +135,7 @@ class LLMClient:
         Returns:
             LLMResponse with content, tokens, cost, and success status
         """
+        require_paid_dispatch()
         request_kwargs = {
             "model": model,
             "messages": messages,
@@ -172,7 +173,7 @@ class LLMClient:
             prompt_tokens=0,
             completion_tokens=0,
             reasoning_tokens=0,
-            cost=0.0,
+            cost=None,
             success=False,
             error=str(last_error),
             finish_reason=None,
@@ -181,8 +182,8 @@ class LLMClient:
     def _parse_response(self, response) -> LLMResponse:
         """Parse OpenAI-style response into standardized LLMResponse."""
         content = response.choices[0].message.content or ""
-        prompt_tokens = response.usage.prompt_tokens if response.usage else 0
-        completion_tokens = response.usage.completion_tokens if response.usage else 0
+        prompt_tokens = response.usage.prompt_tokens if response.usage else None
+        completion_tokens = response.usage.completion_tokens if response.usage else None
 
         # Extract finish_reason from the response
         finish_reason = None
@@ -198,10 +199,11 @@ class LLMClient:
                 else vars(response.usage)
             )
 
-        cost = float(usage_dict.get("cost", 0) or 0)
+        raw_cost = usage_dict.get("cost")
+        cost = None if raw_cost is None else number(raw_cost, "provider cost", maximum=None)
         reasoning_tokens = (usage_dict.get("completion_tokens_details") or {}).get(
-            "reasoning_tokens", 0
-        ) or 0
+            "reasoning_tokens"
+        )
 
         return LLMResponse(
             content=content,
@@ -209,7 +211,7 @@ class LLMClient:
             completion_tokens=completion_tokens,
             reasoning_tokens=reasoning_tokens,
             cost=cost,
-            success=True,
+            success=finish_reason == "stop" and bool(content.strip()),
             finish_reason=finish_reason,
         )
 

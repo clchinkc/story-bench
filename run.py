@@ -23,9 +23,6 @@ from pathlib import Path
 # Add src to path
 sys.path.insert(0, str(Path(__file__).parent / "src"))
 
-from dotenv import load_dotenv
-
-load_dotenv()
 
 # Default models
 DEFAULT_EVAL_MODELS = [
@@ -543,6 +540,9 @@ Examples:
         """,
     )
 
+    parser.add_argument("--offline-report", metavar="MANIFEST.json", help="Validate fixed assignments and report coverage/cost offline")
+    parser.add_argument("--records", metavar="RECORDS.json", help="Repaired record file for --offline-report")
+
     # Commands
     parser.add_argument(
         "--status", action="store_true", help="Show current benchmark status"
@@ -632,7 +632,18 @@ Examples:
     args = parser.parse_args()
 
     # Route to appropriate command
-    if args.status:
+    if args.offline_report:
+        import json
+        from results_db import ResultsDatabase
+        if not args.records:
+            parser.error("--offline-report requires --records")
+        try:
+            manifest = json.loads(Path(args.offline_report).read_text())
+            report = ResultsDatabase(args.records, assignment_manifest=manifest).get_results_summary()
+        except (ValueError, KeyError, TypeError) as exc:
+            parser.error(str(exc))
+        print(json.dumps(report, ensure_ascii=False, indent=2, allow_nan=False))
+    elif args.status:
         cmd_status(args)
     elif args.leaderboard:
         cmd_leaderboard(args)
@@ -652,7 +663,8 @@ Examples:
         args.gen_models = args.list_missing_models
         cmd_list_missing(args)
     elif args.gen_models:
-        cmd_run(args)
+        from measurement_contract import require_paid_dispatch
+        require_paid_dispatch()
     else:
         parser.print_help()
 

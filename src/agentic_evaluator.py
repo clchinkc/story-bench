@@ -7,7 +7,10 @@ and the final output quality.
 """
 
 from dataclasses import dataclass
+import json
 from typing import Any
+
+from measurement_contract import (require_paid_dispatch, require_qualified_oracle, complete_response, context_packet, digest, diagnostic_score, schema_weights, AGENT_PROCESS, AGENT_OUTPUT)
 
 from agentic_generator import AgenticPromptBuilder
 from llm_client import LLMClient, get_llm_client
@@ -46,6 +49,7 @@ class AgenticEvaluationResult:
     llm_results: dict[str, Any]
 
     error: str | None = None
+    context_receipt: dict | None = None
 
     def to_dict(self) -> dict[str, Any]:
         """Convert to dictionary for serialization."""
@@ -64,6 +68,8 @@ class AgenticEvaluationResult:
             "final_score": self.final_score,
             "llm_results": self.llm_results,
             "error": self.error,
+            "context_receipt": self.context_receipt,
+            "measurement_status": "unvalidated diagnostic; explicit report bindings required",
         }
 
 
@@ -165,7 +171,7 @@ Constraints:
 Required beats: {beats_str}
 
 Model's plan:
-{plan[:2000]}{"..." if len(plan) > 2000 else ""}
+{plan}
 
 Final output:
 {final_output}
@@ -199,9 +205,9 @@ JSON response:
         for turn in turns:
             if turn.get("turn_type") == "generation":
                 rev_num = turn.get("metadata", {}).get("revision", 0)
-                versions.append((rev_num, turn.get("content", "")[:500]))
+                versions.append((rev_num, turn.get("content", "")))
 
-        versions_text = "\n\n".join(f"VERSION {v[0]}:\n{v[1]}..." for v in versions)
+        versions_text = "\n\n".join(f"VERSION {v[0]}:\n{v[1]}" for v in versions)
 
         constraints = task.get("constraints", [])
         constraints_str = "\n".join(f"- {c}" for c in constraints)
@@ -248,17 +254,17 @@ JSON response:
         for turn in turns:
             if turn.get("turn_type") == "generation":
                 rev_num = turn.get("metadata", {}).get("revision", 0)
-                versions.append((rev_num, turn.get("content", "")[:400]))
+                versions.append((rev_num, turn.get("content", "")))
             elif turn.get("turn_type") == "critique":
                 round_num = turn.get("metadata", {}).get("round", 0)
-                critiques.append((round_num, turn.get("content", "")[:300]))
+                critiques.append((round_num, turn.get("content", "")))
 
         versions_text = "\n\n".join(
-            f"VERSION {v[0]}:\n{v[1]}..."
-            for v in versions[:4]  # Limit to avoid token overflow
+            f"VERSION {v[0]}:\n{v[1]}"
+            for v in versions
         )
         critiques_text = "\n\n".join(
-            f"CRITIQUE {c[0]}:\n{c[1]}..." for c in critiques[:3]
+            f"CRITIQUE {c[0]}:\n{c[1]}" for c in critiques
         )
 
         constraints = task.get("constraints", [])
@@ -328,6 +334,8 @@ class AgenticEvaluator:
         result: dict[str, Any],
     ) -> AgenticEvaluationResult:
         """Evaluate an agentic generation result."""
+        if task.get("agentic_type") == "constraint_discovery":
+            require_qualified_oracle()
         task_id = task["task_id"]
         agentic_type = task.get("agentic_type", "unknown")
         generation_id = result.get("generation_id", "unknown")
@@ -390,7 +398,10 @@ class AgenticEvaluator:
                 error=f"Unknown agentic type: {agentic_type}",
             )
 
+        cost = None
+        receipt = None
         try:
+            eval_prompt, receipt = context_packet({"task": json.dumps(task, sort_keys=True, ensure_ascii=False), "trajectory": json.dumps(result, sort_keys=True, ensure_ascii=False), "instructions": eval_prompt}, max_bytes=task.get("context_budget_bytes"))
             response = self.llm_client.call(
                 model=self.evaluator_model,
                 messages=[
@@ -412,18 +423,19 @@ class AgenticEvaluator:
                     agentic_type=agentic_type,
                     model=model,
                     evaluator_model=self.evaluator_model,
-                    evaluator_cost=0,
+                    evaluator_cost=response.cost,
                     timestamp=timestamp,
                     success=False,
                     process_scores={},
                     output_scores={},
-                    final_score=0.0,
+                    final_score=None,
                     llm_results={},
                     error=response.error,
                 )
 
-            response_text = response.content
             cost = response.cost
+            complete_response(response)
+            response_text = response.content
 
             llm_results = extract_json_from_response(response_text)
 
@@ -464,6 +476,7 @@ class AgenticEvaluator:
                 output_scores=output_scores,
                 final_score=final_score,
                 llm_results=llm_results,
+                context_receipt=receipt,
             )
 
         except Exception as e:
@@ -474,234 +487,32 @@ class AgenticEvaluator:
                 agentic_type=agentic_type,
                 model=model,
                 evaluator_model=self.evaluator_model,
-                evaluator_cost=0,
+                evaluator_cost=cost,
                 timestamp=timestamp,
                 success=False,
                 process_scores={},
                 output_scores={},
-                final_score=0.0,
+                final_score=None,
                 llm_results={},
                 error=str(e),
+                context_receipt=getattr(e, "receipt", receipt),
             )
 
-    def _safe_float(self, value: Any, default: float = 0.5) -> float:
-        """Safely convert a value to float."""
-        if value is None:
-            return default
-        try:
-            return float(value)
-        except (TypeError, ValueError):
-            return default
 
-    def _compute_scores(
-        self,
-        agentic_type: str,
-        llm_results: dict[str, Any],
-        final_output: str,
-        task: dict[str, Any],
-    ) -> tuple[dict[str, float], dict[str, float], float]:
-        """Compute process scores, output scores, and final score."""
-
-        if agentic_type == "constraint_discovery":
-            process_scores = {
-                "discovery_efficiency": self._safe_float(
-                    llm_results.get("discovery_efficiency")
-                ),
-                "question_quality": self._safe_float(
-                    llm_results.get("question_quality")
-                ),
-                "question_coverage": self._safe_float(
-                    llm_results.get("question_coverage")
-                ),
-            }
-            output_scores = {
-                "constraint_satisfaction": self._safe_float(
-                    llm_results.get("constraint_satisfaction")
-                ),
-                "beat_execution": self._safe_float(llm_results.get("beat_execution")),
-                "narrative_quality": self._safe_float(
-                    llm_results.get("narrative_quality")
-                ),
-            }
-            # Weights: process (40%), output (60%)
-            process_avg = sum(process_scores.values()) / len(process_scores)
-            output_avg = sum(output_scores.values()) / len(output_scores)
-            final_score = 0.40 * process_avg + 0.60 * output_avg
-
-        elif agentic_type == "planning_execution":
-            process_scores = {
-                "plan_completeness": self._safe_float(
-                    llm_results.get("plan_completeness")
-                ),
-                "plan_specificity": self._safe_float(
-                    llm_results.get("plan_specificity")
-                ),
-                "plan_adherence": self._safe_float(llm_results.get("plan_adherence")),
-            }
-            output_scores = {
-                "constraint_satisfaction": self._safe_float(
-                    llm_results.get("constraint_satisfaction")
-                ),
-                "beat_execution": self._safe_float(llm_results.get("beat_execution")),
-                "narrative_quality": self._safe_float(
-                    llm_results.get("narrative_quality")
-                ),
-            }
-            # Weights: process (35%), output (65%)
-            process_avg = sum(process_scores.values()) / len(process_scores)
-            output_avg = sum(output_scores.values()) / len(output_scores)
-            final_score = 0.35 * process_avg + 0.65 * output_avg
-
-        elif agentic_type == "iterative_revision":
-            process_scores = {
-                "improvement_trajectory": self._safe_float(
-                    llm_results.get("improvement_trajectory")
-                ),
-                "feedback_responsiveness": self._safe_float(
-                    llm_results.get("feedback_responsiveness")
-                ),
-                "preservation": self._safe_float(llm_results.get("preservation")),
-            }
-            output_scores = {
-                "constraint_satisfaction": self._safe_float(
-                    llm_results.get("constraint_satisfaction")
-                ),
-                "beat_execution": self._safe_float(llm_results.get("beat_execution")),
-                "narrative_quality": self._safe_float(
-                    llm_results.get("narrative_quality")
-                ),
-            }
-            # Weights: process (30%), output (70%) - final output matters most
-            process_avg = sum(process_scores.values()) / len(process_scores)
-            output_avg = sum(output_scores.values()) / len(output_scores)
-            final_score = 0.30 * process_avg + 0.70 * output_avg
-
-        elif agentic_type == "critique_improvement":
-            process_scores = {
-                "critique_responsiveness": self._safe_float(
-                    llm_results.get("critique_responsiveness")
-                ),
-                "improvement_trajectory": self._safe_float(
-                    llm_results.get("improvement_trajectory")
-                ),
-                "preservation": self._safe_float(llm_results.get("preservation")),
-            }
-            output_scores = {
-                "constraint_satisfaction": self._safe_float(
-                    llm_results.get("constraint_satisfaction")
-                ),
-                "beat_execution": self._safe_float(llm_results.get("beat_execution")),
-                "narrative_quality": self._safe_float(
-                    llm_results.get("narrative_quality")
-                ),
-            }
-            # Weights: process (35%), output (65%) - critique responsiveness matters
-            process_avg = sum(process_scores.values()) / len(process_scores)
-            output_avg = sum(output_scores.values()) / len(output_scores)
-            final_score = 0.35 * process_avg + 0.65 * output_avg
-
-        else:
-            process_scores = {}
-            output_scores = {}
-            final_score = 0.0
-
-        return process_scores, output_scores, final_score
+    def _compute_scores(self, agentic_type, llm_results, final_output, task):
+        diagnostic_score(llm_results, agentic_type, task.get("subtype"))
+        process = {k: llm_results[k] for k in AGENT_PROCESS[agentic_type]}
+        output = {k: llm_results[k] for k in AGENT_OUTPUT}
+        return process, output, None  # Unvalidated components, no headline quality score.
 
 
-def create_constraint_discovery_oracle(
-    task: dict[str, Any],
-    oracle_model: str = "anthropic/claude-haiku-4.5",
-    llm_client: LLMClient | None = None,
-):
-    """Create an LLM-based answer oracle for constraint discovery tasks.
-
-    Uses semantic matching via LLM to determine if a question is asking about
-    any of the hidden constraints. This is more robust than keyword matching.
-
-    Args:
-        task: Task definition with hidden_constraints
-        oracle_model: LLM model to use for semantic matching (cheap model recommended)
-        llm_client: Optional shared LLMClient instance (uses singleton if not provided)
-
-    Returns a function that takes a question and returns YES/NO based on
-    whether the question semantically matches any hidden constraint.
-    """
-    hidden_constraints = task.get("hidden_constraints", [])
-    story_context = task.get("story_context", {})
-
-    # Build constraint descriptions for the LLM
-    constraint_info = []
-    for i, c in enumerate(hidden_constraints):
-        constraint_info.append(
-            {
-                "id": c.get("id", f"constraint_{i}"),
-                "description": c.get("constraint", ""),
-                "answer": c.get("answer", "NO"),
-            }
-        )
-
-    # Use shared LLM client
-    client = llm_client or get_llm_client()
-
-    def oracle(question: str) -> str:
-        """Use LLM to semantically match question to constraints."""
-        # Use AgenticPromptBuilder for consistent prompt building
-        prompt = AgenticPromptBuilder.build_oracle_prompt(
-            question=question,
-            story_context=story_context,
-            constraint_info=constraint_info,
-        )
-
-        try:
-            response = client.call(
-                model=oracle_model,
-                messages=[{"role": "user", "content": prompt}],
-                temperature=0.0,  # Deterministic
-                max_tokens=10,
-            )
-
-            if not response.success:
-                # Fallback to keyword matching if LLM fails
-                return _keyword_fallback(question, hidden_constraints)
-
-            answer = response.content.strip().upper()
-
-            # Parse the response
-            if answer == "NONE" or answer.startswith("NONE"):
-                return "NO"
-
-            # Try to extract constraint number
-            try:
-                # Handle responses like "1" or "1." or "Constraint 1"
-                num_str = "".join(c for c in answer if c.isdigit())
-                if num_str:
-                    idx = int(num_str) - 1
-                    if 0 <= idx < len(constraint_info):
-                        return constraint_info[idx]["answer"]
-            except (ValueError, IndexError):
-                pass
-
-            # If parsing fails but response looks affirmative, return YES
-            if "YES" in answer or answer.isdigit():
-                return "YES"
-            return "NO"
-
-        except Exception:
-            # Fallback to keyword matching if LLM fails
-            return _keyword_fallback(question, hidden_constraints)
-
-    return oracle
+def create_constraint_discovery_oracle(task: dict[str, Any], oracle_model: str = "unqualified", llm_client: LLMClient | None = None):
+    """Disabled: semantic truth of questions has not been calibrated."""
+    require_qualified_oracle()
 
 
 def _keyword_fallback(question: str, hidden_constraints: list[dict[str, Any]]) -> str:
-    """Fallback to keyword matching if LLM fails."""
-    question_lower = question.lower()
-    for constraint in hidden_constraints:
-        patterns = constraint.get("question_patterns", [])
-        for pattern in patterns:
-            if pattern.lower() in question_lower:
-                return constraint.get("answer", "NO")
-    return "NO"
+    require_qualified_oracle()
 
 
 def create_feedback_generator(task: dict[str, Any]):

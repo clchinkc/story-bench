@@ -8,6 +8,7 @@ import logging
 import sys
 from dataclasses import dataclass
 from typing import Any
+from measurement_contract import context_packet
 
 from tqdm import tqdm
 
@@ -49,6 +50,7 @@ class GenerationResult:
     success: bool
     error: str | None = None
     finish_reason: str | None = None  # "stop", "length", "content_filter", etc.
+    context_receipt: dict | None = None
 
     def to_dict(self) -> dict[str, Any]:
         """Convert to dictionary for serialization."""
@@ -60,6 +62,8 @@ class GenerationResult:
             "model": self.model,
             "sample_index": self.sample_index,
             "output": self.output,
+            "context_receipt": self.context_receipt,
+            "measurement_status": "unqualified legacy generator; explicit report bindings required",
             "metadata": {
                 "prompt_tokens": self.prompt_tokens,
                 "completion_tokens": self.completion_tokens,
@@ -431,6 +435,10 @@ class BenchmarkGenerator:
 
         system_prompt = PromptBuilder.build_system_prompt(task_type)
         user_prompt = PromptBuilder.build_user_prompt(task)
+        user_prompt, context_receipt = context_packet(
+            {"system": system_prompt, "entitled_input": user_prompt},
+            max_bytes=task.get("context_budget_bytes"),
+        )
 
         generation_id = generate_id()
         timestamp = get_timestamp()
@@ -467,6 +475,7 @@ class BenchmarkGenerator:
                 success=False,
                 error=response.error,
                 finish_reason=response.finish_reason,
+                context_receipt=context_receipt,
             )
 
         output = response.content
@@ -500,10 +509,11 @@ class BenchmarkGenerator:
                 success=False,
                 error=error_msg,
                 finish_reason=response.finish_reason,
+                context_receipt=context_receipt,
             )
 
         # Check for non-stop finish reasons (length, content_filter, etc.)
-        if response.finish_reason and response.finish_reason != "stop":
+        if response.finish_reason != "stop":
             error_msg = f"Generation failed: finish_reason={response.finish_reason}"
             logger.error(
                 f"[{task_id}] [{model}] {error_msg} "
@@ -526,6 +536,7 @@ class BenchmarkGenerator:
                 success=False,
                 error=error_msg,
                 finish_reason=response.finish_reason,
+                context_receipt=context_receipt,
             )
 
         return GenerationResult(
@@ -543,6 +554,7 @@ class BenchmarkGenerator:
             timestamp=timestamp,
             success=True,
             finish_reason=response.finish_reason,
+            context_receipt=context_receipt,
         )
 
     def run_benchmark(

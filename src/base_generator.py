@@ -11,6 +11,8 @@ Key insight: Standard tasks are just single-turn agentic tasks.
 import logging
 from dataclasses import dataclass, field
 from typing import Any
+from measurement_contract import complete_response, context_packet
+import json
 
 from llm_client import LLMClient
 
@@ -131,6 +133,7 @@ class BaseGenerator:
         max_tokens: int | None = None,
         max_reasoning_tokens: int | None = None,
         temperature: float = 0.7,
+        context_budget_bytes: int | None = None,
     ) -> tuple[str, int, int, int, float, str]:
         """
         Shared LLM calling logic with token tracking and logging.
@@ -148,6 +151,7 @@ class BaseGenerator:
         Raises:
             RuntimeError: If API call fails
         """
+        _, self.last_context_receipt = context_packet({"conversation": json.dumps(messages, ensure_ascii=False)}, max_bytes=context_budget_bytes)
         response = self.llm_client.call(
             model=model,
             messages=messages,
@@ -158,6 +162,7 @@ class BaseGenerator:
             retry_delay=5,
         )
 
+        complete_response(response)
         if not response.success:
             raise RuntimeError(f"LLM call failed: {response.error}")
 
