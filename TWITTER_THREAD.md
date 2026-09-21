@@ -1,3 +1,7 @@
+
+
+> **Withdrawn historical draft — not for publication or current use.** 2026-09-21: original results/text below retain their original protocol and date. Legacy 50/50 scores, narrative templates and ensemble median do not establish objective literary quality or eliminate judge bias. Coverage, missing-field, context/oracle and cost defects limit comparisons. Reaggregate valid raw data, rejudge invalid grading, and regenerate affected episodes under a new version; no corrected experiment is claimed here. See [repair register](docs/repair-register.md).
+
 # Twitter Thread: Story Theory Benchmark Launch
 
 **Format**: Post as continuous thread (Post 1 is main tweet, Posts 2-8 are replies to build narrative)
