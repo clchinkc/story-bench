@@ -125,6 +125,19 @@ def resolve_inside(root: str | Path, rel: str) -> Path:
     return candidate
 
 
+def guard_read(workspace_root: str | Path, rel: str, entitlement: Entitlement) -> Path:
+    """The shipped two-primitive read seam, in ProtectedMcpServer.tool_read order.
+
+    Entitlement refusal first (Entitlement.permits_read), then the
+    resolve_inside path jail. This is the seam the driver-side capability probe
+    exercises (capability_probe, F-01): a path denial is an enforcement refusal on
+    a target that exists, never a missing-file/FileNotFoundError absence. It is
+    runtime discipline plus explicit denial, NOT a kernel/OS sandbox.
+    """
+    if not entitlement.permits_read(rel):
+        raise ScopeRefused(f"read outside the episode entitlement is refused: {rel!r}")
+    return resolve_inside(workspace_root, rel)
+
 @dataclass(frozen=True)
 class Entitlement:
     read_allow: tuple[str, ...]
@@ -367,7 +380,9 @@ class AuthorityBoundary:
         if not isinstance(phase, str) or phase not in PROPOSE_PHASES:
             raise PhaseRefused(
                 f"unknown phase {phase!r} is refused; the closed enum is {list(PROPOSE_PHASES)}; "
-                "ADVANCE is a read (workspace.observe/workspace.frontier), not a phase"
+                "GROUND (workspace.frontier/authorities/list/read/search) and ADVANCE "
+                "(workspace.observe/workspace.frontier) are reads, CHOOSE is planning, and none of "
+                "ground/choose/advance is a phase (N-01)"
             )
         for required in REQUIRED_FIELDS[phase]:
             if proposal.get(required) in (None, ""):

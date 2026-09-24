@@ -443,3 +443,105 @@ def test_contract_records_host_assumptions():
     assert not _honest_contract(doc + "\nThe environment is a kernel sandbox enforced for every process.\n")
     assert not _honest_contract(doc + "\nMCP survival verified under tools-empty.\n")
     assert not _honest_contract(doc.replace("Assumed about the host", "Facts"))
+
+
+# --------------------------------------------------------------------------
+# F-02 (conditions repair 1, AC-2a..d): the closed participant credential policy.
+# --------------------------------------------------------------------------
+F02_CREDENTIAL_NAMES = (
+    "AWS_ACCESS_KEY_ID",
+    "AWS_SECRET_ACCESS_KEY",
+    "AWS_SESSION_TOKEN",
+    "AWS_SECURITY_TOKEN",
+    "AWS_PROFILE",
+    "AWS_DEFAULT_REGION",
+    "AWS_REGION",
+    "GITHUB_TOKEN",
+    "GH_TOKEN",
+    "AZURE_OPENAI_ENDPOINT",
+    "AZURE_OPENAI_API_KEY",
+    "NC_EVAL_ROOT",
+    "NC_EVAL_CASE",
+    "nc_eval_root",
+    "nc_Eval_Mixed",
+    "aws_access_key_id",
+    "Github_Token",
+)
+
+
+def test_participant_child_env_removes_the_closed_credential_policy(tmp_path):
+    environ = {name: "leaked-" + name for name in F02_CREDENTIAL_NAMES}
+    environ["HOME"] = "/Users/someone"
+    environ["SAFE_UNRELATED"] = "kept"
+    cwd = tmp_path / "participant-cwd"
+    cwd.mkdir()
+    env = ec.participant_child_env(cwd, environ=environ, pinned_bin_dir=tmp_path / "empty-bin")
+    for name in F02_CREDENTIAL_NAMES:
+        assert name not in env, name
+    assert env["HOME"] == "/Users/someone"
+    assert env["PWD"] == str(cwd)
+    assert env["SAFE_UNRELATED"] == "kept"
+
+    # the policy is a documented closed LAW, not an ad-hoc partial list
+    for prefix in ("AWS_", "AZURE_OPENAI_", "GITHUB_", "GH_", "NC_EVAL_"):
+        assert prefix in ec.CREDENTIAL_KEY_PREFIXES
+    for name in F02_CREDENTIAL_NAMES:
+        assert ec.is_credential_key(name), name
+    assert ec.is_credential_key("NC_EVAL_ANYTHING_SUFFIXED")
+    assert not ec.is_credential_key("SAFE_UNRELATED")
+
+
+# --------------------------------------------------------------------------
+# F-04 (conditions repair 1, AC-3a): the destination census equality guard.
+# --------------------------------------------------------------------------
+def test_reset_refuses_a_destination_census_with_an_extra_entry(w2c_reset, tmp_path, monkeypatch):
+    """R07 kill: the per-entry loop only walks source paths, so only the
+    destination_census.paths() == source_census.paths() guard can see an EXTRA
+    destination entry. A copytree that appends one unauthorized overlay file must
+    be refused instead of silently producing a non-byte-equal destination.
+    """
+    real_copytree = nw.shutil.copytree
+
+    def copytree_with_overlay(source, destination, *args, **kwargs):
+        result = real_copytree(source, destination, *args, **kwargs)
+        if not args:  # the top-level reset call; recursive calls pass positionals
+            (Path(destination) / "unauthorized-overlay.txt").write_text("tampered\n", encoding="utf-8")
+        return result
+
+    monkeypatch.setattr(nw.shutil, "copytree", copytree_with_overlay)
+    destination = tmp_path / "dest-with-overlay"
+    with pytest.raises(ResetRefused) as refused:
+        w2c_reset("B", destination=destination)
+    assert "census" in str(refused.value)
+    assert not destination.exists()
+
+    # red control: restoring the real copytree makes the same reset succeed
+    monkeypatch.setattr(nw.shutil, "copytree", real_copytree)
+    clean = w2c_reset("B", destination=tmp_path / "dest-clean")
+    assert clean.destination.exists()
+    assert nw.census_files(clean.destination).paths() == nw.census_files(clean.source).paths()
+
+
+# --------------------------------------------------------------------------
+# F-06 (conditions repair 1, AC-5a..b): teardown refuses a foreign destination.
+# --------------------------------------------------------------------------
+def test_teardown_refuses_a_destination_that_is_not_this_instance(w2c_reset, tmp_path):
+    instance = w2c_reset("B")
+    original = instance.destination
+    bystander = tmp_path / "innocent-bystander"
+    bystander.mkdir()
+    (bystander / "keep.md").write_text("keep\n", encoding="utf-8")
+    instance.destination = bystander
+    try:
+        with pytest.raises(nw.TeardownRefused):
+            nw.teardown_workspace(instance)
+        assert (bystander / "keep.md").is_file()
+        assert original.exists()
+    finally:
+        instance.destination = original
+
+    # the normal path still removes exactly the recorded destination
+    nw.teardown_workspace(instance)
+    assert not original.exists()
+    assert not instance.run_dir.exists()
+    assert (bystander / "keep.md").is_file()

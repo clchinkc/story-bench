@@ -462,3 +462,77 @@ def test_arm_b_completes_matched_task_through_basic_mcp(w2c_reset, w2c_stdio_cli
     after = client.call_tool("workspace.observe", {"revision": 2})
     assert after["accepted_state_fingerprint"] == fingerprint
     assert nw.census_files(instance.destination).digest == accepted_bytes
+
+
+# --------------------------------------------------------------------------
+# F-05 (conditions repair 1, AC-4a): resolve_inside escape check, reached with a
+# genuine host owner wave so the ONLY possible refusal is scope-refused.
+# --------------------------------------------------------------------------
+def test_resolve_inside_escape_refused_with_a_genuine_owner_wave(w2c_harness, tmp_path):
+    """R08 kill: the shipped symlink cases never assert the exact escape refusal,
+    because without a wave the mutant still returns refused (with
+    owner-wave-refused). Here a genuine host owner wave answers the pending frame
+    request, so on the unmodified code only the resolve_inside workspace-root/
+    symlink escape check can refuse the proposal (scope-refused); on the mutant the
+    proposal is accepted instead.
+    """
+    instance, server, boundary, engine, waves = w2c_harness("B")
+    outside = tmp_path / "outside-target"
+    outside.mkdir()
+    (outside / "secret.md").write_text("secret\n", encoding="utf-8")
+    (instance.destination / "stories").mkdir(exist_ok=True)
+    (instance.destination / "stories" / "evil").symlink_to(outside, target_is_directory=True)
+    try:
+        (instance.destination / "stories" / "link.md").symlink_to(outside / "secret.md")
+        symlinked_file = True
+    except OSError:
+        symlinked_file = False
+
+    genesis_wave = waves.issue(request_id="req-genesis", decision="apply", revision=0)
+    genesis = boundary.propose(
+        {
+            "phase": "genesis",
+            "move": "plan-change",
+            "source": GENESIS_SOURCE,
+            "owner_wave_ref": genesis_wave,
+            "expected_revision": 0,
+        }
+    )
+    assert genesis["status"] == "accepted", genesis
+
+    frame = boundary.propose({"phase": "frame", "move": "scene-draft", "writes": WRITES})
+    assert frame["status"] == "ok", frame
+    request = frame["pending_owner_wave"]
+    fingerprint = boundary.accepted_fingerprint()
+
+    escape_paths = ["stories/evil/leak.md"]
+    if symlinked_file:
+        escape_paths.append("stories/link.md")
+    for rel in escape_paths:
+        wave = waves.issue(request_id=request, decision="apply", revision=frame["revision"])
+        result = boundary.propose(
+            {
+                "phase": "realize",
+                "move": "scene-draft",
+                "writes": [{"path": rel, "content": "escaped\n"}],
+                "owner_wave_ref": wave,
+                "expected_revision": frame["revision"],
+            }
+        )
+        assert result["status"] == "refused", (rel, result)
+        assert result["code"] == "scope-refused", (rel, result)
+    assert boundary.accepted_fingerprint() == fingerprint
+
+    # red control: the SAME wave-authorized realize succeeds for an in-scope path,
+    # so the refusal above is the escape check and not a missing wave or revision.
+    ok_wave = waves.issue(request_id=request, decision="apply", revision=frame["revision"])
+    ok = boundary.propose(
+        {
+            "phase": "realize",
+            "move": "scene-draft",
+            "writes": WRITES,
+            "owner_wave_ref": ok_wave,
+            "expected_revision": frame["revision"],
+        }
+    )
+    assert ok["status"] == "ok", ok

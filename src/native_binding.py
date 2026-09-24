@@ -1,7 +1,9 @@
 """Explicit pinned native artifact/executable resolution.
 
-The trusted host and the protected MCP server resolve the native narrative
-engine through THIS module only. Implicit PATH/PYTHONPATH discovery is refused
+The trusted host resolves the native narrative engine through THIS module.
+The protected MCP server does NOT resolve it: src/protected_mcp.py imports no
+native binding and receives the already-resolved engine (or its cooperative
+test double) by injection. Implicit PATH/PYTHONPATH discovery is refused
 (risk row N1). The native_binding_digest produced here is a member of the
 closed 16-member environment-ID record (shared-interface.md S5.1 #11).
 
@@ -143,7 +145,13 @@ def verify_artifact(path: str | Path, expected_sha256: str) -> str:
 
 
 def assert_pinned_name_is_absent_from_path(path_value: str) -> None:
-    """T4 helper: the destination PATH must not resolve the native CLI."""
+    """T4 helper: the PARTICIPANT child PATH must not resolve the native CLI.
+
+    The destination is the workspace copy, not a PATH; T4's PATH requirement is
+    about the participant child environment (environment_contract.participant_child_env).
+    Each entry is checked for the bare unpinned name narrative-craft, so a PATH
+    that would shadow the pinned absolute binding is refused.
+    """
     for entry in path_value.split(os.pathsep):
         if not entry:
             continue

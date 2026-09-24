@@ -45,11 +45,28 @@ so the precondition entails the zero-entry postcondition.
 `participant_cwd()` is a freshly created, empty temporary directory outside both
 the source snapshot and the destination workspace, removed after the child
 exits. `participant_child_env(cwd)` is a strip-list, deliberately not an
-allowlist: `os.environ` minus `PYTHONPATH`, `PYTHONHOME`, `VIRTUAL_ENV` and
-every `NC_EVAL_*` key, with `PWD` set to the temp cwd and `HOME` preserved
-(keychain auth survives). W2c supersedes the accepted host-runner precedent's
-untouched `PATH` and provider-key variables only: `PATH` is reduced to the
-directory of the pinned executable, and provider-key variables are removed.
+allowlist: `os.environ` minus `PYTHONPATH`, `PYTHONHOME`, `VIRTUAL_ENV`, with
+`PWD` set to the temp cwd and `HOME` preserved (keychain auth survives). W2c
+supersedes the accepted host-runner precedent's untouched `PATH` and
+provider-key variables only: `PATH` is reduced to the directory of the pinned
+executable, and a closed credential policy is applied.
+
+The credential policy is a closed LAW, not an ad-hoc partial list:
+`environment_contract.is_credential_key` removes a key when its upper-cased
+name is an exact member of `CREDENTIAL_EXACT_KEYS` (the provider keys plus
+`AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_SESSION_TOKEN`,
+`AWS_SECURITY_TOKEN`, `AWS_PROFILE`, `AWS_DEFAULT_REGION`, `AWS_REGION`,
+`GITHUB_TOKEN`, `GH_TOKEN`, `AZURE_OPENAI_ENDPOINT`, `AZURE_OPENAI_API_KEY`),
+or starts with a declared namespace prefix (`AWS_`, `AZURE_OPENAI_`,
+`GITHUB_`, `GH_`, `NC_EVAL_`), or ends with a declared credential suffix
+(`_API_KEY`, `_API_TOKEN`, `_API_SECRET`, `_SECRET_KEY`, `_ACCESS_TOKEN`).
+The prefix test upper-cases the key, so the whole `NC_EVAL_*` namespace is
+removed case-insensitively (including `NC_EVAL_root` and other case variants)
+and the F-02 AWS/GitHub/Azure leaks are closed. `capability_probe`'s own
+secret-key set is declared independently and is deliberately wider than this
+strip policy (it includes the probe sentinel `W2C_PROBE_SENTINEL_CREDENTIAL`),
+so the probe can observe a strip-list gap instead of confirming the list with
+its own keys.
 
 The destination-internal-cwd leak is closed by construction: `--setting-sources
 ""` excludes settings files, but project memory (`CLAUDE.md`/`AGENTS.md`) is
@@ -59,6 +76,40 @@ settings-free channel the `.claude/` census does not enumerate. The fresh empty
 temp cwd removes that channel independent of target-build behavior. Whether the
 target build loads such memory under `--setting-sources ""` cannot be settled
 read-only in W2c.
+
+## Driver-side blocked-capability probe (F-01)
+
+`capability_probe` observes each blocked channel from a child process launched
+with the participant's exact sanitized environment and cwd. The three path
+channels (`filesystem_escape`, `source_inspection`, `inherited_settings`) are
+decided by the SHIPPED enforcement seam, never by whether a fixture happened
+to create a file. The probe child imports `authority_boundary.guard_read` from
+a driver-supplied source path. `guard_read` is the exact read seam
+`ProtectedMcpServer.tool_read` uses: `Entitlement.permits_read(rel)` first,
+then `resolve_inside(workspace_root, rel)`. The child reports that seam's
+refusal as the authoritative channel outcome and separately records the raw OS
+read result in `raw_os`.
+
+Three driver-constructible worlds:
+
+| World | Target on disk | Entitlement | Outcome |
+|---|---|---|---|
+| W_GRANT | exists | permits the target | `granted` (present True) |
+| W_DENY | exists | refuses the target | `denied` (present False; the detail names the enforcement refusal) |
+| W_ABSENT | absent | permits the target | `absent` (explicit third outcome; `denied_channels()` does not count it) |
+
+The driver asserts the W_DENY target exists before the probe runs, and W_DENY
+and W_GRANT differ ONLY in the entitlement, so the denial provably comes from
+the entitlement and not from a missing file. An always-deny stub and an
+accept-all stub each fail the property test (the channel is falsifiable in
+both directions).
+
+Honest limit: the probe child is a DRIVER-SIDE instrument, not the participant,
+and it is handed the source path of the seam. This is runtime discipline plus
+explicit denial at the shipped Python seam, NOT a kernel or OS sandbox. A child
+that does not route through `guard_read`, or that escapes its process, is not
+constrained by the probe or by W2c, and the `raw_os` field records exactly that
+physical reachability.
 
 ## Environment ID
 
@@ -81,15 +132,20 @@ census, no exclusion of any kind), fixed package/artifact bindings, an empty
 conversation, empty memory, empty caches and a unique per-episode credential
 that is revoked at teardown. Conversation, memory, caches and credentials live
 in a host run directory outside the censused destination, so the destination
-census equals the authorized source snapshot for every arm. Teardown discards
-only its own destination and never modifies the source. Replay reproduces the
+census equals the authorized source snapshot for every arm. Teardown refuses to
+remove a directory that is not the instance's recorded destination, then
+discards only its own destination and never modifies the source. Replay reproduces the
 recorded observations from frozen artifacts with zero model calls and refuses
 when any of the 16 members or the frozen trajectory digest changed. A duplicate
 episode identity with identical content is idempotent; different content is
 refused with accepted bytes preserved. The single mutation channel is
-`workspace.propose` with the closed phase enum genesis, author-source, setup,
-frame, realize, prove, resume, reconcile. ADVANCE is a read of
-`workspace.observe`/`workspace.frontier`, not a phase.
+`workspace.propose` with the closed eight-member phase enum genesis,
+author-source, setup, frame, realize, prove, resume, reconcile. GROUND
+(`workspace.frontier`/`workspace.authorities`/`workspace.list`/
+`workspace.read`/`workspace.search`) and ADVANCE (`workspace.observe`/
+`workspace.frontier`) are reads, and CHOOSE is planning: none of `ground`,
+`choose` or `advance` is a phase, and `advance` (like any non-member) is
+refused as a phase with `phase-refused` (N-01).
 
 ## Protected by W2c (tier E, tested)
 
@@ -103,10 +159,14 @@ frame, realize, prove, resume, reconcile. ADVANCE is a read of
 - arm-flag gating and identical basic tool inventories;
 - the constructed isolation flags: `--tools ""`, `--setting-sources ""`,
   `--strict-mcp-config` with an explicit config, `--no-session-persistence`, no
-  provider key and no native executable on the participant PATH;
+  credential key under the closed `is_credential_key` policy and no native
+  executable on the participant PATH;
 - driver-side blocked-capability probes across filesystem, source inspection,
   tool execution, environment variables, inherited settings and tool discovery,
-  each with its red control;
+  each with its red control; the three path channels are observed in the three
+  driver-constructible worlds (W_GRANT/W_DENY/W_ABSENT) at the shipped
+  `guard_read` seam, so a denial names the enforcement refusal on a target that
+  exists and an absence is a separate outcome;
 - native binding pinning and refusal of implicit PATH/PYTHONPATH discovery.
 
 ## Constructed or asserted, not behaviorally observed in W2c

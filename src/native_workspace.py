@@ -160,6 +160,7 @@ class WorkspaceInstance:
     destination_census_digest: str
     credentials: Credentials
     _source_census: Mapping[str, Mapping[str, Any]] = field(default_factory=dict, repr=False)
+    _recorded_destination: str = field(default="", repr=False)
 
     @property
     def conversation_path(self) -> Path:
@@ -259,6 +260,7 @@ def reset_workspace(
         )
         environment_id = compute_environment_id(record)
         _write_json(run_dir / "environment.json", {"record": record, "environment_id": environment_id})
+        _write_json(run_dir / "destination.json", {"destination": str(destination)})
 
         destination_census = census_files(destination)
         if destination_census.paths() != source_census.paths():
@@ -289,15 +291,38 @@ def reset_workspace(
         destination_census_digest=destination_census.digest,
         credentials=credentials,
         _source_census=source_census.entries,
+        _recorded_destination=str(destination),
     )
 
 
 def teardown_workspace(instance: WorkspaceInstance) -> None:
-    """Discard only this operation's destination and revoke its credentials."""
-    if not str(instance.destination).startswith(str(Path(tempfile.gettempdir()))) and instance.destination.exists():
-        # The destination may be a caller-supplied workspace path; remove exactly it.
-        pass
-    shutil.rmtree(instance.destination, ignore_errors=True)
+    """Discard only THIS instance's recorded destination and revoke its credentials.
+
+    Teardown refuses to remove a directory that is not the destination recorded at
+    reset time (F-06). The per-instance record is the in-memory
+    `_recorded_destination` written by reset_workspace and, defensively, the
+    run-directory `destination.json`. A caller that mutates `instance.destination`
+    to another path is refused before any removal happens.
+    """
+    recorded = str(getattr(instance, "_recorded_destination", "") or "")
+    destination = Path(instance.destination)
+    record_path = instance.run_dir / "destination.json"
+    if record_path.exists():
+        raw = parse_canonical_json(record_path.read_text(encoding="utf-8"))
+        recorded_on_disk = str(raw.get("destination", ""))
+        if not recorded or recorded_on_disk != recorded:
+            raise TeardownRefused(
+                f"teardown refused: run-directory destination record {recorded_on_disk!r} is not {recorded!r}"
+            )
+        if Path(recorded_on_disk) != destination:
+            raise TeardownRefused(
+                f"teardown refused: {destination} is not this instance's recorded destination {recorded_on_disk}"
+            )
+    elif not recorded or Path(recorded) != destination:
+        raise TeardownRefused(
+            f"teardown refused: {destination} is not this instance's recorded destination {recorded!r}"
+        )
+    shutil.rmtree(destination, ignore_errors=True)
     if instance.run_dir.exists():
         creds_path = instance.run_dir / "credentials.json"
         if creds_path.exists():

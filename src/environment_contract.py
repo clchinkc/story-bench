@@ -213,8 +213,17 @@ def new_episode_id() -> str:
 # S4 rule 6 (N-04) — participant cwd and child environment.
 # --------------------------------------------------------------------------
 _INHERITED_INTERPRETER_VARS = ("PYTHONPATH", "PYTHONHOME", "VIRTUAL_ENV")
-_STRIP_PREFIXES = ("NC_EVAL_",)
-_PROVIDER_KEY_EXACT = frozenset(
+
+# F-02 / AC-2a..b: the CLOSED participant credential policy. It is a denylist
+# LAW, not an ad-hoc partial list: a key is removed when its upper-cased name
+# is an exact member, starts with a declared credential namespace prefix, or
+# ends with a declared credential suffix. The namespace prefixes are matched
+# case-insensitively, so NC_EVAL_* (including NC_EVAL_root) and every
+# case-variant AWS_/GITHUB_/GH_/AZURE_OPENAI_ spelling is covered. This closes
+# the F-02 leak of AWS_ACCESS_KEY_ID/AWS_SECRET_ACCESS_KEY/AWS_SESSION_TOKEN/
+# AWS_PROFILE/AWS_DEFAULT_REGION/GITHUB_TOKEN/GH_TOKEN/AZURE_OPENAI_ENDPOINT and
+# the case-variant nc_eval_root.
+CREDENTIAL_EXACT_KEYS: frozenset[str] = frozenset(
     {
         "ANTHROPIC_API_KEY",
         "ANTHROPIC_AUTH_TOKEN",
@@ -229,17 +238,45 @@ _PROVIDER_KEY_EXACT = frozenset(
         "TOGETHER_API_KEY",
         "GROQ_API_KEY",
         "COHERE_API_KEY",
-        "AZURE_OPENAI_API_KEY",
         "HF_TOKEN",
         "HUGGING_FACE_HUB_TOKEN",
+        "AWS_ACCESS_KEY_ID",
+        "AWS_SECRET_ACCESS_KEY",
+        "AWS_SESSION_TOKEN",
+        "AWS_SECURITY_TOKEN",
+        "AWS_PROFILE",
+        "AWS_DEFAULT_REGION",
+        "AWS_REGION",
+        "GITHUB_TOKEN",
+        "GH_TOKEN",
+        "AZURE_OPENAI_API_KEY",
+        "AZURE_OPENAI_ENDPOINT",
     }
 )
-_PROVIDER_KEY_SUFFIXES = ("_API_KEY", "_API_TOKEN", "_API_SECRET", "_SECRET_KEY", "_ACCESS_TOKEN")
+CREDENTIAL_KEY_PREFIXES: tuple[str, ...] = (
+    "AWS_",
+    "AZURE_OPENAI_",
+    "GITHUB_",
+    "GH_",
+    "NC_EVAL_",
+)
+CREDENTIAL_KEY_SUFFIXES: tuple[str, ...] = ("_API_KEY", "_API_TOKEN", "_API_SECRET", "_SECRET_KEY", "_ACCESS_TOKEN")
+
+
+def is_credential_key(name: str) -> bool:
+    """True when the closed credential policy removes this environment key."""
+    upper = name.upper()
+    return (
+        upper in CREDENTIAL_EXACT_KEYS
+        or upper.startswith(CREDENTIAL_KEY_PREFIXES)
+        or upper.endswith(CREDENTIAL_KEY_SUFFIXES)
+    )
 
 
 def is_provider_key(name: str) -> bool:
-    upper = name.upper()
-    return upper in _PROVIDER_KEY_EXACT or upper.endswith(_PROVIDER_KEY_SUFFIXES)
+    """Backward-compatible alias: the provider-key policy is a subset of the
+    closed credential policy above."""
+    return is_credential_key(name)
 
 
 def default_pinned_bin_dir() -> Path | None:
@@ -275,19 +312,19 @@ def participant_child_env(
     """The participant's exact sanitized environment.
 
     A strip-list, deliberately not an allowlist (host_runner.py:146-179):
-    os.environ minus PYTHONPATH/PYTHONHOME/VIRTUAL_ENV, minus the NC_EVAL_*
-    namespace, with PWD set to the temp cwd. HOME and the keychain surface
-    survive. W2c supersedes the precedent's untouched PATH and provider-key
-    variables only: PATH becomes the pinned executable directory and provider
-    keys are removed.
+    os.environ minus PYTHONPATH/PYTHONHOME/VIRTUAL_ENV and minus every key the
+    CLOSED credential policy (is_credential_key) names - an exact set plus the
+    AWS_/AZURE_OPENAI_/GITHUB_/GH_/NC_EVAL_ namespace prefixes, matched
+    case-insensitively, plus the credential suffixes - with PWD set to the temp
+    cwd. HOME and the keychain surface survive. W2c supersedes the precedent's
+    untouched PATH and provider-key variables only: PATH becomes the pinned
+    executable directory and the credential policy is applied.
     """
     base = dict(os.environ if environ is None else environ)
     env = {
         key: value
         for key, value in base.items()
-        if key not in _INHERITED_INTERPRETER_VARS
-        and not key.startswith(_STRIP_PREFIXES)
-        and not is_provider_key(key)
+        if key not in _INHERITED_INTERPRETER_VARS and not is_credential_key(key)
     }
     if pinned_bin_dir is None:
         pinned_bin_dir = default_pinned_bin_dir()

@@ -477,14 +477,41 @@ def test_blocked_capability_probes(driver_probe_env):
 
 
 def test_probe_denial_is_behavioral_not_schema_only(driver_probe_env):
-    sanitized, _ = driver_probe_env(permissive=False)
+    sanitized, sanitized_spec = driver_probe_env(permissive=False)
     permissive, _ = driver_probe_env(permissive=True)
 
+    # F-01: the denied path targets provably EXIST on disk before the probe runs,
+    # so the denial is an enforcement refusal, not a missing-file absence.
+    denied_workspace = Path(sanitized_spec["workspace_root"])
+    for channel in ("filesystem_escape", "source_inspection", "inherited_settings"):
+        target = denied_workspace / sanitized_spec["targets"][channel]
+        assert target.is_file(), channel
+        entry = sanitized["channels"][channel]
+        assert entry["outcome"] == "denied", channel
+        assert entry["present"] is False, channel
+        assert entry["detail"].startswith("ScopeRefused"), (channel, entry["detail"])
+        assert "entitlement" in entry["detail"], (channel, entry["detail"])
+        assert "FileNotFoundError" not in entry["detail"], (channel, entry["detail"])
+        # the honest raw-OS observation: the bytes were physically readable
+        assert entry["raw_os"] == "readable", channel
+        assert permissive["channels"][channel]["outcome"] == "granted", channel
+        assert permissive["channels"][channel]["detail"] == "operation succeeded", channel
+
+    # the third world: a permitted target that does not exist is an explicit
+    # "absent" outcome, carrying its FileNotFoundError and NOT counted as a
+    # denial by denied_channels().
+    absent, absent_spec = driver_probe_env(world="absent")
+    absent_workspace = Path(absent_spec["workspace_root"])
+    for channel in ("filesystem_escape", "source_inspection", "inherited_settings"):
+        target = absent_workspace / absent_spec["targets"][channel]
+        assert not target.exists(), channel
+        entry = absent["channels"][channel]
+        assert entry["outcome"] == "absent", channel
+        assert entry["present"] is False, channel
+        assert entry["detail"].startswith("FileNotFoundError"), (channel, entry["detail"])
+        assert channel not in cap.denied_channels(absent), channel
+
     # real child operations: a failed open/spawn is an exception, not a config read
-    assert sanitized["channels"]["filesystem_escape"]["detail"].startswith("FileNotFoundError")
-    assert sanitized["channels"]["source_inspection"]["detail"].startswith("FileNotFoundError")
-    assert permissive["channels"]["filesystem_escape"]["detail"] == "operation succeeded"
-    assert permissive["channels"]["source_inspection"]["detail"] == "operation succeeded"
     assert sanitized["channels"]["cli_execution"]["detail"].startswith("FileNotFoundError")
     assert permissive["channels"]["cli_execution"]["detail"] == "operation succeeded"
     assert sanitized["channels"]["environment_secrets"]["present"] is False
@@ -493,3 +520,124 @@ def test_probe_denial_is_behavioral_not_schema_only(driver_probe_env):
     assert permissive["channels"]["inherited_settings"]["present"] is True
     assert sanitized["channels"]["tool_discovery"]["present"] is False
     assert permissive["channels"]["tool_discovery"]["present"] is True
+
+
+# --------------------------------------------------------------------------
+# F-01 (conditions repair 1, AC-1a..d): the three-world behavioural property.
+# --------------------------------------------------------------------------
+PATH_PROBE_CHANNELS = ("filesystem_escape", "source_inspection", "inherited_settings")
+
+
+def _three_world_property_holds(grant, deny, absent):
+    """AC-1a: grant True, deny False with an enforcement refusal, absent explicit."""
+    for channel in PATH_PROBE_CHANNELS:
+        if grant["channels"][channel]["outcome"] != "granted":
+            return False
+        if deny["channels"][channel]["outcome"] != "denied":
+            return False
+        if "ScopeRefused" not in deny["channels"][channel]["detail"]:
+            return False
+        if "FileNotFoundError" in deny["channels"][channel]["detail"]:
+            return False
+        if absent["channels"][channel]["outcome"] != "absent":
+            return False
+        if channel in cap.denied_channels(absent):
+            return False
+    return True
+
+
+def test_probe_path_denial_three_world_property(driver_probe_env):
+    grant, grant_spec = driver_probe_env(world="grant")
+    deny, deny_spec = driver_probe_env(world="deny")
+    absent, _ = driver_probe_env(world="absent")
+
+    # AC-1b: the W_DENY targets exist on disk before the probe runs
+    work = Path(deny_spec["workspace_root"])
+    for channel in PATH_PROBE_CHANNELS:
+        assert (work / deny_spec["targets"][channel]).is_file(), channel
+    # AC-1c: W_DENY and W_GRANT differ ONLY in the entitlement
+    core = ("workspace_root", "targets", "seam", "seam_paths")
+    assert {key: grant_spec[key] for key in core} == {key: deny_spec[key] for key in core}
+    assert grant_spec["entitlement"] != deny_spec["entitlement"]
+    assert grant_spec["entitlement"] == cap.WORLD_ENTITLEMENTS["grant"]
+    assert deny_spec["entitlement"] == cap.WORLD_ENTITLEMENTS["deny"]
+
+    assert _three_world_property_holds(grant, deny, absent) is True
+
+
+def test_probe_path_denial_is_falsifiable_with_stub_seams(driver_probe_env, tmp_path):
+    """AC-1d: an always-deny stub and an accept-all stub EACH fail AC-1a."""
+    stub_dir = tmp_path / "stub-seams"
+    stub_dir.mkdir()
+    (stub_dir / "always_deny_seam.py").write_text(
+        "class SeamRefused(Exception):\n"
+        "    pass\n"
+        "\n"
+        "\n"
+        "def guard_read(workspace_root, rel, entitlement):\n"
+        "    raise SeamRefused('stub refuses every path')\n",
+        encoding="utf-8",
+    )
+    (stub_dir / "accept_all_seam.py").write_text(
+        "from pathlib import Path\n"
+        "\n"
+        "\n"
+        "def guard_read(workspace_root, rel, entitlement):\n"
+        "    return Path(workspace_root) / rel\n",
+        encoding="utf-8",
+    )
+    paths = [str(stub_dir)]
+
+    grant_real, _ = driver_probe_env(world="grant")
+    deny_real, _ = driver_probe_env(world="deny")
+    absent, _ = driver_probe_env(world="absent")
+    grant_deny_stub, _ = driver_probe_env(world="grant", seam="always_deny_seam:guard_read", seam_paths=paths)
+    deny_accept_stub, _ = driver_probe_env(world="deny", seam="accept_all_seam:guard_read", seam_paths=paths)
+
+    assert _three_world_property_holds(grant_real, deny_real, absent) is True
+    # an always-deny seam cannot observe the W_GRANT grant
+    assert _three_world_property_holds(grant_deny_stub, deny_real, absent) is False
+    # an accept-all seam cannot observe the W_DENY entitlement refusal
+    assert _three_world_property_holds(grant_real, deny_accept_stub, absent) is False
+
+
+# --------------------------------------------------------------------------
+# F-02 (conditions repair 1, AC-2c): the probe secret set is independent.
+# --------------------------------------------------------------------------
+def test_probe_secret_set_is_independently_derived(driver_probe_env):
+    legacy = {"ANTHROPIC_API_KEY", "OPENAI_API_KEY", "DEEPSEEK_API_KEY"}
+    f02 = {
+        "AWS_ACCESS_KEY_ID", "AWS_SECRET_ACCESS_KEY", "AWS_SESSION_TOKEN",
+        "AWS_PROFILE", "AWS_DEFAULT_REGION", "GITHUB_TOKEN", "GH_TOKEN",
+        "AZURE_OPENAI_API_KEY", "AZURE_OPENAI_ENDPOINT", "NC_EVAL_ROOT",
+        "nc_eval_root",
+    }
+    assert isinstance(cap.DEFAULT_SECRET_KEYS, tuple)
+    assert legacy < set(cap.DEFAULT_SECRET_KEYS)  # a strict superset of the old set
+    assert {name.upper() for name in f02} <= {key.upper() for key in cap.DEFAULT_SECRET_KEYS}
+    # The probe is NOT derived from the strip policy: it names a credential the
+    # strip policy does not remove, so a strip-list gap stays observable instead
+    # of the probe confirming the strip list with its own key set.
+    assert not ec.is_credential_key("W2C_PROBE_SENTINEL_CREDENTIAL")
+    assert "W2C_PROBE_SENTINEL_CREDENTIAL" in cap.DEFAULT_SECRET_KEYS
+
+    # A world that leaks an AWS/GitHub credential - exactly the pre-repair F-02
+    # leak the pre-repair strip list did not remove - is reported present=True.
+    _, spec = driver_probe_env(permissive=False)
+    leaky = {
+        "PATH": "",
+        "AWS_ACCESS_KEY_ID": "AKIA-leaked",
+        "AWS_SECRET_ACCESS_KEY": "leaked",
+        "GITHUB_TOKEN": "ghp_leaked",
+        "nc_eval_root": "/runs/leaked",
+        "W2C_PROBE_SENTINEL_CREDENTIAL": "sentinel-leaked",
+    }
+    cwd = ec.participant_cwd()
+    try:
+        leaked = cap.run_probe(spec=spec, cwd=cwd, env=leaky)
+    finally:
+        ec.cleanup_participant_cwd(cwd)
+    assert leaked["channels"]["environment_secrets"]["present"] is True
+    detail = leaked["channels"]["environment_secrets"]["detail"]
+    for name in ("AWS_ACCESS_KEY_ID", "GITHUB_TOKEN", "nc_eval_root", "W2C_PROBE_SENTINEL_CREDENTIAL"):
+        assert name in detail

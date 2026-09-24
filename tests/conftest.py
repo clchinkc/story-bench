@@ -511,17 +511,31 @@ def w2c_stdio_client(tmp_path):
 
 @pytest.fixture
 def driver_probe_env(tmp_path):
-    def _run(*, permissive=False, pinned_bin_dir=None, workspace_root=None):
-        cwd = ec.participant_cwd()
-        probe_root = tmp_path / ("probe-permissive" if permissive else "probe-sanitized")
+    """Drive the probe in one of the three F-01 worlds.
+
+    The workspace disk layout is shared across calls (tmp_path/probe-world), so a
+    grant spec and a deny spec for the same test differ ONLY in the entitlement.
+    ``permissive=True`` is the red control: the grant entitlement plus the
+    permissive CLI/import/secret surface.
+    """
+
+    def _run(*, permissive=False, world=None, pinned_bin_dir=None, seam=None, seam_paths=None):
+        effective = "grant" if permissive else (world or "deny")
+        probe_root = tmp_path / "probe-world"
         probe_root.mkdir(parents=True, exist_ok=True)
+        workspace = cap.build_probe_world(probe_root, open_world=permissive)
+        spec = cap.build_probe_spec(
+            probe_root=probe_root,
+            workspace_root=workspace,
+            entitlement=cap.WORLD_ENTITLEMENTS[effective],
+            targets=cap.world_targets(effective),
+            world=effective,
+            seam=seam,
+            seam_paths=seam_paths,
+        )
+        cwd = ec.participant_cwd()
         if permissive:
-            cap.grant_permissive_world(probe_root)
-        spec = cap.build_probe_spec(probe_root=probe_root)
-        if workspace_root is not None:
-            spec["workspace_root"] = str(workspace_root)
-        if permissive:
-            base = {key: value for key, value in os.environ.items() if not ec.is_provider_key(key)}
+            base = {key: value for key, value in os.environ.items() if not ec.is_credential_key(key)}
             env = cap.permissive_env(base, probe_root)
         else:
             empty_bin = tmp_path / "empty-bin"
