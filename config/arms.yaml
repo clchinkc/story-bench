@@ -1,0 +1,73 @@
+# W2c arm manifest — the single authority for the A/B/C/D treatment flags.
+# New file (frozen existing config/ untouched). pyyaml is already a declared
+# dependency, so adding this file changes no dependency and no lock.
+schema_version: 1
+
+harness:
+  version: "story-bench-harness-0.2c"
+  # The frozen isolation flag set (ADR-023 D015 precedent). {tools} is always
+  # the empty string and {mcp_config} is the explicit protected config path.
+  argv_template: ["claude", "-p", "--tools", "", "--setting-sources", "", "--strict-mcp-config", "--mcp-config", "{mcp_config}", "--no-session-persistence", "--model", "{model}"]
+  model_snapshot: "claude-sonnet-4-5@frozen-2026-09"
+  reasoning_effort: "medium"
+  temperature: 0.0
+  seed: 20260924
+  max_turns: 40
+  max_retries: 2
+  max_output_tokens: 8192
+  wall_time_s: 600
+  dollar_cap_usd: 0
+  latency_budget_ms: 250
+
+basic_mcp:
+  namespace: "workspace"
+  server_id: "story-bench-protected-mcp"
+  server_version: "1.0.0"
+  transport: "stdio"
+  protocol_version: "2024-11-05"
+  tools:
+    - name: "workspace.list"
+      input_schema: {type: object, properties: {scope: {type: string}}, additionalProperties: false}
+    - name: "workspace.read"
+      input_schema: {type: object, properties: {path: {type: string}, max_bytes: {type: integer}}, required: [path], additionalProperties: false}
+    - name: "workspace.search"
+      input_schema: {type: object, properties: {query: {type: string}, scope: {type: string}, max_hits: {type: integer}}, required: [query], additionalProperties: false}
+    - name: "workspace.frontier"
+      input_schema: {type: object, properties: {}, additionalProperties: false}
+    - name: "workspace.authorities"
+      input_schema: {type: object, properties: {kind: {type: string}}, additionalProperties: false}
+    - name: "workspace.observe"
+      input_schema: {type: object, properties: {revision: {type: integer}}, required: [revision], additionalProperties: false}
+    - name: "workspace.propose"
+      input_schema: {type: object, properties: {phase: {type: string}, move: {type: string}, rationale: {type: string}}, required: [phase], additionalProperties: true}
+
+specialized_mcp:
+  namespace: "nc"
+  tools:
+    - name: "nc.ground"
+    - name: "nc.proof_families"
+    - name: "nc.plan_candidate"
+    - name: "nc.critique_packet"
+    - name: "nc.critique_ingest"
+
+treatment_packet:
+  channel: "host-treatment-packet"
+  arm_b_package_version: "arm-b-v1"
+  arm_b_instruction_file: "src/arm_b_package/v1/SKILL.md"
+
+equalisation:
+  information_entitlement: "identical"
+  author_intent: "identical"
+  memory_initialization: "empty"
+  model_snapshot: "identical"
+  budget: "identical"
+  native_binding: "identical"
+
+logging:
+  required_channels: ["output_disclosure", "availability", "call_count", "content_reference", "cost"]
+
+arms:
+  A: {instruction_treatment: "off", specialized_tools: "off"}
+  B: {instruction_treatment: "arm-b-v1", specialized_tools: "off", treatment_packet: "arm-b-v1"}
+  C: {instruction_treatment: "off", specialized_tools: "on"}
+  D: {instruction_treatment: "arm-b-v1", specialized_tools: "on", treatment_packet: "arm-b-v1"}

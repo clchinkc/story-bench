@@ -1,0 +1,407 @@
+{
+  "schemaVersion": 1,
+  "packageVersion": "arm-b-v1",
+  "armBSkillOnlyClaim": true,
+  "sourceSkill": {
+    "identity": "narrative-craft-packaged-skill",
+    "path": "skills/narrative-craft/SKILL.md",
+    "sha256": "3f4ddcf4245f232400485ccedf5931f59916793e62b0a15a3c16601ac7b42830",
+    "installedAt": "narrative_craft/data/skill/SKILL.md",
+    "nativeBinding": "286b006f9712d3084b83c111bc012963088b7afc"
+  },
+  "instructionFile": "v1/SKILL.md",
+  "instructionSha256": "828032de81ee8642c5bf07e33ef2789c1ef30092ab782a0d36a2877d0d728102",
+  "deliveryChannel": "host-treatment-packet",
+  "hostServicesEqualInAllArms": [
+    "owner-wave answering by the labeled simulated-author fixture",
+    "genesis authorization",
+    "host-side storage of prepared packets"
+  ],
+  "derivation": [
+    {
+      "id": "D01",
+      "kind": "cli-to-basic-mcp",
+      "source": "doctor; check all/plan/story/semantic/format; story frontier",
+      "basicOperation": "workspace.frontier|workspace.observe",
+      "change": "Replaced the deterministic check and frontier invocations with the read-only workspace.frontier projection (package_status, checks, accepted revision, pending owner waves). Checks never write a verification cache.",
+      "mechanismPreserved": "GROUND (read-only grounding)",
+      "capabilityDelta": {
+        "kind": "none",
+        "reference": null,
+        "reason": "Every fact is returned by a read; no capability is added or removed.",
+        "hostServiceEqualInAllArms": true,
+        "removesMatchedTaskStep": false,
+        "parentAcceptanceRef": null
+      }
+    },
+    {
+      "id": "D02",
+      "kind": "cli-to-basic-mcp",
+      "source": "plan model get; plan source status; story model get; character model get; character list/get/readiness; decision list/get; eval list/get; eval proof families",
+      "basicOperation": "workspace.authorities",
+      "change": "Replaced the authority read verbs with one typed workspace.authorities read (kind-scoped), returning the same models, source status, decisions, evaluations and proof families.",
+      "mechanismPreserved": "GROUND (authority reading)",
+      "capabilityDelta": {
+        "kind": "none",
+        "reference": null,
+        "reason": "Every fact is returned by a read; no capability is added or removed.",
+        "hostServiceEqualInAllArms": true,
+        "removesMatchedTaskStep": false,
+        "parentAcceptanceRef": null
+      }
+    },
+    {
+      "id": "D03",
+      "kind": "cli-to-basic-mcp",
+      "source": "project init",
+      "basicOperation": "workspace.propose phase=genesis",
+      "change": "Replaced workspace initialization with the genesis phase; the phase is refused unless the host supplies the owner_wave_ref for the genesis authorization.",
+      "mechanismPreserved": "GROUND -> genesis",
+      "capabilityDelta": {
+        "kind": "host-service",
+        "reference": "genesis authorization",
+        "reason": "Initialization authority is supplied host-side identically in all arms.",
+        "hostServiceEqualInAllArms": true,
+        "removesMatchedTaskStep": false,
+        "parentAcceptanceRef": null
+      }
+    },
+    {
+      "id": "D04",
+      "kind": "cli-to-basic-mcp",
+      "source": "character create; character scaffold",
+      "basicOperation": "workspace.propose phase=author-source",
+      "change": "Replaced record creation and scaffold export with the author-source phase, which never authors the guarded origin section.",
+      "mechanismPreserved": "CHOOSE/FRAME (record authoring)",
+      "capabilityDelta": {
+        "kind": "none",
+        "reference": null,
+        "reason": "Creating and scaffolding a Character is still a participant action; only the channel changed.",
+        "hostServiceEqualInAllArms": true,
+        "removesMatchedTaskStep": false,
+        "parentAcceptanceRef": null
+      }
+    },
+    {
+      "id": "D05",
+      "kind": "cli-to-basic-mcp",
+      "source": "eval story semantic setup; eval story critique setup; eval character setup",
+      "basicOperation": "workspace.propose phase=setup",
+      "change": "Replaced packet preparation with the setup phase, which returns the host-stored packet_id and packet_path for packet_kind semantic, critique or character.",
+      "mechanismPreserved": "FRAME (packet preparation)",
+      "capabilityDelta": {
+        "kind": "host-service",
+        "reference": "host-side storage of prepared packets",
+        "reason": "Packet storage was always host-side; the participant still requests and receives the packet.",
+        "hostServiceEqualInAllArms": true,
+        "removesMatchedTaskStep": false,
+        "parentAcceptanceRef": null
+      }
+    },
+    {
+      "id": "D06",
+      "kind": "cli-to-basic-mcp",
+      "source": "run --move (reach the next required action)",
+      "basicOperation": "workspace.propose phase=frame",
+      "change": "Replaced reaching the next required action with the frame phase; the declared move and bounded writes are stated explicitly before any staging.",
+      "mechanismPreserved": "FRAME (bounded change framing)",
+      "capabilityDelta": {
+        "kind": "none",
+        "reference": null,
+        "reason": "The participant still frames the move; the declared writes now travel as structured paths.",
+        "hostServiceEqualInAllArms": true,
+        "removesMatchedTaskStep": false,
+        "parentAcceptanceRef": null
+      }
+    },
+    {
+      "id": "D07",
+      "kind": "cli-to-basic-mcp",
+      "source": "run --candidates",
+      "basicOperation": "workspace.propose phase=realize",
+      "change": "Replaced candidate staging with the realize phase, which returns the content-addressed candidate_bundle for the authorized declared writes.",
+      "mechanismPreserved": "REALIZE (candidate staging)",
+      "capabilityDelta": {
+        "kind": "none",
+        "reference": null,
+        "reason": "Candidate staging is unchanged as a participant capability.",
+        "hostServiceEqualInAllArms": true,
+        "removesMatchedTaskStep": false,
+        "parentAcceptanceRef": null
+      }
+    },
+    {
+      "id": "D08",
+      "kind": "cli-to-basic-mcp",
+      "source": "eval record --file; eval story critique ingest; eval character ingest; check format --schema",
+      "basicOperation": "workspace.propose phase=prove",
+      "change": "Replaced proof/critique/character ingest with the prove phase and typed evidence admission bound to the candidate bytes.",
+      "mechanismPreserved": "PROVE (typed evidence admission)",
+      "capabilityDelta": {
+        "kind": "none",
+        "reference": null,
+        "reason": "Evidence review and ingestion remain participant actions; malformed or mismatched artifacts are refused.",
+        "hostServiceEqualInAllArms": true,
+        "removesMatchedTaskStep": false,
+        "parentAcceptanceRef": null
+      }
+    },
+    {
+      "id": "D09",
+      "kind": "cli-to-basic-mcp",
+      "source": "run --candidate-bundle <hash> --proof-evaluation <id>",
+      "basicOperation": "workspace.propose phase=resume",
+      "change": "Replaced bundle resumption with the resume phase, which returns owner-wait when the exact-result owner wave is unanswered.",
+      "mechanismPreserved": "PROVE -> resume",
+      "capabilityDelta": {
+        "kind": "none",
+        "reference": null,
+        "reason": "Resuming a bundle with its proof is unchanged as a participant capability.",
+        "hostServiceEqualInAllArms": true,
+        "removesMatchedTaskStep": false,
+        "parentAcceptanceRef": null
+      }
+    },
+    {
+      "id": "D10",
+      "kind": "cli-to-basic-mcp",
+      "source": "resume of the same bundle to reconcile after the exact-result owner answer",
+      "basicOperation": "workspace.propose phase=reconcile",
+      "change": "Replaced the reconcile resumption with the reconcile phase, which requires the host-supplied exact-result owner_wave_ref.",
+      "mechanismPreserved": "RECONCILE (accepted result)",
+      "capabilityDelta": {
+        "kind": "host-service",
+        "reference": "owner-wave answering by the labeled simulated-author fixture",
+        "reason": "The owner answer was never a participant capability; it is supplied host-side identically in all arms.",
+        "hostServiceEqualInAllArms": true,
+        "removesMatchedTaskStep": false,
+        "parentAcceptanceRef": null
+      }
+    },
+    {
+      "id": "D11",
+      "kind": "cli-to-basic-mcp",
+      "source": "decision answer <request-id> --decision apply|revise|reject --rationale ... --decided-by ...",
+      "basicOperation": "owner_wave_ref (host-supplied)",
+      "change": "Removed the participant answer verb. The environment's labeled simulated-author fixture answers the request and the participant only references the resulting wave.",
+      "mechanismPreserved": "OWNER WAVE (author control)",
+      "capabilityDelta": {
+        "kind": "host-service",
+        "reference": "owner-wave answering by the labeled simulated-author fixture",
+        "reason": "Answering a human ruling was always forbidden to the participant; it is now unexpressible.",
+        "hostServiceEqualInAllArms": true,
+        "removesMatchedTaskStep": false,
+        "parentAcceptanceRef": null
+      }
+    },
+    {
+      "id": "D12",
+      "kind": "cli-to-basic-mcp",
+      "source": "apply / revise / reject",
+      "basicOperation": "workspace.propose phase=reconcile with a host owner_wave_ref",
+      "change": "Expressed the three owner outcomes as the decision carried by the host-supplied wave; the participant cannot choose or alter it.",
+      "mechanismPreserved": "OWNER WAVE -> RECONCILE",
+      "capabilityDelta": {
+        "kind": "host-service",
+        "reference": "owner-wave answering by the labeled simulated-author fixture",
+        "reason": "The outcome vocabulary is preserved; selection is host-side identically in all arms.",
+        "hostServiceEqualInAllArms": true,
+        "removesMatchedTaskStep": false,
+        "parentAcceptanceRef": null
+      }
+    },
+    {
+      "id": "D13",
+      "kind": "cli-to-basic-mcp",
+      "source": "ADVANCE",
+      "basicOperation": "workspace.observe|workspace.frontier (a read, not a propose phase)",
+      "change": "Stated ADVANCE as a read of the resulting frontier; no advance phase exists in the closed enum, so it cannot be passed as a mutation.",
+      "mechanismPreserved": "ADVANCE (read)",
+      "capabilityDelta": {
+        "kind": "none",
+        "reference": null,
+        "reason": "ADVANCE was always a read; the package now says so explicitly instead of implying a step.",
+        "hostServiceEqualInAllArms": true,
+        "removesMatchedTaskStep": false,
+        "parentAcceptanceRef": null
+      }
+    },
+    {
+      "id": "D14",
+      "kind": "cli-to-basic-mcp",
+      "source": "apply/revise/reject, export and publication closeout",
+      "basicOperation": "host release gate (outside the matched task)",
+      "change": "Stated export and publication closeout as a host release gate outside the matched scene-draft task; the package instructs the participant to report remaining gaps instead of claiming publication.",
+      "mechanismPreserved": "closeout (host gate)",
+      "capabilityDelta": {
+        "kind": "none",
+        "reference": null,
+        "reason": "Export/publication closeout is not a step the matched task requires of the participant in any arm; release ownership is unchanged.",
+        "hostServiceEqualInAllArms": true,
+        "removesMatchedTaskStep": false,
+        "parentAcceptanceRef": null
+      }
+    },
+    {
+      "id": "D15",
+      "kind": "cli-to-basic-mcp",
+      "source": "../../docs/api.md (API contract link)",
+      "basicOperation": "restated inline (inlined loop and phase description)",
+      "change": "Dropped the link and restated the supported loop and phase operations inline so the package is self-contained and points at no package source.",
+      "mechanismPreserved": "self-containment",
+      "capabilityDelta": {
+        "kind": "none",
+        "reference": null,
+        "reason": "No participant capability changes; the contract is restated rather than linked.",
+        "hostServiceEqualInAllArms": true,
+        "removesMatchedTaskStep": false,
+        "parentAcceptanceRef": null
+      }
+    },
+    {
+      "id": "D16",
+      "kind": "cli-to-basic-mcp",
+      "source": "../../spec/narrative-system.yaml (system specification link)",
+      "basicOperation": "restated inline",
+      "change": "Dropped the link; the loop, ownership and evidence rules are restated inline.",
+      "mechanismPreserved": "self-containment",
+      "capabilityDelta": {
+        "kind": "none",
+        "reference": null,
+        "reason": "No participant capability changes.",
+        "hostServiceEqualInAllArms": true,
+        "removesMatchedTaskStep": false,
+        "parentAcceptanceRef": null
+      }
+    },
+    {
+      "id": "D17",
+      "kind": "cli-to-basic-mcp",
+      "source": "../../docs/character-dossier.md (dossier contract link)",
+      "basicOperation": "restated inline (Character work section)",
+      "change": "Dropped the link and restated the dossier/model split, origin-guard and readiness rules inline.",
+      "mechanismPreserved": "self-containment",
+      "capabilityDelta": {
+        "kind": "none",
+        "reference": null,
+        "reason": "No participant capability changes.",
+        "hostServiceEqualInAllArms": true,
+        "removesMatchedTaskStep": false,
+        "parentAcceptanceRef": null
+      }
+    },
+    {
+      "id": "D18",
+      "kind": "cli-to-basic-mcp",
+      "source": "../../docs/character-architecture.md (character architecture link)",
+      "basicOperation": "restated inline",
+      "change": "Dropped the link; the model-versus-source boundary is restated inline.",
+      "mechanismPreserved": "self-containment",
+      "capabilityDelta": {
+        "kind": "none",
+        "reference": null,
+        "reason": "No participant capability changes.",
+        "hostServiceEqualInAllArms": true,
+        "removesMatchedTaskStep": false,
+        "parentAcceptanceRef": null
+      }
+    },
+    {
+      "id": "D19",
+      "kind": "cli-to-basic-mcp",
+      "source": "../../docs/review-provider-contract.md (review provider contract link)",
+      "basicOperation": "restated inline (evidence discipline)",
+      "change": "Dropped the link and restated the evidence-resolution, praise-polarity and no-invented-evidence rules inline.",
+      "mechanismPreserved": "self-containment",
+      "capabilityDelta": {
+        "kind": "none",
+        "reference": null,
+        "reason": "No participant capability changes.",
+        "hostServiceEqualInAllArms": true,
+        "removesMatchedTaskStep": false,
+        "parentAcceptanceRef": null
+      }
+    },
+    {
+      "id": "D20",
+      "kind": "cli-to-basic-mcp",
+      "source": "../../docs/character-eval-protocol.md (character evaluation protocol link)",
+      "basicOperation": "restated inline",
+      "change": "Dropped the link; the provider-neutral, model-free evaluation boundary is restated inline.",
+      "mechanismPreserved": "self-containment",
+      "capabilityDelta": {
+        "kind": "none",
+        "reference": null,
+        "reason": "No participant capability changes.",
+        "hostServiceEqualInAllArms": true,
+        "removesMatchedTaskStep": false,
+        "parentAcceptanceRef": null
+      }
+    },
+    {
+      "id": "D21",
+      "kind": "cli-to-basic-mcp",
+      "source": "eval proof families --move <move> --manifest-delta --with-candidate-bytes",
+      "basicOperation": "workspace.authorities (proof_families)",
+      "change": "Replaced the proof-family coverage invocation with the proof_families read of workspace.authorities.",
+      "mechanismPreserved": "PROVE (coverage inspection)",
+      "capabilityDelta": {
+        "kind": "none",
+        "reference": null,
+        "reason": "The same proof-family facts are returned by a read.",
+        "hostServiceEqualInAllArms": true,
+        "removesMatchedTaskStep": false,
+        "parentAcceptanceRef": null
+      }
+    },
+    {
+      "id": "D22",
+      "kind": "cli-to-basic-mcp",
+      "source": "semantic diagnostic exports requested with --dump-model",
+      "basicOperation": "host-side diagnostic (outside the matched task)",
+      "change": "Stated the diagnostic export as a host-side, derived artifact outside the participant surface.",
+      "mechanismPreserved": "diagnostics (host)",
+      "capabilityDelta": {
+        "kind": "none",
+        "reference": null,
+        "reason": "The diagnostic is derived and outside the matched task; no matched-task capability changes.",
+        "hostServiceEqualInAllArms": true,
+        "removesMatchedTaskStep": false,
+        "parentAcceptanceRef": null
+      }
+    },
+    {
+      "id": "D23",
+      "kind": "cli-to-basic-mcp",
+      "source": "Use published APIs and artifact schemas for integrations",
+      "basicOperation": "not applicable in the protected environment",
+      "change": "Dropped: the participant has no package source and no integration surface; integrations remain a host concern.",
+      "mechanismPreserved": "out-of-scope (host)",
+      "capabilityDelta": {
+        "kind": "none",
+        "reference": null,
+        "reason": "No matched-task capability changes.",
+        "hostServiceEqualInAllArms": true,
+        "removesMatchedTaskStep": false,
+        "parentAcceptanceRef": null
+      }
+    }
+  ],
+  "excluded": [
+    {
+      "kind": "vault-overlay-skill",
+      "reference": ".claude/skills/narrative-craft/",
+      "reason": "The vault overlay skill and its private knowledge routes are excluded from the portable treatment; the package derives from the installed packaged skill only."
+    },
+    {
+      "kind": "private-knowledge",
+      "reference": "vault-private-route-index",
+      "reason": "Private knowledge routes, project memories, feedback stores and personalized knowledge are excluded and are not restated in the package."
+    },
+    {
+      "kind": "specialized-capability",
+      "reference": "specialized-tool-namespace",
+      "reason": "Specialized namespace operations are organization/derivation convenience only and are absent for arm B; every underlying fact remains reachable through the basic surface."
+    }
+  ]
+}
