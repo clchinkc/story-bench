@@ -151,8 +151,9 @@ def arm_b_instruction_path(document: Mapping[str, Any] | None = None) -> str:
 def compose_treatment_packet(*, arm: str, task_brief: str, arm_b_instruction: str, path: str | Path | None = None) -> str:
     """The declared non-settings treatment-packet channel (S4 rule 3).
 
-    The same host-composed mechanism for every arm; only the arm-B instruction
-    text differs. For A/C the packet is the bare task brief.
+    The same host-composed mechanism for every arm. For the instruction-treated
+    arms (B and D) the arm-B instruction text is prepended to the brief; for A/C
+    the packet is the bare task brief.
     """
     manifest = resolve_arm(arm, path)
     if manifest.instruction_treatment:

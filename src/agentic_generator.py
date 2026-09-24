@@ -5,6 +5,7 @@ This module handles multi-turn agentic tasks where models must:
 - Ask questions to discover constraints (Constraint Discovery)
 - Plan before executing (Planning-then-Execution)
 - Revise based on feedback (Iterative Revision)
+- Improve through critic feedback rounds (Critique Improvement)
 
 These tasks test higher-order capabilities beyond single-shot generation.
 """
@@ -40,7 +41,7 @@ class AgenticResult:
     task_id: str
     task_type: str
     agentic_type: (
-        str  # "constraint_discovery", "planning_execution", "iterative_revision"
+        str  # "constraint_discovery", "planning_execution", "iterative_revision", "critique_improvement"
     )
     theory: str
     model: str
@@ -56,8 +57,8 @@ class AgenticResult:
     total_turns: int
     questions_asked: int  # For constraint discovery
     constraints_discovered: int  # For constraint discovery
-    plan_quality: float | None  # For planning-execution
-    revision_count: int  # For iterative revision
+    plan_quality: float | None  # For planning-execution (not populated here; judged by the evaluator)
+    revision_count: int  # For iterative revision and critique improvement
 
     # Token/cost tracking
     total_prompt_tokens: int
@@ -270,6 +271,7 @@ Output ONLY the story (no explanations)."""
 
     @classmethod
     def build_oracle_prompt(cls, question, story_context, constraint_info):
+        """Disabled: semantic oracle is unqualified, so no oracle prompt is ever built."""
         require_qualified_oracle()
 
     @classmethod
@@ -648,7 +650,6 @@ class AgenticGenerator:
                 )
             )
 
-            # Validate final output is non-empty
             self._validate_output(turns, "constraint_discovery")
 
             return AgenticResult(
@@ -782,7 +783,6 @@ class AgenticGenerator:
                 )
             )
 
-            # Validate final output is non-empty
             self._validate_output(turns, "planning_execution")
 
             return AgenticResult(
@@ -943,7 +943,6 @@ class AgenticGenerator:
                 )
                 messages.append({"role": "assistant", "content": current_output})
 
-            # Validate final output is non-empty
             self._validate_output(turns, "iterative_revision")
 
             return AgenticResult(
@@ -1022,7 +1021,6 @@ class AgenticGenerator:
         total_reasoning_tokens = 0
         total_cost = 0.0
 
-        # Use task-specified critic model or default
         critic = critic_model or task.get("critic_model", "anthropic/claude-haiku-4.5")
 
         system_prompt = AgenticPromptBuilder.SYSTEM_PROMPT_CRITIQUE_IMPROVEMENT
@@ -1140,7 +1138,6 @@ class AgenticGenerator:
                 )
                 messages.append({"role": "assistant", "content": current_output})
 
-            # Validate final output is non-empty
             self._validate_output(turns, "critique_improvement")
 
             return AgenticResult(

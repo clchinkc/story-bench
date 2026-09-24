@@ -22,7 +22,6 @@ from utils import (
     save_yaml,
 )
 
-# Configure logging for generation errors
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s - %(levelname)s - %(message)s",
@@ -162,7 +161,6 @@ IMPORTANT: Plan your word budget BEFORE writing. Keep reasoning brief."""
         missing_beat = task["missing_beat"]
         requirements = task["requirements"]
 
-        # Build must_not section if present
         must_not_section = ""
         if requirements.get("must_not_include"):
             must_not_items = "\n".join(
@@ -170,7 +168,6 @@ IMPORTANT: Plan your word budget BEFORE writing. Keep reasoning brief."""
             )
             must_not_section = f"\nMUST NOT include (these would be easy but wrong):\n{must_not_items}\n"
 
-        # Get beat definition if available
         beat_def = missing_beat.get("definition", "")
         beat_def_section = (
             f"\nBEAT DEFINITION ({missing_beat['name']}): {beat_def}\n"
@@ -216,7 +213,6 @@ Output ONLY the beat text."""
         """
         requirements = task["requirements"]
 
-        # Build preservation constraint section if present
         preservation_section = ""
         if "preservation_requirements" in requirements:
             pres_req = requirements["preservation_requirements"]

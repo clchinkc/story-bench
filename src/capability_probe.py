@@ -53,10 +53,8 @@ PROBE_CHANNELS: tuple[str, ...] = (
 PATH_CHANNELS: tuple[str, ...] = ("filesystem_escape", "source_inspection", "inherited_settings")
 OUTCOMES: tuple[str, ...] = ("granted", "denied", "absent")
 
-# F-02 / AC-2c: an INDEPENDENT literal superset. It is never derived from
-# environment_contract, and it deliberately names a credential the strip policy
-# does not cover (W2C_PROBE_SENTINEL_CREDENTIAL) so a strip-list gap stays
-# observable instead of being self-confirming.
+# F-02 / AC-2c: independent of environment_contract; includes the probe-only
+# W2C_PROBE_SENTINEL_CREDENTIAL, which the strip policy deliberately omits.
 DEFAULT_SECRET_KEYS: tuple[str, ...] = (
     "ANTHROPIC_API_KEY",
     "ANTHROPIC_AUTH_TOKEN",

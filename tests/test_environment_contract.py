@@ -1,7 +1,8 @@
-"""W2c environment-contract tests (risk rows E1-E6, PS1, N1, R1-R5, P3).
+"""W2c environment-contract tests (risk rows E1-E6, PS1, N1, R1-R5, P3;
+conditions-repair rows F-02, F-04, F-06).
 
-Every behavioral test carries its own deliberately-wrong build (red control)
-and asserts that the wrong build is refused or detected, then asserts the
+Most behavioral tests carry their own deliberately-wrong build (red control)
+and assert that the wrong build is refused or detected before asserting the
 correct build succeeds.
 """
 from __future__ import annotations
@@ -146,7 +147,7 @@ def test_reset_census_matches_source_snapshot_for_every_arm(w2c_reset, w2c_sourc
         assert destination_census.paths() == source_census.paths(), arm
         for rel in source_census.paths():
             assert destination_census.entries[rel] == source_census.entries[rel], (arm, rel)
-        # the treatment packet and harness argv live outside the censused root
+        # the native control dir and the arm-B treatment package stay outside the censused root (F-03)
         assert ".narrative" not in destination_census.paths()
         assert not (instance.destination / "arm_b_package").exists()
 
@@ -272,7 +273,7 @@ def test_native_binding_pinned_and_implicit_discovery_refused(tmp_path):
     with pytest.raises(nb.NativeBindingRefused):
         nb.resolve_native_binding(environ={"PATH": str(fake_bin)})
 
-    # red control: PYTHONPATH would decide the native module
+    # red control: a PYTHONPATH-injected native module is refused
     fake_pysrc = tmp_path / "pysrc"
     (fake_pysrc / "narrative_craft").mkdir(parents=True)
     (fake_pysrc / "narrative_craft" / "__init__.py").write_text("", encoding="utf-8")
@@ -336,7 +337,7 @@ def test_duplicate_episode_identity_is_idempotent(w2c_env_inputs):
     assert first.content_digest == second.content_digest
 
     # red control: different content under the same episode id is refused and
-    # the existing record and accepted bytes are preserved
+    # the existing record is preserved
     with pytest.raises(ec.ReplayMismatch):
         registry.register(
             episode_id="ep-2",
@@ -439,14 +440,15 @@ def _honest_contract(text):
 def test_contract_records_host_assumptions():
     doc = (Path(__file__).resolve().parent.parent / "docs" / "environment-contract.md").read_text(encoding="utf-8")
     assert _honest_contract(doc)
-    # red controls: an OS-isolation over-claim and a behaviorally-verified claim fail
+    # red controls: an OS-isolation over-claim, a behaviorally-verified claim, and
+    # a relabeled "Assumed about the host" section all fail
     assert not _honest_contract(doc + "\nThe environment is a kernel sandbox enforced for every process.\n")
     assert not _honest_contract(doc + "\nMCP survival verified under tools-empty.\n")
     assert not _honest_contract(doc.replace("Assumed about the host", "Facts"))
 
 
 # --------------------------------------------------------------------------
-# F-02 (conditions repair 1, AC-2a..d): the closed participant credential policy.
+# F-02 (conditions repair 1, AC-2a, AC-2b, AC-2d): the closed participant credential policy.
 # --------------------------------------------------------------------------
 F02_CREDENTIAL_NAMES = (
     "AWS_ACCESS_KEY_ID",

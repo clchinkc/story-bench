@@ -2,7 +2,7 @@
 Scoring module for the Story Theory Benchmark.
 
 Unvalidated mechanical and judge diagnostics (not literary quality):
-- Mechanical diagnostics: Word count + repetition penalty + slop detection
+- Mechanical diagnostics: Word count + repetition penalty + slop detection + optional element count
 - Judge diagnostics: Normalized criteria evaluation
 
 Named diagnostics lie in [0, 1]; calibration and literary preference remain unqualified.
@@ -121,7 +121,7 @@ def element_count_score(gt_count: int, pd_count: int) -> float:
     if type(gt_count) is not int or type(pd_count) is not int or min(gt_count, pd_count) < 0:
         raise ValueError("Element counts must be nonnegative integers")
     if gt_count == 0 and pd_count == 0:
-        return 1.0  # Both zero = both want nothing = perfect
+        return 1.0  # Both zero: target and output agree there are no elements
     denominator = gt_count + pd_count
     if denominator == 0:
         return 1.0
@@ -525,7 +525,7 @@ def repetition_score(text: str) -> float:
     unique_content = len(word_counts)
 
     # Calculate excess repetition penalty
-    # Words appearing more than 3x their expected frequency are penalized
+    # Words with count above max(3, 2x expected frequency) are penalized
     expected_freq = total_content / unique_content if unique_content > 0 else 1
     threshold = max(3, expected_freq * 2)  # At least 3 uses before penalty
 
@@ -536,11 +536,11 @@ def repetition_score(text: str) -> float:
             excess = count - threshold
             penalty += excess * 0.02  # 2% per excess repetition
 
-    # Also check for repeated phrases (2-3 word combinations)
+    # Also check for repeated bigrams (2-word phrases)
     bigrams = [" ".join(words[i : i + 2]) for i in range(len(words) - 1)]
     bigram_counts = Counter(bigrams)
     for phrase, count in bigram_counts.items():
-        # Exclude common phrases
+        # Penalize only phrases repeated more than 3 times
         if count > 3:
             penalty += (count - 3) * 0.03  # 3% per excess phrase repetition
 
@@ -627,7 +627,7 @@ def calculate_programmatic_scores(
 
     Optional fourth component for tasks with strict structural counts:
     - Element count score (Count-Correct): penalizes deviation from required element counts
-      Legacy relative weights 27/27/27/10 are normalized by their sum .91.
+      Fixed relative weights 27/27/27/10, normalized by their sum (0.91).
 
     Returns:
         ProgrammaticScores with individual and overall scores
@@ -703,9 +703,10 @@ def calculate_final_score(
         word_count_method: Method for word count scoring ("gaussian", "tanh", or "sigmoid")
         gt_element_count: Ground truth / target element count (optional)
         pd_element_count: Predicted / actual element count (optional)
+        subtype: Task subtype selecting the judge score schema (optional)
 
     Returns:
-        ScoreBreakdown with all component scores and final score
+        ScoreBreakdown with all component scores (final_score is None unless weights are explicit)
     """
 
     # 1. Programmatic scores (includes word count, optionally element count)

@@ -42,7 +42,7 @@ class AgenticEvaluationResult:
     # Output scores (shared)
     output_scores: dict[str, float]
 
-    # Final composite score
+    # Final score (always None — components are unvalidated, no composite computed)
     final_score: float
 
     # Raw LLM evaluation results
@@ -412,7 +412,7 @@ class AgenticEvaluator:
                     {"role": "user", "content": eval_prompt},
                 ],
                 temperature=0.1,
-                max_tokens=2500,  # Increased to prevent truncation of evidence field
+                max_tokens=2500,  # Prevent truncation of the evidence field
             )
 
             if not response.success:
@@ -500,6 +500,7 @@ class AgenticEvaluator:
 
 
     def _compute_scores(self, agentic_type, llm_results, final_output, task):
+        """Split judge diagnostics into per-type process scores and shared output scores."""
         diagnostic_score(llm_results, agentic_type, task.get("subtype"))
         process = {k: llm_results[k] for k in AGENT_PROCESS[agentic_type]}
         output = {k: llm_results[k] for k in AGENT_OUTPUT}
@@ -512,6 +513,7 @@ def create_constraint_discovery_oracle(task: dict[str, Any], oracle_model: str =
 
 
 def _keyword_fallback(question: str, hidden_constraints: list[dict[str, Any]]) -> str:
+    """Disabled: keyword matching is not a qualified oracle."""
     require_qualified_oracle()
 
 
@@ -535,9 +537,7 @@ def create_feedback_generator(task: dict[str, Any]):
         round_rules = feedback_rules[round_key]
         check_items = round_rules.get("check_items", [])
 
-        # Generate feedback based on focus area
-        # In a real implementation, this would use an LLM to generate feedback
-        # For now, return the check items as feedback prompts
+        # TODO: generate feedback with an LLM; for now return the round's check items as feedback prompts
         return check_items
 
     return feedback_generator

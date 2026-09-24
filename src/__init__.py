@@ -2,7 +2,7 @@
 Story Theory Benchmark - LLM Narrative Generation Evaluation
 
 This package provides tools for evaluating LLM narrative generation capabilities
-across 5 task types based on established story theory frameworks.
+across 9 task types (5 standard, 4 agentic) based on established story theory frameworks.
 """
 
 from .analyzer import BenchmarkAnalyzer

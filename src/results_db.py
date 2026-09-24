@@ -1,12 +1,13 @@
 """
 Results Database for Story Theory Benchmark.
 
-Provides persistent storage for benchmark results with support for:
-- Incremental model addition (run new model on all tasks)
-- Incremental task addition (run new task on all models)
-- Deduplication (don't re-run existing combinations)
-- Consolidated leaderboard generation
+Provides persistent storage for benchmark results:
+- Append-only generations/evaluations with content-checked record IDs
+- Fixed-assignment measurement reporting (see get_results_summary)
 - Atomic saves with file locking (concurrent-safe)
+
+Legacy incremental-run, dedup and ranking helpers are disabled and raise
+ValueError; use an explicit repaired assignment manifest instead.
 """
 
 import fcntl
@@ -66,18 +67,20 @@ class ResultsDatabase:
     """
     JSON-based results database for the benchmark.
 
-    Structure:
+    Structure (metadata is rebuilt on every save):
     {
+        "protocol": "...",
+        "assignment_hash": "...",
         "benchmark_version": "1.0.0",
         "last_updated": "ISO timestamp",
-        "task_version": "hash or count of tasks",
         "generations": [...],
         "evaluations": [...],
         "metadata": {
-            "total_generation_cost": 0.0,
-            "total_evaluation_cost": 0.0,
+            "generation_count": 0,
+            "evaluation_count": 0,
             "models_evaluated": [...],
-            "tasks_evaluated": [...]
+            "tasks_evaluated": [...],
+            "cost": {...}
         }
     }
     """
@@ -124,7 +127,7 @@ class ResultsDatabase:
         raise ValueError("Legacy mutation/cache/ranking disabled; use explicit assignment manifest and append-only records")
 
     def _update_metadata(self):
-        """Metadata preserves unknown spend; report computes its own ledger."""
+        """Keep the recorded spend as-is here; the measurement report computes its own ledger."""
         self._data["metadata"] = {
             "generation_count": len(self._data["generations"]),
             "evaluation_count": len(self._data["evaluations"]),
@@ -153,11 +156,11 @@ class ResultsDatabase:
         return next((r for r in self._data["generations"] if identity(r) == (model, task_id, sample, condition)), None)
 
     def get_models(self) -> list[str]:
-        """Get list of all models that have been evaluated."""
+        """Get list of all models with at least one generation record."""
         return self._data["metadata"].get("models_evaluated", [])
 
     def get_tasks(self) -> list[str]:
-        """Get list of all tasks that have been evaluated."""
+        """Get list of all task IDs with at least one generation record."""
         return self._data["metadata"].get("tasks_evaluated", [])
 
     # =========== Write Methods ===========
@@ -234,7 +237,7 @@ class ResultsDatabase:
         raise ValueError("Legacy mutation/cache/ranking disabled; use explicit assignment manifest and append-only records")
 
     def get_results_summary(self, assignment_manifest=None):
-        """Fixed-assignment offline projection; legacy success-only ranks disabled."""
+        """Fixed-assignment offline projection; legacy success-only ranking is disabled."""
         return project_report(self._data, assignment_manifest or self.assignment_manifest)
 
     def generate_leaderboard_md(self, assignment_manifest=None):
@@ -266,6 +269,9 @@ def get_missing_work(
 ) -> tuple[list[tuple[str, str]], list[tuple[str, str, str]]]:
     """
     Get missing generations and evaluations for given models.
+
+    Note: currently raises ValueError — the legacy missing-work queries are
+    disabled; use an explicit assignment manifest instead.
 
     Returns:
         (missing_generations, missing_evaluations)

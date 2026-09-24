@@ -2,7 +2,8 @@
 Evaluation module for the Story Theory Benchmark.
 
 This module handles LLM-as-judge evaluation of generated story outputs.
-Now includes multi-component scoring (word count + LLM + programmatic).
+Scoring combines programmatic diagnostics (word count, repetition, slop) with
+LLM-judge scores (see scoring.py).
 """
 
 import os
@@ -36,7 +37,7 @@ from utils import (
 
 @dataclass
 class EvaluationResult:
-    """Result of evaluating a single generation with composite scoring."""
+    """Result of evaluating a single generation (composite score only with explicit weights)."""
 
     evaluation_id: str
     task_id: str
@@ -142,12 +143,10 @@ Respond with valid JSON only."""
         word_count_min, word_count_max = requirements["word_count"]
         word_count_valid = word_count_min <= word_count <= word_count_max
 
-        # Build must_not section if present
         must_not_list = requirements.get("must_not_include", [])
         must_not_str = ", ".join(must_not_list) if must_not_list else "None specified"
         num_violations = len(must_not_list)
 
-        # Get beat definition if available
         beat_def = missing_beat.get(
             "definition", f"The '{missing_beat['name']}' beat in {theory}"
         )
@@ -206,7 +205,6 @@ JSON response:
             # Special evaluation for "no flaw" tasks
             return cls._build_no_flaw_revision_eval(task, output, theory, theory_def)
 
-        # Build preservation requirements section if present
         preservation_eval_section = ""
         required_preserved_str = ""
         num_required_preserved = 0
@@ -508,7 +506,7 @@ class BenchmarkEvaluator:
         task: dict[str, Any],
         generation: dict[str, Any],
     ) -> EvaluationResult:
-        """Evaluate a single generation and compute composite score."""
+        """Evaluate a single generation and compute its score breakdown (composite only with explicit weights)."""
         require_paid_dispatch()
         task_id = task["task_id"]
         task_type = task["task_type"]
@@ -568,7 +566,6 @@ class BenchmarkEvaluator:
                 completion_tokens / 1_000_000
             ) * output_price
 
-            # Parse JSON response
             llm_results = extract_json_from_response(response_text)
 
             if llm_results is None:
@@ -589,7 +586,7 @@ class BenchmarkEvaluator:
                     error="Failed to parse JSON from evaluator response",
                 )
 
-            # Calculate composite score
+            # Compute score breakdown (composite only when explicit weights are provided)
             word_range = get_word_count_range(task)
             score_breakdown = calculate_final_score(
                 text=generated_output,
@@ -650,7 +647,6 @@ class BenchmarkEvaluator:
         tasks = load_all_tasks()
         task_lookup = {t["task_id"]: t for t in tasks}
 
-        # Find all generation files
         gen_files = list(generations_dir.glob("*.yaml"))
 
         results = []
@@ -691,7 +687,6 @@ class BenchmarkEvaluator:
         total_cost = sum(r.evaluator_cost for r in results)
         errors = sum(1 for r in results if not r.success)
 
-        # Calculate average scores
         scores = [r.final_score for r in successful]
         avg_score = statistics.mean(scores) if scores else 0.0
 

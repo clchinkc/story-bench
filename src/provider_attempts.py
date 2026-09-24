@@ -451,7 +451,7 @@ def _unknown(plan, ledger, reason):
 def _reservation_event(plan, ledger):
     if plan.spec.retry_index == 0:
         return f"w3b:{plan.spec.attempt_id}:reserve"
-    # One transactional audit snapshot validates both ancestors (maximum depth2).
+    # One transactional audit snapshot validates both ancestors (maximum depth 2).
     # These are actual ledger records, never caller-supplied lineage labels.
     rows = {}
     for event in ledger.events():

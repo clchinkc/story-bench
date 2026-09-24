@@ -1,9 +1,10 @@
 """
 Base generator infrastructure for the Story Theory Benchmark.
 
-Provides unified structures and base classes that both standard and agentic
-generators inherit from. This eliminates code duplication and provides a
-consistent architecture.
+Provides unified structures and a base class intended for shared use by the
+standard and agentic generators. NOTE: currently unused — generator.py and
+agentic_generator.py define their own result structures and do not inherit
+from BaseGenerator.
 
 Key insight: Standard tasks are just single-turn agentic tasks.
 """
@@ -39,7 +40,8 @@ class GenerationResult:
     """
     Unified result structure for all generation types.
 
-    This replaces both the old GenerationResult (standard) and AgenticResult.
+    Intended to replace the separate GenerationResult (generator.py) and
+    AgenticResult (agentic_generator.py) — those remain the types actually used.
     """
 
     generation_id: str
@@ -106,7 +108,7 @@ class GenerationResult:
 
 class BaseGenerator:
     """
-    Base class for all generators (standard and agentic).
+    Base class intended for all generators (standard and agentic).
 
     Provides shared infrastructure:
     - LLM calling with token tracking
@@ -114,7 +116,7 @@ class BaseGenerator:
     - Error handling
     - Final output validation
 
-    Subclasses implement task-specific generation logic.
+    Subclasses are expected to implement task-specific generation logic (none exist yet).
     """
 
     def __init__(self, llm_client: LLMClient | None = None):
@@ -144,6 +146,7 @@ class BaseGenerator:
             max_tokens: Max total tokens (completion + reasoning)
             max_reasoning_tokens: Max reasoning/thinking tokens
             temperature: Sampling temperature
+            context_budget_bytes: Max bytes for the context receipt (None = no limit)
 
         Returns:
             (output, prompt_tokens, completion_tokens, reasoning_tokens, cost, finish_reason)

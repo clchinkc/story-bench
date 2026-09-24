@@ -1,4 +1,4 @@
-"""W2c authority-boundary tests (risk rows F1-F8 and B5).
+"""W2c authority-boundary tests (risk rows F1-F8 and B5; conditions-repair row F-05).
 
 B5 drives the matched task through the BASIC protected MCP only (the stdio
 server process), with the arm-B package loaded and the specialized namespace
@@ -31,7 +31,7 @@ GENESIS_SOURCE = {"id": "story-x", "title": "X", "planSource": "# Plan source\n"
 
 def _run_matched(propose, waves):
     """The S13.1 matched task: GROUND -> FRAME -> OWNER WAVE -> REALIZE -> PROVE
-    -> OWNER WAVE -> RECONCILE -> ADVANCE, driven only through propose."""
+    -> RESUME -> OWNER WAVE -> RECONCILE -> ADVANCE, driven only through propose."""
     g1 = waves.issue(request_id="req-genesis", decision="apply", revision=0)
     genesis = propose(
         {
@@ -202,7 +202,7 @@ def test_scope_escalation_traversal_symlink_refused(w2c_harness, tmp_path):
     assert result["status"] == "refused"
     assert result["code"] == "scope-refused"
 
-    # red control: the same path passes once it is inside the declared scope
+    # red control: the entitlement permits the in-scope path and refuses the out-of-scope path
     assert boundary.entitlement.permits_write("stories/scene-01.md")
     assert not boundary.entitlement.permits_write("results/leak.md")
 

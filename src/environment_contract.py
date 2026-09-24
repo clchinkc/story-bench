@@ -274,8 +274,8 @@ def is_credential_key(name: str) -> bool:
 
 
 def is_provider_key(name: str) -> bool:
-    """Backward-compatible alias: the provider-key policy is a subset of the
-    closed credential policy above."""
+    """Backward-compatible alias for is_credential_key; delegates to the closed
+    credential policy above."""
     return is_credential_key(name)
 
 

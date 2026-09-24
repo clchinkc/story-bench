@@ -1,4 +1,4 @@
-"""W2c treatment-isolation tests (risk rows T1-T9, L1, B1-B4, B6, P1, P2)."""
+"""W2c treatment-isolation tests (risk rows T1-T9, L1, B1-B4, B6, P1, P2; conditions-repair rows F-01, F-02)."""
 from __future__ import annotations
 
 import hashlib
@@ -405,7 +405,7 @@ def test_arm_b_package_contains_no_cli_shell_or_source_instruction():
     assert _forbidden_tokens(package.instruction_text) == []
     assert "workspace.propose" in package.instruction_text
 
-    # red control: a leftover verb or package-internal link is detected
+    # red control: a leftover verb or an out-of-package link is detected
     assert _forbidden_tokens(package.instruction_text + "\nnarrative-craft doctor\n") == ["narrative-craft"]
     assert _forbidden_tokens(package.instruction_text + "\nsee ../../docs/api.md\n") == ["../../"]
 

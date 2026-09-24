@@ -44,8 +44,7 @@ def fixture_records():
     return make
 
 # ==========================================================================
-# W2c additive fixtures (unit W2c). The existing offline denial and
-# fixture_records above are preserved unchanged.
+# W2c additive fixtures (unit W2c).
 # ==========================================================================
 import hashlib  # noqa: E402
 import os  # noqa: E402

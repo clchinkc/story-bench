@@ -60,7 +60,7 @@ def get_company_name(model: str) -> str:
 def get_short_model_name(model: str) -> str:
     """Extract short model name from full path."""
     name = model.split("/")[-1] if "/" in model else model
-    # Further shorten common prefixes for display
+    # Reformat common prefixes for display
     if name.startswith("claude-"):
         name = name.replace("claude-", "Claude ")
     elif name.startswith("gpt-"):
@@ -141,7 +141,6 @@ def plot_cost_vs_score(data: dict, ax: plt.Axes) -> None:
     # Start labels close to points, let adjustText move them if needed
     texts = []
     for i, name in enumerate(names):
-        # Small initial offset - adjustText will push further if needed
         offset_x = max(costs) * 0.015
         offset_y = 0.3
         texts.append(
@@ -156,7 +155,6 @@ def plot_cost_vs_score(data: dict, ax: plt.Axes) -> None:
         )
 
     # Automatically adjust text positions to avoid overlaps
-    # Labels start close but can move far when crowded
     adjust_text(
         texts,
         x=costs,
@@ -233,7 +231,6 @@ def plot_cost_vs_score(data: dict, ax: plt.Axes) -> None:
     ax.set_xlim(-0.1, max(costs) * 1.15)
     ax.set_ylim(70, 100)  # Start from 70 to better show score differences
 
-    # Add grid
     ax.grid(True, alpha=0.3, linestyle="-")
     ax.set_axisbelow(True)
 
@@ -242,7 +239,7 @@ def plot_model_scores_stacked(data: dict, ax: plt.Axes) -> None:
     """Create stacked horizontal bar chart showing weighted component contributions to total score.
 
     Current scoring: Programmatic (50%) + LLM Judge (50%)
-    Programmatic breakdown: Word Count (40%) + Repetition (35%) + Slop (25%)
+    Programmatic breakdown: Word Count (40%) + Repetition (35%) + Slop (25%); with an element-count score: 27/27/27/10 normalized by 0.91
 
     Display: LLM Judge as base, Programmatic on top
     """
@@ -262,15 +259,12 @@ def plot_model_scores_stacked(data: dict, ax: plt.Axes) -> None:
     llm_contrib = []
     for _, stats in sorted_items:
         comps = stats.get("avg_components", {})
-        # Programmatic is 50% of total score
         prog_contrib.append((comps.get("programmatic") or 0) * 0.50 * 100)
-        # LLM Judge is 50% of total score
         llm_contrib.append((comps.get("llm_judge") or 0) * 0.50 * 100)
 
     y = np.arange(len(names))
     height = 0.6
 
-    # Stacked horizontal bars: LLM Judge as base, Programmatic on top
     ax.barh(
         y,
         llm_contrib,
@@ -342,7 +336,6 @@ def plot_task_type_heatmap(data: dict, ax: plt.Axes) -> None:
 
     matrix = np.array(matrix)
 
-    # Create heatmap
     im = ax.imshow(matrix, cmap="RdYlGn", aspect="auto", vmin=0, vmax=100)
 
     # Labels
@@ -373,7 +366,6 @@ def plot_task_type_heatmap(data: dict, ax: plt.Axes) -> None:
 
     ax.set_title("Performance by Task Type (%)", fontsize=14, fontweight="bold")
 
-    # Colorbar
     cbar = plt.colorbar(im, ax=ax, shrink=0.8, pad=0.02)
     cbar.set_label("Score (%)", fontsize=10)
 
@@ -382,7 +374,7 @@ def plot_component_scores_raw(data: dict, ax: plt.Axes) -> None:
     """Create grouped bar chart showing raw (unweighted) component scores for comparison.
 
     Shows Programmatic and LLM Judge scores side by side for each model.
-    Programmatic includes: Word Count (40%) + Repetition (35%) + Slop (25%)
+    Programmatic includes: Word Count (40%) + Repetition (35%) + Slop (25%), or 27/27/27/10 normalized by 0.91 when an element-count score is present.
     """
     models = data["models"]
 
@@ -502,7 +494,6 @@ def create_summary_dashboard(
         y=0.98,
     )
 
-    # Save
     output_path = Path(output_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
     plt.savefig(output_path, dpi=150, bbox_inches="tight", facecolor="white")

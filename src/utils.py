@@ -48,7 +48,7 @@ def save_json(data: dict[str, Any], file_path: str | Path, indent: int = 2) -> N
 
 
 def load_config() -> dict[str, Any]:
-    """Load all configuration files."""
+    """Load the models and settings configuration files."""
     root = get_project_root()
     config = {}
     config["models"] = load_yaml(root / "config" / "models.yaml")
@@ -137,7 +137,6 @@ def get_timestamp() -> str:
 
 def count_words(text: str) -> int:
     """Count words in a text string."""
-    # Remove extra whitespace and split
     words = text.split()
     return len(words)
 

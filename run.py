@@ -24,7 +24,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent / "src"))
 
 
-# Default models
+# Default evaluator models
 DEFAULT_EVAL_MODELS = [
     "anthropic/claude-haiku-4.5",
     "openai/gpt-5-mini",
@@ -33,7 +33,7 @@ DEFAULT_EVAL_MODELS = [
 
 
 def check_api_key() -> bool:
-    """Check if API key is configured."""
+    """Check if the OPENROUTER_API_KEY environment variable is configured."""
     key = os.getenv("OPENROUTER_API_KEY", "")
     if not key or key == "your-api-key-here":
         print("ERROR: OPENROUTER_API_KEY not configured in .env file")
@@ -42,7 +42,7 @@ def check_api_key() -> bool:
 
 
 def cmd_compare(args):
-    """Compare two benchmark result files head-to-head."""
+    """Compare two benchmark result files head-to-head (currently raises: legacy comparison is disabled)."""
     from src.comparison import StoryBenchmarkComparison
 
     left_path = Path(args.compare[0])
@@ -100,7 +100,7 @@ def cmd_status(args):
 
 
 def cmd_leaderboard(args):
-    """Generate and display leaderboard."""
+    """Print the measurement report and save it to results/LEADERBOARD.md."""
     from results_db import ResultsDatabase
 
     db = ResultsDatabase()
@@ -116,7 +116,7 @@ def cmd_leaderboard(args):
 
 
 def cmd_rebuild_db(args):
-    """Rebuild JSON database from YAML files."""
+    """Rebuild JSON database from YAML files (currently raises: legacy rebuild is disabled)."""
     from results_db import ResultsDatabase
 
     print("Rebuilding database from YAML files...")
@@ -127,7 +127,7 @@ def cmd_rebuild_db(args):
 
 
 def cmd_task_analysis(args):
-    """Generate and display task analysis."""
+    """Generate and display task analysis (currently raises: legacy task analysis is disabled)."""
     from results_db import ResultsDatabase
 
     db = ResultsDatabase()
@@ -143,7 +143,7 @@ def cmd_task_analysis(args):
 
 
 def cmd_clean_failed(args):
-    """Remove failed generations and evaluations to allow retry."""
+    """Remove failed generations and evaluations to allow retry (currently raises: legacy cleanup is disabled)."""
     from results_db import ResultsDatabase
 
     db = ResultsDatabase()
@@ -168,7 +168,7 @@ def cmd_clean_failed(args):
 
 
 def cmd_list_missing(args):
-    """List missing generations and evaluations for given models."""
+    """List missing generations and evaluations for given models (currently raises: legacy missing-work queries are disabled)."""
     from results_db import ResultsDatabase
     from utils import load_all_tasks
 
@@ -207,7 +207,7 @@ def cmd_list_missing(args):
 
 
 def cmd_run(args):
-    """Run benchmark for specified models."""
+    """Run benchmark for specified models (currently raises: legacy missing-work queries are disabled)."""
     if not check_api_key():
         return
 
@@ -226,21 +226,18 @@ def cmd_run(args):
     db = ResultsDatabase()
     tasks = load_all_tasks()
 
-    # Filter by task type if specified
     if args.task_type:
         tasks = [t for t in tasks if t["task_type"] == args.task_type]
         print(f"Filtered to task type: {args.task_type}")
 
-    # Limit number of tasks if specified
     if args.max_tasks:
         tasks = tasks[: args.max_tasks]
         print(f"Limited to first {args.max_tasks} task(s)")
 
     # Build task lookup and get all task IDs (both standard and agentic)
     task_lookup = {t["task_id"]: t for t in tasks}
-    task_ids = [t["task_id"] for t in tasks]  # ALL tasks
+    task_ids = [t["task_id"] for t in tasks]
 
-    # Count for display
     standard_count = sum(1 for t in tasks if not is_agentic_task(t))
     agentic_count = sum(1 for t in tasks if is_agentic_task(t))
 
@@ -268,7 +265,6 @@ def cmd_run(args):
         print("\nAll generations complete for specified models.")
     else:
         if args.force:
-            # Force re-run all
             missing_gens = [
                 (task_id, model) for task_id in task_ids for model in gen_models
             ]
@@ -288,7 +284,6 @@ def cmd_run(args):
             )
             from generator import GeneratorConfig
 
-            # Setup generators
             config = GeneratorConfig(max_reasoning_tokens=args.max_reasoning_tokens)
             generator = BenchmarkGenerator(config=config)
             agentic_config = AgenticConfig()
@@ -388,7 +383,6 @@ def cmd_run(args):
         print("\nAll evaluations complete for specified models.")
     else:
         if args.force:
-            # Force re-evaluate all
             missing_evals = [
                 (g["task_id"], g["model"], eval_model)
                 for g in db._data["generations"]
@@ -503,7 +497,6 @@ def cmd_run(args):
                     yaml_path = get_evaluation_path(eval_id)
                     save_yaml(result.to_dict(), yaml_path)
 
-    # Show summary
     print("\n--- Summary ---")
     db.print_status()
 

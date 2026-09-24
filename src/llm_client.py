@@ -34,7 +34,7 @@ TASK_TOKEN_CONFIG = {
     "constrained_continuation": {"max_tokens": 8000, "max_reasoning_tokens": 4500},
     "theory_conversion": {"max_tokens": 7000, "max_reasoning_tokens": 3500},
     "multi_beat_synthesis": {"max_tokens": 10000, "max_reasoning_tokens": 5500},
-    # Agentic tasks (per-turn limits): generous reasoning + 3000 output buffer
+    # Agentic task entries (unused at runtime: agentic runs budget via AgenticConfig)
     "agentic_constraint_discovery": {"max_tokens": 6000, "max_reasoning_tokens": 3000},
     "agentic_planning_execution": {"max_tokens": 7000, "max_reasoning_tokens": 3500},
     "agentic_iterative_revision": {"max_tokens": 6000, "max_reasoning_tokens": 3000},
@@ -134,6 +134,9 @@ class LLMClient:
 
         Returns:
             LLMResponse with content, tokens, cost, and success status
+
+        Raises:
+            ValueError: If require_paid_dispatch() rejects the call (paid-dispatch gate)
         """
         require_paid_dispatch()
         request_kwargs = {
@@ -185,7 +188,6 @@ class LLMClient:
         prompt_tokens = response.usage.prompt_tokens if response.usage else None
         completion_tokens = response.usage.completion_tokens if response.usage else None
 
-        # Extract finish_reason from the response
         finish_reason = None
         if response.choices and len(response.choices) > 0:
             finish_reason = getattr(response.choices[0], "finish_reason", None)
