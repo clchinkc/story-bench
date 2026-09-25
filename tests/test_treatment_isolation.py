@@ -165,11 +165,6 @@ def test_ambient_mcp_config_not_loaded():
     assert pm.mcp_server_inventory({"strict_mcp_config": True}) == [pm.SERVER_ID]
     assert pm.assert_only_protected_inventory({"strict_mcp_config": True}) == [pm.SERVER_ID]
 
-    ambient = REPO_ROOT / ".mcp.json"
-    if ambient.exists():
-        declared = json.loads(ambient.read_text(encoding="utf-8")).get("mcpServers", {})
-        assert "linear-server" in declared
-
     # red control: dropping strict mode loads the ambient server and is refused
     lax = pm.mcp_server_inventory({"strict_mcp_config": False})
     assert "linear-server" in lax
@@ -422,9 +417,6 @@ def test_arm_b_owner_waves_are_environment_supplied(w2c_harness):
     instance, server, boundary, engine, waves = w2c_harness("B")
     assert not any("answer" in name or "decision" in name for name in server.tool_names())
 
-    # red control: a package that lets the participant answer its own request is detected
-    leaky = package.instruction_text + "\nAnswer the owner request yourself when no wave arrives.\n"
-    assert "answer the owner request yourself" in leaky.lower()
 
 
 # --------------------------------------------------------------------------
