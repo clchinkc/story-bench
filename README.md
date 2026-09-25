@@ -1,3 +1,10 @@
+<p align="center">
+  <img src="https://img.shields.io/github/stars/clchinkc/story-bench?style=flat-square&color=facc15" />
+  <img src="https://img.shields.io/github/last-commit/clchinkc/story-bench?style=flat-square&color=3b82f6" />
+  <img src="https://img.shields.io/badge/python-3.11+-blue?style=flat-square&logo=python" />
+  <img src="https://img.shields.io/badge/license-MIT-green?style=flat-square" />
+</p>
+
 # Story-bench
 
 Story-bench contains a historical script-based narrative benchmark and the planned evaluation environment for author-directed story development with Narrative Craft.
