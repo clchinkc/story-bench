@@ -13,7 +13,7 @@ def parse_item(raw:Mapping[str,Any], *, payload_bytes:bytes|None=None)->DatasetI
  if not isinstance(raw,Mapping) or set(raw)!=_FIELDS: raise DatasetContractError("closed item fields required")
  if any(type(raw[k]) is not str or not raw[k].strip() for k in _FIELDS): raise DatasetContractError("all item fields must be nonblank strings")
  if raw["locale"] not in {"en","zh-Hant","zh-Hans"}: raise DatasetContractError("unknown locale")
- if raw["rightsStatus"] not in {"owned","licensed","explicit-permission"} or raw["rightsEvidenceRef"].startswith(("sk-","Bearer ")): raise DatasetContractError("rights metadata invalid")
+ if raw["rightsStatus"] not in {"owned","licensed","explicit-permission","public-domain"} or raw["rightsEvidenceRef"].startswith(("sk-","Bearer ")): raise DatasetContractError("rights metadata invalid")
  if raw["split"] not in {"train","dev","calibration","holdout"}: raise DatasetContractError("unknown split")
  if not _DIGEST.fullmatch(raw["contentDigest"]): raise DatasetContractError("invalid content digest")
  if not _REF.fullmatch(raw["payloadRef"]): raise DatasetContractError("payloadRef must be opaque and non-content")
