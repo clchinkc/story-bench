@@ -41,13 +41,18 @@ def test_context_override_highest_rate_discount_not_subtracted():
     assert Decimal(rates["completion"]) == Decimal("0.000004")
 
 
-@pytest.mark.parametrize("change", ["unknown_component", "reasoning_price", "fixed_request", "time_override", "negative", "boolean", "invalid_discount", "missing_prompt"])
+@pytest.mark.parametrize("change", ["unknown_component", "fixed_request", "time_selector_bad_type", "negative", "boolean", "invalid_discount", "missing_prompt"])
 def test_D03_unknown_or_unsupported_prices_deny(change):
     pack = source_pack(); pricing = pack[2]["data"]["endpoints"][0]["pricing"]
     if change == "unknown_component":pricing["surprise"] = "1"
-    if change == "reasoning_price":pricing["internal_reasoning"] = "1"
+    # The former `reasoning_price` case used `internal_reasoning` as its example of an unknown
+    # component. The 2026-10-07 W3b2 amendment ADMITS that component deliberately, so the case
+    # was asserting denial for something now supported — the "a control decays when its check
+    # gains a condition" failure. It is deleted rather than re-pointed, because
+    # `test_a_genuinely_unknown_pricing_component_still_fails_closed` covers the same ground
+    # with three distinct genuinely-unknown keys.
     if change == "fixed_request":pricing["request"] = "0.1"
-    if change == "time_override":pricing["overrides"] = [dict(utc_start="00:00", prompt="1")]
+    if change == "time_selector_bad_type":pricing["overrides"] = [dict(utc_start="00:00", utc_end=1400, prompt="1")]
     if change == "negative":pricing["prompt"] = "-1"
     if change == "boolean":pricing["prompt"] = True
     if change == "invalid_discount":pricing["discount"] = True
@@ -95,3 +100,71 @@ def test_D08_strict_raw_json(raw):
 @pytest.mark.parametrize("amount", [True, 1.2, "NaN", "Infinity", "-0.1", "1e999"])
 def test_exact_money_validation(amount):
     with pytest.raises(ValueError):money(amount)
+
+
+# --- W3b2 amendment 2026-10-07: components and override shapes real routes declare -----
+# Each admission carries its own control, in both directions: the newly admitted shape must
+# be ACCEPTED, and a genuinely unknown key or selector must still FAIL CLOSED. Deleting the
+# admission turns the accept-cases red; widening it to a blanket pass turns the refuse-cases red.
+
+def _with_pricing(**extra):
+    pack = source_pack()
+    pricing = pack[2]["data"]["endpoints"][0]["pricing"]
+    pricing.update(extra)
+    return pack
+
+
+def test_internal_reasoning_component_is_admitted():
+    snapshot = validate(_with_pricing(internal_reasoning="0.000003"))
+    rates = {r.name: r.usd_per_unit for r in snapshot.rate_components}
+    assert rates["internal_reasoning"] == "0.000003"
+
+
+def test_input_audio_cache_component_is_admitted():
+    snapshot = validate(_with_pricing(input_audio_cache="0.000002"))
+    rates = {r.name: r.usd_per_unit for r in snapshot.rate_components}
+    assert rates["input_audio_cache"] == "0.000002"
+
+
+@pytest.mark.parametrize("key", ["brand_new_charge", "internal_reasoning_v2", "utc_days"])
+def test_a_genuinely_unknown_pricing_component_still_fails_closed(key):
+    with pytest.raises(ValueError):
+        validate(_with_pricing(**{key: "0.000001"}))
+
+
+def _with_overrides(*overrides):
+    pack = source_pack()
+    pack[2]["data"]["endpoints"][0]["pricing"]["overrides"] = list(overrides)
+    return pack
+
+
+def test_time_conditional_override_is_admitted_and_never_discounts():
+    # The base rate stays the reservation basis: a cheaper time window cannot reduce it.
+    snapshot = validate(_with_overrides(
+        {"utc_days": ["saturday", "sunday"], "prompt": "0.0000005", "completion": "0.000001"}))
+    rates = {r.name: r.usd_per_unit for r in snapshot.rate_components}
+    assert rates["prompt"] == "0.000001"
+    assert rates["completion"] == "0.000002"
+
+
+def test_time_window_override_is_admitted_and_a_higher_rate_raises_the_basis():
+    snapshot = validate(_with_overrides(
+        {"utc_start": 0, "utc_end": 1400, "prompt": "0.000004"}))
+    rates = {r.name: r.usd_per_unit for r in snapshot.rate_components}
+    assert rates["prompt"] == "0.000004"
+
+
+@pytest.mark.parametrize("override", [
+    {"unknown_selector": 1, "prompt": "0.000001"},          # unknown selector
+    {"utc_days": ["funday"], "prompt": "0.000001"},         # invalid day
+    {"utc_days": [], "prompt": "0.000001"},                 # empty day list
+    {"utc_start": 0, "utc_end": 9999, "prompt": "0.000001"},  # out-of-range clock
+    {"utc_days": ["monday"]},                               # selector but no rate
+    {"prompt": "0.000001"},                                 # rate but no selector
+    {"utc_start": 0, "prompt": "0.000001"},                 # half-declared window (review F4)
+    {"utc_end": 1400, "prompt": "0.000001"},                # half-declared window (review F4)
+    {"utc_start": "00:00", "utc_end": 1400, "prompt": "0.000001"},  # non-int clock (review F5)
+])
+def test_malformed_override_still_fails_closed(override):
+    with pytest.raises(ValueError):
+        validate(_with_overrides(override))

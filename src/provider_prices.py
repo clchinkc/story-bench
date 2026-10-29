@@ -137,7 +137,18 @@ class PriceSnapshot:
 
 PRICE_KEYS = {"prompt", "completion", "input_cache_read", "input_cache_write",
               "input_cache_write_1h", "request", "web_search", "image", "audio",
-              "audio_output", "image_output", "image_token"}
+              "audio_output", "image_output", "image_token",
+              # W3b2 amendment, 2026-10-07: components real OpenRouter endpoints declare.
+              # `internal_reasoning` is a separately-priced reasoning charge; `input_audio_cache`
+              # is a media-scoped cache charge. Both were previously refused as unknown, which
+              # kept a route carrying them unpriceable rather than making it unsafe.
+              "internal_reasoning", "input_audio_cache"}
+# Override selectors real routes use. A selector narrows WHEN a rate applies; the applied
+# rate is always the MAXIMUM over the base rate and every override, so a discount or a
+# cheaper time window can never reduce a reservation. `utc_start` and `utc_end` describe one
+# window and must be declared together.
+OVERRIDE_SELECTORS = {"min_prompt_tokens", "utc_days", "utc_start", "utc_end"}
+UTC_DAYS = {"monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"}
 PROFILE_FIELDS = {"kind", "catalog_sha256", "endpoints_sha256", "model_id",
                   "canonical_model_slug", "endpoint_tag", "input_bound", "output_bound",
                   "reasoning_bound", "cache_read_bound", "cache_write_bound",
@@ -190,15 +201,31 @@ def validate_snapshot(raw_sources, route, observed_at, expires_at):
         if type(overrides) is not list:
             raise ValidationError("invalid overrides")
         for override in overrides:
-            if type(override) is not dict or "min_prompt_tokens" not in override or set(override) - PRICE_KEYS - {"min_prompt_tokens"}:
+            if type(override) is not dict or not set(override) & OVERRIDE_SELECTORS \
+                    or set(override) - PRICE_KEYS - OVERRIDE_SELECTORS:
                 raise ValidationError("unsupported price override")
-            integer(override["min_prompt_tokens"])
+            if not set(override) & PRICE_KEYS:
+                raise ValidationError("price override declares no rate")
+            if "min_prompt_tokens" in override:
+                integer(override["min_prompt_tokens"])
+            if "utc_days" in override:
+                days = override["utc_days"]
+                if type(days) is not list or not days or set(days) - UTC_DAYS:
+                    raise ValidationError("invalid utc_days override")
+            for selector in ("utc_start", "utc_end"):
+                if selector in override:
+                    integer(override[selector], maximum=2359)
+            if ("utc_start" in override) != ("utc_end" in override):
+                raise ValidationError("utc_start and utc_end must be declared together")
             for key in override.keys() & PRICE_KEYS:
                 rates[key] = max(rates.get(key, Decimal(0)), money(override[key]))
         if rates.get("request", Decimal(0)) != 0:
             raise ValidationError("fixed request charge unsupported")
-        components = tuple(RateComponent(k, str(v), "request" if k in {"request", "web_search"} else "token",
-                                         "maximum over all declared context tiers; discount not subtracted", refs[1])
+        components = tuple(RateComponent(k, str(v),
+                                         "request" if k in {"request", "web_search"} else "token",
+                                         "maximum over the base rate and every declared override, "
+                                         "token-threshold or time-conditional; a discount is never "
+                                         "subtracted", refs[1])
                            for k, v in sorted(rates.items()))
         qualification = "unqualified"
         if len(sources) == 3:

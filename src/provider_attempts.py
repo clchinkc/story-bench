@@ -267,6 +267,12 @@ def _census(spec, snapshot, fields):
     units["retry_calls"] = int(spec.retry_index > 0)
     prices = dict.fromkeys(USAGE_KINDS, "0")
     prices.update(input_tokens=rates["prompt"], output_tokens=rates["completion"],
+                  # A route may price internal reasoning SEPARATELY from completion
+                  # (`internal_reasoning`). When it does, that rate must drive the reasoning
+                  # reservation; otherwise the contract's `reasoning_inclusive` holds and the
+                  # reasoning charge is inside `completion`, which stays 0 here. Admitting the
+                  # component without this mapping would PRICE it but never RESERVE it.
+                  reasoning_tokens=rates.get("internal_reasoning", "0"),
                   cache_read_tokens=rates.get("input_cache_read", "0"),
                   cache_write_tokens=str(max(Decimal(rates.get("input_cache_write", "0")), Decimal(rates.get("input_cache_write_1h", "0")))))
     return tuple(UsageClassPlan(k, units[k], prices[k], snapshot.source_refs[-1],

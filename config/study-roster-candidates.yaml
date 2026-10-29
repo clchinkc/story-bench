@@ -1,0 +1,225 @@
+# W6 candidate study roster — CANDIDATES ONLY.
+#
+# NOTHING IN THIS FILE IS ADMITTED. `admission_state: no_entry_admitted` is a fact,
+# not a placeholder: W3b2 has qualified zero real routes, so no model here can be
+# called, priced or run. This file exists so the roster question is answerable
+# before the W6 freeze, and so an obsolete model cannot quietly stay in scope.
+#
+# Admission rule (from docs/provider-attempts.md and the W3b2 packet):
+# a model enters a FROZEN roster only with a reproducible pinned route, retained
+# first-party price/limit/finality evidence and the eight admission gates. A family
+# name or an architecture label is never admission evidence.
+#
+# ROUTE FAMILY DECIDED 2026-10-07: the OpenRouter surface
+# (https://openrouter.ai/api/v1, /chat/completions, USD) is the surface for every
+# W3b2-qualified model. `src/provider_prices.py` already validates exactly that
+# surface, so no scope amendment is needed; a candidate's route is its OpenRouter
+# `<vendor>/<model>` id. Deciding the surface qualifies NOTHING — no entry here has
+# genuine price/limit/finality/funding evidence, and each needs its own ceilings and
+# its own conservative envelope before any paid dispatch.
+#
+# Provenance: every entry was compiled from a first-party page read on 2026-10-07.
+# `architecture_evidence` is `stated` only when the source itself states the class,
+# `inferred` when the class is derived from source text that does not label it, and
+# `unverified` when no architecture statement was read.
+schema_version: 1
+artifact_kind: study-roster-candidates
+compiled: "2026-10-07"
+compiled_for: W6 / DAILY-1349 pilot roster freeze
+admission_state: no_entry_admitted
+study_relevance: >
+  The initial study is author-directed revision and continuity across en, zh-Hant
+  and zh-Hans. A candidate needs (a) enough context to hold a full source text plus
+  accepted plan/character/story facts, and (b) a place in the architecture
+  stratification, because the study asks whether the effect depends on the model
+  and hybrid/SSM/linear attention is a plausible moderator of long-range continuity.
+
+# The pinned RR-001 contract model, kept first and separate: this one has a frozen
+# contract but still no route qualification.
+pinned_contract_candidate:
+  id: anthropic/claude-fable-5.1
+  canonical: anthropic/claude-fable-5.1-20260831
+  vendor: Anthropic
+  architecture_class: dense_frontier
+  architecture_evidence: unverified
+  context_window: 1000000
+  released: "cutoff Jun 2026 (source: 'Latest')"
+  admission: contract-only, W3b2 unqualified
+  provenance: {tier: first_party_docs, url: "https://platform.claude.com/docs/en/models/fable-5-1/overview", fetched: "2026-10-07"}
+
+candidates:
+  # ---- frontier / strong tier -------------------------------------------------
+  - {id: gpt-6-astra, vendor: OpenAI, class: dense_frontier, evidence: unverified, context: 1050000, released: "cutoff Apr 2026", supersedes: "gpt-5.x line", provenance: "https://developers.openai.com/api/docs/models/gpt-6-astra.md"}
+  - {id: gpt-6.1-sol, vendor: OpenAI, class: dense_frontier, evidence: unverified, context: 1050000, released: "cutoff Apr 2026", supersedes: null, provenance: "https://developers.openai.com/api/docs/models/gpt-6.1-sol.md"}
+  - {id: gpt-6-luna, vendor: OpenAI, class: dense_frontier, evidence: unverified, context: 1050000, released: "cutoff May 2026", supersedes: null, provenance: "https://developers.openai.com/api/docs/models/gpt-6-luna.md"}
+  - {id: claude-opus-5-5, vendor: Anthropic, class: dense_frontier, evidence: unverified, context: 1000000, released: "2026-09-22", supersedes: "claude-opus-4.x", provenance: "https://platform.claude.com/docs/en/models/opus-5-5/overview"}
+  - {id: claude-sonnet-5-5, vendor: Anthropic, class: dense_frontier, evidence: unverified, context: 1000000, released: null, supersedes: "claude-sonnet-4.x", provenance: "https://platform.claude.com/docs/en/models/overview"}
+  - {id: claude-haiku-4-5-20251001, vendor: Anthropic, class: dense_small, evidence: unverified, context: 200000, released: "cutoff Feb 2025", supersedes: null, provenance: "https://platform.claude.com/docs/en/models/overview"}
+  - {id: gemini-3.8-flash, vendor: Google, class: dense_frontier, evidence: unverified, context: 1048576, released: "2026-09", supersedes: "gemini-2.5/3.5-3.7-flash", provenance: "https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash"}
+  - {id: gemini-3.1-pro-preview, vendor: Google, class: dense_frontier, evidence: unverified, context: null, released: null, supersedes: null, note: "context window unread (302/empty) - incomplete, not absent", provenance: "https://ai.google.dev/gemini-api/docs/models"}
+  - {id: grok-4.7, vendor: xAI, class: dense_frontier, evidence: unverified, context: 500000, released: "cutoff May 2026", supersedes: "grok-4.5, grok-4.6", provenance: "https://docs.x.ai/developers/models.md"}
+  - {id: deepseek-flash, vendor: DeepSeek, class: dense_frontier, evidence: unverified, context: 1000000, released: null, supersedes: "deepseek-v4-flash (retired)", provenance: "https://api-docs.deepseek.com/quick_start/pricing"}
+  - {id: deepseek-v4-pro, vendor: DeepSeek, class: dense_frontier, evidence: unverified, context: 1000000, released: "snapshot 0813", supersedes: null, provenance: "https://api-docs.deepseek.com/quick_start/pricing"}
+  - {id: glm-5.3, vendor: Z.ai, class: dense_frontier, evidence: unverified, context: 1000000, released: null, supersedes: "glm-5.2, glm-4.6", note: "same base as GLM-5.2, post-training only", provenance: "https://docs.z.ai/guides/llm/glm-5.3.md"}
+  - {id: command-a-plus-05-2026, vendor: Cohere, class: moe, evidence: stated, context: 128000, released: "2026-05", supersedes: null, provenance: "https://docs.cohere.com/docs/models"}
+  - {id: muse-spark-1.3, vendor: Meta, class: dense_frontier, evidence: unverified, context: 1048576, released: null, supersedes: "the Llama line", provenance: "https://dev.meta.ai/docs/models"}
+  - {id: qwen3.8-max, vendor: Qwen, class: dense_frontier, evidence: unverified, context: 1000000, released: "snapshot 0902", supersedes: "qwen3-max", provenance: "https://www.qwencloud.com/models"}
+  - {id: kimi-k3, vendor: Moonshot, class: hybrid_linear_attention_moe, evidence: inferred, context: 1000000, released: null, supersedes: "kimi-k2.5", note: "card names Kimi Delta Attention (KDA) and Attention Residuals and states the MoE/KDA layer layout; it does not itself label the class, hence inferred", provenance: "https://platform.moonshot.ai/docs/guide/kimi-k3"}
+  - {id: mistral-large-4, vendor: Mistral, class: dense_frontier, evidence: unverified, context: null, released: "v26.10", supersedes: null, note: "NAME ONLY - exact API id and context window unresolved (查核不到出處)", provenance: "https://docs.mistral.ai/getting-started/models/models_overview/"}
+
+  # ---- hybrid attention / SSM / linear attention / efficient -------------------
+  - {id: nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16, vendor: NVIDIA, class: hybrid_ssm_attention_moe, evidence: stated, context: 1000000, released: "2026-08-11", supersedes: "Nemotron-3-Nano-30B-A3B", note: "Mamba-2 + MoE + Attention", provenance: "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16"}
+  - {id: nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B-BF16, vendor: NVIDIA, class: hybrid_ssm_attention_moe, evidence: stated, context: 1000000, released: "2025-12-15", supersedes: null, note: "23 Mamba-2 + 23 MoE + 6 GQA layers; the model issue #1 named", provenance: "https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B-BF16"}
+  - {id: nvidia/NVIDIA-Nemotron-3-Ultra-550B-A55B-NVFP4, vendor: NVIDIA, class: hybrid_ssm_attention_moe, evidence: stated, context: 1000000, released: null, supersedes: null, provenance: "https://docs.api.nvidia.com/nim/reference/nvidia-nemotron-3-ultra-550b-a55b"}
+  - {id: ibm-granite/granite-4.2-30b, vendor: IBM, class: dense, evidence: stated, context: 512000, released: "2026-08-25", supersedes: "granite-4.0 series", note: "ARCHITECTURE CHANGED between generations; card states 'Decoder-only Dense Transformer'", provenance: "https://huggingface.co/ibm-granite/granite-4.2-30b"}
+  - {id: google/gemma-4-31B-it, vendor: Google, class: hybrid_swa, evidence: stated, context: 256000, released: "2026-07-20", supersedes: "gemma-3", note: "interleaves local sliding-window with full global attention; SWA 512-1024; also 26B-A4B/12B/E4B/E2B", provenance: "https://huggingface.co/google/gemma-4-31B-it"}
+  - {id: Qwen/Qwen3.8-Flash-Next, vendor: Qwen, class: hybrid_linear_attention_moe, evidence: stated, context: 1010000, released: "2026-08", supersedes: "Qwen3-Next", note: "Gated DeltaNet + sparse attention", provenance: "https://huggingface.co/Qwen/Qwen3.8-Flash-Next"}
+  - {id: Qwen/Qwen3.8-2.4T-A95B, vendor: Qwen, class: hybrid_linear_attention_moe, evidence: stated, context: 1010000, released: "2026-08", supersedes: "Qwen3.5-*", provenance: "https://huggingface.co/Qwen/Qwen3.8-2.4T-A95B"}
+  - {id: moonshotai/Kimi-Linear-48B-A3B-Base, vendor: Moonshot, class: hybrid_linear_attention, evidence: stated, context: 1000000, released: null, supersedes: null, note: "base model, not instruct: kept for the architecture axis only", provenance: "https://huggingface.co/moonshotai/Kimi-Linear-48B-A3B-Base"}
+  - {id: inclusionAI/Ling-3.0-tiny, vendor: InclusionAI, class: hybrid_linear_attention_moe, evidence: stated, context: 262144, released: "2026-08-24", supersedes: "'Ling Tiny' as named in issue #1", note: "7.9B total / 1.3B active, 3:1 KDA-MLA", provenance: "https://huggingface.co/inclusionAI/Ling-3.0-tiny"}
+  - {id: ai21labs/AI21-Jamba2-Mini, vendor: AI21, class: ssm_transformer, evidence: stated, context: 262144, released: null, supersedes: "Jamba 1.5 / Mini 1.5", provenance: "https://huggingface.co/ai21labs/AI21-Jamba2-Mini"}
+  - {id: tiiuae/Falcon-H1R-7B-FP8, vendor: TII, class: hybrid_ssm, evidence: stated, context: 262144, released: "2026-02-11", supersedes: "Falcon-H1-34B", provenance: "https://huggingface.co/tiiuae/Falcon-H1R-7B-FP8"}
+  - {id: tiiuae/Falcon-H1-Tiny-R-0.6B, vendor: TII, class: hybrid_ssm, evidence: stated, context: 262144, released: "2026-02-04", supersedes: null, provenance: "https://huggingface.co/tiiuae/Falcon-H1-Tiny-R-0.6B"}
+  - {id: microsoft/Phi-4-reasoning-vision-15B, vendor: Microsoft, class: dense_small, evidence: inferred, context: 16384, released: "2026-03-04", supersedes: "microsoft/phi-4", note: "the card's phrase 'hybrid reasoning design' describes its reasoning path, NOT its attention architecture, and the card does not state 'dense'; class is inferred. Multimodal, and the study is text-only, so text-only use must be stated if this enters the roster", provenance: "https://huggingface.co/microsoft/Phi-4-reasoning-vision-15B"}
+  - {id: Ministral-3 series (14B/8B/3B, v25.12), vendor: Mistral, class: dense_small, evidence: unverified, context: null, released: "v25.12", supersedes: null, note: "still the current Ministral per Mistral's own lineup; exact ids/context unresolved (查核不到出處)", provenance: "https://docs.mistral.ai/getting-started/models/models_overview/"}
+
+  # ---- added 2026-10-07 from the Artificial Analysis frontier (see the AA block below).
+  # `id` here is a WORKING LABEL, not a route string: the exact OpenRouter ids are
+  # W3b2 evidence (model_id + canonical_model_slug + endpoint_tag read from the
+  # route's own catalog and endpoint responses). Never promote a label to a route.
+  - {id: label:mimo-v2.6-pro, vendor: Xiaomi, class: unverified, evidence: unverified, context: 1000000, released: null, supersedes: "xiaomi/mimo-v2-flash", note: "AA frontier, II 46.32 blended $0.5437, open weights; architecture not stated on the AA page", provenance: "https://artificialanalysis.ai/leaderboards/models"}
+  - {id: label:mimo-v2.6-flash, vendor: Xiaomi, class: unverified, evidence: unverified, context: 1000000, released: null, supersedes: null, note: "AA frontier, II 37.88 blended $0.175, open weights", provenance: "https://artificialanalysis.ai/leaderboards/models"}
+  - {id: label:glm-5.3-flash, vendor: Z AI, class: unverified, evidence: unverified, context: 1000000, released: null, supersedes: "glm-5.3 (the Max variant, dominated)", note: "AA frontier, II 41.81 blended $0.2375, open weights", provenance: "https://artificialanalysis.ai/leaderboards/models"}
+  - {id: label:k2-horizon-375b-a23b, vendor: "Institute of Foundation Models", class: unverified, evidence: unverified, context: 524288, released: null, supersedes: null, note: "AA frontier, II 30.50 at a literal $0.00 blended price (free/self-host in AA's data). A zero price is a data point, not a qualified route: rate limits, data policy and finality are unresolved", provenance: "https://artificialanalysis.ai/leaderboards/models"}
+  - {id: label:gemini-4-argon, vendor: Google, class: unverified, evidence: unverified, context: 1000000, released: null, supersedes: "gemini-3.8-flash, gemini-3.1-pro-preview", note: "Google's best, II 52.56 blended $4.00; NOT on the frontier", provenance: "https://artificialanalysis.ai/leaderboards/models"}
+  - {id: label:deepseek-v4.1-flash, vendor: DeepSeek, class: unverified, evidence: unverified, context: 1000000, released: null, supersedes: "deepseek-v4-flash (deprecated), deepseek-v4-pro", note: "DeepSeek's best, II 39.46 blended $0.525; NOT on the frontier", provenance: "https://artificialanalysis.ai/leaderboards/models"}
+
+# ---------------------------------------------------------------------------------
+# Artificial Analysis frontier — provenance and method (owner-relevant, not admission)
+# ---------------------------------------------------------------------------------
+artificial_analysis:
+  source: "https://artificialanalysis.ai/leaderboards/models"
+  fetched: "2026-10-07"
+  index: "Artificial Analysis Intelligence Index v4.3.2"
+  index_components: "10 evals: AA-Briefcase v1.1, GDPval-AA v2.1, AutomationBench-AA, Terminal-Bench 4.0, SciCode, HLE, GDP.pdf, CritPt, AA-Omniscience, AA-LCR v1.1"
+  price_basis: "price1mBlended0To3To1 = (3*input + output)/4, USD per 1M tokens, no cache"
+  newest_model_release_in_page: "2026-10-06"
+  what_this_index_is_not: >
+    NONE of the ten components is narrative revision or continuity. This index is a
+    cost/capability SELECTION AID for choosing which models to spend on. It is not a
+    predictor of story-writing, not a literary ranking, and never a substitute for the
+    study's own author judgements. docs/ai-evaluation-criteria.md already says model
+    capability and cost are separate operational facts, not a universal ranking.
+  prices_are_indicative: >
+    AA prices are a selection aid only. The BINDING price for any model is the one
+    W3b2 records from that route's own catalog and endpoint responses, with retained
+    bytes and hashes. No envelope may be computed from an AA number.
+  frontier_is_over_configurations_not_models: >
+    AA lists one row per reasoning-effort variant AT THE SAME PRICE. Measured spread
+    from the raw page: Claude Sonnet 5.5 Low 35.87 -> Max 56.00; Claude Fable 5.1 Low
+    46.82 -> Max 53.35; GPT-6 Luna non-reasoning 18.47 -> Max 38.12. The effort setting
+    is therefore a free variable worth up to ~20 index points, and an unpinned effort
+    would make cross-model comparison meaningless.
+  frontier_2026_10_07:
+    - {label: "Claude Opus 5.5", lab: Anthropic, ii: 57.62, in: 4.00, out: 20.00, blend: 8.00, ctx: 1000000, open_weights: false}
+    - {label: "Claude Sonnet 5.5", lab: Anthropic, ii: 56.00, in: 2.00, out: 10.00, blend: 4.00, ctx: 1000000, open_weights: false}
+    - {label: "Muse Spark 1.3", lab: Meta, ii: 48.09, in: 1.25, out: 4.25, blend: 2.00, ctx: 1000000, open_weights: false}
+    - {label: "MiMo-V2.6-Pro", lab: Xiaomi, ii: 46.32, in: 0.435, out: 0.87, blend: 0.5437, ctx: 1000000, open_weights: true}
+    - {label: "GLM 5.3 Flash", lab: "Z AI", ii: 41.81, in: 0.15, out: 0.50, blend: 0.2375, ctx: 1000000, open_weights: true}
+    - {label: "Qwen3.8-Flash-Next", lab: Alibaba, ii: 39.82, in: 0.15, out: 0.47, blend: 0.23, ctx: 256000, open_weights: true}
+    - {label: "GPT-6 Luna", lab: OpenAI, ii: 38.12, in: 0.10, out: 0.50, blend: 0.20, ctx: 1000000, open_weights: false}
+    - {label: "MiMo-V2.6-Flash", lab: Xiaomi, ii: 37.88, in: 0.14, out: 0.28, blend: 0.175, ctx: 1000000, open_weights: true}
+    - {label: "K2 Horizon 375B A23B", lab: "Institute of Foundation Models", ii: 30.50, in: 0.00, out: 0.00, blend: 0.00, ctx: 524288, open_weights: true}
+  labs_with_no_frontier_model: [Google, xAI, DeepSeek, Mistral, Amazon, Cohere, Moonshot]
+  architecture_stratum_finding: >
+    The SWA/SSM/linear-attention stratum CANNOT be populated at the frontier, with two
+    exceptions: Qwen3.8-Flash-Next (on the frontier, hybrid Gated DeltaNet + sparse
+    attention) and Kimi K3 (Moonshot, MoE + Kimi Delta Attention, II 43.59 at $6.00,
+    dominated but competitive). Every other hybrid/SSM model catalogued above scores
+    II 7-15 (Nemotron 12.86, Granite 14.83, Gemma 14.67, Ling 11.06, Kimi-Linear 7.30,
+    Falcon-H1R 7.83). This is the evidence-backed answer to issue #1: the models
+    TomLucidor named are real, and they are far off the frontier.
+
+# ---------------------------------------------------------------------------------
+# OWNER DECISION 2026-10-07 — the decided study scope
+# ---------------------------------------------------------------------------------
+owner_decided_scope:
+  decided: "2026-10-07"
+  shape: "frontier + non-frontier mainstream flagships, plus the competitive linear-attention models"
+  reasoning_effort: "Max for every model (pinned)"
+  admittance: "STILL FULLY UNQUALIFIED — this decides WHICH models to qualify, not that any is qualified. Every entry needs its own W3b2 record, its own price ceilings and its own envelope."
+  entries:
+    - {label: "Claude Opus 5.5", role: frontier, ii: 57.62}
+    - {label: "Claude Sonnet 5.5", role: frontier, ii: 56.00}
+    - {label: "Muse Spark 1.3", role: frontier, ii: 48.09}
+    - {label: "MiMo-V2.6-Pro", role: frontier, ii: 46.32}
+    - {label: "GLM 5.3 Flash", role: frontier, ii: 41.81}
+    - {label: "Qwen3.8-Flash-Next", role: "frontier + linear attention", ii: 39.82}
+    - {label: "GPT-6 Luna", role: frontier, ii: 38.12}
+    - {label: "MiMo-V2.6-Flash", role: frontier, ii: 37.88}
+    - {label: "K2 Horizon 375B A23B", role: "frontier, $0.00 price — qualify before trusting", ii: 30.50}
+    - {label: "Kimi K3", role: "flagship + linear attention (dominated)", ii: 43.59}
+    - {label: "GPT-6 Astra", role: "flagship, not frontier", ii: 52.67}
+    - {label: "Gemini 4 Argon", role: "flagship, not frontier", ii: 52.56}
+    - {label: "Grok 4.7", role: "flagship, not frontier", ii: 46.45}
+    - {label: "Qwen3.8 Max", role: "flagship, not frontier", ii: 45.42}
+    - {label: "GLM-5.3 (Max)", role: "flagship, not frontier", ii: 44.78}
+    - {label: "DeepSeek V4.1 Flash", role: "flagship, not frontier", ii: 39.46}
+    - {label: "Mistral Large 4 Preview", role: "flagship, not frontier", ii: 38.38}
+    - {label: "claude-fable-5.1", role: "RR-001 pinned first record (owner kept it; AA shows it dominated)", ii: 53.35}
+  route_ids_unresolved: >
+    The labels above are NOT route strings. Each entry's exact `model_id`,
+    `canonical_model_slug` and `endpoint_tag` must come from the route's own catalog and
+    endpoint responses at W3b2 — the packet refuses an identity that is not catalog-verified.
+  scope_limitation_recorded: >
+    The owner did not select the low-capability hybrid batch (Nemotron/Granite/Gemma/
+    Ling/Kimi-Linear/Falcon/Jamba, II 7-15). So this study answers the architecture
+    question only within frontier-competitive linear attention (Qwen3.8-Flash-Next vs
+    Kimi K3 vs dense models), and does NOT measure an SSM/SWA capability band. That is
+    a recorded scope boundary, not an oversight.
+
+# Models that must NOT carry over into a current roster. Kept visible so the
+# exclusion is auditable rather than silent.
+obsolete_as_of_2026_10_07:
+  - {id: Qwen/Qwen3.5-35B-A3B, superseded_by: Qwen/Qwen3.8-*}
+  - {id: Qwen/Qwen3-Next-80B-A3B-Instruct, superseded_by: Qwen/Qwen3.8-Flash-Next}
+  - {id: ibm-granite/granite-4.0-* , superseded_by: ibm-granite/granite-4.2-30b, note: "the 4.0 card calls itself a 'decoder-only dense transformer architecture' whose core components include GQA, Mamba2, MLP and RMSNorm — it does not label itself hybrid or SSM, so an architecture-axis entry would have been unsupported"}
+  - {id: microsoft/phi-4, superseded_by: microsoft/Phi-4-reasoning-vision-15B}
+  - {id: h2oai/h2o-danube3.1-4b-chat, superseded_by: "none direct; h2o-lightning-4b is the org's newest text model (inferred)"}
+  - {id: nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B, superseded_by: nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B}
+  - {id: tiiuae/Falcon-H1-34B-Instruct, superseded_by: tiiuae/Falcon-H1R-7B}
+  - {id: moonshotai/kimi-k2.5, superseded_by: moonshotai/Kimi-K3}
+  - {id: z-ai/glm-5, superseded_by: z-ai/glm-5.3}
+  - {id: qwen/qwen3-235b-a22b, superseded_by: Qwen3.8 line}
+  - {id: meta-llama/llama-4-maverick, superseded_by: "Meta's own docs now lead with muse-spark-1.3"}
+  - {id: openai/gpt-4o, openai/gpt-4o-mini, superseded_by: gpt-6 line; gpt-4.5-preview marked Deprecated}
+  - {id: openai/gpt-5, gpt-5.1, gpt-5.2, gpt-5.3-*, gpt-5.4-*, gpt-5.6-*, superseded_by: gpt-6-astra / gpt-6.1-sol / gpt-6-luna}
+  - {id: anthropic/claude-sonnet-4, claude-opus-4.5, claude-sonnet-4.5, claude-opus-4.6, claude-sonnet-4.6, superseded_by: claude-opus-5-5 / claude-sonnet-5-5}
+  - {id: google/gemini-3-pro-preview, superseded_by: "SHUT DOWN per Google's model list"}
+  - {id: google/gemini-2.5-flash, superseded_by: gemini-3.8-flash}
+  - {id: deepseek/deepseek-r1, superseded_by: deepseek-v4-pro / deepseek-flash}
+  - {id: x-ai/grok-4, superseded_by: grok-4.7}
+  - {id: minimax/minimax-m2 and m2.5, superseded_by: "not re-verified this round"}
+  - {id: qwen/qwen3-max-thinking, qwen/qwen3-coder-next, superseded_by: Qwen3.8 line}
+
+# Sought and not resolvable to a first-party page. Recorded as unresolved, never
+# as "does not exist": a login wall or an unrendered page is not a negative.
+unresolved_查核不到出處:
+  - "Amazon Nova 2 exact API model id (Nova 2 Lite / Nova 2 Sonic exist; ids not read)"
+  - "Microsoft MAI frontier model id (referenced as a group in the Foundry catalog)"
+  - "Mistral Large 4 / Medium 3.5 / Small 4 / Ministral 3 exact API ids and context windows"
+  - "Qwen3.5 architecture class (repos exist, no architecture statement read)"
+
+# Requested by issue #1 / TomLucidor, checked against first-party sources, and NOT
+# carried into the candidates list above. Recorded so the omission is explicit.
+third_party_leads_not_carried:
+  - {lead: "H2O-Danube3", verdict: "real but stale (2024-11-30, 8K context); SLM with 8K cannot hold a full source text"}
+  - {lead: "Phi-4 (base)", verdict: "superseded; and 16K context is disqualifying for the revision/continuity task"}
+  - {lead: "Qwen-3.5 series", verdict: "superseded by Qwen3.8-*"}
+  - {lead: "Qwen3-Next", verdict: "superseded by Qwen3.8-Flash-Next"}
+  - {lead: "Granite 4.0", verdict: "architecture changed in 4.2; 4.0 kept only as the hybrid contrast"}
+  - {lead: "SLMs generally are less viable (TomLucidor, 2026-10-07)", verdict: "supported for this study: context length, not parameter count, is the binding constraint for whole-text revision"}
+
+next_step: >
+  Owner picks the frontier stratum and the architecture strata from this list; each
+  pick then needs its own W3b2 route qualification before the W6 roster freeze.

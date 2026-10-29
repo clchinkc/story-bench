@@ -1,0 +1,190 @@
+# W6 study preregistration — revision/continuity, D-minus-A.
+#
+# status: unfrozen. This is deliberate and load-bearing:
+#   * sample_size is null because the contract freezes it only from pilot evidence;
+#   * roster_status is candidates_pending_owner_approval because the roster below is
+#     a PROPOSAL chosen for stratum coverage, not an owner decision;
+#   * and no entry is admitted regardless, because W3b2 has qualified zero real
+#     routes. validate_study.py refuses to call a study frozen without an
+#     owner-approved roster and a sample size.
+#
+# Encodings: this file never carries story text, labels, credentials or prices.
+schema_version: 1
+study_id: revision-v1
+kind: PREREGISTRATION
+status: unfrozen
+
+estimand:
+  primary: "weighted mean within-cluster paired D-minus-A resolved difference"
+  locale_weights: equal
+  arm_control: A
+  arm_treatment: D
+  secondary_arms: [B, C]
+  # Only `model` is an implemented stratum: the report emits descriptive per-model
+  # lifts. Architecture class is a ROSTER annotation (config/study-roster-candidates.yaml),
+  # not an analysis stratum here — claiming it as one would be decorative, which is
+  # exactly what an independent review caught in the previous revision.
+  strata: [model]
+
+interval:
+  method: hierarchical_paired_cluster_bootstrap
+  seed: 20261007
+  resamples: 10000
+  confidence: 0.95
+
+# OWNER-DECIDED pilot roster, 2026-10-07. `roster_status: owner_approved`.
+#
+# Shape: the Artificial Analysis Pareto frontier (Intelligence Index v4.3.2) plus the
+# non-frontier mainstream flagships, plus the two competitive linear-attention models.
+# Reasoning effort is pinned to Max for EVERY model: AA lists one row per effort variant
+# at the SAME price, and the measured spread is up to ~20 index points (Sonnet 5.5 Low
+# 35.87 -> Max 56.00), so an unpinned effort would make cross-model comparison
+# meaningless.
+#
+# The labels are NOT route strings. Exact `model_id` / `canonical_model_slug` /
+# `endpoint_tag` are W3b2 evidence read from each route's own catalog and endpoint
+# responses. Approving the roster does not admit one model.
+roster:
+  - Claude Opus 5.5
+  - Claude Sonnet 5.5
+  - Muse Spark 1.3
+  - MiMo-V2.6-Pro
+  - GLM 5.3 Flash
+  - Qwen3.8-Flash-Next
+  - GPT-6 Luna
+  - MiMo-V2.6-Flash
+  - Kimi K3
+  - GPT-6 Astra
+  - Gemini 3.8 Flash
+  - Grok 4.7
+  - Qwen3.8 Max
+  - GLM-5.3 (Max)
+  - DeepSeek V4.1 Flash
+  - Mistral Large 4 Preview
+  - claude-fable-5.1
+roster_status: owner_approved
+reasoning_effort: max
+roster_rationale: >
+  Nine frontier models fix the cost/capability envelope from $0.00 to $8.00 blended;
+  nine flagships that are NOT on the frontier add a "flagship is not the frontier"
+  contrast; Qwen3.8-Flash-Next and Kimi K3 are the only linear-attention models that are
+  capability-competitive, so the architecture question is answerable WITHOUT the
+  capability confound that a II 7-15 hybrid batch would introduce. Recorded scope
+  boundary: the owner did not select the low-capability hybrid batch, so this study does
+  not measure an SSM/SWA capability band. claude-fable-5.1 is retained as the RR-001
+  pinned first record for contract continuity even though AA shows it strictly dominated
+  by Claude Opus 5.5 (53.35 @ $20 vs 57.62 @ $8) — that dominance is recorded, not hidden,
+  and fable-5.1 running in the study is a deliberate within-lab contrast at 2.5x price.
+  Full provenance: config/study-roster-candidates.yaml.
+
+# Owner decisions applied 2026-10-07: `K2 Horizon 375B A23B` REMOVED (no OpenRouter route);
+# `Gemini 4 Argon` REPLACED by `Gemini 3.8 Flash` (`google/gemini-3.8-flash`, $0.75/$3.75,
+# AA II 40.93). Net effect: every one of the 17 entries has a real OpenRouter route, so the
+# pending-admissibility gap is closed.
+#
+# OWNER DECISION PENDING, does not block the manifest: the endpoint pin per multi-endpoint
+# model (11 of the 17 entries), which changes both cost and the artifact studied. Each pin,
+# its options and a recommendation are set out in
+# bindings/execution/w3b2/route-evidence-2026-10-07/pin-decision-sheet.md.
+
+# INDICATIVE ONLY — not a quote, not a reservation, not evidence. Binding prices come
+# from each model's W3b2 record. Kept here because the freeze decision is made at this
+# manifest, and hiding the arithmetic would hide the decision.
+#
+# Costs use OpenRouter catalog prices for the 16 routed roster models (catalog
+# top-level price where a model has several endpoints; the endpoint spread reaches 12x,
+# so a pin changes these numbers). Power is the preregistered grid, resolved gate only.
+cost_estimate_indicative:
+  basis: "catalog prices x 4 arms x (8000 input + 6000 output) tokens x units/model"
+  power_grid:
+    - {clusters_per_locale: 10, units_per_cluster: 2, units_per_model: 60, power: 0.17, mean_95_width: 0.390, generation_usd: 330, with_critic_grading_retry_2_5x_usd: 826}
+    - {clusters_per_locale: 16, units_per_cluster: 3, units_per_model: 144, power: 0.30, mean_95_width: 0.273, generation_usd: 793, with_critic_grading_retry_2_5x_usd: 1982}
+    - {clusters_per_locale: 24, units_per_cluster: 4, units_per_model: 288, power: 0.58, mean_95_width: 0.199, generation_usd: 1585, with_critic_grading_retry_2_5x_usd: 3964}
+    - {clusters_per_locale: 36, units_per_cluster: 5, units_per_model: 540, power: 0.63, mean_95_width: 0.148, generation_usd: 2973, with_critic_grading_retry_2_5x_usd: 7432}
+  smallest_design_usd: {units_per_model: 18, generation_usd: 99, with_critic_grading_retry_2_5x_usd: 248}
+  pilot_envelope_usd: 150
+  main_envelope_usd: 400
+  program_cap_usd: 1000
+  finding: >
+    The 18-configuration roster cannot support a POWERED main study inside the USD 1,000
+    cap: the cheapest grid point reaching power ~0.58 costs USD 1,640 for generation alone,
+    and power is a ceiling because the simulation covers the resolved gate only. The
+    smallest design (18 units/model) costs USD 103 generation / USD 256 with critics.
+  pre_dispatch_decision_required: >
+    (a) narrow the MAIN-study roster while the pilot roster stays 18, (b) two arms for the
+    main study (primary D-minus-A only, B/C demoted to a diagnostic) which halves the
+    figures, (c) accept lower power and report precision limits, or (d) report pilot
+    infeasibility. Contract sections 8 and 9 forbid relaxing a threshold after inspection,
+    so this is decided before dispatch, and the binding prices are W3b2's, not these.
+  concentration: >
+    Three models (Claude Opus 5.5, GPT-6 Astra, claude-fable-5.1) are 57% of the
+    generation estimate; the five sub-$0.50 models are 3% of it.
+  endpoint_pin_effect: >
+    These figures use the catalog top-level price. A model with several endpoints can
+    differ by up to 12x, so the endpoint pin decided at W3b2 changes this arithmetic.
+  endpoint_price_envelope_usd_per_unit_model: {cheapest_endpoint: 4.5108, top_level: 5.5052, dearest_endpoint: 14.4192}
+  powered_row_bounds_usd:
+    basis: "the cheapest grid row reaching power >= 0.5 (24 clusters/locale x 4 units/cluster = 288 units/model)"
+    top_level_price: 1585
+    cheapest_endpoint_price: 1299
+    dearest_endpoint_price: 4153
+  robustness: >
+    The headline does not depend on which endpoint price is used: even the
+    cheapest-endpoint bound ($1,299) exceeds the $1,000 cap. Reproduce with
+    bindings/execution/w3b2/route-evidence-2026-10-07/check_cost_estimate.py, which
+    reads the label->route binding from route-evidence.json rather than declaring it.
+  rounding: >
+    Published generation cells are whole USD; raw values are 330.31 / 792.75 / 1585.50 /
+    2972.81 and 99.09 for the 18-unit design. The 2.5x column is derived from the raw
+    value, so e.g. 2972.81 x 2.5 = 7432.02 rounds to 7432.
+  concentration: >
+    Three models (Claude Opus 5.5, GPT-6 Astra, claude-fable-5.1) are 66% of the
+    generation estimate; the six sub-$0.50 models are 2% of it.
+
+sample_size: null
+
+benefit_gate:
+  observed_lift_gate: 0.10
+  lower_bound_gate: 0.0
+
+quality_safeguard:
+  metric: "Q=(wins+0.5*ties)/valid_assessed_pairs"
+  observed_gate: 0.50
+  lower_bound_gate: 0.45
+
+missingness:
+  policy: "full assigned denominator; agent-caused absent counts unresolved; provider/infrastructure/grader-invalid excluded from the point estimate and bounded worst/best; no benefit verdict when the bound straddles the gate"
+  report_full_denominator: true
+  worst_best_bounds: true
+
+valid_assessment:
+  definition: "a unit is assessed when both A and D carry a task-assessable resolved outcome under the authority gates"
+  unassessable_is_not_a_tie: true
+
+coverage_threshold: 0.90
+
+retry_limits:
+  max_retries: 3
+  new_attempt_id_per_retry: true
+  fixed_on_all_arms: true
+
+stop_criteria:
+  - "predeclared cap reached"
+  - "frozen-version drift"
+  - "holdout contamination"
+  - "never stop on significance"
+
+multiplicity:
+  policy: "one primary gate; B/C and the interaction term are secondary and multiplicity-corrected; no post-hoc threshold relaxation and no model reselection after results"
+
+power_simulation:
+  baseline_rate: 0.55
+  true_lift: 0.12
+  cluster_sd: 0.12
+  unassessable_rate: 0.06
+  grid: [[10, 2], [16, 3], [24, 4], [36, 5]]
+
+spend:
+  ceiling_usd: 1000
+  pilot_envelope_usd: 150
+  note: "nominal headroom, not released allowance; direct USD 0 and reservations USD 0 today"

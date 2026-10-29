@@ -1,6 +1,7 @@
 """Offline behavior through the actual adapter; synthetic authority only."""
 import asyncio
 import copy
+from decimal import Decimal
 from dataclasses import asdict, replace
 from datetime import datetime, timedelta, timezone
 import json
@@ -21,7 +22,7 @@ from spend_ledger import Authorization, Ledger, LedgerError, USAGE_KINDS, Valida
 
 def make_case(root, *, attempt_id="attempt-1", role="generation", hosted=True, cost_rate="0.001",
               snapshot=None, manifest=None, prompt=None, ledger=None, retry_index=0, parent=None,
-              max_attempts=1, profile_changes=None):
+              max_attempts=1, profile_changes=None, extra_pricing=None):
     root = Path(root).resolve()
     route = Route("openrouter", "https://openrouter.ai/api/v1", "/chat/completions", "fixture/model",
                   "fixture/model-20260923", "fixture/local", "default", "USD")
@@ -33,7 +34,8 @@ def make_case(root, *, attempt_id="attempt-1", role="generation", hosted=True, c
         context_length=10000, max_prompt_tokens=9000, max_completion_tokens=1000,
         supported_parameters=["max_tokens", "reasoning", "temperature", "seed"],
         pricing=dict(prompt=cost_rate, completion=cost_rate, input_cache_read=cost_rate,
-                     input_cache_write=cost_rate, input_cache_write_1h=cost_rate, request="0"))]}})
+                     input_cache_write=cost_rate, input_cache_write_1h=cost_rate, request="0",
+                     **(extra_pricing or {})))]}})
     profile = dict(kind="SYNTHETIC OFFLINE ONLY", catalog_sha256=sha(catalog), endpoints_sha256=sha(endpoints),
                    model_id=route.model_id, canonical_model_slug=route.canonical_model_slug,
                    endpoint_tag=route.endpoint_tag, input_bound=1000, output_bound=100, reasoning_bound=100,
@@ -827,3 +829,20 @@ def test_R1_financial_truth_and_six_call_bound(tmp_path,monkeypatch,depth,failur
     row=original_attempt(case[0].spec.attempt_id)
     assert row['state']==('SENT' if failure=='unknown-cleanup' else 'RECONCILED')
     assert trace(case[0])['calls']==1
+
+
+# --- W3b2 amendment 2026-10-07: a separately-priced reasoning charge is RESERVED ---------
+# Admitting `internal_reasoning` in provider_prices without mapping it in `_census` would
+# PRICE the component and never reserve it, which is an under-reservation hole rather than a
+# feature. These two controls pin both directions.
+
+def test_separately_priced_reasoning_drives_the_reasoning_reservation(tmp_path):
+    plan, _ledger, _admission, _manifest = make_case(tmp_path, extra_pricing={"internal_reasoning": "0.25"})
+    rates = {c.kind: c.usd_per_unit for c in plan.census}
+    assert Decimal(rates["reasoning_tokens"]) == Decimal("0.25")
+
+
+def test_inclusive_reasoning_stays_zero_when_the_route_does_not_price_it(tmp_path):
+    plan, _ledger, _admission, _manifest = make_case(tmp_path)
+    rates = {c.kind: c.usd_per_unit for c in plan.census}
+    assert Decimal(rates["reasoning_tokens"]) == Decimal("0")

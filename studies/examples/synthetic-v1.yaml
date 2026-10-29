@@ -1,0 +1,74 @@
+# W6 study manifest — SYNTHETIC EXAMPLE.
+#
+# This file exists to exercise the W6 toolchain end to end offline. It is not a
+# study, its roster is fabricated, and analyze_study.py stamps a warning into any
+# report derived from it. The real preregistration is studies/revision-v1.yaml.
+schema_version: 1
+study_id: synthetic-v1
+kind: SYNTHETIC EXAMPLE
+status: unfrozen
+
+estimand:
+  primary: "weighted mean within-cluster paired D-minus-A resolved difference"
+  locale_weights: equal
+  arm_control: A
+  arm_treatment: D
+  secondary_arms: [B, C]
+
+interval:
+  method: hierarchical_paired_cluster_bootstrap
+  seed: 20261007
+  resamples: 2000
+  confidence: 0.95
+
+roster:
+  - synthetic/example-model
+  - synthetic/example-model-second
+roster_status: candidates_pending_owner_approval
+
+sample_size: null
+
+benefit_gate:
+  observed_lift_gate: 0.10
+  lower_bound_gate: 0.0
+
+quality_safeguard:
+  metric: "Q=(wins+0.5*ties)/valid_assessed_pairs"
+  observed_gate: 0.50
+  lower_bound_gate: 0.45
+
+missingness:
+  policy: "full assigned denominator; agent-caused absent counts unresolved; provider/infrastructure/grader-invalid excluded from the point estimate and bounded worst/best; no benefit verdict when the bound straddles the gate"
+  report_full_denominator: true
+  worst_best_bounds: true
+
+valid_assessment:
+  definition: "a unit is assessed when both A and D carry a task-assessable resolved outcome under the authority gates"
+  unassessable_is_not_a_tie: true
+
+coverage_threshold: 0.90
+
+retry_limits:
+  max_retries: 3
+  new_attempt_id_per_retry: true
+  fixed_on_all_arms: true
+
+stop_criteria:
+  - "predeclared cap reached"
+  - "frozen-version drift"
+  - "holdout contamination"
+  - "never stop on significance"
+
+multiplicity:
+  policy: "one primary gate; B/C and interaction terms are secondary and multiplicity-corrected; no post-hoc threshold relaxation"
+
+power_simulation:
+  baseline_rate: 0.55
+  true_lift: 0.12
+  cluster_sd: 0.12
+  unassessable_rate: 0.06
+  grid: [[8, 2], [14, 3], [22, 4]]
+
+spend:
+  ceiling_usd: 1000
+  pilot_envelope_usd: 150
