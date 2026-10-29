@@ -112,6 +112,12 @@ class Route:
     endpoint_tag: str
     service_tier: str
     currency: str
+    # Bare base tags are ambiguous whenever the route exposes `<tag>/...` siblings. Instead of a
+    # hardcoded suffix allowlist (which drifts from reality — `/fast` and `/flex` were excluded
+    # while `/priority` and `/zdr` were not), the caller DECLARES the exact sibling set it is not
+    # selecting. The guard then fails closed if the live set differs, including when a NEW sibling
+    # appears later. The default `()` means "this tag must have no siblings".
+    excluded_variants: tuple[str, ...] = ()
 
 
 @dataclass(frozen=True)
@@ -183,8 +189,9 @@ def validate_snapshot(raw_sources, route, observed_at, expires_at):
         if len(models) != 1 or endpoint_data["id"] != route.model_id or len(matches) != 1:
             raise ValidationError("catalog/model/endpoint identity mismatch")
         if "/" not in route.endpoint_tag:
-            variants = [e for e in endpoints if e["tag"].startswith(route.endpoint_tag + "/") and not e["tag"].endswith(("/fast", "/flex"))]
-            if variants:
+            siblings = sorted(e["tag"] for e in endpoints
+                              if e["tag"].startswith(route.endpoint_tag + "/"))
+            if siblings != sorted(route.excluded_variants):
                 raise ValidationError("ambiguous base provider slug")
         endpoint = matches[0]
         expected_tier = "priority" if route.endpoint_tag.endswith("/fast") else "flex" if route.endpoint_tag.endswith("/flex") else "default"

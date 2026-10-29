@@ -168,3 +168,62 @@ def test_time_window_override_is_admitted_and_a_higher_rate_raises_the_basis():
 def test_malformed_override_still_fails_closed(override):
     with pytest.raises(ValueError):
         validate(_with_overrides(override))
+
+
+# --- W3b2 amendment 2026-10-29: bare base tags need an EXPLICIT sibling declaration ----------
+# The old rule used a hardcoded suffix allowlist (`/fast`, `/flex` were tolerated while `/priority`
+# and `/zdr` were not), which made a DEFAULT tier unpinnable for any provider offering such a
+# variant — and was itself a copy of an external rule that drifted from it. The rule is now: a bare
+# tag is acceptable only when the caller declares the exact sibling set, and the guard fails closed
+# when the live set differs, including when a new sibling appears later.
+
+def _bare_tag_pack(siblings):
+    pack = source_pack()
+    route = pack[0]
+    endpoints = pack[2]["data"]["endpoints"]
+    base = endpoints[0]
+    base["tag"] = "acme"
+    for name in siblings:
+        extra = dict(base)
+        extra["tag"] = name
+        endpoints.append(extra)
+    return [replace(route, endpoint_tag="acme"), *pack[1:]]
+
+
+def test_bare_tag_with_no_siblings_is_accepted():
+    pack = _bare_tag_pack([])
+    assert validate(pack).rate_components
+
+
+def test_bare_tag_with_declared_siblings_is_accepted():
+    siblings = ["acme/priority", "acme/zdr"]
+    pack = _bare_tag_pack(siblings)
+    pack[0] = replace(pack[0], excluded_variants=tuple(siblings))
+    assert validate(pack).rate_components
+
+
+def test_bare_tag_with_undeclared_siblings_denies():
+    with pytest.raises(ValueError):
+        validate(_bare_tag_pack(["acme/priority"]))
+
+
+@pytest.mark.parametrize("declared", [
+    ("acme/priority",),                      # partially declared
+    ("acme/priority", "acme/zdr", "acme/x"),  # over-declared (a variant that does not exist)
+])
+def test_partial_or_over_declaration_denies(declared):
+    pack = _bare_tag_pack(["acme/priority", "acme/zdr"])
+    pack[0] = replace(pack[0], excluded_variants=declared)
+    with pytest.raises(ValueError):
+        validate(pack)
+
+
+def test_a_new_sibling_appearing_later_fails_closed():
+    """The declaration is a claim about the live set, so a route that gains a sibling refuses."""
+    pack = _bare_tag_pack(["acme/priority"])
+    pack[0] = replace(pack[0], excluded_variants=("acme/priority",))
+    assert validate(pack).rate_components
+    pack = _bare_tag_pack(["acme/priority", "acme/priority/eu"])
+    pack[0] = replace(pack[0], excluded_variants=("acme/priority",))
+    with pytest.raises(ValueError):
+        validate(pack)
