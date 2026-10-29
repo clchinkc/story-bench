@@ -7,7 +7,7 @@ break-then-repair. The reward must refuse each one.
 """
 
 from prompt_set import CanonFact, build_task
-from reward_programmatic import reward_contrast, score_assertions, terminal_reward
+from reward_programmatic import group_has_contrast, score_assertions, terminal_reward
 
 EYES = CanonFact("Mara", "eye_colour", "grey")
 LANTERN = CanonFact("the lantern", "state", "lit")
@@ -81,4 +81,4 @@ def test_break_then_repair_becomes_unmeasurable_not_successful():
 
     assert verdict.resolved is False
     assert terminal_reward(verdict) is None
-    assert reward_contrast([terminal_reward(verdict)]) == 0.0
+    assert group_has_contrast([terminal_reward(verdict)]) is None

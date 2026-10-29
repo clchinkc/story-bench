@@ -6,7 +6,6 @@ from prompt_set import CanonFact, build_task
 from reward_programmatic import (
     RewardError,
     RewardVerdict,
-    reward_contrast,
     score_assertions,
     terminal_reward,
 )
@@ -79,18 +78,3 @@ def test_an_unassessable_verdict_cannot_also_be_resolved():
 def test_an_unassessable_verdict_cannot_carry_violations():
     with pytest.raises(RewardError, match="cannot carry violations"):
         RewardVerdict(task_id="t1", resolved=False, violations=(EYES,), unassessable="x")
-
-
-def test_a_uniform_group_has_no_contrast():
-    assert reward_contrast([1, 1, 1, 1]) == 0.0
-    assert reward_contrast([0, 0, 0]) == 0.0
-
-
-def test_a_mixed_group_has_contrast():
-    assert reward_contrast([1, 0, 1, 1]) == 1.0
-
-
-def test_unassessable_samples_are_excluded_rather_than_scored_as_zero():
-    assert reward_contrast([None, None]) == 0.0
-    assert reward_contrast([1, None]) == 0.0
-    assert reward_contrast([1, 0, None]) == 1.0

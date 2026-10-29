@@ -119,16 +119,29 @@ def terminal_reward(verdict: RewardVerdict) -> int | None:
     return 1 if verdict.resolved else 0
 
 
-def reward_contrast(rewards: Iterable[int | None]) -> float:
-    """Share of a group carrying a non-zero advantage; None entries are excluded.
+def group_has_contrast(rewards: Iterable[int | None]) -> bool | None:
+    """Does this group carry a non-zero advantage at all?
 
-    A group where every sample scores the same teaches nothing — GRPO's advantage is
-    group-relative, so a uniform group contributes zero gradient. W9 records this
-    statistic per run and resamples uniform groups rather than training on them.
+    Returns None when nothing in the group was scorable. An unmeasured group is not a
+    uniform group, and reporting it as one would claim a measurement that never
+    happened — the same distinction the contract draws between a wrong answer and a
+    grader-invalid one.
     """
     scored = [reward for reward in rewards if reward is not None]
     if not scored:
-        return 0.0
-    if len(set(scored)) > 1:
-        return 1.0
-    return 0.0
+        return None
+    return len(set(scored)) > 1
+
+
+def run_contrast_share(groups: Iterable[Iterable[int | None]]) -> float | None:
+    """W9's per-run statistic: the share of scorable groups that carry contrast.
+
+    A uniform group teaches nothing, so this is the number a run records; below its
+    target the wave resamples DAPO-style rather than training on those groups. None
+    when no group was scorable at all.
+    """
+    verdicts = [group_has_contrast(group) for group in groups]
+    scorable = [verdict for verdict in verdicts if verdict is not None]
+    if not scorable:
+        return None
+    return sum(scorable) / len(scorable)
