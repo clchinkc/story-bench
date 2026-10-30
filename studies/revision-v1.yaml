@@ -45,57 +45,68 @@ interval:
 # `endpoint_tag` are W3b2 evidence read from each route's own catalog and endpoint
 # responses. Approving the roster does not admit one model.
 roster:
-  - Claude Opus 5.5
-  - Claude Sonnet 5.5
-  - Muse Spark 1.3
-  - MiMo-V2.6-Pro
-  - GLM 5.3 Flash
-  - Qwen3.8-Flash-Next
-  - GPT-6 Luna
-  - MiMo-V2.6-Flash
-  - Kimi K3
-  - GPT-6 Astra
-  - Gemini 3.8 Flash
+  # Nine labs, one officially hosted model each — owner decision 2026-10-31.
+  # "Official" means the vendor's own namespace on OpenRouter. Flex tiers are excluded because only
+  # some labs offer them, which would make service tier a function of lab.
+  - Opus 5.5
+  - Muse Wonder
+  - GPT-6.1 Sol Pro
   - Grok 4.7
-  - Qwen3.8 Max
-  - GLM-5.3 (Max)
-  - DeepSeek V4.1 Flash
-  - Mistral Large 4 Preview
-  - claude-fable-5.1
+  - Qwen3.8 Max Prime
+  - Gemini 4 Argon
+  - Kimi K3.1 Pro
+  - GLM 5.3
+  - DeepSeek V4.1 Flash 1017
 roster_status: owner_approved
-reasoning_effort: max
+reasoning_effort:
+  # Owner decision 2026-10-31: each lab runs at ITS OWN highest supported effort, because three of the
+  # nine cannot accept `max` at all. This is a declared treatment difference, not an oversight: it makes
+  # effort a function of lab, which is the same confound that excluded the flex tier, and it is accepted
+  # here deliberately so that every lab is measured at its own ceiling rather than excluded.
+  # Verified against the 2026-10-31 catalog `reasoning.supported_efforts` per model.
+  default: max
+  per_model:
+    "anthropic/claude-opus-5.5": max
+    "meta/muse-wonder": max
+    "openai/gpt-6.1-sol-pro": max
+    "moonshotai/kimi-k3.1-pro": max
+    "z-ai/glm-5.3": max
+    "deepseek/deepseek-v4.1-flash-1017": max
+    "x-ai/grok-4.7": xhigh          # ceiling: catalog offers xhigh/high/medium/low
+    "qwen/qwen3.8-max-prime": xhigh # ceiling: catalog offers xhigh/high/medium/low/minimal
+    "google/gemini-4-argon": high   # ceiling: catalog offers only high/medium/low
+  note: "requesting an unsupported effort is denied by the adapter's own control, so three routes would have been unrunnable at `max`"
+
 roster_rationale: >
-  Nine frontier models fix the cost/capability envelope from $0.00 to $8.00 blended;
-  nine flagships that are NOT on the frontier add a "flagship is not the frontier"
-  contrast; Qwen3.8-Flash-Next and Kimi K3 are the only linear-attention models that are
-  capability-competitive, so the architecture question is answerable WITHOUT the
-  capability confound that a II 7-15 hybrid batch would introduce. Recorded scope
-  boundary: the owner did not select the low-capability hybrid batch, so this study does
-  not measure an SSM/SWA capability band. claude-fable-5.1 is retained as the RR-001
-  pinned first record for contract continuity even though AA shows it strictly dominated
-  by Claude Opus 5.5 (53.35 @ $20 vs 57.62 @ $8) — that dominance is recorded, not hidden,
-  and fable-5.1 running in the study is a deliberate within-lab contrast at 2.5x price.
-  Full provenance: config/study-roster-candidates.yaml.
+  Owner decision 2026-10-31 replaced a deliberately constructed roster with one that represents each
+  lab at its frontier: nine labs, one officially hosted model each, chosen as the newest largest
+  non-preview model by model version number, pinned to the vendor's own endpoint. This answers a
+  different question from its predecessor and the difference is recorded rather than glossed. The
+  previous roster existed to make three contrasts answerable — a blended cost envelope from USD 0.00
+  to 8.00, nine flagships deliberately NOT on the frontier, and two linear-attention models for an
+  architecture question without a capability confound. This roster CANNOT answer any of the three:
+  every model is frontier, so the cost envelope collapses to the top of its range; nothing is chosen
+  off-frontier; and no linear-attention model remains. Those questions are abandoned, not deferred.
+  Two further facts the roster's shape follows rather than chooses: Z.ai is represented by glm-5.3 and
+  not its flagship glm-5.3-prime, because the flagship has no z-ai endpoint; and Meta is represented
+  by muse-wonder alone, because it is Meta's only officially hosted model. Precision is not held
+  constant across labs: four pins are the vendor's quantised deployment and the rest declare
+  quantization unknown, so cross-lab comparison mixes model and precision.
 
-# Owner decisions applied 2026-10-07: `K2 Horizon 375B A23B` REMOVED (no OpenRouter route);
-# `Gemini 4 Argon` REPLACED by `Gemini 3.8 Flash` (`google/gemini-3.8-flash`, $0.75/$3.75,
-# AA II 40.93). Net effect: every one of the 17 entries has a real OpenRouter route, so the
-# pending-admissibility gap is closed.
-#
-# OWNER DECISION PENDING, does not block the manifest: the endpoint pin per multi-endpoint
-# model (11 of the 17 entries), which changes both cost and the artifact studied. Each pin,
-# its options and a recommendation are set out in
-# bindings/execution/w3b2/route-evidence-2026-10-07/pin-decision-sheet.md.
-
-# INDICATIVE ONLY — not a quote, not a reservation, not evidence. Binding prices come
-# from each model's W3b2 record. Kept here because the freeze decision is made at this
-# manifest, and hiding the arithmetic would hide the decision.
-#
-# Costs use OpenRouter catalog prices for the 16 routed roster models (catalog
-# top-level price where a model has several endpoints; the endpoint spread reaches 12x,
-# so a pin changes these numbers). Power is the preregistered grid, resolved gate only.
 cost_estimate_indicative:
   basis: "catalog prices x 4 arms x (8000 input + 6000 output) tokens x units/model"
+  basis_note: "the historical grid below is priced on FOUR arms at 288 units/model. A unit is a matched four-arm set, so units_per_model counts units and each carries four arm-runs; unit_cost multiplying by ARMS is therefore correct, not a double count."
+  decided_configuration_2026_10_31:
+    note: "owner decision 2026-10-31; the four-arm main study did not fit the cap"
+    units_per_model: 144
+    arms: 2
+    generation_usd: 239.97
+    power: 0.30
+    critics_graders_at_1_5x_usd: 359.95
+    programme_usd: 989.97
+    spare_usd: 10.03
+    retry_exposure: "retry_limits.max_retries 3 permits four attempts, so the conservative main bound is 479.94 against a 240 main allocation; the guard must REFUSE rather than overrun"
+    arms_consequence: "B and C lose inferential status and become a diagnostic run; the primary estimand is computed on D minus A only"
   power_grid:
     - {clusters_per_locale: 10, units_per_cluster: 2, units_per_model: 60, power: 0.17, mean_95_width: 0.390, generation_usd: 330, with_critic_grading_retry_2_5x_usd: 826}
     - {clusters_per_locale: 16, units_per_cluster: 3, units_per_model: 144, power: 0.30, mean_95_width: 0.273, generation_usd: 793, with_critic_grading_retry_2_5x_usd: 1982}
@@ -188,3 +199,10 @@ spend:
   ceiling_usd: 1000
   pilot_envelope_usd: 150
   note: "nominal headroom, not released allowance; direct USD 0 and reservations USD 0 today"
+  allocations_2026_10_31:
+    repair: 100
+    data_judge: 500
+    pilot: 150
+    main: 240
+    reserve: 10
+    note: "data/judge raised 200 -> 500, funded by main 400 -> 240 and reserve 150 -> 10; the shift is explicit as contract section 9 requires"

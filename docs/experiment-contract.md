@@ -111,7 +111,9 @@ Pilot measures variance, failure rates, cluster dependence, assessment burden an
 
 ## 9. Spend and failure accounting
 
-One atomic program ledger, **USD 1,000 inference cap**. Initial allocations: repair 100, data/judge 200, pilot 150, main 400, reserve 150. All later work draws from unspent/reallocated funds within 1,000. No per-phase cap reset.
+One atomic program ledger, **USD 1,000 inference cap**. Initial allocations: repair 100, data/judge 500, pilot 150, main 240, reserve 10.
+
+**Amendment 2026-10-31 (owner decision) — the allocation shift is explicit.** `data/judge` rose from 200 to 500, funded by `main` falling 400 to 240 and `reserve` 150 to 10, so the five lines still sum to 1,000. The reason is recorded because the numbers alone look arbitrary: critics and graders cost about 1.5x generation, and the previous 200 line could not fund them at any configuration that fitted `main`. The main figure falls because the roster moved to nine labs at 144 units and two arms, which is what made the programme close at 989.97 of the 1,000 cap. All later work draws from unspent/reallocated funds within 1,000. No per-phase cap reset.
 
 **Amendment 2026-10-29 (owner decision) — funding fees sit OUTSIDE that cap.** The provider charges a fee on credit purchases, separately from inference pricing; its rate is not published in the retained bytes. The fee is therefore reported as a **named funding line, separate from the inference envelopes, and never as zero** — recorded as unknown rather than excluded or assumed away. This supersedes the earlier reading of this paragraph as a single total that included funding costs. The consequence is recorded rather than hidden: **spending the full USD 1,000 on inference requires purchasing more than USD 1,000 of credits**, so the reported program cost is incomplete unless the funding line is read with it. This amendment changes a canonical document of the r1 approved set, so **the r1 `canonical_set_sha256` `6cc00746…` is superseded** and a verifier must re-derive it from the current bytes.
 
