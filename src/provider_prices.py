@@ -1,4 +1,10 @@
-"""Finite offline price snapshots. No real route is qualified or contacted."""
+"""Finite price snapshots under two named authorities; this module never opens a connection.
+
+A snapshot is `unqualified` from catalog+endpoint bytes alone. A synthetic profile yields
+`offline_fixture`; a profile carrying a passing, route-independent C8 verification artifact
+yields `c8_verified`. The difference is who vouches, and it is read from the fourth source
+rather than asserted by the profile that benefits from it.
+"""
 from dataclasses import asdict, dataclass, field
 from datetime import datetime, timedelta, timezone
 from decimal import Decimal
@@ -159,15 +165,164 @@ PROFILE_FIELDS = {"kind", "catalog_sha256", "endpoints_sha256", "model_id",
                   "canonical_model_slug", "endpoint_tag", "input_bound", "output_bound",
                   "reasoning_bound", "cache_read_bound", "cache_write_bound",
                   "structural_zero", "no_incremental_infrastructure", "no_metered_agent"}
+# Two authorities may vouch for a route's execution profile, and they are NAMED rather than assumed.
+# A synthetic profile exists so MockTransport can be exercised without claiming anything about the
+# world. A verified profile claims something about the world, so it must carry the C8 verification
+# artifact that made the claim, and that artifact's bytes are hashed into the snapshot beside the
+# prices. The difference between the two is who vouches, recorded explicitly — not a code path.
+SYNTHETIC_KIND = "SYNTHETIC OFFLINE ONLY"
+VERIFIED_KIND = "C8 VERIFIED ROUTE"
+REAL_PROFILE_FIELDS = PROFILE_FIELDS | {"verification_sha256", "verifier", "verdict",
+                                        "verified_at"}
+_STRUCTURAL_ZERO_KEY = {"reasoning_tokens": "reasoning_bound",
+                        "cache_read_tokens": "cache_read_bound",
+                        "cache_write_tokens": "cache_write_bound"}
+# Non-token components that may be asserted zero by the profile. `request` has no token bound to
+# contradict, so it needs no entry in the map above — but asserting it is a CLAIM, which is why it
+# must be declared explicitly rather than inferred from the provider omitting a price key.
+_STRUCTURAL_ZERO_PLAIN = frozenset({"request"})
+# The qualifications that permit a reservation. `unqualified` never appears here: a bare
+# catalog+endpoint fetch is evidence of PRICES, not of a route anyone has agreed to pay for.
+QUALIFICATION_FOR_KIND = {SYNTHETIC_KIND: "offline_fixture", VERIFIED_KIND: "c8_verified"}
+AUTHORITY_FOR_QUALIFICATION = {v: k for k, v in QUALIFICATION_FOR_KIND.items()}
+QUALIFIED_KINDS = frozenset(QUALIFICATION_FOR_KIND.values())
+
+
+def _profile_identity(profile, route, refs, label):
+    """The profile must describe THESE bytes and THIS route, or it describes nothing."""
+    if profile["catalog_sha256"] != refs[0].sha256 or profile["endpoints_sha256"] != refs[1].sha256:
+        raise ValidationError(f"{label} source binding")
+    for key in ("model_id", "canonical_model_slug", "endpoint_tag"):
+        if profile[key] != getattr(route, key):
+            raise ValidationError(f"{label} route binding")
+
+
+def _token_bounds(profile):
+    """The three token ceilings a reservation is built from, checked before anything is priced."""
+    for key in ("input_bound", "output_bound", "reasoning_bound", "cache_read_bound", "cache_write_bound"):
+        integer(profile[key])
+    if profile["output_bound"] < 1 or profile["reasoning_bound"] > profile["output_bound"]:
+        raise ValidationError("invalid combined completion bound")
+    if max(profile["cache_read_bound"], profile["cache_write_bound"]) > profile["input_bound"]:
+        raise ValidationError("invalid cache subset bound")
+
+
+def _zero_proof(profile):
+    """Which counters are structurally zero. A claim of zero that the bounds contradict is refused."""
+    zeros = profile["structural_zero"]
+    allowed = set(_STRUCTURAL_ZERO_KEY) | _STRUCTURAL_ZERO_PLAIN
+    if type(zeros) is not list or len(zeros) != len(set(zeros)) or set(zeros) - allowed:
+        raise ValidationError("invalid structural-zero proof")
+    for kind in zeros:
+        if kind in _STRUCTURAL_ZERO_KEY and profile[_STRUCTURAL_ZERO_KEY[kind]] != 0:
+            raise ValidationError("structural-zero contradicts bound")
+    return frozenset(zeros)
+
+
+def _cost_completeness(profile, rates, zeros, label):
+    """An unknown cost is not zero, so it blocks rather than underwrites a reservation."""
+    if profile["no_incremental_infrastructure"] is not True or profile["no_metered_agent"] is not True:
+        raise ValidationError(f"unknown {label} execution cost")
+    for kind, key in (("cache_read_tokens", "input_cache_read"), ("cache_write_tokens", "input_cache_write")):
+        if key not in rates and kind not in zeros:
+            raise ValidationError("unknown applicable cache price")
+    if "request" not in rates and "request" not in zeros:
+        # Absence is UNKNOWN unless the profile explicitly asserts the component cannot be charged.
+        # The retained records record exactly this component as unknown, so a route only becomes
+        # priceable when that assertion is made deliberately and auditable.
+        raise ValidationError("unknown request price")
+
+
+def _profile_bounds(profile, rates, label):
+    """Bounds are what the ledger reserves against, so they are checked identically whatever
+    vouches for them; only the authority differs between a fixture and a verified route."""
+    _token_bounds(profile)
+    _cost_completeness(profile, rates, _zero_proof(profile), label)
+
+
+
+VERIFICATION_MAX_AGE = timedelta(hours=24)
+
+
+def _instant(value):
+    """A tz-aware instant in UTC. The retained artifacts write `+08:00`, so demanding a `Z` suffix
+    would have refused every real verification while accepting every forged one that copied the
+    format — the same shape of bug as comparing `pass` to `PASS`."""
+    try:
+        parsed = datetime.fromisoformat(text(value))
+        if parsed.tzinfo is None:
+            raise ValueError("offset required")
+        return parsed.astimezone(timezone.utc)
+    except (ValueError, OverflowError) as exc:
+        raise ValidationError("offset-aware timestamp required") from exc
+
+
+def _verification(profile, route, artifact, expires):
+    """Read the C8 artifact and let IT be the authority, rather than the profile vouching for itself.
+
+    Without this the fourth source was any JSON file whatsoever: the profile declared a verdict and
+    the code compared only a hash the profile itself wrote, so a passing claim needed no passing
+    evidence. A self-signed qualification is not a qualification; it is a restatement.
+    """
+    if type(artifact) is not dict:
+        raise ValidationError("verification artifact must be an object")
+    if str(artifact.get("verdict", "")).lower() != "pass":
+        raise ValidationError("verified qualification requires a passing verdict")
+    if artifact.get("subject") != route.model_id:
+        raise ValidationError("verification artifact names another subject")
+    if artifact.get("route_independent") is not True:
+        raise ValidationError("route-dependent verification does not qualify")
+    if artifact.get("verifier") != profile["verifier"]:
+        raise ValidationError("verification verifier mismatch")
+    verified = _instant(artifact.get("verified_at"))
+    if verified != _instant(profile["verified_at"]):
+        raise ValidationError("verification timestamp mismatch")
+    # Anchored on the WINDOW, not on `observed_at`: the C8 reviews for this base legitimately ran
+    # minutes AFTER the price snapshot was taken, so "must not postdate the snapshot" refused
+    # every real artifact while accepting synthetic ones written earlier. What matters is that
+    # the review is not from the future of its own evidence and has not gone stale.
+    expires = _instant(expires)
+    if verified > expires:
+        raise ValidationError("verification postdates the evidence window")
+    if expires - verified > VERIFICATION_MAX_AGE:
+        raise ValidationError("verification is stale for these bytes")
+
+
+def _qualify(sources, route, refs, rates, expires_at):
+    """Decide WHOSE authority backs this profile, and refuse anything that does not name itself.
+
+    A synthetic profile may describe any route; a verified one must carry the C8 artifact that
+    verified those exact bytes, so the claim and the evidence travel together.
+    """
+    profile = sources[2]
+    kind = profile.get("kind") if type(profile) is dict else None
+    if len(sources) == 3 and kind == SYNTHETIC_KIND:
+        exact_fields(profile, PROFILE_FIELDS)
+        _profile_identity(profile, route, refs, "synthetic")
+        _profile_bounds(profile, rates, "fixture")
+        return QUALIFICATION_FOR_KIND[kind]
+    if len(sources) == 4 and kind == VERIFIED_KIND:
+        exact_fields(profile, REAL_PROFILE_FIELDS)
+        _profile_identity(profile, route, refs, "verified")
+        _profile_bounds(profile, rates, "verified route")
+        if profile["verification_sha256"] != refs[3].sha256:
+            raise ValidationError("verification artifact binding")
+        _verification(profile, route, sources[3], expires_at)
+        return QUALIFICATION_FOR_KIND[kind]
+    raise ValidationError("unknown profile authority or source count")
 
 
 def validate_snapshot(raw_sources, route, observed_at, expires_at):
-    """Parse real catalog+endpoint bytes, optionally with an explicitly fake profile.
+    """Parse real catalog+endpoint bytes, optionally with a profile that names its own authority.
 
-    An offline profile supplies synthetic enforcement evidence ONLY for MockTransport.
-    It cannot qualify live prices, invoices or transport. Real snapshots stay unqualified.
+    Two profiles are admissible and they claim different things. A SYNTHETIC profile is enforcement
+    evidence for MockTransport only: it says nothing about the world. A C8 VERIFIED profile says the
+    prices and identity in this snapshot were independently verified, and it must therefore carry the
+    verification artifact whose sha256 it declares, as a fourth source, so the claim and its evidence
+    are hashed together. With neither profile the snapshot is `unqualified` — the default, and the
+    state that keeps a bare catalog+endpoint fetch from being mistaken for a qualified route.
     """
-    if type(route) is not Route or type(raw_sources) is not tuple or len(raw_sources) not in (2, 3):
+    if type(route) is not Route or type(raw_sources) is not tuple or len(raw_sources) not in (2, 3, 4):
         raise ValidationError("finite route and source tuple required")
     if (route.provider, route.base_url, route.path, route.currency) != (
             "openrouter", "https://openrouter.ai/api/v1", "/chat/completions", "USD"):
@@ -234,40 +389,11 @@ def validate_snapshot(raw_sources, route, observed_at, expires_at):
                                          "token-threshold or time-conditional; a discount is never "
                                          "subtracted", refs[1])
                            for k, v in sorted(rates.items()))
-        qualification = "unqualified"
-        if len(sources) == 3:
-            profile = sources[2]
-            exact_fields(profile, PROFILE_FIELDS)
-            if profile["kind"] != "SYNTHETIC OFFLINE ONLY" or profile["catalog_sha256"] != refs[0].sha256 or profile["endpoints_sha256"] != refs[1].sha256:
-                raise ValidationError("synthetic source binding")
-            for key in ("model_id", "canonical_model_slug", "endpoint_tag"):
-                if profile[key] != getattr(route, key):
-                    raise ValidationError("synthetic route binding")
-            for key in ("input_bound", "output_bound", "reasoning_bound", "cache_read_bound", "cache_write_bound"):
-                integer(profile[key])
-            if profile["output_bound"] < 1 or profile["reasoning_bound"] > profile["output_bound"]:
-                raise ValidationError("invalid combined completion bound")
-            if max(profile["cache_read_bound"], profile["cache_write_bound"]) > profile["input_bound"]:
-                raise ValidationError("invalid cache subset bound")
-            if profile["no_incremental_infrastructure"] is not True or profile["no_metered_agent"] is not True:
-                raise ValidationError("unknown fixture execution cost")
-            zeros = profile["structural_zero"]
-            if type(zeros) is not list or len(zeros) != len(set(zeros)) or set(zeros) - {"reasoning_tokens", "cache_read_tokens", "cache_write_tokens"}:
-                raise ValidationError("invalid structural-zero proof")
-            for kind in zeros:
-                key = {"reasoning_tokens": "reasoning_bound", "cache_read_tokens": "cache_read_bound", "cache_write_tokens": "cache_write_bound"}[kind]
-                if profile[key] != 0:
-                    raise ValidationError("structural-zero contradicts bound")
-            for kind, key in (("cache_read_tokens", "input_cache_read"), ("cache_write_tokens", "input_cache_write")):
-                if key not in rates and kind not in zeros:
-                    raise ValidationError("unknown applicable cache price")
-            if "request" not in rates:
-                raise ValidationError("unknown request price")
-            qualification = "offline_fixture"
+        qualification = _qualify(sources, route, refs, rates, expires_at) if len(sources) > 2 else "unqualified"
     except (KeyError, TypeError, AttributeError) as exc:
         raise ValidationError("malformed catalog or endpoint metadata") from exc
     return PriceSnapshot(route, refs, observed_at, expires_at, components, qualification,
-                         refs[2:] if qualification == "offline_fixture" else (), raw_sources)
+                         refs[2:] if qualification in QUALIFIED_KINDS else (), raw_sources)
 
 
 def verify_snapshot(snapshot, *, require_current=True):
@@ -281,6 +407,13 @@ def verify_snapshot(snapshot, *, require_current=True):
     else:
         if tuple(ArtifactRef.of(f"price_source_{n}", raw) for n, raw in enumerate(snapshot._sources)) != snapshot.source_refs:
             raise ValidationError("snapshot bytes changed")
+        # Bytes matching is not enough: a hand-built snapshot could keep genuine source bytes and
+        # relabel itself `c8_verified`. The authority is re-derived from the profile's own kind, so
+        # recovery cannot launder an unverified route into a qualified one.
+        sources = tuple(parse_json(raw) for raw in snapshot._sources)
+        kind = sources[2].get("kind") if len(sources) > 2 and type(sources[2]) is dict else None
+        if snapshot.qualification != QUALIFICATION_FOR_KIND.get(kind, "unqualified"):
+            raise ValidationError("snapshot qualification drift")
     return snapshot
 
 

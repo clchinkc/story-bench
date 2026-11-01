@@ -93,6 +93,53 @@ roster_rationale: >
   constant across labs: four pins are the vendor's quantised deployment and the rest declare
   quantization unknown, so cross-lab comparison mixes model and precision.
 
+task_mix:
+  status: declared 2026-11-01
+  basis: >
+    The reservation ceiling cannot be derived from the roster alone: "144 units x 2 arms" says how many
+    arm-runs exist, not what each one costs, because `max_tokens` is fixed per task family. Leaving the
+    mix undeclared forced every arm-run to be priced at the longest family, which was 114.82 of the
+    hold. Declaring it here makes the ceiling DERIVED rather than assumed, and it is the single source
+    both `scripts/mix_ceiling.py` and the dispatch gate read instead of carrying their own copies.
+  weights_are: >
+    the frozen task counts below, with the 144 units per model allocated proportionally, so each of the
+    25 frozen tasks is used about 5.76 times per model per arm. The counts are read from
+    `dataset/tasks/<family>/*.yaml`; a counting change is a mix change and must be re-declared.
+  families:
+    beat_interpolation: 5
+    beat_revision: 5
+    constrained_continuation: 4
+    multi_beat_synthesis: 3
+    theory_conversion: 4
+    critique_improvement: 4
+  max_tokens_by_family:
+    beat_interpolation: 6000
+    beat_revision: 6000
+    constrained_continuation: 8000
+    multi_beat_synthesis: 10000
+    theory_conversion: 7000
+    critique_improvement: 7000
+  max_tokens_basis: >
+    Must equal TASK_TOKEN_CONFIG in src/llm_client.py, which is the code SSOT and what actually caps a
+    request. tests/test_task_mix.py asserts the equality, so a divergence fails the suite rather than
+    silently mispricing the study.
+  excluded_multicall:
+    - agentic_constraint_discovery
+    - agentic_planning_execution
+    - agentic_iterative_revision
+  excluded_reason: >
+    These three are NOT in the mix and the omission is a correctness decision, not convenience.
+    Agentic episodes make several model calls each: `agentic_iterative_revision` loops
+    max_revisions and planning execution is plan plus execute, so pricing them at a single
+    max_tokens would UNDERSTATE the hold — the one direction this arithmetic must never err in. If a
+    later revision admits them, their per-episode call count must be bounded first.
+  ceiling_consequence: >
+    At these weights the gate's reservation ceiling is 294.21 (input held at the 8,000-byte profile
+    ceiling), against 389.26 when every arm-run is priced at the longest family. Using each family's
+    measured body instead of the 8,000 ceiling lowers it further to 274.44, but only the gate's
+    conservative figure is funded. Recompute with `scripts/mix_ceiling.py`, which reads this block
+    rather than carrying its own copy.
+
 cost_estimate_indicative:
   basis: "catalog prices x 4 arms x (8000 input + 6000 output) tokens x units/model"
   basis_note: "the historical grid below is priced on FOUR arms at 288 units/model. A unit is a matched four-arm set, so units_per_model counts units and each carries four arm-runs; unit_cost multiplying by ARMS is therefore correct, not a double count."
@@ -206,3 +253,60 @@ spend:
     main: 240
     reserve: 10
     note: "data/judge raised 200 -> 500, funded by main 400 -> 240 and reserve 150 -> 10; the shift is explicit as contract section 9 requires"
+    superseded_by: allocations_2026_11_01
+  allocations_2026_11_01:
+    repair: 100
+    data_judge: 375
+    pilot: 150
+    main: 365
+    reserve: 10
+    total_usd: 1000
+    note: "data/judge 500 -> 375, funding main 240 -> 365; five lines still sum to 1,000 and the programme total is unchanged at 989.97"
+    reason: >
+      The 2026-10-31 split was not self-consistent with contract section 9's own pre-dispatch
+      paragraph, which requires a CONSERVATIVE UPPER BOUND reserved before every call and refusal
+      when it would breach an envelope. The $239.96 figure is an EXPECTED cost (8,000 input /
+      6,000 output per arm-run); the bound is not. At 144 units x 2 arms x 9 routes the proven
+      worst case is $360.46 with output capped at the largest task max_tokens (10,000), and about
+      $280 using each task's own max_tokens. A 240 main could therefore only have been satisfied
+      by reserving the expected rather than an upper bound, i.e. by breaking the paragraph above.
+      The reservation is a hold, not a spend: the excess returns at reconcile, and the expected
+      generation cost stays 239.96. Verified against the nine qualified records, not re-estimated.
+    bound_evidence: "260 arm-runs x 9 routes at 8,000 input / 10,000 output from each record's guarded price_components"
+    superseded_by: allocations_2026_11_01_corrected
+  allocations_2026_11_01_corrected:
+    repair: 90
+    data_judge: 360
+    pilot: 150
+    main: 390
+    reserve: 10
+    total_usd: 1000
+    note: "repair 100 -> 90 and data/judge 375 -> 360 fund main 365 -> 390; five lines still sum to 1,000, programme unchanged at 989.97"
+    reason: >
+      The 365 above was derived from 360.46 and was WRONG by 28.80, in one line: gemini-4-argon
+      declares reasoning_inclusive false and prices internal_reasoning separately, so its 10,000
+      token reasoning bound is a real charge beside completion rather than inside it. The corrected
+      bound, obtained by deriving all nine profiles from the retained records with
+      build_verified_profiles.py rather than by hand, is 389.26. data/judge keeps 360 because
+      critics cost about 1.5x the EXPECTED generation of 239.96, i.e. 359.94, and that line has to
+      stay funded; repair gives up the 10 instead.
+    bound_evidence: "build_verified_profiles.py over the nine retained records and verification artifacts"
+    superseded_by: allocations_2026_11_01_lean
+  allocations_2026_11_01_lean:
+    repair: 90
+    data_judge: 426
+    pilot: 150
+    main: 324
+    reserve: 10
+    total_usd: 1000
+    note: "main 390 -> 324 once the mix is declared; the 66 returned goes to data/judge 360 -> 426"
+    reason: >
+      With the task mix declared the reservation ceiling falls from 389.26 to 294.21, so a 390 main
+      would hold 95.79 idle against a 1,000 cap. main is set to the declared ceiling plus a 10 % retry
+      allowance: 294.21 x 1.1 = 323.63, rounded to 324, leaving 29.79 for retries, about 29 retried
+      arm-runs. 294.21 is the GATE's figure and it is deliberately the conservative one: the gate holds
+      input at the 8,000-byte profile ceiling, while 274.44 is achievable only if each family's own
+      measured body is used. The gate's number is the one that binds, so it is the one funded. The
+      surplus returns to the critic/grading line, which was pinned at 360 for a 359.94 estimate and
+      had no room to absorb a re-grade.
+    bound_evidence: "scripts/mix_ceiling.py, reading task_mix above; dataset-weighted, measured input"

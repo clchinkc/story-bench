@@ -1,4 +1,10 @@
-"""One immutable, ledger-bound OFFLINE attempt; no credential or live transport path."""
+"""One immutable, ledger-bound attempt, under EITHER a synthetic or a verified route authority.
+
+A synthetic profile exercises MockTransport only and never reads a credential. A `c8_verified`
+profile, carrying the C8 artifact that verified those exact price bytes, admits a real request
+to the pinned endpoint: the credential is read from `OPENROUTER_API_KEY` at send time, never
+persisted, and the transport is selected by the admission authority rather than by a caller flag.
+"""
 import asyncio
 from dataclasses import asdict, dataclass, field, replace
 from datetime import datetime, timezone
@@ -12,11 +18,19 @@ import stat
 import httpx
 
 from measurement_contract import digest, identity, project_report
-from provider_prices import (ArtifactRef, MAX_BYTES, PriceSnapshot, Route, digest_text,
-                             exact_fields, fresh, integer, json_bytes, money, parse_json,
-                             sha, snapshot_identity, text, utc, verify_snapshot)
+from provider_prices import (AUTHORITY_FOR_QUALIFICATION, ArtifactRef, MAX_BYTES, PriceSnapshot,
+                             QUALIFICATION_FOR_KIND, QUALIFIED_KINDS, Route, SYNTHETIC_KIND,
+                             VERIFIED_KIND, digest_text, exact_fields, fresh, integer, json_bytes,
+                             money, parse_json, sha, snapshot_identity, text, utc, verify_snapshot)
 from spend_ledger import (Ledger, LedgerError, Quote, Receipt, USAGE_KINDS, UsageBound,
                          ValidationError)
+
+# The deadline a REAL call gets. The frozen transport contract allowed 1..120 s because the only
+# caller was a fixture; a 10,000-token generation at `effort: max` is not a two-minute operation,
+# and a timeout burns the reservation while recording the cost as unknown. Owner decision
+# 2026-11-01: 600 s, which requires freeze revision 5 to record the widened range.
+MAX_DEADLINE_SECONDS = 600
+DEFAULT_DEADLINE = {"offline_fixture": 1, "c8_verified": MAX_DEADLINE_SECONDS}
 
 GATES = frozenset({"rights", "provider_permission", "phase", "protocol", "roster", "effort", "budget", "billing"})
 ROLES = {"generation": "deployment", "critic": "deployment", "retrieval": "deployment",
@@ -250,21 +264,48 @@ def _body(fields, snapshot):
     return json_bytes(body)
 
 
-def _census(spec, snapshot, fields):
-    if snapshot.qualification != "offline_fixture":
-        raise ValidationError("real route remains unqualified")
-    profile = parse_json(snapshot._sources[2])
-    rates = {r.name: r.usd_per_unit for r in snapshot.rate_components}
+def _request_bounds(profile, fields, body):
+    """The profile is the CEILING; the request is the number. Returns the reasoning ceiling.
+
+    Two holes were found here by review, both with an executable repro: the output bound was enforced
+    but the input one was not, and `reasoning_bound` was never tied to the reasoning the request
+    enables (`effort: max` could spend the whole completion budget at an `internal_reasoning` rate
+    while reserving zero). Reasoning is a subset of completion, so its worst case is `max_tokens`
+    under `effort`, or the explicit ceiling when one is given.
+    """
+    needed = fields.max_tokens if fields.reasoning_effort is not None else (fields.reasoning_max_tokens or 0)
+    if profile["reasoning_bound"] < needed:
+        raise ValidationError("request reasoning exceeds the profile's reasoning bound")
+    if len(body) > profile["input_bound"]:
+        raise ValidationError("request exceeds the profile's input bound")
     if fields.max_tokens > profile["output_bound"]:
-        raise ValidationError("request exceeds supported synthetic output bound")
+        raise ValidationError("request exceeds the profile's output bound")
+    return needed
+
+
+def _usage_units(spec, fields, body, needed):
+    """Reserve what THIS request can spend, not the profile's global worst case on every call.
+
+    Reserving `input_bound`/`output_bound` verbatim charged every 6,000-token task for a 10,000-token
+    one and every short prompt for the longest in the set, which inflated the hold and left no room to
+    retry anything. Each figure below is still a PROVEN upper bound:
+      input      the serialized body's bytes, and tokens are never more numerous than bytes;
+      output     `max_tokens`, which the provider cannot exceed;
+      reasoning  the same ceiling under `effort`, or the explicit `reasoning.max_tokens`;
+      cache      structurally zero, because `_body` never emits a `cache_control` block.
+    """
     units = dict.fromkeys(USAGE_KINDS, 0)
-    units.update(input_tokens=profile["input_bound"], output_tokens=profile["output_bound"],
-                 reasoning_tokens=profile["reasoning_bound"], cache_read_tokens=profile["cache_read_bound"],
-                 cache_write_tokens=profile["cache_write_bound"])
-    activity = {"critic": "critic_calls", "retrieval": "retrieval_calls", "selection": "selection_calls", "research_evaluation": "grading_calls"}.get(spec.activity_role)
+    units.update(input_tokens=len(body), output_tokens=fields.max_tokens, reasoning_tokens=needed,
+                 cache_read_tokens=0, cache_write_tokens=0)
+    activity = {"critic": "critic_calls", "retrieval": "retrieval_calls",
+                "selection": "selection_calls", "research_evaluation": "grading_calls"}.get(spec.activity_role)
     if activity:
         units[activity] = 1
     units["retry_calls"] = int(spec.retry_index > 0)
+    return units
+
+
+def _usage_prices(rates):
     prices = dict.fromkeys(USAGE_KINDS, "0")
     prices.update(input_tokens=rates["prompt"], output_tokens=rates["completion"],
                   # A route may price internal reasoning SEPARATELY from completion
@@ -274,9 +315,24 @@ def _census(spec, snapshot, fields):
                   # component without this mapping would PRICE it but never RESERVE it.
                   reasoning_tokens=rates.get("internal_reasoning", "0"),
                   cache_read_tokens=rates.get("input_cache_read", "0"),
-                  cache_write_tokens=str(max(Decimal(rates.get("input_cache_write", "0")), Decimal(rates.get("input_cache_write_1h", "0")))))
-    return tuple(UsageClassPlan(k, units[k], prices[k], snapshot.source_refs[-1],
-                               "SYNTHETIC ONLY: inactive in this local single text request" if units[k] == 0 else None)
+                  cache_write_tokens=str(max(Decimal(rates.get("input_cache_write", "0")),
+                                             Decimal(rates.get("input_cache_write_1h", "0")))))
+    return prices
+
+
+def _census(spec, snapshot, fields, body):
+    if snapshot.qualification not in QUALIFIED_KINDS:
+        raise ValidationError(f"route qualification {snapshot.qualification!r} cannot be reserved")
+    profile = parse_json(snapshot._sources[2])
+    rates = {r.name: r.usd_per_unit for r in snapshot.rate_components}
+    needed = _request_bounds(profile, fields, body)
+    units = _usage_units(spec, fields, body, needed)
+    prices = _usage_prices(rates)
+    # The profile is source 2 in both authorities; the verification artifact sits after it, and
+    # pointing the bound at `[-1]` would have cited the verifier for a fixture and the verifier's
+    # hash for a real route — evidence for the claim must be the profile that states the bound.
+    return tuple(UsageClassPlan(k, units[k], prices[k], snapshot.source_refs[2],
+                               f"inactive in this single text request ({snapshot.qualification})" if units[k] == 0 else None)
                  for k in USAGE_KINDS)
 
 
@@ -351,8 +407,12 @@ def _validate_spec(spec, snapshot, fields, artifacts):
         raise ValidationError("effort drift")
 
 
-def prepare_attempt(spec, snapshot, artifact_bytes, request_fields, evidence_root):
+def prepare_attempt(spec, snapshot, artifact_bytes, request_fields, evidence_root, deadline_seconds=None):
     verify_snapshot(snapshot)
+    if deadline_seconds is None:
+        if snapshot.qualification not in DEFAULT_DEADLINE:
+            raise ValidationError(f"route qualification {snapshot.qualification!r} cannot be prepared")
+        deadline_seconds = DEFAULT_DEADLINE[snapshot.qualification]
     if type(artifact_bytes) is not tuple or any(type(p) is not tuple or len(p) != 2 for p in artifact_bytes):
         raise ValidationError("immutable artifact bytes tuple required")
     artifacts = dict(artifact_bytes)
@@ -361,7 +421,7 @@ def prepare_attempt(spec, snapshot, artifact_bytes, request_fields, evidence_roo
     body = _body(request_fields, snapshot)
     _validate_spec(spec, snapshot, request_fields, artifacts)
     plan = RequestPlan(spec, snapshot.route, snapshot, body, _refs(spec)["prompt"],
-                       _census(spec, snapshot, request_fields), 1, _root(evidence_root), request_fields)
+                       _census(spec, snapshot, request_fields, body), deadline_seconds, _root(evidence_root), request_fields)
     for raw in (*artifacts.values(), *snapshot._sources, body):
         _persist(plan.evidence_root / "blobs" / sha(raw), raw)
     _persist(_directory(plan) / "manifest.json", manifest_bytes(plan))
@@ -371,11 +431,11 @@ def prepare_attempt(spec, snapshot, artifact_bytes, request_fields, evidence_roo
 def verify_plan(plan, *, current=True):
     if type(plan) is not RequestPlan or type(plan.census) is not tuple:
         raise ValidationError("immutable request plan required")
-    integer(plan.deadline_seconds, 1, 120)
+    integer(plan.deadline_seconds, 1, MAX_DEADLINE_SECONDS)
     verify_snapshot(plan.snapshot, require_current=current)
     if plan.route != plan.snapshot.route or _body(plan._fields, plan.snapshot) != plan.body_bytes:
         raise ValidationError("route/request drift")
-    if plan.census != _census(plan.spec, plan.snapshot, plan._fields):
+    if plan.census != _census(plan.spec, plan.snapshot, plan._fields, plan.body_bytes):
         raise ValidationError("usage census drift")
     artifacts = {r.name: artifact_bytes(plan, r) for r in plan.spec.artifacts}
     _validate_spec(plan.spec, plan.snapshot, plan._fields, artifacts)
@@ -388,22 +448,31 @@ def verify_plan(plan, *, current=True):
 
 
 def _admit(plan, admission):
-    if type(admission) is not Admission or admission.mode != "offline_fixture":
-        raise ValidationError("paid dispatch disabled; synthetic local admission only")
+    """Admission must NAME its authority, and the authority must be the one this route carries.
+
+    Before this could admit anything but a fixture, which made "qualified route" and "payable route"
+    two different facts that nothing compared. They are compared here: the admission mode must equal
+    the snapshot's qualification, and every gate must be vouched for by the authority that mode names.
+    """
+    if type(admission) is not Admission or admission.mode not in QUALIFIED_KINDS:
+        raise ValidationError("admission mode must name a qualified route")
+    if plan.snapshot.qualification != admission.mode:
+        raise ValidationError("admission authority does not match the route qualification")
     if admission.assignment_hash != plan.spec.assignment_hash or admission.route_sha256 != sha(json_bytes(asdict(plan.route))):
         raise ValidationError("admission identity mismatch")
     if utc(admission.valid_until) <= datetime.now(timezone.utc):
         raise ValidationError("admission expired")
     if type(admission.authority_refs) is not tuple:
         raise ValidationError("gate tuple required")
+    authority = AUTHORITY_FOR_QUALIFICATION[admission.mode]
     kinds = []
     for ref in admission.authority_refs:
         if ref not in plan.spec.artifacts:
             raise ValidationError("unbound gate evidence")
         gate = parse_json(artifact_bytes(plan, ref))
         exact_fields(gate, {"kind", "authority", "assignment_hash", "route_sha256", "valid_until"})
-        if gate["authority"] != "SYNTHETIC OFFLINE ONLY" or gate["assignment_hash"] != admission.assignment_hash or gate["route_sha256"] != admission.route_sha256 or utc(gate["valid_until"]) < utc(admission.valid_until):
-            raise ValidationError("invalid synthetic gate binding")
+        if gate["authority"] != authority or gate["assignment_hash"] != admission.assignment_hash or gate["route_sha256"] != admission.route_sha256 or utc(gate["valid_until"]) < utc(admission.valid_until):
+            raise ValidationError("invalid gate binding")
         kinds.append(gate["kind"])
     if len(kinds) != len(GATES) or set(kinds) != GATES:
         raise ValidationError("missing or duplicate rights/phase/billing gate")
@@ -495,11 +564,70 @@ def _reservation_event(plan, ledger):
     return "w3b:retry-slot:" + sha(json_bytes(dict(root_request_sha256=sha(raw), retry_index=plan.spec.retry_index)))
 
 
-async def execute_attempt(plan, ledger, admission, fixture):
-    _fixture(fixture)
+CREDENTIAL_ENV = "OPENROUTER_API_KEY"
+
+
+def _credential():
+    """Read at send time. Never stored, never logged, never passed on a command line."""
+    value = os.environ.get(CREDENTIAL_ENV)
+    if not value:
+        raise ValidationError(f"{CREDENTIAL_ENV} absent; refusing an unauthenticated send")
+    return value
+
+
+def _offline_transport(fixture):
+    class Stream(httpx.AsyncByteStream):
+        async def __aiter__(self):
+            for delay, chunk in fixture.chunks:
+                await asyncio.sleep(delay / 1000)
+                yield chunk
+
+        async def aclose(self):
+            return None
+
+    async def handler(request):
+        await asyncio.sleep(fixture.header_delay_ms / 1000)
+        return httpx.Response(fixture.status_code, stream=Stream())
+
+    return httpx.MockTransport(handler)
+
+
+def _transport(admission, fixture):
+    """Which seam carries the bytes is decided by the AUTHORITY, not by a caller flag.
+
+    A fixture may only travel under a synthetic admission, and a verified route may only travel over
+    the network. Handing fixture bytes to a real admission would publish invented token counts as a
+    receipt, so the mismatch is refused rather than resolved.
+    """
+    if admission.mode == QUALIFICATION_FOR_KIND[SYNTHETIC_KIND]:
+        _fixture(fixture)
+        return _offline_transport(fixture)
+    if admission.mode != QUALIFICATION_FOR_KIND[VERIFIED_KIND]:
+        raise ValidationError("unknown admission authority")
+    if fixture is not None:
+        raise ValidationError("a verified route admits no offline fixture bytes")
+    # retries=0: a retry is a ledger event with its own reservation, never a transport behaviour.
+    return httpx.AsyncHTTPTransport(retries=0)
+
+
+def _request_headers(admission):
+    headers = {"content-type": "application/json"}
+    if admission.mode == QUALIFICATION_FOR_KIND[SYNTHETIC_KIND]:
+        return headers
+    if admission.mode != QUALIFICATION_FOR_KIND[VERIFIED_KIND]:
+        raise ValidationError("unknown admission authority")
+    headers["authorization"] = "Bearer " + _credential()
+    return headers
+
+
+async def execute_attempt(plan, ledger, admission, fixture=None):
     verify_plan(plan)
     _ledger_identity(plan, ledger)
     _admit(plan, admission)
+    # Both are resolved BEFORE the reserve: an absent credential or a fixture under a real admission
+    # must refuse without consuming permission, which is the one thing a reservation cannot undo.
+    transport = _transport(admission, fixture)
+    headers = _request_headers(admission)
     reservation_event = _reservation_event(plan, ledger)
     quote = quote_for(plan)
     reserved = ledger.reserve(reservation_event, attempt_id=plan.spec.attempt_id,
@@ -521,29 +649,16 @@ async def execute_attempt(plan, ledger, admission, fixture):
         return _result(plan, current["state"], "replay_no_send", True)
     deadline = asyncio.get_running_loop().time() + plan.deadline_seconds
     response = None
-
-    class Stream(httpx.AsyncByteStream):
-        async def __aiter__(self):
-            for delay, chunk in fixture.chunks:
-                await asyncio.sleep(delay / 1000)
-                yield chunk
-
-        async def aclose(self):
-            return None
-
-    async def handler(request):
-        _persist(_directory(plan) / "transport.json", json_bytes(dict(
-            method=request.method, url=str(request.url), body_hex=request.content.hex(),
-            body_sha256=sha(request.content), marker=marker, calls=1)))
-        await asyncio.sleep(fixture.header_delay_ms / 1000)
-        return httpx.Response(fixture.status_code, stream=Stream())
-
     try:
-        async with httpx.AsyncClient(transport=httpx.MockTransport(handler), trust_env=False, follow_redirects=False) as client:
+        async with httpx.AsyncClient(transport=transport, trust_env=False, follow_redirects=False) as client:
+            request = client.build_request("POST", plan.route.base_url + plan.route.path,
+                                           content=plan.body_bytes, headers=headers)
+            # Headers are deliberately NOT recorded: one of them is the credential.
+            _persist(_directory(plan) / "transport.json", json_bytes(dict(
+                method=request.method, url=str(request.url), body_hex=plan.body_bytes.hex(),
+                body_sha256=sha(plan.body_bytes), marker=marker, calls=1)))
             try:
                 async with asyncio.timeout_at(deadline):
-                    request = client.build_request("POST", plan.route.base_url + plan.route.path,
-                                                   content=plan.body_bytes, headers={"content-type": "application/json"})
                     response = await client.send(request, stream=True)
                     raw = await response.aread()
             finally:
@@ -625,6 +740,10 @@ def reconcile_attempt(plan, ledger, response_bytes, response_status):
         if counters[subset] is not None and counters[whole] is not None and counters[subset] > counters[whole]:
             raise ValidationError("impossible token subset")
     for line in plan.census:
+        # Absent stays absent. Filling a missing provider counter with the reserved bound would
+        # invent a usage figure, and this program answers an unknown charge with a refusal, not a
+        # number that happens to be conservative. The control test_R02_unknown_never_zero is the
+        # one that caught an earlier attempt to do exactly that.
         if line.kind not in counters:
             counters[line.kind] = line.max_units
     content = ""

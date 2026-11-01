@@ -1,9 +1,11 @@
-# Offline provider attempts
+# Provider attempts: synthetic and verified authority
 
-`provider_prices`, `provider_attempts`, and `provider_reporting` qualify a finite local
-provider simulation against the existing spend ledger and W1 reporting contract.
-They cannot dispatch to a real provider. No credentials are read and no CLI or legacy
-client is enabled. A successful fixture is evidence of adapter behavior, not financial
+`provider_prices`, `provider_attempts`, and `provider_reporting` qualify provider routes against
+the existing spend ledger and W1 reporting contract. As originally accepted they could dispatch
+only to a local fixture and read no credential; **amended 2026-11-01** to add a second, named
+authority (`c8_verified`) under which a real request may be sent to a pinned endpoint, with the
+credential read from `OPENROUTER_API_KEY` at send time and never persisted. The synthetic authority
+is unchanged and still reads nothing. A successful fixture is evidence of adapter behavior, not financial
 authority, author rights, a model roster, human labels, or native story outcomes.
 
 **Amendment 2026-10-07 (W3b2 scope revision, independently reviewed).** Real OpenRouter
@@ -147,7 +149,11 @@ result = await execute_attempt(plan, ledger, admission, OfflineFixture(
 ))
 ```
 
-`Admission` must have mode `offline_fixture`, matching assignment/route, current validity,
+`Admission.mode` must be a qualified kind, must EQUAL the snapshot's qualification, and must match
+assignment/route and current validity. Under `offline_fixture` the gates must name the synthetic
+authority; under `c8_verified` they must name `C8 VERIFIED ROUTE`, and the snapshot must carry a
+structurally valid, fresh (< 24 h) verification artifact for the same route. In both cases the gates
+are eight strict artifacts covering
 and all eight strict synthetic gate artifacts: rights, provider permission, phase,
 protocol, roster, effort, budget, billing. Synthetic gates never represent actual rights
 or invoices. The existing ledger independently checks hosted billing, envelope/cap,

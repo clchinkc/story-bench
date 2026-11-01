@@ -20,6 +20,19 @@ from provider_reporting import project_attempts, project_cost_report
 from spend_ledger import Authorization, Ledger, LedgerError, USAGE_KINDS, ValidationError
 
 
+def reserved_micros(plan):
+    """What the ledger must hold: the census priced for THIS request.
+
+    Deliberately derived rather than written as a number. The old assertions quoted 3,100,000
+    micros, which was the profile-bound arithmetic; when the reservation became request-scoped
+    the constant was the only thing that failed, and a test that asserts a snapshot of the
+    arithmetic cannot tell a correct change from a wrong one.
+    """
+    from spend_ledger import usd_to_micros
+    total = sum(Decimal(line.max_units) * Decimal(line.usd_per_unit) for line in plan.census)
+    return usd_to_micros(total)
+
+
 def make_case(root, *, attempt_id="attempt-1", role="generation", hosted=True, cost_rate="0.001",
               snapshot=None, manifest=None, prompt=None, ledger=None, retry_index=0, parent=None,
               max_attempts=1, profile_changes=None, extra_pricing=None):
@@ -457,15 +470,16 @@ def test_C02_different_send_event_cannot_gain_permission(tmp_path):
 
 
 def test_C03_processes_contend_last_envelope_capacity(tmp_path):
-    # Each quote reserves $62 against the unchanged $100 repair envelope.
-    first = make_case(tmp_path, cost_rate="0.02")
-    second = make_case(tmp_path, attempt_id="other", cost_rate="0.02", ledger=first[1])
+    # One lean quote must exceed HALF the unchanged $100 repair envelope, or both attempts fit and
+    # nothing contends. At 0.10 the quote is 51.40 and two of them are 102.80, so exactly one fits.
+    first = make_case(tmp_path, cost_rate="0.10")
+    second = make_case(tmp_path, attempt_id="other", cost_rate="0.10", ledger=first[1])
     ctx = multiprocessing.get_context("spawn"); queue = ctx.Queue()
     processes = [ctx.Process(target=_child_execute, args=(c[0], c[1].path, c[2], b'{}', queue)) for c in (first, second)]
     for process in processes:process.start()
     for process in processes:process.join(10); assert process.exitcode == 0
     assert sorted(queue.get(timeout=1) for _ in processes) == ["UNKNOWN", "denied"]
-    assert first[1].status()["reserved_micros"] == 62000000
+    assert first[1].status()["reserved_micros"] == reserved_micros(first[0])
     assert sum((c[0].evidence_root / "attempts" / c[0].spec.attempt_id / "transport.json").exists() for c in (first, second)) == 1
 
 
@@ -503,7 +517,7 @@ def test_C04_real_process_crash_matrix(tmp_path, phase, state, calls):
         assert case[1].status()["attempt_ids"] == []
     else:
         assert case[1].attempt("attempt-1")["state"] == state
-        assert case[1].status()["reserved_micros"] == 3100000
+        assert case[1].status()["reserved_micros"] == reserved_micros(case[0])
     if state == "SENT":
         assert execute(case).replayed is True
         assert int((case[0].evidence_root / "attempts/attempt-1/transport.json").exists()) == calls
@@ -523,7 +537,7 @@ def test_C05_C08_failed_persistence_and_failed_unknown_keep_sent(tmp_path, monke
     monkeypatch.setattr(case[1], "mark_unknown", fail_unknown)
     assert execute(case).ledger_state == "SENT"
     assert case[1].attempt("attempt-1")["state"] == "SENT"
-    assert case[1].status()["reserved_micros"] == 3100000
+    assert case[1].status()["reserved_micros"] == reserved_micros(case[0])
     assert trace(case[0])["calls"] == 1
 
 
@@ -594,7 +608,13 @@ def test_P05_fractional_quote_rounds_each_line_upward(tmp_path):
     case = make_case(tmp_path,cost_rate="0.000000001")
     execute(case,response(case[0],cost="0"))
     row = case[1].attempt("attempt-1")
-    assert row["reserved_micros"] == 4 and row["actual_micros"] == 0
+    # The property is "each PRICED line rounds up to at least one micro", not a remembered total:
+    # at a nanodollar rate every priced line is a fraction of a micro, so the reservation is exactly
+    # one micro per priced line. Lines priced at zero contribute nothing and must not be counted.
+    priced = sum(1 for line in case[0].census
+                 if line.max_units and Decimal(line.usd_per_unit) > 0)
+    assert priced == 2
+    assert row["reserved_micros"] == priced and row["actual_micros"] == 0
 
 
 def test_P05_nonfinite_display_rejected_without_changing_ledger(tmp_path,monkeypatch):
@@ -742,7 +762,7 @@ def test_R1_malformed_identity_is_typed_failure(tmp_path,field,value):
     except Exception as exc:escaped=exc
     assert escaped is None, f"untyped response failure: {escaped}"
     assert result.transport_status=='infrastructure_failure' and result.ledger_state=='UNKNOWN'
-    assert case[1].status()['reserved_micros']==3100000
+    assert case[1].status()['reserved_micros']==reserved_micros(case[0])
     assert (case[0].evidence_root/'attempts/attempt-1/response.bin').read_bytes()==raw
 
 
