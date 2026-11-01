@@ -14,10 +14,10 @@ Purity: imports `hashlib` and `dataclasses`; no file, network, clock or random a
 
 from __future__ import annotations
 
-import hashlib
 from dataclasses import dataclass
 
 from continuation_parser import extract
+from holdout_guard import prompt_digest
 from prompt_set import CanonFact, PromptTask
 from reward_repair import correction_reward, score_repair, terminal_reward
 
@@ -78,9 +78,12 @@ class RepairTask:
         )
 
     def content_digest(self) -> str:
-        """Identity of the passage, for checking a split stays disjoint."""
-        normalised = " ".join(self.passage.split())
-        return "sha256:" + hashlib.sha256(normalised.encode("utf-8")).hexdigest()
+        """Identity of the passage, for checking a split stays disjoint.
+
+        Delegates to `holdout_guard.prompt_digest`: the guard already owns this identity, and two
+        implementations of one digest is how a split check silently stops matching what it guards.
+        """
+        return prompt_digest(self.passage)
 
 
 def from_row(row: dict) -> RepairTask:

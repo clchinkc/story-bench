@@ -8,7 +8,10 @@ dependencies = [
 ]
 
 [dependency-groups]
-dev = ["pytest>=8"]
+# The training harness needs torch and the Tinker SDK; the benchmark itself does not. `dev` includes
+# `train` so a plain `uv run pytest` exercises everything with no conditional skips.
+train = ["tinker>=0.36", "tinker-cookbook>=0.5.9"]
+dev = ["pytest>=8", { include-group = "train" }]
 
 [tool.uv]
 package = false

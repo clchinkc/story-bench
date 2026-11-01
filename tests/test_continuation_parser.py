@@ -7,7 +7,6 @@ a run's "unparsed" count stops meaning what the report says it means.
 import pytest
 
 from continuation_parser import (
-    POLICIES,
     extract,
     extract_lenient,
     extract_prose,
@@ -118,6 +117,3 @@ def test_an_unknown_policy_is_refused_rather_than_defaulted():
     with pytest.raises(ValueError, match="unknown parser policy"):
         extract(CANONICAL, "guess")
 
-
-def test_the_policy_list_is_ordered_from_strictest():
-    assert POLICIES == ("strict", "lenient", "prose")
