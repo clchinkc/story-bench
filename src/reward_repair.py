@@ -116,3 +116,21 @@ def terminal_reward(verdict: RepairVerdict) -> int:
     """Project to the training scalar. Unlike the coverage reward there is no None:
     a blank continuation is a wrong answer, not an unmeasured one."""
     return 1 if verdict.resolved else 0
+
+
+def correction_reward(verdict: RepairVerdict) -> int:
+    """Pay for carrying the correction only, ignoring whether the error was also mentioned.
+
+    Exists as a **diagnostic projection**, not as a proposed training reward. Free-decoded
+    continuations often repair the prose and then name the error to reject it ("ticklish work, not
+    simple business"); `terminal_reward` fails those, and the pre-flight in `bindings/w1-parser/`
+    measured that shape as the great majority of free-mode failures.
+
+    Scoring the same rollouts under both projections costs nothing and reports the gap, which is how
+    a run can say whether a gain is a gain in continuity or a gain in suppressing a string. Training
+    on this projection would pay for a suffix template, so it is deliberately not wired to a loop.
+    """
+    # `correct_present` is load-bearing: a blank continuation comes back with both tuples empty,
+    # and "nothing missing" would then read as "correction carried".
+    carried = bool(verdict.correct_present)
+    return 1 if carried and not verdict.correct_missing else 0
