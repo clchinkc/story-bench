@@ -29,6 +29,7 @@ from tinker_cookbook.utils.session_naming import default_cookbook_session_name
 
 from story_rl.env import DEFAULT_MODEL, DEFAULT_RENDERER
 from story_rl.env import TaskDatasetBuilder as RepairDatasetBuilder
+from story_rl.prose import ProseDatasetBuilder
 from story_rl.shape_a import ShapeADatasetBuilder
 from story_rl.spend import bound, load_rates, require_approval
 
@@ -38,10 +39,12 @@ DEFAULT_SHAPE = "repair"
 RECIPES = {
     "repair": "story_repair_grpo",
     "shape-a": "story_shape_a_grpo",
+    "prose": "story_prose_grpo",
 }
 SHAPE_BUILDERS: dict[str, type[RLDatasetBuilder]] = {
     "repair": RepairDatasetBuilder,
     "shape-a": ShapeADatasetBuilder,
+    "prose": ProseDatasetBuilder,
 }
 
 DEFAULT_STEPS = 30

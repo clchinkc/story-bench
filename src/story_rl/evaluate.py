@@ -23,7 +23,7 @@ from scorable import ScorableTask
 from story_rl.stats import cluster_bootstrap, sign_test, wilson
 
 DEFAULT_POLICY = "prose"
-SHAPES = ("repair", "shape-a")
+SHAPES = ("repair", "shape-a", "prose")
 
 
 def tasks_for(shape: str) -> dict[str, ScorableTask]:
@@ -31,8 +31,10 @@ def tasks_for(shape: str) -> dict[str, ScorableTask]:
         raise SystemExit(f"unknown shape {shape!r}; known: {SHAPES}")
     if shape == "repair":
         from story_rl.corpus import load_split
-    else:
+    elif shape == "shape-a":
         from story_rl.shape_a import load_split
+    else:
+        from story_rl.prose import load_split
 
     return load_split().by_id()
 
@@ -41,16 +43,24 @@ def read_generations(path: Path) -> list[dict]:
     return [json.loads(line) for line in path.read_text().splitlines() if line.strip()]
 
 
+def _scorer(shape: str):
+    if shape == "prose":
+        from story_rl.prose import score_prose as scorer
+        return scorer
+    return score_rollout
+
+
 def per_task_rewards(
-    rows: list[dict], tasks: dict[str, ScorableTask], policy: str
+    rows: list[dict], tasks: dict[str, ScorableTask], policy: str, shape: str = "repair"
 ) -> dict[str, list[float]]:
-    """task_id -> the reward of each of its generations."""
+    """task_id -> the reward of each of its generations, under the shape's own scorer."""
+    scorer = _scorer(shape)
     by_task: dict[str, list[float]] = {}
     for row in rows:
         task = tasks.get(row["task_id"])
         if task is None:
             raise ValueError(f"generation names an unknown task: {row['task_id']!r}")
-        by_task.setdefault(row["task_id"], []).append(float(score_rollout(row["raw"], task, policy).strict))
+        by_task.setdefault(row["task_id"], []).append(float(scorer(row["raw"], task, policy).strict))
     return by_task
 
 
@@ -104,11 +114,11 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
 
     tasks = tasks_for(args.shape)
-    by_task = per_task_rewards(read_generations(Path(args.generations)), tasks, args.policy)
+    by_task = per_task_rewards(read_generations(Path(args.generations)), tasks, args.policy, args.shape)
     result: dict = {"shape": args.shape, "treatment": summarise(by_task, args.policy)}
 
     if args.against:
-        baseline = per_task_rewards(read_generations(Path(args.against)), tasks, args.policy)
+        baseline = per_task_rewards(read_generations(Path(args.against)), tasks, args.policy, args.shape)
         result["baseline"] = summarise(baseline, args.policy)
         result["paired"] = compare(baseline, by_task)
 

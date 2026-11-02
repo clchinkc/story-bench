@@ -31,7 +31,7 @@ from scorable import ScorableTask
 from story_rl.env import DEFAULT_MODEL, DEFAULT_RENDERER
 from story_rl.spend import load_rates, per_rollout
 
-SHAPES = ("repair", "shape-a")
+SHAPES = ("repair", "shape-a", "prose")
 
 
 def load_passages(half: str = "held_out", shape: str = "repair") -> tuple[ScorableTask, ...]:
@@ -40,8 +40,10 @@ def load_passages(half: str = "held_out", shape: str = "repair") -> tuple[Scorab
         raise SystemExit(f"unknown shape {shape!r}; known: {SHAPES}")
     if shape == "repair":
         from story_rl.corpus import load_split
-    else:
+    elif shape == "shape-a":
         from story_rl.shape_a import load_split
+    else:
+        from story_rl.prose import load_split
 
     corpus = load_split()
     return tuple(corpus.held_out if half == "held_out" else corpus.train)

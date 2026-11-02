@@ -44,11 +44,17 @@ from tinker_cookbook.rl.types import (
 )
 from tinker_cookbook.tokenizer_utils import get_tokenizer
 
+from collections.abc import Callable
+
 from repair_task import RolloutScore, score_rollout
 from scorable import ScorableTask
 from story_rl.corpus import SPLIT_SALT, TaskSet, load_split, load_tasks
 
 DEFAULT_POLICY = "prose"
+
+# A scorer is anything shaped like `score_rollout`: text and task in, a scored result out. Prose supplies its
+# own (lint veto + frozen assessor); repair supplies the canonical one. The env does not care which.
+ScoreFn = Callable[[str, ScorableTask, str], RolloutScore]
 DEFAULT_RENDERER = "qwen3_5_disable_thinking"
 DEFAULT_MODEL = "Qwen/Qwen3.5-4B"
 
@@ -84,7 +90,11 @@ class TaskEnv(ProblemEnv):
     """One task. The reward is the task's own verdict, and nothing else."""
 
     def __init__(
-        self, task: ScorableTask, renderer: renderers.Renderer, policy: str = DEFAULT_POLICY
+        self,
+        task: ScorableTask,
+        renderer: renderers.Renderer,
+        policy: str = DEFAULT_POLICY,
+        score_fn: ScoreFn = score_rollout,
     ):
         super().__init__(
             renderer,
@@ -94,6 +104,7 @@ class TaskEnv(ProblemEnv):
         )
         self.task = task
         self.policy = policy
+        self.score_fn = score_fn
         # `ProblemEnv.step` scores through `check_answer` and this class reports the diagnostic
         # projection in the same step. The reward is a pure function of the text, so caching by text
         # means one parse per rollout instead of three.
@@ -105,7 +116,7 @@ class TaskEnv(ProblemEnv):
     def score(self, sample_str: str) -> RolloutScore:
         if self._scored is not None and self._scored[0] == sample_str:
             return self._scored[1]
-        result = score_rollout(sample_str, self.task, self.policy)
+        result = self.score_fn(sample_str, self.task, self.policy)
         self._scored = (sample_str, result)
         return result
 
@@ -149,6 +160,7 @@ class TaskDataset(RLDataset):
         policy: str = DEFAULT_POLICY,
         salt: str = SPLIT_SALT,
         dataset_name: str = "repair",
+        score_fn: ScoreFn = score_rollout,
     ):
         if not tasks:
             raise ValueError("an empty task set cannot source a batch")
@@ -165,6 +177,7 @@ class TaskDataset(RLDataset):
         self.policy = policy
         self.salt = salt
         self.dataset_name = dataset_name
+        self.score_fn = score_fn
 
     def get_batch(self, index: int) -> Sequence[EnvGroupBuilder]:
         """`batch_size` distinct passages, reshuffled every pass through the training set."""
@@ -173,7 +186,10 @@ class TaskDataset(RLDataset):
         chosen = [order[(offset + step) % len(order)] for step in range(self.batch_size)]
         return [
             ProblemGroupBuilder(
-                env_thunk=partial(TaskEnv, task=task, renderer=self.renderer, policy=self.policy),
+                env_thunk=partial(
+                    TaskEnv, task=task, renderer=self.renderer, policy=self.policy,
+                    score_fn=self.score_fn,
+                ),
                 num_envs=self.group_size,
                 dataset_name=self.dataset_name,
             )
