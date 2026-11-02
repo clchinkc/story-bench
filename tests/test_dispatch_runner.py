@@ -114,6 +114,17 @@ def test_every_attempt_id_is_unique(tmp_path):
     assert len(ids) == len(set(ids))
 
 
+def test_the_declared_designs_plan_the_agreed_counts():
+    """A drift guard on the REAL config: these two numbers are what the budget was sized against."""
+    study = dr._study(dr.DEFAULT_REPO)
+    for design, units, arms in (("pilot_run", 18, 2), ("main_run", 144, 2)):
+        spec, refusals = dr.declared_spec(study, design)
+        assert refusals == [], (design, refusals)
+        assert spec.units == units, design
+        assert spec.arms == arms, design
+    assert study["status"] == "frozen"
+
+
 def test_the_design_selector_reads_the_named_block(tmp_path):
     """The pilot and the main run share one planner; only the declared block differs."""
     repo = _repo(tmp_path, None)

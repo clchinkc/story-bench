@@ -1,18 +1,19 @@
 # W6 study preregistration — revision/continuity, D-minus-A.
 #
-# status: unfrozen. This is deliberate and load-bearing:
-#   * sample_size is null because the contract freezes it only from pilot evidence;
-#   * roster_status is candidates_pending_owner_approval because the roster below is
-#     a PROPOSAL chosen for stratum coverage, not an owner decision;
-#   * and no entry is admitted regardless, because W3b2 has qualified zero real
-#     routes. validate_study.py refuses to call a study frozen without an
-#     owner-approved roster and a sample size.
+# status: frozen, owner decision 2026-11-02. The three earlier blockers are closed: the roster is
+# owner_approved, W3b2 has qualified nine real routes, and both run designs are declared below.
+#
+# Declaring both at once is deliberate and its cost is recorded (D026): `main_run` fixes the main
+# sample size BEFORE the pilot that the contract says should justify it. The owner chose that over
+# waiting, so the pilot measures variance, failure rates and real prices for a design already fixed.
+# If it contradicts that design, the honest remedy is a new declaration — not a quiet reinterpretation
+# of this one.
 #
 # Encodings: this file never carries story text, labels, credentials or prices.
 schema_version: 1
 study_id: revision-v1
 kind: PREREGISTRATION
-status: unfrozen
+status: frozen
 
 estimand:
   primary: "weighted mean within-cluster paired D-minus-A resolved difference"
@@ -140,6 +141,28 @@ task_mix:
     conservative figure is funded. Recompute with `scripts/mix_ceiling.py`, which reads this block
     rather than carrying its own copy.
 
+pilot_run:
+  status: frozen
+  units_per_model: 18
+  arms: 2
+  units_per_cluster: 3
+  clusters_per_locale: 2
+  locales: ["en", "zh-Hant", "zh-Hans"]
+  basis: >
+    The cost grid's smallest row: 18 units/model at USD 99 generation, inside the 150 pilot envelope.
+    2 clusters x 3 units x 3 locales composes to exactly 18, which the runner verifies before planning.
+
+main_run:
+  status: frozen
+  units_per_model: 144
+  arms: 2
+  units_per_cluster: 3
+  clusters_per_locale: 16
+  locales: ["en", "zh-Hant", "zh-Hans"]
+  basis: >
+    16 clusters x 3 units x 3 locales = 144, the decided configuration, giving 2,592 arm-runs over the
+    nine routes. The reservation against the declared mix is 294.21 and main is 324.
+
 cost_estimate_indicative:
   basis: "catalog prices x 4 arms x (8000 input + 6000 output) tokens x units/model"
   basis_note: "the historical grid below is priced on FOUR arms at 288 units/model. A unit is a matched four-arm set, so units_per_model counts units and each carries four arm-runs; unit_cost multiplying by ARMS is therefore correct, not a double count."
@@ -199,7 +222,7 @@ cost_estimate_indicative:
     Three models (Claude Opus 5.5, GPT-6 Astra, claude-fable-5.1) are 66% of the
     generation estimate; the six sub-$0.50 models are 2% of it.
 
-sample_size: null
+sample_size: 144
 
 benefit_gate:
   observed_lift_gate: 0.10
