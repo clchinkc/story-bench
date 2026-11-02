@@ -24,6 +24,14 @@ from pathlib import Path
 DEFAULT_URL = "http://127.0.0.1:8770"
 DEFAULT_MODEL = "prose-final-Q4_K_M.gguf"
 
+PROMPT_ZH = (
+    "續寫這個場景。\n"
+    "\n"
+    "{opening}\n"
+    "\n"
+    "只寫兩句。保持同一個聲音、同一個時刻；不要總結，不要另起場景，不要解釋這段文字的意思。"
+)
+
 PROMPT = (
     "Continue this scene.\n"
     "\n"
@@ -34,10 +42,12 @@ PROMPT = (
 )
 
 
-def draft(url: str, model: str, opening: str, *, seed: int, tokens: int, temperature: float) -> str:
+def draft(url: str, model: str, opening: str, *, seed: int, tokens: int, temperature: float,
+          lang: str = "en") -> str:
     body = {
         "model": model,
-        "messages": [{"role": "user", "content": PROMPT.format(opening=opening.strip())}],
+        "messages": [{"role": "user", "content": (PROMPT_ZH if lang == "zh" else PROMPT).format(
+            opening=opening.strip())}],
         "n_predict": tokens,
         "temperature": temperature,
         "top_p": 0.95,
@@ -60,6 +70,7 @@ def main() -> int:
     parser.add_argument("--samples", type=int, default=3)
     parser.add_argument("--url", default=DEFAULT_URL)
     parser.add_argument("--model", default=DEFAULT_MODEL)
+    parser.add_argument("--lang", default="en", choices=("en", "zh"))
     parser.add_argument("--tokens", type=int, default=160)
     parser.add_argument("--temperature", type=float, default=0.9)
     args = parser.parse_args()
@@ -71,7 +82,7 @@ def main() -> int:
     for sample in range(args.samples):
         print(f"--- draft {sample + 1} ---")
         print(draft(args.url, args.model, opening, seed=sample, tokens=args.tokens,
-                    temperature=args.temperature))
+                    temperature=args.temperature, lang=args.lang))
         print()
     return 0
 

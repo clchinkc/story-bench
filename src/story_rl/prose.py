@@ -23,6 +23,7 @@ from __future__ import annotations
 
 import asyncio
 import hashlib
+import os
 import json
 import sys
 from dataclasses import dataclass
@@ -41,8 +42,11 @@ from story_rl.assessor import Assessment, JudgeError, assess
 from story_rl.env import DEFAULT_MODEL, DEFAULT_POLICY, DEFAULT_RENDERER, TaskDataset, permuted
 
 DATA = Path(__file__).resolve().parent.parent.parent / "dataset" / "story_rl"
-TASKS = DATA / "prose.json"
-SPLIT = DATA / "prose_split.json"
+
+# Overridable so the same shape trains on a different corpus (the owner's voice, for instance) without a
+# second module. The corpus and its split travel together or not at all.
+TASKS = Path(os.environ.get("PROSE_TASKS", DATA / "prose.json"))
+SPLIT = Path(os.environ.get("PROSE_SPLIT", DATA / "prose_split.json"))
 
 NARRATIVE_CRAFT_SRC = Path("/Users/clchinkc/Documents/GitHub/narrative-craft/src")
 
@@ -64,6 +68,7 @@ class ProseTask:
     human_continuation: str
     prompt_text: str
     words: int
+    lang: str = "en"
 
     def __post_init__(self) -> None:
         for name in ("task_id", "book", "opening", "human_continuation", "prompt_text"):
@@ -108,13 +113,13 @@ class ProseScore:
     text: str = ""
 
 
-def lint(text: str) -> tuple[int, list[tuple[str, str]]]:
+def lint(text: str, lang: str = "en") -> tuple[int, list[tuple[str, str]]]:
     """The author's deterministic engine. Imported from the package, never reimplemented."""
     if str(NARRATIVE_CRAFT_SRC) not in sys.path:
         sys.path.insert(0, str(NARRATIVE_CRAFT_SRC))
     from narrative_craft.lint.core import lint_text
 
-    result = lint_text(text, lang="en")
+    result = lint_text(text, lang=lang)
     return result.score, [(f.severity, f.pattern_id) for f in result.findings]
 
 
@@ -131,11 +136,11 @@ def score_prose(raw: str, task: ProseTask, policy: str = DEFAULT_POLICY) -> Pros
     if extraction.unparsed or not text.strip():
         return base
 
-    lint_score, findings = lint(text)
+    lint_score, findings = lint(text, task.lang)
     vetoed = lint_score < LINT_CEILING or any(severity == FATAL_SEVERITY for severity, _ in findings)
 
     try:
-        judged: Assessment = assess(task.opening, text)
+        judged: Assessment = assess(task.opening, text, task.lang)
     except JudgeError as exc:
         # An unreachable judge is an instrument failure. Zero with the reason recorded beats a silent pass.
         return ProseScore(**{**base.__dict__, "lint_score": lint_score, "lint_veto": vetoed,
@@ -151,9 +156,11 @@ def score_prose(raw: str, task: ProseTask, policy: str = DEFAULT_POLICY) -> Pros
 
 def from_row(row: dict) -> ProseTask:
     return ProseTask(
-        task_id=row["task_id"], book=row["book"], opening=row["opening"],
+        task_id=row["task_id"], book=row.get("book", row["task_id"].split("-")[0]),
+        opening=row["opening"],
         human_continuation=row["human_continuation"], prompt_text=row["prompt"],
         words=int(row.get("words", len(row["opening"].split()) + len(row["human_continuation"].split()))),
+        lang=row.get("lang", "en"),
     )
 
 

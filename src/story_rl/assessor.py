@@ -36,6 +36,18 @@ BACKEND = os.environ.get("PROSE_JUDGE_BACKEND", "local")
 OPENROUTER_MODEL = os.environ.get("PROSE_JUDGE_MODEL", "anthropic/claude-sonnet-4.5")
 OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
 
+# Any OpenAI-compatible endpoint can judge, because the instrument that matters is the prompt and the
+# frozen temperature, not the vendor. The provider is chosen per run and recorded with every score, so a
+# result can never be attributed to the wrong judge.
+PROVIDERS = {
+    "openrouter": ("OPENROUTER_API_KEY", "https://openrouter.ai/api/v1/chat/completions",
+                   "anthropic/claude-sonnet-4.5"),
+    "deepseek": ("DEEPSEEK_API_KEY", "https://api.deepseek.com/v1/chat/completions", "deepseek-chat"),
+}
+JUDGE_PROVIDER = os.environ.get("PROSE_JUDGE_PROVIDER", "")
+if JUDGE_PROVIDER:
+    _key_name, OPENROUTER_URL, OPENROUTER_MODEL = PROVIDERS[JUDGE_PROVIDER]
+
 JUDGE_URL = os.environ.get("PROSE_JUDGE_URL", "http://127.0.0.1:8768")
 JUDGE_MODEL_ID = "Qwen3.5-4B-Q4_K_M.gguf"
 JUDGE_PROMPT_VERSION = "craft-v1"
@@ -52,6 +64,38 @@ BANDS = (
     ("hollow", 30, 49, "grammatical but empty: no stakes, no specificity, nothing observed"),
     ("broken", 0, 29, "incoherent, contradicts the opening, or is not prose"),
 )
+
+# The Chinese bands. Same thresholds, same instruction to anchor on evidence — a translation that softened
+# the bands would be a different instrument, and the corpus it judges is Chinese.
+BANDS_ZH = (
+    ("出版級", 90, 100), ("合格", 70, 89), ("可用", 50, 69), ("空殼", 30, 49), ("崩壞", 0, 29),
+)
+
+PROMPT_ZH = """你在為一段小說續寫打分，標準是一份寫作手藝量表。
+
+場景開頭（作者已給）：
+---
+{opening}
+---
+
+待評分的續寫：
+---
+{continuation}
+---
+
+只評這段續寫：讀者會不會想讀下去？
+
+出版級（90-100）：具體、有觀察；句子有聲音；細節裏有張力或內心活動；沒有把該演的解釋掉。
+合格（70-89）：清楚可讀、貼合場景，但部分地方平淡或套語。
+可用（50-69）：交代了事件，卻沒有聲音、張力或內心生活。
+空殼（30-49）：語法正確但空洞——沒有利害、沒有具體、沒有真正被觀察到的東西。
+崩壞（0-29）：語意不通、與開頭矛盾，或根本不是散文。
+
+以證據定位，不要慣性取中。若這段續寫只是概述場景而非寫在場景裏，它不算合格。
+
+只輸出 JSON，前後不要散文：
+{{"score": <0-100 的整數>, "band": "<出版級|合格|可用|空殼|崩壞>", "note": "<不超過 12 字>"}}
+"""
 
 PROMPT = """You are scoring one continuation of a fiction scene against a craft rubric.
 
@@ -103,15 +147,17 @@ def active_judge() -> tuple[str, str]:
     return (BACKEND, OPENROUTER_MODEL) if BACKEND == "openrouter" else ("local", JUDGE_MODEL_ID)
 
 
-def band_of(score: int) -> str:
-    for name, low, high, _ in BANDS:
+def band_of(score: int, lang: str = "en") -> str:
+    for entry in (BANDS_ZH if lang == "zh" else BANDS):
+        name, low, high = entry[0], entry[1], entry[2]
         if low <= score <= high:
             return name
     raise JudgeError(f"{score} is outside every band")
 
 
-def build_prompt(opening: str, continuation: str) -> str:
-    return PROMPT.format(opening=opening.strip(), continuation=continuation.strip())
+def build_prompt(opening: str, continuation: str, lang: str = "en") -> str:
+    template = PROMPT_ZH if lang == "zh" else PROMPT
+    return template.format(opening=opening.strip(), continuation=continuation.strip())
 
 
 def _post(body: dict) -> dict:
@@ -127,7 +173,7 @@ def _post(body: dict) -> dict:
         raise JudgeError(f"judge unreachable at {JUDGE_URL}: {exc}") from exc
 
 
-def parse(text: str) -> Assessment:
+def parse(text: str, lang: str = "en") -> Assessment:
     if not isinstance(text, str) or not text.strip():
         raise JudgeError(f"judge returned no content: {text!r}")
     match = re.search(r"\{.*\}", text, flags=re.DOTALL)
@@ -141,16 +187,22 @@ def parse(text: str) -> Assessment:
     if not isinstance(score, int) or not 0 <= score <= 100:
         raise JudgeError(f"judge score is not an int in 0..100: {score!r}")
     declared = payload.get("band")
-    expected = band_of(score)
+    expected = band_of(score, lang)
     if declared is not None and declared != expected:
         raise JudgeError(f"judge band {declared!r} disagrees with its score {score} ({expected})")
     return Assessment(score=score, band=expected, note=str(payload.get("note", ""))[:120])
 
 
+def _provider_key() -> tuple[str, str]:
+    name = JUDGE_PROVIDER or "openrouter"
+    key_env = PROVIDERS[name][0]
+    return key_env, os.environ.get(key_env, "")
+
+
 def _post_openrouter(prompt: str) -> dict:
-    key = os.environ.get("OPENROUTER_API_KEY", "")
+    key_env, key = _provider_key()
     if not key:
-        raise JudgeError("PROSE_JUDGE_BACKEND=openrouter but OPENROUTER_API_KEY is unset")
+        raise JudgeError(f"judge provider {JUDGE_PROVIDER or 'openrouter'} has no {key_env}")
     body = {"model": OPENROUTER_MODEL, "messages": [{"role": "user", "content": prompt}],
             "temperature": JUDGE_TEMPERATURE, "max_tokens": 200}
     request = urllib.request.Request(
@@ -163,7 +215,7 @@ def _post_openrouter(prompt: str) -> dict:
         raise JudgeError(f"openrouter judge unreachable: {exc}") from exc
 
 
-def assess(opening: str, continuation: str) -> Assessment:
+def assess(opening: str, continuation: str, lang: str = "en") -> Assessment:
     """One frozen call. Raises rather than inventing a score."""
     if not continuation.strip():
         raise JudgeError("empty continuation cannot be assessed")
@@ -177,14 +229,14 @@ def assess(opening: str, continuation: str) -> Assessment:
         "chat_template_kwargs": {"enable_thinking": False},
     }
     if BACKEND == "openrouter":
-        reply = _post_openrouter(build_prompt(opening, continuation))
+        reply = _post_openrouter(build_prompt(opening, continuation, lang))
     else:
         reply = _post(body)
     try:
         text = reply["choices"][0]["message"]["content"]
     except (KeyError, IndexError) as exc:
         raise JudgeError(f"judge reply has no message content: {str(reply)[:160]}") from exc
-    scored = parse(text)
+    scored = parse(text, lang)
     backend, model = active_judge()
     return Assessment(score=scored.score, band=scored.band, note=scored.note, version=JUDGE_PROMPT_VERSION,
                       model=f"{backend}:{model}")
