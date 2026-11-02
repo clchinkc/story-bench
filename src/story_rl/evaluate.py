@@ -1,12 +1,15 @@
-"""Score generations against the repair reward, at the level of the task rather than the rollout.
+"""Score generations against a shape's reward, at the level of the task rather than the rollout.
 
 Four samples of one passage are not four independent observations: they share a passage, a truth and an
 error. A rollout-level interval is therefore too narrow. This reports both, labels which is which, and
-reports the per-task rates because with eight passages an interval is arithmetic without inference.
+reports the per-task rates because with sixteen passages an interval is arithmetic without inference.
 
 The input is a plain JSONL of `{"task_id", "raw"}` rather than a live client, so the same instrument
 scores a local probe, a service sample and a hand-written file — and can be tested before any of them
 exist.
+
+`--shape` selects the corpus and the task ids; the reward, the parser policy and the statistics are the
+same for every shape, which is what makes two shapes' rates comparable at all.
 """
 
 from __future__ import annotations
@@ -15,18 +18,32 @@ import argparse
 import json
 from pathlib import Path
 
-from repair_task import RepairTask, score_rollout
-from story_rl.corpus import load_split
+from repair_task import score_rollout
+from scorable import ScorableTask
 from story_rl.stats import cluster_bootstrap, sign_test, wilson
 
 DEFAULT_POLICY = "prose"
+SHAPES = ("repair", "shape-a")
+
+
+def tasks_for(shape: str) -> dict[str, ScorableTask]:
+    if shape not in SHAPES:
+        raise SystemExit(f"unknown shape {shape!r}; known: {SHAPES}")
+    if shape == "repair":
+        from story_rl.corpus import load_split
+    else:
+        from story_rl.shape_a import load_split
+
+    return load_split().by_id()
 
 
 def read_generations(path: Path) -> list[dict]:
     return [json.loads(line) for line in path.read_text().splitlines() if line.strip()]
 
 
-def per_task_rewards(rows: list[dict], tasks: dict[str, RepairTask], policy: str) -> dict[str, list[float]]:
+def per_task_rewards(
+    rows: list[dict], tasks: dict[str, ScorableTask], policy: str
+) -> dict[str, list[float]]:
     """task_id -> the reward of each of its generations."""
     by_task: dict[str, list[float]] = {}
     for row in rows:
@@ -81,14 +98,14 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--generations", required=True)
     parser.add_argument("--against", default=None, help="a baseline JSONL for a paired comparison")
+    parser.add_argument("--shape", default="repair", choices=SHAPES)
     parser.add_argument("--policy", default=DEFAULT_POLICY)
     parser.add_argument("--out", default=None)
     args = parser.parse_args(argv)
 
-    corpus = load_split()
-    tasks = corpus.by_id()
+    tasks = tasks_for(args.shape)
     by_task = per_task_rewards(read_generations(Path(args.generations)), tasks, args.policy)
-    result: dict = {"treatment": summarise(by_task, args.policy)}
+    result: dict = {"shape": args.shape, "treatment": summarise(by_task, args.policy)}
 
     if args.against:
         baseline = per_task_rewards(read_generations(Path(args.against)), tasks, args.policy)
@@ -99,8 +116,8 @@ def main(argv: list[str] | None = None) -> int:
         Path(args.out).write_text(json.dumps(result, indent=1) + "\n", encoding="utf-8")
 
     treatment = result["treatment"]
-    print(f"{treatment['tasks']} tasks, {treatment['generations']} generations, "
-          f"pass/task {treatment['pass_rate']:.3f} {treatment['pass_rate_ci']} "
+    print(f"{args.shape}: {treatment['tasks']} tasks, {treatment['generations']} generations, "
+          f"pass {treatment['pass_rate']:.3f} {treatment['pass_rate_ci']} "
           f"cluster {treatment['pass_rate_cluster_ci']}")
     if "paired" in result:
         paired = result["paired"]

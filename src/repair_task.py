@@ -20,6 +20,7 @@ from continuation_parser import extract
 from holdout_guard import prompt_digest
 from prompt_set import CanonFact, PromptTask
 from reward_repair import correction_reward, score_repair, terminal_reward
+from scorable import ScorableTask
 
 REPAIR_PROMPT = (
     "Story so far: {passage}\n"
@@ -139,8 +140,12 @@ class RolloutScore:
     text: str = ""
 
 
-def score_rollout(raw: str, task: RepairTask, policy: str = "prose") -> RolloutScore:
-    """Parse a completion under `policy` and score it both ways. The single scoring entry point."""
+def score_rollout(raw: str, task: ScorableTask, policy: str = "prose") -> RolloutScore:
+    """Parse a completion under `policy` and score it both ways. The single scoring entry point.
+
+    Typed against the seam, not against `RepairTask`: a shape that supplies canon and a break through
+    `as_prompt_task` is scored by this same function, so no shape can drift into its own reward.
+    """
     extraction = extract(raw, policy)
     if extraction.unparsed:
         return RolloutScore(

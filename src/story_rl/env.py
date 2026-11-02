@@ -1,9 +1,14 @@
-"""The Tinker environment: one repair task per episode, GRPO over the repair reward.
+"""The Tinker environment: one scoreable task per episode, GRPO over the task's own reward.
 
 Tinker's cookbook already has the right shape — `ProblemEnv` for a single-turn scored episode,
 `ProblemGroupBuilder` for the GRPO group, `RLDataset` for the batch source — so this is a mapping from
 the benchmark's reward onto it, not a new training loop. The less of the loop that is ours, the less of
 it can be wrong.
+
+Nothing here knows what a task *is*. It asks for a prompt, a canon-plus-break to score against, and a
+reference answer — `scorable.ScorableTask`. That is what makes a shape a class plus a corpus file
+rather than an edit to the env: `story_rl.shape_a` and `story_rl.corpus` are two instances of the same
+seam, and neither can grow its own reward because both are scored by `repair_task.score_rollout`.
 
 Two settings are deliberate and neither is a default:
 
@@ -39,7 +44,8 @@ from tinker_cookbook.rl.types import (
 )
 from tinker_cookbook.tokenizer_utils import get_tokenizer
 
-from repair_task import RepairTask, RolloutScore, score_rollout
+from repair_task import RolloutScore, score_rollout
+from scorable import ScorableTask
 from story_rl.corpus import SPLIT_SALT, TaskSet, load_split, load_tasks
 
 DEFAULT_POLICY = "prose"
@@ -66,18 +72,20 @@ def route_code(route: str) -> int:
     return UNPARSED_ROUTE
 
 
-def permuted(tasks: Sequence[RepairTask], epoch: int, salt: str = SPLIT_SALT) -> list[RepairTask]:
+def permuted(tasks: Sequence[ScorableTask], epoch: int, salt: str = SPLIT_SALT) -> list[ScorableTask]:
     """A deterministic permutation per epoch — new order each pass, identical order on replay."""
-    def key(task: RepairTask) -> str:
+    def key(task: ScorableTask) -> str:
         return hashlib.sha256(f"{salt}:{epoch}:{task.task_id}".encode()).hexdigest()
 
     return sorted(tasks, key=key)
 
 
-class RepairEnv(ProblemEnv):
-    """One repair task. The reward is the repair verdict, and nothing else."""
+class TaskEnv(ProblemEnv):
+    """One task. The reward is the task's own verdict, and nothing else."""
 
-    def __init__(self, task: RepairTask, renderer: renderers.Renderer, policy: str = DEFAULT_POLICY):
+    def __init__(
+        self, task: ScorableTask, renderer: renderers.Renderer, policy: str = DEFAULT_POLICY
+    ):
         super().__init__(
             renderer,
             convo_prefix=None,
@@ -124,18 +132,23 @@ class RepairEnv(ProblemEnv):
         return replace(result, metrics=metrics)
 
 
-class RepairDataset(RLDataset):
-    """Batches of training passages. One batch is `batch_size` groups of `group_size` rollouts."""
+class TaskDataset(RLDataset):
+    """Batches of training passages. One batch is `batch_size` groups of `group_size` rollouts.
+
+    `dataset_name` is the shape's name in the harness log. It defaults to `repair` so every run
+    recorded before shapes existed keeps its own label rather than being retro-named.
+    """
 
     def __init__(
         self,
-        tasks: Sequence[RepairTask],
+        tasks: Sequence[ScorableTask],
         renderer: renderers.Renderer,
         batch_size: int,
         group_size: int,
         n_batches: int = 200,
         policy: str = DEFAULT_POLICY,
         salt: str = SPLIT_SALT,
+        dataset_name: str = "repair",
     ):
         if not tasks:
             raise ValueError("an empty task set cannot source a batch")
@@ -151,6 +164,7 @@ class RepairDataset(RLDataset):
         self.n_batches = n_batches
         self.policy = policy
         self.salt = salt
+        self.dataset_name = dataset_name
 
     def get_batch(self, index: int) -> Sequence[EnvGroupBuilder]:
         """`batch_size` distinct passages, reshuffled every pass through the training set."""
@@ -159,9 +173,9 @@ class RepairDataset(RLDataset):
         chosen = [order[(offset + step) % len(order)] for step in range(self.batch_size)]
         return [
             ProblemGroupBuilder(
-                env_thunk=partial(RepairEnv, task=task, renderer=self.renderer, policy=self.policy),
+                env_thunk=partial(TaskEnv, task=task, renderer=self.renderer, policy=self.policy),
                 num_envs=self.group_size,
-                dataset_name="repair",
+                dataset_name=self.dataset_name,
             )
             for task in chosen
         ]
@@ -171,8 +185,12 @@ class RepairDataset(RLDataset):
 
 
 @chz.chz
-class RepairDatasetBuilder(RLDatasetBuilder):
-    """What `tinker_cookbook.rl.train.Config` takes. The training half only, never the held-out one."""
+class TaskDatasetBuilder(RLDatasetBuilder):
+    """What `tinker_cookbook.rl.train.Config` takes, for the repair corpus.
+
+    The training half only, never the held-out one. A second shape subclasses or mirrors this with its
+    own corpus loader; the class is chz-serialisable, so the run definition stays reconstructible.
+    """
 
     batch_size: int
     group_size: int
@@ -182,8 +200,9 @@ class RepairDatasetBuilder(RLDatasetBuilder):
     policy: str = DEFAULT_POLICY
     tasks_path: str = ""
     split_path: str = ""
+    dataset_name: str = "repair"
 
-    async def __call__(self) -> tuple[RepairDataset, None]:
+    async def __call__(self) -> tuple[TaskDataset, None]:
         from story_rl.corpus import SPLIT, TASKS
 
         tasks = load_tasks(Path(self.tasks_path) if self.tasks_path else TASKS)
@@ -191,13 +210,22 @@ class RepairDatasetBuilder(RLDatasetBuilder):
         tokenizer = get_tokenizer(self.model_name_for_tokenizer)
         renderer = renderers.get_renderer(self.renderer_name, tokenizer=tokenizer)
         return (
-            RepairDataset(
+            TaskDataset(
                 tasks=corpus.train,
                 renderer=renderer,
                 batch_size=self.batch_size,
                 group_size=self.group_size,
                 n_batches=self.n_batches,
                 policy=self.policy,
+                dataset_name=self.dataset_name,
             ),
             None,
         )
+
+
+# The names the repair recipe shipped under. Kept as aliases rather than renamed everywhere in one
+# commit, because a run's log path and its tests both spell them, and a rename is not an improvement
+# to what the run measures.
+RepairEnv = TaskEnv
+RepairDataset = TaskDataset
+RepairDatasetBuilder = TaskDatasetBuilder
