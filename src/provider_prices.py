@@ -343,11 +343,15 @@ def validate_snapshot(raw_sources, route, observed_at, expires_at):
         matches = [e for e in endpoints if e["tag"] == route.endpoint_tag]
         if len(models) != 1 or endpoint_data["id"] != route.model_id or len(matches) != 1:
             raise ValidationError("catalog/model/endpoint identity mismatch")
-        if "/" not in route.endpoint_tag:
-            siblings = sorted(e["tag"] for e in endpoints
-                              if e["tag"].startswith(route.endpoint_tag + "/"))
-            if siblings != sorted(route.excluded_variants):
-                raise ValidationError("ambiguous base provider slug")
+        # Every tag, not only the bare ones. A tag containing "/" can still have children — `xai/zdr`
+        # has `xai/zdr/priority` and `xai/zdr/us` — and the old `"/" not in tag` guard skipped them,
+        # so for such a pin the check accepted an empty declaration, a wrong one, a partial one and
+        # even a nonexistent one identically. An independent verifier demonstrated all four. The
+        # fail-closed property this rule exists for was bypassable by any tag containing a slash.
+        siblings = sorted(e["tag"] for e in endpoints
+                          if e["tag"].startswith(route.endpoint_tag + "/"))
+        if siblings != sorted(route.excluded_variants):
+            raise ValidationError("ambiguous provider tag")
         endpoint = matches[0]
         expected_tier = "priority" if route.endpoint_tag.endswith("/fast") else "flex" if route.endpoint_tag.endswith("/flex") else "default"
         if route.service_tier != expected_tier or endpoint["model_id"] != route.model_id:
