@@ -57,12 +57,12 @@ def _study(repo: pathlib.Path) -> dict:
     return (yaml.safe_load(path.read_text()) or {}) if path.exists() else {}
 
 
-def declared_spec(study: dict) -> tuple[RunSpec | None, list[str]]:
-    """Read `main_run`, or say precisely which of its fields is missing."""
-    block = study.get("main_run") or {}
+def declared_spec(study: dict, design: str = "main_run") -> tuple[RunSpec | None, list[str]]:
+    """Read the named design block, or say precisely which of its fields is missing."""
+    block = study.get(design) or {}
     missing = [key for key in REQUIRED if key not in block]
     if missing:
-        return None, [f"main_run declares no {key}" for key in missing]
+        return None, [f"{design} declares no {key}" for key in missing]
     spec = RunSpec(
         status=str(block["status"]),
         units_per_model=int(block["units_per_model"]),
@@ -73,7 +73,7 @@ def declared_spec(study: dict) -> tuple[RunSpec | None, list[str]]:
     )
     refusals = []
     if spec.status != FROZEN:
-        refusals.append(f"main_run is {spec.status!r}, not {FROZEN!r}")
+        refusals.append(f"{design} is {spec.status!r}, not {FROZEN!r}")
     if spec.units != spec.units_per_model:
         refusals.append(f"declared units {spec.units} contradict units_per_model {spec.units_per_model}")
     if study.get("status") != FROZEN:
@@ -125,15 +125,38 @@ def route_names(base: pathlib.Path) -> list[str]:
                   for p in (base / "records").glob("*.json"))
 
 
+def dispatch(attempts, *, authorise, build, execute, completed=()) -> dict:
+    """Walk the plan. Refuse without a token, skip what is already settled, stop on the first failure.
+
+    `build` and `execute` are injected rather than imported: the control flow is what this function
+    owns, and keeping the provider modules out of it means the loop can be exercised without a
+    transport, a ledger or a base — which is the only way its refusal paths get tested at all.
+    """
+    if not authorise or not str(authorise).startswith("PAID-PILOT-"):
+        return dict(refused="no PAID-PILOT token", executed=0, skipped=0)
+    done = set(completed)
+    executed = skipped = 0
+    for attempt in attempts:
+        if attempt["attempt_id"] in done:
+            skipped += 1
+            continue
+        execute(build(attempt))
+        executed += 1
+    return dict(refused=None, executed=executed, skipped=skipped)
+
+
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--repo", type=pathlib.Path, default=DEFAULT_REPO)
     ap.add_argument("--base", type=pathlib.Path, default=DEFAULT_BASE)
     ap.add_argument("--plan", action="store_true")
+    ap.add_argument("--design", default="main_run", choices=("main_run", "pilot_run"))
+    ap.add_argument("--authorise", default=None)
+    ap.add_argument("--dispatch", action="store_true")
     args = ap.parse_args(argv)
 
     study = _study(args.repo)
-    spec, refusals = declared_spec(study)
+    spec, refusals = declared_spec(study, args.design)
     if refusals:
         print("  REFUSED:")
         for reason in refusals:
@@ -147,6 +170,13 @@ def main(argv=None) -> int:
     print(f"  arm-runs    : {len(attempts)}")
     if args.plan:
         print(json.dumps(attempts[:2], indent=1))
+    if args.dispatch:
+        # The loop is ready; the two adapters it takes are not. Refusing here rather than reaching
+        # for an import that does not exist yet is the same rule the gate follows everywhere else.
+        print("  REFUSED: the descriptor-to-attempt adapter is not wired; "
+              "`provider_attempts.prepare_attempt` is the intended build step and "
+              "`provider_attempts.execute_attempt` the execute step")
+        return 2
     return 0
 
 

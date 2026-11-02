@@ -114,6 +114,64 @@ def test_every_attempt_id_is_unique(tmp_path):
     assert len(ids) == len(set(ids))
 
 
+def test_the_design_selector_reads_the_named_block(tmp_path):
+    """The pilot and the main run share one planner; only the declared block differs."""
+    repo = _repo(tmp_path, None)
+    study = dr._study(repo)
+    study["pilot_run"] = {**DECLARED, "units_per_model": 6}
+    spec, refusals = dr.declared_spec(study, "pilot_run")
+    assert refusals == []
+    assert spec.units == 6
+    assert "main_run" in dr.declared_spec(study, "main_run")[1][0]  # the other block still refuses
+
+
+def test_dispatch_refuses_without_a_token():
+    result = dr.dispatch([{"attempt_id": "a"}], authorise=None,
+                         build=lambda attempt: attempt, execute=lambda plan: None)
+    assert result["refused"] and result["executed"] == 0
+
+
+def test_dispatch_refuses_a_token_of_the_wrong_shape():
+    result = dr.dispatch([{"attempt_id": "a"}], authorise="please",
+                         build=lambda attempt: attempt, execute=lambda plan: None)
+    assert result["refused"] and result["executed"] == 0
+
+
+def test_dispatch_executes_every_attempt_it_is_given():
+    seen = []
+    attempts = [{"attempt_id": f"a{i}"} for i in range(3)]
+    result = dr.dispatch(attempts, authorise="PAID-PILOT-2026-11-02",
+                         build=lambda attempt: attempt["attempt_id"], execute=seen.append)
+    assert seen == ["a0", "a1", "a2"]
+    assert result == dict(refused=None, executed=3, skipped=0)
+
+
+def test_dispatch_skips_what_the_ledger_already_settled():
+    """Resumption is the ledger's fact, not a re-run: a reconciled attempt must never be resent."""
+    seen = []
+    attempts = [{"attempt_id": f"a{i}"} for i in range(4)]
+    result = dr.dispatch(attempts, authorise="PAID-PILOT-2026-11-02",
+                         build=lambda attempt: attempt["attempt_id"], execute=seen.append,
+                         completed={"a1", "a3"})
+    assert seen == ["a0", "a2"]
+    assert result["executed"] == 2 and result["skipped"] == 2
+
+
+def test_dispatch_stops_at_the_first_failure():
+    seen = []
+
+    def execute(attempt_id):
+        if attempt_id == "a1":
+            raise RuntimeError("transport died")
+        seen.append(attempt_id)
+
+    attempts = [{"attempt_id": f"a{i}"} for i in range(3)]
+    with pytest.raises(RuntimeError, match="transport died"):
+        dr.dispatch(attempts, authorise="PAID-PILOT-2026-11-02",
+                    build=lambda attempt: attempt["attempt_id"], execute=execute)
+    assert seen == ["a0"]
+
+
 def test_units_cover_every_locale_and_cluster_once(tmp_path):
     repo = _repo(tmp_path, {**DECLARED, "locales": ["en", "zh-Hant"], "units_per_model": 12})
     spec, _ = dr.declared_spec(dr._study(repo))
