@@ -124,6 +124,7 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--base", type=pathlib.Path, required=True)
     ap.add_argument("--assignment", type=pathlib.Path, required=True)
+    ap.add_argument("--index", type=int, default=0, help="which assignment row to rehearse")
     ap.add_argument("--evidence", type=pathlib.Path, default=pathlib.Path("/tmp/w3b2-rehearsal"))
     args = ap.parse_args()
 
@@ -131,7 +132,9 @@ def main() -> int:
     manifest = json.loads(raw)
     if not manifest.get("judge_designated"):
         raise SystemExit("manifest records no judge designation; refusing to rehearse it as one")
-    row = manifest["assignments"][0]
+    # The row you rehearse must be the row you send: a rehearsal of row 0 that authorises row 4
+    # proves the wiring and nothing about the request that will actually be made.
+    row = manifest["assignments"][args.index]
     record, endpoints, profile, artifact = load_route(args.base, row["model"])
     identity = record["route_identity"]
 

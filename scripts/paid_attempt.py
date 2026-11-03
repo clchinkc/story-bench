@@ -90,20 +90,24 @@ def _prepared(args, token: str):
     if snapshot.qualification != pp.QUALIFICATION_FOR_KIND[pp.VERIFIED_KIND]:
         raise SystemExit(f"{row['model']}: qualification {snapshot.qualification!r} is not payable")
     fields = reh.request_fields(row["task"], "max", 6000)
-    artifacts = dict(reh.artifacts_for(row, fields, raw, args.base))
+    # The eight gate artifacts must be part of the PLAN's artifact set: `_admit` requires every
+    # authority ref to be an artifact the request already carries ("unbound gate evidence"
+    # otherwise). They are derived from the record's own statuses, and the route hash they bind to
+    # is the one the plan will carry, so they are computed before the plan rather than after it.
+    route_sha256 = pp.sha(reh.json_bytes(dataclasses.asdict(reh._route(identity))))
+    gate_blobs = gates(record, assignment_hash, route_sha256, identity["expires_at"])
+    artifacts = dict(reh.artifacts_for(row, fields, raw, args.base)) | gate_blobs
     plan = pa.prepare_attempt(
         reh.spec_for(row, dict(attempt_id=dr.attempt_id(row["model"], f"smoke-u{args.index}",
                                                        row["condition"]),
                                unit_id=f"smoke-u{args.index}"),
                      "max", artifacts, assignment_hash),
         snapshot, tuple(sorted(artifacts.items())), fields, args.evidence)
-    gate_blobs = gates(record, assignment_hash, pp.sha(reh.json_bytes(dataclasses.asdict(plan.route))),
-                       identity["expires_at"])
     admission = pa.Admission(
         mode=snapshot.qualification,
         authority_refs=tuple(pa.ArtifactRef.of(name, blob) for name, blob in sorted(gate_blobs.items())),
         assignment_hash=assignment_hash,
-        route_sha256=pp.sha(reh.json_bytes(dataclasses.asdict(plan.route))),
+        route_sha256=route_sha256,
         valid_until=identity["expires_at"])
     return token, row, plan, admission, identity
 

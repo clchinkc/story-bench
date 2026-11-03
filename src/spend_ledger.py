@@ -17,6 +17,11 @@ import sqlite3
 
 MICROS_PER_USD = 1_000_000
 CAP_MICROS = 1_000 * MICROS_PER_USD
+# KNOWN DIVERGENCE, not fixed here. This split (repair 100, data_judge 200, main 400, reserve 150)
+# is not `studies/revision-v1.yaml` spend.allocations_2026_11_01_lean (90 / 426 / 150 / 324 / 10);
+# both total CAP_MICROS. Aligning it changed 8 ledger tests whose reservation sizes are tuned to
+# these heads, which is a change to make deliberately and with its own review -- not minutes before
+# a paid call. `pilot` is 150 in both, and `pilot` is the envelope the smoke unit draws on.
 INITIAL_ENVELOPES = dict(repair=100_000_000, data_judge=200_000_000,
                          pilot=150_000_000, main=400_000_000, reserve=150_000_000)
 USAGE_KINDS = (
