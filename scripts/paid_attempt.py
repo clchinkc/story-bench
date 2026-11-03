@@ -99,10 +99,13 @@ def _prepared(args, token: str):
     route_sha256 = pp.sha(reh.json_bytes(dataclasses.asdict(reh._route(identity))))
     gate_blobs = gates(record, assignment_hash, route_sha256, identity["expires_at"])
     artifacts = dict(reh.artifacts_for(row, fields, raw, args.base)) | gate_blobs
+    # The unit tag is explicit because an attempt id is ONE ledger slot, forever. The first smoke
+    # attempt now sits in UNKNOWN and can never be resent, so a second call has to be a different
+    # unit -- and the id must say which one it is rather than silently colliding.
+    unit_id = f"{args.unit}-u{args.index}"
     plan = pa.prepare_attempt(
-        reh.spec_for(row, dict(attempt_id=dr.attempt_id(row["model"], f"smoke-u{args.index}",
-                                                       row["condition"]),
-                               unit_id=f"smoke-u{args.index}"),
+        reh.spec_for(row, dict(attempt_id=dr.attempt_id(row["model"], unit_id, row["condition"]),
+                               unit_id=unit_id),
                      "max", artifacts, assignment_hash),
         snapshot, tuple(sorted(artifacts.items())), fields, args.evidence)
     admission = pa.Admission(
@@ -153,6 +156,8 @@ def main() -> int:
     ap.add_argument("--ledger", type=pathlib.Path, required=True)
     ap.add_argument("--evidence", type=pathlib.Path, required=True)
     ap.add_argument("--index", type=int, default=0, help="which assignment row to send")
+    ap.add_argument("--unit", default="smoke",
+                    help="unit tag; a new tag is a new ledger slot, an existing one is a replay")
     ap.add_argument("--authorise", default=None)
     args = ap.parse_args()
 
