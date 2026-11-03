@@ -58,9 +58,11 @@ FATAL_SEVERITY = "error"
 
 # Training collapsed continuations to ~33 characters against the base model's ~70, and the judge paid the
 # shorter ones less — not because brevity is wrong, but because a 30-character line has no room to show
-# craft. Length is therefore a floor and a ceiling, not a preference.
-MIN_CONTINUATION_CHARS = 45
-MAX_CONTINUATION_CHARS = 320
+# craft. A hard veto at 45 rejected 45 % of rollouts and halved the learning, so length is now graded: a
+# floor below which nothing is payable, a ramp, and a ceiling.
+MIN_CONTINUATION_CHARS = 20
+LENGTH_TARGET_CHARS = 60
+MAX_CONTINUATION_CHARS = 400
 
 # Both arms leaked foreign tokens at 3.3 % (base included), so this is not a training defect — but a
 # Chinese draft with `wet` or a Greek word in it is unusable, and the check costs nothing.
@@ -134,6 +136,12 @@ def lint(text: str, lang: str = "en") -> tuple[int, list[tuple[str, str]]]:
     return result.score, [(f.severity, f.pattern_id) for f in result.findings]
 
 
+def length_factor(text: str) -> float:
+    """0 below the floor, ramping to 1 at the target. Graded because a binary floor starved the run."""
+    span = max(1, LENGTH_TARGET_CHARS - MIN_CONTINUATION_CHARS)
+    return max(0.0, min(1.0, (len(text) - MIN_CONTINUATION_CHARS) / span))
+
+
 def guard(text: str, lang: str = "en") -> list[str]:
     """Deterministic rejections the judge should never have to see. Empty means admissible."""
     reasons = []
@@ -161,15 +169,20 @@ def score_prose(raw: str, task: ProseTask, policy: str = DEFAULT_POLICY) -> Pros
 
     lint_score, findings = lint(text, task.lang)
     reasons = guard(text, task.lang)
-    vetoed = (lint_score < LINT_CEILING or any(severity == FATAL_SEVERITY for severity, _ in findings)
-              or bool(reasons))
+    # Only an error-severity finding vetoes. Requiring a pristine 100 meant a single warning — a repeated
+    # sentence opening, an adverb — zeroed the rollout, and that vetoed ~45 % of every batch, halving the
+    # signal the run could learn from.
+    # Only an error-severity finding vetoes. Requiring a pristine score meant a single warning — a repeated
+    # sentence opening, an adverb — zeroed the rollout, and that rejected ~45 % of every batch. Lint vetoes
+    # breakage; pricing hollowness is the judge's job, which is what D001 already said it could not do.
+    vetoed = any(severity == FATAL_SEVERITY for severity, _ in findings) or bool(reasons)
 
     # A judge that cannot answer is an instrument failure, and it must not look like bad prose. Returning 0
     # here once let a 402 (out of credit) score every rollout zero for nine steps while the run kept billing;
     # the caller must hear about it, not average it away.
     judged: Assessment = assess(task.opening, text, task.lang)
 
-    reward = 0.0 if vetoed else judged.normalised()
+    reward = 0.0 if vetoed else judged.normalised() * length_factor(text)
     return ProseScore(
         task_id=task.task_id, parsed=True, how=extraction.how, strict=reward, correction=judged.normalised(),
         lint_score=lint_score, lint_veto=vetoed, craft=judged.score, band=judged.band,

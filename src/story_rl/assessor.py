@@ -236,6 +236,25 @@ def _post_openrouter(prompt: str) -> dict:
     raise JudgeError(f"judge unreachable after {JUDGE_ATTEMPTS} attempts: {last}") from last
 
 
+def parse_with_retry(opening: str, continuation: str, lang: str) -> Assessment:
+    """Ask again when the reply does not parse. A malformed answer is not a broken instrument."""
+    last: Exception | None = None
+    for attempt in range(JUDGE_ATTEMPTS):
+        reply = _post_openrouter(build_prompt(opening, continuation, lang))
+        try:
+            text = reply["choices"][0]["message"]["content"]
+        except (KeyError, IndexError) as exc:
+            last = exc
+        else:
+            try:
+                return parse(text, lang)
+            except JudgeError as exc:
+                last = exc
+        if attempt < JUDGE_ATTEMPTS - 1:
+            time.sleep(0.5)
+    raise JudgeError(f"judge gave no parseable answer in {JUDGE_ATTEMPTS} attempts: {last}") from last
+
+
 def assess(opening: str, continuation: str, lang: str = "en") -> Assessment:
     """One frozen call. Raises rather than inventing a score."""
     if not continuation.strip():
@@ -250,14 +269,14 @@ def assess(opening: str, continuation: str, lang: str = "en") -> Assessment:
         "chat_template_kwargs": {"enable_thinking": False},
     }
     if BACKEND == "openrouter":
-        reply = _post_openrouter(build_prompt(opening, continuation, lang))
+        scored = parse_with_retry(opening, continuation, lang)
     else:
         reply = _post(body)
-    try:
-        text = reply["choices"][0]["message"]["content"]
-    except (KeyError, IndexError) as exc:
-        raise JudgeError(f"judge reply has no message content: {str(reply)[:160]}") from exc
-    scored = parse(text, lang)
+        try:
+            text = reply["choices"][0]["message"]["content"]
+        except (KeyError, IndexError) as exc:
+            raise JudgeError(f"judge reply has no message content: {str(reply)[:160]}") from exc
+        scored = parse(text, lang)
     backend, model = active_judge()
     return Assessment(score=scored.score, band=scored.band, note=scored.note, version=JUDGE_PROMPT_VERSION,
                       model=f"{backend}:{model}")

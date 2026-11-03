@@ -79,20 +79,34 @@ def test_a_missing_judge_raises_instead_of_scoring_zero(monkeypatch):
         score_prose("她把傘收起來，水滴沿著手背往下滑。", a_task())
 
 
-def test_a_clean_continuation_is_paid_the_judge_score(monkeypatch):
+def test_a_clean_continuation_is_paid_the_judge_score_scaled_by_length(monkeypatch):
+    """Length is graded, not binary: a 54-character line earns most of the score, not all or none."""
+    from story_rl.prose import length_factor
+
     monkeypatch.setattr("story_rl.prose.assess", lambda *a, **k: Assessment(score=80, band="合格", note="ok"))
-    scored = score_prose("她把傘收起來，水滴沿著手背往下滑，沒有回頭，也沒有等他把話說完就往前走，傘尖在石階上拖出一道很長的水痕。", a_task())
-    assert scored.strict == pytest.approx(0.8)
+    text = "她把傘收起來，水滴沿著手背往下滑，沒有回頭，也沒有等他把話說完就往前走，傘尖在石階上拖出一道很長的水痕。"
+    scored = score_prose(text, a_task())
     assert scored.lint_veto is False
+    assert scored.strict == pytest.approx(0.8 * length_factor(text))
 
 
-def test_a_hollow_continuation_is_vetoed_whatever_the_judge_says(monkeypatch):
-    """Lint is a veto, not a discount: a high score cannot buy past a broken sentence."""
+def test_an_error_severity_finding_vetoes_whatever_the_judge_says(monkeypatch):
+    """Lint is a veto on breakage, not a discount: a high score cannot buy past it."""
     monkeypatch.setattr("story_rl.prose.assess", lambda *a, **k: Assessment(score=99, band="出版級", note="ok"))
-    hollow = "她走了。他走了。天黑了。燈亮了。" * 3
-    scored = score_prose(hollow, a_task())
+    monkeypatch.setattr("story_rl.prose.lint", lambda *a, **k: (40, [("error", "broken-sentence")]))
+    scored = score_prose("他把手插在口袋裡，指節微微發白，腳步聲在空蕩蕩的走廊裡拖出兩段很長的回響。", a_task())
     assert scored.lint_veto is True
     assert scored.strict == 0.0
+
+
+def test_a_single_warning_does_not_zero_a_good_rollout(monkeypatch):
+    """The starvation bug: requiring a pristine 100 vetoed ~45 % of every batch and halved the signal."""
+    monkeypatch.setattr("story_rl.prose.assess", lambda *a, **k: Assessment(score=80, band="合格", note="ok"))
+    monkeypatch.setattr("story_rl.prose.lint", lambda *a, **k: (95, [("warning", "sentence-monotone")]))
+    text = "他把手插在口袋裡，指節微微發白，腳步聲在空蕩蕩的走廊裡拖出兩段很長的回響，久久不散，也沒有人應他。"
+    scored = score_prose(text, a_task())
+    assert scored.lint_veto is False
+    assert scored.strict > 0
 
 
 # ── the stop rule, as arithmetic ────────────────────────────────────────────────────────────────────────
