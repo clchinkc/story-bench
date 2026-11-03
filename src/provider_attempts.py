@@ -667,7 +667,15 @@ async def execute_attempt(plan, ledger, admission, fixture=None):
     deadline = asyncio.get_running_loop().time() + plan.deadline_seconds
     response = None
     try:
-        async with httpx.AsyncClient(transport=transport, trust_env=False, follow_redirects=False) as client:
+        # The plan's deadline, not httpx's 5 s default. Without this, `asyncio.timeout_at` below
+        # governs only the OUTER bound while the transport gives up after five seconds of silence --
+        # and a reasoning model is silent for longer than that. Both smoke attempts on 2026-11-03
+        # were charged and then abandoned this way: ReadTimeout at 5 s, no response, no artifact.
+        # Connect stays short because DNS, TCP and TLS measured 0.14 s against this host; the
+        # long waits are all in the read.
+        limit = httpx.Timeout(plan.deadline_seconds, connect=30)
+        async with httpx.AsyncClient(transport=transport, trust_env=False, follow_redirects=False,
+                                     timeout=limit) as client:
             request = client.build_request("POST", plan.route.base_url + plan.route.path,
                                            content=plan.body_bytes, headers=headers)
             # Headers are deliberately NOT recorded: one of them is the credential.

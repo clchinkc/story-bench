@@ -35,7 +35,7 @@ def reserved_micros(plan):
 
 def make_case(root, *, attempt_id="attempt-1", role="generation", hosted=True, cost_rate="0.001",
               snapshot=None, manifest=None, prompt=None, ledger=None, retry_index=0, parent=None,
-              max_attempts=1, profile_changes=None, extra_pricing=None):
+              max_attempts=1, profile_changes=None, extra_pricing=None, deadline_seconds=None):
     root = Path(root).resolve()
     route = Route("openrouter", "https://openrouter.ai/api/v1", "/chat/completions", "fixture/model",
                   "fixture/model-20260923", "fixture/local", "default", "USD")
@@ -77,7 +77,8 @@ def make_case(root, *, attempt_id="attempt-1", role="generation", hosted=True, c
         sha(artifacts["settings"]), "low", parent, retry_index, max_attempts, "repair",
         "research" if role == "research_evaluation" else "deployment", role, "synthetic-program", "synthetic-store",
         sha(artifacts["native_package"]), refs)
-    plan = pa.prepare_attempt(spec, snapshot, tuple(artifacts.items()), fields, root / "evidence")
+    plan = pa.prepare_attempt(spec, snapshot, tuple(artifacts.items()), fields, root / "evidence",
+                              deadline_seconds)
     admission = pa.Admission("offline_fixture", tuple(r for r in refs if r.name.startswith("gate_")),
                              spec.assignment_hash, route_hash, end)
     if ledger is None:
@@ -866,3 +867,28 @@ def test_inclusive_reasoning_stays_zero_when_the_route_does_not_price_it(tmp_pat
     plan, _ledger, _admission, _manifest = make_case(tmp_path)
     rates = {c.kind: c.usd_per_unit for c in plan.census}
     assert Decimal(rates["reasoning_tokens"]) == Decimal("0")
+
+
+def test_the_http_client_is_given_the_plans_deadline(tmp_path, monkeypatch):
+    """The plan declares a deadline; httpx carries its own 5 s default, and it used to win.
+
+    Both smoke attempts on 2026-11-03 were billed and then abandoned at five seconds: a reasoning
+    model does not emit its first byte that fast, so `ReadTimeout` fired inside a 600-second
+    deadline and the response was lost *after* the provider had charged for it. The offline
+    transport does not enforce timeouts, so this asserts the contract at the seam that does: the
+    client must be constructed with the plan's deadline rather than httpx's default.
+    """
+    seen = {}
+    original = httpx.AsyncClient
+
+    class Recording(original):
+        def __init__(self, *args, **kwargs):
+            seen.update(kwargs)
+            super().__init__(*args, **kwargs)
+
+    monkeypatch.setattr(pa.httpx, "AsyncClient", Recording)
+    case = make_case(tmp_path, deadline_seconds=8)
+    execute(case)
+    timeout = seen.get("timeout")
+    assert timeout is not None, "no timeout given: httpx would use its 5 s default"
+    assert timeout.read == 8, timeout
