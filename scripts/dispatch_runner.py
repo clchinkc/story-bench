@@ -81,27 +81,50 @@ def declared_spec(study: dict, design: str = "main_run") -> tuple[RunSpec | None
     return spec, refusals
 
 
-def task_set(repo: pathlib.Path) -> list[tuple[str, str]]:
-    """(family, task_id) for every frozen task, sorted so the plan is reproducible."""
+def _declared_families(repo: pathlib.Path) -> set[str] | None:
+    """The families the study priced against, or None when it declares no mix (the test repos)."""
+    declared = ((_study(repo).get("task_mix") or {}).get("families") or {})
+    return set(declared) or None
+
+
+def _task_row(path: pathlib.Path) -> tuple[str, str] | None:
     import yaml  # noqa: PLC0415
-    out = []
-    for path in sorted((repo / "dataset" / "tasks").rglob("*.yaml")):
-        task = yaml.safe_load(path.read_text())
-        if isinstance(task, dict) and "task_id" in task and "task_type" in task:
-            out.append((task["task_type"], task["task_id"]))
-    return out
+    task = yaml.safe_load(path.read_text())
+    if isinstance(task, dict) and "task_id" in task and "task_type" in task:
+        return (task["task_type"], task["task_id"])
+    return None
+
+
+def task_set(repo: pathlib.Path, families: set[str] | None = None) -> list[tuple[str, str]]:
+    """(family, task_id) for every frozen task in the DECLARED mix, sorted for reproducibility.
+
+    The mix filter is not a convenience. `task_mix.families` is what the reservation ceiling was
+    priced against, and cycling over every yaml under `dataset/tasks` silently planned units from
+    families the study EXCLUDES: the four agentic families sort first, so an 18-unit pilot would
+    have been built entirely from them -- costs and claims for a mix the study never declared. When
+    no mix is declared (the synthetic repos the tests build), every task is admissible.
+    """
+    if families is None:
+        families = _declared_families(repo)
+    rows = [_task_row(path) for path in sorted((repo / "dataset" / "tasks").rglob("*.yaml"))]
+    return [row for row in rows if row and (families is None or row[0] in families)]
 
 
 def assign(spec: RunSpec, tasks: list[tuple[str, str]]) -> list[dict]:
     """One row per unit. Task choice is a deterministic cycle, so a unit's identity never drifts."""
     if not tasks:
         return []
-    rows = []
+    rows, index = [], 0
     for locale in spec.locales:
         for cluster in range(spec.clusters_per_locale):
             for unit in range(spec.units_per_cluster):
-                index = (cluster * spec.units_per_cluster + unit) % len(tasks)
-                family, task_id = tasks[index]
+                # ONE running counter, not a per-cluster offset. The old formula restarted the
+                # cycle inside every cluster, so an 18-unit pilot drew only indices 0..5 and landed
+                # in 2 of the 6 declared families -- while the study's own note promises "each of
+                # the 25 frozen tasks used about 5.76 times per model per arm". The counter is what
+                # makes that promise true at any unit count.
+                family, task_id = tasks[index % len(tasks)]
+                index += 1
                 rows.append(dict(locale=locale, cluster=f"{locale}-c{cluster:02d}", unit=unit,
                                  task_family=family, task_id=task_id,
                                  unit_id=f"{locale}-c{cluster:02d}-u{unit}"))
