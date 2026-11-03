@@ -88,6 +88,24 @@ def draft(url: str, model: str, context: str, *, seed: int, lang: str, tokens: i
     return payload["choices"][0]["message"]["content"].strip()
 
 
+def strip_previous_drafts(note: str) -> str:
+    """Remove the last `> [!draft]` callout (and its continuation lines), leaving the author's prose."""
+    lines = note.splitlines()
+    start = None
+    for index, line in enumerate(lines):
+        if line.lstrip().startswith("> [!draft]"):
+            start = index
+    if start is None:
+        return note
+    end = start
+    while end + 1 < len(lines) and lines[end + 1].lstrip().startswith(">"):
+        end += 1
+    kept = lines[:start] + lines[end + 1:]
+    while kept and not kept[-1].strip():
+        kept.pop()
+    return "\n".join(kept) + "\n"
+
+
 def render(drafts: list[tuple[int, str]], *, model: str, prompt_hash: str, url: str) -> str:
     stamp = datetime.now(timezone.utc).astimezone().isoformat(timespec="seconds")
     lines = [f"> [!draft] {model} · {len(drafts)} drafts · {stamp}", ">"]
@@ -132,8 +150,8 @@ def main() -> int:
         print(block)
         return 0
 
-    with note_path.open("a", encoding="utf-8") as handle:
-        handle.write("\n" + block)
+    kept = strip_previous_drafts(note)
+    note_path.write_text(kept + "\n" + block, encoding="utf-8")
     print(f"appended {len(drafts)} drafts to {note_path}")
     return 0
 

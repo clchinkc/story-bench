@@ -179,3 +179,18 @@ def test_a_clean_chinese_continuation_passes_the_guards():
 
     clean = "他把手插在口袋裡，指節微微發白，腳步聲在空蕩蕩的走廊裡拖出兩段很長的回響，久久不散，也沒有人應他。"
     assert guard(clean, "zh") == []
+
+
+def test_a_previous_draft_block_is_replaced_not_stacked():
+    """Run the command twice and the note must not fill with suggestions; the author's prose survives."""
+    from scripts.write_continue_note import render, strip_previous_drafts
+
+    prose = "他推開門，雨聲忽然變大。\n\n走廊盡頭的燈一閃一閃，像有人在數著什麼。\n"
+    first = prose + "\n" + render([(0, "第一次")], model="m", prompt_hash="h", url="u")
+    second = prose + "\n" + render([(0, "第二次")], model="m", prompt_hash="h", url="u")
+
+    cleaned = strip_previous_drafts(first)
+    assert "第一次" not in cleaned
+    assert "走廊盡頭的燈一閃一閃" in cleaned
+    assert cleaned.count("[!draft]") == 0
+    assert "第二次" in second and "第一次" not in second

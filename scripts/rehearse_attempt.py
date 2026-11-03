@@ -43,16 +43,17 @@ def json_bytes(value) -> bytes:
                       separators=(",", ":"), allow_nan=False).encode()
 
 
-def _siblings(tag: str, endpoints: bytes) -> tuple[str, ...]:
-    live = [e["tag"] for e in json.loads(endpoints)["data"]["endpoints"]]
-    return tuple(sorted(t for t in live if t.startswith(tag + "/")))
+def _route(identity: dict) -> pp.Route:
+    """The route AS THE RECORD DECLARES IT, including its own `excluded_variants`.
 
-
-def _route(identity: dict, endpoints: bytes) -> pp.Route:
+    Deriving the sibling set from the payload here would be this file quietly repairing a record
+    that under-declares: the guard would then compare the payload to itself and always agree. The
+    declaration is the reviewed claim, so it is what travels; a record that is wrong fails closed.
+    """
     return pp.Route(identity["provider"], identity["base_url"], identity["path"],
                     identity["model_id"], identity["canonical_model_slug"],
                     identity["endpoint_tag"], identity["service_tier"], identity["currency"],
-                    _siblings(identity["endpoint_tag"], endpoints))
+                    tuple(identity.get("excluded_variants") or ()))
 
 
 def load_route(base: pathlib.Path, model_id: str):
@@ -64,10 +65,14 @@ def load_route(base: pathlib.Path, model_id: str):
         slug = model_id.replace("/", "_")
         endpoints = (base / f"endpoints-{slug}.json").read_bytes()
         profile = (base / "verified" / f"{slug}.profile.json").read_bytes()
-        artifact = next((p.read_bytes() for p in sorted((base / "verification").glob("*.json"))
-                         if json.loads(p.read_text()).get("subject") == model_id), None)
-        if artifact is None:
-            raise SystemExit(f"{model_id}: no verification artifact")
+        # The brief fixes the artifact's NAME; matching on `subject` alone let a stale generation
+        # beside the canonical file win on sort order.
+        artifact_path = base / "verification" / (model_id.split("/")[-1] + ".json")
+        if not artifact_path.is_file():
+            raise SystemExit(f"{model_id}: no verification artifact at {artifact_path.name}")
+        artifact = artifact_path.read_bytes()
+        if json.loads(artifact).get("subject") != model_id:
+            raise SystemExit(f"{model_id}: {artifact_path.name} names another subject")
         return record, endpoints, profile, artifact
     raise SystemExit(f"{model_id}: no record in {base}")
 
@@ -132,7 +137,7 @@ def main() -> int:
 
     snapshot = pp.validate_snapshot(
         (( args.base / "openrouter-models.json").read_bytes(), endpoints, profile, artifact),
-        _route(identity, endpoints), identity["observed_at"], identity["expires_at"])
+        _route(identity), identity["observed_at"], identity["expires_at"])
     if snapshot.qualification != "c8_verified":
         raise SystemExit(f"{row['model']}: qualification {snapshot.qualification!r} is not c8_verified")
 
