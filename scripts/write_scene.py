@@ -42,12 +42,26 @@ PROMPT = (
 )
 
 
+def prompt_for(lang: str) -> str:
+    """The template for one language. Frozen per corpus: an English prompt on Chinese prose asks a model to
+    write in the wrong language, and the run then measures the prompt rather than the training."""
+    return PROMPT_ZH if lang == "zh" else PROMPT
+
+
+def healthy(url: str) -> bool:
+    """A dead server should read as a missing tool, not as a traceback."""
+    try:
+        with urllib.request.urlopen(f"{url.rstrip('/')}/health", timeout=5) as response:
+            return json.loads(response.read().decode()).get("status") == "ok"
+    except (OSError, ValueError, urllib.error.URLError):
+        return False
+
+
 def draft(url: str, model: str, opening: str, *, seed: int, tokens: int, temperature: float,
           lang: str = "en") -> str:
     body = {
         "model": model,
-        "messages": [{"role": "user", "content": (PROMPT_ZH if lang == "zh" else PROMPT).format(
-            opening=opening.strip())}],
+        "messages": [{"role": "user", "content": prompt_for(lang).format(opening=opening.strip())}],
         "n_predict": tokens,
         "temperature": temperature,
         "top_p": 0.95,
@@ -74,6 +88,10 @@ def main() -> int:
     parser.add_argument("--tokens", type=int, default=160)
     parser.add_argument("--temperature", type=float, default=0.9)
     args = parser.parse_args()
+
+    if not healthy(args.url):
+        raise SystemExit(f"no model at {args.url} — start it with: llama-server -m {args.model} --port "
+                         f"{args.url.rsplit(':', 1)[-1]}")
 
     opening = Path(args.opening).read_text(encoding="utf-8") if args.opening else sys.stdin.read()
     if not opening.strip():

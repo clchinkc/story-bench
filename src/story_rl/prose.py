@@ -38,7 +38,7 @@ from tinker_cookbook.rl.types import RLDatasetBuilder
 from tinker_cookbook.tokenizer_utils import get_tokenizer
 
 from holdout_guard import HoldoutSet, assert_disjoint, prompt_digest
-from story_rl.assessor import Assessment, JudgeError, assess
+from story_rl.assessor import Assessment, assess
 from story_rl.env import DEFAULT_MODEL, DEFAULT_POLICY, DEFAULT_RENDERER, TaskDataset, permuted
 
 DATA = Path(__file__).resolve().parent.parent.parent / "dataset" / "story_rl"
@@ -139,12 +139,10 @@ def score_prose(raw: str, task: ProseTask, policy: str = DEFAULT_POLICY) -> Pros
     lint_score, findings = lint(text, task.lang)
     vetoed = lint_score < LINT_CEILING or any(severity == FATAL_SEVERITY for severity, _ in findings)
 
-    try:
-        judged: Assessment = assess(task.opening, text, task.lang)
-    except JudgeError as exc:
-        # An unreachable judge is an instrument failure. Zero with the reason recorded beats a silent pass.
-        return ProseScore(**{**base.__dict__, "lint_score": lint_score, "lint_veto": vetoed,
-                             "note": f"judge-error: {exc}"[:120]})
+    # A judge that cannot answer is an instrument failure, and it must not look like bad prose. Returning 0
+    # here once let a 402 (out of credit) score every rollout zero for nine steps while the run kept billing;
+    # the caller must hear about it, not average it away.
+    judged: Assessment = assess(task.opening, text, task.lang)
 
     reward = 0.0 if vetoed else judged.normalised()
     return ProseScore(

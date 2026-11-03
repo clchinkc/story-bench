@@ -73,7 +73,10 @@ def summarise(by_task: dict[str, list[float]], policy: str = DEFAULT_POLICY) -> 
         "policy": policy,
         "tasks": len(by_task),
         "generations": len(rewards),
+        # NOTE: this is the mean reward across generations, not the share above a threshold. It was
+        # reported as "pass (craft ≥ 70)" once, which was wrong: nothing in this file thresholds.
         "pass_rate": round(passes / len(rewards), 4) if rewards else None,
+        "pass_rate_definition": "mean reward across generations; not a threshold share",
         "pass_rate_ci": [round(1 - high, 4), round(1 - low, 4)],
         "pass_rate_cluster_ci": [cluster_low, cluster_high],
         "per_task": {
@@ -127,7 +130,7 @@ def main(argv: list[str] | None = None) -> int:
 
     treatment = result["treatment"]
     print(f"{args.shape}: {treatment['tasks']} tasks, {treatment['generations']} generations, "
-          f"pass {treatment['pass_rate']:.3f} {treatment['pass_rate_ci']} "
+          f"mean reward {treatment['pass_rate']:.3f} {treatment['pass_rate_ci']} "
           f"cluster {treatment['pass_rate_cluster_ci']}")
     if "paired" in result:
         paired = result["paired"]
