@@ -25,7 +25,9 @@ from __future__ import annotations
 
 import json
 import os
+import random
 import re
+import threading
 import time
 import urllib.error
 import urllib.request
@@ -55,6 +57,16 @@ JUDGE_PROMPT_VERSION = "craft-v1"
 JUDGE_TEMPERATURE = 0.0
 JUDGE_SEED = 0
 JUDGE_MAX_TOKENS = 96
+
+# The gate, and why it is code rather than a note.
+#
+# A step samples 8 tasks x 16 rollouts and every rollout asks the judge. Fired together that is 128
+# simultaneous requests, and the provider answers 429 to most of them: the first v9 attempt died at step 0
+# with `judge unreachable after 3 attempts: HTTP Error 429`, while six sequential probes in a row all
+# returned 200. The limit was concurrency, not volume. So this is a ceiling on requests *in flight*, and
+# the jittered backoff further down carries a burst through the moments the provider still pushes back.
+JUDGE_CONCURRENCY = int(os.environ.get("PROSE_JUDGE_CONCURRENCY", "6"))
+_GATE = threading.BoundedSemaphore(JUDGE_CONCURRENCY)
 
 # Bands, not points: the protocol is band-first, and a 2B judge is more reliable at "which band" than at
 # "which number inside the band".
@@ -202,8 +214,13 @@ def _provider_key() -> tuple[str, str]:
 
 # A transient blip must not kill a run; a real failure must. 402 (no credit) is not retryable — retrying it
 # just burns the clock while every rollout scores zero.
+#
+# Six attempts, not three, and the reason is measured: three attempts with 1 s and 2 s backoff died at step 1
+# of v9 on three consecutive 429s, while the same key answered 16 of 16 requests at concurrency 8 in a probe
+# minutes later. The limit is a burst window, not a ceiling, so the fix is patience — a retry costs three
+# seconds, a dead run costs ninety minutes.
 RETRYABLE_STATUS = frozenset({429, 500, 502, 503, 504})
-JUDGE_ATTEMPTS = 3
+JUDGE_ATTEMPTS = int(os.environ.get("PROSE_JUDGE_ATTEMPTS", "6"))
 
 
 def retryable(status: int | None) -> bool:
@@ -220,20 +237,45 @@ def _post_openrouter(prompt: str) -> dict:
     request = urllib.request.Request(
         OPENROUTER_URL, data=json.dumps(body).encode(),
         headers={"Content-Type": "application/json", "Authorization": f"Bearer {key}"})
+    return _with_retries(request)
+
+
+def _call_once(request: urllib.request.Request) -> dict:
+    """One request, behind the gate. The gate is held only for the call, never for the backoff."""
+    with _GATE:
+        with urllib.request.urlopen(request, timeout=120) as response:
+            return json.loads(response.read().decode())
+
+
+def _with_retries(request: urllib.request.Request) -> dict:
     last: Exception | None = None
     for attempt in range(JUDGE_ATTEMPTS):
         try:
-            with urllib.request.urlopen(request, timeout=120) as response:
-                return json.loads(response.read().decode())
+            return _call_once(request)
         except urllib.error.HTTPError as exc:
             if not retryable(exc.code):
                 raise JudgeError(f"judge refused ({exc.code}): {exc.reason}") from exc
             last = exc
+            wait = _retry_after(exc) or (1 + 2 ** attempt)
         except (urllib.error.URLError, TimeoutError) as exc:
             last = exc
+            wait = 1 + 2 ** attempt
         if attempt < JUDGE_ATTEMPTS - 1:
-            time.sleep(1 + 2 ** attempt)
+            # Jitter, because 128 rollouts refused together would otherwise retry together and reproduce
+            # the burst that caused the refusal.
+            time.sleep(wait + random.uniform(0, wait))
     raise JudgeError(f"judge unreachable after {JUDGE_ATTEMPTS} attempts: {last}") from last
+
+
+def _retry_after(exc: urllib.error.HTTPError) -> float | None:
+    """The provider's own instruction when it gives one, bounded so a bad header cannot stall a run."""
+    raw = exc.headers.get("Retry-After") if exc.headers else None
+    if raw is None:
+        return None
+    try:
+        return min(30.0, max(0.0, float(raw)))
+    except (TypeError, ValueError):
+        return None
 
 
 def parse_with_retry(opening: str, continuation: str, lang: str) -> Assessment:

@@ -194,3 +194,79 @@ def test_a_previous_draft_block_is_replaced_not_stacked():
     assert "走廊盡頭的燈一閃一閃" in cleaned
     assert cleaned.count("[!draft]") == 0
     assert "第二次" in second and "第一次" not in second
+
+
+# ── the judge gate: a concurrency ceiling, measured rather than asserted ───────────────────────────────
+
+def test_the_judge_gate_caps_requests_in_flight(monkeypatch):
+    """A step fires 128 judge calls at once and the provider answers 429. The gate is the fix, so this
+    measures the peak concurrency while 24 calls are in flight instead of trusting the semaphore exists."""
+    import threading
+    import time
+
+    from story_rl import assessor
+
+    live = 0
+    peak = 0
+    lock = threading.Lock()
+
+    class FakeResponse:
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *exc):
+            return False
+
+        def read(self):
+            return b'{"choices": []}'
+
+    def slow_urlopen(request, timeout=None):
+        nonlocal live, peak
+        with lock:
+            live += 1
+            peak = max(peak, live)
+        time.sleep(0.05)
+        with lock:
+            live -= 1
+        return FakeResponse()
+
+    monkeypatch.setattr(assessor.urllib.request, "urlopen", slow_urlopen)
+
+    threads = [threading.Thread(target=assessor._call_once, args=(None,)) for _ in range(24)]
+    for thread in threads:
+        thread.start()
+    for thread in threads:
+        thread.join()
+
+    assert peak <= assessor.JUDGE_CONCURRENCY, f"{peak} concurrent calls exceeded the gate"
+    assert peak > 1, "the gate serialised every call, which would make a 68-step run untenable"
+
+
+def test_a_rate_limited_reply_is_retried_and_a_refused_one_is_not(monkeypatch):
+    """429 is a burst; 402 is a bill. The first gets another attempt, the second must stop the run."""
+    import urllib.error
+
+    from story_rl import assessor
+
+    calls = {"n": 0}
+
+    def flaky(request):
+        calls["n"] += 1
+        if calls["n"] == 1:
+            raise urllib.error.HTTPError("u", 429, "slow down", {"Retry-After": "0"}, None)
+        return {"ok": True}
+
+    monkeypatch.setattr(assessor, "_call_once", flaky)
+    assert assessor._with_retries(None) == {"ok": True}
+    assert calls["n"] == 2
+
+    def refused(request):
+        raise urllib.error.HTTPError("u", 402, "no credit", {}, None)
+
+    monkeypatch.setattr(assessor, "_call_once", refused)
+    try:
+        assessor._with_retries(None)
+    except assessor.JudgeError as exc:
+        assert "402" in str(exc)
+    else:
+        raise AssertionError("a 402 must not be retried")
