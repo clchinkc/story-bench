@@ -17,13 +17,13 @@ import sqlite3
 
 MICROS_PER_USD = 1_000_000
 CAP_MICROS = 1_000 * MICROS_PER_USD
-# KNOWN DIVERGENCE, not fixed here. This split (repair 100, data_judge 200, main 400, reserve 150)
-# is not `studies/revision-v1.yaml` spend.allocations_2026_11_01_lean (90 / 426 / 150 / 324 / 10);
-# both total CAP_MICROS. Aligning it changed 8 ledger tests whose reservation sizes are tuned to
-# these heads, which is a change to make deliberately and with its own review -- not minutes before
-# a paid call. `pilot` is 150 in both, and `pilot` is the envelope the smoke unit draws on.
-INITIAL_ENVELOPES = dict(repair=100_000_000, data_judge=200_000_000,
-                         pilot=150_000_000, main=400_000_000, reserve=150_000_000)
+# `studies/revision-v1.yaml` -> spend.allocations_2026_11_01_lean, in micros. This is the ONLY
+# allocation the programme has; the previous split (repair 100, data_judge 200, main 400, reserve 150)
+# was a second, older set that no study declared, and it disagreed in the direction that matters --
+# data_judge planned 426 against a 200 cap, which cannot execute as written. The two totals agree at
+# CAP_MICROS either way. `test_initial_envelopes_match_the_study` fails if this drifts from the YAML.
+INITIAL_ENVELOPES = dict(repair=90_000_000, data_judge=426_000_000,
+                         pilot=150_000_000, main=324_000_000, reserve=10_000_000)
 USAGE_KINDS = (
     "input_tokens", "output_tokens", "reasoning_tokens", "cache_read_tokens",
     "cache_write_tokens", "critic_calls", "retrieval_calls", "selection_calls",

@@ -19,6 +19,14 @@ from spend_ledger import (
 
 
 AUTH = Authorization("synthetic-parent", "a" * 64, "Disposable offline test only")
+
+# Several tests deliberately reserve the WHOLE `repair` envelope -- to exhaust it, to race two
+# writers for its last allowance, to leave the store holding every cent. Those amounts are derived
+# here rather than typed, because bare 100-dollar literals pinned the old 100-dollar head: aligning
+# the envelopes to the study turned eight tests red without the ledger being wrong about anything.
+WHOLE = INITIAL_ENVELOPES["repair"]
+WHOLE_USD = str(WHOLE // 1_000_000)
+NEARLY_USD = str((WHOLE - 1_000_000) // 1_000_000)
 IDENTITY = dict(program_id="synthetic-program", store_id="synthetic-store")
 
 
@@ -156,8 +164,26 @@ def test_successful_dispatch_receipt_and_exact_event_attempt_census(ledger):
     assert ledger.events()[0]["payload"]["metadata"]["cap_micros"] == CAP_MICROS
 
 
+def test_initial_envelopes_match_the_study():
+    """The ledger's envelope split IS the study's allocation, or the next edit is a silent fork.
+
+    `INITIAL_ENVELOPES` carried a second, older set of heads that no study declared, and the two
+    disagreed in the direction that matters: data_judge planned 426 against a 200 cap. `Ledger.create`
+    is one-way, so a fork here is baked into a program's identity and cannot be corrected afterwards.
+    """
+    import yaml
+
+    study = yaml.safe_load((Path(__file__).resolve().parent.parent / "studies"
+                            / "revision-v1.yaml").read_text(encoding="utf-8"))
+    lean = study["spend"]["allocations_2026_11_01_lean"]
+    expected = {name: lean[name] * 1_000_000
+                for name in ("repair", "data_judge", "pilot", "main", "reserve")}
+    assert INITIAL_ENVELOPES == expected
+    assert sum(INITIAL_ENVELOPES.values()) == CAP_MICROS
+
+
 def test_envelope_equality_exhaustion_and_unsent_release(ledger):
-    q = quote("100")
+    q = quote(WHOLE_USD)
     reserve(ledger, q=q)
     rejects_unchanged(ledger, BudgetError, lambda: reserve(ledger, "over", quote("0.0000001")))
     result = ledger.cancel_unsent("cancel", attempt_id="a", reason="Never sent")
@@ -171,11 +197,15 @@ def test_envelope_equality_exhaustion_and_unsent_release(ledger):
 def test_total_cap_exhaustion_and_authorized_reserve_transfer(ledger):
     rejects_unchanged(ledger, BudgetError,
                       lambda: reserve(ledger, "direct-reserve", envelope="reserve"))
-    transfer = dict(source="reserve", target="repair", amount_micros=150_000_000, authorization=AUTH)
+    transfer = dict(source="reserve", target="repair",
+                    amount_micros=INITIAL_ENVELOPES["reserve"], authorization=AUTH)
     assert ledger.transfer("transfer", **transfer)["replayed"] is False
     assert ledger.transfer("transfer", **transfer)["replayed"] is True
-    for envelope, dollars in [("repair", "250"), ("data_judge", "200"), ("pilot", "150"), ("main", "400")]:
-        reserve(ledger, envelope, quote(dollars), envelope)
+    # Each envelope's CURRENT allowance, not its initial one: the transfer above moved 10 into
+    # repair, so spending the initial head would leave that 10 idle and the cap unreached.
+    for envelope in ("repair", "data_judge", "pilot", "main"):
+        allowance = ledger.status()["envelopes"][envelope]["allocation_micros"]
+        reserve(ledger, envelope, quote(str(allowance // 1_000_000)), envelope)
     status = ledger.status()
     assert status["reserved_micros"] == CAP_MICROS
     assert status["nominal_remaining_micros"] == status["usable_micros"] == 0
@@ -235,10 +265,10 @@ def test_all_receipt_outcomes_preserve_billed_attempt_and_role(ledger, outcome):
 
 
 def test_timeout_retains_liability_until_known_receipt(ledger):
-    q = sent(ledger, q=quote("100"))
+    q = sent(ledger, q=quote(WHOLE_USD))
     first = ledger.mark_unknown("timeout", attempt_id="a", reason="Transport timed out; billing unknown")
     assert ledger.mark_unknown("timeout", attempt_id="a", reason="Transport timed out; billing unknown") == {**first, "replayed": True}
-    assert ledger.status()["reserved_micros"] == 100_000_000
+    assert ledger.status()["reserved_micros"] == WHOLE
     rejects_unchanged(ledger, BudgetError, lambda: reserve(ledger, "after-timeout"))
     rejects_unchanged(ledger, StateError, lambda: ledger.cancel_unsent("cancel-sent", attempt_id="a", reason="Local cancellation"))
     rejects_unchanged(ledger, StateError, lambda: ledger.mark_unknown("again", attempt_id="a", reason="Still unknown"))
@@ -304,14 +334,14 @@ def test_unknown_external_gate_blocks_both_reservation_and_send(ledger):
 
 
 def test_external_overrun_preserves_invoice_and_existing_liability(ledger):
-    reserve(ledger, q=quote("99"))
+    reserve(ledger, q=quote(NEARLY_USD))
     ledger.record_external_unknown("external", charge_id="infra", envelope="repair", role="research", reason="Pending")
     result = ledger.reconcile_external("external-final", charge_id="infra", receipt_id="infra-receipt",
                                        actual_usd="1001", evidence_sha256="e" * 64, authorization=AUTH)
     assert result["incident_ids"] == ["external-final"]
     assert result["receipt"]["actual_usd"] == "1001"
     status = ledger.status()
-    assert (status["committed_micros"], status["reserved_micros"], status["nominal_remaining_micros"]) == (1_001_000_000, 99_000_000, -100_000_000)
+    assert (status["committed_micros"], status["reserved_micros"], status["nominal_remaining_micros"]) == (1_001_000_000, WHOLE - 1_000_000, -WHOLE)
     assert status["dispatch_blocked"] is True
     rejects_unchanged(ledger, DispatchBlocked, lambda: reserve(ledger, "b"))
 
@@ -582,7 +612,7 @@ def _race_worker(path, ready, start, output, number):
         if not start.wait(10):
             raise RuntimeError("race start timed out")
         attempt = f"worker-{number}"
-        reserve(ledger, attempt, quote("100"))
+        reserve(ledger, attempt, quote(WHOLE_USD))
         permit = ledger.mark_sent("send-" + attempt, attempt_id=attempt)
         output.put(("dispatch", attempt, permit["replayed"]))
     except BudgetError:
@@ -607,7 +637,7 @@ def test_independent_processes_cannot_dispatch_same_last_allowance(ledger):
         assert sorted(result[0] for result in results) == ["denied", "dispatch"], results
         dispatched = [result[1] for result in results if result[0] == "dispatch"]
         assert ledger.status()["attempt_ids"] == dispatched
-        assert ledger.status()["reserved_micros"] == 100_000_000
+        assert ledger.status()["reserved_micros"] == WHOLE
         assert ledger.status()["envelopes"]["repair"]["remaining_micros"] == 0
         assert len(ledger.events()) == 4
     finally:
@@ -622,7 +652,7 @@ def test_independent_processes_cannot_dispatch_same_last_allowance(ledger):
 
 def _crash_worker(path, stage):
     ledger = Ledger.open(path, **IDENTITY)
-    reserve(ledger, "crashed", quote("100"))
+    reserve(ledger, "crashed", quote(WHOLE_USD))
     if stage != "before-marker":
         ledger.mark_sent("send-crashed", attempt_id="crashed")
     if stage == "after-transport":
@@ -643,7 +673,7 @@ def test_process_crash_retains_durable_liability(ledger, stage):
             worker.terminate()
             worker.join(5)
     ledger = Ledger.open(ledger.path, **IDENTITY)
-    assert ledger.status()["reserved_micros"] == 100_000_000
+    assert ledger.status()["reserved_micros"] == WHOLE
     rejects_unchanged(ledger, BudgetError, lambda: reserve(ledger, "after-crash"))
     if stage == "before-marker":
         ledger.cancel_unsent("recover-unsent", attempt_id="crashed", reason="No committed send marker")
@@ -652,5 +682,5 @@ def test_process_crash_retains_durable_liability(ledger, stage):
         rejects_unchanged(ledger, StateError, lambda: ledger.cancel_unsent(
             "unsafe-refund", attempt_id="crashed", reason="Process exited"))
         assert ledger.mark_sent("send-crashed", attempt_id="crashed")["replayed"] is True
-        assert ledger.status()["reserved_micros"] == 100_000_000
+        assert ledger.status()["reserved_micros"] == WHOLE
     assert Path(str(ledger.path) + ".synthetic-transport").exists() == (stage == "after-transport")
