@@ -159,6 +159,8 @@ def main() -> int:
     ap.add_argument("--unit", default="smoke",
                     help="unit tag; a new tag is a new ledger slot, an existing one is a replay")
     ap.add_argument("--authorise", default=None)
+    ap.add_argument("--reconcile", action="store_true",
+                    help="settle a retained response instead of sending; never opens the transport")
     args = ap.parse_args()
 
     token, row, plan, admission, identity = _prepared(args, _token(args.authorise))
@@ -167,13 +169,23 @@ def main() -> int:
     print(f"  attempt      : {plan.spec.attempt_id}")
     print(f"  body bytes   : {len(plan.body_bytes)}  deadline {plan.deadline_seconds}s")
     print(f"  gates        : {len(admission.authority_refs)} satisfied")
-    observed = preflight(plan, identity)
-    if observed:
-        print(f"  live status  : {observed['status']!r}  5m={observed['uptime_last_5m']} "
-              f"30m={observed['uptime_last_30m']} 1d={observed['uptime_last_1d']}")
     ledger = sl.Ledger.open(args.ledger, program_id=reh.PROGRAM_ID, store_id=reh.STORE_ID)
-    result = asyncio.run(pa.execute_attempt(plan, ledger, admission))
-    print(f"  state        : {result.ledger_state}  transport {result.transport_status}")
+    if args.reconcile:
+        # An attempt that returned bytes but was refused by a validator is not unknown: the
+        # provider's own numbers are on disk. Settling it is accounting, not a second call, and it
+        # is the only way an UNKNOWN reservation closes without pretending.
+        directory = plan.evidence_root / "attempts" / plan.spec.attempt_id
+        body = (directory / "response.bin").read_bytes()
+        status = json.loads((directory / "response.json").read_text())["status"]
+        result = pa.reconcile_attempt(plan, ledger, body, status)
+        print(f"  reconciled   : {result.ledger_state}  (http {status})")
+    else:
+        observed = preflight(plan, identity)
+        if observed:
+            print(f"  live status  : {observed['status']!r}  5m={observed['uptime_last_5m']} "
+                  f"30m={observed['uptime_last_30m']} 1d={observed['uptime_last_1d']}")
+        result = asyncio.run(pa.execute_attempt(plan, ledger, admission))
+        print(f"  state        : {result.ledger_state}  transport {result.transport_status}")
     after = ledger.attempt(plan.spec.attempt_id)
     print(f"  reserved usd : {after['reserved_micros'] / 1_000_000:.4f}")
     if after.get("actual_micros") is not None:

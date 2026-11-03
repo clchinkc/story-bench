@@ -90,14 +90,31 @@ def make_case(root, *, attempt_id="attempt-1", role="generation", hosted=True, c
     return plan, ledger, admission, manifest
 
 
-def response(plan, *, cost="0.03", finish="stop", content="Complete end.", generation_id=None):
+def response(plan, *, cost="0.03", finish="stop", content="Complete end.", generation_id=None,
+             media=0):
+    """The envelope OpenRouter actually returns, not the narrower one this used to imitate.
+
+    A live 200 on 2026-11-03 carried `created`, `object` and `system_fingerprint` at the top level,
+    `index`/`logprobs`/`native_finish_reason` in the choice, `reasoning` and `reasoning_details` in
+    the message, and audio/video/image counters in both token-detail objects -- and `service_tier:
+    null`, which the record normalises to "default". Every one of those was refused as an
+    unsupported field on a response the provider had already billed. The fixture mirrors it so the
+    next such field is caught here rather than by an invoice.
+    """
     # Inject the literal JSON monetary number without a float round trip.
     data = dict(id=generation_id or "gen-" + plan.spec.attempt_id, model=plan.route.canonical_model_slug,
-                provider="Fixture", service_tier="default",
-                choices=[dict(finish_reason=finish, message=dict(content=content))],
+                provider="Fixture", service_tier=None, created=1793719516,
+                object="chat.completion", system_fingerprint="fp_fixture",
+                choices=[dict(finish_reason=finish, native_finish_reason=finish, index=0,
+                              logprobs=None,
+                              message=dict(content=content, role="assistant", refusal=None,
+                                           reasoning="", reasoning_details=[]))],
                 usage=dict(cost="MONEY", is_byok=False, prompt_tokens=20, completion_tokens=5,
-                    total_tokens=25, prompt_tokens_details=dict(cached_tokens=0, cache_write_tokens=0),
-                    completion_tokens_details=dict(reasoning_tokens=2)))
+                    total_tokens=25,
+                    prompt_tokens_details=dict(cached_tokens=0, cache_write_tokens=0,
+                                               audio_tokens=media, video_tokens=media),
+                    completion_tokens_details=dict(reasoning_tokens=2, image_tokens=media,
+                                                   audio_tokens=media)))
     return json_bytes(data).replace(b'"MONEY"', cost.encode())
 
 
@@ -892,3 +909,18 @@ def test_the_http_client_is_given_the_plans_deadline(tmp_path, monkeypatch):
     timeout = seen.get("timeout")
     assert timeout is not None, "no timeout given: httpx would use its 5 s default"
     assert timeout.read == 8, timeout
+
+
+def test_media_tokens_are_refused_by_a_text_only_protocol(tmp_path):
+    """A zero media counter is admitted; a non-zero one is a charge nobody here asked for.
+
+    The counters arrived with the live response and are now part of the envelope, so the guard that
+    used to be implied by their absence has to be stated: this protocol is text-only, and an audio
+    or video token would be a line in the receipt with no protocol behind it.
+    """
+    case = make_case(tmp_path)
+    result = execute(case, response(case[0], media=17))
+    assert result.ledger_state == "UNKNOWN", result
+    failure = json.loads((case[0].evidence_root / "attempts" / case[0].spec.attempt_id
+                          / "failure.json").read_text())
+    assert "text-only protocol" in failure["detail"], failure

@@ -707,6 +707,17 @@ async def execute_attempt(plan, ledger, admission, fixture=None):
                         detail=f"{type(exc).__name__}: {exc}")
 
 
+def _billed_tier(value):
+    """The wire's tier, normalised the way the record declares it.
+
+    A bare request comes back `service_tier: null`, and the record names that tier "default" in
+    `service_tier_basis` rather than pretending the payload published the word. Comparing the raw
+    value would have refused every successful call on all nine routes; comparing the normalised one
+    still refuses a response that landed on a priority or flex tier we did not pay for.
+    """
+    return "default" if value is None else text(value)
+
+
 def reconcile_attempt(plan, ledger, response_bytes, response_status):
     verify_plan(plan, current=False)
     _ledger_identity(plan, ledger)
@@ -717,12 +728,16 @@ def reconcile_attempt(plan, ledger, response_bytes, response_status):
     data = parse_json(raw)
     if type(data) is not dict:
         raise ValidationError("invalid provider response")
-    allowed = {"id", "model", "provider", "service_tier", "choices", "usage", "error", "total_cost"}
+    # The documented envelope plus the fields OpenRouter actually sends. Anything outside this set
+    # is still refused: an unrecognised top-level field could be a billing shape this code cannot
+    # price, and the guard is worth more than the convenience.
+    allowed = {"id", "model", "provider", "service_tier", "choices", "usage", "error", "total_cost",
+               "created", "object", "system_fingerprint"}
     if set(data) - allowed:
         raise ValidationError("unsupported response field")
-    for key in ("id", "model", "provider", "service_tier"):
+    for key in ("id", "model", "provider"):
         text(data.get(key))
-    if data.get("model") not in {plan.route.model_id, plan.route.canonical_model_slug} or data.get("provider") != _endpoint(plan.snapshot)["provider_name"] or data.get("service_tier") != plan.route.service_tier:
+    if data.get("model") not in {plan.route.model_id, plan.route.canonical_model_slug} or data.get("provider") != _endpoint(plan.snapshot)["provider_name"] or _billed_tier(data.get("service_tier")) != plan.route.service_tier:
         raise ValidationError("provider/model/tier mismatch")
     generation_id = text(data.get("id"))
     usage = data.get("usage")
@@ -745,9 +760,21 @@ def reconcile_attempt(plan, ledger, response_bytes, response_status):
         raise ValidationError("conflicting cumulative receipt")
     prompt_details = usage.get("prompt_tokens_details")
     completion_details = usage.get("completion_tokens_details")
-    for details, keys in ((prompt_details, {"cached_tokens", "cache_write_tokens"}), (completion_details, {"reasoning_tokens"})):
+    # The modality counters OpenRouter now sends alongside the ones this study prices. They are
+    # admitted only at ZERO: the protocol is text-only, so a non-zero audio/video/image count would
+    # mean the provider billed for a modality nothing here asked for, and silently accepting it
+    # would put an unexplainable line in the receipt.
+    media = ((prompt_details, ("audio_tokens", "video_tokens")),
+             (completion_details, ("image_tokens", "audio_tokens")))
+    for details, keys in ((prompt_details, {"cached_tokens", "cache_write_tokens",
+                                            "audio_tokens", "video_tokens"}),
+                          (completion_details, {"reasoning_tokens", "image_tokens", "audio_tokens"})):
         if details is not None and (type(details) is not dict or set(details) - keys):
             raise ValidationError("unsupported token detail")
+    for details, keys in media:
+        for key in keys:
+            if (details or {}).get(key) not in (None, 0):
+                raise ValidationError("media tokens billed by a text-only protocol")
     counters = dict(input_tokens=usage.get("prompt_tokens"), output_tokens=usage.get("completion_tokens"),
                     reasoning_tokens=(completion_details or {}).get("reasoning_tokens"),
                     cache_read_tokens=(prompt_details or {}).get("cached_tokens"),
@@ -779,9 +806,20 @@ def reconcile_attempt(plan, ledger, response_bytes, response_status):
         choices = data.get("choices")
         if type(choices) is not list or len(choices) != 1:
             raise ValidationError("one complete choice required")
-        exact_fields(choices[0], {"finish_reason", "message"})
-        message = choices[0]["message"]
-        if type(message) is not dict or set(message) - {"content", "refusal", "role"}:
+        choice = choices[0]
+        # The envelope OpenRouter actually returns, not the narrower one the offline fixture
+        # imitated: `index`, `logprobs` and `native_finish_reason` ride alongside the two fields
+        # this code reads, and `native_finish_reason` is the provider's own stop reason. Listed
+        # rather than ignored, so a NEW field still fails closed; presence of the two required
+        # ones is checked separately, because a model with no reasoning legitimately omits them.
+        if type(choice) is not dict or set(choice) - {"finish_reason", "message", "index", "logprobs",
+                                                     "native_finish_reason"}:
+            raise ValidationError("unsupported choice field")
+        if "finish_reason" not in choice or "message" not in choice:
+            raise ValidationError("incomplete choice")
+        message = choice["message"]
+        if type(message) is not dict or set(message) - {"content", "refusal", "role", "reasoning",
+                                                       "reasoning_details"}:
             raise ValidationError("invalid response message")
         for key in ("role", "refusal"):
             if message.get(key) is not None and type(message[key]) is not str:
@@ -791,7 +829,7 @@ def reconcile_attempt(plan, ledger, response_bytes, response_status):
             content = ""
         if type(content) is not str:
             raise ValidationError("text output required")
-        finish = choices[0]["finish_reason"]
+        finish = choice["finish_reason"]
         text(finish)
         if finish == "length":
             outcome = "truncated"
