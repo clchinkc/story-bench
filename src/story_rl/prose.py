@@ -23,6 +23,7 @@ from __future__ import annotations
 
 import asyncio
 import hashlib
+import re
 import os
 import json
 import sys
@@ -54,6 +55,16 @@ NARRATIVE_CRAFT_SRC = Path("/Users/clchinkc/Documents/GitHub/narrative-craft/src
 # 100 has already lost a finding; `error` severity is fatal regardless of the total.
 LINT_CEILING = 100
 FATAL_SEVERITY = "error"
+
+# Training collapsed continuations to ~33 characters against the base model's ~70, and the judge paid the
+# shorter ones less — not because brevity is wrong, but because a 30-character line has no room to show
+# craft. Length is therefore a floor and a ceiling, not a preference.
+MIN_CONTINUATION_CHARS = 45
+MAX_CONTINUATION_CHARS = 320
+
+# Both arms leaked foreign tokens at 3.3 % (base included), so this is not a training defect — but a
+# Chinese draft with `wet` or a Greek word in it is unusable, and the check costs nothing.
+FOREIGN_SCRIPT = re.compile(r"[A-Za-z\u0370-\u03ff\u0400-\u04ff]")
 
 
 class ProseTaskError(ValueError):
@@ -123,6 +134,18 @@ def lint(text: str, lang: str = "en") -> tuple[int, list[tuple[str, str]]]:
     return result.score, [(f.severity, f.pattern_id) for f in result.findings]
 
 
+def guard(text: str, lang: str = "en") -> list[str]:
+    """Deterministic rejections the judge should never have to see. Empty means admissible."""
+    reasons = []
+    if len(text) < MIN_CONTINUATION_CHARS:
+        reasons.append(f"too-short:{len(text)}")
+    if len(text) > MAX_CONTINUATION_CHARS:
+        reasons.append(f"too-long:{len(text)}")
+    if lang == "zh" and FOREIGN_SCRIPT.search(text):
+        reasons.append("foreign-script")
+    return reasons
+
+
 def score_prose(raw: str, task: ProseTask, policy: str = DEFAULT_POLICY) -> ProseScore:
     """One rollout: parse, apply the lint veto, then ask the frozen judge. Never invents a score."""
     from continuation_parser import extract
@@ -137,7 +160,9 @@ def score_prose(raw: str, task: ProseTask, policy: str = DEFAULT_POLICY) -> Pros
         return base
 
     lint_score, findings = lint(text, task.lang)
-    vetoed = lint_score < LINT_CEILING or any(severity == FATAL_SEVERITY for severity, _ in findings)
+    reasons = guard(text, task.lang)
+    vetoed = (lint_score < LINT_CEILING or any(severity == FATAL_SEVERITY for severity, _ in findings)
+              or bool(reasons))
 
     # A judge that cannot answer is an instrument failure, and it must not look like bad prose. Returning 0
     # here once let a 402 (out of credit) score every rollout zero for nine steps while the run kept billing;

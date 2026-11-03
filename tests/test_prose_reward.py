@@ -81,7 +81,7 @@ def test_a_missing_judge_raises_instead_of_scoring_zero(monkeypatch):
 
 def test_a_clean_continuation_is_paid_the_judge_score(monkeypatch):
     monkeypatch.setattr("story_rl.prose.assess", lambda *a, **k: Assessment(score=80, band="合格", note="ok"))
-    scored = score_prose("她把傘收起來，水滴沿著手背往下滑，沒有回頭。", a_task())
+    scored = score_prose("她把傘收起來，水滴沿著手背往下滑，沒有回頭，也沒有等他把話說完就往前走，傘尖在石階上拖出一道很長的水痕。", a_task())
     assert scored.strict == pytest.approx(0.8)
     assert scored.lint_veto is False
 
@@ -142,3 +142,26 @@ def test_a_transient_status_is_worth_retrying_and_a_fatal_one_is_not():
         assert retryable(status) is True
     for status in (400, 401, 402, 403, 404):
         assert retryable(status) is False
+
+
+# ── deterministic guards (length, language) ────────────────────────────────────────────────────────────
+
+def test_a_too_short_continuation_is_rejected_before_the_judge_sees_it():
+    from story_rl.prose import guard
+
+    assert guard("他走了。", "zh")[0].startswith("too-short")
+
+
+def test_a_foreign_script_in_chinese_prose_is_rejected(monkeypatch):
+    from story_rl.prose import guard
+
+    leaked = "他把手插進口袋，腳步聲在走廊裡拖出很長的回響，雨聲卻忽然變成wet的雜訊，整條街都濕了。"
+    assert "foreign-script" in guard(leaked, "zh")
+    assert guard(leaked, "en") == [] or "foreign-script" not in guard(leaked, "en")
+
+
+def test_a_clean_chinese_continuation_passes_the_guards():
+    from story_rl.prose import guard
+
+    clean = "他把手插在口袋裡，指節微微發白，腳步聲在空蕩蕩的走廊裡拖出兩段很長的回響，久久不散，也沒有人應他。"
+    assert guard(clean, "zh") == []
