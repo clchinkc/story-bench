@@ -115,9 +115,14 @@ def test_every_attempt_id_is_unique(tmp_path):
 
 
 def test_the_declared_designs_plan_the_agreed_counts():
-    """A drift guard on the REAL config: these two numbers are what the budget was sized against."""
+    """A drift guard on the REAL config: these two numbers are what the budget was sized against.
+
+    pilot_run moved 18 -> 24 on the owner's 2026-11-03 decision, so that the pilot covers the
+    declared mix instead of 2 of its 6 families. The guard moves with the decision: it exists to
+    make a silent change fail, not to make a decided one impossible.
+    """
     study = dr._study(dr.DEFAULT_REPO)
-    for design, units, arms in (("pilot_run", 18, 2), ("main_run", 144, 2)):
+    for design, units, arms in (("pilot_run", 24, 2), ("main_run", 144, 2)):
         spec, refusals = dr.declared_spec(study, design)
         assert refusals == [], (design, refusals)
         assert spec.units == units, design

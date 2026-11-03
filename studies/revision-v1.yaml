@@ -143,14 +143,21 @@ task_mix:
 
 pilot_run:
   status: frozen
-  units_per_model: 18
+  units_per_model: 24
   arms: 2
-  units_per_cluster: 3
+  units_per_cluster: 4
   clusters_per_locale: 2
   locales: ["en", "zh-Hant", "zh-Hans"]
   basis: >
-    The cost grid's smallest row: 18 units/model at USD 99 generation, inside the 150 pilot envelope.
-    2 clusters x 3 units x 3 locales composes to exactly 18, which the runner verifies before planning.
+    Owner decision 2026-11-03: the pilot must COVER the declared mix, because its purpose is to
+    validate the mix-based ceiling. 18 units drew only indices 0..5 and landed in 2 of the 6
+    families. 25 -- one unit per frozen task -- is not composable with three locales under the
+    runner's product form (25 is not divisible by 3), so the smallest configuration reaching all
+    six families without dropping a locale is 24: 2 clusters x 4 units x 3 locales, covering
+    indices 0..23, i.e. every family plus 3 of the 4 theory_conversion tasks. Cost rises from about
+    USD 99 to about 132, still inside the 150 pilot envelope. Requesting exactly 25 would require
+    locales: ["en"], which buys one more task and loses two locales -- a worse trade that this
+    decision did not intend.
 
 main_run:
   status: frozen
