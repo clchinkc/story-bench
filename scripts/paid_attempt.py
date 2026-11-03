@@ -26,6 +26,8 @@ import asyncio
 import dataclasses
 import datetime
 import json
+
+import httpx
 import pathlib
 import sys
 
@@ -112,6 +114,38 @@ def _prepared(args, token: str):
     return token, row, plan, admission, identity
 
 
+def preflight(plan, identity: dict) -> dict | None:
+    """What the provider says about the pinned endpoint AT SEND TIME. Free, unauthenticated, advisory.
+
+    The first paid attempt failed at the transport layer and the evidence could not say whether the
+    endpoint was healthy when we hit it: the retained snapshot is 18 hours old by then, and its
+    `status` field had already moved from -5 to 0 in between. This reads the live endpoint list
+    first and records the pinned tag's numbers beside the attempt, so a failure arrives with its
+    context rather than a single word.
+
+    It never blocks and never raises. A preflight that refused on `status` would quietly re-pin the
+    endpoint the owner explicitly decided to validate with a real call, and one that could throw
+    would be a new way to lose an attempt -- which is why the ENTIRE body is inside the guard.
+    """
+    try:
+        url = f"https://openrouter.ai/api/v1/models/{identity['model_id']}/endpoints"
+        with httpx.Client(trust_env=False, follow_redirects=False, timeout=10) as client:
+            data = client.get(url).json()["data"]["endpoints"]
+        live = next((e for e in data if e.get("tag") == identity["endpoint_tag"]), None)
+        if live is None:
+            return None
+        observed = dict(
+            url=url, at=datetime.datetime.now(datetime.timezone.utc).isoformat(),
+            tag=identity["endpoint_tag"], status=live.get("status"),
+            uptime_last_5m=live.get("uptime_last_5m"),
+            uptime_last_30m=live.get("uptime_last_30m"),
+            uptime_last_1d=live.get("uptime_last_1d"))
+        pa._persist(pa._directory(plan) / "preflight.json", reh.json_bytes(observed))
+        return observed
+    except Exception:  # advisory only: bookkeeping must never cost an attempt
+        return None
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--base", type=pathlib.Path, required=True)
@@ -128,6 +162,10 @@ def main() -> int:
     print(f"  attempt      : {plan.spec.attempt_id}")
     print(f"  body bytes   : {len(plan.body_bytes)}  deadline {plan.deadline_seconds}s")
     print(f"  gates        : {len(admission.authority_refs)} satisfied")
+    observed = preflight(plan, identity)
+    if observed:
+        print(f"  live status  : {observed['status']!r}  5m={observed['uptime_last_5m']} "
+              f"30m={observed['uptime_last_30m']} 1d={observed['uptime_last_1d']}")
     ledger = sl.Ledger.open(args.ledger, program_id=reh.PROGRAM_ID, store_id=reh.STORE_ID)
     result = asyncio.run(pa.execute_attempt(plan, ledger, admission))
     print(f"  state        : {result.ledger_state}  transport {result.transport_status}")

@@ -507,9 +507,26 @@ class LedgerStateUnavailable(LedgerError):
     """Permission remains consumed, but final accounting cannot currently be read."""
 
 
-def _unknown(plan, ledger, reason):
+def _unknown(plan, ledger, reason, detail=None):
+    """`reason` stays the closed vocabulary; `detail` is the part the vocabulary cannot say.
+
+    The first paid attempt failed, and the whole finding was the string "infrastructure_failure":
+    enough to stop spending, useless for diagnosis, because a TLS reset, a server that hangs up
+    mid-request, and a `ValueError` from our own code all land in that one word. A bounded,
+    credential-free line now travels with the attempt -- headers are never included, so nothing
+    sensitive can reach it.
+    """
+    detail = (detail or "").strip()[:300] or None
+    if detail is not None:
+        try:
+            _persist(_directory(plan) / "failure.json", json_bytes(dict(
+                reason=reason, detail=detail,
+                at=datetime.now(timezone.utc).isoformat())))
+        except (OSError, ValidationError):
+            pass  # a failed postmortem must never mask the failure it describes
     try:
-        row = ledger.mark_unknown(f"w3b:{plan.spec.attempt_id}:unknown", attempt_id=plan.spec.attempt_id, reason=reason)
+        row = ledger.mark_unknown(f"w3b:{plan.spec.attempt_id}:unknown", attempt_id=plan.spec.attempt_id,
+                                  reason=reason if detail is None else f"{reason}: {detail}")
         if row["replayed"] is False:
             return _result(plan, row["state"], reason)
     except LedgerError:
@@ -677,8 +694,9 @@ async def execute_attempt(plan, ledger, admission, fixture=None):
         return _unknown(plan, ledger, "timeout")
     except LedgerStateUnavailable:
         raise
-    except (ValueError, OSError, httpx.HTTPError, LedgerError):
-        return _unknown(plan, ledger, "infrastructure_failure")
+    except (ValueError, OSError, httpx.HTTPError, LedgerError) as exc:
+        return _unknown(plan, ledger, "infrastructure_failure",
+                        detail=f"{type(exc).__name__}: {exc}")
 
 
 def reconcile_attempt(plan, ledger, response_bytes, response_status):
