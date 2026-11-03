@@ -131,3 +131,14 @@ def test_a_half_written_metrics_line_is_ignored(tmp_path):
 def test_the_drafting_prompt_matches_the_corpus_language():
     assert "續寫" in prompt_for("zh") and "Continue this scene" not in prompt_for("zh")
     assert "Continue this scene" in prompt_for("en") and "續寫" not in prompt_for("en")
+
+
+# ── transient vs fatal judge failures ───────────────────────────────────────────────────────────────────
+
+def test_a_transient_status_is_worth_retrying_and_a_fatal_one_is_not():
+    from story_rl.assessor import retryable
+
+    for status in (429, 500, 502, 503, 504):
+        assert retryable(status) is True
+    for status in (400, 401, 402, 403, 404):
+        assert retryable(status) is False

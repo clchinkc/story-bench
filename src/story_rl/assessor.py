@@ -26,6 +26,7 @@ from __future__ import annotations
 import json
 import os
 import re
+import time
 import urllib.error
 import urllib.request
 from dataclasses import dataclass
@@ -199,6 +200,17 @@ def _provider_key() -> tuple[str, str]:
     return key_env, os.environ.get(key_env, "")
 
 
+# A transient blip must not kill a run; a real failure must. 402 (no credit) is not retryable — retrying it
+# just burns the clock while every rollout scores zero.
+RETRYABLE_STATUS = frozenset({429, 500, 502, 503, 504})
+JUDGE_ATTEMPTS = 3
+
+
+def retryable(status: int | None) -> bool:
+    """One predicate, testable without a network: is this status worth another try?"""
+    return status is None or status in RETRYABLE_STATUS
+
+
 def _post_openrouter(prompt: str) -> dict:
     key_env, key = _provider_key()
     if not key:
@@ -208,11 +220,20 @@ def _post_openrouter(prompt: str) -> dict:
     request = urllib.request.Request(
         OPENROUTER_URL, data=json.dumps(body).encode(),
         headers={"Content-Type": "application/json", "Authorization": f"Bearer {key}"})
-    try:
-        with urllib.request.urlopen(request, timeout=120) as response:
-            return json.loads(response.read().decode())
-    except (urllib.error.URLError, TimeoutError) as exc:
-        raise JudgeError(f"openrouter judge unreachable: {exc}") from exc
+    last: Exception | None = None
+    for attempt in range(JUDGE_ATTEMPTS):
+        try:
+            with urllib.request.urlopen(request, timeout=120) as response:
+                return json.loads(response.read().decode())
+        except urllib.error.HTTPError as exc:
+            if not retryable(exc.code):
+                raise JudgeError(f"judge refused ({exc.code}): {exc.reason}") from exc
+            last = exc
+        except (urllib.error.URLError, TimeoutError) as exc:
+            last = exc
+        if attempt < JUDGE_ATTEMPTS - 1:
+            time.sleep(1 + 2 ** attempt)
+    raise JudgeError(f"judge unreachable after {JUDGE_ATTEMPTS} attempts: {last}") from last
 
 
 def assess(opening: str, continuation: str, lang: str = "en") -> Assessment:

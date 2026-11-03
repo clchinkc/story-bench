@@ -79,7 +79,7 @@ def build_config(
     learning_rate: float = DEFAULT_LEARNING_RATE,
     max_tokens: int = DEFAULT_MAX_TOKENS,
     log_path: str | None = None,
-    save_every: int = 20,
+    save_every: int = 5,
     shape: str = DEFAULT_SHAPE,
 ) -> cookbook_train.Config:
     """The whole run definition, in one place, with no default inherited by accident.
@@ -98,6 +98,8 @@ def build_config(
         max_tokens=max_tokens,
         log_path=log_path or cli_utils.runs_path(recipe),
         eval_every=0,
+        # Every 5 steps, not 20: a run that dies at step 12 has produced nothing otherwise. A checkpoint costs
+        # seconds and the alternative is losing the whole run to one transient judge error.
         save_every=save_every,
         lora_rank=32,
         temperature=1.0,
