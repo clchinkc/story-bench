@@ -489,9 +489,12 @@ def test_C02_different_send_event_cannot_gain_permission(tmp_path):
 
 def test_C03_processes_contend_last_envelope_capacity(tmp_path):
     # One lean quote must exceed HALF the unchanged $100 repair envelope, or both attempts fit and
-    # nothing contends. At 0.10 the quote is 51.40 and two of them are 102.80, so exactly one fits.
-    first = make_case(tmp_path, cost_rate="0.10")
-    second = make_case(tmp_path, attempt_id="other", cost_rate="0.10", ledger=first[1])
+    # nothing contends. The census now bounds the cache kinds by the prompt instead of assuming
+    # zero, so a quote carries ~1,339 priced units rather than ~513; at 0.05 that is 66.95, and two
+    # of them are 133.90, so exactly one fits. The rate moved because the unit count did -- the
+    # property (one wins, one is denied) did not.
+    first = make_case(tmp_path, cost_rate="0.05")
+    second = make_case(tmp_path, attempt_id="other", cost_rate="0.05", ledger=first[1])
     ctx = multiprocessing.get_context("spawn"); queue = ctx.Queue()
     processes = [ctx.Process(target=_child_execute, args=(c[0], c[1].path, c[2], b'{}', queue)) for c in (first, second)]
     for process in processes:process.start()
@@ -631,7 +634,10 @@ def test_P05_fractional_quote_rounds_each_line_upward(tmp_path):
     # one micro per priced line. Lines priced at zero contribute nothing and must not be counted.
     priced = sum(1 for line in case[0].census
                  if line.max_units and Decimal(line.usd_per_unit) > 0)
-    assert priced == 2
+    # Four, not two: input, output, cache_read and cache_write all carry units now, because
+    # the cache kinds are bounded by the prompt instead of assumed zero. The property under
+    # test -- one micro per PRICED line, zero-rate lines contributing nothing -- is unchanged.
+    assert priced == 4
     assert row["reserved_micros"] == priced and row["actual_micros"] == 0
 
 

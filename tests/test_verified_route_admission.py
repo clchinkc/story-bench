@@ -131,7 +131,11 @@ def test_verified_route_reserves_the_request_not_the_profile_worst_case(tmp_path
     census = {c.kind: c for c in plan.census}
     assert census["output_tokens"].max_units == 40 < OUTPUT_BOUND
     assert census["input_tokens"].max_units == len(plan.body_bytes) < BOUND
-    assert census["cache_read_tokens"].max_units == 0
+    # Cache is bounded by the prompt, not by zero: providers cache implicitly, and reserving
+    # zero turned a legitimate cache hit into a `usage_overrun` -- a permanent incident that
+    # blocks the ledger. The claim is still "leaner than the profile's worst case".
+    assert census["cache_read_tokens"].max_units == len(plan.body_bytes) < BOUND
+    assert census["cache_write_tokens"].max_units == len(plan.body_bytes) < BOUND
     assert plan.deadline_seconds == pa.MAX_DEADLINE_SECONDS
 
 

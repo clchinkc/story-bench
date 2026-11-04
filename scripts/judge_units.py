@@ -530,8 +530,16 @@ def _skip(skipped, reason):
 
 
 def _retained_output(root, record, attempt_id):
-    """Read one attempt's manifest, response and task bytes, checking every hash on the way."""
+    """Read one attempt's manifest, response and task bytes, checking every hash on the way.
+
+    Absence is a REASON, not an exception. One ledger outlives several evidence roots -- the smoke
+    units live under `spend/evidence`, the pilot under `spend/pilot-evidence` -- so an attempt the
+    ledger holds is not necessarily an attempt this root contains. Crashing on that made `--plan`
+    unusable against the real ledger, and a traceback is not a finding.
+    """
     directory = root / "attempts" / attempt_id
+    if not (directory / "manifest.json").is_file():
+        raise JudgeError(f"{attempt_id}: no retained evidence under {root.name}")
     manifest_raw = (directory / "manifest.json").read_bytes()
     if pp.sha(manifest_raw) != record["quote"]["request_sha256"]:
         raise JudgeError(f"{attempt_id}: retained manifest is not the request the ledger holds")
@@ -576,7 +584,12 @@ def collected(ledger, evidence_root):
     root = pathlib.Path(evidence_root)
     outputs, skipped = [], {}
     for attempt_id in ledger.status()["attempt_ids"]:
-        output, reason = _output_or_reason(root, ledger.attempt(attempt_id), attempt_id)
+        try:
+            output, reason = _output_or_reason(root, ledger.attempt(attempt_id), attempt_id)
+        except JudgeError as exc:
+            # A ledger entry this root does not hold, or a hash that disagrees with it, is a SKIP
+            # with a reason. One traceback per foreign attempt is not a diagnostic.
+            output, reason = None, str(exc)
         if output is None:
             _skip(skipped, reason)
         else:

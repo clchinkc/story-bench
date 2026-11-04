@@ -297,11 +297,18 @@ def _usage_units(spec, fields, body, needed):
       input      the serialized body's bytes, and tokens are never more numerous than bytes;
       output     `max_tokens`, which the provider cannot exceed;
       reasoning  the same ceiling under `effort`, or the explicit `reasoning.max_tokens`;
-      cache      structurally zero, because `_body` never emits a `cache_control` block.
+      cache      the input bound, because a cache read cannot exceed the prompt -- and because
+                 assuming zero made every implicit cache hit a permanent dispatch block.
     """
     units = dict.fromkeys(USAGE_KINDS, 0)
+    # CACHE IS NOT STRUCTURALLY ZERO. Providers cache implicitly: kimi reported 1,024 cache-read
+    # tokens on a request that carried no `cache_control` block at all. Reserving zero therefore made
+    # every cache hit a `usage_overrun`, and an overrun is recorded as a PERMANENT incident -- so one
+    # cheap, entirely legitimate cache hit took 1,024 of a reserved 0 and blocked the ledger from
+    # dispatching anything else, ever. A cache read cannot exceed the prompt, which makes the input
+    # bound the proven ceiling: same argument as `input_tokens`, one line down.
     units.update(input_tokens=len(body), output_tokens=fields.max_tokens, reasoning_tokens=needed,
-                 cache_read_tokens=0, cache_write_tokens=0)
+                 cache_read_tokens=len(body), cache_write_tokens=len(body))
     activity = {"critic": "critic_calls", "retrieval": "retrieval_calls",
                 "selection": "selection_calls", "research_evaluation": "grading_calls"}.get(spec.activity_role)
     if activity:
