@@ -10,7 +10,12 @@ Design choices that matter:
     append, never overwrite  the note is the author's; the tool only adds a block at the end
     frontmatter stripped     YAML is not prose, and a model that sees `---` writes `---`
     refuse a dead server     a missing model reads as a missing tool, not a traceback
-    provenance per draft     model file, seed, prompt hash, timestamp
+    provenance per draft      model file, seed, prompt hash, timestamp
+    characters are repaired   the model writes an unambiguous simplified character in a quarter of its
+                             generations (54 % on the model this replaced). A draft is passed through
+                             `story_rl.traditional` before it reaches the callout, and every repair is
+                             named in the block: a silent rewrite is indistinguishable from the model
+                             having been right.
 
     python scripts/write_continue_note.py --note ~/vault/場景.md --samples 3 --lang zh
 
@@ -28,8 +33,17 @@ import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
 
+# `scripts/story_rl.py` shadows the `story_rl` package when this file is run as a script and its own
+# directory is sys.path[0]. Put the source tree ahead of it so both invocation styles import the package.
+_SRC = str(Path(__file__).resolve().parent.parent / "src")
+if _SRC in sys.path:          # PYTHONPATH often already carries it, but behind the scripts directory
+    sys.path.remove(_SRC)
+sys.path.insert(0, _SRC)
+
+from story_rl.traditional import repair  # noqa: E402
+
 DEFAULT_URL = "http://127.0.0.1:8771"
-DEFAULT_MODEL = "voice-zh-Q4_K_M.gguf"
+DEFAULT_MODEL = "voice-zh-v9-Q4_K_M.gguf"
 CONTEXT_CHARS = 600
 
 PROMPT_ZH = (
@@ -106,11 +120,34 @@ def strip_previous_drafts(note: str) -> str:
     return "\n".join(kept) + "\n"
 
 
-def render(drafts: list[tuple[int, str]], *, model: str, prompt_hash: str, url: str) -> str:
+def strip_echo(text: str, context: str, floor: int = 8) -> tuple[str, bool]:
+    """Drop a leading repeat of the context's own tail.
+
+    The model sometimes restates the last sentence before continuing — visible in the first smoke test after
+    the v9 swap, where seed 0 opened by quoting the note back. In the callout that reads as a duplicate line,
+    so the echo is removed; anything shorter than `floor` characters is left alone, because a two-character
+    overlap is a coincidence, not a repeat.
+    """
+    tail = context.strip()
+    head = text.lstrip()
+    for size in range(min(len(tail), len(head)), floor - 1, -1):
+        if head.startswith(tail[-size:]):
+            rest = head[size:].lstrip(" ，、。！？；：\n")
+            if len(rest) >= floor:
+                return rest, True
+    return text, False
+
+
+def render(drafts: list[tuple[int, str]], *, model: str, prompt_hash: str, url: str,
+           fixes: dict[int, list[str]] | None = None) -> str:
     stamp = datetime.now(timezone.utc).astimezone().isoformat(timespec="seconds")
+    fixes = fixes or {}
     lines = [f"> [!draft] {model} · {len(drafts)} drafts · {stamp}", ">"]
     for seed, text in drafts:
-        lines.append(f"> **seed {seed}** — {text}")
+        note = ""
+        if fixes.get(seed):
+            note = " _(corrected: " + " ".join(fixes[seed]) + ")_"
+        lines.append(f"> **seed {seed}** — {text}{note}")
         lines.append(">")
     lines.append(f"> provenance: model `{model}` at `{url}` · prompt `{prompt_hash}` · take or delete")
     return "\n".join(lines) + "\n"
@@ -138,13 +175,23 @@ def main() -> int:
         raise SystemExit(f"no model at {args.url} — start it with: llama-server -m {args.model} --port "
                          f"{args.url.rsplit(':', 1)[-1]}")
 
-    drafts = []
+    drafts, fixes, echoes = [], {}, []
     for seed in range(args.samples):
-        drafts.append((seed, draft(args.url, args.model, context, seed=seed, lang=args.lang,
-                                   tokens=args.tokens, temperature=args.temperature)))
+        text = draft(args.url, args.model, context, seed=seed, lang=args.lang,
+                     tokens=args.tokens, temperature=args.temperature)
+        text, echoed = strip_echo(text, context)
+        if echoed:
+            echoes.append(seed)
+        if args.lang == "zh":
+            text, findings = repair(text)
+            if findings:
+                fixes[seed] = [f"{f.char}→{f.replacement}" for f in findings if f.replacement]
+        drafts.append((seed, text))
 
     prompt_hash = hashlib.sha256(prompt_for(args.lang).format(opening=context).encode()).hexdigest()[:12]
-    block = render(drafts, model=args.model, prompt_hash=prompt_hash, url=args.url)
+    block = render(drafts, model=args.model, prompt_hash=prompt_hash, url=args.url, fixes=fixes)
+    if echoes:
+        print(f"stripped a repeated opening from seed(s) {', '.join(map(str, echoes))}")
 
     if args.dry_run:
         print(block)

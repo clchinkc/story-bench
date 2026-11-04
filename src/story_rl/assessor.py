@@ -297,10 +297,35 @@ def parse_with_retry(opening: str, continuation: str, lang: str) -> Assessment:
     raise JudgeError(f"judge gave no parseable answer in {JUDGE_ATTEMPTS} attempts: {last}") from last
 
 
+def remote() -> bool:
+    """True when the judge is a paid remote endpoint rather than the local llama-server.
+
+    Naming a provider IS the choice of a remote judge: `PROSE_JUDGE_PROVIDER=deepseek` alone must not fall
+    through to the local server, which is what happened the first time this was run from a shell and cost a
+    probe run. The backend variable is kept for the local/remote axis only.
+    """
+    return BACKEND == "openrouter" or bool(JUDGE_PROVIDER)
+
+
+def check_route() -> None:
+    """The owner's ruling, enforced where it can fail: DeepSeek is always api.deepseek.com.
+
+    A `deepseek/...` model id is an OpenRouter id. Reaching OpenRouter with it routes the same model through
+    a different door, and that door cost 0.10 of measured score on identical weights (v1: 0.596 direct, 0.697
+    via OpenRouter). Absolute scores are not comparable across routes, so the route is not a preference.
+    """
+    if OPENROUTER_MODEL.startswith("deepseek/") and JUDGE_PROVIDER != "deepseek":
+        raise JudgeError(
+            f"model {OPENROUTER_MODEL!r} is an OpenRouter id for DeepSeek; DeepSeek must use "
+            "api.deepseek.com (set PROSE_JUDGE_PROVIDER=deepseek)"
+        )
+
+
 def assess(opening: str, continuation: str, lang: str = "en") -> Assessment:
     """One frozen call. Raises rather than inventing a score."""
     if not continuation.strip():
         raise JudgeError("empty continuation cannot be assessed")
+    check_route()
     body = {
         "model": JUDGE_MODEL_ID,
         "messages": [{"role": "user", "content": build_prompt(opening, continuation)}],
@@ -310,7 +335,7 @@ def assess(opening: str, continuation: str, lang: str = "en") -> Assessment:
         "n_predict": JUDGE_MAX_TOKENS,
         "chat_template_kwargs": {"enable_thinking": False},
     }
-    if BACKEND == "openrouter":
+    if remote():
         scored = parse_with_retry(opening, continuation, lang)
     else:
         reply = _post(body)

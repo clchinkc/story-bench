@@ -158,6 +158,41 @@ def test_a_transient_status_is_worth_retrying_and_a_fatal_one_is_not():
         assert retryable(status) is False
 
 
+# ── the judge route: DeepSeek is always api.deepseek.com ──────────────────────────────────────────────
+
+def test_deepseek_model_id_cannot_be_sent_through_openrouter(monkeypatch):
+    """Owner ruling 2026-11-04. The same weights scored 0.596 direct and 0.697 through OpenRouter, so the
+    route is part of the measurement. An OpenRouter id for DeepSeek must raise, not silently route."""
+    from story_rl import assessor
+
+    monkeypatch.setattr(assessor, "OPENROUTER_MODEL", "deepseek/deepseek-chat")
+    monkeypatch.setattr(assessor, "JUDGE_PROVIDER", "")
+    try:
+        assessor.check_route()
+    except assessor.JudgeError as exc:
+        assert "api.deepseek.com" in str(exc)
+    else:
+        raise AssertionError("an OpenRouter DeepSeek id must not pass the route check")
+
+    monkeypatch.setattr(assessor, "JUDGE_PROVIDER", "deepseek")
+    assessor.check_route()  # the direct provider is the sanctioned route
+
+
+def test_naming_a_provider_is_enough_to_reach_the_remote_judge(monkeypatch):
+    """`PROSE_JUDGE_PROVIDER=deepseek` with no backend set must not fall through to the local server."""
+    from story_rl import assessor
+
+    monkeypatch.setattr(assessor, "BACKEND", "local")
+    monkeypatch.setattr(assessor, "JUDGE_PROVIDER", "deepseek")
+    assert assessor.remote() is True
+
+    monkeypatch.setattr(assessor, "JUDGE_PROVIDER", "")
+    assert assessor.remote() is False
+
+    monkeypatch.setattr(assessor, "BACKEND", "openrouter")
+    assert assessor.remote() is True
+
+
 # ── deterministic guards (length, language) ────────────────────────────────────────────────────────────
 
 def test_a_too_short_continuation_is_rejected_before_the_judge_sees_it():
@@ -270,3 +305,26 @@ def test_a_rate_limited_reply_is_retried_and_a_refused_one_is_not(monkeypatch):
         assert "402" in str(exc)
     else:
         raise AssertionError("a 402 must not be retried")
+
+
+def test_a_draft_that_quotes_the_note_back_loses_the_quote():
+    """The first smoke test after the v9 swap came back with the note's last sentence repeated verbatim as
+    the draft's first sentence. In the callout that reads as a duplicate line, so the echo is stripped."""
+    from scripts.write_continue_note import strip_echo
+
+    context = "他把手插進口袋，指節微微發白，走廊盡頭的燈一閃一閃。"
+    echoed = context + "風在門外低語，像誰在遠處輕聲低唸。他的呼吸在空氣中凝結成霧。"
+
+    cleaned, stripped = strip_echo(echoed, context)
+    assert stripped is True
+    assert cleaned.startswith("風在門外低語")
+    assert "指節微微發白" not in cleaned
+
+
+def test_a_short_overlap_is_not_treated_as_an_echo():
+    """Two or three shared characters are a coincidence; stripping them would eat the draft's opening."""
+    from scripts.write_continue_note import strip_echo
+
+    cleaned, stripped = strip_echo("一閃，像有人在數著什麼。", "走廊盡頭的燈一閃一閃。")
+    assert stripped is False
+    assert cleaned == "一閃，像有人在數著什麼。"

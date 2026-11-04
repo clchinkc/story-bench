@@ -39,6 +39,7 @@ from tinker_cookbook.rl.types import RLDatasetBuilder
 from tinker_cookbook.tokenizer_utils import get_tokenizer
 
 from holdout_guard import HoldoutSet, assert_disjoint, prompt_digest
+from story_rl import traditional
 from story_rl.assessor import Assessment, assess
 from story_rl.env import DEFAULT_MODEL, DEFAULT_POLICY, DEFAULT_RENDERER, TaskDataset, permuted
 
@@ -151,6 +152,14 @@ def guard(text: str, lang: str = "en") -> list[str]:
         reasons.append(f"too-long:{len(text)}")
     if lang == "zh" and FOREIGN_SCRIPT.search(text):
         reasons.append("foreign-script")
+    if lang == "zh":
+        # The author writes Traditional; a simplified character is not a style choice, it is a character she
+        # does not use. Measured before this check existed: 54 % of the shipped model's generations carried
+        # one, and the reward paid them exactly as much as correct text. Only unambiguous findings veto —
+        # `traditional.defects()` never returns a character whose intended form needs a judgement call.
+        found = traditional.defects(text)
+        if found:
+            reasons.append("simplified:" + "".join(f.char for f in found[:4]))
     return reasons
 
 
