@@ -111,7 +111,8 @@ def prepared(base: pathlib.Path, raw: bytes, index: int, unit_id: str,
     plan = pa.prepare_attempt(
         reh.spec_for(row, dict(attempt_id=dr.attempt_id(row["model"], unit_id, row["condition"]),
                                unit_id=unit_id),
-                     effort, artifacts, assignment_hash),
+                     fields.reasoning_effort or f"tokens:{fields.reasoning_max_tokens}",
+                     artifacts, assignment_hash),
         snapshot, tuple(sorted(artifacts.items())), fields, evidence_root)
     admission = pa.Admission(
         mode=snapshot.qualification,

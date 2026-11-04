@@ -245,19 +245,19 @@ def _body(fields, snapshot):
     if fields.reasoning_effort is not None or fields.reasoning_max_tokens is not None:
         if "reasoning" not in supported:
             raise ValidationError("unsupported reasoning")
-        # Both together, deliberately. The study declares an effort PER MODEL (its ceiling) and a
-        # reasoning budget PER FAMILY, and they answer different questions. Sending only the effort
-        # let opus spend all 6,000 completion tokens on reasoning and return `content: null` twice,
-        # at $0.126 a time: a paid call that bought nothing. The budget is what bounds that; the
-        # effort is the treatment the study declares and cannot be dropped to get the bound.
-        body["reasoning"] = {}
+        # ONE setting, not both. Sending an effort and a budget together is refused outright --
+        # "Only one of \"reasoning.effort\" and \"reasoning.max_tokens\" can be specified", HTTP 400 --
+        # which every row of a resumed pilot discovered at $0.00 each. The choice between them is
+        # therefore a design decision, not a detail: see `request_fields`.
+        if fields.reasoning_effort is not None and fields.reasoning_max_tokens is not None:
+            raise ValidationError("one reasoning setting allowed")
         if fields.reasoning_effort is not None:
             if fields.reasoning_effort not in {"none", "minimal", "low", "medium", "high", "xhigh", "max"}:
                 raise ValidationError("invalid reasoning effort")
-            body["reasoning"]["effort"] = fields.reasoning_effort
-        if fields.reasoning_max_tokens is not None:
+            body["reasoning"] = dict(effort=fields.reasoning_effort)
+        else:
             integer(fields.reasoning_max_tokens, 1, fields.max_tokens - 1)
-            body["reasoning"]["max_tokens"] = fields.reasoning_max_tokens
+            body["reasoning"] = dict(max_tokens=fields.reasoning_max_tokens)
     if fields.temperature is not None:
         if "temperature" not in supported or not 0 <= money(fields.temperature) <= 2:
             raise ValidationError("unsupported temperature")

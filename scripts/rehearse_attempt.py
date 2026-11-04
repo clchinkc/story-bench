@@ -104,8 +104,15 @@ def request_fields(task: dict, effort: str, max_tokens: int,
 
     system = PromptBuilder.build_system_prompt(task["task_type"])
     user = PromptBuilder.build_user_prompt(task)
+    # The provider accepts ONE reasoning setting, so the budget wins over the effort whenever both
+    # are known. The effort is the study's declared treatment; the budget is what stops a maximising
+    # model spending the whole completion allowance on thinking and returning `content: null` -- which
+    # is exactly what opus did twice at $0.126. A treatment that produces no text measures nothing,
+    # so the budget is kept and the omission is recorded rather than silent: the spec's `effort`
+    # becomes `tokens:<budget>`, which is what the request actually carries.
     return pa.RequestFields(messages=(("system", system), ("user", user)),
-                            max_tokens=max_tokens, reasoning_effort=effort,
+                            max_tokens=max_tokens,
+                            reasoning_effort=None if reasoning_max_tokens is not None else effort,
                             reasoning_max_tokens=reasoning_max_tokens)
 
 
