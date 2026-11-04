@@ -47,8 +47,8 @@ Regenerate and run:
 
 ```
 uv run python3 scripts/build_traditional_map.py --corpus <posted stories>
-uv run python3 scripts/story_rl.py estimate --shape prose --steps 68
-STORY_RL_APPROVED_USD=4.74 uv run python3 scripts/story_rl.py train --shape prose --steps 68
+uv run python3 scripts/bench.py estimate --shape prose --steps 68
+STORY_RL_APPROVED_USD=4.74 uv run python3 scripts/bench.py train --shape prose --steps 68
 ```
 
 A training run takes about an hour and must be detached (`nohup … & disown`): the harness reaps jobs that
@@ -93,11 +93,10 @@ route.
 | script | what it is for |
 |---|---|
 | `write_continue_note.py` | the writing surface: continue a note, append a callout, keep or delete |
-| `write_scene.py` | the same model on a bare opening, for a flow that supplies its own context |
 | `build_traditional_map.py` | regenerate the character table from the corpus |
 | `build_blind_read.py` | build the unlabelled sheet and its key |
 | `score_blind_read.py` | turn keep/drop marks into a two-sided exact test |
-| `story_rl.py` | estimate, train, sample, evaluate |
+| `bench.py` | estimate, train, sample, evaluate |
 
 ## Open
 

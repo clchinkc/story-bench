@@ -25,7 +25,6 @@ import pathlib
 import sys
 from decimal import Decimal
 
-sys.path.insert(0, "src")
 
 import yaml  # noqa: E402
 

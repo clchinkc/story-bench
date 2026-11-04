@@ -13,6 +13,7 @@ The legacy scores and leaderboards are historical outputs, not validated literar
 
 ## Current authority
 
+- [Shapes](docs/shapes.md): the three task families, their corpora and the test that keeps each alive.
 - [The writing tool](docs/writing-tool.md): the shipped voice model, its corpus, its character guarantee and the one human check still outstanding. Start here if you are here for the artifact rather than the benchmark.
 - [Experiment contract](docs/experiment-contract.md): tasks, native environment, four skill/tool arms, dataset/annotation, critics, reward, statistics and spending.
 - [Repair register](docs/repair-register.md): observed defects, unresolved candidates, planned regressions and historical disposition.

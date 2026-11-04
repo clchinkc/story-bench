@@ -20,11 +20,6 @@ import sys
 import urllib.request
 from pathlib import Path
 
-# `scripts/story_rl.py` shadows the package when this file is run as a script; put the source tree first.
-_SRC = str(Path(__file__).resolve().parent.parent / "src")
-if _SRC in sys.path:
-    sys.path.remove(_SRC)
-sys.path.insert(0, _SRC)
 
 from story_rl.prose import load_split  # noqa: E402
 

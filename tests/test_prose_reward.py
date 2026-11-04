@@ -19,7 +19,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from story_rl.assessor import Assessment, JudgeError, band_of, build_prompt, parse  # noqa: E402
 from story_rl.prose import ProseTask, score_prose  # noqa: E402
-from scripts.write_scene import prompt_for  # noqa: E402
+from scripts.write_continue_note import prompt_for  # noqa: E402
 
 
 def a_task(lang: str = "zh") -> ProseTask:

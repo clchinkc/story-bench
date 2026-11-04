@@ -19,7 +19,6 @@ import json
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 from study_analysis import (  # noqa: E402
     ManifestError, analyse, assert_manifest, load_manifest, load_records,

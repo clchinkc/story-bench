@@ -13,7 +13,7 @@ import yaml
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 
-# Loaded by path, NOT by inserting scripts/ on sys.path: `scripts/story_rl.py` would then shadow the
+# Loaded by path, NOT by inserting scripts/ on sys.path: a module named like the package would then shadow the
 # `src/story_rl/` package for every test collected after this module, which is exactly what happened on
 # the first attempt — five unrelated modules failed to collect while this one passed.
 _spec = importlib.util.spec_from_file_location("dispatch_runner", ROOT / "scripts" / "dispatch_runner.py")

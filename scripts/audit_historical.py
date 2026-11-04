@@ -12,7 +12,6 @@ import sys
 
 import yaml
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 from measurement_contract import PROTOCOL, digest, diagnostic_score
 
 

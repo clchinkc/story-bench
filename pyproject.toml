@@ -20,9 +20,21 @@ dependencies = [
 train = ["tinker>=0.36", "tinker-cookbook>=0.5.9"]
 dev = ["pytest>=8", { include-group = "train" }]
 
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+# `src/` holds the package plus the loose modules it imports (`repair_task`, `scorable`, `holdout_guard`,
+# and the benchmark's own). Both are installed flat, which is the layout the imports already assume.
+sources = ["src"]
+include = ["story_rl", "*.py"]
+
 [tool.uv]
-package = false
+# Installed, so `import story_rl` works from any script. It used to be false, and every script in
+# `scripts/` carried the same two-line `sys.path.insert` to compensate — sixteen copies of one workaround,
+# two of which drifted into a different idiom.
+package = true
 
 [tool.pytest.ini_options]
-pythonpath = ["src"]
 testpaths = ["tests"]

@@ -1,16 +1,17 @@
 #!/usr/bin/env python3
 """Story continuity repair — command line for the GRPO harness.
 
-    python scripts/story_rl.py estimate                 the spend bound, no side effect
-    python scripts/story_rl.py train                    the paid run (needs an approval figure)
-    python scripts/story_rl.py sample --plan            what sampling would send and cost
-    python scripts/story_rl.py sample --out base.jsonl  sample the base model
-    python scripts/story_rl.py evaluate --generations trained.jsonl --against base.jsonl
-    python scripts/story_rl.py skip-rate --run ~/tinker-runs/story_repair_grpo
+    python scripts/bench.py estimate                 the spend bound, no side effect
+    python scripts/bench.py train                    the paid run (needs an approval figure)
+    python scripts/bench.py sample --plan            what sampling would send and cost
+    python scripts/bench.py sample --out base.jsonl  sample the base model
+    python scripts/bench.py evaluate --generations trained.jsonl --against base.jsonl
+    python scripts/bench.py skip-rate --run ~/tinker-runs/story_repair_grpo
 
-Every subcommand is a thin call into `src/story_rl/`; the library holds the behaviour, this file holds
-the argument parsing. `sys.path` is extended the same way the repo's other scripts do it, because the
-package is not installed — `pythonpath = ["src"]` covers pytest, and this line covers the CLI.
+Every subcommand is a thin call into `src/story_rl/`; the library holds the behaviour, this file holds the
+argument parsing. The file used to be named `story_rl.py`, which shadowed the package for every other script
+in this directory: `sys.path[0]` is the script's own folder, so `import story_rl` found this file instead of
+the package, and twelve scripts compensated with the same two-line `sys.path.insert`.
 """
 
 from __future__ import annotations
@@ -18,7 +19,6 @@ from __future__ import annotations
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 SUBCOMMANDS = {
     "estimate": ("story_rl.train", "print the spend bound for the default configuration"),

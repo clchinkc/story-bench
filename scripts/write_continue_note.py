@@ -36,12 +36,6 @@ import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
 
-# `scripts/story_rl.py` shadows the `story_rl` package when this file is run as a script and its own
-# directory is sys.path[0]. Put the source tree ahead of it so both invocation styles import the package.
-_SRC = str(Path(__file__).resolve().parent.parent / "src")
-if _SRC in sys.path:          # PYTHONPATH often already carries it, but behind the scripts directory
-    sys.path.remove(_SRC)
-sys.path.insert(0, _SRC)
 
 from story_rl.traditional import rewrite  # noqa: E402
 

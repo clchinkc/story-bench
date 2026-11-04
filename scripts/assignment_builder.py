@@ -33,7 +33,6 @@ import pathlib
 import sys
 
 REPO = pathlib.Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(REPO / "src"))
 sys.path.insert(0, str(REPO / "scripts"))
 
 from measurement_contract import PROTOCOL, digest, project_report  # noqa: E402
