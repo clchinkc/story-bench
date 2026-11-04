@@ -69,8 +69,12 @@ def one(args, raw: bytes, ledger, index: int, row: dict) -> dict:
     observed = paid.preflight(plan, identity)
     result = asyncio.run(pa.execute_attempt(plan, ledger, admission))
     after = ledger.attempt(plan.spec.attempt_id)
+    detail = ""
+    failure = plan.evidence_root / "attempts" / plan.spec.attempt_id / "failure.json"
+    if failure.is_file():
+        detail = json.loads(failure.read_text()).get("detail", "")
     entry = dict(attempt_id=plan.spec.attempt_id, state=result.ledger_state,
-                 status=result.transport_status,
+                 status=result.transport_status, detail=detail,
                  reserved_usd=after["reserved_micros"] / 1e6,
                  actual_usd=(after["actual_micros"] or 0) / 1e6,
                  live_status=(observed or {}).get("status"))
@@ -112,8 +116,13 @@ def main() -> int:
     state = dict(started=time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
                  done=[], failed=[], already_held=len(held))
     sent = failures = 0
+    blocked: dict[str, str] = {}      # model -> why; later rows for it are skipped, not retried
     for index, row in enumerate(rows):
         if attempt_id_for(row, args.unit) in held:
+            continue
+        if row["model"] in blocked:
+            state.setdefault("blocked", []).append(
+                dict(index=index, model=row["model"], reason=blocked[row["model"]]))
             continue
         if args.limit is not None and sent >= args.limit:
             break
@@ -138,6 +147,12 @@ def main() -> int:
             progress.write_text(json.dumps(state | dict(aborted=str(exc)), indent=1))
             return 3
         state["done"].append(entry)
+        # A 404 from the account's data policy answers the same way every time. Retrying it 39 more
+        # times buys nothing and leaves 39 permanent UNKNOWNs in a ledger meant to account for
+        # money. A 5xx is transient and is NOT blocked this way.
+        if entry["state"] == "UNKNOWN" and "HTTP 404" in entry.get("detail", ""):
+            blocked[row["model"]] = entry["detail"][:200]
+            print(f"  BLOCKED {row['model']}: {entry['detail'][:110]}", flush=True)
         sent += 1
         failures = failures + 1 if entry["state"] == "UNKNOWN" else 0
         progress.write_text(json.dumps(state | dict(sent=sent, failures=failures), indent=1))

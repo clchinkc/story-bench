@@ -924,3 +924,19 @@ def test_media_tokens_are_refused_by_a_text_only_protocol(tmp_path):
     failure = json.loads((case[0].evidence_root / "attempts" / case[0].spec.attempt_id
                           / "failure.json").read_text())
     assert "text-only protocol" in failure["detail"], failure
+
+
+def test_a_refusal_without_an_envelope_is_named_not_malformed(tmp_path):
+    """A policy 404 used to surface as "infrastructure_failure: bounded nonempty text required".
+
+    That string names neither the status nor the reason, and it is what sent a real run of 432
+    attempt against a route that answers 404 every time. The provider's own message is now kept.
+    """
+    case = make_case(tmp_path)
+    body = json.dumps({"error": {"message": "0 endpoints out of 1 requested are available",
+                                 "code": 404}}).encode()
+    result = execute(case, body, status=404)
+    assert result.transport_status == "provider_failure", result
+    failure = json.loads((case[0].evidence_root / "attempts" / case[0].spec.attempt_id
+                          / "failure.json").read_text())
+    assert "HTTP 404" in failure["detail"] and "endpoints out of 1" in failure["detail"]

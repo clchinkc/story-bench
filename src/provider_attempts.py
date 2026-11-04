@@ -707,6 +707,14 @@ async def execute_attempt(plan, ledger, admission, fixture=None):
                         detail=f"{type(exc).__name__}: {exc}")
 
 
+def _provider_error(data) -> str:
+    """The provider's own words about a refusal, bounded, or a note that it gave none."""
+    error = data.get("error") if isinstance(data, dict) else None
+    if isinstance(error, dict):
+        return str(error.get("message") or error.get("code") or "")[:300] or "no message"
+    return str(error)[:300] if error else "no error body"
+
+
 def _billed_tier(value):
     """The wire's tier, normalised the way the record declares it.
 
@@ -715,7 +723,11 @@ def _billed_tier(value):
     value would have refused every successful call on all nine routes; comparing the normalised one
     still refuses a response that landed on a priority or flex tier we did not pay for.
     """
-    return "default" if value is None else text(value)
+    # The wire has three ways of saying "no special tier": null (gemini), "default", and "auto"
+    # (muse, where the provider chose). All three are the tier this study declares as "default".
+    # Comparing literally refused a call the provider had already completed and billed -- a valid
+    # response on disk, recorded as infrastructure_failure because the word differed.
+    return "default" if value is None or value == "auto" else text(value)
 
 
 def reconcile_attempt(plan, ledger, response_bytes, response_status):
@@ -728,6 +740,18 @@ def reconcile_attempt(plan, ledger, response_bytes, response_status):
     data = parse_json(raw)
     if type(data) is not dict:
         raise ValidationError("invalid provider response")
+    # A body with no completion envelope is a REFUSAL, not a malformed success. Falling through to
+    # the success checks turned an account-level 404 into "infrastructure_failure: bounded nonempty
+    # text required" -- naming neither the status nor the reason, on a route that answers the same
+    # way every time. `provider_failure` is already in the reporting vocabulary.
+    #
+    # A refusal that DOES carry a `usage.cost` still travels the normal path below, because that
+    # money is real: the provider processed and billed the request and then answered with an error.
+    # Charging nothing because the status was not 200 would understate the ledger, which is the one
+    # direction this project never accepts.
+    if not {"id", "model", "provider", "choices"} <= set(data):
+        return _unknown(plan, ledger, "provider_failure",
+                        detail=f"HTTP {response_status}: {_provider_error(data)}")
     # The documented envelope plus the fields OpenRouter actually sends. Anything outside this set
     # is still refused: an unrecognised top-level field could be a billing shape this code cannot
     # price, and the guard is worth more than the convenience.
