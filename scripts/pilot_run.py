@@ -91,6 +91,8 @@ def main() -> int:
     ap.add_argument("--limit", type=int, default=None, help="stop after N attempts this run")
     ap.add_argument("--stop-after-failures", type=int, default=3)
     ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--skip-unsupported", action="store_true",
+                    help="skip rows whose task type the harness cannot build, and say which")
     args = ap.parse_args()
     paid._token(args.authorise)                     # refuse before anything is built
     # A 432-attempt run must not discover a missing credential at attempt 1, behind a traceback.
@@ -114,8 +116,17 @@ def main() -> int:
             break
         try:
             entry = one(args, raw, ledger, index, row)
-        except SystemExit as exc:                    # a route that will not prepare is a finding
-            state["failed"].append(dict(index=index, reason=str(exc)))
+        except (SystemExit, ValueError) as exc:      # a route that will not prepare is a finding
+            reason = str(exc)
+            # Exactly one class is skippable, and only on request: a task family the harness has no
+            # prompt builder for. Anything else -- a withdrawn route, a stale profile -- is a real
+            # failure and stops the run, because those are the ones worth being loud about.
+            if args.skip_unsupported and "Unknown task type" in reason:
+                state.setdefault("skipped", []).append(dict(index=index, reason=reason))
+                print(f"  {index:3} SKIP  {reason}", flush=True)
+                progress.write_text(json.dumps(state | dict(sent=sent), indent=1))
+                continue
+            state["failed"].append(dict(index=index, reason=reason))
             failures += 1
             continue
         except Exception as exc:                     # a setup error is not a per-row failure
