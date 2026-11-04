@@ -43,7 +43,7 @@ sys.path.insert(0, _SRC)
 from story_rl.traditional import repair  # noqa: E402
 
 DEFAULT_URL = "http://127.0.0.1:8771"
-DEFAULT_MODEL = "voice-zh-v9-Q4_K_M.gguf"
+DEFAULT_MODEL = "voice-zh-v10-Q4_K_M.gguf"
 CONTEXT_CHARS = 600
 
 PROMPT_ZH = (
