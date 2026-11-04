@@ -45,12 +45,11 @@ from story_rl.env import DEFAULT_MODEL, DEFAULT_POLICY, DEFAULT_RENDERER, TaskDa
 
 DATA = Path(__file__).resolve().parent.parent.parent / "dataset" / "story_rl"
 
-# The corpus the `prose` shape trains on, and the split that holds the held-out openings still. Defaulting to
-# the author's own voice — rather than to the English corpus behind an environment variable — is deliberate:
-# twice a run was launched without `PROSE_TASKS` and silently trained on the wrong corpus. The English corpus
-# is still reachable through the environment when that is what you mean.
-TASKS = Path(os.environ.get("PROSE_TASKS", DATA / "voice.json"))
-SPLIT = Path(os.environ.get("PROSE_SPLIT", DATA / "voice_split.json"))
+# The corpus this shape trains on, pinned here the way `shape_a` and `corpus` pin theirs. It used to be two
+# environment variables so the same builder could reach a second corpus; with one corpus in use that was a
+# switch nobody needed, and twice a run was launched without it and silently trained on the wrong text.
+TASKS = DATA / "voice.json"
+SPLIT = DATA / "voice_split.json"
 
 NARRATIVE_CRAFT_SRC = Path("/Users/clchinkc/Documents/GitHub/narrative-craft/src")
 

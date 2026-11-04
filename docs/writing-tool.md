@@ -23,6 +23,11 @@ compared them is not.
 held-out tasks are byte-identical to the ones every earlier round was scored on, so a result measured today
 is comparable with one measured yesterday.
 
+The corpus is pinned in `src/story_rl/prose.py`, the way `shape_a` and `corpus` pin theirs. It used to be two
+environment variables so one builder could reach a second corpus; with one corpus in use that switch was a
+footgun, and it silently trained two runs on the wrong text. The English corpus it could reach was unused and
+is deleted.
+
 `dataset/story_rl/archive/voice-v1.json` is the superseded 81-task corpus, kept because it is the provenance of
 the shipped comparison.
 
@@ -32,7 +37,7 @@ side; the builder will not stop you, and the split then measures nothing.
 ## Training
 
 ```
-shape       prose (src/story_rl/prose.py)
+shape       prose (src/story_rl/prose.py) — the name is the task family, the corpus is the instance
 recipe      GRPO, 68 steps = 5 epochs at batch 8 over 108 tasks
 reward      judge craft score x length factor, gated by a lint veto and a character veto
 judge       deepseek-chat via api.deepseek.com — never through OpenRouter (owner ruling, enforced in code)
