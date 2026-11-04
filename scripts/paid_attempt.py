@@ -76,18 +76,22 @@ def gates(record: dict, assignment_hash: str, route_sha256: str, valid_until: st
         route_sha256=route_sha256, valid_until=valid_until)) for kind in sorted(pa.GATES)}
 
 
-def _prepared(args, token: str):
-    """Everything that can be refused for free, named and validated before a ledger is touched."""
-    raw = args.assignment.read_bytes()
+def prepared(base: pathlib.Path, raw: bytes, index: int, unit_id: str,
+             evidence_root: pathlib.Path):
+    """One prepared attempt: everything that can be refused for free, before a ledger is touched.
+
+    Takes explicit values rather than argparse output so the pilot runner can call it per row --
+    the pilot is the same act 432 times, and it must not be a second, drifting implementation.
+    """
     manifest = json.loads(raw)
     if not manifest.get("judge_designated"):
         raise SystemExit("manifest records no judge designation; refusing to spend on it")
-    row = manifest["assignments"][args.index]
+    row = manifest["assignments"][index]
     assignment_hash = digest(manifest)
-    record, endpoints, profile, artifact = reh.load_route(args.base, row["model"])
+    record, endpoints, profile, artifact = reh.load_route(base, row["model"])
     identity = record["route_identity"]
     snapshot = pp.validate_snapshot(
-        ((args.base / "openrouter-models.json").read_bytes(), endpoints, profile, artifact),
+        ((base / "openrouter-models.json").read_bytes(), endpoints, profile, artifact),
         reh._route(identity), identity["observed_at"], identity["expires_at"])
     if snapshot.qualification != pp.QUALIFICATION_FOR_KIND[pp.VERIFIED_KIND]:
         raise SystemExit(f"{row['model']}: qualification {snapshot.qualification!r} is not payable")
@@ -98,23 +102,22 @@ def _prepared(args, token: str):
     # is the one the plan will carry, so they are computed before the plan rather than after it.
     route_sha256 = pp.sha(reh.json_bytes(dataclasses.asdict(reh._route(identity))))
     gate_blobs = gates(record, assignment_hash, route_sha256, identity["expires_at"])
-    artifacts = dict(reh.artifacts_for(row, fields, raw, args.base)) | gate_blobs
+    artifacts = dict(reh.artifacts_for(row, fields, raw, base)) | gate_blobs
     # The unit tag is explicit because an attempt id is ONE ledger slot, forever. The first smoke
     # attempt now sits in UNKNOWN and can never be resent, so a second call has to be a different
     # unit -- and the id must say which one it is rather than silently colliding.
-    unit_id = f"{args.unit}-u{args.index}"
     plan = pa.prepare_attempt(
         reh.spec_for(row, dict(attempt_id=dr.attempt_id(row["model"], unit_id, row["condition"]),
                                unit_id=unit_id),
                      "max", artifacts, assignment_hash),
-        snapshot, tuple(sorted(artifacts.items())), fields, args.evidence)
+        snapshot, tuple(sorted(artifacts.items())), fields, evidence_root)
     admission = pa.Admission(
         mode=snapshot.qualification,
         authority_refs=tuple(pa.ArtifactRef.of(name, blob) for name, blob in sorted(gate_blobs.items())),
         assignment_hash=assignment_hash,
         route_sha256=route_sha256,
         valid_until=identity["expires_at"])
-    return token, row, plan, admission, identity
+    return row, plan, admission, identity
 
 
 def preflight(plan, identity: dict) -> dict | None:
@@ -163,7 +166,9 @@ def main() -> int:
                     help="settle a retained response instead of sending; never opens the transport")
     args = ap.parse_args()
 
-    token, row, plan, admission, identity = _prepared(args, _token(args.authorise))
+    token = _token(args.authorise)
+    row, plan, admission, identity = prepared(args.base, args.assignment.read_bytes(), args.index,
+                                              f"{args.unit}-u{args.index}", args.evidence)
     print(f"  token        : {token}")
     print(f"  route        : {row['model']} ({admission.mode})")
     print(f"  attempt      : {plan.spec.attempt_id}")
