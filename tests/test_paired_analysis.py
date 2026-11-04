@@ -300,3 +300,25 @@ def test_report_includes_resolved_rates_status_breakdown_and_per_model():
     assert set(report["per_model"]) == {"vendor/model-one", "vendor/model-two"}
     assert report["per_model"]["vendor/model-one"]["observed_lift"] == pytest.approx(0.0)
     assert report["per_model"]["vendor/model-two"]["observed_lift"] == pytest.approx(1.0)
+
+
+def test_a_two_arm_unit_is_analysable_because_the_study_declares_two():
+    """The study runs arms A and D and computes D minus A; B and C are secondary and disabled.
+
+    `parse_units` used to demand exactly four arms, which refused every unit a two-arm run can
+    produce -- the pilot's whole output would have been unreadable by the tool built to read it.
+    Unknown arms still fail closed, so this admits the declared design without admitting a typo.
+    """
+    import pytest as _pytest
+    from study_analysis import ManifestError, parse_units
+
+    arm = dict(resolved=True, cost_usd="0.01", latency_ms=100)
+    unit = dict(cluster_id="c0", model="m", locale="en", task_family="beat_revision",
+                sample_id="s0", arms=dict(A=arm, D=arm))
+    parsed = parse_units([unit])
+    assert set(parsed[0].arms) == {"A", "D"}
+
+    with _pytest.raises(ManifestError):
+        parse_units([dict(unit, arms=dict(A=arm))])          # the estimand pair is required
+    with _pytest.raises(ManifestError):
+        parse_units([dict(unit, arms=dict(A=arm, D=arm, Z=arm))])   # unknown arm

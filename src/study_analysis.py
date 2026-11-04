@@ -25,6 +25,11 @@ except ImportError:  # pragma: no cover - declared dependency must be present
     yaml = None
 
 ARMS = ("A", "B", "C", "D")
+# What a unit MUST carry, as distinct from what it MAY. The study declares `arms: 2` and computes
+# its primary estimand on D minus A; B and C are `secondary_arms` that the manifest itself marks as
+# losing inferential status. Demanding all four refused every unit a two-arm run can produce -- the
+# 180 arm-runs of the pilot would have been unreadable by the very tool built to read them.
+REQUIRED_ARMS = ("A", "D")
 LOCALES = ("en", "zh-Hant", "zh-Hans")
 QUALITY_OUTCOMES = ("win", "tie", "loss", "cannot_assess")
 INVALID_KINDS = (None, "absent", "provider", "infrastructure", "grader")
@@ -203,10 +208,16 @@ def parse_units(raw):
             if not isinstance(item.get(key), str) or not item[key].strip():
                 raise ManifestError(f"record {index}.{key}: non-empty text required")
         arms_raw = item.get("arms")
-        if not isinstance(arms_raw, dict) or set(arms_raw) != set(ARMS):
-            raise ManifestError(f"record {index}: exactly arms {list(ARMS)} required")
+        if not isinstance(arms_raw, dict):
+            raise ManifestError(f"record {index}: arms object required")
+        if not set(REQUIRED_ARMS) <= set(arms_raw):
+            raise ManifestError(
+                f"record {index}: arms {list(REQUIRED_ARMS)} required, got {sorted(arms_raw)}")
+        if set(arms_raw) - set(ARMS):
+            raise ManifestError(
+                f"record {index}: unknown arms {sorted(set(arms_raw) - set(ARMS))}")
         observations = {}
-        for arm in ARMS:
+        for arm in sorted(arms_raw):
             payload = arms_raw[arm]
             if not isinstance(payload, dict):
                 raise ManifestError(f"record {index}.{arm}: object required")
