@@ -133,6 +133,14 @@ def rows_for(units: list[dict], routes: list[str], snaps: dict[str, str],
                     "task_id": unit["task_id"], "task": task, "task_hash": digest(task),
                     "sample": sample, "condition": arm, "story_id": story_of(task),
                     "judge_snapshot": judge, "prompt_version": PROMPT_VERSION,
+                    # The DESIGN ROW travels with the assignment, because the analysis needs it and
+                    # nothing else retains it. `dispatch_runner.assign` computes locale and cluster
+                    # and the attempt evidence keeps neither, so a units file built from response
+                    # bytes alone could not say which locale a unit belongs to or which cluster to
+                    # resample -- and inventing either fabricates the strata the interval is
+                    # computed over. Four fields, carried from where they are already known.
+                    "locale": unit["locale"], "cluster": unit["cluster"],
+                    "unit_id": unit["unit_id"], "task_family": task["task_type"],
                 })
     return rows
 

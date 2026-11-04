@@ -427,7 +427,9 @@ def _arm_resolved_summary(units, arm):
 def _status_breakdown(units):
     """Provider/infrastructure/grader/absent counts per arm, never folded into 'failed'."""
     breakdown = {}
-    for arm in ARMS:
+    # The arms the data HAS, not the four the fixture simulates. The study declares two (A and D),
+    # and iterating the constant raised KeyError 'B' on every unit the pilot can produce.
+    for arm in sorted({a for unit in units for a in unit.arms}):
         counts = {kind: 0 for kind in INVALID_KINDS if kind is not None}
         for unit in units:
             kind = unit.observation(arm).invalid_kind
@@ -535,12 +537,12 @@ def analyse(units, manifest, *, resamples=None):
         "quality": {"wins": wins, "ties": ties, "losses": losses,
                     "cannot_assess": cannot, "Q": q_observed, "Q_lower_bound": q_lower,
                     "valid_assessed_pairs": len(quality_pairs)},
-        "authority_breaches": sum(1 for u in units for arm in ARMS
+        "authority_breaches": sum(1 for u in units for arm in u.arms
                                   if u.observation(arm).authority_breach),
         "all_attempt_cost_usd": str(sum((u.observation(arm).cost_usd for u in units
-                                         for arm in ARMS), Decimal(0))),
+                                         for arm in u.arms), Decimal(0))),
         "latency_ms_total": sum(u.observation(arm).latency_ms for u in units
-                                for arm in ARMS),
+                                for arm in u.arms),
         "missingness": bounds,
         "benefit_status": benefit_status,
         "limits": [

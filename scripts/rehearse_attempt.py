@@ -76,13 +76,37 @@ def load_route(base: pathlib.Path, model_id: str):
     raise SystemExit(f"{model_id}: no record in {base}")
 
 
-def request_fields(task: dict, effort: str, max_tokens: int) -> pa.RequestFields:
+def study_limits(task_type: str, model: str) -> tuple[str, int, int]:
+    """Effort and token budgets from the SSOTs, never from a literal at the call site.
+
+    `max_tokens=6000` was hardcoded for every family and `effort="max"` for every model, while the
+    study declares a cap PER FAMILY (constrained_continuation 8000, multi_beat_synthesis 10000) and a
+    ceiling PER MODEL (grok and qwen xhigh, gemini high). Two consequences, both paid for: three
+    families were guaranteed to truncate, and opus -- told `effort: max` with no reasoning budget --
+    spent all 6,000 completion tokens thinking and returned `content: null`, twice, at $0.126 each.
+
+    The budget returns with the caps because `max_tokens` alone is not a guard: it bounds reasoning
+    AND output together, so a maximising model can spend it all before writing a word.
+    """
+    import yaml
+
+    from llm_client import TASK_TOKEN_CONFIG  # noqa: PLC0415
+
+    study = yaml.safe_load((REPO / "studies" / "revision-v1.yaml").read_text(encoding="utf-8"))
+    effort = study["reasoning_effort"]["per_model"][model]
+    config = TASK_TOKEN_CONFIG[task_type]
+    return effort, config["max_tokens"], config["max_reasoning_tokens"]
+
+
+def request_fields(task: dict, effort: str, max_tokens: int,
+                   reasoning_max_tokens: int | None = None) -> pa.RequestFields:
     from generator import PromptBuilder  # noqa: PLC0415
 
     system = PromptBuilder.build_system_prompt(task["task_type"])
     user = PromptBuilder.build_user_prompt(task)
     return pa.RequestFields(messages=(("system", system), ("user", user)),
-                            max_tokens=max_tokens, reasoning_effort=effort)
+                            max_tokens=max_tokens, reasoning_effort=effort,
+                            reasoning_max_tokens=reasoning_max_tokens)
 
 
 def artifacts_for(row: dict, fields, assignment: bytes, base: pathlib.Path) -> dict[str, bytes]:
@@ -102,7 +126,14 @@ def artifacts_for(row: dict, fields, assignment: bytes, base: pathlib.Path) -> d
 
 
 def spec_for(row: dict, attempt: dict, effort: str, artifacts: dict[str, bytes],
-             assignment_hash: str) -> pa.AttemptSpec:
+             assignment_hash: str, *, envelope: str = "pilot",
+             cost_role: str = "deployment") -> pa.AttemptSpec:
+    """The attempt's identity, with the envelope as a PARAMETER.
+
+    It was hardcoded to `pilot`, which meant every attempt built through the only path that can
+    spend drew the generation envelope -- so the 426 USD `data_judge` line was unreachable and a
+    judge phase would have spent the pilot's budget instead of its own.
+    """
     refs = tuple(pa.ArtifactRef.of(name, raw) for name, raw in sorted(artifacts.items()))
     by = dict(artifacts)
     return pa.AttemptSpec(
@@ -114,7 +145,7 @@ def spec_for(row: dict, attempt: dict, effort: str, artifacts: dict[str, bytes],
         harness_sha256=pp.sha(by["harness"]), protocol_sha256=pp.sha(by["protocol"]),
         settings_sha256=pp.sha(by["settings"]), effort=effort,
         parent_attempt_id=None, retry_index=0, max_attempts=1,
-        envelope="pilot", cost_role="deployment", activity_role="generation",
+        envelope=envelope, cost_role=cost_role, activity_role="generation",
         program_id=PROGRAM_ID, store_id=STORE_ID,
         native_package_sha256=pp.sha(by["native_package"]), artifacts=refs)
 

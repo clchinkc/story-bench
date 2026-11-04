@@ -14,6 +14,7 @@ import os
 from pathlib import Path
 import re
 import stat
+import time
 
 import httpx
 
@@ -241,18 +242,22 @@ def _body(fields, snapshot):
                 provider=dict(only=[route.endpoint_tag], order=[route.endpoint_tag], allow_fallbacks=False,
                               require_parameters=True), **{limit: fields.max_tokens})
     body["service_tier"] = route.service_tier
-    if fields.reasoning_effort is not None and fields.reasoning_max_tokens is not None:
-        raise ValidationError("one reasoning setting allowed")
     if fields.reasoning_effort is not None or fields.reasoning_max_tokens is not None:
         if "reasoning" not in supported:
             raise ValidationError("unsupported reasoning")
+        # Both together, deliberately. The study declares an effort PER MODEL (its ceiling) and a
+        # reasoning budget PER FAMILY, and they answer different questions. Sending only the effort
+        # let opus spend all 6,000 completion tokens on reasoning and return `content: null` twice,
+        # at $0.126 a time: a paid call that bought nothing. The budget is what bounds that; the
+        # effort is the treatment the study declares and cannot be dropped to get the bound.
+        body["reasoning"] = {}
         if fields.reasoning_effort is not None:
             if fields.reasoning_effort not in {"none", "minimal", "low", "medium", "high", "xhigh", "max"}:
                 raise ValidationError("invalid reasoning effort")
-            body["reasoning"] = dict(effort=fields.reasoning_effort)
-        else:
+            body["reasoning"]["effort"] = fields.reasoning_effort
+        if fields.reasoning_max_tokens is not None:
             integer(fields.reasoning_max_tokens, 1, fields.max_tokens - 1)
-            body["reasoning"] = dict(max_tokens=fields.reasoning_max_tokens)
+            body["reasoning"]["max_tokens"] = fields.reasoning_max_tokens
     if fields.temperature is not None:
         if "temperature" not in supported or not 0 <= money(fields.temperature) <= 2:
             raise ValidationError("unsupported temperature")
@@ -665,6 +670,7 @@ async def execute_attempt(plan, ledger, admission, fixture=None):
         current = ledger.attempt(plan.spec.attempt_id)
         return _result(plan, current["state"], "replay_no_send", True)
     deadline = asyncio.get_running_loop().time() + plan.deadline_seconds
+    started_at, started_mono = datetime.now(timezone.utc).isoformat(), time.monotonic()
     response = None
     try:
         # The plan's deadline, not httpx's 5 s default. Without this, `asyncio.timeout_at` below
@@ -691,6 +697,12 @@ async def execute_attempt(plan, ledger, admission, fixture=None):
                     await response.aclose()
         _persist(_directory(plan) / "response.bin", raw)
         _persist(_directory(plan) / "response.json", json_bytes(dict(status=response.status_code, sha256=sha(raw), request_sha256=request_hash(plan))))
+        # Wall clock, kept apart from transport.json and response.json because both are compared
+        # byte-for-byte on reconcile and a timestamp there would break that. Without it the units
+        # file reports latency 0 for every arm while the contract requires latency to be reported.
+        _persist(_directory(plan) / "timing.json", json_bytes(dict(
+            started_at=started_at, finished_at=datetime.now(timezone.utc).isoformat(),
+            duration_ms=int((time.monotonic() - started_mono) * 1000))))
         return reconcile_attempt(plan, ledger, raw, response.status_code)
     except asyncio.CancelledError:
         try:

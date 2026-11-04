@@ -94,7 +94,10 @@ def prepared(base: pathlib.Path, raw: bytes, index: int, unit_id: str,
         reh._route(identity), identity["observed_at"], identity["expires_at"])
     if snapshot.qualification != pp.QUALIFICATION_FOR_KIND[pp.VERIFIED_KIND]:
         raise SystemExit(f"{row['model']}: qualification {snapshot.qualification!r} is not payable")
-    fields = reh.request_fields(row["task"], "max", 6000)
+    # Per-family cap, per-model effort, and an explicit reasoning budget -- all from the study's own
+    # SSOTs. A literal here is what produced zero-character opus runs at $0.126 each.
+    effort, max_tokens, reasoning_max = reh.study_limits(row["task"]["task_type"], row["model"])
+    fields = reh.request_fields(row["task"], effort, max_tokens, reasoning_max)
     # The eight gate artifacts must be part of the PLAN's artifact set: `_admit` requires every
     # authority ref to be an artifact the request already carries ("unbound gate evidence"
     # otherwise). They are derived from the record's own statuses, and the route hash they bind to
