@@ -49,6 +49,11 @@ STORY_RL_APPROVED_USD=4.74 uv run python3 scripts/story_rl.py train --shape pros
 A training run takes about an hour and must be detached (`nohup … & disown`): the harness reaps jobs that
 outlive their turn, which is how five earlier runs died at 6–15 steps with no traceback.
 
+The test suite runs offline, so it reads the tokenizer from the HuggingFace cache. On a cold machine that cache
+is empty and seven pipeline tests fail with a download error that looks like a network outage; warm it once
+(`uv run python3 -c "from tinker_cookbook.tokenizer_utils import get_tokenizer; get_tokenizer('Qwen/Qwen3.5-4B')"`)
+and they pass.
+
 ## Characters
 
 The author writes Traditional Chinese. The model used to write simplified characters in **52 %** of its
