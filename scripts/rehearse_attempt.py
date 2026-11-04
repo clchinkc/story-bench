@@ -95,7 +95,12 @@ def study_limits(task_type: str, model: str) -> tuple[str, int, int]:
     study = yaml.safe_load((REPO / "studies" / "revision-v1.yaml").read_text(encoding="utf-8"))
     effort = study["reasoning_effort"]["per_model"][model]
     config = TASK_TOKEN_CONFIG[task_type]
-    return effort, config["max_tokens"], config["max_reasoning_tokens"]
+    # The completion allowance is the family's OUTPUT budget PLUS its reasoning budget, because the
+    # provider accepts only one reasoning setting and the study's choice is to keep the effort
+    # (`reasoning_effort.per_model`) and let the model decide how much to think. `max_tokens` is the
+    # only remaining bound, so it has to cover both halves or the effort guarantees nothing: opus
+    # spent 6,000 of 6,000 on reasoning under `effort: max` and returned `content: null` twice.
+    return effort, config["max_tokens"] + config["max_reasoning_tokens"], config["max_reasoning_tokens"]
 
 
 def request_fields(task: dict, effort: str, max_tokens: int,
@@ -110,10 +115,11 @@ def request_fields(task: dict, effort: str, max_tokens: int,
     # is exactly what opus did twice at $0.126. A treatment that produces no text measures nothing,
     # so the budget is kept and the omission is recorded rather than silent: the spec's `effort`
     # becomes `tokens:<budget>`, which is what the request actually carries.
+    # Effort ONLY: the provider refuses the two together, and the study's decision is to keep the
+    # per-model effort as its declared treatment. `max_tokens` carries the room that the effort
+    # cannot bound -- see `study_limits`.
     return pa.RequestFields(messages=(("system", system), ("user", user)),
-                            max_tokens=max_tokens,
-                            reasoning_effort=None if reasoning_max_tokens is not None else effort,
-                            reasoning_max_tokens=reasoning_max_tokens)
+                            max_tokens=max_tokens, reasoning_effort=effort)
 
 
 def artifacts_for(row: dict, fields, assignment: bytes, base: pathlib.Path) -> dict[str, bytes]:
