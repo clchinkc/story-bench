@@ -370,7 +370,12 @@ class Ledger:
                 roles[row["role"]]["unknown_charge_ids"].append(row["charge_id"])
         committed = sum(e["committed_micros"] for e in envelopes.values())
         reserved = sum(e["reserved_micros"] for e in envelopes.values())
-        incidents = [r[0] for r in db.execute("SELECT id FROM incidents ORDER BY id")]
+        # An incident blocks until it is RESOLVED, and only one class can be resolved. The row is
+        # never deleted: the history of what happened stays, and `resolved` records who closed it
+        # and why.
+        incidents = [i for i, payload in db.execute(
+            "SELECT id, payload FROM incidents ORDER BY id")
+            if json.loads(payload).get("resolved") is None]
         blocked = bool(unknowns or incidents)
         for key, item in envelopes.items():
             item["remaining_micros"] = item["allocation_micros"] - item["committed_micros"] - item["reserved_micros"]
@@ -478,6 +483,46 @@ class Ledger:
             self._put(db, "attempts", attempt_id, row)
             return dict(**row, incident_ids=self._incident(db, event_id, reasons))
         return self._mutate(event_id, "reconciled", payload, operation)
+
+    def resolve_incident(self, event_id, *, incident_id, attempt_id, authorization, reason):
+        """Close a `usage_overrun` incident that the MONEY did not justify.
+
+        `usage_overrun` exists so a model that consumed more units than reserved cannot pass
+        unnoticed. But the reservation bounds SPEND, and a unit count can overrun while the bill
+        stays under: kimi reported 1,024 cache-read tokens against a reservation that assumed zero,
+        and the attempt cost $0.0173 of a $0.0697 hold. Left permanent, that blocks every later
+        dispatch -- one cheap, legitimate cache hit halting the programme.
+
+        Only this case is resolvable, and only with the bill in hand:
+
+          * the reasons must be exactly `usage_overrun`;
+          * the attempt must be RECONCILED and its actual must not exceed what it reserved.
+
+        `money_overrun` and `unreconciled_usage` stay permanent, because those are what the
+        invariant is for. The row is annotated, never deleted, so the history survives.
+        """
+        _text(incident_id, "incident_id")
+        _text(attempt_id, "attempt_id")
+        _text(reason, "reason")
+        authorization = _authorization(authorization)
+        payload = dict(incident_id=incident_id, attempt_id=attempt_id, resolution=reason,
+                       authorization=authorization)
+
+        def operation(db):
+            row = self._get(db, "incidents", incident_id)
+            if row.get("resolved") is not None:
+                raise StateError("incident is already resolved")
+            if row.get("reasons") != ["usage_overrun"]:
+                raise StateError(f"incident {row.get('reasons')} is not a usage-only overrun")
+            attempt = self._get(db, "attempts", attempt_id)
+            if attempt["state"] != "RECONCILED" or attempt["actual_micros"] is None:
+                raise StateError("incident attempt is not reconciled")
+            if attempt["actual_micros"] > attempt["reserved_micros"]:
+                raise StateError("the bill exceeded the reservation; this is a money_overrun")
+            row.update(resolved=reason, authorization=authorization)
+            self._put(db, "incidents", incident_id, row)
+            return dict(row)
+        return self._mutate(event_id, "incident_resolved", payload, operation)
 
     def record_external_unknown(self, event_id, *, charge_id, envelope, role, reason):
         _text(charge_id, "charge_id")

@@ -684,3 +684,32 @@ def test_process_crash_retains_durable_liability(ledger, stage):
         assert ledger.mark_sent("send-crashed", attempt_id="crashed")["replayed"] is True
         assert ledger.status()["reserved_micros"] == WHOLE
     assert Path(str(ledger.path) + ".synthetic-transport").exists() == (stage == "after-transport")
+
+
+def test_a_usage_overrun_the_money_did_not_justify_can_be_resolved(ledger):
+    """A cache hit overran a reserved zero and cost LESS; leaving it permanent halts everything.
+
+    Kimi reported 1,024 cache-read tokens against a reservation that assumed cache was structurally
+    zero. The attempt cost $0.0173 of a $0.0697 hold, and the resulting permanent incident blocked
+    every later dispatch. The row is annotated, never deleted.
+    """
+    lines = tuple(UsageBound(kind, 0 if kind.startswith("cache") else 3, "0.0000001")
+                  for kind in USAGE_KINDS)
+    q = quote(lines=lines)
+    reserve(ledger, q=q)
+    ledger.mark_sent("send-a", attempt_id="a")
+    billed = tuple((line.kind, 1024 if line.kind == "cache_read_tokens" else line.max_units)
+                   for line in q.lines)
+    result = ledger.reconcile("reconcile-a", attempt_id="a",
+                              receipt=receipt(q, "0.000001", usage=billed))
+    incident = result["incident_ids"][0]
+    assert ledger.status()["dispatch_blocked"] is True
+
+    ledger.resolve_incident("resolve-a", incident_id=incident, attempt_id="a",
+                            authorization=AUTH, reason="cache overrun, bill under the reservation")
+    assert ledger.status()["dispatch_blocked"] is False
+    assert ledger.status()["incident_ids"] == []      # resolved, not deleted
+
+    with pytest.raises(StateError):
+        ledger.resolve_incident("resolve-again", incident_id=incident, attempt_id="a",
+                                authorization=AUTH, reason="again")
