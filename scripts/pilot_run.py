@@ -98,7 +98,11 @@ def main() -> int:
     # `execute_attempt` already refuses before reserving, so nothing is ever spent on this -- the
     # check exists to fail in one line instead of four hundred.
     if not args.dry_run and not os.environ.get(pa.CREDENTIAL_ENV):
-        raise SystemExit(f"{pa.CREDENTIAL_ENV} absent; refusing to start a pilot that cannot send")
+        raise SystemExit(
+            f"{pa.CREDENTIAL_ENV} absent; refusing to start a pilot that cannot send.\n"
+            f"  Export it in THIS shell, in the same block as the run: "
+            f"export {pa.CREDENTIAL_ENV}='...'  -- a background job inherits only what its "
+            f"own shell had.")
 
     raw = args.assignment.read_bytes()
     rows = json.loads(raw)["assignments"]
