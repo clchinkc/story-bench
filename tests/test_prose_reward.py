@@ -328,3 +328,17 @@ def test_a_short_overlap_is_not_treated_as_an_echo():
     cleaned, stripped = strip_echo("一閃，像有人在數著什麼。", "走廊盡頭的燈一閃一閃。")
     assert stripped is False
     assert cleaned == "一閃，像有人在數著什麼。"
+
+
+def test_a_draft_that_changes_one_punctuation_still_loses_the_echo():
+    """The final end-to-end check caught this: the note ended `…亮起來。` and the draft came back
+    `…亮起來，紅燈管…`. An exact-match rule misses it and the callout shows your own paragraph back."""
+    from scripts.write_continue_note import strip_echo
+
+    context = "雨停在半空，像有人按下了什麼。他站在騎樓下，看著對街那塊廣告牌一點一點亮起來。"
+    drifted = context[:-1] + "，紅燈管先抖動，像要跳起，又停住。"
+
+    cleaned, stripped = strip_echo(drifted, context)
+    assert stripped is True
+    assert cleaned.startswith("紅燈管先抖動")
+    assert "廣告牌" not in cleaned

@@ -127,21 +127,32 @@ def strip_previous_drafts(note: str) -> str:
 
 
 def strip_echo(text: str, context: str, floor: int = 8) -> tuple[str, bool]:
-    """Drop a leading repeat of the context's own tail.
+    """Drop a leading repeat of what the model was just shown.
 
-    The model sometimes restates the last sentence before continuing — visible in the first smoke test after
-    the v9 swap, where seed 0 opened by quoting the note back. In the callout that reads as a duplicate line,
-    so the echo is removed; anything shorter than `floor` characters is left alone, because a two-character
-    overlap is a coincidence, not a repeat.
+    The model restates its prompt before continuing. Two shapes of that exist and both are defects in a
+    callout — the draft reads as a duplicate line:
+
+        verbatim   the draft starts with the context, exactly
+        drifed     the draft starts with the context but changes a character at the end, which is what the
+                   final check caught: `…亮起來。` came back as `…亮起來，紅燈管…`
+
+    So the overlap is measured as a common prefix, not as an exact match, with a suffix match as a second
+    rule for the case where the context is much longer than what the model echoed. Anything under `floor`
+    characters is left alone: a two-character overlap is a coincidence, not a repeat.
     """
     tail = context.strip()
     head = text.lstrip()
+    overlap = 0
     for size in range(min(len(tail), len(head)), floor - 1, -1):
-        if head.startswith(tail[-size:]):
-            rest = head[size:].lstrip(" ，、。！？；：\n")
-            if len(rest) >= floor:
-                return rest, True
-    return text, False
+        if head[:size] == tail[:size] or head.startswith(tail[-size:]):
+            overlap = size
+            break
+    if overlap == 0:
+        return text, False
+    rest = head[overlap:].lstrip(" ，、。！？；：\n")
+    if len(rest) < floor:
+        return text, False
+    return rest, True
 
 
 def render(drafts: list[tuple[int, str]], *, model: str, prompt_hash: str, url: str,
