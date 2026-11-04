@@ -45,10 +45,12 @@ from story_rl.env import DEFAULT_MODEL, DEFAULT_POLICY, DEFAULT_RENDERER, TaskDa
 
 DATA = Path(__file__).resolve().parent.parent.parent / "dataset" / "story_rl"
 
-# Overridable so the same shape trains on a different corpus (the owner's voice, for instance) without a
-# second module. The corpus and its split travel together or not at all.
-TASKS = Path(os.environ.get("PROSE_TASKS", DATA / "prose.json"))
-SPLIT = Path(os.environ.get("PROSE_SPLIT", DATA / "prose_split.json"))
+# The corpus the `prose` shape trains on, and the split that holds the held-out openings still. Defaulting to
+# the author's own voice — rather than to the English corpus behind an environment variable — is deliberate:
+# twice a run was launched without `PROSE_TASKS` and silently trained on the wrong corpus. The English corpus
+# is still reachable through the environment when that is what you mean.
+TASKS = Path(os.environ.get("PROSE_TASKS", DATA / "voice.json"))
+SPLIT = Path(os.environ.get("PROSE_SPLIT", DATA / "voice_split.json"))
 
 NARRATIVE_CRAFT_SRC = Path("/Users/clchinkc/Documents/GitHub/narrative-craft/src")
 
@@ -156,10 +158,10 @@ def guard(text: str, lang: str = "en") -> list[str]:
         # The author writes Traditional; a simplified character is not a style choice, it is a character she
         # does not use. Measured before this check existed: 54 % of the shipped model's generations carried
         # one, and the reward paid them exactly as much as correct text. Only unambiguous findings veto —
-        # `traditional.defects()` never returns a character whose intended form needs a judgement call.
-        found = traditional.defects(text)
+        # `traditional.audit()` only returns characters whose correct form is certain.
+        found = traditional.audit(text)
         if found:
-            reasons.append("simplified:" + "".join(f.char for f in found[:4]))
+            reasons.append("simplified:" + "".join(f.matched for f in found[:4]))
     return reasons
 
 

@@ -27,7 +27,10 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import shutil
+import subprocess
 import sys
+import time
 import urllib.error
 import urllib.request
 from datetime import datetime, timezone
@@ -40,11 +43,14 @@ if _SRC in sys.path:          # PYTHONPATH often already carries it, but behind 
     sys.path.remove(_SRC)
 sys.path.insert(0, _SRC)
 
-from story_rl.traditional import repair  # noqa: E402
+from story_rl.traditional import rewrite  # noqa: E402
 
 DEFAULT_URL = "http://127.0.0.1:8771"
 DEFAULT_MODEL = "voice-zh-v10-Q4_K_M.gguf"
+MODELS_DIR = Path("~/models/gguf")
 CONTEXT_CHARS = 600
+MIN_CONTEXT_CHARS = 20
+SERVER_WAIT_SECONDS = 90
 
 PROMPT_ZH = (
     "續寫這個場景。\n\n{opening}\n\n只寫兩句。保持同一個聲音、同一個時刻；不要總結，不要另起場景，"
@@ -153,6 +159,34 @@ def render(drafts: list[tuple[int, str]], *, model: str, prompt_hash: str, url: 
     return "\n".join(lines) + "\n"
 
 
+def ensure_server(url: str, model: str) -> None:
+    """Start the model if it is not already answering, and wait until it is.
+
+    The server was found dead one morning after the machine slept, and the tool then refused with a command
+    to paste. A writing tool that needs a daemon started by hand is not ready for use, and a resident daemon
+    is 2.6 GB held forever for a feature used in bursts. So the tool starts it, detached, and only when asked.
+    """
+    if healthy(url):
+        return
+    binary = shutil.which("llama-server")
+    weights = MODELS_DIR.expanduser() / model
+    if binary is None:
+        raise SystemExit("llama-server is not on PATH — install it with: brew install llama.cpp")
+    if not weights.exists():
+        raise SystemExit(f"model file missing: {weights}")
+    port = url.rsplit(":", 1)[-1]
+    subprocess.Popen(
+        [binary, "-m", str(weights), "--port", port, "-c", "4096", "-ngl", "99", "--no-webui"],
+        stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, start_new_session=True,
+    )
+    for _ in range(SERVER_WAIT_SECONDS):
+        time.sleep(1)
+        if healthy(url):
+            print(f"started {model} on {url}")
+            return
+    raise SystemExit(f"{model} did not answer on {url} within {SERVER_WAIT_SECONDS}s — see `llama-server --help`")
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--note", required=True)
@@ -166,14 +200,12 @@ def main() -> int:
     args = parser.parse_args()
 
     note_path = Path(args.note).expanduser()
-    note = note_path.read_text(encoding="utf-8")
-    context = body_of(note)[-CONTEXT_CHARS:]
-    if len(context) < 20:
-        raise SystemExit("not enough prose in the note to continue from")
+    context = body_of(note_path.read_text(encoding="utf-8"))[-CONTEXT_CHARS:]
+    if len(context) < MIN_CONTEXT_CHARS:
+        raise SystemExit(f"not enough prose in the note to continue from (need {MIN_CONTEXT_CHARS} characters)")
 
-    if not healthy(args.url):
-        raise SystemExit(f"no model at {args.url} — start it with: llama-server -m {args.model} --port "
-                         f"{args.url.rsplit(':', 1)[-1]}")
+    ensure_server(args.url, args.model)
+    note = note_path.read_text(encoding="utf-8")
 
     drafts, fixes, echoes = [], {}, []
     for seed in range(args.samples):
@@ -183,9 +215,9 @@ def main() -> int:
         if echoed:
             echoes.append(seed)
         if args.lang == "zh":
-            text, findings = repair(text)
+            text, findings = rewrite(text)
             if findings:
-                fixes[seed] = [f"{f.char}→{f.replacement}" for f in findings if f.replacement]
+                fixes[seed] = [f"{f.matched}→{f.repaired}" for f in findings]
         drafts.append((seed, text))
 
     prompt_hash = hashlib.sha256(prompt_for(args.lang).format(opening=context).encode()).hexdigest()[:12]
