@@ -693,3 +693,57 @@ def test_a_repair_escalates_its_attempt_id_when_the_last_one_was_spent(tmp_path,
 
     assert tags == ["-r3"], "the spent -r2 id is skipped, not reused"
     assert sent == [unit.attempt_id + "-r3"]
+
+
+# ── 8. setting a spent attempt aside must converge, not accumulate ───────────────────────────────
+#
+# Measured cost of the counter naming it replaces: three judge runs on 2026-11-09 left
+# `.superseded-1`, `-2` and `-3` of the same attempts -- 177 directories, 2396 changed paths in git,
+# all describing one call each. A re-run must find the evidence already preserved and leave it alone.
+
+
+def test_a_second_run_does_not_add_another_superseded_copy(tmp_path):
+    attempts = tmp_path / "attempts"
+    root = attempts / "judge-a1"
+    root.mkdir(parents=True)
+    (root / "transport.json").write_text('{"state": "SENT"}', encoding="utf-8")
+    (root / "receipt.json").write_text('{"cost": "0.01"}', encoding="utf-8")
+
+    first = ju._set_aside(root)
+    assert not root.exists() and (attempts / first).exists()
+
+    # A later run rebuilds the plan, leaving a marker-less manifest at the canonical name.
+    root.mkdir()
+    (root / "manifest.json").write_text("{}", encoding="utf-8")
+    ju._discard_unsent(tmp_path, "judge-a1", held={"judge-a1"})
+
+    copies = sorted(p.name for p in attempts.iterdir() if ".superseded-" in p.name)
+    assert len(copies) == 1, f"exactly one preserved copy, got {copies}"
+    assert not root.exists(), "the marker-less leftover is gone, the evidence is not"
+
+
+def test_the_set_aside_name_is_the_content_not_the_run_order(tmp_path):
+    """The property the old counter lacked: identical evidence maps to one name, forever."""
+    first, second = tmp_path / "a1", tmp_path / "a2"
+    for directory in (first, second):
+        directory.mkdir()
+        (directory / "transport.json").write_text('{"state": "SENT"}', encoding="utf-8")
+    assert ju._dir_digest(first) == ju._dir_digest(second), "same bytes, same name"
+
+    (second / "transport.json").write_text('{"state": "UNKNOWN"}', encoding="utf-8")
+    assert ju._dir_digest(first) != ju._dir_digest(second), "different bytes, different name"
+
+
+def test_setting_aside_refuses_to_discard_a_sent_copy(tmp_path, monkeypatch):
+    """If the preserved copy and the canonical one both hold a send, neither may be deleted."""
+    attempts = tmp_path / "attempts"
+    root = attempts / "judge-a1"
+    root.mkdir(parents=True)
+    (root / "transport.json").write_text('{"state": "SENT"}', encoding="utf-8")
+    preserved = ju._set_aside(root)
+
+    root.mkdir()
+    (root / "transport.json").write_text('{"state": "SENT"}', encoding="utf-8")
+    with pytest.raises(ju.JudgeError, match="two sent copies"):
+        ju._set_aside(root)
+    assert (attempts / preserved).exists() and root.exists()

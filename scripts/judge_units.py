@@ -916,20 +916,38 @@ def _purge(path):
     shutil.rmtree(path, ignore_errors=True)
 
 
+def _dir_digest(root):
+    """A stable name for a directory's evidence: every file name and its bytes, sorted."""
+    parts = []
+    for path in sorted(root.iterdir()):
+        if path.is_file():
+            parts.append(path.name.encode() + b"\0" + pp.sha(path.read_bytes()).encode())
+    return pp.sha(b"\n".join(parts))[:16]
+
+
 def _set_aside(root):
-    """Rename a spent directory out of the way, keeping every file inside it.
+    """Rename a spent directory out of the way, keeping every file inside it, IDEMPOTENTLY.
 
     Used only when the LEDGER ALREADY HOLDS the attempt: the call was paid for and reconciled, so
     the next run must not re-send it, but `prepare_attempt` cannot write the name it wants while the
     old directory sits there. Renaming preserves the receipt, response and transport for audit and
     lets the plan be built; the walk then skips the judgement as held, so no money is spent twice.
+
+    The target name is the directory's CONTENT digest, not a counter. A counter made every run add a
+    copy: three runs of the 2026-11-09 judge left `.superseded-1`, `-2` and `-3` of the same attempts
+    -- 177 directories and 2396 changed paths in git, all describing one call each. With the digest
+    the same evidence always lands on the same name, so the second run finds it already set aside and
+    what is left at the canonical path is only the marker-less manifest it just wrote.
     """
-    for suffix in range(1, 100):
-        candidate = root.with_name(root.name + ".superseded-%d" % suffix)
-        if not candidate.exists():
-            root.rename(candidate)
-            return candidate.name
-    raise RuntimeError("too many superseded copies beside %s" % root.name)
+    candidate = root.with_name(f"{root.name}.superseded-{_dir_digest(root)}")
+    if candidate.exists():
+        if any((root / marker).exists() for marker in SENT_MARKERS):
+            raise JudgeError(f"two sent copies of {root.name}; refusing to discard evidence")
+        # Same content already preserved, and this one never sent: a plan-rebuild leftover.
+        _purge(root)
+        return candidate.name
+    root.rename(candidate)
+    return candidate.name
 
 
 def _discard_unsent(evidence_root, attempt_id, held=()):
