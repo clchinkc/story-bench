@@ -626,8 +626,8 @@ def test_repair_invalid_rejudges_only_a_held_judgement_whose_verdict_failed(tmp_
         [_held_pair(unit, None)], ledger=None, confound={}, evidence_root=tmp_path,
         held={unit.attempt_id}, stop_after_failures=3, prepare=prepare, repair_invalid=True)
 
-    assert tags == [ju.REPAIR_TAG], "a repair is tagged, so its attempt id is new"
-    assert sent == [unit.attempt_id + ju.REPAIR_TAG], "the spent slot is never reused"
+    assert tags == ["-r2"], "a repair is tagged, so its attempt id is new"
+    assert sent == [unit.attempt_id + "-r2"], "the spent slot is never reused"
     assert held_back == [], "a repaired judgement is not reported as held back"
     assert lines[0]["failure"] is None
     preserved = directory / "verdict.prior1.json"

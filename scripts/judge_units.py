@@ -1338,8 +1338,6 @@ def _corrective_reattempt(*, judgement, prepare, ledger, confound, evidence_root
     return line, failure, parsed, error
 
 
-REPAIR_TAG = "-r2"
-
 
 def _verdict_path(evidence_root, judgement):
     return pathlib.Path(evidence_root) / "judgements" / judgement.judgement_id / "verdict.json"
