@@ -91,13 +91,21 @@ def synthetic_base(root, *, input_bound=200000):
     catalog = pp.json_bytes({"data": [{"id": model_id, "canonical_slug": canonical}]})
     endpoints = pp.json_bytes({"data": {"id": model_id, "endpoints": [dict(
         tag=tag, provider_name="Fixture", model_id=model_id, context_length=300000,
-        max_prompt_tokens=290000, max_completion_tokens=8000,
+        max_prompt_tokens=290000,
+        # The bound the fixture models: the real judge route publishes 65536, not 8000. This value
+        # gates `JUDGE_MAX_TOKENS`, so pinning it low made the fixture refuse a request the route
+        # accepts -- a test double deciding a production question. The "over the bound" control below
+        # drives its refusal from `input_bound`, so it keeps its teeth either way.
+        max_completion_tokens=65536,
         supported_parameters=["max_tokens", "temperature"],
         pricing=dict(prompt="0.000001", completion="0.000002"))]}})
     profile = dict(kind=pp.SYNTHETIC_KIND, catalog_sha256=pp.sha(catalog),
                    endpoints_sha256=pp.sha(endpoints), model_id=model_id,
                    canonical_model_slug=canonical, endpoint_tag=tag, input_bound=input_bound,
-                   output_bound=8000, reasoning_bound=0, cache_read_bound=0, cache_write_bound=0,
+                   # Matches the payload's `max_completion_tokens` above, and the real route's 65536.
+                   # This is the number `judge_units` validates `max_tokens` against, so leaving it
+                   # at 8000 made the fixture refuse a request the provider accepts.
+                   output_bound=65536, reasoning_bound=0, cache_read_bound=0, cache_write_bound=0,
                    structural_zero=["reasoning_tokens", "cache_read_tokens", "cache_write_tokens",
                                     "request"],
                    no_incremental_infrastructure=True, no_metered_agent=True)
@@ -444,6 +452,25 @@ def test_a_contradiction_is_its_own_error_class_and_still_a_verdict_error():
     assert ju._preference({"better": "cannot_assess"}, {"1": None, "2": None}) == "cannot_assess"
 
 
+def test_both_resolved_true_licenses_any_preference():
+    """The regression control for a gate bug that manufactured contradictions.
+
+    When BOTH submissions resolve true the rubric asserts nothing, so `better: "1"` is legal. The old
+    ternary chain computed `only == "2"` in that case and rejected it — and the corrective re-ask then
+    told the judge "better must name submission 2", false guidance that could coerce a preference the
+    judge never held. Measured on the 2026-11-09 run: 4 of 9 surviving failures were this defect.
+    """
+    both = {"1": True, "2": True}
+    for better in ("1", "2", "tie", "cannot_assess"):
+        assert ju._preference({"better": better}, both) == better, f"{better} must be licensed"
+    # and the exactly-one rule is untouched by the fix
+    with pytest.raises(ju.ResolutionConflict, match="only resolved submission"):
+        ju._preference({"better": "2"}, {"1": True, "2": False})
+    # nor is the asserts-a-preference-without-a-resolved-submission rule
+    with pytest.raises(ju.ResolutionConflict, match="neither submission is resolved true"):
+        ju._preference({"better": "1"}, {"1": False, "2": False})
+
+
 def test_a_correction_quotes_the_rule_and_leaves_the_reply_instruction_last():
     """The correction must not become the last thing read, and must not break the rubric check."""
     criteria = ju.criteria_of(task())
@@ -590,7 +617,7 @@ def test_repair_invalid_rejudges_only_a_held_judgement_whose_verdict_failed(tmp_
     unit = judgement()
     directory = tmp_path / "judgements" / unit.judgement_id
     directory.mkdir(parents=True)
-    (directory / "verdict.json").write_text('{"failure": "judge call did not complete: truncated"}',
+    (directory / "verdict.json").write_text('{"response": {"failure": "judge call did not complete: truncated"}}',
                                             encoding="utf-8")
     sent, tags = [], []
     prepare = _repair_harness(monkeypatch, unit, sent, tags)
@@ -614,7 +641,7 @@ def test_repair_invalid_never_rebuys_a_verdict_that_already_parsed(tmp_path, mon
     unit = judgement()
     directory = tmp_path / "judgements" / unit.judgement_id
     directory.mkdir(parents=True)
-    (directory / "verdict.json").write_text('{"failure": null, "analysis": {}}', encoding="utf-8")
+    (directory / "verdict.json").write_text('{"response": {"failure": null}, "analysis": {}}', encoding="utf-8")
     sent, tags = [], []
     prepare = _repair_harness(monkeypatch, unit, sent, tags)
 
@@ -633,7 +660,7 @@ def test_without_the_flag_a_held_judgement_is_still_never_resent(tmp_path, monke
     unit = judgement()
     directory = tmp_path / "judgements" / unit.judgement_id
     directory.mkdir(parents=True)
-    (directory / "verdict.json").write_text('{"failure": "truncated"}', encoding="utf-8")
+    (directory / "verdict.json").write_text('{"response": {"failure": "truncated"}}', encoding="utf-8")
     sent, tags = [], []
     prepare = _repair_harness(monkeypatch, unit, sent, tags)
 
@@ -643,3 +670,26 @@ def test_without_the_flag_a_held_judgement_is_still_never_resent(tmp_path, monke
 
     assert sent == [] and tags == []
     assert len(held_back) == 1 and lines == []
+
+
+def test_a_repair_escalates_its_attempt_id_when_the_last_one_was_spent(tmp_path, monkeypatch):
+    """A repair that failed leaves its id spent; the next pass must not collide with it.
+
+    Measured need: the 2026-11-09 repair stopped on the repetition guard with 9 failed repairs, whose
+    `-r2` ids were already in the ledger. A fixed tag would have made every later pass refuse to
+    reserve, so the tag escalates rather than the id being reused.
+    """
+    unit = judgement()
+    directory = tmp_path / "judgements" / unit.judgement_id
+    directory.mkdir(parents=True)
+    (directory / "verdict.json").write_text('{"response": {"failure": "truncated"}}', encoding="utf-8")
+    sent, tags = [], []
+    prepare = _repair_harness(monkeypatch, unit, sent, tags)
+
+    _, _, _ = ju._execute_plans(
+        [_held_pair(unit)], ledger=None, confound={}, evidence_root=tmp_path,
+        held={unit.attempt_id, unit.attempt_id + "-r2"}, stop_after_failures=3,
+        prepare=prepare, repair_invalid=True)
+
+    assert tags == ["-r3"], "the spent -r2 id is skipped, not reused"
+    assert sent == [unit.attempt_id + "-r3"]

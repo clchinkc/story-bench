@@ -42,7 +42,12 @@ def verdict(root, judgement_id, control, treatment, a_resolved, d_resolved,
     directory.mkdir(parents=True, exist_ok=True)
     document = {
         "judgement_id": judgement_id, "control_attempt_id": control,
-        "treatment_attempt_id": treatment, "failure": failure,
+        "treatment_attempt_id": treatment,
+        # The real artifact shape: `judge_units._verdict_doc` writes the failure at
+        # `response.failure`, and there is NO top-level `failure` key. Writing the top-level one here
+        # would let a regression to that wrong key pass, which is exactly the bug that let 45
+        # truncated replies enter the estimate as "cannot_assess".
+        "response": {"parse": "failed" if failure else "ok", "failure": failure},
         "analysis": {
             "A": {"resolved": a_resolved, "quality": None, "invalid_kind": None},
             "D": {"resolved": d_resolved, "quality": "win" if d_resolved else "loss",

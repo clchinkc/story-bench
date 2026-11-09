@@ -94,11 +94,11 @@ GENERATION_ROLE = "deployment"
 #
 # 3000 was too small, and the failure was measured rather than suspected. On the 2026-11-09 clean1
 # run, 12 of 15 judge failures were `finish_reason == "length"` -- the reply was cut off mid-object,
-# so a paid call produced no verdict at all, and the route's declared `max_completion_tokens` is far
-# above what we were asking for. 8000 is the largest value that stays inside every bound this code
-# validates against (the route declares 65536; the offline route fixture declares 8000, and it is the
-# tighter of the two), which is what keeps the request provably payable rather than merely large.
-JUDGE_MAX_TOKENS = 8000
+# so a paid call produced no verdict at all. 8000 fixed 19 of 45 such judgements and still truncated
+# 16, which is the evidence for this value: on this route the reply plus its reasoning does not
+# reliably fit below ~10000. The route publishes `max_completion_tokens` 65536, so 16000 is inside the
+# bound the provider actually declares and inside the reservation's output ceiling.
+JUDGE_MAX_TOKENS = 16000
 # Sampling is pinned because a judge that samples is a different judge on every call, and the
 # study's quality gate compares arms across hundreds of calls. A route whose endpoint does not
 # declare `temperature` cannot be pinned, and `_body` refuses it loudly rather than letting the
@@ -469,21 +469,34 @@ def _submission(raw, slot, expected):
 
 
 def _preference(raw, resolved):
-    """The pairwise claim, refused when it contradicts the rubric the judge was given."""
+    """The pairwise claim, refused when it contradicts the rubric the judge was given.
+
+    The rubric names two cases and both are about EXACTLY ONE or NEITHER resolved: "If exactly one
+    submission is resolved true, `better` must be that one. If neither is resolved true, `better` must
+    be tie or cannot_assess." When BOTH are resolved true the rubric asserts nothing, so any of the
+    four outcomes is licensed -- both passed, the judge may still prefer one.
+
+    This was implemented as a chain of ternaries instead of a count, and the chain is wrong at the one
+    point that matters: `"1" if first is True and second is not True else "2" if second is True` makes
+    `only == "2"` when BOTH are true, so a legitimate `better: "1"` was rejected as a contradiction --
+    and the corrective re-ask then told the judge "better must name submission 2", which was FALSE
+    guidance derived from a comparison the rubric never ordered.
+    """
     better = raw["better"]
     if better not in BETTER_OUTCOMES:
         raise VerdictError(f"better {better!r} is not one of {BETTER_OUTCOMES}")
-    first, second = resolved["1"], resolved["2"]
-    only = "1" if first is True and second is not True else "2" if second is True else None
-    if only is not None and better != only:
+    resolved_text = f"resolved={{{', '.join(f'{k}: {v!r}' for k, v in sorted(resolved.items()))}}}"
+    trues = [slot for slot in sorted(resolved) if resolved[slot] is True]
+    if len(trues) == 1:
+        if better != trues[0]:
+            raise ResolutionConflict(
+                f"better must name submission {trues[0]}, the only resolved submission "
+                f"({resolved_text}, better={better!r})")
+        return better
+    if not trues and better not in ("tie", "cannot_assess"):
         raise ResolutionConflict(
-            f"better must name submission {only}, the only resolved submission "
-            f"(resolved={{{', '.join(f'{k}: {v!r}' for k, v in sorted(resolved.items()))}}}, "
-            f"better={better!r})")
-    if only is None and better not in ("tie", "cannot_assess"):
-        raise VerdictError(
-            "neither submission is resolved true; a preference between them is taste the task's "
-            "criteria do not license")
+            f"neither submission is resolved true, yet better={better!r}: a preference between them "
+            f"is taste the task's criteria do not license ({resolved_text})")
     return better
 
 
@@ -1314,6 +1327,19 @@ def _verdict_path(evidence_root, judgement):
     return pathlib.Path(evidence_root) / "judgements" / judgement.judgement_id / "verdict.json"
 
 
+def recorded_failure(document):
+    """The failure a verdict artifact recorded, or None.
+
+    `_verdict_doc` writes it at `response.failure` -- there is no top-level `failure` key. Reading the
+    wrong one is silent and expensive: the first repair pass read the top level, so it saw only the 2
+    judgements with no file at all and missed the 45 whose replies had been truncated, every one of
+    which looked like a clean "cannot_assess" downstream. The top-level read survives only as a
+    fallback so a hand-written fixture keeps working.
+    """
+    failure = (document.get("response") or {}).get("failure")
+    return failure if failure else document.get("failure")
+
+
 def _needs_repair(evidence_root, judgement):
     """(True, why) when this judgement carries no usable verdict: absent, unreadable, or failed.
 
@@ -1329,8 +1355,9 @@ def _needs_repair(evidence_root, judgement):
         document = pp.parse_json(path.read_bytes())
     except (ValueError, OSError):
         return True, "verdict unreadable"
-    if document.get("failure"):
-        return True, str(document["failure"])[:120]
+    failure = recorded_failure(document)
+    if failure:
+        return True, str(failure)[:120]
     return False, None
 
 
@@ -1346,12 +1373,28 @@ def _preserve(path):
     raise JudgeError(f"cannot preserve {path}: too many prior readings")
 
 
-def _prepare_repair(judgement, prepare, evidence_root):
+def _free_repair_tag(judgement, taken):
+    """The first repair attempt id this judgement has never used.
+
+    A repair that fails leaves its attempt id spent, and the guard stops the run; the next pass has
+    to use a NEW id for the same judgement. A fixed `-r2` would collide with the failed attempt and
+    the ledger would refuse the reservation, so the tag escalates: `-r2`, `-r3`, ... The alternative
+    -- reusing the id -- is exactly what the ledger exists to prevent.
+    """
+    for index in range(2, 100):
+        tag = f"-r{index}"
+        if f"{judgement.attempt_id}{tag}" not in taken:
+            return tag
+    raise JudgeError(f"{judgement.judgement_id}: no unused repair attempt id remains")
+
+
+def _prepare_repair(judgement, prepare, evidence_root, taken):
     """Re-judge a held judgement under a new attempt id. None when it needs no repair."""
     needed, reason = _needs_repair(evidence_root, judgement)
     if not needed:
         return None
-    plan, admission, identity, slot_by_arm = prepare(judgement, tag=REPAIR_TAG)
+    plan, admission, identity, slot_by_arm = prepare(
+        judgement, tag=_free_repair_tag(judgement, taken))
     _preserve(_verdict_path(evidence_root, judgement))
     print(f"  {judgement.judgement_id[:58]:58} repairing: {reason}", flush=True)
     return plan, admission, identity, slot_by_arm
@@ -1369,7 +1412,7 @@ def _ledger_hop(judgement, packed, *, held, prepare, repair_invalid, evidence_ro
     if plan.spec.attempt_id not in held:
         return packed, None
     if repair_invalid and prepare is not None:
-        repair = _prepare_repair(judgement, prepare, evidence_root)
+        repair = _prepare_repair(judgement, prepare, evidence_root, held)
         if repair is not None:
             return repair, None
     return None, dict(attempt_id=plan.spec.attempt_id, state="CONSUMED",

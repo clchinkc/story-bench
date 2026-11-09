@@ -61,11 +61,20 @@ def _claims(document, path):
     return (control, treatment), None
 
 
+def _recorded_failure(document):
+    """The failure the artifact recorded, or None. `judge_units` writes it at `response.failure`;
+    there is no top-level key, and reading the wrong one silently admits every truncated reply as if
+    the judge had answered "cannot_assess"."""
+    failure = (document.get("response") or {}).get("failure")
+    return failure if failure else document.get("failure")
+
+
 def _usable(document, path):
     """(index entries, failure note, refusal note) for one verdict document."""
     judgement = document.get("judgement_id", path.parent.name)
-    if document.get("failure") is not None:
-        return None, dict(judgement_id=judgement, failure=str(document["failure"])[:200]), None
+    failure = _recorded_failure(document)
+    if failure is not None:
+        return None, dict(judgement_id=judgement, failure=str(failure)[:200]), None
     claims, refusal = _claims(document, path)
     if refusal is not None:
         return None, None, refusal
