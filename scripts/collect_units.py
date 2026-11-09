@@ -468,9 +468,25 @@ def _cost_text(state, response_bin, attempt_id):
     return ledger_text, (attempt_id, str(provider_cost), provider_micros, actual_micros, ledger_text)
 
 
+def _attempt_dir(evidence_root, attempt_id):
+    """The attempt's directory under one OR MANY evidence roots.
+
+    A ledger outlives an evidence root: every resumed pilot used a fresh `--evidence` (the unit tag
+    changed, so the directory did), and the collector then refused the whole ledger because one early
+    smoke arm lived under a different root. Searching each root in order keeps the refusal for a
+    genuinely missing arm while allowing one ledger to be collected across the runs it actually had.
+    """
+    roots = evidence_root if isinstance(evidence_root, (list, tuple)) else [evidence_root]
+    for root in roots:
+        candidate = Path(root) / "attempts" / attempt_id
+        if candidate.is_dir():
+            return candidate
+    return Path(roots[0]) / "attempts" / attempt_id
+
+
 def _resolve_attempt(evidence_root, attempt_id, state, index):
     """Read one reconciled attempt into (Arm, disagreement, assignment_hash), or refuse."""
-    directory = Path(evidence_root) / "attempts" / attempt_id
+    directory = _attempt_dir(evidence_root, attempt_id)
     if not directory.is_dir():
         raise Refusal(f"attempt {attempt_id} is RECONCILED in the ledger but its evidence directory "
                       f"{directory} does not exist; a paid arm cannot be collected without it")
@@ -510,7 +526,7 @@ def _label_for(attempt_id, directory):
     return attempt_id.split(":", 1)[0]
 
 
-def _walk_ledger(evidence_root, ledger, index):
+def _walk_ledger(evidence_root, ledger, index, scope=()):
     """Every ledger attempt, split into resolved arms and counted skips. This is the only loop
     that decides whether an attempt is collected, so the skip reasons are all in one place.
     """
@@ -519,11 +535,17 @@ def _walk_ledger(evidence_root, ledger, index):
     per_model = defaultdict(lambda: dict(reconciled=0, skipped=Counter(), incomplete=0))
     bound_hash = None
     for attempt_id in _ledger_attempt_ids(ledger):
+        # A ledger outlives a run, and an earlier run may be bound to a DIFFERENT manifest. `scope`
+        # selects one run's attempts by their unit tag; anything outside it is out of this collection
+        # altogether, which is a different statement from "an arm we decided to skip". The
+        # manifest-hash refusal below still applies to everything that IS in scope.
+        if scope and not any(marker in attempt_id for marker in scope):
+            continue
         try:
             state = ledger.attempt(attempt_id)
         except sl.LedgerError as exc:
             raise Refusal(f"attempt {attempt_id}: the ledger cannot describe it: {exc}") from exc
-        directory = Path(evidence_root) / "attempts" / attempt_id
+        directory = _attempt_dir(evidence_root, attempt_id)
         if state.get("state") != "RECONCILED":
             reason = f"state_{str(state.get('state')).lower()}"
             skipped[reason] += 1
@@ -568,15 +590,32 @@ def _select_and_group(arm_records):
 
 
 def _unit_payload(arms):
+    """One unit, carrying the task and attempt ids that make a verdict attachable.
+
+    `task_family` alone does NOT identify a unit: five `beat_interpolation_*` tasks share one family
+    and one sample index, so a 176-unit run collapses to 45 family-level keys. Measured on the clean1
+    run: 176 units, 45 distinct `(model, task_family, sample_id)`. A judge verdict names a `task_id`
+    and two attempt ids, so with the family alone there is no non-guessing way to say which of five
+    tasks a verdict scored -- and a wrong guess would mis-pair the arms invisibly, because every
+    record still parses and the interval still prints.
+
+    `attempt_id` per arm is the exact key: the verdict records `control_attempt_id` and
+    `treatment_attempt_id`, so the join needs no model-name or task-name normalisation at all.
+    Both additions are extra keys to `study_analysis.parse_units`, which validates only the fields it
+    reads; they do not change the estimand.
+    """
     representative = arms[REQUIRED_ARMS[0]].row
     return {
         "cluster_id": representative.cluster_id,
         "model": representative.model,
+        "model_snapshot": representative.model_snapshot,
+        "task_id": representative.task_id,
         "locale": representative.locale,
         "task_family": representative.task_family,
         "sample_id": str(representative.sample),
         "arms": {
             condition: {
+                "attempt_id": arms[condition].attempt_id,
                 "resolved": None,
                 "invalid_kind": arms[condition].invalid_kind,
                 "authority_breach": False,
@@ -621,10 +660,10 @@ def _verify_assignment_hash(assignment_document, observed):
             f"rows by (task, sample, arm) would pair evidence with the wrong row.")
 
 
-def collect(evidence_root, ledger, assignment_document, index):
+def collect(evidence_root, ledger, assignment_document, index, scope=()):
     """Walk the ledger, resolve every settled attempt, and assemble complete units."""
     arm_records, disagreements, skipped, outcomes, per_model, bound_hash = _walk_ledger(
-        evidence_root, ledger, index)
+        evidence_root, ledger, index, scope)
     if arm_records and bound_hash is not None:
         _verify_assignment_hash(assignment_document, bound_hash)
     chosen, superseded = _select_and_group(arm_records)
@@ -681,26 +720,34 @@ def _validate(text):
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__,
                                      formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("--evidence", required=True,
-                        help="evidence root holding attempts/<attempt_id>/")
+    parser.add_argument("--evidence", required=True, action="append",
+                        help="evidence root holding attempts/<attempt_id>/. Repeatable: one ledger "
+                             "outlives a root, because every resumed run used a new --unit and "
+                             "therefore a new directory")
     parser.add_argument("--ledger", required=True, help="canonical spend ledger (SQLite)")
     parser.add_argument("--assignment", required=True, help="the W1 assignment manifest JSON")
     parser.add_argument("--out", required=True, help="JSONL path to write; nothing else is written")
+    parser.add_argument("--unit", action="append", default=None, metavar="TAG",
+                        help="collect only attempts whose id contains this tag (repeatable). One "
+                             "ledger can outlive a run and hold arms bound to other manifests; this "
+                             "scopes the collection to one run rather than refusing the ledger")
     parser.add_argument("--overwrite", action="store_true",
                         help="replace an existing --out; without it an existing file is a refusal")
     args = parser.parse_args(argv)
 
     try:
         assignment_document, index = load_assignment(args.assignment)
-        if not Path(args.evidence).is_dir():
-            raise Refusal(f"evidence root {args.evidence} is not a directory")
+        for root in args.evidence:
+            if not Path(root).is_dir():
+                raise Refusal(f"evidence root {root} is not a directory")
         try:
             ledger = sl.Ledger.open(args.ledger, program_id=PROGRAM_ID, store_id=STORE_ID)
         except sl.LedgerError as exc:
             raise Refusal(f"cannot open ledger {args.ledger} as {PROGRAM_ID}/{STORE_ID}: "
                           f"{exc}") from exc
         ledger_total = len(_ledger_attempt_ids(ledger))
-        collected = collect(args.evidence, ledger, assignment_document, index)
+        collected = collect(args.evidence, ledger, assignment_document, index,
+                            tuple(args.unit or ()))
         text = "".join(json.dumps(unit, ensure_ascii=False) + "\n" for unit in collected.units)
         if collected.units:
             _validate(text)

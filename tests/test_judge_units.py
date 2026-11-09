@@ -319,12 +319,36 @@ def test_judge_subject_confound_is_recorded_with_its_citation(tmp_path):
     assert record["disclosure"]["key"] == "judge.confound_disclosure"
 
 
-def test_an_undisclosed_confound_is_recorded_as_not_found_not_as_a_quote():
+def test_an_undisclosed_confound_is_recorded_as_not_found_not_as_a_quote(tmp_path):
     """No citation beats a fabricated one: the field says what was searched."""
-    record = ju.confound_record(manifest(), STUDY)
+    silent = tmp_path / "study.yaml"
+    silent.write_text("study_id: fixture\njudge: {}\n")
+    record = ju.confound_record(manifest(), silent)
     assert record["overlapping"] is True
     assert record["disclosure"]["found"] is False
     assert record["disclosure"]["searched"]
+
+
+def test_the_real_study_discloses_the_confound_it_actually_has():
+    """The overlap is a frozen-design fact, so the study must state it in its own words."""
+    record = ju.confound_record(manifest(), STUDY)
+    assert record["overlapping"] is True
+    assert record["disclosure"]["found"] is True, record["disclosure"]
+
+
+def test_the_judge_overlaps_a_dated_snapshot_of_the_same_route():
+    """The judge is a CANONICAL SLUG; a row carries a DATED snapshot. Comparing them with `==`
+    says 'no overlap', and that false negative is the one error that would hide a confound
+    inside paid evidence."""
+    judge = "google/gemini-4-argon"
+    assert ju.same_route(judge, "google/gemini-4-argon-20261013")
+    assert ju.same_route("google/gemini-4-argon-20261013", judge)
+    assert not ju.same_route(judge, "google/gemini-4-argon-pro-20261013")
+    record = ju.confound_record(
+        manifest(judge_snapshot=judge, model_snapshot="google/gemini-4-argon-20261013"), STUDY)
+    assert record["overlapping"] is True
+    assert record["affected_arm_runs"] == 2
+    assert record["overlapping_subjects"] == ["google/gemini-4-argon-20261013"]
 
 
 def test_evidence_refuses_a_confound_block_from_another_judge(tmp_path):
@@ -390,3 +414,232 @@ def test_a_consumed_judgement_is_skipped_never_resent(tmp_path, monkeypatch):
     assert lines == [] and stopped is None
     assert held_back == [dict(attempt_id=unit.attempt_id, state="CONSUMED",
                               reason="already held; a consumed judgement is never resent")]
+
+
+# ── 6. a self-contradicting reply is re-asked ONCE, and the rejected reading is kept ─────────────
+#
+# The failure this covers was observed on a paid run: 4 of 11 replies set `resolved` so that exactly
+# one submission was true, then named the OTHER as `better`. The rule is in JUDGE_RULES and the judge
+# still broke it. Discarding those judgements wastes a paid call; deriving the answer from `resolved`
+# would let the harness write a preference the judge never asserted. One re-ask, quoting the judge's
+# own two fields and the rule, is the middle path -- and it never names the answer.
+
+
+def test_a_contradiction_is_its_own_error_class_and_still_a_verdict_error():
+    """Positive control: the one re-askable failure. Negative controls: every consistent reply.
+
+    It must stay a `VerdictError` subclass so every existing handler keeps treating it as an
+    instrument failure rather than crashing on an uncaught type.
+    """
+    assert issubclass(ju.ResolutionConflict, ju.VerdictError)
+    with pytest.raises(ju.ResolutionConflict, match="only resolved submission"):
+        ju._preference({"better": "2"}, {"1": True, "2": False})
+    with pytest.raises(ju.ResolutionConflict):
+        ju._preference({"better": "1"}, {"1": False, "2": True})
+
+    # consistent replies raise nothing, including the two legal non-preference outcomes
+    assert ju._preference({"better": "1"}, {"1": True, "2": False}) == "1"
+    assert ju._preference({"better": "2"}, {"1": False, "2": True}) == "2"
+    assert ju._preference({"better": "tie"}, {"1": False, "2": False}) == "tie"
+    assert ju._preference({"better": "cannot_assess"}, {"1": None, "2": None}) == "cannot_assess"
+
+
+def test_a_correction_quotes_the_rule_and_leaves_the_reply_instruction_last():
+    """The correction must not become the last thing read, and must not break the rubric check."""
+    criteria = ju.criteria_of(task())
+    conflict = ju.ResolutionConflict("better must name submission 2, the only resolved submission")
+    message = ju._corrective_message(conflict)
+    assert "better must name submission 2" in message, "the judge's own contradiction is quoted back"
+    assert "resolved" in message and "better" in message, "it is told which two fields disagree"
+    for directive in ("must be that one", "do not assert a preference"):
+        assert directive in message, "the rule it broke is quoted, not paraphrased from memory"
+
+    _, user = ju.judge_prompt(task(), criteria, {"1": "first prose", "2": "second prose"},
+                              correction=message)
+    assert "CORRECTION REQUIRED" in user
+    assert user.index("CORRECTION REQUIRED") < user.index("Return the JSON object now.")
+    assert user.rstrip().endswith("Return the JSON object now.")
+    ju.assert_prompt_carries_rubric(user, criteria)  # the rubric check survives a correction
+
+    # without a correction the prompt is unchanged: the first call reads exactly as it always did
+    without = ju.judge_prompt(task(), criteria, {"1": "first prose", "2": "second prose"})[1]
+    assert "CORRECTION REQUIRED" not in without
+
+
+def _loop_harness(monkeypatch, unit, errors):
+    """Drive `_execute_plans` offline: record what was sent, and reply from a queue of outcomes."""
+    sent, prepared = [], []
+
+    async def fake_execute(plan, *args, **kwargs):
+        sent.append(plan.spec.attempt_id)
+        return object(), 5, {}
+
+    def fake_outcome(plan, ledger, judgement, slot_by_arm, result, latency_ms, observed, confound,
+                     evidence_root, stem="verdict"):
+        error = errors.pop(0) if errors else None
+        failure = None if error is None else str(error)
+        line = dict(judgement_id=judgement.judgement_id, attempt_id=plan.spec.attempt_id,
+                    state="RECONCILED", cost_usd="0.010000", latency_ms=5, failure=failure,
+                    analysis={}, evidence="e")
+        return line, failure, None, error
+
+    monkeypatch.setattr(ju, "_execute_one", fake_execute)
+    monkeypatch.setattr(ju, "_judge_outcome", fake_outcome)
+
+    def prepare(judgement, correction=None, tag=None):
+        prepared.append(dict(correction=correction, tag=tag))
+        plan = type("P", (), {"spec": type("S", (), {"attempt_id": unit.attempt_id + "-r1"})()})
+        return plan, object(), {}, {"1": "A", "2": "D"}
+
+    first = type("P", (), {"spec": type("S", (), {"attempt_id": unit.attempt_id})()})
+    return sent, prepared, prepare, first
+
+
+def test_a_contradiction_is_reasked_once_and_the_rejected_reading_is_kept(tmp_path, monkeypatch):
+    unit = judgement()
+    sent, prepared, prepare, first = _loop_harness(
+        monkeypatch, unit, [ju.ResolutionConflict("better must name submission 2"), None])
+    directory = tmp_path / "judgements" / unit.judgement_id
+    directory.mkdir(parents=True)
+    (directory / "verdict.json").write_text("{\"first\": true}", encoding="utf-8")
+
+    lines, held_back, stopped = ju._execute_plans(
+        [(unit, (first, object(), {}, {"1": "A", "2": "D"}))], ledger=None, confound={},
+        evidence_root=tmp_path, held=set(), stop_after_failures=3, prepare=prepare)
+
+    assert sent == [unit.attempt_id, unit.attempt_id + "-r1"], "exactly one re-ask, new attempt id"
+    assert len(prepared) == 1 and prepared[0]["tag"] == ju.CORRECTIVE_TAG
+    assert "better must name submission 2" in prepared[0]["correction"]
+    assert len(lines) == 1, "one row per judgement: a re-ask is not a second judgement"
+    assert lines[0]["failure"] is None
+    assert lines[0]["corrective_reask"]["superseded_attempt_id"] == unit.attempt_id
+    assert lines[0]["corrective_reask"]["also_conflicted"] is False
+    assert (directory / "verdict.rejected.json").read_text(encoding="utf-8") == "{\"first\": true}"
+    assert stopped is None
+
+
+def test_a_second_contradiction_is_recorded_not_reasked_a_third_time(tmp_path, monkeypatch):
+    """One re-ask is the budget. A judge that contradicts itself twice is grader-invalid, and the
+    repetition guard still sees a failure so a systematic fault cannot buy 176 calls."""
+    unit = judgement()
+    sent, _, prepare, first = _loop_harness(
+        monkeypatch, unit, [ju.ResolutionConflict("again"), ju.ResolutionConflict("again")])
+
+    lines, _, _ = ju._execute_plans(
+        [(unit, (first, object(), {}, {"1": "A", "2": "D"}))], ledger=None, confound={},
+        evidence_root=tmp_path, held=set(), stop_after_failures=3, prepare=prepare)
+
+    assert sent == [unit.attempt_id, unit.attempt_id + "-r1"], "no third call"
+    assert lines[0]["corrective_reask"]["also_conflicted"] is True
+    assert lines[0]["failure"] is not None
+
+
+def test_a_malformed_reply_is_never_reasked(tmp_path, monkeypatch):
+    """Only a contradiction is re-askable. A reply that is not the schema says the instrument was
+    driven wrong; buying it again is how a run spends its envelope learning nothing."""
+    unit = judgement()
+    sent, prepared, prepare, first = _loop_harness(
+        monkeypatch, unit, [ju.VerdictError("better 'maybe' is not one of ('1', '2')")])
+
+    lines, _, _ = ju._execute_plans(
+        [(unit, (first, object(), {}, {"1": "A", "2": "D"}))], ledger=None, confound={},
+        evidence_root=tmp_path, held=set(), stop_after_failures=3, prepare=prepare)
+
+    assert sent == [unit.attempt_id]
+    assert prepared == []
+    assert lines[0]["failure"].startswith("better 'maybe'")
+
+
+# ── 7. `--repair-invalid`: a spent slot is reused only when its verdict is unusable ─────────────
+#
+# Measured need: on the 2026-11-09 clean1 run 47 of 176 judgements settled with a rejected reply
+# (mostly `finish_reason == "length"`). Their attempt ids were spent, so every later run skipped them
+# and those units lost both arms. Repair is the narrow exception: a held judgement is re-judged only
+# when its STORED verdict carries a failure, under a new `-r2` id, after the old reading is preserved.
+
+
+def _held_pair(unit, verdict_document=None):
+    """(judgement, prepared-plan tuple) shaped exactly as `_prepare_all` returns it."""
+    plan = type("P", (), {"spec": type("S", (), {"attempt_id": unit.attempt_id})()})
+    return unit, (plan, object(), {}, {"1": "A", "2": "D"})
+
+
+def _repair_harness(monkeypatch, unit, sent, tags):
+    async def fake_execute(plan, *args, **kwargs):
+        sent.append(plan.spec.attempt_id)
+        return object(), 1, {}
+
+    def fake_outcome(plan, ledger, judgement, slot_by_arm, result, latency_ms, observed, confound,
+                     evidence_root, stem="verdict"):
+        line = dict(judgement_id=judgement.judgement_id, attempt_id=plan.spec.attempt_id,
+                    state="RECONCILED", cost_usd="0.010000", failure=None, analysis={}, evidence="e")
+        return line, None, None, None
+
+    monkeypatch.setattr(ju, "_execute_one", fake_execute)
+    monkeypatch.setattr(ju, "_judge_outcome", fake_outcome)
+
+    def prepare(judgement, correction=None, tag=None):
+        tags.append(tag)
+        plan = type("P", (), {"spec": type("S", (), {"attempt_id": unit.attempt_id + (tag or "")})()})
+        return plan, object(), {}, {"1": "A", "2": "D"}
+
+    return prepare
+
+
+def test_repair_invalid_rejudges_only_a_held_judgement_whose_verdict_failed(tmp_path, monkeypatch):
+    unit = judgement()
+    directory = tmp_path / "judgements" / unit.judgement_id
+    directory.mkdir(parents=True)
+    (directory / "verdict.json").write_text('{"failure": "judge call did not complete: truncated"}',
+                                            encoding="utf-8")
+    sent, tags = [], []
+    prepare = _repair_harness(monkeypatch, unit, sent, tags)
+
+    lines, held_back, stopped = ju._execute_plans(
+        [_held_pair(unit, None)], ledger=None, confound={}, evidence_root=tmp_path,
+        held={unit.attempt_id}, stop_after_failures=3, prepare=prepare, repair_invalid=True)
+
+    assert tags == [ju.REPAIR_TAG], "a repair is tagged, so its attempt id is new"
+    assert sent == [unit.attempt_id + ju.REPAIR_TAG], "the spent slot is never reused"
+    assert held_back == [], "a repaired judgement is not reported as held back"
+    assert lines[0]["failure"] is None
+    preserved = directory / "verdict.prior1.json"
+    assert preserved.exists(), "the failed reading is kept, not overwritten"
+    assert "truncated" in preserved.read_text(encoding="utf-8")
+    assert stopped is None
+
+
+def test_repair_invalid_never_rebuys_a_verdict_that_already_parsed(tmp_path, monkeypatch):
+    """The guard that keeps a repair pass from paying twice for good judgements."""
+    unit = judgement()
+    directory = tmp_path / "judgements" / unit.judgement_id
+    directory.mkdir(parents=True)
+    (directory / "verdict.json").write_text('{"failure": null, "analysis": {}}', encoding="utf-8")
+    sent, tags = [], []
+    prepare = _repair_harness(monkeypatch, unit, sent, tags)
+
+    lines, held_back, _ = ju._execute_plans(
+        [_held_pair(unit, None)], ledger=None, confound={}, evidence_root=tmp_path,
+        held={unit.attempt_id}, stop_after_failures=3, prepare=prepare, repair_invalid=True)
+
+    assert sent == [] and tags == []
+    assert lines == []
+    assert held_back == [dict(attempt_id=unit.attempt_id, state="CONSUMED",
+                              reason="already held; a consumed judgement is never resent")]
+
+
+def test_without_the_flag_a_held_judgement_is_still_never_resent(tmp_path, monkeypatch):
+    """The default must not change: a failed held verdict stays failed unless repair is asked for."""
+    unit = judgement()
+    directory = tmp_path / "judgements" / unit.judgement_id
+    directory.mkdir(parents=True)
+    (directory / "verdict.json").write_text('{"failure": "truncated"}', encoding="utf-8")
+    sent, tags = [], []
+    prepare = _repair_harness(monkeypatch, unit, sent, tags)
+
+    lines, held_back, _ = ju._execute_plans(
+        [_held_pair(unit, None)], ledger=None, confound={}, evidence_root=tmp_path,
+        held={unit.attempt_id}, stop_after_failures=3, prepare=prepare)
+
+    assert sent == [] and tags == []
+    assert len(held_back) == 1 and lines == []

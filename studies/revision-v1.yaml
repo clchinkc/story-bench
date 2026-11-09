@@ -77,6 +77,29 @@ reasoning_effort:
     "qwen/qwen3.8-max-prime": xhigh # ceiling: catalog offers xhigh/high/medium/low/minimal
     "google/gemini-4-argon": high   # ceiling: catalog offers only high/medium/low
   note: "requesting an unsupported effort is denied by the adapter's own control, so three routes would have been unrunnable at `max`"
+  # Added 2026-11-05 after a paid attempt. OpenRouter accepts ONE reasoning setting: `reasoning.effort`
+  # and `reasoning.max_tokens` together are refused with HTTP 400. That forces a choice, and the
+  # measurement made it: opus at `effort: max` with `max_tokens: 9000` spent 9,000 of 9,000 tokens
+  # reasoning and returned `content: null`, twice, at $0.126 and $0.186 — a billed empty string is not
+  # a measurement. The same harness at `effort: high` (gemini) produced 2,973 reasoning + 3,385 output.
+  # Effort is a policy hint that does not terminate inside a budget; `max_tokens` is a hard split.
+  # So `max` routes are sent a thinking budget, and every other route keeps its declared effort.
+  request_encoding:
+    cap_when_effort_is: [max]
+    # A route whose declared effort does NOT terminate is capped too, whatever that effort is.
+    # Measured, not assumed: at `xhigh`, x-ai/grok-4.7 produced 5,136 output tokens and finished,
+    # while qwen/qwen3.8-max-prime spent all 9,000 completion tokens on reasoning and returned
+    # `content: null` (outcome=truncated) -- so the discriminator is the route, not the effort word.
+    cap_models: ["qwen/qwen3.8-max-prime"]
+    rule: "declared effort in cap_when_effort_is -> reasoning.max_tokens = TASK_TOKEN_CONFIG[family].max_reasoning_tokens; otherwise -> reasoning.effort = the declared value"
+    why: >
+      The trade is explicit rather than hidden. A capped route is no longer asked, on the wire, for its
+      highest effort; it is given the family's thinking budget, which is the only bound that leaves
+      room to write. The declared `per_model` effort stays as the reason the cap is needed, and the
+      admission gate's `effort` text states which of the two encodings the request actually carries, so
+      the record cannot attest to a request that was never made. This is a treatment difference between
+      labs and it is accepted for the same reason the per-model effort already is: excluding six of
+      nine labs would be a larger distortion than encoding them differently.
 
 roster_rationale: >
   Owner decision 2026-10-31 replaced a deliberately constructed roster with one that represents each
@@ -249,6 +272,22 @@ valid_assessment:
   definition: "a unit is assessed when both A and D carry a task-assessable resolved outcome under the authority gates"
   unassessable_is_not_a_tie: true
 
+judge:
+  designated: "google/gemini-4-argon"
+  qualification: "the judge is drawn from the same nine qualified routes that generate the outputs, because those are the only routes this study has qualified; no route outside the roster was qualified to judge, and qualifying one would be a second instrument bought with money this hold does not contain"
+  confound_disclosure: >
+    The judge is ALSO a generation subject: google/gemini-4-argon generates 48 of the 432 rows and
+    judges, so its preference for its own prose cannot be separated from its prose being better.
+    The overlap is not an accident of sampling and it cannot be removed by re-design, because the
+    only qualified judge is one of the subjects. It is therefore DECLARED and carried into the
+    analysis rather than argued away: every judgement is recorded with the overlap as evidence, and
+    the estimand's primary contrast (D minus A, pooled across models) inherits a bias only through
+    the judge's own 48 rows. The gemini-versus-others contrast is the one most exposed and is
+    reported as such, not folded into the pooled number. A reader who does not accept this design
+    fact should read the pooled estimate as conditional on a self-interested judge, and should give
+    the per-model breakdown the weight instead.
+  confound_affected_rows: 48
+
 coverage_threshold: 0.90
 
 retry_limits:
@@ -340,3 +379,45 @@ spend:
       surplus returns to the critic/grading line, which was pinned at 360 for a 359.94 estimate and
       had no room to absorb a re-grade.
     bound_evidence: "scripts/mix_ceiling.py, reading task_mix above; dataset-weighted, measured input"
+    superseded_by: allocations_2026_11_07_overshoot
+  allocations_2026_11_07_overshoot:
+    repair: 90
+    data_judge: 200
+    pilot: 150
+    main: 800
+    reserve: 10
+    total_usd: 1250
+    note: "owner decision 2026-11-07 (option B): cap 1,000 -> 1,250 so main can hold what the measurements require; main 800, data/judge 426 -> 200"
+    bound_evidence: "dispatch_gate.py reservation 776.26 over route-evidence-2026-11-06"
+    supersedes: allocations_2026_11_01_lean
+
+critique_episode:
+  # `critique_improvement` is NOT a single call, so its 72 rows are deferred rather than measured as
+  # if one answer were an episode. The shape below is the harness's own
+  # (`AgenticGenerator.run_critique_improvement`), restated here because the mix price currently
+  # assumes one call per row and that assumption is wrong until this runner exists.
+  rounds: 3
+  calls_per_row: 7          # 1 initial + 3 x (critique, revision)
+  subject_calls: 4
+  critic_calls: 3
+  critic_route: "google/gemini-4-argon"
+  critic_budget: >
+    The critic gets the SAME max_tokens as the subject, and the first paid turn is why: a separate
+    1,500-token critic cap was tried, gemini at `effort: high` spent 1,497 of it thinking and returned
+    zero characters (`outcome: truncated`, $0.0177 for an empty critique). Under `effort` the thinking
+    shares `max_tokens` with the answer, so a cap sized for "just a critique" is a cap sized for
+    nothing. The prompt asks for feedback rather than a rewrite; the budget belongs to the route.
+  critic_rule: >
+    The critic is a SECOND model, never the subject: asking a model to critique its own draft
+    measures self-agreement, not responsiveness to criticism. It is the study's designated judge
+    route because that is the only other qualified route the programme already pays for, and the
+    consequence is disclosed rather than hidden: the route that critiques the revision also scores
+    it, so a critique that is merely agreeable will look like an improvement. The judge-subject
+    confound in `judge.confound_disclosure` therefore extends to this family, and the
+    improvement-trajectory estimand is reported as conditional on it.
+  state_machine: "scripts/critique_episode.py: next_turn(task, transcript, rounds, builder)"
+  budget_consequence: >
+    The declared mix prices every arm-run at one call. Until the runner exists, the 72
+    critique_improvement rows are EXCLUDED from any run (pilot_run --family omits them) and the
+    reservation does not cover them. Admitting them multiplies their cost by seven and requires a
+    re-priced `allocations_*` block; that is why they are deferred rather than quietly run.

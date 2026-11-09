@@ -20,6 +20,7 @@ should not pretend it is a designation.
 from __future__ import annotations
 
 import argparse
+import dataclasses
 import json
 import pathlib
 import sys
@@ -76,50 +77,89 @@ def load_route(base: pathlib.Path, model_id: str):
     raise SystemExit(f"{model_id}: no record in {base}")
 
 
-def study_limits(task_type: str, model: str) -> tuple[str, int, int]:
-    """Effort and token budgets from the SSOTs, never from a literal at the call site.
+@dataclasses.dataclass(frozen=True)
+class Limits:
+    """What the request's reasoning budget depends on, derived from the study once.
+
+    `encoding` exists because the provider accepts exactly ONE reasoning setting: `effort` and
+    `max_tokens` together are refused with HTTP 400. So a route is asked for its effort OR given a
+    thinking budget, never both, and which one is a study-level rule rather than a choice made at
+    each call site.
+    """
+    effort: str
+    encoding: str
+    max_tokens: int
+    reasoning_max_tokens: int
+
+
+def _study() -> dict:
+    import yaml  # noqa: PLC0415
+
+    return yaml.safe_load((REPO / "studies" / "revision-v1.yaml").read_text(encoding="utf-8"))
+
+
+def declared_encoding(study: dict, effort: str, model: str | None = None) -> str:
+    """`effort` or `max_tokens`, read from the study's rule instead of decided here.
+
+    Two ways a route lands in the capped set, and both are measured rather than inferred: its
+    declared effort is one that does not terminate inside a budget, or the route itself was observed
+    returning `content: null` at its own effort.
+    """
+    rule = (study.get("reasoning_effort") or {}).get("request_encoding") or {}
+    capped = rule.get("cap_when_effort_is")
+    if not isinstance(capped, list):
+        raise SystemExit(
+            "studies/revision-v1.yaml declares no reasoning_effort.request_encoding.cap_when_effort_is; "
+            "refusing to guess which reasoning setting a request carries — a guess here is the "
+            "difference between a measured output and a billed empty string")
+    if model and model in (rule.get("cap_models") or []):
+        return "max_tokens"
+    return "max_tokens" if effort in capped else "effort"
+
+
+def study_limits(task_type: str, model: str) -> Limits:
+    """Effort, encoding and token budgets from the SSOTs, never from a literal at the call site.
 
     `max_tokens=6000` was hardcoded for every family and `effort="max"` for every model, while the
-    study declares a cap PER FAMILY (constrained_continuation 8000, multi_beat_synthesis 10000) and a
-    ceiling PER MODEL (grok and qwen xhigh, gemini high). Two consequences, both paid for: three
+    study declares a cap PER FAMILY (constrained_continuation 8000, multi_beat_synthesis 10000) and
+    a ceiling PER MODEL (grok and qwen xhigh, gemini high). Two consequences, both paid for: three
     families were guaranteed to truncate, and opus -- told `effort: max` with no reasoning budget --
-    spent all 6,000 completion tokens thinking and returned `content: null`, twice, at $0.126 each.
+    spent every completion token thinking and returned `content: null`.
 
-    The budget returns with the caps because `max_tokens` alone is not a guard: it bounds reasoning
-    AND output together, so a maximising model can spend it all before writing a word.
+    The allowance is the family's OUTPUT budget PLUS its reasoning budget, because `max_tokens`
+    bounds reasoning AND output together. Under `effort` that is only room to think; under
+    `max_tokens` it is a hard split.
     """
-    import yaml
-
     from llm_client import TASK_TOKEN_CONFIG  # noqa: PLC0415
 
-    study = yaml.safe_load((REPO / "studies" / "revision-v1.yaml").read_text(encoding="utf-8"))
+    study = _study()
     effort = study["reasoning_effort"]["per_model"][model]
     config = TASK_TOKEN_CONFIG[task_type]
-    # The completion allowance is the family's OUTPUT budget PLUS its reasoning budget, because the
-    # provider accepts only one reasoning setting and the study's choice is to keep the effort
-    # (`reasoning_effort.per_model`) and let the model decide how much to think. `max_tokens` is the
-    # only remaining bound, so it has to cover both halves or the effort guarantees nothing: opus
-    # spent 6,000 of 6,000 on reasoning under `effort: max` and returned `content: null` twice.
-    return effort, config["max_tokens"] + config["max_reasoning_tokens"], config["max_reasoning_tokens"]
+    return Limits(effort=effort,
+                  encoding=declared_encoding(study, effort, model),
+                  max_tokens=config["max_tokens"] + config["max_reasoning_tokens"],
+                  reasoning_max_tokens=config["max_reasoning_tokens"])
 
 
-def request_fields(task: dict, effort: str, max_tokens: int,
-                   reasoning_max_tokens: int | None = None) -> pa.RequestFields:
+def request_fields(task: dict, limits: Limits) -> pa.RequestFields:
+    """The request, carrying the ONE reasoning setting the study's rule selects.
+
+    Measured, not argued: `effort: max` with `max_tokens: 9000` spent 9,000 of 9,000 tokens on
+    reasoning and returned zero characters at $0.186, while `effort: high` on the same harness
+    produced 2,973 reasoning plus 3,385 output. Effort does not terminate inside a budget, so the
+    routes the study marks `max` are given a thinking budget instead — and the effort they were
+    declared with stays in the study as the reason for that choice.
+    """
     from generator import PromptBuilder  # noqa: PLC0415
 
     system = PromptBuilder.build_system_prompt(task["task_type"])
     user = PromptBuilder.build_user_prompt(task)
-    # The provider accepts ONE reasoning setting, so the budget wins over the effort whenever both
-    # are known. The effort is the study's declared treatment; the budget is what stops a maximising
-    # model spending the whole completion allowance on thinking and returning `content: null` -- which
-    # is exactly what opus did twice at $0.126. A treatment that produces no text measures nothing,
-    # so the budget is kept and the omission is recorded rather than silent: the spec's `effort`
-    # becomes `tokens:<budget>`, which is what the request actually carries.
-    # Effort ONLY: the provider refuses the two together, and the study's decision is to keep the
-    # per-model effort as its declared treatment. `max_tokens` carries the room that the effort
-    # cannot bound -- see `study_limits`.
-    return pa.RequestFields(messages=(("system", system), ("user", user)),
-                            max_tokens=max_tokens, reasoning_effort=effort)
+    messages = (("system", system), ("user", user))
+    if limits.encoding == "max_tokens":
+        return pa.RequestFields(messages=messages, max_tokens=limits.max_tokens,
+                                reasoning_max_tokens=limits.reasoning_max_tokens)
+    return pa.RequestFields(messages=messages, max_tokens=limits.max_tokens,
+                            reasoning_effort=limits.effort)
 
 
 def artifacts_for(row: dict, fields, assignment: bytes, base: pathlib.Path) -> dict[str, bytes]:
@@ -140,7 +180,8 @@ def artifacts_for(row: dict, fields, assignment: bytes, base: pathlib.Path) -> d
 
 def spec_for(row: dict, attempt: dict, effort: str, artifacts: dict[str, bytes],
              assignment_hash: str, *, envelope: str = "pilot",
-             cost_role: str = "deployment") -> pa.AttemptSpec:
+             cost_role: str = "deployment",
+             activity_role: str = "generation") -> pa.AttemptSpec:
     """The attempt's identity, with the envelope as a PARAMETER.
 
     It was hardcoded to `pilot`, which meant every attempt built through the only path that can
@@ -158,7 +199,7 @@ def spec_for(row: dict, attempt: dict, effort: str, artifacts: dict[str, bytes],
         harness_sha256=pp.sha(by["harness"]), protocol_sha256=pp.sha(by["protocol"]),
         settings_sha256=pp.sha(by["settings"]), effort=effort,
         parent_attempt_id=None, retry_index=0, max_attempts=1,
-        envelope=envelope, cost_role=cost_role, activity_role="generation",
+        envelope=envelope, cost_role=cost_role, activity_role=activity_role,
         program_id=PROGRAM_ID, store_id=STORE_ID,
         native_package_sha256=pp.sha(by["native_package"]), artifacts=refs)
 
@@ -187,13 +228,12 @@ def main() -> int:
     if snapshot.qualification != "c8_verified":
         raise SystemExit(f"{row['model']}: qualification {snapshot.qualification!r} is not c8_verified")
 
-    effort = "max"
-    max_tokens = 6000
-    fields = request_fields(row["task"], effort, max_tokens)
+    limits = study_limits(row["task"]["task_type"], row["model"])
+    fields = request_fields(row["task"], limits)
     artifacts = artifacts_for(row, fields, raw, args.base)
     attempt = dict(attempt_id=dr.attempt_id(row["model"], "rehearsal-u0", row["condition"]),
                    unit_id="rehearsal-u0")
-    spec = spec_for(row, attempt, effort, artifacts, digest(manifest))
+    spec = spec_for(row, attempt, limits.effort, artifacts, digest(manifest))
     plan = pa.prepare_attempt(spec, snapshot, tuple(sorted(artifacts.items())), fields, args.evidence)
 
     print(f"  route        : {row['model']} ({snapshot.route.endpoint_tag})")

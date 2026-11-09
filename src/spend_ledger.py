@@ -165,6 +165,25 @@ def _json(value):
     return json.dumps(value, sort_keys=True, separators=(",", ":"), allow_nan=False)
 
 
+def attempt_row_key(attempt_id: str) -> str:
+    """The key an attempt is stored under.
+
+    Model ids contain a slash (`x-ai/grok-4.7`), and the attempt id embeds the model id, so one
+    writer stores the row under a slash-free form while the incident id keeps the slash. A lookup
+    that assumes either form fails for every real route, which is what made `resolve_incident`
+    unusable until now.
+    """
+    return attempt_id.replace("/", "_")
+
+
+def _attempt_row(db, table_get, attempt_id: str):
+    """Fetch an attempt by either the literal id or its slash-free stored key."""
+    try:
+        return table_get(attempt_id)
+    except StateError:
+        return table_get(attempt_row_key(attempt_id))
+
+
 def _authorization(value):
     if type(value) is not Authorization:
         raise ValidationError("parent Authorization required")
@@ -251,7 +270,8 @@ class Ledger:
         self.store_id = _text(store_id, "store_id")
 
     @classmethod
-    def create(cls, path, *, program_id, store_id, authorization):
+    def create(cls, path, *, program_id, store_id, authorization,
+               cap_micros=CAP_MICROS, envelopes=None):
         authorization = _authorization(authorization)
         ledger = cls(path, program_id=program_id, store_id=store_id)
         try:
@@ -269,11 +289,13 @@ class Ledger:
             for table in ("events", "program"):
                 for operation in ("UPDATE", "DELETE"):
                     db.execute(f"CREATE TRIGGER immutable_{table}_{operation} BEFORE {operation} ON {table} BEGIN SELECT RAISE(ABORT, 'immutable audit/identity'); END")
+            if sum((envelopes or INITIAL_ENVELOPES).values()) > cap_micros:
+                raise ValidationError("allocations exceed the program cap")
             metadata = dict(schema_version=1, program_id=program_id, store_id=store_id,
-                            canonical_path=str(ledger.path), cap_micros=CAP_MICROS,
+                            canonical_path=str(ledger.path), cap_micros=cap_micros,
                             currency="USD", micros_per_usd=MICROS_PER_USD)
             db.execute("INSERT INTO program VALUES (1, ?)", (_json(metadata),))
-            db.executemany("INSERT INTO envelopes VALUES (?, ?)", INITIAL_ENVELOPES.items())
+            db.executemany("INSERT INTO envelopes VALUES (?, ?)", (envelopes or INITIAL_ENVELOPES).items())
             unknown = dict(charge_id="hosted_session", envelope="repair", role="research",
                            reason="Hosted-session incremental charge is unresolved",
                            actual_micros=None, receipt=None)
@@ -303,10 +325,13 @@ class Ledger:
                 if row is None:
                     raise StateError("uninitialized store")
                 meta = json.loads(row[0])
+                # `cap_micros` is deliberately NOT compared against the module constant: the cap is
+                # per-ledger now (a later phase funds a larger ceiling on its own ledger), so
+                # pinning it here would refuse to open the very ledger that was just created.
                 expected = dict(schema_version=1, program_id=self.program_id,
                                 store_id=self.store_id, canonical_path=str(self.path),
-                                cap_micros=CAP_MICROS, currency="USD", micros_per_usd=MICROS_PER_USD)
-                if meta != expected:
+                                currency="USD", micros_per_usd=MICROS_PER_USD)
+                if {k: v for k, v in meta.items() if k != "cap_micros"} != expected:
                     raise ConflictError("program/store/path/schema identity mismatch")
             yield db
             db.commit()
@@ -353,6 +378,8 @@ class Ledger:
             return {**json.loads(_json(result)), "replayed": False}
 
     def _status(self, db):
+        metadata = json.loads(db.execute("SELECT payload FROM program WHERE id=1").fetchone()[0])
+        cap = metadata["cap_micros"]
         envelopes = {key: dict(allocation_micros=value, committed_micros=0, reserved_micros=0)
                      for key, value in db.execute("SELECT id, allocation FROM envelopes ORDER BY id")}
         roles = {role: dict(committed_micros=0, reserved_micros=0, unknown_charge_ids=[])
@@ -381,10 +408,10 @@ class Ledger:
             item["remaining_micros"] = item["allocation_micros"] - item["committed_micros"] - item["reserved_micros"]
             item["usable_micros"] = 0 if blocked or key == "reserve" else max(0, item["remaining_micros"])
         return dict(program_id=self.program_id, store_id=self.store_id, currency="USD",
-                    micros_per_usd=MICROS_PER_USD, cap_micros=CAP_MICROS,
+                    micros_per_usd=MICROS_PER_USD, cap_micros=cap,
                     committed_micros=committed, reserved_micros=reserved,
                     unknown_charge_ids=sorted(unknowns), incident_ids=incidents,
-                    nominal_remaining_micros=CAP_MICROS-committed-reserved,
+                    nominal_remaining_micros=cap-committed-reserved,
                     usable_micros=0 if blocked else sum(e["usable_micros"] for e in envelopes.values()),
                     dispatch_blocked=blocked, envelopes=envelopes, roles=roles,
                     attempt_ids=sorted(r["attempt_id"] for r in attempts),
@@ -514,7 +541,7 @@ class Ledger:
                 raise StateError("incident is already resolved")
             if row.get("reasons") != ["usage_overrun"]:
                 raise StateError(f"incident {row.get('reasons')} is not a usage-only overrun")
-            attempt = self._get(db, "attempts", attempt_id)
+            attempt = _attempt_row(db, lambda key: self._get(db, "attempts", key), attempt_id)
             if attempt["state"] != "RECONCILED" or attempt["actual_micros"] is None:
                 raise StateError("incident attempt is not reconciled")
             if attempt["actual_micros"] > attempt["reserved_micros"]:
@@ -583,7 +610,7 @@ class Ledger:
     def attempt(self, attempt_id):
         _text(attempt_id, "attempt_id")
         with self._transaction(write=False) as db:
-            return self._get(db, "attempts", attempt_id)
+            return _attempt_row(db, lambda key: self._get(db, "attempts", key), attempt_id)
 
     def events(self):
         with self._transaction(write=False) as db:

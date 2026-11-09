@@ -164,6 +164,36 @@ def test_successful_dispatch_receipt_and_exact_event_attempt_census(ledger):
     assert ledger.events()[0]["payload"]["metadata"]["cap_micros"] == CAP_MICROS
 
 
+def test_a_ledger_carries_its_own_cap_and_envelopes(tmp_path):
+    """Cap is per-ledger, not a module constant.
+
+    Raising the programme total from 1,000 to 1,250 (owner decision 2026-11-07) cannot happen on the
+    existing ledger: its `program` row is trigger-immutable and `create` is one-way. So a later phase
+    funds its own ledger, and both the identity check and `status()` have to read the cap that was
+    CREATED rather than the constant -- otherwise the new ledger refuses to open on every call.
+    """
+    import spend_ledger as sl
+    path = Path(tmp_path).resolve() / "phase2.sqlite3"
+    envelopes = dict(repair=90_000_000, data_judge=200_000_000, pilot=150_000_000,
+                     main=800_000_000, reserve=10_000_000)
+    sl.Ledger.create(path, program_id="story-bench", store_id="revision-v1",
+                     authorization=sl.Authorization("PAID-PILOT-2026-11-07", "a" * 64, "phase 2 cap"),
+                     cap_micros=1_250_000_000, envelopes=envelopes)
+    status = sl.Ledger.open(path, program_id="story-bench", store_id="revision-v1").status()
+    assert status["cap_micros"] == 1_250_000_000
+    assert status["envelopes"]["main"]["allocation_micros"] == 800_000_000
+    assert sum(e["allocation_micros"] for e in status["envelopes"].values()) == 1_250_000_000
+
+
+def test_allocations_above_the_cap_are_refused(tmp_path):
+    import spend_ledger as sl
+    path = Path(tmp_path).resolve() / "over.sqlite3"
+    with pytest.raises(sl.ValidationError, match="exceed the program cap"):
+        sl.Ledger.create(path, program_id="p", store_id="s",
+                         authorization=sl.Authorization("PAID-PILOT-2026-11-07", "a" * 64, "over"),
+                         cap_micros=1_000_000, envelopes=dict(main=2_000_000))
+
+
 def test_initial_envelopes_match_the_study():
     """The ledger's envelope split IS the study's allocation, or the next edit is a silent fork.
 

@@ -85,37 +85,27 @@ cross_beat_constraints:
 
 word_count: [700, 1000]
 
+# NOTE 2026-11-05: evaluation_criteria was a MAPPING (beat_specific + cross_beat), which
+# `scripts/judge_units.py` refuses by design -- a mapping has no criterion ids, and flattening
+# it in code would invent them. The same requirements are restated here as a flat list of
+# {criterion, description} items, one per beat plus the cross-beat constraints, so the judge
+# scores exactly what this task already demanded. No requirement was added or dropped.
 evaluation_criteria:
-  beat_specific:
-    beat_1:
-      - "Clear departure from Cape Coast"
-      - "Point of no return"
-      - "Immediate danger at threshold"
-      - "Wits used over force"
-      - "Internal shift shown"
-    beat_2:
-      - "Uncertain ally encounter"
-      - "Commitment test"
-      - "Adaptive response to obstacle"
-      - "Language skills crucial"
-      - "New resistance knowledge"
-    beat_3:
-      - "Near stronghold location"
-      - "Preparation/steeling moment"
-      - "Cost recognition"
-      - "Final obstacle"
-      - "Resist vs survive theme"
-
-  cross_beat:
-    - criterion: "chekhovs_gun"
-      description: "Skill from Beat 1 essential in Beat 3"
-    - criterion: "identity_transformation"
-      description: "Self-perception evolves: servant → capable → fighter"
-    - criterion: "escalating_danger"
-      description: "Physical danger increases each beat"
-    - criterion: "thematic_thread"
-      description: "Knowledge as resistance present in all beats"
-    - criterion: "word_count_valid"
-      description: "Output is between 700-1000 words total"
-    - criterion: "context_maintained"
-      description: "Historical setting, protagonist, conflict consistent"
+  - criterion: "beat_1_crossing_first_threshold"
+    description: "Beat 1 (Crossing the First Threshold) contains every one of: a clear departure from Cape Coast; a point of no return; immediate danger or obstacle at the threshold; wits used rather than force; and an internal shift from servant-scholar to active resistance."
+  - criterion: "beat_2_tests_allies_enemies"
+    description: "Beat 2 (Tests, Allies, Enemies) contains every one of: an ally whose loyalty is uncertain; a test that proves her commitment to the cause; an enemy or obstacle that forces her to adapt; her language skills becoming crucial; and new knowledge about the resistance."
+  - criterion: "beat_3_approach_inmost_cave"
+    description: "Beat 3 (Approach to the Inmost Cave) contains every one of: the approach to the stronghold; a preparation or steeling moment; recognition of what the confrontation will cost; a final obstacle; and the resist-versus-survive theme."
+  - criterion: "chekhovs_gun"
+    description: "Skill from Beat 1 essential in Beat 3"
+  - criterion: "identity_transformation"
+    description: "Self-perception evolves: servant -> capable -> fighter"
+  - criterion: "escalating_danger"
+    description: "Physical danger increases each beat"
+  - criterion: "thematic_thread"
+    description: "Knowledge as resistance present in all beats"
+  - criterion: "word_count_valid"
+    description: "Output is between 700-1000 words total"
+  - criterion: "context_maintained"
+    description: "Historical setting, protagonist, conflict consistent"

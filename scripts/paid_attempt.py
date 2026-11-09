@@ -76,7 +76,8 @@ def gates(record: dict, assignment_hash: str, route_sha256: str, valid_until: st
 
 
 def prepared(base: pathlib.Path, raw: bytes, index: int, unit_id: str,
-             evidence_root: pathlib.Path):
+             evidence_root: pathlib.Path, *, fields=None, model=None, attempt_id=None,
+             spend=None):
     """One prepared attempt: everything that can be refused for free, before a ledger is touched.
 
     Takes explicit values rather than argparse output so the pilot runner can call it per row --
@@ -87,32 +88,41 @@ def prepared(base: pathlib.Path, raw: bytes, index: int, unit_id: str,
         raise SystemExit("manifest records no judge designation; refusing to spend on it")
     row = manifest["assignments"][index]
     assignment_hash = digest(manifest)
-    record, endpoints, profile, artifact = reh.load_route(base, row["model"])
+    # A critique episode sends seven requests for one row, alternating between two routes, with
+    # prompts built by a different builder. Rather than a second implementation of the money path,
+    # the caller may supply the fields, the route and the id; everything else -- qualification,
+    # gates, artifacts, admission -- is the same code a single-call row goes through.
+    route_model = model or row["model"]
+    record, endpoints, profile, artifact = reh.load_route(base, route_model)
     identity = record["route_identity"]
     snapshot = pp.validate_snapshot(
         ((base / "openrouter-models.json").read_bytes(), endpoints, profile, artifact),
         reh._route(identity), identity["observed_at"], identity["expires_at"])
     if snapshot.qualification != pp.QUALIFICATION_FOR_KIND[pp.VERIFIED_KIND]:
         raise SystemExit(f"{row['model']}: qualification {snapshot.qualification!r} is not payable")
-    # Per-family cap, per-model effort, and an explicit reasoning budget -- all from the study's own
-    # SSOTs. A literal here is what produced zero-character opus runs at $0.126 each.
-    effort, max_tokens, reasoning_max = reh.study_limits(row["task"]["task_type"], row["model"])
-    fields = reh.request_fields(row["task"], effort, max_tokens, reasoning_max)
+    # Per-family cap, per-model effort, and the ONE reasoning setting the study's rule selects --
+    # all from the study's own SSOTs. A literal here is what produced zero-character opus runs.
+    if fields is None:
+        limits = reh.study_limits(row["task"]["task_type"], route_model)
+        fields = reh.request_fields(row["task"], limits)
     # The eight gate artifacts must be part of the PLAN's artifact set: `_admit` requires every
     # authority ref to be an artifact the request already carries ("unbound gate evidence"
     # otherwise). They are derived from the record's own statuses, and the route hash they bind to
     # is the one the plan will carry, so they are computed before the plan rather than after it.
     route_sha256 = pp.sha(reh.json_bytes(dataclasses.asdict(reh._route(identity))))
     gate_blobs = gates(record, assignment_hash, route_sha256, identity["expires_at"])
-    artifacts = dict(reh.artifacts_for(row, fields, raw, base)) | gate_blobs
+    turn_row = {**row, "model": route_model, "model_snapshot": identity["canonical_model_slug"]}
+    artifacts = dict(reh.artifacts_for(turn_row, fields, raw, base)) | gate_blobs
     # The unit tag is explicit because an attempt id is ONE ledger slot, forever. The first smoke
     # attempt now sits in UNKNOWN and can never be resent, so a second call has to be a different
     # unit -- and the id must say which one it is rather than silently colliding.
     plan = pa.prepare_attempt(
-        reh.spec_for(row, dict(attempt_id=dr.attempt_id(row["model"], unit_id, row["condition"]),
-                               unit_id=unit_id),
+        reh.spec_for(turn_row,
+                     dict(attempt_id=attempt_id or dr.attempt_id(row["model"], unit_id,
+                                                                row["condition"]),
+                          unit_id=unit_id),
                      fields.reasoning_effort or f"tokens:{fields.reasoning_max_tokens}",
-                     artifacts, assignment_hash),
+                     artifacts, assignment_hash, **(spend or {})),
         snapshot, tuple(sorted(artifacts.items())), fields, evidence_root)
     admission = pa.Admission(
         mode=snapshot.qualification,

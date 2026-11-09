@@ -129,13 +129,19 @@ def test_verified_route_reserves_the_request_not_the_profile_worst_case(tmp_path
     """
     plan, _, _, _ = make_verified_case(tmp_path, max_tokens=40)
     census = {c.kind: c for c in plan.census}
-    assert census["output_tokens"].max_units == 40 < OUTPUT_BOUND
-    assert census["input_tokens"].max_units == len(plan.body_bytes) < BOUND
+    prompt_bound = pa._prompt_token_bound(plan.body_bytes)
+    # `max_tokens` is not a hard cap: grok was sent 9,000 and billed 13,405. The reservation carries
+    # the overshoot factor, so the assertion is against the factor, not the request.
+    assert census["output_tokens"].max_units == 40 * pa.OUTPUT_OVERSHOOT
+    # Bytes are NOT tokens: a paid call billed 5,308 prompt tokens for a 4,808-byte body, so this
+    # bound is a multiple of the body rather than the body itself.
+    assert prompt_bound > len(plan.body_bytes)
+    assert census["input_tokens"].max_units == prompt_bound < BOUND
     # Cache is bounded by the prompt, not by zero: providers cache implicitly, and reserving
     # zero turned a legitimate cache hit into a `usage_overrun` -- a permanent incident that
     # blocks the ledger. The claim is still "leaner than the profile's worst case".
-    assert census["cache_read_tokens"].max_units == len(plan.body_bytes) < BOUND
-    assert census["cache_write_tokens"].max_units == len(plan.body_bytes) < BOUND
+    assert census["cache_read_tokens"].max_units == prompt_bound < BOUND
+    assert census["cache_write_tokens"].max_units == prompt_bound < BOUND
     assert plan.deadline_seconds == pa.MAX_DEADLINE_SECONDS
 
 

@@ -320,6 +320,31 @@ def test_R05_zero_receipt_not404_absence(tmp_path):
     assert other[1].attempt("attempt-1")["state"] == "UNKNOWN"
 
 
+def test_a_dated_route_matches_its_canonical_slug():
+    """A manifest records the judge as a canonical slug; the route carries the dated snapshot.
+
+    Comparing them literally refuses every research call, and the same comparison was written
+    wrongly in three places before it was one helper.
+    """
+    assert pa._same_route("google/gemini-4-argon", "google/gemini-4-argon-20261013")
+    assert pa._same_route("google/gemini-4-argon-20261013", "google/gemini-4-argon")
+    assert not pa._same_route("google/gemini-4-argon", "google/gemini-4-argon-pro-20261013")
+    assert not pa._same_route("anthropic/claude-opus-5.5", "google/gemini-4-argon-20261013")
+
+
+def test_census_prompt_bound_covers_more_tokens_than_bytes(tmp_path):
+    """Bytes are not tokens. openai/gpt-6.1-sol-pro billed 5,308 prompt tokens for a 4,808-byte
+    body (1.10 per byte); reserving `len(body)` left the reservation 522 short, reconcile called it
+    `usage_overrun`, and an overrun is a PERMANENT incident — one ordinary call blocked the whole
+    programme from dispatching."""
+    plan, _, _, _ = make_case(tmp_path)
+    body = plan.body_bytes
+    assert pa.TOKENS_PER_BYTE >= 1.10
+    assert pa._prompt_token_bound(body) >= int(len(body) * 1.10) + 1
+    line = {c.kind: c for c in plan.census}["input_tokens"]
+    assert line.max_units == pa._prompt_token_bound(body) > len(body)
+
+
 @pytest.mark.parametrize("phase", ["header", "body"])
 def test_C05_absolute_deadline_retains_liability(tmp_path, phase, monkeypatch):
     case = make_case(tmp_path)
@@ -488,13 +513,14 @@ def test_C02_different_send_event_cannot_gain_permission(tmp_path):
 
 
 def test_C03_processes_contend_last_envelope_capacity(tmp_path):
-    # One lean quote must exceed HALF the unchanged $100 repair envelope, or both attempts fit and
-    # nothing contends. The census now bounds the cache kinds by the prompt instead of assuming
-    # zero, so a quote carries ~1,339 priced units rather than ~513; at 0.05 that is 66.95, and two
-    # of them are 133.90, so exactly one fits. The rate moved because the unit count did -- the
-    # property (one wins, one is denied) did not.
-    first = make_case(tmp_path, cost_rate="0.05")
-    second = make_case(tmp_path, attempt_id="other", cost_rate="0.05", ledger=first[1])
+    # One lean quote must exceed HALF the repair envelope ($90), or both attempts fit and nothing
+    # contends. Two changes have moved the unit count since this test was written: the census now
+    # bounds the cache kinds by the prompt instead of assuming zero, and it bounds the prompt by
+    # `TOKENS_PER_BYTE` because a provider billed 1.10 tokens per body byte. At 0.03 a quote is
+    # $77.52 against $90, and two of them are $155.04, so exactly one fits. The rate moved because
+    # the unit count did -- the property (one wins, one is denied) did not.
+    first = make_case(tmp_path, cost_rate="0.03")
+    second = make_case(tmp_path, attempt_id="other", cost_rate="0.03", ledger=first[1])
     ctx = multiprocessing.get_context("spawn"); queue = ctx.Queue()
     processes = [ctx.Process(target=_child_execute, args=(c[0], c[1].path, c[2], b'{}', queue)) for c in (first, second)]
     for process in processes:process.start()

@@ -224,6 +224,23 @@ def _endpoint(snapshot):
     return next(e for e in parse_json(snapshot._sources[1])["data"]["endpoints"] if e["tag"] == snapshot.route.endpoint_tag)
 
 
+_DATED_SNAPSHOT = re.compile(r"^(?P<stem>.+?)-(?P<date>\d{8})$")
+
+
+def _same_route(a, b) -> bool:
+    """Same route, allowing one side to be the dated snapshot.
+
+    A manifest records the judge as its CANONICAL SLUG (`google/gemini-4-argon`) while the route
+    carries the dated form (`google/gemini-4-argon-20261013`), so a plain comparison fails for every
+    research call. This is the third place the same comparison was written wrongly; it is one
+    helper now rather than three expressions.
+    """
+    def stem(value):
+        match = _DATED_SNAPSHOT.match(str(value))
+        return match.group("stem") if match else str(value)
+    return stem(a) == stem(b)
+
+
 def _body(fields, snapshot):
     if type(fields) is not RequestFields or type(fields.messages) is not tuple or not fields.messages:
         raise ValidationError("finite immutable request fields required")
@@ -277,8 +294,21 @@ def _request_bounds(profile, fields, body):
     enables (`effort: max` could spend the whole completion budget at an `internal_reasoning` rate
     while reserving zero). Reasoning is a subset of completion, so its worst case is `max_tokens`
     under `effort`, or the explicit ceiling when one is given.
+
+    A THIRD hole was found by a paid call, and it is the reason this reservation is generous:
+    `reasoning.max_tokens` is NOT a hard provider cap. meta/muse-wonder was sent a 3,000-token
+    thinking budget and billed 4,494 reasoning tokens -- a `usage_overrun`, which is a permanent
+    incident. Reasoning cannot exceed completion, so the executable ceiling is `max_tokens`; the
+    requested budget is a floor, not the bound. Reasoning is priced at zero on every route in this
+    roster, so the larger figure costs nothing to hold.
     """
-    needed = fields.max_tokens if fields.reasoning_effort is not None else (fields.reasoning_max_tokens or 0)
+    requested = fields.max_tokens if fields.reasoning_effort is not None else (fields.reasoning_max_tokens or 0)
+    # The larger of what was asked for and what the request can physically spend on thinking. The
+    # ceiling is the smaller of completion and the profile's reasoning bound, because reasoning is a
+    # SUBSET of completion -- a provider that ignores `reasoning.max_tokens` still cannot reason more
+    # than `max_tokens`.
+    ceiling = min(fields.max_tokens * OUTPUT_OVERSHOOT, profile["reasoning_bound"])
+    needed = max(requested, ceiling) if requested else 0
     if profile["reasoning_bound"] < needed:
         raise ValidationError("request reasoning exceeds the profile's reasoning bound")
     if len(body) > profile["input_bound"]:
@@ -288,27 +318,58 @@ def _request_bounds(profile, fields, body):
     return needed
 
 
+# TOKENS ARE NOT BOUNDED BY BYTES. The reservation used to take `len(body)` for the prompt, on the
+# stated assumption that "tokens are never more numerous than bytes". A paid pilot falsified it:
+# openai/gpt-6.1-sol-pro billed 5,308 prompt tokens for a 4,808-byte body — 1.10 tokens per byte. The
+# reservation was 522 tokens short, the reconcile called it `usage_overrun`, and an overrun is a
+# PERMANENT incident, so one ordinary call blocked every later dispatch in the programme.
+# 2 is the ceiling rather than 1.10 because the observed ratio is a floor, not a law: a tokenizer may
+# split a byte, and the prompt is the cheap half of the bill ($0.02 of a $0.18 hold), so doubling it
+# buys a real bound for very little money.
+TOKENS_PER_BYTE = 2
+
+# `max_tokens` IS NOT A HARD CAP EITHER. The reservation treated it as one -- "which the provider
+# cannot exceed" -- and a paid call exceeded it by 49%: x-ai/grok-4.7 was sent max_tokens 9000 and
+# billed 13,405 completion tokens (plus 12,968 reasoning inside them). The overrun became a permanent
+# incident and stopped the run, exactly as the byte-as-token assumption did before it.
+#
+# 2 was calibrated on one observation (1.49x) and was not enough: x-ai/grok-4.7 was then sent
+# max_tokens 15,500 on multi_beat_synthesis and billed 32,757 completion tokens -- 2.11x. The factor
+# is raised to 3, which covers that with margin. A route that ignores its ceiling by more than 3x
+# still trips an overrun, and that is deliberate: the alternative is reserving the profile's whole
+# 450,000-token ceiling ($6.75 per attempt) for a provider that has shown it does not honour one.
+OUTPUT_OVERSHOOT = 3
+
+
+def _prompt_token_bound(body: bytes) -> int:
+    """The prompt-token ceiling this request can be billed for. Never `len(body)`."""
+    return max(1, len(body)) * TOKENS_PER_BYTE
+
+
 def _usage_units(spec, fields, body, needed):
     """Reserve what THIS request can spend, not the profile's global worst case on every call.
 
     Reserving `input_bound`/`output_bound` verbatim charged every 6,000-token task for a 10,000-token
     one and every short prompt for the longest in the set, which inflated the hold and left no room to
     retry anything. Each figure below is still a PROVEN upper bound:
-      input      the serialized body's bytes, and tokens are never more numerous than bytes;
+      input      the serialized body's bytes TIMES `TOKENS_PER_BYTE` -- bytes are not tokens;
       output     `max_tokens`, which the provider cannot exceed;
       reasoning  the same ceiling under `effort`, or the explicit `reasoning.max_tokens`;
       cache      the input bound, because a cache read cannot exceed the prompt -- and because
                  assuming zero made every implicit cache hit a permanent dispatch block.
     """
     units = dict.fromkeys(USAGE_KINDS, 0)
+    prompt = _prompt_token_bound(body)
+    completion = fields.max_tokens * OUTPUT_OVERSHOOT
     # CACHE IS NOT STRUCTURALLY ZERO. Providers cache implicitly: kimi reported 1,024 cache-read
     # tokens on a request that carried no `cache_control` block at all. Reserving zero therefore made
     # every cache hit a `usage_overrun`, and an overrun is recorded as a PERMANENT incident -- so one
     # cheap, entirely legitimate cache hit took 1,024 of a reserved 0 and blocked the ledger from
     # dispatching anything else, ever. A cache read cannot exceed the prompt, which makes the input
     # bound the proven ceiling: same argument as `input_tokens`, one line down.
-    units.update(input_tokens=len(body), output_tokens=fields.max_tokens, reasoning_tokens=needed,
-                 cache_read_tokens=len(body), cache_write_tokens=len(body))
+    units.update(input_tokens=prompt, output_tokens=completion,
+                 reasoning_tokens=max(needed, completion),
+                 cache_read_tokens=prompt, cache_write_tokens=prompt)
     activity = {"critic": "critic_calls", "retrieval": "retrieval_calls",
                 "selection": "selection_calls", "research_evaluation": "grading_calls"}.get(spec.activity_role)
     if activity:
@@ -410,7 +471,7 @@ def _validate_spec(spec, snapshot, fields, artifacts):
     if len(matches) != 1 or matches[0]["story_id"] != spec.story_id or json_bytes(matches[0]["task"]) != artifacts["task"]:
         raise ValidationError("assigned task/condition/model drift")
     route_snapshot = matches[0]["judge_snapshot"] if spec.cost_role == "research" else spec.assigned_model_snapshot
-    if route_snapshot != snapshot.route.canonical_model_slug:
+    if not _same_route(route_snapshot, snapshot.route.canonical_model_slug):
         raise ValidationError("assigned model differs from route")
     if artifacts["settings"] != json_bytes(asdict(fields)) or artifacts["prompt"] != "\n\n".join(p[1] for p in fields.messages).encode():
         raise ValidationError("prompt/settings drift")

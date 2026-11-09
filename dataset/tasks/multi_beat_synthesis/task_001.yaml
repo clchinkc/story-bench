@@ -83,37 +83,27 @@ cross_beat_constraints:
 
 word_count: [700, 1000]
 
+# NOTE 2026-11-05: evaluation_criteria was a MAPPING (beat_specific + cross_beat), which
+# `scripts/judge_units.py` refuses by design -- a mapping has no criterion ids, and flattening
+# it in code would invent them. The same requirements are restated here as a flat list of
+# {criterion, description} items, one per beat plus the cross-beat constraints, so the judge
+# scores exactly what this task already demanded. No requirement was added or dropped.
 evaluation_criteria:
-  beat_specific:
-    beat_1:
-      - "Distrustful Resonant encounter present"
-      - "Dante's ability tested under pressure"
-      - "Traitor/enemy revealed"
-      - "Alliance formed"
-      - "Addiction/recovery referenced"
-    beat_2:
-      - "Planning scene with ally"
-      - "Sister guilt recognized as obstacle"
-      - "Preparation shown"
-      - "Doubt/fear moment"
-      - "Symbolic threshold crossing"
-    beat_3:
-      - "Killer confrontation"
-      - "Symbolic death through guilt"
-      - "All is lost moment"
-      - "Transformation through acceptance"
-      - "Victory through understanding"
-
-  cross_beat:
-    - criterion: "chekhovs_gun"
-      description: "Element from Beat 1 is essential in Beat 3"
-    - criterion: "guilt_arc_progression"
-      description: "Guilt evolves: mentioned → recognized → transformed"
-    - criterion: "rising_stakes"
-      description: "Stakes escalate across all three beats"
-    - criterion: "ally_continuity"
-      description: "Ally present and relevant in all three beats"
-    - criterion: "word_count_valid"
-      description: "Output is between 700-1000 words total"
-    - criterion: "context_maintained"
-      description: "Protagonist, setting, conflict, and tone consistent"
+  - criterion: "beat_1_tests_allies_enemies"
+    description: "Beat 1 (Tests, Allies, Enemies) contains every one of: a distrustful Resonant encounter; Dante's ability tested under pressure; a traitor or enemy within the community revealed; an alliance formed by proving himself; and a reference to his addiction and recovery."
+  - criterion: "beat_2_approach_inmost_cave"
+    description: "Beat 2 (Approach to the Inmost Cave) contains every one of: a planning scene with the new ally; his sister's guilt recognised as the obstacle to the confrontation; the preparation itself shown; a doubt or fear moment; and a symbolic threshold crossing."
+  - criterion: "beat_3_ordeal"
+    description: "Beat 3 (The Ordeal) contains every one of: the confrontation with the killer; a symbolic death through guilt; an all-is-lost moment; a transformation through acceptance; and a victory won through understanding rather than force."
+  - criterion: "chekhovs_gun"
+    description: "Element from Beat 1 is essential in Beat 3"
+  - criterion: "guilt_arc_progression"
+    description: "Guilt evolves: mentioned -> recognized -> transformed"
+  - criterion: "rising_stakes"
+    description: "Stakes escalate across all three beats"
+  - criterion: "ally_continuity"
+    description: "Ally present and relevant in all three beats"
+  - criterion: "word_count_valid"
+    description: "Output is between 700-1000 words total"
+  - criterion: "context_maintained"
+    description: "Protagonist, setting, conflict, and tone consistent"

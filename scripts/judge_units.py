@@ -91,7 +91,14 @@ GENERATION_ENVELOPES = ("pilot", "main")
 GENERATION_ROLE = "deployment"
 
 # A verdict has to fit: two submissions x up to 13 criteria x a short basis, plus the object.
-JUDGE_MAX_TOKENS = 3000
+#
+# 3000 was too small, and the failure was measured rather than suspected. On the 2026-11-09 clean1
+# run, 12 of 15 judge failures were `finish_reason == "length"` -- the reply was cut off mid-object,
+# so a paid call produced no verdict at all, and the route's declared `max_completion_tokens` is far
+# above what we were asking for. 8000 is the largest value that stays inside every bound this code
+# validates against (the route declares 65536; the offline route fixture declares 8000, and it is the
+# tighter of the two), which is what keeps the request provably payable rather than merely large.
+JUDGE_MAX_TOKENS = 8000
 # Sampling is pinned because a judge that samples is a different judge on every call, and the
 # study's quality gate compares arms across hundreds of calls. A route whose endpoint does not
 # declare `temperature` cannot be pinned, and `_body` refuses it loudly rather than letting the
@@ -178,6 +185,16 @@ class RubricError(JudgeError):
 
 class VerdictError(JudgeError):
     """The judge did not answer in the declared schema — an instrument failure, not a score."""
+
+
+class ResolutionConflict(VerdictError):
+    """The reply is well formed but contradicts itself: `better` and `resolved` disagree.
+
+    Separate from every other `VerdictError` because it is the one failure a re-ask can fix. A
+    malformed reply, an invented criterion or an out-of-schema value all say the instrument was not
+    driven correctly; this one says the judge's two summary fields disagree about a comparison it has
+    already scored, which is a mis-read of its own work rather than a failure to do it.
+    """
 
 
 # --------------------------------------------------------------------------- the rubric
@@ -320,8 +337,14 @@ def task_brief(task):
             f"refusing to judge a task the writer's own prompt builder cannot express") from exc
 
 
-def judge_prompt(task, criteria, submissions):
-    """(system, user) for one paired judgement. `submissions` maps slot -> text."""
+def judge_prompt(task, criteria, submissions, correction=None):
+    """(system, user) for one paired judgement. `submissions` maps slot -> text.
+
+    `correction` is set only on a re-ask, and only for `ResolutionConflict`. It quotes the judge's
+    own two summary fields back at it and names the rule they break; it never says which submission
+    is the better one, because that is the measurement. It sits after both submissions and before the
+    reply instruction, so the last thing read is still the instruction to answer.
+    """
     if set(submissions) != set(SLOTS):
         raise JudgeError(f"a paired judgement needs both slots {SLOTS}, got {sorted(submissions)}")
     for slot, text in submissions.items():
@@ -329,7 +352,7 @@ def judge_prompt(task, criteria, submissions):
             raise JudgeError(f"submission {slot} is empty; nothing to judge")
     system = JUDGE_SYSTEM + json.dumps(VERDICT_SCHEMA, sort_keys=True, separators=(",", ":")) + (
         JUDGE_RULES)
-    user = "\n".join((
+    parts = [
         f"TASK: {task.get('task_id')} ({task.get('task_type')})",
         "",
         SECTION.format("TASK BRIEF (what the writer was given)"),
@@ -344,10 +367,14 @@ def judge_prompt(task, criteria, submissions):
         SECTION.format("SUBMISSION 2"),
         submissions["2"],
         "",
+    ]
+    if correction is not None:
+        parts += [SECTION.format("CORRECTION REQUIRED"), correction, ""]
+    parts += [
         SECTION.format("REPLY"),
         "Return the JSON object now.",
-    ))
-    return system, user
+    ]
+    return system, "\n".join(parts)
 
 
 # --------------------------------------------------------------------------- the verdict
@@ -449,7 +476,10 @@ def _preference(raw, resolved):
     first, second = resolved["1"], resolved["2"]
     only = "1" if first is True and second is not True else "2" if second is True else None
     if only is not None and better != only:
-        raise VerdictError(f"better must name submission {only}, the only resolved submission")
+        raise ResolutionConflict(
+            f"better must name submission {only}, the only resolved submission "
+            f"(resolved={{{', '.join(f'{k}: {v!r}' for k, v in sorted(resolved.items()))}}}, "
+            f"better={better!r})")
     if only is None and better not in ("tie", "cannot_assess"):
         raise VerdictError(
             "neither submission is resolved true; a preference between them is taste the task's "
@@ -572,7 +602,7 @@ def _output_or_reason(root, record, attempt_id):
                      text=content, cost_usd=receipt["actual_usd"]), None
 
 
-def collected(ledger, evidence_root):
+def collected(ledger, evidence_root, scope=()):
     """Read what the ledger says was paid for AND the evidence still holds. Nothing is inferred.
 
     The ledger is the source of truth for which attempts exist and what they cost; the retained
@@ -584,6 +614,11 @@ def collected(ledger, evidence_root):
     root = pathlib.Path(evidence_root)
     outputs, skipped = [], {}
     for attempt_id in ledger.status()["attempt_ids"]:
+        # A ledger outlives a run. Attempts from an earlier run are bound to another manifest (and
+        # their evidence lives under another root), so reading them here would bury the real skips
+        # under hundreds of "no retained evidence" lines. `scope` selects ONE run by its unit tag.
+        if scope and not any(marker in attempt_id for marker in scope):
+            continue
         try:
             output, reason = _output_or_reason(root, ledger.attempt(attempt_id), attempt_id)
         except JudgeError as exc:
@@ -710,6 +745,24 @@ def disclosure_citation(path, raw):
                           "a line mentioning judge + confound/overlap"])
 
 
+_DATED_SNAPSHOT = re.compile(r"^(?P<stem>.+?)-(?P<date>\d{8})$")
+
+
+def same_route(a, b):
+    """Are these two strings the same route, given one may be the dated snapshot?
+
+    `judge_snapshot` is the CANONICAL SLUG (`google/gemini-4-argon`) while a row's `model_snapshot`
+    is the dated form (`google/gemini-4-argon-20261013`), so a plain `==` reports no overlap even
+    when the judge IS a subject — which is exactly this study's case. That comparison is not a
+    detail: it decides whether the paid evidence admits a confound or quietly omits it.
+    """
+    def stem(value):
+        match = _DATED_SNAPSHOT.match(value)
+        return match.group("stem") if match else value
+
+    return stem(str(a)) == stem(str(b))
+
+
 def confound_record(manifest, study_path):
     """The judge-subject overlap, with a citation to where the study discloses it.
 
@@ -727,10 +780,11 @@ def confound_record(manifest, study_path):
     subjects = sorted({row["model_snapshot"] for row in manifest["assignments"]})
     path = pathlib.Path(study_path)
     raw = path.read_text(encoding="utf-8")
-    return dict(judge_snapshot=judge, overlapping=judge in subjects, subjects=len(subjects),
-                overlapping_subjects=[subject for subject in subjects if subject == judge],
+    overlapping = [subject for subject in subjects if same_route(judge, subject)]
+    return dict(judge_snapshot=judge, overlapping=bool(overlapping), subjects=len(subjects),
+                overlapping_subjects=overlapping,
                 affected_arm_runs=sum(1 for row in manifest["assignments"]
-                                      if row["model_snapshot"] == judge),
+                                      if same_route(row["model_snapshot"], judge)),
                 disclosure=disclosure_citation(path, raw),
                 consequence=("The judge is one of the study's generation subjects; its preference "
                              "for its own prose cannot be separated from its prose being better. "
@@ -790,7 +844,7 @@ def _gate_blobs(record, assignment_hash, route_sha256, valid_until, mode):
         route_sha256=route_sha256, valid_until=valid_until)) for kind in sorted(pa.GATES)}
 
 
-def judge_spec(row, judgement, artifacts, assignment_hash):
+def judge_spec(row, judgement, artifacts, assignment_hash, tag=None):
     """The AttemptSpec for a judge call: `data_judge`, `research`, `research_evaluation`.
 
     This is the one place this file departs from `paid_attempt.prepared`, and it must. `prepared`
@@ -801,11 +855,16 @@ def judge_spec(row, judgement, artifacts, assignment_hash):
     `row["judge_snapshot"]`, so the ledger would record the judge call as a generation call.
     Everything else `prepared` does (route load, snapshot validation, gate derivation, artifact
     assembly, `prepare_attempt`) is reused through the same functions.
+
+    `tag` distinguishes a corrective re-ask from the first call. It changes the attempt id and
+    nothing else: the correction is not a retry (`retry_index` stays 0) because the first call
+    completed and was paid for — what failed was its answer's internal consistency, not the transport.
     """
     refs = tuple(pa.ArtifactRef.of(name, raw) for name, raw in sorted(artifacts.items()))
     by = dict(artifacts)
     return pa.AttemptSpec(
-        attempt_id=judgement.attempt_id, run_id=f"judge-{judgement.judgement_id}",
+        attempt_id=f"{judgement.attempt_id}{tag or ''}",
+        run_id=f"judge-{judgement.judgement_id}",
         episode_id=judgement.judgement_id, assignment_hash=assignment_hash,
         task_id=row["task_id"], task_sha256=digest(row["task"]),
         story_id=row["story_id"], condition=row["condition"], sample=row["sample"],
@@ -834,8 +893,60 @@ def _submissions(judgement, slot_by_arm):
             for slot, arm in slot_by_arm.items()}
 
 
-def prepare_judgement(judgement, *, base, manifest_raw, evidence_root, judge_snapshot):
-    """Build and validate one judge request under the judge route's own record. Sends nothing."""
+SENT_MARKERS = ("transport.json", "response.bin", "receipt.json")
+
+
+def _purge(path):
+    """Delegate removal of a directory tree."""
+    import shutil
+
+    shutil.rmtree(path, ignore_errors=True)
+
+
+def _set_aside(root):
+    """Rename a spent directory out of the way, keeping every file inside it.
+
+    Used only when the LEDGER ALREADY HOLDS the attempt: the call was paid for and reconciled, so
+    the next run must not re-send it, but `prepare_attempt` cannot write the name it wants while the
+    old directory sits there. Renaming preserves the receipt, response and transport for audit and
+    lets the plan be built; the walk then skips the judgement as held, so no money is spent twice.
+    """
+    for suffix in range(1, 100):
+        candidate = root.with_name(root.name + ".superseded-%d" % suffix)
+        if not candidate.exists():
+            root.rename(candidate)
+            return candidate.name
+    raise RuntimeError("too many superseded copies beside %s" % root.name)
+
+
+def _discard_unsent(evidence_root, attempt_id, held=()):
+    """Make the evidence name writable without ever losing a sent attempt.
+
+    Three cases:
+      * no directory            -> nothing to do;
+      * directory, nothing sent -> a `--plan` leftover; drop it, it holds no evidence;
+      * directory, something sent -> the ledger holds it (a crash spent the call before the verdict
+        was written): set it aside so the plan can be rebuilt, and never resend it.
+    """
+    root = evidence_root / "attempts" / attempt_id
+    if not root.is_dir():
+        return False
+    if not any((root / marker).exists() for marker in SENT_MARKERS):
+        _purge(root)
+        return True
+    if attempt_id in held:
+        _set_aside(root)
+        return True
+    return False
+
+
+def prepare_judgement(judgement, *, base, manifest_raw, evidence_root,
+                      judge_snapshot, discard_unsent=False, held=(), correction=None, tag=None):
+    """Build and validate one judge request under the judge route's own record. Sends nothing.
+
+    `correction`/`tag` build the corrective re-ask: same submissions, same blinding, same rubric, one
+    added section that quotes the judge's own contradiction back at it.
+    """
     record, sources = _route_sources(pathlib.Path(base), judge_snapshot)
     identity = record["route_identity"]
     route = reh._route(identity)
@@ -845,7 +956,7 @@ def prepare_judgement(judgement, *, base, manifest_raw, evidence_root, judge_sna
         raise JudgeError(f"{judge_snapshot}: route is {snapshot.qualification!r}, not payable")
     slot_by_arm = blind_slots(judgement.judgement_id)
     system, user = judge_prompt(judgement.task, judgement.criteria,
-                                _submissions(judgement, slot_by_arm))
+                                _submissions(judgement, slot_by_arm), correction=correction)
     fields = pa.RequestFields(messages=(("system", system), ("user", user)),
                               max_tokens=JUDGE_MAX_TOKENS, temperature=JUDGE_TEMPERATURE)
     artifacts = reh.artifacts_for(judgement.row, fields, manifest_raw, base)
@@ -857,9 +968,13 @@ def prepare_judgement(judgement, *, base, manifest_raw, evidence_root, judge_sna
     gate_blobs = _gate_blobs(record, assignment_hash, route_sha256, identity["expires_at"],
                              snapshot.qualification)
     artifacts |= gate_blobs
-    plan = pa.prepare_attempt(judge_spec(judgement.row, judgement, artifacts, assignment_hash),
-                              snapshot, tuple(sorted(artifacts.items())), fields,
-                              pathlib.Path(evidence_root))
+    if discard_unsent:
+        _discard_unsent(pathlib.Path(evidence_root), judge_spec(
+            judgement.row, judgement, artifacts, assignment_hash, tag=tag).attempt_id, held=held)
+    plan = pa.prepare_attempt(
+        judge_spec(judgement.row, judgement, artifacts, assignment_hash, tag=tag),
+        snapshot, tuple(sorted(artifacts.items())), fields,
+        pathlib.Path(evidence_root))
     admission = pa.Admission(
         mode=snapshot.qualification,
         authority_refs=tuple(pa.ArtifactRef.of(name, blob)
@@ -1089,10 +1204,15 @@ def _call_record(ledger, attempt_id, latency_ms, observed):
 
 
 def _judge_outcome(plan, ledger, judgement, slot_by_arm, result, latency_ms, observed, confound,
-                   evidence_root):
-    """Turn one executed call into (evidence document, result line, verdict)."""
+                   evidence_root, stem="verdict"):
+    """Turn one executed call into (evidence document, result line, verdict, error).
+
+    `error` is the `VerdictError` instance when the reply was rejected, so the caller can tell a
+    correctable contradiction from an instrument failure. `stem` names the evidence file: the retry
+    writes over `verdict.json` only after the rejected reading has been moved aside.
+    """
     call = _call_record(ledger, plan.spec.attempt_id, latency_ms, observed)
-    content, failure, parsed = None, None, None
+    content, failure, parsed, error = None, None, None, None
     if result.transport_status != "completed" or result.output_ref is None:
         failure = f"judge call did not complete: {result.transport_status}"
         analysis = failed_analysis(failure)
@@ -1102,17 +1222,18 @@ def _judge_outcome(plan, ledger, judgement, slot_by_arm, result, latency_ms, obs
             parsed = parse_verdict(content, judgement.criteria)
             analysis = analysis_fields(parsed, slot_by_arm)
         except VerdictError as exc:
+            error = exc
             failure = str(exc)
             analysis = failed_analysis(failure)
     document = _verdict_doc(judgement, plan, slot_by_arm, confound, content=content,
                             parsed=None if parsed is None else _parsed_block(parsed, slot_by_arm),
                             failure=failure, call=call, analysis=analysis)
     directory = pathlib.Path(evidence_root) / "judgements" / judgement.judgement_id
-    pa._persist(directory / "verdict.json", pp.json_bytes(document))
+    pa._persist(directory / f"{stem}.json", pp.json_bytes(document))
     return dict(judgement_id=judgement.judgement_id, attempt_id=plan.spec.attempt_id,
                 state=call["state"], cost_usd=call["cost_usd"], latency_ms=latency_ms,
                 failure=failure, analysis=analysis,
-                evidence=str(directory / "verdict.json")), failure, parsed
+                evidence=str(directory / f"{stem}.json")), failure, parsed, error
 
 
 async def _execute_one(plan, ledger, admission, identity):
@@ -1122,27 +1243,187 @@ async def _execute_one(plan, ledger, admission, identity):
     return result, int((time.monotonic() - started) * 1000), observed
 
 
-def _execute_plans(plans, *, ledger, confound, evidence_root, held, stop_after_failures):
-    """Walk the prepared plans. Returns (lines, held_back, stop_reason)."""
+CORRECTIVE_TAG = "-r1"
+
+
+def _corrective_message(conflict):
+    """What a re-asked judge is told: its own two fields, the rule, and nothing about the answer.
+
+    Deliberately not "name submission N". That field is derivable from the judge's own `resolved`,
+    so telling it the answer would turn a measurement into a compliance check: it could satisfy the
+    re-ask by flipping one field without re-reading either text. It is asked to make the two agree,
+    in whichever direction its reading actually supports.
+    """
+    return "\n".join((
+        "Your previous reply was rejected for an internal contradiction, not for the verdicts you "
+        "gave on the criteria.",
+        f"The contradiction: {conflict}",
+        "",
+        "The rule it breaks, quoted from the instructions above: \"If exactly one submission is "
+        "resolved true, `better` must be that one. If neither is resolved true, `better` must be "
+        "\"tie\" or \"cannot_assess\" — do not assert a preference the criteria do not license.\"",
+        "",
+        "Re-read both submissions against the same criteria and return ONE corrected JSON object in "
+        "which `resolved` and `better` agree. Either correct `better` to match the criterion verdicts "
+        "you already gave, or correct a criterion verdict that you now believe you misread so that "
+        "`resolved` supports the preference you intended. Do not change a criterion verdict you "
+        "still believe is right merely to remove the disagreement.",
+    ))
+
+
+def _corrective_reattempt(*, judgement, prepare, ledger, confound, evidence_root, first_line,
+                          conflict):
+    """Re-ask once. Returns (line, failure, parsed, error), or None when the re-ask could not run.
+
+    The rejected reading is moved to `verdict.rejected.json`, never deleted: `verdict.json` is the
+    verdict of record, and the rejected one is the evidence that the first answer contradicted
+    itself. A re-ask that cannot be prepared puts the original record back and leaves the original
+    failure standing, so a failed retry never costs the run a paid call's evidence.
+    """
+    directory = pathlib.Path(evidence_root) / "judgements" / judgement.judgement_id
+    original, rejected = directory / "verdict.json", directory / "verdict.rejected.json"
+    moved = original.exists()
+    if moved:
+        os.replace(original, rejected)
+    try:
+        plan, admission, identity, slot_by_arm = prepare(
+            judgement, correction=_corrective_message(conflict), tag=CORRECTIVE_TAG)
+        result, latency_ms, observed = asyncio.run(
+            _execute_one(plan, ledger, admission, identity))
+    except (JudgeError, sl.LedgerError, ValueError, SystemExit) as exc:
+        if moved and rejected.exists():
+            os.replace(rejected, original)
+        print(f"  {judgement.judgement_id[:58]:58} corrective re-ask could not be prepared: "
+              f"{type(exc).__name__}: {str(exc)[:60]}", flush=True)
+        return None
+    line, failure, parsed, error = _judge_outcome(
+        plan, ledger, judgement, slot_by_arm, result, latency_ms, observed, confound, evidence_root)
+    line["corrective_reask"] = dict(
+        superseded_attempt_id=first_line["attempt_id"],
+        superseded_cost_usd=first_line["cost_usd"],
+        conflict=str(conflict),
+        rejected_evidence=str(rejected) if moved else None,
+        also_conflicted=isinstance(error, ResolutionConflict))
+    return line, failure, parsed, error
+
+
+REPAIR_TAG = "-r2"
+
+
+def _verdict_path(evidence_root, judgement):
+    return pathlib.Path(evidence_root) / "judgements" / judgement.judgement_id / "verdict.json"
+
+
+def _needs_repair(evidence_root, judgement):
+    """(True, why) when this judgement carries no usable verdict: absent, unreadable, or failed.
+
+    A judgement whose call settled but whose reply was rejected -- truncated, unparseable, or
+    contradicting itself twice -- is `held`: its attempt id is spent, so a normal run skips it and the
+    unit loses both arms. Its evidence is still readable, which is what lets a repair pass tell "this
+    one already has a verdict" from "this one has a failure and needs another call".
+    """
+    path = _verdict_path(evidence_root, judgement)
+    if not path.exists():
+        return True, "no verdict recorded"
+    try:
+        document = pp.parse_json(path.read_bytes())
+    except (ValueError, OSError):
+        return True, "verdict unreadable"
+    if document.get("failure"):
+        return True, str(document["failure"])[:120]
+    return False, None
+
+
+def _preserve(path):
+    """Move an existing evidence file aside rather than overwriting it."""
+    if not path.exists():
+        return None
+    for index in range(1, 100):
+        candidate = path.with_name(f"{path.stem}.prior{index}{path.suffix}")
+        if not candidate.exists():
+            os.replace(path, candidate)
+            return candidate
+    raise JudgeError(f"cannot preserve {path}: too many prior readings")
+
+
+def _prepare_repair(judgement, prepare, evidence_root):
+    """Re-judge a held judgement under a new attempt id. None when it needs no repair."""
+    needed, reason = _needs_repair(evidence_root, judgement)
+    if not needed:
+        return None
+    plan, admission, identity, slot_by_arm = prepare(judgement, tag=REPAIR_TAG)
+    _preserve(_verdict_path(evidence_root, judgement))
+    print(f"  {judgement.judgement_id[:58]:58} repairing: {reason}", flush=True)
+    return plan, admission, identity, slot_by_arm
+
+
+def _ledger_hop(judgement, packed, *, held, prepare, repair_invalid, evidence_root):
+    """The plan to send, or None plus the `held_back` note when this slot is spent and stays spent.
+
+    `repair_invalid` is the single exception to "a consumed judgement is never resent", and it is
+    narrow on purpose: a held attempt is re-judged only when its stored verdict carries a `failure`,
+    under a new `-r2` attempt id, so the spent slot is never reused and a verdict that already parsed
+    is never re-bought.
+    """
+    plan = packed[0]
+    if plan.spec.attempt_id not in held:
+        return packed, None
+    if repair_invalid and prepare is not None:
+        repair = _prepare_repair(judgement, prepare, evidence_root)
+        if repair is not None:
+            return repair, None
+    return None, dict(attempt_id=plan.spec.attempt_id, state="CONSUMED",
+                      reason="already held; a consumed judgement is never resent")
+
+
+def _record_outcome(judgement, plan, slot_by_arm, outcome, *, ledger, confound, evidence_root,
+                    prepare):
+    """Verdict for one executed call, with the single corrective re-ask when it applies."""
+    result, latency_ms, observed = outcome
+    line, failure, _, error = _judge_outcome(
+        plan, ledger, judgement, slot_by_arm, result, latency_ms, observed, confound, evidence_root)
+    if not isinstance(error, ResolutionConflict) or prepare is None:
+        return line, failure, False
+    again = _corrective_reattempt(
+        judgement=judgement, prepare=prepare, ledger=ledger, confound=confound,
+        evidence_root=evidence_root, first_line=line, conflict=error)
+    if again is None:
+        return line, failure, False
+    line, failure, _, _ = again
+    return line, failure, True
+
+
+def _execute_plans(plans, *, ledger, confound, evidence_root, held, stop_after_failures,
+                   prepare=None, repair_invalid=False):
+    """Walk the prepared plans. Returns (lines, held_back, stop_reason).
+
+    One judgement whose reply contradicts itself is re-asked once, through `prepare`, with the rule
+    quoted and no hint at the answer. Every other rejection is final: a malformed reply or an
+    invented criterion says the instrument was driven wrong, and buying the same failure again is how
+    a run spends its envelope learning nothing.
+    """
     results, held_back, consecutive = [], [], 0
-    for judgement, (plan, admission, identity, slot_by_arm) in plans:
-        if plan.spec.attempt_id in held:
-            held_back.append(dict(attempt_id=plan.spec.attempt_id, state="CONSUMED",
-                                  reason="already held; a consumed judgement is never resent"))
+    for judgement, packed in plans:
+        packed, note = _ledger_hop(judgement, packed, held=held, prepare=prepare,
+                                   repair_invalid=repair_invalid, evidence_root=evidence_root)
+        if note is not None:
+            held_back.append(note)
             continue
+        plan, admission, identity, slot_by_arm = packed
         try:
-            result, latency_ms, observed = asyncio.run(
-                _execute_one(plan, ledger, admission, identity))
+            outcome = asyncio.run(_execute_one(plan, ledger, admission, identity))
         except (sl.LedgerError, ValueError) as exc:
             # An accounting refusal (a budget that shrank between plan and send, an incident) is
             # a stop, not a per-row failure: continuing would buy calls the ledger just refused.
             return results, held_back, f"stopped: {type(exc).__name__}: {exc}"
-        line, failure, _ = _judge_outcome(plan, ledger, judgement, slot_by_arm, result, latency_ms,
-                                          observed, confound, evidence_root)
+        line, failure, retried = _record_outcome(
+            judgement, plan, slot_by_arm, outcome, ledger=ledger, confound=confound,
+            evidence_root=evidence_root, prepare=prepare)
         results.append(line)
         print(f"  {plan.spec.attempt_id[:58]:58} {line['state']:11} "
               f"${Decimal(line['cost_usd'] or '0'):.6f}  "
-              f"{'FAILED: ' + failure[:60] if failure else 'ok'}", flush=True)
+              f"{'FAILED: ' + failure[:60] if failure else 'ok'}"
+              f"{'  (re-asked)' if retried else ''}", flush=True)
         consecutive = consecutive + 1 if failure else 0
         if consecutive >= stop_after_failures:
             return results, held_back, (
@@ -1153,7 +1434,7 @@ def _execute_plans(plans, *, ledger, confound, evidence_root, held, stop_after_f
 
 def run_execute(judgements, *, ledger, prepare, manifest, evidence_root, study, outputs,
                 partial_ok=False, refused=None, unpaired=None, unassigned=None,
-                stop_after_failures=3):
+                stop_after_failures=3, repair_invalid=False):
     """Reserve, send, and record one judgement at a time — never resend a consumed slot.
 
     The envelope arithmetic is only reviewable if the calls are sequential: two concurrent
@@ -1163,6 +1444,15 @@ def run_execute(judgements, *, ledger, prepare, manifest, evidence_root, study, 
     refused, unpaired, unassigned = refused or {}, unpaired or [], unassigned or []
     confound = confound_record(manifest, study)
     plans, failed = _prepare_all(judgements, prepare)
+    # The manifest names the judge the way the STUDY names it ("google/gemini-4-argon"); the route
+    # actually called carries the dated slug ("google/gemini-4-argon-20261013"). The evidence guard
+    # compares the dated one, so recording only the study name failed every judgement with
+    # "evidence would record a confound for a different judge route" -- after the call was paid for.
+    # Both names are kept: the study's, so the citation stays traceable, and the route's, so the
+    # guard compares like with like.
+    if plans:
+        confound = dict(confound, judge_study_name=manifest.get("judge_snapshot"),
+                        judge_snapshot=plans[0][1][0].route.canonical_model_slug)
     reservations = [reservation_micros(plan) for _, (plan, _, _, _) in plans]
     status = ledger.status()
     affordability = _affordability(status, reservations)
@@ -1175,7 +1465,8 @@ def run_execute(judgements, *, ledger, prepare, manifest, evidence_root, study, 
     if not reasons:
         results, held_back, stopped = _execute_plans(
             plans, ledger=ledger, confound=confound, evidence_root=evidence_root,
-            held=set(status["attempt_ids"]), stop_after_failures=stop_after_failures)
+            held=set(status["attempt_ids"]), stop_after_failures=stop_after_failures,
+            prepare=prepare, repair_invalid=repair_invalid)
     if stopped:
         reasons.append(stopped)
     return dict(mode="execute", manifest_sha256=digest(manifest),
@@ -1258,7 +1549,7 @@ def _phase(args):
     if not isinstance(judge_snapshot, str) or not judge_snapshot.strip():
         raise SystemExit("manifest records no judge_snapshot")
     ledger = sl.Ledger.open(args.ledger, program_id=PROGRAM_ID, store_id=STORE_ID)
-    outputs, skipped = collected(ledger, args.evidence)
+    outputs, skipped = collected(ledger, args.evidence, tuple(args.scope or ()))
     pairs, unpaired, unassigned = pair_units(outputs, manifest)
     judgements, refused = build_judgements(pairs, manifest, unit=args.unit)
     return Phase(manifest, raw, judge_snapshot, ledger, outputs, skipped, pairs, unpaired,
@@ -1278,9 +1569,13 @@ def _authority(mode, authorise):
 
 
 def _dispatch(mode, phase, args):
-    def prepare(judgement):
+    def prepare(judgement, correction=None, tag=None):
+        """Build one request. `correction`/`tag` are set only by the corrective re-ask."""
         return prepare_judgement(judgement, base=args.base, manifest_raw=phase.raw,
-                                 evidence_root=args.evidence, judge_snapshot=phase.judge_snapshot)
+                                 evidence_root=args.evidence, judge_snapshot=phase.judge_snapshot,
+                                 discard_unsent=args.discard_unsent,
+                                 held=tuple(phase.ledger.status()["attempt_ids"]),
+                                 correction=correction, tag=tag)
 
     common = dict(ledger=phase.ledger, prepare=prepare, manifest=phase.manifest,
                   evidence_root=args.evidence, study=args.study, outputs=phase.outputs,
@@ -1290,7 +1585,9 @@ def _dispatch(mode, phase, args):
         return run_plan(phase.judgements, **common)
     if mode == "dry-run":
         return run_dry_run(phase.judgements, **common)
-    return run_execute(phase.judgements, **common, stop_after_failures=args.stop_after_failures)
+    return run_execute(phase.judgements, **common,
+                       stop_after_failures=args.stop_after_failures,
+                       repair_invalid=args.repair_invalid)
 
 
 def _parse_args(argv):
@@ -1310,10 +1607,25 @@ def _parse_args(argv):
     ap.add_argument("--authorise", default=None, help="PAID-JUDGE-YYYY-MM-DD")
     ap.add_argument("--unit", default="judge",
                     help="unit tag; a new tag is a new ledger slot, an existing one is a replay")
+    # NOT `--unit`: that name is already the tag for the judge's OWN attempt ids, and a duplicate
+    # option silently replaced it -- `tuple(args.unit)` became the characters of a string, so every
+    # single-letter "marker" matched and the scope selected everything.
+    ap.add_argument("--scope", action="append", default=None, metavar="TAG",
+                    help="only judge attempts whose id contains this tag (repeatable). A ledger "
+                         "outlives a run, and a previous run's attempts are bound to another manifest")
+    ap.add_argument("--discard-unsent", action="store_true",
+                    help="before each judgement, drop an evidence directory that carries no send "
+                         "marker. A --plan run writes each attempt's manifest, so a later --execute "
+                         "in the same root collides with its own leftovers and stops after ONE "
+                         "judgement; a directory holding transport/response/receipt is never touched")
     ap.add_argument("--partial-ok", action="store_true",
                     help="proceed knowing some tasks are refused or some plans fail")
     ap.add_argument("--stop-after-failures", type=int, default=3,
                     help="consecutive failed judgements end the run")
+    ap.add_argument("--repair-invalid", action="store_true",
+                    help="re-judge a HELD judgement whose stored verdict carries a failure, under a "
+                         "new -r2 attempt id. The spent slot is never reused; a verdict that already "
+                         "parsed is never re-bought. For repairing a run whose replies were truncated")
     return ap.parse_args(argv)
 
 

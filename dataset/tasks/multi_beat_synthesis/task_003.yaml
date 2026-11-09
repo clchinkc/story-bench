@@ -85,37 +85,27 @@ cross_beat_constraints:
 
 word_count: [700, 1000]
 
+# NOTE 2026-11-05: evaluation_criteria was a MAPPING (beat_specific + cross_beat), which
+# `scripts/judge_units.py` refuses by design -- a mapping has no criterion ids, and flattening
+# it in code would invent them. The same requirements are restated here as a flat list of
+# {criterion, description} items, one per beat plus the cross-beat constraints, so the judge
+# scores exactly what this task already demanded. No requirement was added or dropped.
 evaluation_criteria:
-  beat_specific:
-    beat_1:
-      - "Heist action showcasing skills"
-      - "Clever problem-solving"
-      - "Humor and style present"
-      - "Plan working (mostly)"
-      - "Minor complication introduced"
-    beat_2:
-      - "False victory achieved"
-      - "Stakes raised dramatically"
-      - "Mentor involvement discovered"
-      - "Heist nature changes"
-      - "Party setting pressure"
-    beat_3:
-      - "Security closing in"
-      - "Team friction surfaces"
-      - "Crew member in danger"
-      - "Painting vs revenge choice"
-      - "Walls closing in feeling"
-
-  cross_beat:
-    - criterion: "chekhovs_gun"
-      description: "Detail from Beat 1 critical in Beat 3"
-    - criterion: "tonal_escalation"
-      description: "Tone shifts: playful → shaken → genuine danger"
-    - criterion: "mentor_presence"
-      description: "Antagonist presence increases: background → revealed → active"
-    - criterion: "team_dynamics"
-      description: "Crew member has consistent arc affecting plot"
-    - criterion: "word_count_valid"
-      description: "Output is between 700-1000 words total"
-    - criterion: "context_maintained"
-      description: "Heist setting, protagonist, crew, conflict consistent"
+  - criterion: "beat_1_fun_and_games"
+    description: "Beat 1 (Fun and Games) contains every one of: the heist in action showcasing Miri and the crew's skills; clever problem-solving that delivers on the heist premise; moments of humour and style; things going according to plan, mostly; and the introduction of a minor unexpected complication."
+  - criterion: "beat_2_midpoint"
+    description: "Beat 2 (Midpoint) contains every one of: a false victory; stakes raised dramatically by new information or threat; the discovery that her mentor is involved; the heist's nature changing from simple theft to something more; and pressure from the public or party setting."
+  - criterion: "beat_3_bad_guys_close_in"
+    description: "Beat 3 (Bad Guys Close In) contains every one of: security closing in; team friction surfacing; a crew member in danger; the choice between the painting and revenge; and a walls-closing-in feeling."
+  - criterion: "chekhovs_gun"
+    description: "Detail from Beat 1 critical in Beat 3"
+  - criterion: "tonal_escalation"
+    description: "Tone shifts: playful -> shaken -> genuine danger"
+  - criterion: "mentor_presence"
+    description: "Antagonist presence increases: background -> revealed -> active"
+  - criterion: "team_dynamics"
+    description: "Crew member has a consistent arc affecting plot"
+  - criterion: "word_count_valid"
+    description: "Output is between 700-1000 words total"
+  - criterion: "context_maintained"
+    description: "Heist setting, protagonist, crew, conflict consistent"
