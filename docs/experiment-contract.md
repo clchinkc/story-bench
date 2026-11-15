@@ -73,6 +73,8 @@ Continuity fixtures label chronology, location, identity, relationships, knowled
 
 Initial human annotation proposal: small precomputed calibration batches (e.g. 24–36 task clusters spanning three locales, adjusted to author capacity), with 10–15% delayed blinded repeats. These are workload proposals, not power claims or collected labels. Show full relevant context, randomize pair order, hide arm/model names and AI verdicts; record initial verdict, evidence, confidence, tie/cannot-assess and time. Store optional AI-assisted reconsideration separately after locking the initial judgment. Only the user rates; estimate intra-rater consistency, never inter-rater agreement. Dev disagreement can select later calibration examples; no held-out cherry-picking.
 
+The first structural metric that consumes scene-level annotation is the [function ledger](function-ledger.md): once an annotation pass exists, its order and missing-predecessor findings become reportable, and until then it carries no score.
+
 ## 6. Artifact, critic and generation assessment
 
 Revision primary resolved predicate is requested changes fulfilled, protected decisions/content preserved, dependencies propagated, no new critical continuity defect and valid final submission. Report each component and over-editing. Quality pairwise judgments include all assessable outputs, including unresolved tasks; otherwise the success filter would bias results. A failed empty/absent artifact has its own status and conservative outcome treatment, not a favorable omission.
