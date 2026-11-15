@@ -9,12 +9,14 @@ Propp's functions may be omitted but do not reorder. A story that fills every sl
 by padding is worse than one that omits half of them, so a coverage number would
 reward padding. The only outputs are:
 
-- `missing-prerequisite` — a function appears whose predecessor never does;
+- `missing-predecessor` — a function appears whose predecessor never does;
 - `order` — a function appears before a predecessor that comes later;
 - `no-branch` — neither opening branch (8a villainy, 8b lack) is present, which
   means the ledger does not apply to this story.
 
-Coverage is emitted for completeness and must not be ranked.
+Coverage is emitted for completeness and must not be ranked. It divides by the 31
+slots one sequence can occupy, not by the 32 ids in `FUNCTION_SEQUENCE`: a story
+takes 8a or 8b and never both, so dividing by 32 could never reach 1.
 
 ## Annotation format
 
@@ -23,7 +25,7 @@ Coverage is emitted for completeness and must not be ranked.
 ```
 
 One entry per occurrence. The first scene wins for ordering. `function` is a
-string id from `FUNCTIONS` (`"1"`..`"31"`, plus `"8a"` and `"8b"`).
+string id from `FUNCTION_SEQUENCE` (`"1"`..`"31"`, plus `"8a"` and `"8b"`).
 
 ## Running
 

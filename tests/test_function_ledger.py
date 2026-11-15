@@ -1,4 +1,4 @@
-from src.function_ledger import Annotation, diagnose
+from src.function_ledger import FUNCTION_SEQUENCE, Annotation, diagnose
 
 
 def _a(function: str, scene: int) -> Annotation:
@@ -19,9 +19,9 @@ def test_out_of_order_function_is_reported():
     assert any(f.kind == "order" and "18" in f.detail for f in d.findings)
 
 
-def test_missing_prerequisite_is_reported():
+def test_missing_predecessor_is_reported():
     d = diagnose([_a("8b", 1), _a("18", 2)])
-    assert any(f.kind == "missing-prerequisite" and "16" in f.detail for f in d.findings)
+    assert any(f.kind == "missing-predecessor" and "16" in f.detail for f in d.findings)
 
 
 def test_lack_branch_is_recognised():
@@ -41,6 +41,13 @@ def test_unknown_function_is_flagged_not_crashed():
     d = diagnose([_a("8a", 1), _a("99", 2)])
     assert any(f.kind == "unknown-function" for f in d.findings)
     assert d.branch == "8a"
+
+
+def test_a_full_sequence_scores_coverage_one():
+    seq = [f.id for f in FUNCTION_SEQUENCE if f.id != "8b"]
+    d = diagnose([_a(f, i) for i, f in enumerate(seq, start=1)])
+    assert d.clean
+    assert d.coverage == 1.0
 
 
 def test_repeated_function_uses_first_scene():
